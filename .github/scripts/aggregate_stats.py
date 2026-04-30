@@ -179,6 +179,18 @@ def load_runs():
                 print(f"WARNING: unexpected format in {results_file}")
                 continue
 
+            # Load QualWeb results if available
+            qualweb_report_file = run_dir / "qualweb_report.json"
+            qualweb_issues = 0
+            if qualweb_report_file.exists():
+                try:
+                    qualweb_report = json.loads(qualweb_report_file.read_text(encoding='utf-8-sig'))
+                    qualweb_issues = qualweb_report.get("failedCount", 0)
+                except json.JSONDecodeError:
+                    pass
+            for it in iterations:
+                it["qualweb_issues"] = qualweb_issues
+
             # Recompute scores AND status so historical runs reflect current validators.
             for it in iterations:
                 it["score"] = recompute_score(it)
@@ -267,6 +279,7 @@ def build_leaderboard(runs):
             "w3c_errors":      final.get("w3c_errors", 0),
             "axe_violations":  final.get("axe_violations", 0),
             "pa11y_issues":    final.get("pa11y_issues", 0),
+            "qualweb_issues":  final.get("qualweb_issues", 0),
             "iterations_used": final.get("iteration", len(run["iterations"])),
             "status":          final.get("status", "unknown"),
             "timestamp":       final.get("timestamp", ""),
@@ -329,6 +342,7 @@ def build_model_progress(runs):
                     "w3c_errors":      it.get("w3c_errors", 0),
                     "axe_violations":  it.get("axe_violations"),
                     "pa11y_issues":    it.get("pa11y_issues", 0),
+                    "qualweb_issues":  it.get("qualweb_issues", 0),
                     "status":          it.get("status"),
                     "timestamp":       it.get("timestamp", ""),
                 }
@@ -353,6 +367,7 @@ def build_error_breakdown(runs):
                 "w3c_errors":      final.get("w3c_errors", 0),
                 "axe_violations":  final.get("axe_violations", 0),
                 "pa11y_issues":    final.get("pa11y_issues", 0),
+                "qualweb_issues":  final.get("qualweb_issues", 0),
             }
     return sorted(seen.values(), key=lambda x: -x["score"])
 
@@ -404,6 +419,7 @@ def build_runs_by_model(runs):
             "final_w3c_errors":      final.get("w3c_errors", 0),
             "final_axe_violations":  final.get("axe_violations", 0),
             "final_pa11y_issues":    final.get("pa11y_issues", 0),
+            "final_qualweb_issues":  final.get("qualweb_issues", 0),
             "status":                final.get("status", "unknown"),
             "timestamp":             final.get("timestamp", ""),
             "benchmark_url":         f"benchmarks/{run['model']}/{run['run_id']}/index.html",
