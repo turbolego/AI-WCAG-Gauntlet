@@ -142,9 +142,6 @@ function renderKPIs(data) {
   const passes = (data.leaderboard ?? []).filter(r => r.status === 'pass').length;
   $('#kpi-passes').textContent = passes;
 
-  const pa11yZero = (data.leaderboard ?? []).filter(r => (r.pa11y_issues ?? 0) === 0).length;
-  $('#kpi-pa11y-zero').textContent = pa11yZero;
-
   const best = Math.max(...(data.leaderboard ?? []).map(r => r.score ?? 0));
   $('#kpi-best-score').textContent = isFinite(best) ? best.toFixed(1) : '—';
 }
@@ -516,12 +513,13 @@ function renderProgressCharts(runs, modelName) {
   for (const run of runs) {
     for (const it of run.iterations) {
       const n = it.iteration;
-      if (!byIter[n]) byIter[n] = { scores: [], html: [], w3c: [], axe: [], pa11y: [] };
+      if (!byIter[n]) byIter[n] = { scores: [], html: [], w3c: [], axe: [], pa11y: [], qualweb: [] };
       byIter[n].scores.push(it.score ?? 0);
       byIter[n].html.push(it.html_tag_errors ?? 0);
       byIter[n].w3c.push(it.w3c_errors ?? 0);
       byIter[n].axe.push(it.axe_violations ?? 0);
       byIter[n].pa11y.push(it.pa11y_issues ?? 0);
+      byIter[n].qualweb.push(it.qualweb_issues ?? 0);
     }
   }
 
@@ -534,6 +532,7 @@ function renderProgressCharts(runs, modelName) {
   const w3cData = iterNums.map(n => +avg(byIter[n].w3c).toFixed(1));
   const axeData = iterNums.map(n => +avg(byIter[n].axe).toFixed(1));
   const pa11yData = iterNums.map(n => +avg(byIter[n].pa11y).toFixed(1));
+  const qualwebData = iterNums.map(n => +avg(byIter[n].qualweb).toFixed(1));
 
   const runsLabel = `${modelName} — ${runs.length} run${runs.length !== 1 ? 's' : ''} averaged`;
 
@@ -567,6 +566,7 @@ function renderProgressCharts(runs, modelName) {
         { label: 'W3C errors', data: w3cData, borderColor: C.warn, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
         { label: 'Axe violations', data: axeData, borderColor: C.accent4, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
         { label: 'Pa11y issues', data: pa11yData, borderColor: C.accent2, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+        { label: 'QualWeb issues', data: qualwebData, borderColor: '#f472b6', backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
       ],
     },
     options: mergeCD({}),

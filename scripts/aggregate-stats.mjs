@@ -72,6 +72,8 @@ function groupRunsIntoSessions(modelDir, modelName) {
     const w3cErrors = testResult.w3c_errors ?? testResult.vnu_errors ?? 0;
     const axeViolations = testResult.axe_violations ?? 0;
     const pa11yIssues = testResult.pa11y_issues ?? 0;
+    const qualwebReport = readJSON(path.join(runDir, "qualweb_report.json"));
+    const qualwebIssues = qualwebReport?.failedCount ?? 0;
     const missingTags = htmlReport?.missingTags ?? [];
     const foundCount = htmlReport?.foundCount ?? (TOTAL_TAGS - htmlTagErrors);
     const usedTags = REQUIRED_HTML5_TAGS.filter(t => !missingTags.includes(t));
@@ -86,6 +88,7 @@ function groupRunsIntoSessions(modelDir, modelName) {
       w3c_errors: w3cErrors,
       axe_violations: axeViolations,
       pa11y_issues: pa11yIssues,
+      qualweb_issues: qualwebIssues,
       status: testResult.status,
       timestamp: testResult.timestamp ?? metadata?.timestamp,
       missing_tags: missingTags,
@@ -101,6 +104,10 @@ function groupRunsIntoSessions(modelDir, modelName) {
         iterations: [iterData],
         axe_version: axeVersion,
         benchmark_url: `benchmarks/${modelName}/${folderName}/index.html`,
+        source: metadata?.source ?? 'local',
+        provider: metadata?.provider ?? 'unknown',
+        providerLabel: metadata?.providerLabel ?? 'Unknown',
+        tool: metadata?.tool ?? null,
       };
       sessions.push(currentSession);
     } else {
@@ -144,6 +151,10 @@ function main() {
     return {
       model: session.model,
       run_id: session.run_id,
+      source: session.source,
+      provider: session.provider,
+      providerLabel: session.providerLabel,
+      tool: session.tool,
       score: computeScore(
         finalIter.html_tag_errors, finalIter.w3c_errors,
         finalIter.axe_violations, finalIter.pa11y_issues, iterCount
@@ -152,6 +163,7 @@ function main() {
       w3c_errors: finalIter.w3c_errors,
       axe_violations: finalIter.axe_violations,
       pa11y_issues: finalIter.pa11y_issues,
+      qualweb_issues: finalIter.qualweb_issues,
       iterations_used: iterCount,
       status: finalIter.status,
       timestamp: finalIter.timestamp,
@@ -170,12 +182,17 @@ function main() {
   const runsByModel = leaderboard.map(entry => ({
     model: entry.model,
     run_id: entry.run_id,
+    source: entry.source,
+    provider: entry.provider,
+    providerLabel: entry.providerLabel,
+    tool: entry.tool,
     total_iterations: entry.iterations_used,
     final_score: entry.score,
     final_html_errors: entry.html_tag_errors,
     final_w3c_errors: entry.w3c_errors,
     final_axe_violations: entry.axe_violations,
     final_pa11y_issues: entry.pa11y_issues,
+    final_qualweb_issues: entry.qualweb_issues,
     status: entry.status,
     timestamp: entry.timestamp,
     benchmark_url: entry.benchmark_url,
@@ -195,6 +212,7 @@ function main() {
     w3c_errors: e.w3c_errors,
     axe_violations: e.axe_violations,
     pa11y_issues: e.pa11y_issues,
+    qualweb_issues: e.qualweb_issues,
   }));
 
   // tag_coverage_by_model: best run per model
@@ -234,6 +252,7 @@ function main() {
         w3c_errors: it.w3c_errors,
         axe_violations: it.axe_violations,
         pa11y_issues: it.pa11y_issues,
+        qualweb_issues: it.qualweb_issues,
         status: it.status,
         timestamp: it.timestamp,
       })),
