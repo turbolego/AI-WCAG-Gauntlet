@@ -126,7 +126,11 @@ if ! jq empty "$TARGET_DIR/pa11y_report.json" 2>/dev/null; then
 fi
 
 PA11Y_ISSUES=$(jq 'if type == "array" then length else (.issues // [] | length) end' \
-    "$TARGET_DIR/pa11y_report.json" || echo 0)
+        "$TARGET_DIR/pa11y_report.json" 2>/dev/null)
+# If PA11Y_ISSUES is empty or not a number, default to 0
+if ! [[ "$PA11Y_ISSUES" =~ ^[0-9]+$ ]]; then
+    PA11Y_ISSUES=0
+fi
 
 PA11Y_VERSION=$(pa11y --version 2>/dev/null || echo "unknown")
 
