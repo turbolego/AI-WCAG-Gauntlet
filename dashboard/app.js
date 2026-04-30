@@ -224,6 +224,7 @@ function drawLeaderboard() {
       <td>${numCell(r.w3c_errors)}</td>
       <td>${numCell(r.axe_violations)}</td>
       <td>${numCell(r.pa11y_issues ?? 0)}</td>
+      <td>${numCell(r.qualweb_issues ?? 0)}</td>
       <td><span class="${iterCls}" aria-label="${r.iterations_used} iterations">${r.iterations_used}</span></td>
       <td>${r.benchmark_url
         ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
@@ -255,7 +256,7 @@ function setupLeaderboardSort() {
 function renderRunHistory(runs) {
   const tbody = $('#run-history-body');
   if (!runs || runs.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="10" class="empty">No run history yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="11" class="empty">No run history yet.</td></tr>`;
     return;
   }
   tbody.innerHTML = runs.map(r => {
@@ -274,6 +275,7 @@ function renderRunHistory(runs) {
       <td>${numCell(r.final_w3c_errors)}</td>
       <td>${numCell(r.final_axe_violations)}</td>
       <td>${numCell(r.final_pa11y_issues ?? 0)}</td>
+      <td>${numCell(r.final_qualweb_issues ?? 0)}</td>
       <td style="font-family:var(--mono);font-size:12px;color:var(--text-muted)">${fmtDate(r.timestamp)}</td>
     </tr>`;
   }).join('');
@@ -293,6 +295,7 @@ function renderErrorBreakdown(rows) {
         { label: 'W3C errors', data: rows.map(r => r.w3c_errors), backgroundColor: 'rgba(251,191,36,0.75)', borderColor: C.warn, borderWidth: 1 },
         { label: 'Axe violations', data: rows.map(r => r.axe_violations), backgroundColor: 'rgba(192,132,252,0.75)', borderColor: C.accent4, borderWidth: 1 },
         { label: 'Pa11y issues', data: rows.map(r => r.pa11y_issues ?? 0), backgroundColor: 'rgba(71,212,255,0.75)', borderColor: C.accent2, borderWidth: 1 },
+        { label: 'QualWeb issues', data: rows.map(r => r.qualweb_issues ?? 0), backgroundColor: 'rgba(244,114,182,0.75)', borderColor: '#f472b6', borderWidth: 1 },
       ],
     },
     options: mergeCD({

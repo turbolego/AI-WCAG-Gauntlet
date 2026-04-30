@@ -1,0 +1,41 @@
+#forms-interactive > h2 {
+    color: #111 !important;
+    background: #fff !important;
+    border-bottom: 2px solid #111;
+    padding: 4px 0;
+}
+#forms-interactive {
+    background: #fff !important;
+    background-color: #fff !important;
+    color: #111 !important;
+    padding: 16px !important;
+    border: 2px solid #111 !important;
+}
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+section > h2, section > h3, section > h4, section > h5, section > h6 {
+    color: #111;
+    background-color: #fff;
+    border-bottom: 2px solid #111;
+    padding: 4px 0;
+}
+
+iframe {
+    border: 2px solid #111;
+    min-height: 50px;
+    min-width: 100px;
+}
+}

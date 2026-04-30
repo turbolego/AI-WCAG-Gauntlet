@@ -63,6 +63,22 @@ fi
 ITERATIONS=$(($(cat "$ITERATIONS_FILE") + 1))
 echo "$ITERATIONS" > "$ITERATIONS_FILE"
 
+# --- Start local HTTP server for CSS/resource loading ---
+# Generated pages use <base href="/AI-WCAG-Gauntlet/"> which needs an HTTP
+# context. Serve from the parent of the project root so /AI-WCAG-Gauntlet/
+# resolves to the correct directory, matching the GitHub Pages deployment.
+PARENT_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_NAME="$(basename "$SCRIPT_DIR")"
+SERVE_PORT="${A11Y_SERVE_PORT:-28763}"
+python3 -m http.server "$SERVE_PORT" --directory "$PARENT_DIR" >/dev/null 2>&1 &
+SERVE_PID=$!
+trap "kill $SERVE_PID 2>/dev/null || true" EXIT INT TERM
+sleep 1
+REL_TARGET="${TARGET_DIR#${SCRIPT_DIR}/}"
+REL_TARGET_ENC=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1], safe='/'))" "$REL_TARGET")
+TARGET_HTTP_URL="http://localhost:$SERVE_PORT/$PROJECT_NAME/$REL_TARGET_ENC/index.html"
+echo "Testing via HTTP: $TARGET_HTTP_URL"
+
 # --- HTML5 tag test ---
 echo "Running HTML5 tag test..."
 if ! (cd "$TARGET_DIR" && python3 "$RESOURCES/check_html5_tags.py" > /dev/null); then
@@ -94,9 +110,10 @@ W3C_ERRORS=$(jq '.errorCount // 0' "$TARGET_DIR/w3c_report.json" || echo 0)
 echo "Running axe..."
 if ! (
     cd "$TARGET_DIR"
-    axe "file://$(pwd)/index.html" \
+    axe "$TARGET_HTTP_URL" \
         --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
         --timeout 60000 \
+        --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \
         --save axe_report.json \
         > /dev/null
 ); then
@@ -135,7 +152,7 @@ if ! (
         --runner axe \
         --standard WCAG2AAA \
         --reporter json \
-        "file://$(pwd)/index.html" \
+        "$TARGET_HTTP_URL" \
         > pa11y_report.json 2>/dev/null || true
     # pa11y exits non-zero when issues are found — that's expected
 ); then

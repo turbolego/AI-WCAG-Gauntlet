@@ -64,8 +64,30 @@ if (-not $chromePath) {
 }
 
 $env:CHROME_PATH = $chromePath
-
-# --- html5 tags ---
+# --- Start local HTTP server for CSS/resource loading ---
+# Generated pages use <base href="/AI-WCAG-Gauntlet/"> which only resolves
+# correctly over HTTP. Serve from the parent of the project root so that
+# /AI-WCAG-Gauntlet/ maps to the project directory, matching GitHub Pages.
+$servePort = if ($env:A11Y_SERVE_PORT) { [int]$env:A11Y_SERVE_PORT } else { 28763 }
+$serveProcess = $null
+$python3Path = (Get-Command "python3" -ErrorAction SilentlyContinue)?.Source ??
+               (Get-Command "python"  -ErrorAction SilentlyContinue)?.Source
+if ($python3Path) {
+    $serveProcess = Start-Process -FilePath $python3Path `
+        -ArgumentList @("-m", "http.server", "$servePort", "--directory", (Split-Path $PSScriptRoot -Parent)) `
+        -PassThru -WindowStyle Hidden -ErrorAction SilentlyContinue
+    if ($serveProcess) {
+        Start-Sleep -Seconds 1
+        $psRoot    = $PSScriptRoot.Replace('\', '/')
+        $targetStr = ([string]$TARGET_DIR).Replace('\', '/')
+        $relTarget = $targetStr.Substring($psRoot.Length + 1)
+        $relTargetEnc = [uri]::EscapeUriString($relTarget)
+        $TARGET_URI = "http://localhost:$servePort/$(Split-Path $PSScriptRoot -Leaf)/$relTargetEnc/index.html"
+        Write-Host "Testing via HTTP: $TARGET_URI"
+    }
+} else {
+    Write-Host "Warning: python3 not found — CSS/resources may not load via file:// URI."
+}
 Write-Host "Checking HTML5 tag coverage..."
 $htmlTagErrors = 0
 try {
@@ -177,10 +199,16 @@ Write-Host "--------------------------------"
 
 if ($status -eq "pass") {
     Write-Host "STATUS: PASS"
+    if ($serveProcess -and -not $serveProcess.HasExited) {
+        Stop-Process -Id $serveProcess.Id -Force -ErrorAction SilentlyContinue
+    }
     exit 0
 }
 
 Write-Host "STATUS: FAIL"
+if ($serveProcess -and -not $serveProcess.HasExited) {
+    Stop-Process -Id $serveProcess.Id -Force -ErrorAction SilentlyContinue
+}
 if ($AllowFailures) {
     exit 0
 }

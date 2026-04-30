@@ -57,7 +57,12 @@ try {
 
   await page.evaluate(axeCore.source);
   const result = await Promise.race([
-    page.evaluate(async () => globalThis.axe.run()),
+    page.evaluate(async () => globalThis.axe.run({
+      runOnly: {
+        type: "tag",
+        values: ["wcag2a", "wcag2aa", "wcag2aaa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"],
+      },
+    })),
     new Promise((_, reject) => {
       setTimeout(() => reject(new Error(`axe.run timeout after ${AXE_RUN_TIMEOUT_MS}ms`)), AXE_RUN_TIMEOUT_MS);
     })

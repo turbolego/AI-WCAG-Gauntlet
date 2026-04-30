@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+</head>
+<body>
+    <header>
+        <h1>AI WCAG Gauntlet</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Skip to main content</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <article>
+            <section>
+                <h2>HTML5 Showcase</h2>
+                <p>This page demonstrates all HTML5 tags for the WCAG Gauntlet benchmark.</p>
+                <address id="about">Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" />
+                    <figcaption>Benchmark icon image</figcaption>
+                </figure>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Audio not supported.
+                </audio>
+                <video controls width="320">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Video not supported.
+                </video>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark icon"></object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark icon" />
+                <map name="samplemap"><area shape="rect" coords="0,0,50,50" href="#" alt="Sample area"></map>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#samplemap" alt="Mapped image">
+                <canvas id="canvas1" width="100" height="50" aria-label="Sample canvas"></canvas>
+                <blockquote cite="https://example.com"><p>This is a blockquote.</p></blockquote>
+                <q cite="https://example.com">This is a short inline quote.</q>
+                <pre><code>Sample code block</code></pre>
+                <hr>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <nav><menu><li>Menu item</li></menu></nav>
+                <form>
+                    <fieldset>
+                        <legend>Sample Fieldset</legend>
+                        <label for="input1">Text input:</label>
+                        <input id="input1" name="input1" type="text" />
+                        <input type="checkbox" id="cb1" name="cb1"><label for="cb1">Check</label>
+                        <input type="radio" id="r1" name="rgroup"><label for="r1">Radio</label>
+                        <select><option>Option 1</option><optgroup label="Group"><option>Option 2</option></optgroup></select>
+                        <textarea rows="2" cols="20">Textarea</textarea>
+                        <button type="submit">Submit</button>
+                        <output>Output</output>
+                        <meter min="0" max="100" value="50">50%</meter>
+                        <progress value="70" max="100">70%</progress>
+                        <datalist id="dl1"><option value="A"><option value="B"></datalist>
+                        <input list="dl1">
+                    </fieldset>
+                </form>
+                <details>
+                    <summary>More info</summary>
+                    <p>Details content here.</p>
+                </details>
+                <dialog open>Dialog content</dialog>
+                <time datetime="2026-04-30">April 30, 2026</time>
+                <data value="42">The answer</data>
+                <mark>Highlighted text</mark>
+                <span>Sample span</span>
+                <strong>Strong text</strong>
+                <em>Emphasized text</em>
+                <b>Bold text</b>
+                <i>Italic text</i>
+                <s>Strikethrough</s>
+                <u>Underlined</u>
+                <small>Small text</small>
+                <sup>Superscript</sup>
+                <sub>Subscript</sub>
+                <ins>Inserted text</ins>
+                <del>Deleted text</del>
+                <abbr title="Abbreviation">abbr</abbr>
+                <dfn id="dfn1">Definition</dfn>
+                <kbd>Ctrl+C</kbd>
+                <samp>Sample output</samp>
+                <var>x</var>
+                <bdi>BDI text</bdi>
+                <bdo dir="rtl">BDO text</bdo>
+                <ruby>漢 <rt>hàn</rt></ruby>
+                <rp>(</rp><rt>han</rt><rp>)</rp>
+                <wbr>
+                <script>console.log('script tag');</script>
+                <template><div>Template content</div></template>
+                <slot name="slot1">Slot content</slot>
+                <selectedcontent>Selected content</selectedcontent>
+                <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-4.1/GPT-4.1-20260430-140850/style.css">
+                <style>/* style tag */</style>
+            </section>
+        </article>
+        <aside>
+            <h3>Aside Section</h3>
+            <p>This is an aside element.</p>
+        </aside>
+    </main>
+    <footer>
+        <small>&copy; 2026 AI WCAG Gauntlet</small>
+    </footer>
+</body>
+</html>

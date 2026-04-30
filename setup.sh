@@ -5,7 +5,8 @@
 
 # ── FILL IN THESE VARIABLES BEFORE RUNNING ───────────────────────────────────
 # The model name used for benchmarking (used as the folder name)
-MODEL_NAME="Claude Haiku 4.5"
+#MODEL_NAME="Claude Haiku 4.5"
+MODEL_NAME="GPT-4.1"
 
 # The provider where the model runs (machine-readable identifier).
 # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"

@@ -40,7 +40,7 @@ All accessibility fixes and code changes must be justified with reference to the
 **Important Note:** Never use `-ExecutionPolicy Bypass` when running PowerShell scripts. This ensures that popups or interruptions related to execution policies are avoided.
 
 ## Required tools
-In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`npm install -g pa11y`), **qualweb** (`npm install -g @qualweb/cli`), and **w3c-html-validator** (included via `npm ci`). Pa11y is run against `file://` URIs with the WCAG2AAA standard and the axe runner — the same approach used for axe-core.
+In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`npm install -g pa11y`), **qualweb** (`npm install -g @qualweb/cli`), and **w3c-html-validator** (included via `npm ci`). Pa11y is run against an HTTP URL (via a local `python3 -m http.server` instance) with the WCAG2AAA standard and the axe runner — the same approach used for axe-core. Serving via HTTP is required because generated pages include `<base href="/AI-WCAG-Gauntlet/">`, which causes CSS and media resources to resolve to wrong paths under `file://`, making color-contrast and other style-dependent checks unreliable.
 
 ## Loop Protocol (follow exactly)
 1. Run `test-suite.sh`.
