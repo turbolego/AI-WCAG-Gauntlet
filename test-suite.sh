@@ -3,6 +3,34 @@
 # that AI agents (e.g. Copilot Autopilot) never see an unexpected non-zero exit
 # code that would cause them to abort the benchmark loop prematurely.
 
+# --- Bootstrap Node.js into PATH (unattended – no profile sourcing) ----------
+# Probe nvm-managed versions (newest first) and common install prefixes.
+# Uses only filesystem checks; never sources a profile; never triggers prompts.
+if ! command -v node >/dev/null 2>&1; then
+    _NVM_DIR="${NVM_DIR:-${HOME}/.nvm}"
+    for _d in $(ls -1d "${_NVM_DIR}/versions/node/"*/bin 2>/dev/null | sort -Vr); do
+        if [ -x "${_d}/node" ]; then
+            export PATH="${_d}:${PATH}"
+            break
+        fi
+    done
+fi
+if ! command -v node >/dev/null 2>&1; then
+    for _p in \
+        /opt/homebrew/bin \
+        /usr/local/bin \
+        /usr/local/opt/node/bin \
+        /opt/local/bin \
+        /snap/bin
+    do
+        if [ -x "${_p}/node" ]; then
+            export PATH="${_p}:${PATH}"
+            break
+        fi
+    done
+fi
+# -----------------------------------------------------------------------------
+
 # --- Resolve paths ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESOURCES="$SCRIPT_DIR/resources"
