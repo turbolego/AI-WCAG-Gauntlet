@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI WCAG Gauntlet — Model Performance Stats</title>
+  <meta name="description"
+    content="Benchmark statistics comparing AI model performance on WCAG 2.2 AAA compliance and HTML5 tag coverage.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Compiled CSS -->
+  <link rel="stylesheet" href="./style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
+</head>
+
+<body>
+  <script src="./app.js"></script>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="wrap">
+    <header role="banner">
+      <div class="header-inner">
+        <h1 class="logo">Gauntlet<span aria-hidden="true">.</span><span class="sr-only"> Gauntlet</span></h1>
+        <div class="header-meta">
+          <p>AI Model Performance on WCAG 2.2 AAA &amp; HTML5 Coverage</p>
+          <p>Updated <strong id="generated-at">—</strong></p>
+        </div>
+      </div>
+    </header>
+
+    <nav aria-label="Page sections">
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#run-history">Run History</a>
+      <a href="#errors">Error Breakdown</a>
+      <a href="#coverage">Tag Coverage</a>
+      <a href="#missing-tags">Missing Tags</a>
+      <a href="#progress">Iteration Progress</a>
+    </nav>
+
+    <main id="main-content" style="background-color:var(--bg)">
+      <div id="loading" role="status" aria-live="polite" style="background-color:var(--bg)">
+        <div class="spinner" aria-hidden="true"></div>
+        Loading benchmark data…
+      </div>
+
+      <div id="app" hidden style="background-color:var(--bg)">
+
+        <!-- KPIs -->
+        <section aria-labelledby="kpi-section-title">
+          <h2 id="kpi-section-title" class="sr-only">Summary statistics</h2>
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="kpi-value" id="kpi-models" aria-label="Models tested">—</div>
+              <div class="kpi-label">Models tested</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value" id="kpi-runs" aria-label="Total benchmark runs">—</div>
+              <div class="kpi-label">Total runs</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--pass)">
+              <div class="kpi-value" id="kpi-passes" aria-label="Runs with perfect scores">—</div>
+              <div class="kpi-label" style="color:var(--text-muted)">Perfect passes</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent2)">
+              <div class="kpi-value" id="kpi-best-score" aria-label="Best score achieved" style="color:var(--accent2)">—
+              </div>
+              <div class="kpi-label">Best score (APS)</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent4)">
+              <div class="kpi-value" id="kpi-tags" aria-label="HTML5 tags tracked" style="color:var(--accent4)">—</div>
+              <div class="kpi-label">HTML5 tags tracked</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent3)">
+              <div class="kpi-value" id="kpi-pa11y-zero" aria-label="Runs with zero Pa11y issues" style="color:var(--accent3)">—</div>
+              <div class="kpi-label">Pa11y-clean runs</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Leaderboard -->
+        <section id="leaderboard" aria-labelledby="leaderboard-title">
+          <div class="section-header">
+            <h2 class="section-title" id="leaderboard-title">Leaderboard</h2>
+            <span class="section-sub" aria-hidden="true">All runs ranked by final score</span>
+          </div>
+          <div class="filter-controls">
+            <label for="best-only-checkbox" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="best-only-checkbox" aria-label="Show only the best score for each model" checked>
+              <span style="font-family: var(--mono); font-size: 13px; color: var(--text-muted);">Only show best score per model</span>
+            </label>
+          </div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table - Leaderboard">
+            <table aria-labelledby="leaderboard-title">
+              <caption>All benchmark runs sorted by final Agent Performance Score (APS). Higher is better.</caption>
+              <thead>
+                <tr>
+                  <th scope="col" role="columnheader" aria-sort="ascending">
+                    <button class="sort-btn" data-col="rank">Rank<span class="sort-icon"
+                        aria-hidden="true"></span></button>
+                  </th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Source</th>
+                  <th scope="col"><button class="sort-btn" data-col="score">Score<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col">Status</th>
+                  <th scope="col"><button class="sort-btn" data-col="tag_coverage_pct">Tag coverage<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="html_tag_errors">Missing tags<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="w3c_errors">W3C errors<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="axe_violations">Axe violations<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="pa11y_issues">Pa11y issues<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="iterations_used">Iterations<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col">Run ID</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Run history -->
+        <section id="run-history" aria-labelledby="run-history-title">
+          <div class="section-header">
+            <h2 class="section-title" id="run-history-title">Run History</h2>
+            <span class="section-sub" aria-hidden="true">All runs per model</span>
+          </div>
+          <div class="table-wrap run-history" tabindex="0" role="region" aria-label="Scrollable table - Run History">
+            <table aria-labelledby="run-history-title">
+              <caption>Complete list of benchmark runs grouped by model, showing final-iteration results.</caption>
+              <thead>
+                <tr>
+                  <th scope="col"><button class="sort-btn" data-col="model">Model<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="source">Source<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="run_id">Run ID<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="final_score">Score<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="status">Status<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="total_iterations">Iterations<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="final_html_errors">Missing tags<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="final_w3c_errors">W3C errors<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="final_axe_violations">Axe violations<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="final_pa11y_issues">Pa11y issues<span class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="timestamp">Timestamp<span class="sort-icon" aria-hidden="true"></span></button></th>
+                </tr>
+              </thead>
+              <tbody id="run-history-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Error breakdown -->
+        <section id="errors" aria-labelledby="errors-title">
+          <div class="section-header">
+            <h2 class="section-title" id="errors-title">Error Breakdown</h2>
+            <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="chart-errors-label">Error types per model (stacked)</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-errors-stacked" role="img" aria-labelledby="chart-errors-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="chart-scores-label">Score comparison across models</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-scores" role="img" aria-labelledby="chart-scores-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tag coverage -->
+        <section id="coverage" aria-labelledby="coverage-title">
+          <div class="section-header">
+            <h2 class="section-title" id="coverage-title">Tag Coverage</h2>
+            <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="chart-cov-stack-label">Tags used vs missing per model</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-coverage-stacked" role="img" aria-labelledby="chart-cov-stack-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="chart-cov-pct-label">Coverage percentage per model</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-coverage-pct" role="img" aria-labelledby="chart-cov-pct-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Missing tags heatmap -->
+        <section id="missing-tags" aria-labelledby="missing-tags-title">
+          <div class="section-header">
+            <h2 class="section-title" id="missing-tags-title">Missing Tags Heatmap</h2>
+            <span class="section-sub" aria-hidden="true">How often each HTML5 tag was missing in final iterations across
+              all runs</span>
+          </div>
+          <p id="tag-grid-desc" style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">
+            Each tag shows the percentage of runs where it was absent in the final iteration.
+            Darker red fill indicates more frequent omission.
+          </p>
+          <div id="tag-grid" class="tag-grid" role="list" aria-describedby="tag-grid-desc"></div>
+        </section>
+
+        <!-- Iteration progress -->
+        <section id="progress" aria-labelledby="progress-title">
+          <div class="section-header">
+            <h2 class="section-title" id="progress-title">Iteration Progress</h2>
+            <span class="section-sub" aria-hidden="true">Score and error trends per model over iterations</span>
+          </div>
+          <div id="model-tabs" class="model-tabs" role="tablist" aria-label="Select model to view iteration progress">
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="prog-score-label">Score over iterations</h3>
+              <div class="chart-wrap" style="height:280px">
+                <canvas id="chart-progress-score" role="img" aria-labelledby="prog-score-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="prog-errors-label">Error counts over iterations</h3>
+              <div class="chart-wrap" style="height:280px">
+                <canvas id="chart-progress-errors" role="img" aria-labelledby="prog-errors-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /#app -->
+    </main>
+
+    <footer role="contentinfo">
+      <p>AI WCAG Gauntlet — <a href="https://github.com/turbolego/AI-WCAG-Gauntlet">GitHub</a></p>
+      <p id="footer-meta"></p>
+    </footer>
+  </div>
+
+</body>
+
+</html>

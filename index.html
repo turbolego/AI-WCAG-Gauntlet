@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI WCAG Gauntlet — Model Performance Stats</title>
+  <meta name="description"
+    content="Benchmark statistics comparing AI model performance on WCAG 2.2 AAA compliance and HTML5 tag coverage.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+/* ── Design tokens ───────────────────────────────────────────── */
+:root {
+    /* All text colours meet WCAG AAA (≥7:1) against their backgrounds */
+    --bg: #0b0c10;
+    --surface: #13151c;
+    --surface2: #1e2130;
+    --border: #2e3245;
+
+    /* Accent colours — used only for decorative elements or paired with
+     high-contrast text. Never used as text colour on dark backgrounds
+     unless contrast is verified. */
+    --accent: #e8ff47;
+    /* decorative / large text only */
+    --accent2: #47d4ff;
+    /* decorative / large text only */
+    --accent3: #ff7070;
+    /* decorative / large text only */
+    --accent4: #c084fc;
+    /* decorative / large text only */
+    --pass: #4ade80;
+    /* decorative / large text only */
+    --warn: #fbbf24;
+    /* decorative / large text only */
+
+    /* Body text — verified ≥7:1 on --bg and --surface */
+    --text: #f0f2f8;
+    /* Secondary text — verified ≥7:1 on --bg and --surface */
+    --text-muted: #a8afc4;
+    /* Link colour — ≥7:1 on dark backgrounds */
+    --link: #93ddff;
+
+    --mono: 'DM Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --radius: 6px;
+    --gutter: 24px;
+    --focus: 3px solid #e8ff47;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Explicit background on html AND body so axe never tests text against
+   an inherited white background (e.g. when run in about:srcdoc context). */
+html {
+    scroll-behavior: smooth;
+    background-color: #0b0c10;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── Skip link (AAA: 2.4.1) ─────────────────────────────────── */
+.skip-link {
+    position: absolute;
+    top: -999px;
+    left: 0;
+    z-index: 9999;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: #000;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ── Focus styles (AAA: 2.4.12 — enhanced focus) ───────────── */
+:focus-visible {
+    outline: var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    background-color: var(--bg);
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+header {
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 32px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg);
+}
+
+header::after {
+    content: 'GAUNTLET';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    font-family: var(--display);
+    font-size: 160px;
+    color: rgba(232, 255, 71, 0.03);
+    pointer-events: none;
+    user-select: none;
+}
+
+.header-inner {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-family: var(--display);
+    font-size: clamp(36px, 6vw, 72px);
+    letter-spacing: 2px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 400;
+    background-color: var(--bg);
+}
+
+.logo span[aria-hidden="true"] {
+    color: var(--text);
+}
+
+.header-meta {
+    padding-bottom: 4px;
+}
+
+.header-meta p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.header-meta strong {
+    color: var(--link);
+    font-family: var(--mono);
+}
+
+/* ── Nav (landmark + keyboard accessible) ────────────────────── */
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--bg);
+}
+
+nav a {
+    font-family: var(--mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background-color: var(--bg);
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+nav a:hover {
+    background: var(--surface2);
+    border-color: var(--link);
+}
+
+/* ── KPI row ─────────────────────────────────────────────────── */
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 32px 0 0;
+}
+
+.kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.kpi-value {
+    font-family: var(--display);
+    font-size: 52px;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.kpi-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+/* ── Sections ────────────────────────────────────────────────── */
+section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--bg);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.section-title {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 32px);
+    letter-spacing: 1px;
+    color: var(--text);
+}
+
+.section-sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--bg);
+}
+
+/* ── Leaderboard table ───────────────────────────────────────── */
+.filter-controls {
+    margin-bottom: 20px;
+}
+
+.filter-controls label {
+    user-select: none;
+}
+
+.filter-controls input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+}
+
+.filter-controls input[type="checkbox"]:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+caption {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+    caption-side: top;
+}
+
+thead th {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    background-color: var(--surface);
+}
+
+th button.sort-btn {
+    background-color: var(--surface);
+    border: none;
+    color: var(--text-muted);
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+th button.sort-btn:hover {
+    color: var(--text);
+}
+
+th button.sort-btn[aria-sort="ascending"] .sort-icon::after {
+    content: ' ↑';
+}
+
+th button.sort-btn[aria-sort="descending"] .sort-icon::after {
+    content: ' ↓';
+}
+
+th button.sort-btn .sort-icon::after {
+    content: ' ↕';
+    color: var(--border);
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+}
+
+tbody tr:hover {
+    background: var(--surface2);
+}
+
+tbody td {
+    padding: 12px 14px;
+    vertical-align: middle;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    font-family: var(--display);
+    font-size: 18px;
+}
+
+.rank-1 {
+    background: var(--accent);
+    color: #000;
+}
+
+.rank-2 {
+    background: var(--accent2);
+    color: #000;
+}
+
+.rank-3 {
+    background: var(--accent4);
+    color: #000;
+}
+
+.rank-n {
+    background: var(--surface2);
+    color: var(--text-muted);
+}
+
+.model-name {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.run-id {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.score-val {
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--accent);
+}
+
+.pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+}
+
+.pill-pass {
+    background: var(--pass);
+    color: #000;
+    border-color: var(--pass);
+}
+
+.pill-fail {
+    background: var(--accent3);
+    color: #000;
+    border-color: var(--accent3);
+}
+
+.num-good {
+    color: var(--pass);
+    font-family: var(--mono);
+}
+
+.num-bad {
+    color: var(--accent3);
+    font-family: var(--mono);
+}
+
+.num-warn {
+    color: var(--warn);
+    font-family: var(--mono);
+}
+
+.num-zero {
+    color: var(--text-muted);
+    font-family: var(--mono);
+}
+
+/* Coverage bar */
+.cov-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.cov-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--surface2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cov-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+}
+
+.cov-pct {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    background-color: var(--bg);
+}
+
+/* ── Chart cards ─────────────────────────────────────────────── */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 20px;
+}
+
+.chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+
+.chart-card h3 {
+    font-family: var(--mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    background-color: var(--surface);
+}
+
+.chart-wrap {
+    position: relative;
+}
+
+/* ── Tag heatmap grid ────────────────────────────────────────── */
+.tag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+    gap: 8px;
+}
+
+.tag-cell {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 6px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    font-family: inherit;
+    transition: border-color 0.1s;
+}
+
+.tag-cell::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--heat, 0%);
+    background: rgba(255, 112, 112, 0.18);
+    pointer-events: none;
+}
+
+.tag-cell:hover,
+.tag-cell:focus-visible {
+    border-color: var(--link);
+}
+
+.tag-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    position: relative;
+}
+
+.tag-pct {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    position: relative;
+    background-color: transparent;
+}
+
+/* ── Run history table ───────────────────────────────────────── */
+.run-history {
+    margin-top: 24px;
+}
+
+/* ── Progress section ────────────────────────────────────────── */
+.model-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.model-tab {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 6px 16px;
+    border: 2px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-muted);
+    cursor: pointer;
+    background: none;
+    transition: all 0.15s;
+}
+
+.model-tab:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
+
+.model-tab[aria-selected="true"] {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ── Empty / loading states ──────────────────────────────────── */
+.empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 14px;
+}
+
+.empty-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--text-muted);
+    gap: 12px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+/* Respect prefers-reduced-motion (AAA: 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+footer {
+    padding: 32px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--bg);
+}
+
+footer p {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    background-color: var(--bg);
+}
+
+footer a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Visually hidden (screen reader only) ────────────────────── */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-value {
+        font-size: 40px;
+    }
+}
+
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="wrap">
+    <header role="banner">
+      <div class="header-inner">
+        <h1 class="logo">Gauntlet<span aria-hidden="true">.</span><span class="sr-only"> Gauntlet</span></h1>
+        <div class="header-meta">
+          <p>AI Model Performance on WCAG 2.2 AAA &amp; HTML5 Coverage</p>
+          <p>Updated <strong id="generated-at">—</strong></p>
+        </div>
+      </div>
+    </header>
+
+    <nav aria-label="Page sections">
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#run-history">Run History</a>
+      <a href="#errors">Error Breakdown</a>
+      <a href="#coverage">Tag Coverage</a>
+      <a href="#missing-tags">Missing Tags</a>
+      <a href="#progress">Iteration Progress</a>
+    </nav>
+
+    <main id="main-content" style="background-color:var(--bg)">
+      <div id="loading" role="status" aria-live="polite" style="background-color:var(--bg)">
+        <div class="spinner" aria-hidden="true"></div>
+        Loading benchmark data…
+      </div>
+
+      <div id="app" hidden style="background-color:var(--bg)">
+
+        <!-- KPIs -->
+        <section aria-labelledby="kpi-section-title">
+          <h2 id="kpi-section-title" class="sr-only">Summary statistics</h2>
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="kpi-value" id="kpi-models" aria-label="Models tested">—</div>
+              <div class="kpi-label">Models tested</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value" id="kpi-runs" aria-label="Total benchmark runs">—</div>
+              <div class="kpi-label">Total runs</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--pass)">
+              <div class="kpi-value" id="kpi-passes" aria-label="Runs with perfect scores">—</div>
+              <div class="kpi-label" style="color:var(--text-muted)">Perfect passes</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent2)">
+              <div class="kpi-value" id="kpi-best-score" aria-label="Best score achieved" style="color:var(--accent2)">—
+              </div>
+              <div class="kpi-label">Best score (APS)</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent4)">
+              <div class="kpi-value" id="kpi-tags" aria-label="HTML5 tags tracked" style="color:var(--accent4)">—</div>
+              <div class="kpi-label">HTML5 tags tracked</div>
+            </div>
+            <div class="kpi" style="border-top-color:var(--accent3)">
+              <div class="kpi-value" id="kpi-pa11y-zero" aria-label="Runs with zero Pa11y issues" style="color:var(--accent3)">—</div>
+              <div class="kpi-label">Pa11y-clean runs</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Leaderboard -->
+        <section id="leaderboard" aria-labelledby="leaderboard-title">
+          <div class="section-header">
+            <h2 class="section-title" id="leaderboard-title">Leaderboard</h2>
+            <span class="section-sub" aria-hidden="true">All runs ranked by final score</span>
+          </div>
+          <div class="filter-controls">
+            <label for="best-only-checkbox" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="best-only-checkbox" aria-label="Show only the best score for each model">
+              <span style="font-family: var(--mono); font-size: 13px; color: var(--text-muted);">Only show best score per model</span>
+            </label>
+          </div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table - Leaderboard">
+            <table aria-labelledby="leaderboard-title">
+              <caption>All benchmark runs sorted by final Agent Performance Score (APS). Higher is better.</caption>
+              <thead>
+                <tr>
+                  <th scope="col" role="columnheader" aria-sort="ascending">
+                    <button class="sort-btn" data-col="rank">Rank<span class="sort-icon"
+                        aria-hidden="true"></span></button>
+                  </th>
+                  <th scope="col">Model</th>
+                  <th scope="col"><button class="sort-btn" data-col="score">Score<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col">Status</th>
+                  <th scope="col"><button class="sort-btn" data-col="tag_coverage_pct">Tag coverage<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="html_tag_errors">Missing tags<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="w3c_errors">W3C errors<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="axe_violations">Axe violations<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="pa11y_issues">Pa11y issues<span
+                        class="sort-icon" aria-hidden="true"></span></button></th>
+                  <th scope="col"><button class="sort-btn" data-col="iterations_used">Iterations<span class="sort-icon"
+                        aria-hidden="true"></span></button></th>
+                  <th scope="col">Run ID</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Run history -->
+        <section id="run-history" aria-labelledby="run-history-title">
+          <div class="section-header">
+            <h2 class="section-title" id="run-history-title">Run History</h2>
+            <span class="section-sub" aria-hidden="true">All runs per model</span>
+          </div>
+          <div class="table-wrap run-history" tabindex="0" role="region" aria-label="Scrollable table - Run History">
+            <table aria-labelledby="run-history-title">
+              <caption>Complete list of benchmark runs grouped by model, showing final-iteration results.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col">Run ID</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Iterations</th>
+                  <th scope="col">Missing tags</th>
+                  <th scope="col">W3C errors</th>
+                  <th scope="col">Axe violations</th>
+                  <th scope="col">Pa11y issues</th>
+                  <th scope="col">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="run-history-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Error breakdown -->
+        <section id="errors" aria-labelledby="errors-title">
+          <div class="section-header">
+            <h2 class="section-title" id="errors-title">Error Breakdown</h2>
+            <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="chart-errors-label">Error types per model (stacked)</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-errors-stacked" role="img" aria-labelledby="chart-errors-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="chart-scores-label">Score comparison across models</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-scores" role="img" aria-labelledby="chart-scores-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tag coverage -->
+        <section id="coverage" aria-labelledby="coverage-title">
+          <div class="section-header">
+            <h2 class="section-title" id="coverage-title">Tag Coverage</h2>
+            <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="chart-cov-stack-label">Tags used vs missing per model</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-coverage-stacked" role="img" aria-labelledby="chart-cov-stack-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="chart-cov-pct-label">Coverage percentage per model</h3>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-coverage-pct" role="img" aria-labelledby="chart-cov-pct-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Missing tags heatmap -->
+        <section id="missing-tags" aria-labelledby="missing-tags-title">
+          <div class="section-header">
+            <h2 class="section-title" id="missing-tags-title">Missing Tags Heatmap</h2>
+            <span class="section-sub" aria-hidden="true">How often each HTML5 tag was missing in final iterations across
+              all runs</span>
+          </div>
+          <p id="tag-grid-desc" style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">
+            Each tag shows the percentage of runs where it was absent in the final iteration.
+            Darker red fill indicates more frequent omission.
+          </p>
+          <div id="tag-grid" class="tag-grid" role="list" aria-describedby="tag-grid-desc"></div>
+        </section>
+
+        <!-- Iteration progress -->
+        <section id="progress" aria-labelledby="progress-title">
+          <div class="section-header">
+            <h2 class="section-title" id="progress-title">Iteration Progress</h2>
+            <span class="section-sub" aria-hidden="true">Score and error trends per model over iterations</span>
+          </div>
+          <div id="model-tabs" class="model-tabs" role="tablist" aria-label="Select model to view iteration progress">
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="prog-score-label">Score over iterations</h3>
+              <div class="chart-wrap" style="height:280px">
+                <canvas id="chart-progress-score" role="img" aria-labelledby="prog-score-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="prog-errors-label">Error counts over iterations</h3>
+              <div class="chart-wrap" style="height:280px">
+                <canvas id="chart-progress-errors" role="img" aria-labelledby="prog-errors-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /#app -->
+    </main>
+
+    <footer role="contentinfo">
+      <p>AI WCAG Gauntlet — <a href="https://github.com/turbolego/AI-WCAG-Gauntlet">GitHub</a></p>
+      <p id="footer-meta"></p>
+    </footer>
+  </div>
+
+  <script>
+'use strict';
+
+/* ── Chart palette ───────────────────────────────────────────── */
+const C = {
+  accent: '#e8ff47',
+  accent2: '#47d4ff',
+  accent3: '#ff7070',
+  accent4: '#c084fc',
+  pass: '#4ade80',
+  warn: '#fbbf24',
+  bg: '#0b0c10',
+  surface: '#13151c',
+  surface2: '#1e2130',
+  border: '#2e3245',
+  muted: '#a8afc4',
+  text: '#f0f2f8',
+};
+
+const MODEL_COLORS = [C.accent, C.accent2, C.accent4, C.pass, C.warn, '#f472b6', '#67e8f9'];
+const modelColor = (i) => MODEL_COLORS[i % MODEL_COLORS.length];
+
+/* Chart.js defaults applied to all charts */
+const CD = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      labels: {
+        color: C.muted,
+        font: { family: 'DM Mono', size: 11 },
+        boxWidth: 12,
+        padding: 16,
+      },
+    },
+    tooltip: {
+      backgroundColor: C.surface2,
+      borderColor: C.border,
+      borderWidth: 1,
+      titleColor: C.text,
+      bodyColor: C.muted,
+      titleFont: { family: 'DM Mono', size: 12 },
+      bodyFont: { family: 'DM Mono', size: 11 },
+      padding: 10,
+    },
+  },
+  scales: {
+    x: {
+      ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+      grid: { color: C.border },
+    },
+    y: {
+      ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+      grid: { color: C.border },
+    },
+  },
+};
+
+function mergeCD(opts) {
+  return {
+    ...CD, ...opts,
+    plugins: { ...CD.plugins, ...(opts.plugins || {}) },
+    scales: { ...CD.scales, ...(opts.scales || {}) },
+  };
+}
+
+/* ── Helpers ─────────────────────────────────────────────────── */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  try {
+    return new Date(iso).toLocaleString('en-GB', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', timeZone: 'UTC',
+    }) + ' UTC';
+  } catch { return iso; }
+}
+
+/** Returns CSS class and aria label for a numeric error count */
+function numInfo(n, lowThreshold = 2, highThreshold = 5) {
+  if (n === 0) return { cls: 'num-zero', label: 'zero' };
+  if (n <= lowThreshold) return { cls: 'num-warn', label: 'warning' };
+  return { cls: 'num-bad', label: 'high' };
+}
+
+function numCell(n) {
+  const { cls, label } = numInfo(n);
+  return `<span class="${cls}" aria-label="${n} — ${label}">${n}</span>`;
+}
+
+/* ── Main ────────────────────────────────────────────────────── */
+async function main() {
+  let data;
+  try {
+    const res = await fetch('./benchmarks/benchmark_stats.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
+  } catch (e) {
+    $('#loading').style.display = 'none';
+    const err = document.createElement('div');
+    err.className = 'empty';
+    err.setAttribute('role', 'status');
+    err.innerHTML =
+      `<div class="empty-icon" aria-hidden="true">📭</div>
+       <p>Could not load benchmark_stats.json.<br>Run the GitHub Actions workflow to generate stats.</p>`;
+    $('#loading').insertAdjacentElement('afterend', err);
+    return;
+  }
+
+  $('#loading').style.display = 'none';
+  $('#app').removeAttribute('hidden');
+  $('#app').style.display = 'block';
+
+  renderHeader(data);
+  renderKPIs(data);
+  renderLeaderboard(data.leaderboard);
+  renderRunHistory(data.runs_by_model ?? []);
+  renderErrorBreakdown(data.error_breakdown);
+  renderCoverageCharts(data.tag_coverage_by_model);
+  renderMissingTagsHeatmap(data.missing_tags_frequency, data.total_runs);
+  renderProgressSection(data.model_progress);
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+function renderHeader(data) {
+  $('#generated-at').textContent = fmtDate(data.generated_at);
+  $('#footer-meta').textContent =
+    `${data.total_runs} run(s) across ${data.total_models} model(s)`;
+}
+
+/* ── KPIs ────────────────────────────────────────────────────── */
+function renderKPIs(data) {
+  $('#kpi-models').textContent = data.total_models;
+  $('#kpi-runs').textContent = data.total_runs;
+  $('#kpi-tags').textContent = data.total_tags;
+
+  const passes = (data.leaderboard ?? []).filter(r => r.status === 'pass').length;
+  $('#kpi-passes').textContent = passes;
+
+  const pa11yZero = (data.leaderboard ?? []).filter(r => (r.pa11y_issues ?? 0) === 0).length;
+  $('#kpi-pa11y-zero').textContent = pa11yZero;
+
+  const best = Math.max(...(data.leaderboard ?? []).map(r => r.score ?? 0));
+  $('#kpi-best-score').textContent = isFinite(best) ? best.toFixed(1) : '—';
+}
+
+/* ── Leaderboard ─────────────────────────────────────────────── */
+let lbData = [];
+let lbSort = { col: 'rank', dir: 1 };
+let lbShowBestOnly = false;
+
+function renderLeaderboard(rows) {
+  lbData = rows ?? [];
+  drawLeaderboard();
+  setupLeaderboardSort();
+  setupLeaderboardFilter();
+}
+
+function setupLeaderboardFilter() {
+  const checkbox = $('#best-only-checkbox');
+  if (!checkbox) return;
+
+  checkbox.addEventListener('change', () => {
+    lbShowBestOnly = checkbox.checked;
+    lbSort = { col: 'rank', dir: 1 };
+    document.querySelectorAll('#leaderboard thead .sort-btn').forEach(b => {
+      b.removeAttribute('aria-sort');
+    });
+    drawLeaderboard();
+  });
+}
+
+function drawLeaderboard() {
+  const tbody = $('#leaderboard-body');
+  let dataToDisplay = lbData;
+
+  if (lbShowBestOnly) {
+    const bestPerModel = {};
+    for (const row of lbData) {
+      if (!bestPerModel[row.model] || row.score > bestPerModel[row.model].score) {
+        bestPerModel[row.model] = row;
+      }
+    }
+    dataToDisplay = Object.values(bestPerModel);
+  }
+
+  if (dataToDisplay.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="11" class="empty">No data yet.</td></tr>`;
+    return;
+  }
+
+  const sorted = [...dataToDisplay].sort((a, b) => {
+    const av = a[lbSort.col] ?? 0, bv = b[lbSort.col] ?? 0;
+    return typeof av === 'string'
+      ? av.localeCompare(bv) * lbSort.dir
+      : (av - bv) * lbSort.dir;
+  });
+
+  tbody.innerHTML = sorted.map(r => {
+    const rankCls = r.rank <= 3 ? `rank-${r.rank}` : 'rank-n';
+    const status = r.status === 'pass'
+      ? `<span class="pill pill-pass">PASS</span>`
+      : `<span class="pill pill-fail">FAIL</span>`;
+    const covPct = r.tag_coverage_pct ?? 0;
+    const covBar = `
+      <div class="cov-bar-wrap">
+        <div class="cov-bar" role="img" aria-label="Tag coverage ${covPct}%">
+          <div class="cov-bar-fill" style="width:${covPct}%"></div>
+        </div>
+        <span class="cov-pct" aria-hidden="true">${covPct}%</span>
+      </div>`;
+    const iterCls = r.iterations_used <= 5 ? 'num-good'
+      : r.iterations_used <= 12 ? 'num-warn' : 'num-bad';
+    return `<tr>
+      <td><span class="rank-badge ${rankCls}" aria-label="Rank ${r.rank}">${r.rank}</span></td>
+      <td><span class="model-name">${esc(r.model)}</span></td>
+      <td><span class="score-val" aria-label="Score ${(r.score ?? 0).toFixed(1)}">${(r.score ?? 0).toFixed(1)}</span></td>
+      <td>${status}</td>
+      <td>${covBar}</td>
+      <td>${numCell(r.html_tag_errors)}</td>
+      <td>${numCell(r.w3c_errors)}</td>
+      <td>${numCell(r.axe_violations)}</td>
+      <td>${numCell(r.pa11y_issues ?? 0)}</td>
+      <td><span class="${iterCls}" aria-label="${r.iterations_used} iterations">${r.iterations_used}</span></td>
+      <td>${r.benchmark_url
+        ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
+        : `<span class="run-id">${esc(r.run_id)}</span>`}</td>
+    </tr>`;
+  }).join('');
+}
+
+function setupLeaderboardSort() {
+  document.querySelectorAll('#leaderboard thead .sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const col = btn.dataset.col;
+      if (lbSort.col === col) {
+        lbSort.dir *= -1;
+      } else {
+        lbSort.col = col;
+        lbSort.dir = col === 'rank' ? 1 : -1;
+      }
+      document.querySelectorAll('#leaderboard thead .sort-btn').forEach(b => {
+        b.removeAttribute('aria-sort');
+      });
+      btn.setAttribute('aria-sort', lbSort.dir === 1 ? 'ascending' : 'descending');
+      drawLeaderboard();
+    });
+  });
+}
+
+/* ── Run history ─────────────────────────────────────────────── */
+function renderRunHistory(runs) {
+  const tbody = $('#run-history-body');
+  if (!runs || runs.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="10" class="empty">No run history yet.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = runs.map(r => {
+    const status = r.status === 'pass'
+      ? `<span class="pill pill-pass">PASS</span>`
+      : `<span class="pill pill-fail">FAIL</span>`;
+    return `<tr>
+      <td><span class="model-name">${esc(r.model)}</span></td>
+      <td>${r.benchmark_url
+        ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
+        : `<span class="run-id">${esc(r.run_id)}</span>`}</td>
+      <td><span class="score-val" style="font-size:20px">${(r.final_score ?? 0).toFixed(1)}</span></td>
+      <td>${status}</td>
+      <td><span class="num-zero" style="font-family:var(--mono)">${r.total_iterations}</span></td>
+      <td>${numCell(r.final_html_errors)}</td>
+      <td>${numCell(r.final_w3c_errors)}</td>
+      <td>${numCell(r.final_axe_violations)}</td>
+      <td>${numCell(r.final_pa11y_issues ?? 0)}</td>
+      <td style="font-family:var(--mono);font-size:12px;color:var(--text-muted)">${fmtDate(r.timestamp)}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ── Error breakdown ─────────────────────────────────────────── */
+function renderErrorBreakdown(rows) {
+  if (!rows?.length) return;
+  const labels = rows.map(r => r.model);
+
+  new Chart($('#chart-errors-stacked'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Missing HTML tags', data: rows.map(r => r.html_tag_errors), backgroundColor: 'rgba(255,112,112,0.75)', borderColor: C.accent3, borderWidth: 1 },
+        { label: 'W3C errors', data: rows.map(r => r.w3c_errors), backgroundColor: 'rgba(251,191,36,0.75)', borderColor: C.warn, borderWidth: 1 },
+        { label: 'Axe violations', data: rows.map(r => r.axe_violations), backgroundColor: 'rgba(192,132,252,0.75)', borderColor: C.accent4, borderWidth: 1 },
+        { label: 'Pa11y issues', data: rows.map(r => r.pa11y_issues ?? 0), backgroundColor: 'rgba(71,212,255,0.75)', borderColor: C.accent2, borderWidth: 1 },
+      ],
+    },
+    options: mergeCD({
+      scales: {
+        x: { stacked: true, ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+        y: { stacked: true, ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+      },
+    }),
+  });
+
+  new Chart($('#chart-scores'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Score (APS)',
+        data: rows.map(r => r.score ?? 0),
+        backgroundColor: rows.map((_, i) => modelColor(i) + 'cc'),
+        borderColor: rows.map((_, i) => modelColor(i)),
+        borderWidth: 1,
+        borderRadius: 3,
+      }],
+    },
+    options: mergeCD({
+      plugins: { ...CD.plugins, legend: { display: false } },
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+        y: { min: 0, ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+      },
+    }),
+  });
+}
+
+/* ── Tag coverage charts ─────────────────────────────────────── */
+function renderCoverageCharts(rows) {
+  if (!rows?.length) return;
+  const labels = rows.map(r => r.model);
+
+  new Chart($('#chart-coverage-stacked'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Tags used', data: rows.map(r => r.used_count), backgroundColor: 'rgba(71,212,255,0.7)', borderColor: C.accent2, borderWidth: 1 },
+        { label: 'Tags missing', data: rows.map(r => r.missing_count), backgroundColor: 'rgba(255,112,112,0.4)', borderColor: C.accent3, borderWidth: 1 },
+      ],
+    },
+    options: mergeCD({
+      scales: {
+        x: { stacked: true, ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+        y: { stacked: true, ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+      },
+    }),
+  });
+
+  new Chart($('#chart-coverage-pct'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Coverage %',
+        data: rows.map(r => r.coverage_pct),
+        backgroundColor: rows.map((_, i) => modelColor(i) + 'bb'),
+        borderColor: rows.map((_, i) => modelColor(i)),
+        borderWidth: 1,
+        borderRadius: 3,
+      }],
+    },
+    options: mergeCD({
+      indexAxis: 'y',
+      plugins: { ...CD.plugins, legend: { display: false } },
+      scales: {
+        x: {
+          min: 0, max: 100,
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 }, callback: v => v + '%' },
+          grid: { color: C.border },
+        },
+        y: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
+      },
+    }),
+  });
+}
+
+/* ── Missing tags heatmap ────────────────────────────────────── */
+function renderMissingTagsHeatmap(tags, totalRuns) {
+  const grid = $('#tag-grid');
+  if (!tags?.length) { grid.innerHTML = '<p class="empty">No data.</p>'; return; }
+
+  const alpha = [...tags].sort((a, b) => a.tag.localeCompare(b.tag));
+  const maxMiss = Math.max(...tags.map(t => t.miss_count), 1);
+
+  grid.innerHTML = alpha.map(t => {
+    const heat = Math.round((t.miss_count / maxMiss) * 100);
+    const labelColor = t.miss_count === 0 ? 'var(--pass)'
+      : t.miss_pct >= 75 ? 'var(--accent3)'
+        : t.miss_pct >= 40 ? 'var(--warn)'
+          : 'var(--text)';
+    const ariaLabel = `${t.tag}: missing in ${t.miss_count} of ${totalRuns} run${totalRuns !== 1 ? 's' : ''} (${t.miss_pct}%)`;
+    return `
+      <div class="tag-cell"
+           role="listitem"
+           style="--heat:${heat}%"
+           tabindex="0"
+           title="${ariaLabel}"
+           aria-label="${ariaLabel}">
+        <div class="tag-name" style="color:${labelColor}" aria-hidden="true">&lt;${esc(t.tag)}&gt;</div>
+        <div class="tag-pct" aria-hidden="true">${t.miss_pct}%</div>
+      </div>`;
+  }).join('');
+}
+
+/* ── Iteration progress ──────────────────────────────────────── */
+let progChartScore = null;
+let progChartErrors = null;
+
+function renderProgressSection(modelProgress) {
+  const models = Object.keys(modelProgress ?? {});
+  const tabsEl = $('#model-tabs');
+
+  if (!models.length) {
+    tabsEl.innerHTML = '<p style="font-size:14px;color:var(--text-muted)">No iteration data available.</p>';
+    return;
+  }
+
+  tabsEl.innerHTML = models.map((m, i) =>
+    `<button
+       class="model-tab"
+       role="tab"
+       type="button"
+       id="tab-${i}"
+       aria-selected="${i === 0 ? 'true' : 'false'}"
+       aria-controls="progress-panel"
+       data-model="${esc(m)}"
+     >${esc(m)}</button>`
+  ).join('');
+
+  tabsEl.querySelectorAll('.model-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.model-tab').forEach(b => b.setAttribute('aria-selected', 'false'));
+      btn.setAttribute('aria-selected', 'true');
+      renderProgressCharts(modelProgress[btn.dataset.model], btn.dataset.model);
+    });
+    btn.addEventListener('keydown', (e) => {
+      const tabs = [...tabsEl.querySelectorAll('.model-tab')];
+      const idx = tabs.indexOf(btn);
+      if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+    });
+  });
+
+  const progressPanel = document.createElement('div');
+  progressPanel.id = 'progress-panel';
+  progressPanel.setAttribute('role', 'tabpanel');
+  progressPanel.setAttribute('aria-labelledby', 'tab-0');
+  document.querySelector('#progress').appendChild(progressPanel);
+
+  renderProgressCharts(modelProgress[models[0]], models[0]);
+}
+
+function renderProgressCharts(runs, modelName) {
+  const byIter = {};
+  for (const run of runs) {
+    for (const it of run.iterations) {
+      const n = it.iteration;
+      if (!byIter[n]) byIter[n] = { scores: [], html: [], w3c: [], axe: [], pa11y: [] };
+      byIter[n].scores.push(it.score ?? 0);
+      byIter[n].html.push(it.html_tag_errors ?? 0);
+      byIter[n].w3c.push(it.w3c_errors ?? 0);
+      byIter[n].axe.push(it.axe_violations ?? 0);
+      byIter[n].pa11y.push(it.pa11y_issues ?? 0);
+    }
+  }
+
+  const avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+  const iterNums = Object.keys(byIter).map(Number).sort((a, b) => a - b);
+  const labels = iterNums.map(n => `Iter ${n}`);
+
+  const scoreData = iterNums.map(n => +avg(byIter[n].scores).toFixed(2));
+  const htmlData = iterNums.map(n => +avg(byIter[n].html).toFixed(1));
+  const w3cData = iterNums.map(n => +avg(byIter[n].w3c).toFixed(1));
+  const axeData = iterNums.map(n => +avg(byIter[n].axe).toFixed(1));
+  const pa11yData = iterNums.map(n => +avg(byIter[n].pa11y).toFixed(1));
+
+  const runsLabel = `${modelName} — ${runs.length} run${runs.length !== 1 ? 's' : ''} averaged`;
+
+  if (progChartScore) progChartScore.destroy();
+  progChartScore = new Chart($('#chart-progress-score'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: runsLabel,
+        data: scoreData,
+        borderColor: C.accent,
+        backgroundColor: 'rgba(232,255,71,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: C.accent,
+        pointRadius: 4,
+        tension: 0.3,
+        fill: true,
+      }],
+    },
+    options: mergeCD({}),
+  });
+
+  if (progChartErrors) progChartErrors.destroy();
+  progChartErrors = new Chart($('#chart-progress-errors'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Missing tags', data: htmlData, borderColor: C.accent3, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+        { label: 'W3C errors', data: w3cData, borderColor: C.warn, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+        { label: 'Axe violations', data: axeData, borderColor: C.accent4, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+        { label: 'Pa11y issues', data: pa11yData, borderColor: C.accent2, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 3, tension: 0.3 },
+      ],
+    },
+    options: mergeCD({}),
+  });
+}
+
+main();
+
+  </script>
+</body>
+
+</html>
+

@@ -1,0 +1,32 @@
+{
+  "name": "ai-wcag-gauntlet",
+  "version": "1.0.0",
+  "description": "AI-WCAG-Gauntlet benchmark loop for Copilot on GitHub Actions.",
+  "main": "index.js",
+  "scripts": {
+    "bench:setup": "pwsh -File ./setup.ps1",
+    "bench:test": "pwsh -File ./test-suite.ps1",
+    "test": "node --test scripts/generate-page.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turbolego/AI-WCAG-Gauntlet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/turbolego/AI-WCAG-Gauntlet/issues"
+  },
+  "homepage": "https://github.com/turbolego/AI-WCAG-Gauntlet#readme",
+  "devDependencies": {
+    "axe-core": "^4.11.3",
+    "pa11y": "^9.1.1",
+    "puppeteer-core": "^24.41.0",
+    "w3c-html-validator": "^2.2.0"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.13.15"
+  }
+}
