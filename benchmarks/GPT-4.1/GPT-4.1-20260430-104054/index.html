@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg">
+    <script>/* Example script tag */</script>
+    <style>/* Example style tag */</style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main" accesskey="m">Skip to main</a></li>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+        <hgroup>
+            <h1 id="main">AI WCAG Gauntlet</h1>
+        </hgroup>
+        <h2>HTML5 + WCAG 2.2 AAA Demo</h2>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2 id="section1">Article Section</h2>
+                <address>Contact: <a href="mailto:test@example.com">test@example.com</a></address>
+            </header>
+            <section>
+                <p>This <b>page</b> demonstrates <strong>all HTML5 tags</strong> with <em>WCAG 2.2 AAA</em> compliance.<br> <abbr title="World Wide Web Consortium">W3C</abbr> standards apply. <mark>Highlighted text</mark> and <small>small print</small>. The word we<wbr>b includes a word break opportunity.</p>
+                <p>Here is a <a href="https://www.w3.org/" target="_blank" rel="noopener" aria-label="W3C website">link</a>, <cite>citation</cite>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <var>x</var>, <dfn id="dfn">definition</dfn>, <time datetime="2026-04-30T10:00">April 30, 2026</time>, <data value="42">data</data>, <output>output</output>, <progress value="70" max="100">70%</progress>, <meter value="0.6">60%</meter>, <q cite="https://www.w3.org/">short quote</q>, <blockquote cite="https://www.w3.org/">Blockquote example</blockquote>, <del>deleted</del>, <ins>inserted</ins>, <u>underlined</u>, <s>strikethrough</s>, <sub>sub</sub>, <sup>sup</sup>, <bdi>BDI</bdi>, <bdo dir="rtl">BDO</bdo>, <span>span</span></p>
+                <div>Sample <div>div</div> element.</div>
+                <p><img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="100" height="100"></p>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon large" width="200" height="200">
+                    <figcaption>Figure caption for image</figcaption>
+                </figure>
+                <hr>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 800px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG object"></object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Audio not supported.
+                </audio>
+                <video controls width="320">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Video not supported.
+                </video>
+                <canvas id="canvas" width="100" height="50" aria-label="Sample canvas"></canvas>
+                <svg width="100" height="50" aria-label="Sample SVG"><rect width="100" height="50" style="fill:blue;"></rect></svg>
+                <i>Italic text (i tag)</i>
+                <map name="samplemap"><area shape="rect" coords="0,0,50,50" href="#" alt="Sample area"></map>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#samplemap" alt="Mapped image">
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+                <pre>Preformatted text</pre>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <ol><li>Ordered item</li></ol>
+                <ul><li>Unordered item</li></ul>
+                <menu><li>Menu item</li></menu>
+                <form>
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        <label for="input1">Input:</label>
+                        <input id="input1" name="input1" type="text" aria-required="true">
+                        <datalist id="datalist1"><option value="Option 1"><option value="Option 2"></datalist>
+                        <label for="select1">Select:</label>
+                        <select id="select1" name="select1"><optgroup label="Group 1"><option>Option 1</option></optgroup></select>
+                        <label for="textarea1">Textarea:</label>
+                        <textarea id="textarea1" rows="2" cols="20">Sample text</textarea>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+                </form>
+                <details>
+                    <summary>More info</summary>
+                    <p>Details content</p>
+                </details>
+                <dialog open>Dialog content <button onclick="this.parentElement.close()">Close</button></dialog>
+                <iframe src="about:blank" title="Example iframe" width="200" height="100" aria-label="Example iframe for HTML5 tag demo" tabindex="0"></iframe>
+                <template id="tpl"><span>Template content</span></template>
+                <noscript>Your browser does not support JavaScript!</noscript>
+                <section id="section2">
+                    <h3>Section Heading</h3>
+                    <h4>H4 heading</h4>
+                    <h5>H5 heading</h5>
+                    <h6>H6 heading</h6>
+                    <p>Section content</p>
+                </section>
+                <ruby>漢 <rt>kan</rt> <rp>(</rp> <rt>ji</rt> <rp>)</rp></ruby>
+                <!-- <selectedcontent>Selected content tag (custom demo, not standard)</selectedcontent> -->
+                <slot name="slot1">Slot content</slot>
+                <search><input type="search" aria-label="Search"></search>
+            </section>
+            <footer>
+                <p>Article footer</p>
+            </footer>
+        </article>
+    </main>
+    <aside>
+        <p>Aside content</p>
+    </aside>
+    <footer>
+        <p>Site footer</p>
+    </footer>
+</body>
+</html>

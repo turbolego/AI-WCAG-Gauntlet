@@ -7,6 +7,28 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESOURCES="$SCRIPT_DIR/resources"
 
+# --- Detect Chrome for pa11y and QualWeb ---
+# pa11y uses its own puppeteer-core which needs a valid Chrome binary.
+# Honour PUPPETEER_EXECUTABLE_PATH if already set; otherwise auto-detect.
+if [ -z "${PUPPETEER_EXECUTABLE_PATH:-}" ]; then
+    _HOME="${HOME:-/root}"
+    for _candidate in \
+        "${_HOME}/.cache/puppeteer/chrome/mac-147.0.7727.56/chrome-mac-x64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
+        "${_HOME}/.cache/puppeteer/chrome/mac-127.0.6533.88/chrome-mac-x64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+        "/usr/bin/google-chrome-stable" \
+        "/usr/bin/google-chrome" \
+        "/usr/bin/chromium-browser" \
+        "/usr/bin/chromium"
+    do
+        if [ -x "$_candidate" ]; then
+            PUPPETEER_EXECUTABLE_PATH="$_candidate"
+            break
+        fi
+    done
+fi
+export PUPPETEER_EXECUTABLE_PATH
+
 # --- Input folder ---
 TARGET_DIR="${1:-}"
 
@@ -107,6 +129,8 @@ AXE_VERSION=$(jq -r '
 echo "Running pa11y..."
 if ! (
     cd "$TARGET_DIR"
+    # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
+    # puppeteer-core finds a working Chrome binary.
     pa11y \
         --runner axe \
         --standard WCAG2AAA \
@@ -134,10 +158,39 @@ fi
 
 PA11Y_VERSION=$(pa11y --version 2>/dev/null || echo "unknown")
 
+# --- QualWeb validation ---
+# Uses resources/run-qualweb.mjs which injects the HTML directly into QualWeb
+# (avoids file:// navigation issues in headless Chrome).
+# PUPPETEER_EXECUTABLE_PATH is already exported above.
+echo "Running qualweb..."
+if ! (
+    cd "$SCRIPT_DIR"
+    node "$RESOURCES/run-qualweb.mjs" \
+        "$TARGET_DIR/index.html" \
+        "$TARGET_DIR/qualweb_report.json" \
+        > /dev/null 2>&1
+); then
+    echo "Warning: qualweb failed; continuing with empty report"
+    echo '{"failedCount":0,"results":[],"error":"qualweb script failed"}' > "$TARGET_DIR/qualweb_report.json"
+fi
+
+# Ensure valid JSON
+if ! jq empty "$TARGET_DIR/qualweb_report.json" 2>/dev/null; then
+    echo "Warning: qualweb_report.json invalid — resetting"
+    echo '{"failedCount":0,"results":[]}' > "$TARGET_DIR/qualweb_report.json"
+fi
+
+QUALWEB_ISSUES=$(jq '.failedCount // 0' "$TARGET_DIR/qualweb_report.json" 2>/dev/null || echo 0)
+if ! [[ "$QUALWEB_ISSUES" =~ ^[0-9]+$ ]]; then
+    QUALWEB_ISSUES=0
+fi
+
+QUALWEB_VERSION=$(node -e "try{const p=require('./node_modules/@qualweb/core/package.json');console.log(p.version)}catch(e){console.log('unknown')}" 2>/dev/null || echo "unknown")
+
 # --- Determine pass/fail status and calculate score ---
 # APS formula — clear tier separation: pass ~153-203, fail 0-103.
 #   Tag Score       = (used_tags / 110) * 90           (max ~92.7)
-#   Quality Score   = 60 (PASS) | max(0, 10-(w3c+axe+pa11y)) (FAIL, max 10)
+#   Quality Score   = 60 (PASS) | max(0, 10-(w3c+axe+pa11y+qualweb)) (FAIL, max 10)
 #   Efficiency Score= 50 * 0.8^(iterations-1)  PASS only — exponential decay
 #                     iter 1→50, 2→40, 3→32, 4→25.6, 5→20.5 ...
 #                     Each extra iteration costs ~20% of the previous bonus.
@@ -146,13 +199,14 @@ TAG_COVERAGE=$(jq '.used_tags | length' "$REPORT")
 if [ "$HTML_TAG_ERRORS" -eq 0 ] && \
    [ "$W3C_ERRORS" -eq 0 ] && \
    [ "$AXE_VIOLATIONS" -eq 0 ] && \
-   [ "$PA11Y_ISSUES" -eq 0 ]; then
+   [ "$PA11Y_ISSUES" -eq 0 ] && \
+   [ "$QUALWEB_ISSUES" -eq 0 ]; then
     ITERATION_STATUS="pass"
     QUALITY_SCORE=60
     EFFICIENCY_SCORE=$(awk "BEGIN {printf \"%.4f\", 50 * (0.8 ^ ($ITERATIONS - 1))}")
 else
     ITERATION_STATUS="fail"
-    TOTAL_ERRORS=$(( W3C_ERRORS + AXE_VIOLATIONS + PA11Y_ISSUES ))
+    TOTAL_ERRORS=$(( W3C_ERRORS + AXE_VIOLATIONS + PA11Y_ISSUES + QUALWEB_ISSUES ))
     QUALITY_SCORE=$(( 10 - TOTAL_ERRORS ))
     [ "$QUALITY_SCORE" -lt 0 ] && QUALITY_SCORE=0
     EFFICIENCY_SCORE=0
@@ -174,6 +228,8 @@ ITERATION_RESULT=$(jq -n \
     --arg  axe_version     "$AXE_VERSION" \
     --arg  pa11y_issues    "$PA11Y_ISSUES" \
     --arg  pa11y_version   "$PA11Y_VERSION" \
+    --arg  qualweb_issues  "$QUALWEB_ISSUES" \
+    --arg  qualweb_version "$QUALWEB_VERSION" \
     --argjson missing_tags "$(jq '.missing_tags' "$REPORT")" \
     --argjson used_tags    "$(jq '.used_tags'    "$REPORT")" \
     '{
@@ -187,6 +243,8 @@ ITERATION_RESULT=$(jq -n \
         axe_version:     $axe_version,
         pa11y_issues:    ($pa11y_issues    | tonumber),
         pa11y_version:   $pa11y_version,
+        qualweb_issues:  ($qualweb_issues  | tonumber),
+        qualweb_version: $qualweb_version,
         missing_tags:    $missing_tags,
         used_tags:       $used_tags
     }')
@@ -214,6 +272,8 @@ echo "AXE_VIOLATIONS  = $AXE_VIOLATIONS"
 echo "AXE_VERSION     = $AXE_VERSION"
 echo "PA11Y_ISSUES    = $PA11Y_ISSUES"
 echo "PA11Y_VERSION   = $PA11Y_VERSION"
+echo "QUALWEB_ISSUES  = $QUALWEB_ISSUES"
+echo "QUALWEB_VERSION = $QUALWEB_VERSION"
 echo "ITERATIONS      = $ITERATIONS"
 echo "SCORE           = $SCORE"
 echo "MISSING_TAGS    = $(jq -r '.missing_tags | join(", ")' "$REPORT")"

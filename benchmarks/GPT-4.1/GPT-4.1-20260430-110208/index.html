@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-4.1/GPT-4.1-20260430-110208/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>/* fallback style */</style>
+</head>
+<body>
+    <header>
+        <h1>AI WCAG Gauntlet</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Skip to main content</a></li>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <article>
+            <h2 id="section1">Section 1</h2>
+            <section>
+                <h3>Text Elements</h3>
+                <p>This <strong>showcase</strong> demonstrates <em>every</em> HTML5 tag. <abbr title="World Wide Web Consortium">W3C</abbr> <cite>HTML Living Standard</cite>.</p>
+                <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <bdi>BiDi text</bdi> <bdo dir="rtl">Right-to-left</bdo>
+                <blockquote cite="https://example.com">A blockquote example.</blockquote>
+                <q cite="https://example.com">A short quote</q>
+                <code>&lt;div&gt;code&lt;/div&gt;</code> <samp>Sample output</samp> <kbd>Ctrl+C</kbd>
+                <var>x</var> = <output>42</output>
+                <mark>Highlighted</mark> <small>Small text</small> <sub>sub</sub> <sup>sup</sup> <u>underline</u> <s>strikethrough</s>
+                <time datetime="2026-04-30T10:00">April 30, 2026</time>
+                <data value="123">Data</data>
+                <dfn id="dfn">Definition</dfn>
+                <ruby>漢 <rt>hàn</rt> <rp>(</rp><rp>)</rp></ruby>
+                <b>Bold text</b> <i>Italic text</i> <ins cite="#" datetime="2026-04-30">Inserted text</ins> <del cite="#" datetime="2026-04-29">Deleted text</del>
+                <br>
+                <pre>Preformatted
+Text</pre>
+            </section>
+            <section>
+                <h3>Lists & Structure</h3>
+                <ul><li>Unordered list</li></ul>
+                <ol><li>Ordered list</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <menu><li>Menu item</li></menu>
+                <nav>Secondary nav</nav>
+                <hr>
+                <div>Generic container</div>
+                <span>Span</span>
+                <section>Nested section</section>
+                <aside>Aside content</aside>
+                <main>Main again (invalid, demo only)</main>
+                <hgroup><h4>H4</h4><h5>H5</h5><h6>H6</h6></hgroup>
+                <figure>
+                  <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Figure image">
+                  <figcaption>Figure caption describing the image above.</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h3>Tables & Forms</h3>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup>
+                        <col span="1" style="background-color:#eee">
+                        <col span="1" style="background-color:#ccc">
+                    </colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td>Footer 1</td><td>Footer 2</td></tr></tfoot>
+                </table>
+                <form>
+                    <fieldset>
+                        <legend>Form Legend</legend>
+                        <label for="input1">Text Input</label>
+                        <input id="input1" type="text" name="input1">
+                        <input type="button" value="Button">
+                        <button type="submit">Submit</button>
+                        <label for="select1">Choose an option</label>
+                        <select id="select1"><optgroup label="Group"><option>Option</option></optgroup></select>
+                        <label for="textarea1">Textarea</label>
+                        <textarea id="textarea1">Textarea</textarea>
+                        <meter min="0" max="100" value="50">50%</meter>
+                        <progress value="70" max="100">70%</progress>
+                        <datalist id="dl"><option value="A"></datalist>
+                        <output>Output</output>
+                    </fieldset>
+                </form>
+                <details>
+                    <summary>More info</summary>
+                    <p>Details content</p>
+                </details>
+                <dialog open>Dialog content</dialog>
+            </section>
+            <section>
+                <h3>Media & Embeds</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                </audio>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                </video>
+                 <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml"><span style="color:#000;background:#fff;">SVG fallback</span></object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                 <!-- <iframe src="about:blank" title="Sample iframe"></iframe> -->
+                <canvas id="canvas" width="100" height="50">Canvas fallback</canvas>
+                <map name="map"><area shape="rect" coords="0,0,10,10" href="#" alt="Area"></map>
+                 <svg width="100" height="50"><rect width="100" height="50" style="fill:blue"/></svg>
+                <noscript>JavaScript is disabled</noscript>
+                <script>/* Inline script */</script>
+                <template><div>Template content</div></template>
+                <wbr>
+                <search>
+                  <form>
+                    <input type="search" placeholder="Search..." aria-label="Search input">
+                    <button type="submit">Go</button>
+                  </form>
+                </search>
+            </section>
+            <section>
+                <h3>Shadow DOM & Slots</h3>
+                <slot name="slot1">Slot fallback</slot>
+                <selectedcontent>Selected content fallback</selectedcontent>
+            </section>
+        </article>
+        <aside>Sidebar content</aside>
+    </main>
+    <footer>
+        <p>&copy; 2026 Benchmark</p>
+    </footer>
+</body>
+</html>

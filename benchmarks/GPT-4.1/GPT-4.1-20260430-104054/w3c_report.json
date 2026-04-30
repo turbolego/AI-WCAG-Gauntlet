@@ -1,0 +1,28 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 2,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 35,
+      "lastColumn": 735,
+      "firstColumn": 732,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "pan</span></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 33,
+      "lastColumn": 21,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Section lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all sections, or else use a “div” element instead for any cases where no heading is needed.",
+      "extract": "          <section>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    }
+  ]
+}
