@@ -39,10 +39,12 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install tools
+      - name: Install dependencies
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
-        run: npm ci
+        run: |
+          npm ci
+          npm install -g @axe-core/cli pa11y @qualweb/cli
 
       - name: Execute benchmark loop and generate dashboard
         env:
@@ -59,18 +61,23 @@ jobs:
             exit 1
           fi
 
-          # setup.sh uses unconditional variable assignments, so env-var overrides
-          # won't work. Patch the relevant lines into a temp copy at runtime.
+          # Sanitize the model name for use as a filesystem folder name:
+          # replace any character that isn't alphanumeric, dot, underscore, or
+          # hyphen with a hyphen — same logic as setup.ps1's safeModelName.
+          SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
+
+          # setup.sh uses unconditional variable assignments so env-var overrides
+          # won't work. Build a patched temp copy at runtime: prepend the correct
+          # values and strip all existing MODEL_NAME/PROVIDER/PROVIDER_LABEL/TOOL
+          # lines from the original.
           make_setup_script() {
             local tmp
             tmp=$(mktemp /tmp/setup_XXXXXX.sh)
-            # Blank all existing MODEL_NAME/PROVIDER/PROVIDER_LABEL/TOOL lines,
-            # then prepend the values we actually want.
             {
-              printf 'MODEL_NAME=%q\n'         "$MODEL"
-              printf 'PROVIDER=%q\n'           "groq"
-              printf 'PROVIDER_LABEL=%q\n'     "Groq LPU"
-              printf 'TOOL=%q\n'               "github-actions"
+              printf 'MODEL_NAME=%q\n'     "$SAFE_MODEL"
+              printf 'PROVIDER=%q\n'       "groq"
+              printf 'PROVIDER_LABEL=%q\n' "Groq LPU"
+              printf 'TOOL=%q\n'           "github-actions"
               grep -vE '^#?(MODEL_NAME|PROVIDER|PROVIDER_LABEL|TOOL)=' setup.sh
             } > "$tmp"
             echo "$tmp"
@@ -79,7 +86,7 @@ jobs:
           FOUND_PASSING_RUN=false
 
           for i in $(seq 1 "$ITERATIONS"); do
-            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL ━━━"
+            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
 
             SETUP_TMP=$(make_setup_script)
             RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
@@ -91,7 +98,15 @@ jobs:
             fi
             echo "Benchmark folder: $RUN_DIR"
 
-            # test-suite.sh always exits 0 — read the STATUS line, not exit code
+            # setup.sh wrote SAFE_MODEL as the model name — patch metadata.json
+            # back to the original human-readable name so the dashboard shows it correctly.
+            METADATA="$RUN_DIR/metadata.json"
+            if [ -f "$METADATA" ]; then
+              _tmp=$(mktemp)
+              jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+            fi
+
+            # test-suite.sh always exits 0 — read the STATUS line, not the exit code
             bash test-suite.sh "$RUN_DIR"
 
             RESULTS_JSON="$RUN_DIR/test_results.json"
