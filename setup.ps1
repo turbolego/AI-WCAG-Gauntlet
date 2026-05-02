@@ -1,64 +1,82 @@
 # AI WCAG Gauntlet - Setup Script
 # Creates a fresh benchmark run folder under benchmarks/<MODEL_NAME>/
+# Prerequisites: axe-core/cli, w3c-html-validator (via npm ci), serve, and pa11y
+#   npm install -g @axe-core/cli pa11y serve
 
-param(
-    [string]$ModelName = "GPT-4.1",
-    [int]$Iteration = 1,
-    [string]$PreviousRunDir,
-    # Internal API provider identifier used by scripts/generate-page.mjs
-    # Examples: "github", "openai", "huggingface", "mistral", "openrouter", "ollama"
-    [string]$Provider = "github",
-    # Machine-readable provider identifier written to metadata.json for the dashboard.
-    # Fill this in before running for local benchmarks.
-    # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
-    [string]$ProviderKey = "github-copilot",
-    # Human-readable label shown in the dashboard Source column.
-    # Examples: "GitHub Copilot", "Ollama", "OpenAI", "HuggingFace", "Mistral AI", "OpenRouter"
-    [string]$ProviderLabel = "GitHub Copilot",
-    # Tool/interface used to run the benchmark.
-    # Examples: "vscode", "github-actions", "cli"
-    [string]$Tool = "vscode"
-)
+# ── FILL IN THESE VARIABLES BEFORE RUNNING ────────────────────────────────────
+# The model name used for benchmarking (used as the folder name)
+#$MODEL_NAME = "Claude Haiku 4.5"
+#$MODEL_NAME = "GPT-4.1"
+$MODEL_NAME = "GPT-4o"
+#$MODEL_NAME = "Gemini 3 Flash (Preview)"
 
-$safeModelName = ($ModelName -replace '[^A-Za-z0-9._-]', '-')
-$timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-$benchmarkFolder = Join-Path $PSScriptRoot "benchmarks/$safeModelName/$safeModelName-$timestamp-$Iteration"
-$resolvedPreviousRunDir = $null
+#$MODEL_NAME = "sorc/qwen3.5-claude-4.6-opus-q4:2b"
+#$MODEL_NAME = "qwen2.5-coder-1.5b"
 
-New-Item -ItemType Directory -Force -Path $benchmarkFolder | Out-Null
+# The provider where the model runs (machine-readable identifier).
+# Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
+$PROVIDER = "github-copilot"
+#$PROVIDER = "ollama"
 
+# Human-readable label for the provider shown in the dashboard Source column.
+# Examples: "GitHub Copilot", "Ollama", "OpenAI", "HuggingFace", "Mistral AI", "OpenRouter"
+$PROVIDER_LABEL = "GitHub Copilot"
+#$PROVIDER_LABEL = "Ollama"
 
-$generateScript = Join-Path $PSScriptRoot "scripts/generate-page.mjs"
-$generateArgs = @(
-    $generateScript,
-    "--model", $ModelName,
-    "--iteration", $Iteration.ToString(),
-    "--outputDir", $benchmarkFolder,
-    "--provider", $Provider
-)
+# The tool/interface used to run the benchmark.
+# Examples: "vscode", "github-actions", "cli"
+$TOOL = "vscode"
+# ──────────────────────────────────────────────────────────────────────────────
 
-if ($PreviousRunDir -and (Test-Path $PreviousRunDir)) {
-    $resolvedPreviousRunDir = (Resolve-Path $PreviousRunDir).Path
-    $generateArgs += @("--previousDir", $resolvedPreviousRunDir)
+$TIMESTAMP = Get-Date -Format "yyyyMMdd-HHmmss"
+
+# e.g. .\benchmarks\GPT-4o\GPT-4o-20260405-155342
+$BENCHMARK_FOLDER = Join-Path $PSScriptRoot "benchmarks\$MODEL_NAME\$MODEL_NAME-$TIMESTAMP"
+New-Item -ItemType Directory -Force -Path $BENCHMARK_FOLDER | Out-Null
+
+# Minimal starter index.html
+@"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+</head>
+<body>
+    <h1>AI WCAG Gauntlet</h1>
+</body>
+</html>
+"@ | Out-File -FilePath (Join-Path $BENCHMARK_FOLDER "index.html") -Encoding UTF8
+
+# Minimal starter style.css
+@"
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-& node @generateArgs
-if ($LASTEXITCODE -ne 0) {
-    throw "AI page generation failed."
+h1 {
+    text-align: center;
+    margin-top: 20px;
 }
+"@ | Out-File -FilePath (Join-Path $BENCHMARK_FOLDER "style.css") -Encoding UTF8
 
-$metadata = [PSCustomObject]@{
-    model         = $ModelName
-    safeModel     = $safeModelName
-    iteration     = $Iteration
-    timestamp     = (Get-Date -Format "o")
-    folder        = [System.IO.Path]::GetFileName($benchmarkFolder)
-    previous      = if ($resolvedPreviousRunDir) { [System.IO.Path]::GetFileName($resolvedPreviousRunDir) } else { $null }
-    provider      = $ProviderKey
-    providerLabel = $ProviderLabel
-    tool          = $Tool
+# Write metadata.json
+$metadata = [ordered]@{
+    model         = $MODEL_NAME
+    provider      = $PROVIDER
+    providerLabel = $PROVIDER_LABEL
+    tool          = $TOOL
+    timestamp     = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
+    folder        = Split-Path $BENCHMARK_FOLDER -Leaf
 }
-$metadata | ConvertTo-Json -Depth 10 | Out-File (Join-Path $benchmarkFolder "metadata.json") -Encoding UTF8
+$metadata | ConvertTo-Json -Depth 10 | Out-File -FilePath (Join-Path $BENCHMARK_FOLDER "metadata.json") -Encoding UTF8
 
-Write-Host "Benchmark setup complete: $benchmarkFolder"
-Write-Output $benchmarkFolder
+Write-Host "Benchmark setup complete: $BENCHMARK_FOLDER"
+Write-Host "Run tests with:"
+Write-Host ".\test-suite.ps1 $BENCHMARK_FOLDER"
