@@ -140,6 +140,29 @@ jobs:
           for i in $(seq 1 "$ITERATIONS"); do
             echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
 
+            # Generate updated page content for this iteration using the model.
+            # Use the same run directory as feedback context so each pass can
+            # improve based on the latest reports.
+            node scripts/generate-page.mjs \
+              --model "$MODEL" \
+              --provider groq \
+              --outputDir "$RUN_DIR" \
+              --iteration "$i" \
+              --previousDir "$RUN_DIR"
+
+            GENERATION_JSON="$RUN_DIR/generation.json"
+            if [ ! -f "$GENERATION_JSON" ]; then
+              echo "Error: generation.json missing after model generation."
+              exit 1
+            fi
+
+            GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
+            if [ "$GENERATED_BY_MODEL" != "true" ]; then
+              GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
+              echo "Error: model did not generate content this iteration: $GEN_ERROR"
+              exit 1
+            fi
+
             # test-suite.sh always exits 0 — read the STATUS line, not the exit code
             bash test-suite.sh "$RUN_DIR"
 
