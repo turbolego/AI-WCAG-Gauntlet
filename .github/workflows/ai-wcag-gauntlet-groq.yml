@@ -62,22 +62,12 @@ jobs:
           # Confirm the versions match
           echo "ChromeDriver version: $(chromedriver --version)"
 
-      - name: Execute benchmark loop and generate dashboard
-        env:
-          GROQ_TOKEN: ${{ secrets.GROQ_TOKEN }}
-          # Point pa11y and qualweb (puppeteer-based) at the system Chrome.
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+      - name: Initialize benchmark run folder
+        id: init-benchmark
         run: |
-          # No -e: test-suite.sh always exits 0 by design; we check STATUS ourselves.
-          set -uo pipefail
+          set -euo pipefail
 
-          ITERATIONS="${{ inputs.iterations }}"
           MODEL="${{ inputs.model }}"
-
-          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
-            echo "Error: iterations must be between 1 and 100"
-            exit 1
-          fi
 
           # Sanitize the model name for use as a filesystem folder name:
           # replace any character that isn't alphanumeric, dot, underscore, or
@@ -101,9 +91,8 @@ jobs:
             echo "$tmp"
           }
 
-          # Create the benchmark folder once and reuse it across all iterations.
-          # Re-running setup.sh each loop would reset index.html/style.css and
-          # discard the model's previous fixes.
+          # Always initialize a fresh benchmark folder for this workflow run.
+          # Never reuse folders from previous runs.
           SETUP_TMP=$(make_setup_script)
           RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
           rm -f "$SETUP_TMP"
@@ -112,7 +101,7 @@ jobs:
             echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
             exit 1
           fi
-          echo "Benchmark folder: $RUN_DIR"
+          echo "Created benchmark folder: $RUN_DIR"
 
           # setup.sh writes SAFE_MODEL as the model name — patch metadata.json
           # back to the original human-readable name so the dashboard shows it correctly.
@@ -121,6 +110,30 @@ jobs:
             _tmp=$(mktemp)
             jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
           fi
+
+          echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
+          echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
+
+      - name: Execute benchmark loop and generate dashboard
+        env:
+          GROQ_TOKEN: ${{ secrets.GROQ_TOKEN }}
+          # Point pa11y and qualweb (puppeteer-based) at the system Chrome.
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+        run: |
+          # No -e: test-suite.sh always exits 0 by design; we check STATUS ourselves.
+          set -uo pipefail
+
+          ITERATIONS="${{ inputs.iterations }}"
+          MODEL="${{ inputs.model }}"
+          SAFE_MODEL="${{ steps.init-benchmark.outputs.safe_model }}"
+          RUN_DIR="${{ steps.init-benchmark.outputs.run_dir }}"
+
+          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
+            echo "Error: iterations must be between 1 and 100"
+            exit 1
+          fi
+
+          echo "Benchmark folder: $RUN_DIR"
 
           FOUND_PASSING_RUN=false
 
