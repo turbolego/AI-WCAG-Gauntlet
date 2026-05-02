@@ -1,0 +1,71 @@
+{
+  "validates": false,
+  "errorCount": 2,
+  "messageCount": 6,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 32,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "</a>\n\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 35,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Demons",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 46,
+      "lastColumn": 40,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "der>\n\n    <main id=\"main-content\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "error",
+      "lastLine": 64,
+      "lastColumn": 175,
+      "firstColumn": 172,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "</address></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 339,
+      "lastColumn": 66,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “complementary” role is unnecessary for element “aside”.",
+      "extract": "ain>\n\n    <aside role=\"complementary\" aria-labelledby=\"related-heading\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 62
+    },
+    {
+      "type": "info",
+      "lastLine": 350,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "ide>\n\n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}

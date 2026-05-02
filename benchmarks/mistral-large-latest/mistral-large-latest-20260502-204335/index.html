@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Accessible Single-Page Web App</title>
+    <meta name="description" content="An accessibility-focused single-page web application demonstrating all required HTML5 tags.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline style for demonstration */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <noscript>
+        <p>JavaScript is disabled in your browser. Some features may not work properly.</p>
+    </noscript>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <hgroup>
+            <h1>Accessible Web App</h1>
+            <h2>Demonstrating all HTML5 tags with accessibility in mind</h2>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <search>
+            <form role="search">
+                <label for="search-input">Search:</label>
+                <input type="search" id="search-input" name="search" aria-label="Search through site content">
+                <button type="submit">Search</button>
+            </form>
+        </search>
+
+        <section aria-labelledby="intro-heading">
+            <h3 id="intro-heading">Introduction</h3>
+            <article>
+                <header>
+                    <h4>Welcome to our accessible web app</h4>
+                    <p><time datetime="2026-05-02">May 2, 2026</time></p>
+                </header>
+                <p>This page demonstrates all required HTML5 tags while maintaining accessibility standards.</p>
+                <p>Here's an example of an <abbr title="Accessible Rich Internet Applications">ARIA</abbr> attribute in use.</p>
+                <p>Contact us at <address>123 Accessibility Lane, Inclusive City, IC 10001<br>Email: <a href="mailto:contact@example.com">contact@example.com</a></address></p>
+                <footer>
+                    <p>Posted by: Accessibility Team</p>
+                </footer>
+            </article>
+        </section>
+
+        <section aria-labelledby="content-heading">
+            <h3 id="content-heading">Content Demonstration</h3>
+            <article>
+                <h4>Text Formatting</h4>
+                <p>This paragraph includes various text formatting tags: <b>bold</b>, <i>italic</i>, <u>underline</u>, <s>strikethrough</s>, <mark>highlighted</mark>, <small>small text</small>, <sub>subscript</sub>, <sup>superscript</sup>, and <var>variable</var>.</p>
+                <p>Here's some <code>inline code</code> and a <kbd>keyboard input</kbd> example.</p>
+                <pre><code>function example() {
+    return "This is a code block";
+}</code></pre>
+                <p>This is a <q>short quotation</q> and here's a longer one:</p>
+                <blockquote cite="https://example.com">
+                    <p>This is a block quotation. It's important to maintain proper semantics for accessibility.</p>
+                    <footer>— <cite>Accessibility Guidelines</cite></footer>
+                </blockquote>
+                <p>Here's a definition: <dfn id="html">HTML</dfn> is the standard markup language for creating web pages.</p>
+                <p>Sample output: <samp>This is sample output from a program.</samp></p>
+                <p>Deleted text: <del datetime="2026-05-01">old content</del> and inserted text: <ins datetime="2026-05-02">new content</ins>.</p>
+                <p>Bi-directional text: <bdi>Some text that might be right-to-left</bdi> and <bdo dir="rtl">This text will go right-to-left</bdo>.</p>
+            </article>
+
+            <article>
+                <h4>Interactive Elements</h4>
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>This is additional content revealed when expanded.</p>
+                </details>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" aria-required="true">
+                </div>
+                <div>
+                    <label for="color">Favorite Color:</label>
+                    <input type="color" id="color" name="color">
+                </div>
+                <div>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div>
+                    <label for="file">Upload File:</label>
+                    <input type="file" id="file" name="file">
+                </div>
+                <div>
+                    <label for="range">Range:</label>
+                    <input type="range" id="range" name="range" min="0" max="100" value="50">
+                    <output for="range" id="range-value">50</output>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Choose your favorite fruit:</legend>
+                        <input type="radio" id="banana" name="fruit" value="banana">
+                        <label for="banana">Banana</label><br>
+                        <input type="radio" id="apple" name="fruit" value="apple">
+                        <label for="apple">Apple</label><br>
+                        <input type="radio" id="orange" name="fruit" value="orange">
+                        <label for="orange">Orange</label>
+                    </fieldset>
+                </div>
+                <div>
+                    <label for="fruits">Select multiple fruits:</label>
+                    <select id="fruits" name="fruits" multiple size="3">
+                        <optgroup label="Tropical">
+                            <option value="mango">Mango</option>
+                            <option value="pineapple">Pineapple</option>
+                        </optgroup>
+                        <optgroup label="Berries">
+                            <option value="strawberry">Strawberry</option>
+                            <option value="blueberry">Blueberry</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <label for="bio">Biography:</label>
+                    <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <button type="button" aria-expanded="false" aria-controls="dialog1">Open Dialog</button>
+                </div>
+                <dialog id="dialog1" aria-labelledby="dialog-title">
+                    <h5 id="dialog-title">Sample Dialog</h5>
+                    <p>This is a sample dialog box.</p>
+                    <form method="dialog">
+                        <button type="submit">Close</button>
+                    </form>
+                </dialog>
+            </article>
+
+            <article>
+                <h4>Lists and Data</h4>
+                <div>
+                    <h5>Ordered List:</h5>
+                    <ol>
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                    </ol>
+                </div>
+                <div>
+                    <h5>Unordered List:</h5>
+                    <ul>
+                        <li>Item A</li>
+                        <li>Item B</li>
+                        <li>Item C</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Description List:</h5>
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets</dd>
+                    </dl>
+                </div>
+                <div>
+                    <h5>Menu:</h5>
+                    <menu>
+                        <li><button>New</button></li>
+                        <li><button>Open</button></li>
+                        <li><button>Save</button></li>
+                    </menu>
+                </div>
+            </article>
+
+            <article>
+                <h4>Multimedia</h4>
+                <figure>
+                    <img src="placeholder.img" alt="Placeholder image demonstrating proper alt text" width="300" height="200">
+                    <figcaption>A placeholder image with proper alt text</figcaption>
+                </figure>
+                <figure>
+                    <picture>
+                        <source media="(min-width: 800px)" srcset="large.img">
+                        <source media="(min-width: 480px)" srcset="medium.img">
+                        <img src="small.img" alt="Responsive image example">
+                    </picture>
+                    <figcaption>Responsive image using picture element</figcaption>
+                </figure>
+                <figure>
+                    <audio controls>
+                        <source src="audio.mp3" type="audio/mpeg">
+                        <source src="audio.ogg" type="audio/ogg">
+                        <track src="captions.vtt" kind="captions" srclang="en" label="English">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <figcaption>Audio player with captions</figcaption>
+                </figure>
+                <figure>
+                    <video controls width="300" height="200">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English">
+                        Your browser does not support the video element.
+                    </video>
+                    <figcaption>Video player with subtitles</figcaption>
+                </figure>
+                <figure>
+                    <iframe src="about:blank" title="Example iframe" width="300" height="200" style="border: 1px solid #000;"></iframe>
+                    <figcaption>Example iframe with title attribute</figcaption>
+                </figure>
+                <figure>
+                    <embed type="image/svg+xml" src="graphic.svg" width="300" height="200" aria-label="Embedded SVG graphic">
+                    <figcaption>Embedded SVG graphic</figcaption>
+                </figure>
+                <figure>
+                    <object data="document.pdf" type="application/pdf" width="300" height="200">
+                        <p>Your browser does not support PDFs. <a href="document.pdf">Download the PDF</a> instead.</p>
+                    </object>
+                    <figcaption>Embedded PDF document</figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <h4>Tables and Data Visualization</h4>
+                <table>
+                    <caption>Sample Data Table</caption>
+                    <colgroup>
+                        <col span="2" style="background-color: #f4f4f4;">
+                        <col style="background-color: #e9e9e9;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Occupation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>32</td>
+                            <td>Developer</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>28</td>
+                            <td>Designer</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total</td>
+                            <td>2</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div>
+                    <label for="progress">Progress:</label>
+                    <progress id="progress" value="70" max="100">70%</progress>
+                </div>
+                <div>
+                    <label for="meter">Disk Usage:</label>
+                    <meter id="meter" value="0.6">60%</meter>
+                </div>
+                <div>
+                    <canvas id="chart" width="300" height="200" aria-label="Sample chart"></canvas>
+                </div>
+            </article>
+
+            <article>
+                <h4>Special Elements</h4>
+                <div>
+                    <h5>Ruby Annotation:</h5>
+                    <ruby>
+                        漢 <rp>(</rp><rt>kan</rt><rp>)</rp>
+                        字 <rp>(</rp><rt>ji</rt><rp>)</rp>
+                    </ruby>
+                </div>
+                <div>
+                    <h5>Template:</h5>
+                    <template id="template-example">
+                        <div>
+                            <p>This is a template content.</p>
+                        </div>
+                    </template>
+                    <button onclick="showTemplate()">Show Template Content</button>
+                    <div id="template-output"></div>
+                </div>
+                <div>
+                    <h5>Slot Example:</h5>
+                    <div>
+                        <slot name="example-slot">Default slot content</slot>
+                    </div>
+                </div>
+                <div>
+                    <h5>Data Element:</h5>
+                    <p>Product: <data value="12345">Premium Widget</data></p>
+                </div>
+                <div>
+                    <h5>Datalist:</h5>
+                    <label for="browser">Choose your browser:</label>
+                    <input list="browsers" id="browser" name="browser">
+                    <datalist id="browsers">
+                        <option value="Chrome">
+                        <option value="Firefox">
+                        <option value="Safari">
+                        <option value="Edge">
+                        <option value="Opera">
+                    </datalist>
+                </div>
+                <div>
+                    <h5>WBR Example:</h5>
+                    <p>ThisIsAVeryLongWordThatMightBreak<wbr>AcrossLinesIfNeeded.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <aside role="complementary" aria-labelledby="related-heading">
+        <h3 id="related-heading">Related Information</h3>
+        <nav aria-label="Related links">
+            <ul>
+                <li><a href="#resources">Accessibility Resources</a></li>
+                <li><a href="#guidelines">WCAG Guidelines</a></li>
+                <li><a href="#tools">Accessibility Tools</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <footer role="contentinfo">
+        <hr>
+        <p>&copy; 2026 Accessible Web App. All rights reserved.</p>
+        <address>
+            Contact us at <a href="mailto:info@example.com">info@example.com</a><br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+        <p><small>Last updated: <time datetime="2026-05-02">May 2, 2026</time></small></p>
+    </footer>
+
+    <script>
+        // Simple script to demonstrate functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update range output
+            const range = document.getElementById('range');
+            const rangeValue = document.getElementById('range-value');
+            range.addEventListener('input', function() {
+                rangeValue.textContent = this.value;
+            });
+
+            // Dialog functionality
+            const dialogButton = document.querySelector('button[aria-controls="dialog1"]');
+            const dialog = document.getElementById('dialog1');
+            dialogButton.addEventListener('click', function() {
+                dialog.showModal();
+                this.setAttribute('aria-expanded', 'true');
+            });
+            dialog.addEventListener('close', function() {
+                dialogButton.setAttribute('aria-expanded', 'false');
+            });
+
+            // Template functionality
+            window.showTemplate = function() {
+                const template = document.getElementById('template-example');
+                const clone = template.content.cloneNode(true);
+                document.getElementById('template-output').appendChild(clone);
+            };
+
+            // Canvas example
+            const canvas = document.getElementById('chart');
+            if (canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'rgb(200, 0, 0)';
+                ctx.fillRect(10, 10, 50, 50);
+                ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+                ctx.fillRect(30, 30, 50, 50);
+            }
+
+            // Map example
+            const map = document.createElement('map');
+            map.name = 'example-map';
+            const area = document.createElement('area');
+            area.shape = 'rect';
+            area.coords = '0,0,82,126';
+            area.href = '#';
+            area.alt = 'Example area';
+            map.appendChild(area);
+            document.body.appendChild(map);
+        });
+    </script>
+</body>
+</html>
