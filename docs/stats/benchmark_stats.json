@@ -1,9 +1,31 @@
 {
-  "generated_at": "2026-04-30T13:01:59.192Z",
-  "total_runs": 5,
-  "total_models": 3,
+  "generated_at": "2026-05-02T16:02:34.643656Z",
+  "total_runs": 30,
+  "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
+    {
+      "model": "Gemini 3 Flash (Preview)",
+      "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 168.84,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 6,
+      "status": "pass",
+      "timestamp": "2026-04-30T12:56:32Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html",
+      "rank": 1
+    },
     {
       "model": "Claude Haiku 4.5",
       "run_id": "Claude Haiku 4.5-20260430-134439",
@@ -11,122 +33,42 @@
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "score": 200,
+      "score": 154.21,
       "html_tag_errors": 0,
       "w3c_errors": 0,
       "axe_violations": 0,
       "pa11y_issues": 0,
       "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T11:44:39Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
+      "iterations_used": 16,
+      "status": "pass",
+      "timestamp": "2026-04-30T11:55:58Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260430-134439/index.html",
-      "rank": 1
-    },
-    {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-132600",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T11:26:00Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html",
       "rank": 2
     },
     {
       "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-135739",
+      "run_id": "GPT-4.1-20260430-180130",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "score": 200,
+      "score": 99.45,
       "html_tag_errors": 0,
       "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 1,
       "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T11:57:39Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html",
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:04:08Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-180130/index.html",
       "rank": 3
-    },
-    {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-140850",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 1,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T12:08:50Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html",
-      "rank": 4
-    },
-    {
-      "model": "Gemini 3 Flash (Preview)",
-      "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T12:53:13Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html",
-      "rank": 5
-    }
-  ],
-  "runs_by_model": [
-    {
-      "model": "Claude Haiku 4.5",
-      "run_id": "Claude Haiku 4.5-20260430-134439",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:44:39Z",
-      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260430-134439/index.html"
     },
     {
       "model": "GPT-4.1",
@@ -135,32 +77,64 @@
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:26:00Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html"
+      "score": 99.27,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 3,
+      "pa11y_issues": 1,
+      "qualweb_issues": 0,
+      "iterations_used": 15,
+      "status": "fail",
+      "timestamp": "2026-04-30T11:39:43Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html",
+      "rank": 4
     },
     {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-135739",
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260501-084921",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:57:39Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html"
+      "score": 87.55,
+      "html_tag_errors": 7,
+      "w3c_errors": 0,
+      "axe_violations": 6,
+      "pa11y_issues": 7,
+      "qualweb_issues": 2,
+      "iterations_used": 9,
+      "status": "fail",
+      "timestamp": "2026-05-01T06:52:56Z",
+      "tag_coverage_pct": 93.8,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260501-084921/index.html",
+      "rank": 5
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260430-183237",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 80.18,
+      "html_tag_errors": 15,
+      "w3c_errors": 0,
+      "axe_violations": 7,
+      "pa11y_issues": 6,
+      "qualweb_issues": 2,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:46:17Z",
+      "tag_coverage_pct": 86.7,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-183237/index.html",
+      "rank": 6
     },
     {
       "model": "GPT-4.1",
@@ -169,16 +143,529 @@
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 1,
-      "timestamp": "2026-04-30T12:08:50Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html"
+      "score": 78.09,
+      "html_tag_errors": 20,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 6,
+      "qualweb_issues": 1,
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-04-30T12:14:12Z",
+      "tag_coverage_pct": 82.3,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html",
+      "rank": 7
     },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260430-182140",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 66.64,
+      "html_tag_errors": 34,
+      "w3c_errors": 0,
+      "axe_violations": 3,
+      "pa11y_issues": 5,
+      "qualweb_issues": 0,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:28:19Z",
+      "tag_coverage_pct": 69.9,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-182140/index.html",
+      "rank": 8
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260502-151421",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 43.18,
+      "html_tag_errors": 70,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 11,
+      "status": "fail",
+      "timestamp": "2026-05-02T13:19:11Z",
+      "tag_coverage_pct": 38.1,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260502-151421/index.html",
+      "rank": 9
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160029",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:39Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160029/index.html",
+      "rank": 10
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260430-135739",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "fail",
+      "timestamp": "2026-04-30T11:58:03Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html",
+      "rank": 11
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160039",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:45Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160039/index.html",
+      "rank": 12
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160045",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:52Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160045/index.html",
+      "rank": 13
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160052",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:57Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160052/index.html",
+      "rank": 14
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160057",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 5,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:05Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160057/index.html",
+      "rank": 15
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160105",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 6,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:11Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160105/index.html",
+      "rank": 16
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160111",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 7,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:17Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160111/index.html",
+      "rank": 17
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160117",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 8,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:22Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160117/index.html",
+      "rank": 18
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160122",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 9,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:28Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160122/index.html",
+      "rank": 19
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160128",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 10,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:34Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160128/index.html",
+      "rank": 20
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160134",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 11,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:40Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160134/index.html",
+      "rank": 21
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160140",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 12,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:45Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160140/index.html",
+      "rank": 22
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160145",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 13,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:51Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160145/index.html",
+      "rank": 23
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160151",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 14,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:57Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160151/index.html",
+      "rank": 24
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160157",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 15,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:02Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160157/index.html",
+      "rank": 25
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160202",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 16,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:08Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160202/index.html",
+      "rank": 26
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160208",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 17,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:14Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160208/index.html",
+      "rank": 27
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160214",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 18,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:20Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160214/index.html",
+      "rank": 28
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160220",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 19,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:26Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160220/index.html",
+      "rank": 29
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:31Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html",
+      "rank": 30
+    }
+  ],
+  "runs_by_model": [
     {
       "model": "Gemini 3 Flash (Preview)",
       "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
@@ -186,582 +673,1105 @@
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
+      "total_iterations": 6,
+      "final_score": 168.84,
       "final_html_errors": 0,
       "final_w3c_errors": 0,
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T12:53:13Z",
+      "status": "pass",
+      "timestamp": "2026-04-30T12:56:32Z",
       "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html"
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260430-134439",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 16,
+      "final_score": 154.21,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-04-30T11:55:58Z",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260430-134439/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260430-180130",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 99.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 1,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:04:08Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-180130/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260430-132600",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 15,
+      "final_score": 99.27,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 3,
+      "final_pa11y_issues": 1,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-04-30T11:39:43Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260501-084921",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 9,
+      "final_score": 87.55,
+      "final_html_errors": 7,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 6,
+      "final_pa11y_issues": 7,
+      "final_qualweb_issues": 2,
+      "status": "fail",
+      "timestamp": "2026-05-01T06:52:56Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260501-084921/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260430-183237",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 20,
+      "final_score": 80.18,
+      "final_html_errors": 15,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 7,
+      "final_pa11y_issues": 6,
+      "final_qualweb_issues": 2,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:46:17Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-183237/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260430-140850",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 78.09,
+      "final_html_errors": 20,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 6,
+      "final_qualweb_issues": 1,
+      "status": "fail",
+      "timestamp": "2026-04-30T12:14:12Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260430-182140",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 20,
+      "final_score": 66.64,
+      "final_html_errors": 34,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 3,
+      "final_pa11y_issues": 5,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-04-30T16:28:19Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-182140/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260502-151421",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 11,
+      "final_score": 43.18,
+      "final_html_errors": 70,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T13:19:11Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260502-151421/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260430-135739",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-04-30T11:58:03Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160029",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:39Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160029/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160039",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 2,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:45Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160039/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160045",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 3,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:52Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160045/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160052",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 4,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:00:57Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160052/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160057",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 5,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:05Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160057/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160105",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 6,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:11Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160105/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160111",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 7,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:17Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160111/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160117",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 8,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:22Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160117/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160122",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 9,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:28Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160122/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160128",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 10,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:34Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160128/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160134",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 11,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:40Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160134/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160140",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 12,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:45Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160140/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160145",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 13,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:51Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160145/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160151",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 14,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:01:57Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160151/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160157",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 15,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:02Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160157/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160202",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 16,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:08Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160202/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160208",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 17,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:14Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160208/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160214",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 18,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:20Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160214/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160220",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 19,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:26Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160220/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:02:31Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html"
     }
   ],
   "missing_tags_frequency": [
     {
-      "tag": "a",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "base",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "abbr",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "col",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "address",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "colgroup",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "area",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "hgroup",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "article",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "search",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "aside",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "selectedcontent",
+      "miss_count": 25,
+      "miss_pct": 83.3
     },
     {
-      "tag": "audio",
-      "miss_count": 0,
-      "miss_pct": 0
+      "tag": "div",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "rp",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "s",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "sub",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "sup",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "tfoot",
+      "miss_count": 24,
+      "miss_pct": 80.0
+    },
+    {
+      "tag": "wbr",
+      "miss_count": 24,
+      "miss_pct": 80.0
     },
     {
       "tag": "b",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "base",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_count": 23,
+      "miss_pct": 76.7
     },
     {
       "tag": "bdi",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_count": 23,
+      "miss_pct": 76.7
     },
     {
       "tag": "bdo",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "br",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "cite",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "data",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "datalist",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "dialog",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "h2",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "h4",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "h5",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "h6",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "i",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "ins",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "menu",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "noscript",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "object",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "optgroup",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "option",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "output",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "picture",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "rt",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "ruby",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "script",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "select",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "slot",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "small",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "span",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "strong",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "template",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "textarea",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "time",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "u",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "var",
+      "miss_count": 23,
+      "miss_pct": 76.7
+    },
+    {
+      "tag": "a",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "area",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "canvas",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "caption",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "dd",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "del",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "dfn",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "dl",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "dt",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "em",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "embed",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "fieldset",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "figcaption",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "figure",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "h3",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "hr",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "kbd",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "legend",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "map",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "meter",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "nav",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "q",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "samp",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "style",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "table",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "tbody",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "td",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "th",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "thead",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "tr",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "track",
+      "miss_count": 22,
+      "miss_pct": 73.3
+    },
+    {
+      "tag": "abbr",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "address",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "article",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "aside",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "audio",
+      "miss_count": 21,
+      "miss_pct": 70.0
     },
     {
       "tag": "blockquote",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "button",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "code",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "details",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "footer",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "form",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "header",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "img",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "input",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "label",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "li",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "link",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "main",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "mark",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "ol",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "p",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "pre",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "progress",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "section",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "source",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "summary",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "ul",
+      "miss_count": 21,
+      "miss_pct": 70.0
+    },
+    {
+      "tag": "video",
+      "miss_count": 21,
+      "miss_pct": 70.0
     },
     {
       "tag": "body",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "br",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "button",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "canvas",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "caption",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "cite",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "code",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "col",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "colgroup",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "data",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "datalist",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "dd",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "del",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "details",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "dfn",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "dialog",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "div",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "dl",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "dt",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "em",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "embed",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "fieldset",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "figcaption",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "figure",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "footer",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "form",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     },
     {
       "tag": "h1",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "h2",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "h3",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "h4",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "h5",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "h6",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     },
     {
       "tag": "head",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "header",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "hgroup",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "hr",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     },
     {
       "tag": "html",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "i",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "iframe",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "img",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "input",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "ins",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "kbd",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "label",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "legend",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "li",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "link",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "main",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "map",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "mark",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "menu",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     },
     {
       "tag": "meta",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "meter",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "nav",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "noscript",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "object",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "ol",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "optgroup",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "option",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "output",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "p",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "picture",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "pre",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "progress",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "q",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "rp",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "rt",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "ruby",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "s",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "samp",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "script",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "search",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "section",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "select",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "selectedcontent",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "slot",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "small",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "source",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "span",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "strong",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "style",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "sub",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "summary",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "sup",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "table",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "tbody",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "td",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "template",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "textarea",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "tfoot",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "th",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "thead",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "time",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     },
     {
       "tag": "title",
       "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "tr",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "track",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "u",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "ul",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "var",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "video",
-      "miss_count": 0,
-      "miss_pct": 0
-    },
-    {
-      "tag": "wbr",
-      "miss_count": 0,
-      "miss_pct": 0
+      "miss_pct": 0.0
     }
   ],
   "model_progress": {
@@ -770,14 +1780,169 @@
         "run_id": "Claude Haiku 4.5-20260430-134439",
         "iterations": [
           {
-            "iteration": 1,
-            "score": 200,
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:45:02Z"
+          },
+          {
+            "iteration": 3,
+            "score": 85.09,
+            "html_tag_errors": 9,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 9,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:47:29Z"
+          },
+          {
+            "iteration": 4,
+            "score": 90.82,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 9,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:48:11Z"
+          },
+          {
+            "iteration": 5,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 9,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:48:42Z"
+          },
+          {
+            "iteration": 6,
+            "score": 96.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:49:48Z"
+          },
+          {
+            "iteration": 7,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:50:52Z"
+          },
+          {
+            "iteration": 8,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:51:23Z"
+          },
+          {
+            "iteration": 9,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:51:49Z"
+          },
+          {
+            "iteration": 10,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:52:32Z"
+          },
+          {
+            "iteration": 11,
+            "score": 100.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:53:05Z"
+          },
+          {
+            "iteration": 12,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:53:37Z"
+          },
+          {
+            "iteration": 13,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:54:05Z"
+          },
+          {
+            "iteration": 14,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:54:38Z"
+          },
+          {
+            "iteration": 15,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:55:09Z"
+          },
+          {
+            "iteration": 16,
+            "score": 154.21,
             "html_tag_errors": 0,
             "w3c_errors": 0,
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:44:39Z"
+            "status": "pass",
+            "timestamp": "2026-04-30T11:55:58Z"
           }
         ]
       }
@@ -787,14 +1952,158 @@
         "run_id": "GPT-4.1-20260430-132600",
         "iterations": [
           {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
             "w3c_errors": 0,
-            "axe_violations": 0,
+            "axe_violations": 2,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:26:00Z"
+            "status": "fail",
+            "timestamp": "2026-04-30T11:26:24Z"
+          },
+          {
+            "iteration": 3,
+            "score": 87.0,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:29:40Z"
+          },
+          {
+            "iteration": 4,
+            "score": 96.64,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:31:40Z"
+          },
+          {
+            "iteration": 5,
+            "score": 98.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:32:11Z"
+          },
+          {
+            "iteration": 6,
+            "score": 98.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:32:52Z"
+          },
+          {
+            "iteration": 7,
+            "score": 98.45,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:34:31Z"
+          },
+          {
+            "iteration": 8,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:34:58Z"
+          },
+          {
+            "iteration": 9,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:35:57Z"
+          },
+          {
+            "iteration": 10,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:36:30Z"
+          },
+          {
+            "iteration": 11,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:37:19Z"
+          },
+          {
+            "iteration": 12,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:37:52Z"
+          },
+          {
+            "iteration": 13,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:38:30Z"
+          },
+          {
+            "iteration": 14,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:39:02Z"
+          },
+          {
+            "iteration": 15,
+            "score": 99.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T11:39:43Z"
           }
         ]
       },
@@ -802,14 +2111,15 @@
         "run_id": "GPT-4.1-20260430-135739",
         "iterations": [
           {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
             "w3c_errors": 0,
-            "axe_violations": 0,
+            "axe_violations": 2,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:57:39Z"
+            "status": "fail",
+            "timestamp": "2026-04-30T11:58:03Z"
           }
         ]
       },
@@ -817,14 +2127,625 @@
         "run_id": "GPT-4.1-20260430-140850",
         "iterations": [
           {
-            "iteration": 1,
-            "score": 200,
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:09:19Z"
+          },
+          {
+            "iteration": 3,
+            "score": 40.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:12:06Z"
+          },
+          {
+            "iteration": 4,
+            "score": 78.09,
+            "html_tag_errors": 20,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 6,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:14:12Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260430-180130",
+        "iterations": [
+          {
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:01:52Z"
+          },
+          {
+            "iteration": 3,
+            "score": 89.0,
+            "html_tag_errors": 14,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:03:06Z"
+          },
+          {
+            "iteration": 4,
+            "score": 99.45,
             "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:04:08Z"
+          }
+        ]
+      }
+    ],
+    "GPT-4o": [
+      {
+        "run_id": "GPT-4o-20260430-182140",
+        "iterations": [
+          {
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:22:02Z"
+          },
+          {
+            "iteration": 4,
+            "score": 26.18,
+            "html_tag_errors": 92,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:22:52Z"
+          },
+          {
+            "iteration": 6,
+            "score": 28.91,
+            "html_tag_errors": 85,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:23:32Z"
+          },
+          {
+            "iteration": 8,
+            "score": 37.09,
+            "html_tag_errors": 75,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:24:14Z"
+          },
+          {
+            "iteration": 10,
+            "score": 42.45,
+            "html_tag_errors": 66,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:24:55Z"
+          },
+          {
+            "iteration": 12,
+            "score": 46.36,
+            "html_tag_errors": 60,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:25:39Z"
+          },
+          {
+            "iteration": 14,
+            "score": 51.27,
+            "html_tag_errors": 54,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:26:16Z"
+          },
+          {
+            "iteration": 16,
+            "score": 55.36,
+            "html_tag_errors": 49,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:26:53Z"
+          },
+          {
+            "iteration": 18,
+            "score": 59.27,
+            "html_tag_errors": 43,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 5,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:27:30Z"
+          },
+          {
+            "iteration": 20,
+            "score": 66.64,
+            "html_tag_errors": 34,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 5,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:28:19Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260430-183237",
+        "iterations": [
+          {
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:32:59Z"
+          },
+          {
+            "iteration": 4,
+            "score": 25.36,
+            "html_tag_errors": 93,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:33:34Z"
+          },
+          {
+            "iteration": 5,
+            "score": 29.45,
+            "html_tag_errors": 88,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:34:00Z"
+          },
+          {
+            "iteration": 6,
+            "score": 36.45,
+            "html_tag_errors": 77,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:34:30Z"
+          },
+          {
+            "iteration": 7,
+            "score": 42.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:35:04Z"
+          },
+          {
+            "iteration": 8,
+            "score": 49.0,
+            "html_tag_errors": 58,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:35:40Z"
+          },
+          {
+            "iteration": 9,
+            "score": 58.0,
+            "html_tag_errors": 47,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:36:23Z"
+          },
+          {
+            "iteration": 10,
+            "score": 81.0,
+            "html_tag_errors": 14,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:37:16Z"
+          },
+          {
+            "iteration": 11,
+            "score": 60.45,
+            "html_tag_errors": 44,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:37:59Z"
+          },
+          {
+            "iteration": 12,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:38:49Z"
+          },
+          {
+            "iteration": 13,
+            "score": 60.45,
+            "html_tag_errors": 44,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:39:35Z"
+          },
+          {
+            "iteration": 14,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:40:40Z"
+          },
+          {
+            "iteration": 15,
+            "score": 61.27,
+            "html_tag_errors": 43,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:41:27Z"
+          },
+          {
+            "iteration": 16,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:42:21Z"
+          },
+          {
+            "iteration": 17,
+            "score": 61.27,
+            "html_tag_errors": 43,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:43:13Z"
+          },
+          {
+            "iteration": 18,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:44:11Z"
+          },
+          {
+            "iteration": 19,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:45:13Z"
+          },
+          {
+            "iteration": 20,
+            "score": 80.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-04-30T16:46:17Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260501-084921",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:49:44Z"
+          },
+          {
+            "iteration": 2,
+            "score": 24.55,
+            "html_tag_errors": 94,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:50:13Z"
+          },
+          {
+            "iteration": 3,
+            "score": 35.18,
+            "html_tag_errors": 81,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:50:34Z"
+          },
+          {
+            "iteration": 4,
+            "score": 44.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:50:57Z"
+          },
+          {
+            "iteration": 5,
+            "score": 53.45,
+            "html_tag_errors": 55,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:51:22Z"
+          },
+          {
+            "iteration": 6,
+            "score": 63.36,
+            "html_tag_errors": 38,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 4,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:51:47Z"
+          },
+          {
+            "iteration": 7,
+            "score": 76.09,
+            "html_tag_errors": 21,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:52:11Z"
+          },
+          {
+            "iteration": 8,
+            "score": 87.55,
+            "html_tag_errors": 7,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 7,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:52:34Z"
+          },
+          {
+            "iteration": 9,
+            "score": 87.55,
+            "html_tag_errors": 7,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 7,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-01T06:52:56Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260502-151421",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:14:36Z"
+          },
+          {
+            "iteration": 2,
+            "score": 21.45,
+            "html_tag_errors": 99,
             "w3c_errors": 0,
             "axe_violations": 0,
             "pa11y_issues": 0,
-            "qualweb_issues": 1,
-            "timestamp": "2026-04-30T12:08:50Z"
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:14:59Z"
+          },
+          {
+            "iteration": 3,
+            "score": 23.73,
+            "html_tag_errors": 95,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:15:19Z"
+          },
+          {
+            "iteration": 4,
+            "score": 32.73,
+            "html_tag_errors": 84,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:15:43Z"
+          },
+          {
+            "iteration": 5,
+            "score": 36.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:16:07Z"
+          },
+          {
+            "iteration": 6,
+            "score": 39.27,
+            "html_tag_errors": 76,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:16:33Z"
+          },
+          {
+            "iteration": 7,
+            "score": 41.55,
+            "html_tag_errors": 72,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:17:00Z"
+          },
+          {
+            "iteration": 8,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:17:31Z"
+          },
+          {
+            "iteration": 9,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:18:04Z"
+          },
+          {
+            "iteration": 10,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:18:38Z"
+          },
+          {
+            "iteration": 11,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T13:19:11Z"
           }
         ]
       }
@@ -834,14 +2755,370 @@
         "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
         "iterations": [
           {
-            "iteration": 1,
-            "score": 200,
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:53:32Z"
+          },
+          {
+            "iteration": 3,
+            "score": 94.73,
+            "html_tag_errors": 7,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:55:03Z"
+          },
+          {
+            "iteration": 5,
+            "score": 99.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-04-30T12:56:07Z"
+          },
+          {
+            "iteration": 6,
+            "score": 168.84,
             "html_tag_errors": 0,
             "w3c_errors": 0,
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T12:53:13Z"
+            "status": "pass",
+            "timestamp": "2026-04-30T12:56:32Z"
+          }
+        ]
+      }
+    ],
+    "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160029",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:00:39Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160039",
+        "iterations": [
+          {
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:00:45Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160045",
+        "iterations": [
+          {
+            "iteration": 3,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:00:52Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160052",
+        "iterations": [
+          {
+            "iteration": 4,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:00:57Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160057",
+        "iterations": [
+          {
+            "iteration": 5,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:05Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160105",
+        "iterations": [
+          {
+            "iteration": 6,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:11Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160111",
+        "iterations": [
+          {
+            "iteration": 7,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:17Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160117",
+        "iterations": [
+          {
+            "iteration": 8,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:22Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160122",
+        "iterations": [
+          {
+            "iteration": 9,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:28Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160128",
+        "iterations": [
+          {
+            "iteration": 10,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:34Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160134",
+        "iterations": [
+          {
+            "iteration": 11,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:40Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160140",
+        "iterations": [
+          {
+            "iteration": 12,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:45Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160145",
+        "iterations": [
+          {
+            "iteration": 13,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:51Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160151",
+        "iterations": [
+          {
+            "iteration": 14,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:01:57Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160157",
+        "iterations": [
+          {
+            "iteration": 15,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:02Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160202",
+        "iterations": [
+          {
+            "iteration": 16,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:08Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160208",
+        "iterations": [
+          {
+            "iteration": 17,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:14Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160214",
+        "iterations": [
+          {
+            "iteration": 18,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:20Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160220",
+        "iterations": [
+          {
+            "iteration": 19,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:26Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226",
+        "iterations": [
+          {
+            "iteration": 20,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:02:31Z"
           }
         ]
       }
@@ -849,8 +3126,17 @@
   },
   "error_breakdown": [
     {
+      "model": "Gemini 3 Flash (Preview)",
+      "score": 168.84,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
       "model": "Claude Haiku 4.5",
-      "score": 200,
+      "score": 154.21,
       "html_tag_errors": 0,
       "w3c_errors": 0,
       "axe_violations": 0,
@@ -859,41 +3145,62 @@
     },
     {
       "model": "GPT-4.1",
-      "score": 200,
+      "score": 99.45,
       "html_tag_errors": 0,
       "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 1,
       "qualweb_issues": 0
     },
     {
-      "model": "Gemini 3 Flash (Preview)",
-      "score": 200,
-      "html_tag_errors": 0,
+      "model": "GPT-4o",
+      "score": 87.55,
+      "html_tag_errors": 7,
       "w3c_errors": 0,
-      "axe_violations": 0,
+      "axe_violations": 6,
+      "pa11y_issues": 7,
+      "qualweb_issues": 2
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
       "pa11y_issues": 0,
       "qualweb_issues": 0
     }
   ],
   "tag_coverage_by_model": [
     {
+      "model": "Gemini 3 Flash (Preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100.0
+    },
+    {
       "model": "Claude Haiku 4.5",
       "used_count": 113,
       "missing_count": 0,
-      "coverage_pct": 100
+      "coverage_pct": 100.0
     },
     {
       "model": "GPT-4.1",
       "used_count": 113,
       "missing_count": 0,
-      "coverage_pct": 100
+      "coverage_pct": 100.0
     },
     {
-      "model": "Gemini 3 Flash (Preview)",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
+      "model": "GPT-4o",
+      "used_count": 107,
+      "missing_count": 7,
+      "coverage_pct": 94.7
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "used_count": 6,
+      "missing_count": 107,
+      "coverage_pct": 5.3
     }
   ]
 }
