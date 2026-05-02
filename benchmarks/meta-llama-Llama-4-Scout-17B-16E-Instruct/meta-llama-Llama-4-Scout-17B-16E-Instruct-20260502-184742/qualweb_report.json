@@ -1,0 +1,10 @@
+{
+  "failedCount": 1,
+  "results": [
+    {
+      "ruleId": "QW-ACT-R2",
+      "outcome": "failed",
+      "description": "The `lang` attribute doesn't exist or is empty ('')."
+    }
+  ]
+}

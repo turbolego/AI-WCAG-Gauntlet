@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T18:40:31.833279Z",
-  "total_runs": 12,
+  "generated_at": "2026-05-02T18:50:49.151566Z",
+  "total_runs": 13,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -247,6 +247,28 @@
       "rank": 11
     },
     {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 26.82,
+      "html_tag_errors": 90,
+      "w3c_errors": 0,
+      "axe_violations": 1,
+      "pa11y_issues": 1,
+      "qualweb_issues": 1,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-02T18:50:46Z",
+      "tag_coverage_pct": 20.4,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742/index.html",
+      "rank": 12
+    },
+    {
       "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260430-135739",
       "source": "local",
@@ -266,7 +288,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html",
-      "rank": 12
+      "rank": 13
     }
   ],
   "runs_by_model": [
@@ -469,6 +491,24 @@
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000/index.html"
     },
     {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 26.82,
+      "final_html_errors": 90,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 1,
+      "final_pa11y_issues": 1,
+      "final_qualweb_issues": 1,
+      "status": "fail",
+      "timestamp": "2026-05-02T18:50:46Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742/index.html"
+    },
+    {
       "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260430-135739",
       "source": "local",
@@ -490,538 +530,538 @@
   "missing_tags_frequency": [
     {
       "tag": "selectedcontent",
-      "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_count": 8,
+      "miss_pct": 61.5
     },
     {
       "tag": "col",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 7,
+      "miss_pct": 53.8
     },
     {
       "tag": "colgroup",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 7,
+      "miss_pct": 53.8
     },
     {
       "tag": "hgroup",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 7,
+      "miss_pct": 53.8
     },
     {
       "tag": "search",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 7,
+      "miss_pct": 53.8
     },
     {
       "tag": "tfoot",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 7,
+      "miss_pct": 53.8
     },
     {
       "tag": "base",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "div",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "rp",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "s",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "sub",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "sup",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "template",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "wbr",
+      "miss_count": 6,
+      "miss_pct": 46.2
+    },
+    {
+      "tag": "bdi",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "bdo",
+      "miss_count": 5,
+      "miss_pct": 38.5
     },
     {
       "tag": "br",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "div",
+      "tag": "cite",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "rp",
+      "tag": "data",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "s",
+      "tag": "datalist",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "sub",
+      "tag": "dialog",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "sup",
+      "tag": "h5",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "template",
+      "tag": "h6",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "i",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "ins",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "menu",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "noscript",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "object",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "optgroup",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "option",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "output",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "picture",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "rt",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "ruby",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "select",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "slot",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "small",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "span",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "strong",
+      "miss_count": 5,
+      "miss_pct": 38.5
+    },
+    {
+      "tag": "style",
+      "miss_count": 5,
+      "miss_pct": 38.5
     },
     {
       "tag": "textarea",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "wbr",
+      "tag": "time",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
-      "tag": "bdi",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "tag": "u",
+      "miss_count": 5,
+      "miss_pct": 38.5
     },
     {
-      "tag": "bdo",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "tag": "var",
+      "miss_count": 5,
+      "miss_pct": 38.5
     },
     {
-      "tag": "cite",
+      "tag": "area",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "data",
+      "tag": "b",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "datalist",
+      "tag": "canvas",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "dialog",
+      "tag": "caption",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "h5",
+      "tag": "dd",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "h6",
+      "tag": "del",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "i",
+      "tag": "dfn",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "iframe",
+      "tag": "dl",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "ins",
+      "tag": "dt",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "menu",
+      "tag": "em",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "noscript",
+      "tag": "embed",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "object",
+      "tag": "fieldset",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "optgroup",
+      "tag": "figcaption",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "option",
+      "tag": "figure",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "output",
+      "tag": "h4",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "picture",
+      "tag": "hr",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "rt",
+      "tag": "kbd",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "ruby",
+      "tag": "legend",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
+    },
+    {
+      "tag": "map",
+      "miss_count": 4,
+      "miss_pct": 30.8
+    },
+    {
+      "tag": "meter",
+      "miss_count": 4,
+      "miss_pct": 30.8
+    },
+    {
+      "tag": "q",
+      "miss_count": 4,
+      "miss_pct": 30.8
+    },
+    {
+      "tag": "samp",
+      "miss_count": 4,
+      "miss_pct": 30.8
     },
     {
       "tag": "script",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "select",
+      "tag": "table",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "slot",
+      "tag": "tbody",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "small",
+      "tag": "td",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "span",
+      "tag": "th",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "strong",
+      "tag": "thead",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "style",
+      "tag": "tr",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "time",
+      "tag": "track",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
-      "tag": "u",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "var",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "area",
+      "tag": "a",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "b",
+      "tag": "abbr",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "canvas",
+      "tag": "address",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "caption",
+      "tag": "article",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "dd",
+      "tag": "audio",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "del",
+      "tag": "blockquote",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "dfn",
+      "tag": "button",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "dl",
+      "tag": "code",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "dt",
+      "tag": "details",
       "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "em",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "embed",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "fieldset",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "figcaption",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "figure",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "h2",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "h4",
+      "tag": "img",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "hr",
+      "tag": "mark",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "kbd",
+      "tag": "nav",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "legend",
+      "tag": "ol",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "map",
+      "tag": "pre",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "meter",
+      "tag": "progress",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "q",
+      "tag": "source",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "samp",
+      "tag": "summary",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
-      "tag": "table",
+      "tag": "video",
       "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "tbody",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "td",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "th",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "thead",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "tr",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "track",
-      "miss_count": 3,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "a",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "abbr",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "address",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "article",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "audio",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "blockquote",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "button",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "code",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "details",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 23.1
     },
     {
       "tag": "form",
       "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "h3",
       "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "img",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "label",
       "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "mark",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "nav",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "ol",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "pre",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "progress",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "source",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "summary",
-      "miss_count": 2,
-      "miss_pct": 16.7
-    },
-    {
-      "tag": "video",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "aside",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "footer",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "header",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "link",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "main",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "p",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "section",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "body",
@@ -2298,6 +2338,231 @@
             "qualweb_issues": 0,
             "status": "fail",
             "timestamp": "2026-05-02T18:40:28Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 34.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:47:55Z"
+          },
+          {
+            "iteration": 2,
+            "score": 78.55,
+            "html_tag_errors": 18,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 5,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:04Z"
+          },
+          {
+            "iteration": 3,
+            "score": 44.82,
+            "html_tag_errors": 68,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:13Z"
+          },
+          {
+            "iteration": 4,
+            "score": 63.45,
+            "html_tag_errors": 44,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:24Z"
+          },
+          {
+            "iteration": 5,
+            "score": 32.82,
+            "html_tag_errors": 79,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:32Z"
+          },
+          {
+            "iteration": 6,
+            "score": 36.82,
+            "html_tag_errors": 79,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:40Z"
+          },
+          {
+            "iteration": 7,
+            "score": 85.91,
+            "html_tag_errors": 8,
+            "w3c_errors": 0,
+            "axe_violations": 8,
+            "pa11y_issues": 9,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:50Z"
+          },
+          {
+            "iteration": 8,
+            "score": 38.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:48:57Z"
+          },
+          {
+            "iteration": 9,
+            "score": 39.55,
+            "html_tag_errors": 73,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:07Z"
+          },
+          {
+            "iteration": 10,
+            "score": 32.36,
+            "html_tag_errors": 82,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:14Z"
+          },
+          {
+            "iteration": 11,
+            "score": 87.55,
+            "html_tag_errors": 6,
+            "w3c_errors": 0,
+            "axe_violations": 11,
+            "pa11y_issues": 12,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:25Z"
+          },
+          {
+            "iteration": 12,
+            "score": 36.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:33Z"
+          },
+          {
+            "iteration": 13,
+            "score": 23.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:40Z"
+          },
+          {
+            "iteration": 14,
+            "score": 86.73,
+            "html_tag_errors": 7,
+            "w3c_errors": 0,
+            "axe_violations": 8,
+            "pa11y_issues": 8,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:49:52Z"
+          },
+          {
+            "iteration": 15,
+            "score": 88.36,
+            "html_tag_errors": 6,
+            "w3c_errors": 0,
+            "axe_violations": 10,
+            "pa11y_issues": 12,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:04Z"
+          },
+          {
+            "iteration": 16,
+            "score": 37.27,
+            "html_tag_errors": 76,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:12Z"
+          },
+          {
+            "iteration": 17,
+            "score": 30.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:21Z"
+          },
+          {
+            "iteration": 18,
+            "score": 19.82,
+            "html_tag_errors": 90,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 8,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:29Z"
+          },
+          {
+            "iteration": 19,
+            "score": 85.09,
+            "html_tag_errors": 10,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 10,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:38Z"
+          },
+          {
+            "iteration": 20,
+            "score": 26.82,
+            "html_tag_errors": 90,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-02T18:50:46Z"
           }
         ]
       }
