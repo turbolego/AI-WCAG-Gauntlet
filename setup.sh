@@ -41,14 +41,19 @@ fi
 MODEL_NAME="GPT-4o"
 #MODEL_NAME="Gemini 3 Flash (Preview)"
 
+#MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
+#MODEL_NAME="qwen2.5-coder-1.5b"
+
 
 # The provider where the model runs (machine-readable identifier).
 # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
 PROVIDER="github-copilot"
+#PROVIDER="ollama"
 
 # Human-readable label for the provider shown in the dashboard Source column.
 # Examples: "GitHub Copilot", "Ollama", "OpenAI", "HuggingFace", "Mistral AI", "OpenRouter"
 PROVIDER_LABEL="GitHub Copilot"
+#PROVIDER_LABEL="Ollama"
 
 # The tool/interface used to run the benchmark.
 # Examples: "vscode", "github-actions", "cli"
