@@ -39,28 +39,34 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Set up Chrome (stable, with matching ChromeDriver)
-        uses: browser-actions/setup-chrome@v1
-        id: setup-chrome
-        with:
-          chrome-version: stable
-
-      - name: Install dependencies
+      - name: Install dependencies and matching ChromeDriver
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: |
           npm ci
-          npm install -g @axe-core/cli pa11y @qualweb/cli
+          npm install -g pa11y @qualweb/cli
+
+          # Detect the major version of the system Chrome so we can install a
+          # matching chromedriver. @axe-core/cli uses whatever chromedriver is
+          # first on PATH, so putting a version-matched one there prevents the
+          # "ChromeDriver only supports Chrome version N" mismatch.
+          CHROME_MAJOR=$(/usr/bin/google-chrome --version 2>/dev/null \
+            | grep -oP '\d+' | head -1)
+          echo "System Chrome major version: $CHROME_MAJOR"
+
+          # Install chromedriver at the matching major version, then axe CLI.
+          # npm installs the chromedriver binary into node_modules/.bin/ and
+          # also into the global bin — @axe-core/cli will pick it up from PATH.
+          npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli
+
+          # Confirm the versions match
+          echo "ChromeDriver version: $(chromedriver --version)"
 
       - name: Execute benchmark loop and generate dashboard
         env:
           GROQ_TOKEN: ${{ secrets.GROQ_TOKEN }}
-          # Use the Chrome binary installed by browser-actions/setup-chrome above.
-          # Both PUPPETEER_EXECUTABLE_PATH (for pa11y/qualweb) and CHROME_PATH
-          # (for axe-core/cli) are set to the same versioned binary, eliminating
-          # the ChromeDriver mismatch.
-          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          # Point pa11y and qualweb (puppeteer-based) at the system Chrome.
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: |
           # No -e: test-suite.sh always exits 0 by design; we check STATUS ourselves.
           set -uo pipefail
