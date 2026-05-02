@@ -1,6 +1,11 @@
 name: Update Benchmark Stats
 
 on:
+  workflow_run:
+    workflows:
+      - AI-WCAG-Gauntlet (Groq LPU)
+    types:
+      - completed
   push:
     branches:
       - main
