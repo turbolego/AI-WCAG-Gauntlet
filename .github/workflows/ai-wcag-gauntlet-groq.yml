@@ -101,33 +101,31 @@ jobs:
             echo "$tmp"
           }
 
+          # Create the benchmark folder once and reuse it across all iterations.
+          # Re-running setup.sh each loop would reset index.html/style.css and
+          # discard the model's previous fixes.
+          SETUP_TMP=$(make_setup_script)
+          RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
+          rm -f "$SETUP_TMP"
+
+          if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
+            echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
+            exit 1
+          fi
+          echo "Benchmark folder: $RUN_DIR"
+
+          # setup.sh writes SAFE_MODEL as the model name — patch metadata.json
+          # back to the original human-readable name so the dashboard shows it correctly.
+          METADATA="$RUN_DIR/metadata.json"
+          if [ -f "$METADATA" ]; then
+            _tmp=$(mktemp)
+            jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+          fi
+
           FOUND_PASSING_RUN=false
 
           for i in $(seq 1 "$ITERATIONS"); do
             echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
-
-            SETUP_TMP=$(make_setup_script)
-            RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
-            rm -f "$SETUP_TMP"
-
-            if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
-              echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
-              exit 1
-            fi
-            echo "Benchmark folder: $RUN_DIR"
-
-            # setup.sh creates a fresh folder every loop, so test-suite.sh would
-            # otherwise always report iteration 1. Seed the counter with i-1 so
-            # the test-suite increment produces the real global iteration number.
-            echo "$((i - 1))" > "$RUN_DIR/iterations_count.txt"
-
-            # setup.sh wrote SAFE_MODEL as the model name — patch metadata.json
-            # back to the original human-readable name so the dashboard shows it correctly.
-            METADATA="$RUN_DIR/metadata.json"
-            if [ -f "$METADATA" ]; then
-              _tmp=$(mktemp)
-              jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
-            fi
 
             # test-suite.sh always exits 0 — read the STATUS line, not the exit code
             bash test-suite.sh "$RUN_DIR"
