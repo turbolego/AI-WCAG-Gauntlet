@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T16:02:34.530Z",
-  "total_runs": 30,
+  "generated_at": "2026-05-02T16:09:04.483Z",
+  "total_runs": 31,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -633,6 +633,27 @@
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html",
       "rank": 30
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-02T16:06:58Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658/index.html",
+      "rank": 31
     }
   ],
   "runs_by_model": [
@@ -1145,6 +1166,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-02T16:02:26Z",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-02T16:06:58Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -2171,6 +2209,21 @@
             "pa11y_issues": 0,
             "qualweb_issues": 0,
             "timestamp": "2026-05-02T16:02:26Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-02T16:06:58Z"
           }
         ]
       }

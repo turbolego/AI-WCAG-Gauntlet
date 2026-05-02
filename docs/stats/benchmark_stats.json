@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T16:02:34.643656Z",
-  "total_runs": 30,
+  "generated_at": "2026-05-02T16:09:04.673351Z",
+  "total_runs": 31,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -663,6 +663,28 @@
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html",
       "rank": 30
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 12.91,
+      "html_tag_errors": 107,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:09:01Z",
+      "tag_coverage_pct": 5.3,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658/index.html",
+      "rank": 31
     }
   ],
   "runs_by_model": [
@@ -1205,543 +1227,561 @@
       "status": "fail",
       "timestamp": "2026-05-02T16:02:31Z",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160226/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 12.91,
+      "final_html_errors": 107,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:09:01Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658/index.html"
     }
   ],
   "missing_tags_frequency": [
     {
       "tag": "base",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "col",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "colgroup",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "hgroup",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "search",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "selectedcontent",
-      "miss_count": 25,
-      "miss_pct": 83.3
+      "miss_count": 26,
+      "miss_pct": 83.9
     },
     {
       "tag": "div",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "rp",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "s",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "sub",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "sup",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "tfoot",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "wbr",
-      "miss_count": 24,
-      "miss_pct": 80.0
+      "miss_count": 25,
+      "miss_pct": 80.6
     },
     {
       "tag": "b",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "bdi",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "bdo",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "br",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "cite",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "data",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "datalist",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "dialog",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "h2",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "h4",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "h5",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "h6",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "i",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "iframe",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "ins",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "menu",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "noscript",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "object",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "optgroup",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "option",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "output",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "picture",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "rt",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "ruby",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "script",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "select",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "slot",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "small",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "span",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "strong",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "template",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "textarea",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "time",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "u",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "var",
-      "miss_count": 23,
-      "miss_pct": 76.7
+      "miss_count": 24,
+      "miss_pct": 77.4
     },
     {
       "tag": "a",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "area",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "canvas",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "caption",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "dd",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "del",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "dfn",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "dl",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "dt",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "em",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "embed",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "fieldset",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "figcaption",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "figure",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "h3",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "hr",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "kbd",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "legend",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "map",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "meter",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "nav",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "q",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "samp",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "style",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "table",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "tbody",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "td",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "th",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "thead",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "tr",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "track",
-      "miss_count": 22,
-      "miss_pct": 73.3
+      "miss_count": 23,
+      "miss_pct": 74.2
     },
     {
       "tag": "abbr",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "address",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "article",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "aside",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "audio",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "blockquote",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "button",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "code",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "details",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "footer",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "form",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "header",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "img",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "input",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "label",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "li",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "link",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "main",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "mark",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "ol",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "p",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "pre",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "progress",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "section",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "source",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "summary",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "ul",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "video",
-      "miss_count": 21,
-      "miss_pct": 70.0
+      "miss_count": 22,
+      "miss_pct": 71.0
     },
     {
       "tag": "body",
@@ -3119,6 +3159,231 @@
             "qualweb_issues": 0,
             "status": "fail",
             "timestamp": "2026-05-02T16:02:31Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-160658",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:04Z"
+          },
+          {
+            "iteration": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:10Z"
+          },
+          {
+            "iteration": 3,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:17Z"
+          },
+          {
+            "iteration": 4,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:23Z"
+          },
+          {
+            "iteration": 5,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:29Z"
+          },
+          {
+            "iteration": 6,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:35Z"
+          },
+          {
+            "iteration": 7,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:42Z"
+          },
+          {
+            "iteration": 8,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:48Z"
+          },
+          {
+            "iteration": 9,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:07:54Z"
+          },
+          {
+            "iteration": 10,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:00Z"
+          },
+          {
+            "iteration": 11,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:06Z"
+          },
+          {
+            "iteration": 12,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:12Z"
+          },
+          {
+            "iteration": 13,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:18Z"
+          },
+          {
+            "iteration": 14,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:24Z"
+          },
+          {
+            "iteration": 15,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:31Z"
+          },
+          {
+            "iteration": 16,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:37Z"
+          },
+          {
+            "iteration": 17,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:43Z"
+          },
+          {
+            "iteration": 18,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:49Z"
+          },
+          {
+            "iteration": 19,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:08:55Z"
+          },
+          {
+            "iteration": 20,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-02T16:09:01Z"
           }
         ]
       }
