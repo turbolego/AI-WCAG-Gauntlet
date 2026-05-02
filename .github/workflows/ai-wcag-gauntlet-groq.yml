@@ -39,45 +39,28 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Set up Chrome (stable, with matching ChromeDriver)
+        uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+        with:
+          chrome-version: stable
+
       - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
         run: |
-          # npm ci installs local deps including @qualweb/core and w3c-html-validator.
-          # We allow puppeteer to download Chrome here so that @axe-core/cli,
-          # pa11y, and qualweb all use the same puppeteer-managed binary whose
-          # ChromeDriver version is guaranteed to match.
           npm ci
           npm install -g @axe-core/cli pa11y @qualweb/cli
-
-      - name: Resolve puppeteer Chrome path
-        id: chrome
-        run: |
-          # Find the Chrome binary that puppeteer downloaded during npm ci.
-          # node_modules/.bin/puppeteer browsers list-installed would work too,
-          # but parsing the cache directory directly is simpler and portable.
-          CHROME_BIN=$(node -e "
-            const { executablePath } = require('puppeteer');
-            console.log(executablePath());
-          " 2>/dev/null || true)
-
-          if [ -z "$CHROME_BIN" ] || [ ! -x "$CHROME_BIN" ]; then
-            # Fallback: glob the puppeteer cache for any chrome binary
-            CHROME_BIN=$(find "$HOME/.cache/puppeteer" -name "chrome" -type f 2>/dev/null | head -1)
-          fi
-
-          if [ -z "$CHROME_BIN" ] || [ ! -x "$CHROME_BIN" ]; then
-            echo "Error: could not locate puppeteer-managed Chrome binary."
-            exit 1
-          fi
-
-          echo "Found Chrome: $CHROME_BIN"
-          echo "path=$CHROME_BIN" >> "$GITHUB_OUTPUT"
 
       - name: Execute benchmark loop and generate dashboard
         env:
           GROQ_TOKEN: ${{ secrets.GROQ_TOKEN }}
-          # Point axe-core/cli, pa11y, and qualweb at the puppeteer-managed
-          # Chrome so the ChromeDriver version always matches.
-          PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.path }}
+          # Use the Chrome binary installed by browser-actions/setup-chrome above.
+          # Both PUPPETEER_EXECUTABLE_PATH (for pa11y/qualweb) and CHROME_PATH
+          # (for axe-core/cli) are set to the same versioned binary, eliminating
+          # the ChromeDriver mismatch.
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: |
           # No -e: test-suite.sh always exits 0 by design; we check STATUS ourselves.
           set -uo pipefail
