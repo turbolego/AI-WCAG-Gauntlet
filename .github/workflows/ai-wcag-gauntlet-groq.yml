@@ -120,7 +120,10 @@ jobs:
           # Point pa11y and qualweb (puppeteer-based) at the system Chrome.
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: |
-          # No -e: test-suite.sh always exits 0 by design; we check STATUS ourselves.
+          # Disable errexit for this loop so a single failed test run
+          # (for example axe runtime/browser-dialog errors) does not abort
+          # the entire benchmark workflow.
+          set +e
           set -uo pipefail
 
           ITERATIONS="${{ inputs.iterations }}"
@@ -163,8 +166,13 @@ jobs:
               exit 1
             fi
 
-            # test-suite.sh always exits 0 — read the STATUS line, not the exit code
+            # Run tests; if the runner fails hard, keep iterating.
             bash test-suite.sh "$RUN_DIR"
+            TEST_EXIT=$?
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
+              continue
+            fi
 
             RESULTS_JSON="$RUN_DIR/test_results.json"
             if [ ! -f "$RESULTS_JSON" ]; then
