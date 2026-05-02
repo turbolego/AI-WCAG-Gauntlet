@@ -116,6 +116,11 @@ jobs:
             fi
             echo "Benchmark folder: $RUN_DIR"
 
+            # setup.sh creates a fresh folder every loop, so test-suite.sh would
+            # otherwise always report iteration 1. Seed the counter with i-1 so
+            # the test-suite increment produces the real global iteration number.
+            echo "$((i - 1))" > "$RUN_DIR/iterations_count.txt"
+
             # setup.sh wrote SAFE_MODEL as the model name — patch metadata.json
             # back to the original human-readable name so the dashboard shows it correctly.
             METADATA="$RUN_DIR/metadata.json"
@@ -148,7 +153,7 @@ jobs:
             echo "No fully passing run found after $ITERATIONS iterations."
           fi
 
-          bash generate-dashboard.sh
+          pwsh -File ./generate-dashboard.ps1
 
       - name: Commit and push benchmark results
         run: |
