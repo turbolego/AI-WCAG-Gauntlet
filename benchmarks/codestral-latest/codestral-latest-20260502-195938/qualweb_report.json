@@ -1,0 +1,20 @@
+{
+  "failedCount": 3,
+  "results": [
+    {
+      "ruleId": "QW-ACT-R16",
+      "outcome": "failed",
+      "description": "The test target accessible name doesn't exist or it's empty ('')."
+    },
+    {
+      "ruleId": "QW-ACT-R37",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    },
+    {
+      "ruleId": "QW-ACT-R76",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    }
+  ]
+}

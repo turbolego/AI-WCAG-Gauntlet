@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-02T18:50:48.969Z",
-  "total_runs": 13,
-  "total_models": 5,
+  "generated_at": "2026-05-02T20:07:28.931Z",
+  "total_runs": 14,
+  "total_models": 6,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -215,6 +215,27 @@
       "rank": 10
     },
     {
+      "model": "codestral-latest",
+      "run_id": "codestral-latest-20260502-195938",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 3,
+      "iterations_used": 1,
+      "timestamp": "2026-05-02T19:59:38Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260502-195938/index.html",
+      "rank": 11
+    },
+    {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
       "source": "local",
@@ -233,7 +254,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html",
-      "rank": 11
+      "rank": 12
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
@@ -254,7 +275,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000/index.html",
-      "rank": 12
+      "rank": 13
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
@@ -275,7 +296,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742/index.html",
-      "rank": 13
+      "rank": 14
     }
   ],
   "runs_by_model": [
@@ -448,6 +469,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-04-30T12:53:13Z",
       "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html"
+    },
+    {
+      "model": "codestral-latest",
+      "run_id": "codestral-latest-20260502-195938",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 3,
+      "timestamp": "2026-05-02T19:59:38Z",
+      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260502-195938/index.html"
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
@@ -1227,6 +1265,23 @@
         ]
       }
     ],
+    "codestral-latest": [
+      {
+        "run_id": "codestral-latest-20260502-195938",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 3,
+            "timestamp": "2026-05-02T19:59:38Z"
+          }
+        ]
+      }
+    ],
     "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
       {
         "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
@@ -1313,6 +1368,15 @@
       "qualweb_issues": 0
     },
     {
+      "model": "codestral-latest",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 3
+    },
+    {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "score": 200,
       "html_tag_errors": 0,
@@ -1343,6 +1407,12 @@
     },
     {
       "model": "Gemini 3 Flash (Preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "codestral-latest",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100
