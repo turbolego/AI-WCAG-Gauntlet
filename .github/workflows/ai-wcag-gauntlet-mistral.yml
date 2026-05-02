@@ -39,88 +39,163 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install tools
+      - name: Install dependencies
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
-        run: npm ci
+        run: |
+          npm ci
+          npm install -g pa11y @qualweb/cli
+
+          # Detect the major version of the system Chrome so we can install a
+          # matching chromedriver. @axe-core/cli uses whatever chromedriver is
+          # first on PATH, so putting a version-matched one there prevents the
+          # "ChromeDriver only supports Chrome version N" mismatch.
+          CHROME_MAJOR=$(/usr/bin/google-chrome --version 2>/dev/null \
+            | grep -oP '\d+' | head -1)
+          echo "System Chrome major version: $CHROME_MAJOR"
+
+          # Install chromedriver at the matching major version, then axe CLI.
+          # npm installs the chromedriver binary into node_modules/.bin/ and
+          # also into the global bin — @axe-core/cli will pick it up from PATH.
+          npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli
+
+          # Confirm the versions match
+          echo "ChromeDriver version: $(chromedriver --version)"
+
+      - name: Initialize benchmark run folder
+        id: init-benchmark
+        run: |
+          set -euo pipefail
+
+          MODEL="${{ inputs.model }}"
+
+          # Sanitize the model name for use as a filesystem folder name:
+          # replace any character that isn't alphanumeric, dot, underscore, or
+          # hyphen with a hyphen — same logic as setup.ps1's safeModelName.
+          SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
+
+          # setup.sh uses unconditional variable assignments so env-var overrides
+          # won't work. Build a patched temp copy at runtime: prepend the correct
+          # values and strip all existing MODEL_NAME/PROVIDER/PROVIDER_LABEL/TOOL
+          # lines from the original.
+          make_setup_script() {
+            local tmp
+            tmp=$(mktemp /tmp/setup_XXXXXX.sh)
+            {
+              printf 'MODEL_NAME=%q\n'     "$SAFE_MODEL"
+              printf 'PROVIDER=%q\n'       "mistral"
+              printf 'PROVIDER_LABEL=%q\n' "Mistral AI"
+              printf 'TOOL=%q\n'           "github-actions"
+              grep -vE '^#?(MODEL_NAME|PROVIDER|PROVIDER_LABEL|TOOL)=' setup.sh
+            } > "$tmp"
+            echo "$tmp"
+          }
+
+          # Always initialize a fresh benchmark folder for this workflow run.
+          # Never reuse folders from previous runs.
+          SETUP_TMP=$(make_setup_script)
+          RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
+          rm -f "$SETUP_TMP"
+
+          if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
+            echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
+            exit 1
+          fi
+          echo "Created benchmark folder: $RUN_DIR"
+
+          # setup.sh writes SAFE_MODEL as the model name — patch metadata.json
+          # back to the original human-readable name so the dashboard shows it correctly.
+          METADATA="$RUN_DIR/metadata.json"
+          if [ -f "$METADATA" ]; then
+            _tmp=$(mktemp)
+            jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+          fi
+
+          echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
+          echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
 
       - name: Execute benchmark loop and generate dashboard
         env:
           MISTRAL_TOKEN: ${{ secrets.MISTRAL_TOKEN }}
-        shell: pwsh
+          # Point pa11y and qualweb (puppeteer-based) at the system Chrome.
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: |
-          $iterations = [int]::Parse("${{ inputs.iterations }}")
-          if ($iterations -lt 1) {
-            throw "iterations must be at least 1"
-          }
-          if ($iterations -gt 100) {
-            throw "iterations must be 100 or less"
-          }
+          # Disable errexit for this loop so a single failed test run
+          # (for example axe runtime/browser-dialog errors) does not abort
+          # the entire benchmark workflow.
+          set +e
+          set -uo pipefail
 
-          $model = "${{ inputs.model }}"
-          $previousRunDir = $null
-          $foundPassingRun = $false
+          ITERATIONS="${{ inputs.iterations }}"
+          MODEL="${{ inputs.model }}"
+          SAFE_MODEL="${{ steps.init-benchmark.outputs.safe_model }}"
+          RUN_DIR="${{ steps.init-benchmark.outputs.run_dir }}"
 
-          function Try-ParseJson {
-            param([string]$json)
-            try {
-              return $json | ConvertFrom-Json
-            } catch {
-              # Attempt to repair common issues (e.g., trailing commas)
-              $fixed = $json -replace ',\s*([\]}])', '$1'
-              try {
-                return $fixed | ConvertFrom-Json
-              } catch {
-                Write-Host "Failed to parse JSON after repair attempts."
-                return $null
-              }
-            }
-          }
+          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
+            echo "Error: iterations must be between 1 and 100"
+            exit 1
+          fi
 
-          for ($i = 1; $i -le $iterations; $i++) {
-            Write-Host "Starting iteration $i/$iterations for model $model"
-            $runDir = ./setup.ps1 -ModelName $model -Iteration $i -PreviousRunDir $previousRunDir -Provider mistral -ProviderKey mistral -ProviderLabel 'Mistral AI' | Select-Object -Last 1
+          echo "Benchmark folder: $RUN_DIR"
 
-            # Detect rate-limit / generation failure — discard the run and stop
-            $generationPath = Join-Path $runDir "generation.json"
-            if (Test-Path $generationPath) {
-              $generationRaw = Get-Content $generationPath -Raw
-              $generation = Try-ParseJson $generationRaw
-              if ($null -eq $generation) {
-                Write-Host "Model generation output is not valid JSON. Discarding this run."
-                Remove-Item -Recurse -Force $runDir
-                continue
-              }
-              if (-not $generation.generatedByModel) {
-                Write-Host "Model generation failed at iteration $i`: $($generation.generationError)"
-                Remove-Item -Recurse -Force $runDir
-                continue
-              }
-            }
+          FOUND_PASSING_RUN=false
 
-            ./test-suite.ps1 -TargetDir $runDir -AllowFailures
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
 
-            $resultPath = Join-Path $runDir "test_results.json"
-            if (-not (Test-Path $resultPath)) {
-              Write-Host "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
-              $previousRunDir = $runDir
+            # Generate updated page content for this iteration using the model.
+            # Use the same run directory as feedback context so each pass can
+            # improve based on the latest reports.
+            node scripts/generate-page.mjs \
+              --model "$MODEL" \
+              --provider mistral \
+              --outputDir "$RUN_DIR" \
+              --iteration "$i" \
+              --previousDir "$RUN_DIR"
+
+            GENERATION_JSON="$RUN_DIR/generation.json"
+            if [ ! -f "$GENERATION_JSON" ]; then
+              echo "Error: generation.json missing after model generation."
+              exit 1
+            fi
+
+            GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
+            if [ "$GENERATED_BY_MODEL" != "true" ]; then
+              GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
+              echo "Error: model did not generate content this iteration: $GEN_ERROR"
+              exit 1
+            fi
+
+            # Run tests; if the runner fails hard, keep iterating.
+            bash test-suite.sh "$RUN_DIR"
+            TEST_EXIT=$?
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
               continue
-            }
-            $result = Get-Content $resultPath -Raw | ConvertFrom-Json
-            if ($result.status -eq "pass") {
-              Write-Host "Stopping early after iteration $i because tests passed."
-              $foundPassingRun = $true
+            fi
+
+            RESULTS_JSON="$RUN_DIR/test_results.json"
+            if [ ! -f "$RESULTS_JSON" ]; then
+              echo "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
+              continue
+            fi
+
+            # test_results.json is a JSON array — read status from the last entry
+            STATUS=$(jq -r '.[-1].status' "$RESULTS_JSON")
+            echo "Iteration $i result: $STATUS"
+
+            if [ "$STATUS" = "pass" ]; then
+              echo "Stopping early after iteration $i — all tests passed."
+              FOUND_PASSING_RUN=true
               break
-            }
+            fi
+          done
 
-            $previousRunDir = $runDir
-          }
+          if [ "$FOUND_PASSING_RUN" = false ]; then
+            echo "No fully passing run found after $ITERATIONS iterations."
+          fi
 
-          if (-not $foundPassingRun) {
-            Write-Host "No fully passing run found after $iterations iterations."
-          }
-
-          ./generate-dashboard.ps1
+          pwsh -File ./generate-dashboard.ps1
 
       - name: Commit and push benchmark webpages
         shell: bash
