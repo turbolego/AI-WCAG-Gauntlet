@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T16:40:50.319Z",
-  "total_runs": 12,
+  "generated_at": "2026-05-02T16:53:59.177Z",
+  "total_runs": 11,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -216,28 +216,7 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T16:30:52Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052/index.html",
-      "rank": 11
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -249,12 +228,12 @@
       "pa11y_issues": 0,
       "qualweb_issues": 2,
       "iterations_used": 1,
-      "timestamp": "2026-05-02T16:40:17Z",
+      "timestamp": "2026-05-02T16:50:49Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017/index.html",
-      "rank": 12
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html",
+      "rank": 11
     }
   ],
   "runs_by_model": [
@@ -430,24 +409,7 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-05-02T16:30:52Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052/index.html"
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -459,8 +421,8 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 2,
-      "timestamp": "2026-05-02T16:40:17Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017/index.html"
+      "timestamp": "2026-05-02T16:50:49Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -1191,22 +1153,7 @@
     ],
     "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
       {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-05-02T16:30:52Z"
-          }
-        ]
-      },
-      {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
         "iterations": [
           {
             "iteration": 1,
@@ -1216,7 +1163,7 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 2,
-            "timestamp": "2026-05-02T16:40:17Z"
+            "timestamp": "2026-05-02T16:50:49Z"
           }
         ]
       }
@@ -1266,7 +1213,7 @@
       "w3c_errors": 0,
       "axe_violations": 0,
       "pa11y_issues": 0,
-      "qualweb_issues": 0
+      "qualweb_issues": 2
     }
   ],
   "tag_coverage_by_model": [

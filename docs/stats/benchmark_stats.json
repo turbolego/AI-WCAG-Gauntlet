@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-02T16:40:50.515852Z",
-  "total_runs": 12,
+  "generated_at": "2026-05-02T16:53:59.360051Z",
+  "total_runs": 11,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -93,28 +93,6 @@
       "rank": 4
     },
     {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 87.55,
-      "html_tag_errors": 6,
-      "w3c_errors": 49,
-      "axe_violations": 8,
-      "pa11y_issues": 10,
-      "qualweb_issues": 2,
-      "iterations_used": 3,
-      "status": "fail",
-      "timestamp": "2026-05-02T16:40:47Z",
-      "tag_coverage_pct": 94.7,
-      "axe_version": "4.11.4",
-      "pa11y_version": "9.1.1",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017/index.html",
-      "rank": 5
-    },
-    {
       "model": "GPT-4o",
       "run_id": "GPT-4o-20260501-084921",
       "source": "local",
@@ -134,6 +112,28 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260501-084921/index.html",
+      "rank": 5
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 86.73,
+      "html_tag_errors": 8,
+      "w3c_errors": 34,
+      "axe_violations": 12,
+      "pa11y_issues": 11,
+      "qualweb_issues": 2,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-02T16:53:54Z",
+      "tag_coverage_pct": 92.9,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html",
       "rank": 6
     },
     {
@@ -245,28 +245,6 @@
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html",
       "rank": 11
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 12.91,
-      "html_tag_errors": 107,
-      "w3c_errors": 0,
-      "axe_violations": 2,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 20,
-      "status": "fail",
-      "timestamp": "2026-05-02T16:32:54Z",
-      "tag_coverage_pct": 5.3,
-      "axe_version": "4.11.4",
-      "pa11y_version": "9.1.1",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052/index.html",
-      "rank": 12
     }
   ],
   "runs_by_model": [
@@ -362,21 +340,21 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
       "tool": "github-actions",
-      "total_iterations": 3,
-      "final_score": 87.55,
-      "final_html_errors": 6,
-      "final_w3c_errors": 49,
-      "final_axe_violations": 8,
-      "final_pa11y_issues": 10,
+      "total_iterations": 20,
+      "final_score": 86.73,
+      "final_html_errors": 8,
+      "final_w3c_errors": 34,
+      "final_axe_violations": 12,
+      "final_pa11y_issues": 11,
       "final_qualweb_issues": 2,
       "status": "fail",
-      "timestamp": "2026-05-02T16:40:47Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017/index.html"
+      "timestamp": "2026-05-02T16:53:54Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html"
     },
     {
       "model": "GPT-4o",
@@ -467,561 +445,543 @@
       "status": "fail",
       "timestamp": "2026-04-30T11:58:03Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html"
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "total_iterations": 20,
-      "final_score": 12.91,
-      "final_html_errors": 107,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 2,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "status": "fail",
-      "timestamp": "2026-05-02T16:32:54Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052/index.html"
     }
   ],
   "missing_tags_frequency": [
     {
-      "tag": "hgroup",
-      "miss_count": 7,
-      "miss_pct": 58.3
-    },
-    {
       "tag": "selectedcontent",
-      "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_count": 6,
+      "miss_pct": 54.5
     },
     {
       "tag": "base",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 45.5
     },
     {
       "tag": "col",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 45.5
     },
     {
       "tag": "colgroup",
-      "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 45.5
+    },
+    {
+      "tag": "hgroup",
+      "miss_count": 5,
+      "miss_pct": 45.5
     },
     {
       "tag": "search",
-      "miss_count": 6,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "div",
       "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "noscript",
-      "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "rp",
-      "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "s",
-      "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "sub",
-      "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "sup",
-      "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 45.5
     },
     {
       "tag": "tfoot",
       "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "wbr",
-      "miss_count": 5,
-      "miss_pct": 41.7
-    },
-    {
-      "tag": "area",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "b",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "bdi",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "bdo",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 45.5
     },
     {
       "tag": "br",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
-      "tag": "cite",
+      "tag": "div",
       "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "data",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "datalist",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "dialog",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "h2",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "h4",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "h5",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "h6",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
       "tag": "i",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
-      "tag": "iframe",
+      "tag": "rp",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
-      "tag": "ins",
+      "tag": "s",
       "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "map",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "menu",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "object",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "optgroup",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "option",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "output",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "picture",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "rt",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "ruby",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
       "tag": "script",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
-      "tag": "select",
+      "tag": "sub",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
-      "tag": "slot",
+      "tag": "sup",
       "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "small",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "span",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "strong",
-      "miss_count": 4,
-      "miss_pct": 33.3
-    },
-    {
-      "tag": "style",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
       "tag": "template",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
     },
     {
       "tag": "textarea",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 36.4
+    },
+    {
+      "tag": "wbr",
+      "miss_count": 4,
+      "miss_pct": 36.4
+    },
+    {
+      "tag": "b",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "bdi",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "bdo",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "cite",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "data",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "datalist",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "dialog",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "h2",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "h4",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "h5",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "h6",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "ins",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "menu",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "noscript",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "object",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "optgroup",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "option",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "output",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "picture",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "rt",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "ruby",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "select",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "slot",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "small",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "span",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "strong",
+      "miss_count": 3,
+      "miss_pct": 27.3
+    },
+    {
+      "tag": "style",
+      "miss_count": 3,
+      "miss_pct": 27.3
     },
     {
       "tag": "time",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_count": 3,
+      "miss_pct": 27.3
     },
     {
       "tag": "u",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_count": 3,
+      "miss_pct": 27.3
     },
     {
       "tag": "var",
-      "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_count": 3,
+      "miss_pct": 27.3
     },
     {
       "tag": "a",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
+    },
+    {
+      "tag": "area",
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "canvas",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "caption",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "dd",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "del",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "dfn",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "dl",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "dt",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "em",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "embed",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "fieldset",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "figcaption",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "figure",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "h3",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "hr",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "kbd",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "legend",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
+    },
+    {
+      "tag": "map",
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "meter",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "nav",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "q",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "samp",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "table",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "tbody",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "td",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "th",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "thead",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "tr",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "track",
-      "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_count": 2,
+      "miss_pct": 18.2
     },
     {
       "tag": "abbr",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "address",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "article",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "aside",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "audio",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "blockquote",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "button",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "code",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "details",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "footer",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "form",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "header",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "img",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "input",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "label",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "li",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "link",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "main",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "mark",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "ol",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "p",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "pre",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "progress",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "section",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "source",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "summary",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "ul",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "video",
-      "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_count": 1,
+      "miss_pct": 9.1
     },
     {
       "tag": "body",
@@ -2083,265 +2043,183 @@
     ],
     "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
       {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-163052",
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
         "iterations": [
           {
             "iteration": 1,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
+            "score": 24.55,
+            "html_tag_errors": 83,
+            "w3c_errors": 34,
             "axe_violations": 2,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:03Z"
+            "timestamp": "2026-05-02T16:51:00Z"
           },
           {
             "iteration": 2,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
+            "score": 27.82,
+            "html_tag_errors": 79,
+            "w3c_errors": 34,
             "axe_violations": 2,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:09Z"
+            "timestamp": "2026-05-02T16:51:09Z"
           },
           {
             "iteration": 3,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 90.82,
+            "html_tag_errors": 3,
+            "w3c_errors": 34,
+            "axe_violations": 10,
+            "pa11y_issues": 11,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:15Z"
+            "timestamp": "2026-05-02T16:51:25Z"
           },
           {
             "iteration": 4,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
+            "score": 30.27,
+            "html_tag_errors": 76,
+            "w3c_errors": 34,
             "axe_violations": 2,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:21Z"
-          },
-          {
-            "iteration": 5,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:31:27Z"
+            "timestamp": "2026-05-02T16:51:32Z"
           },
           {
             "iteration": 6,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 19.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 34,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:32Z"
+            "timestamp": "2026-05-02T16:51:46Z"
           },
           {
             "iteration": 7,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
+            "score": 20.45,
+            "html_tag_errors": 88,
+            "w3c_errors": 34,
+            "axe_violations": 0,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:38Z"
-          },
-          {
-            "iteration": 8,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:31:44Z"
+            "timestamp": "2026-05-02T16:51:54Z"
           },
           {
             "iteration": 9,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 24.55,
+            "html_tag_errors": 83,
+            "w3c_errors": 34,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:50Z"
+            "timestamp": "2026-05-02T16:52:07Z"
           },
           {
             "iteration": 10,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
+            "score": 25.36,
+            "html_tag_errors": 82,
+            "w3c_errors": 34,
+            "axe_violations": 0,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:31:56Z"
+            "timestamp": "2026-05-02T16:52:14Z"
           },
           {
             "iteration": 11,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 34,
+            "axe_violations": 9,
+            "pa11y_issues": 8,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:02Z"
+            "timestamp": "2026-05-02T16:52:26Z"
           },
           {
             "iteration": 12,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 86.73,
+            "html_tag_errors": 7,
+            "w3c_errors": 34,
+            "axe_violations": 9,
+            "pa11y_issues": 9,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:08Z"
+            "timestamp": "2026-05-02T16:52:39Z"
           },
           {
             "iteration": 13,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
+            "score": 29.45,
+            "html_tag_errors": 77,
+            "w3c_errors": 34,
             "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:13Z"
-          },
-          {
-            "iteration": 14,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:32:19Z"
+            "timestamp": "2026-05-02T16:52:47Z"
           },
           {
             "iteration": 15,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 87.55,
+            "html_tag_errors": 7,
+            "w3c_errors": 34,
+            "axe_violations": 10,
+            "pa11y_issues": 9,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:25Z"
+            "timestamp": "2026-05-02T16:53:05Z"
           },
           {
             "iteration": 16,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
+            "score": 20.45,
+            "html_tag_errors": 88,
+            "w3c_errors": 34,
             "axe_violations": 2,
             "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:31Z"
+            "timestamp": "2026-05-02T16:53:13Z"
           },
           {
             "iteration": 17,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 84.27,
+            "html_tag_errors": 11,
+            "w3c_errors": 34,
+            "axe_violations": 6,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:37Z"
-          },
-          {
-            "iteration": 18,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:32:43Z"
+            "timestamp": "2026-05-02T16:53:26Z"
           },
           {
             "iteration": 19,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
+            "score": 34.36,
+            "html_tag_errors": 73,
+            "w3c_errors": 34,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:32:48Z"
+            "timestamp": "2026-05-02T16:53:42Z"
           },
           {
             "iteration": 20,
-            "score": 12.91,
-            "html_tag_errors": 107,
-            "w3c_errors": 0,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:32:54Z"
-          }
-        ]
-      },
-      {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-164017",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 20.45,
-            "html_tag_errors": 88,
-            "w3c_errors": 49,
-            "axe_violations": 2,
-            "pa11y_issues": 0,
+            "score": 86.73,
+            "html_tag_errors": 8,
+            "w3c_errors": 34,
+            "axe_violations": 12,
+            "pa11y_issues": 11,
             "qualweb_issues": 2,
             "status": "fail",
-            "timestamp": "2026-05-02T16:40:28Z"
-          },
-          {
-            "iteration": 2,
-            "score": 26.18,
-            "html_tag_errors": 81,
-            "w3c_errors": 49,
-            "axe_violations": 2,
-            "pa11y_issues": 2,
-            "qualweb_issues": 2,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:40:36Z"
-          },
-          {
-            "iteration": 3,
-            "score": 87.55,
-            "html_tag_errors": 6,
-            "w3c_errors": 49,
-            "axe_violations": 8,
-            "pa11y_issues": 10,
-            "qualweb_issues": 2,
-            "status": "fail",
-            "timestamp": "2026-05-02T16:40:47Z"
+            "timestamp": "2026-05-02T16:53:54Z"
           }
         ]
       }
@@ -2386,11 +2264,11 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "score": 87.55,
-      "html_tag_errors": 6,
-      "w3c_errors": 49,
-      "axe_violations": 8,
-      "pa11y_issues": 10,
+      "score": 86.73,
+      "html_tag_errors": 8,
+      "w3c_errors": 34,
+      "axe_violations": 12,
+      "pa11y_issues": 11,
       "qualweb_issues": 2
     }
   ],
@@ -2421,9 +2299,9 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "used_count": 107,
-      "missing_count": 6,
-      "coverage_pct": 94.7
+      "used_count": 106,
+      "missing_count": 8,
+      "coverage_pct": 93.8
     }
   ]
 }
