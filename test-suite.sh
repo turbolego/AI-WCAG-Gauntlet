@@ -138,6 +138,12 @@ W3C_ERRORS=$(jq '.errorCount // 0' "$TARGET_DIR/w3c_report.json" || echo 0)
 echo "Running axe..."
 if ! (
     cd "$TARGET_DIR"
+    
+    # Disable alert/confirm/prompt to prevent UnexpectedAlertOpenError during axe scan.
+    # Models sometimes generate code with alerts or error handlers that trigger alerts,
+    # which causes Selenium to abort the scan. Suppress them here.
+    sed -i '/<\/head>/i <script>window.alert=window.confirm=window.prompt=()=>null;</script>' index.html
+    
     axe "$TARGET_HTTP_URL" \
         --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
         --timeout 60000 \
