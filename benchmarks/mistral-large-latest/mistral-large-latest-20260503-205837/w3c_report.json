@@ -1,0 +1,90 @@
+{
+  "validates": false,
+  "errorCount": 5,
+  "messageCount": 8,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 74,
+      "lastColumn": 99,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 78,
+      "lastColumn": 102,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 82,
+      "lastColumn": 105,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <textarea id=\"message\" name=\"message\" rows=\"4\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "error",
+      "lastLine": 170,
+      "lastColumn": 89,
+      "firstColumn": 86,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "</address></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 175,
+      "lastColumn": 72,
+      "firstColumn": 62,
+      "message": "Stray end tag “datalist”.",
+      "extract": "123</data></datalist></p>\n ",
+      "hiliteStart": 10,
+      "hiliteLength": 11
+    },
+    {
+      "type": "error",
+      "lastLine": 188,
+      "lastColumn": 27,
+      "firstColumn": 24,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "   </menu></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 193,
+      "lastColumn": 29,
+      "firstColumn": 26,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": " </dialog></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 225,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "The heading “h5” (with computed level 5) follows the heading “h2” (with computed level 2), skipping 2 heading levels.",
+      "extract": "          <h5>Templa",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Single-Page Web App</title>
+    <base href="/">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="An accessibility-focused single-page web application">
+    <style>
+        /* Inline style for critical CSS */
+        :root {
+            --primary-color: #0056b3;
+            --primary-contrast: #ffffff;
+            --text-color: #333333;
+            --background-color: #ffffff;
+            --border-color: #cccccc;
+            --focus-outline: 2px solid #0056b3;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <hgroup>
+            <h1>Accessible Web App</h1>
+            <p>Ensuring digital inclusion for all users</p>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome</h2>
+            <article>
+                <h3>Introduction to Accessibility</h3>
+                <p>This page demonstrates <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 compliance with proper use of HTML5 elements.</p>
+                <p>Here's an example of a <b>bold statement</b>, <i>italicized text</i>, and <u>underlined content</u>.</p>
+                <p>Visit our <a href="https://example.com" target="_blank" rel="noopener noreferrer">example website</a> for more information.</p>
+            </article>
+        </section>
+
+        <section aria-labelledby="content-heading">
+            <h2 id="content-heading">Content Examples</h2>
+            <article>
+                <h3>Text Formatting</h3>
+                <p>This is <strong>strong importance</strong>, <em>emphasized text</em>, and <mark>highlighted content</mark>.</p>
+                <p>Keyboard input: <kbd>Ctrl + C</kbd></p>
+                <p>Sample output: <samp>Error: File not found</samp></p>
+                <p>Variable: <var>x</var> = <var>y</var> + 2</p>
+                <p>Subscript: H<sub>2</sub>O, Superscript: E=mc<sup>2</sup></p>
+                <p>Deleted: <del>old text</del>, Inserted: <ins>new text</ins></p>
+                <p>Citation: <cite>To Kill a Mockingbird</cite> by Harper Lee</p>
+                <p>Code: <code>function example() {}</code></p>
+                <pre>Preformatted text
+    with preserved whitespace</pre>
+            </article>
+
+            <article>
+                <h3>Interactive Elements</h3>
+                <form aria-labelledby="form-heading">
+                    <fieldset>
+                        <legend id="form-heading">Contact Form</legend>
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </article>
+        </section>
+
+        <section aria-labelledby="media-heading">
+            <h2 id="media-heading">Media Examples</h2>
+            <figure>
+                <img src="example.jpg" alt="Description of the image" width="400" height="300">
+                <figcaption>Example image with descriptive caption</figcaption>
+            </figure>
+
+            <figure>
+                <audio controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                    Your browser does not support the audio element.
+                </audio>
+                <figcaption>Audio example with captions</figcaption>
+            </figure>
+
+            <figure>
+                <video controls width="400" height="300">
+                    <source src="video.mp4" type="video/mp4">
+                    <track kind="captions" src="video-captions.vtt" srclang="en" label="English">
+                    Your browser does not support the video element.
+                </video>
+                <figcaption>Video example with captions</figcaption>
+            </figure>
+        </section>
+
+        <section aria-labelledby="data-heading">
+            <h2 id="data-heading">Data Examples</h2>
+            <article>
+                <h3>Data Visualization</h3>
+                <figure>
+                    <canvas id="exampleChart" width="400" height="200" aria-label="Example chart showing data visualization"></canvas>
+                    <figcaption>Example chart</figcaption>
+                </figure>
+                <p>Progress: <progress value="70" max="100">70%</progress></p>
+                <p>Meter: <meter value="0.6">60%</meter></p>
+                <details>
+                    <summary>More information</summary>
+                    <p>Additional details about the data visualization.</p>
+                </details>
+            </article>
+        </section>
+
+        <section aria-labelledby="tables-heading">
+            <h2 id="tables-heading">Tabular Data</h2>
+            <table>
+                <caption>Example Table</caption>
+                <colgroup>
+                    <col span="2" style="background-color: #f4f4f4;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Header 1</th>
+                        <th scope="col">Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Footer 1</td>
+                        <td>Footer 2</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section aria-labelledby="misc-heading">
+            <h2 id="misc-heading">Miscellaneous Elements</h2>
+            <article>
+                <h3>Special Elements</h3>
+                <p><q>This is a short quotation.</q></p>
+                <blockquote>
+                    <p>This is a longer quotation that spans multiple lines and provides more context about the content.</p>
+                </blockquote>
+                <p>Time: <time datetime="2026-05-03T21:00">May 3, 2026</time></p>
+                <p>Address: <address>123 Accessibility Lane, Inclusive City</address></p>
+                <p>Bidirectional text: <bdi>Some text</bdi>, <bdo dir="rtl">Right to left text</bdo></p>
+                <p>Ruby annotation: <ruby>漢字 <rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby></p>
+                <p>Small text: <small>Fine print details</small></p>
+                <p>Word break opportunity: Supercalifragilistic<wbr>expialidocious</p>
+                <p>Data: <data value="123">Product 123</data></datalist></p>
+                <p>Embedded content: <embed type="image/svg+xml" src="example.svg" width="100" height="100" aria-label="Embedded SVG example"></p>
+                <p>Object: <object data="example.pdf" type="application/pdf" width="100" height="100" aria-label="PDF example">PDF content</object></p>
+                <p>Picture: <picture>
+                    <source media="(min-width: 600px)" srcset="large.jpg">
+                    <img src="small.jpg" alt="Responsive image">
+                </picture></p>
+                <p>Map: <map name="example-map">
+                    <area shape="rect" coords="0,0,100,100" href="example.html" alt="Example area">
+                </map></p>
+                <p>Menu: <menu>
+                    <li><button>Menu Item 1</button></li>
+                    <li><button>Menu Item 2</button></li>
+                </menu></p>
+                <p>Dialog: <dialog open aria-labelledby="dialog-heading">
+                    <h4 id="dialog-heading">Example Dialog</h4>
+                    <p>This is an example dialog.</p>
+                    <button>Close</button>
+                </dialog></p>
+            </article>
+        </section>
+    </main>
+
+    <aside aria-labelledby="related-heading">
+        <h2 id="related-heading">Related Content</h2>
+        <nav aria-label="Related links">
+            <ul>
+                <li><a href="#resources">Accessibility Resources</a></li>
+                <li><a href="#guidelines">WCAG Guidelines</a></li>
+                <li><a href="#tools">Accessibility Tools</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Accessible Web App. All rights reserved.</p>
+        <address>
+            Contact us at <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms of Service</a></li>
+                <li><a href="#sitemap">Sitemap</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <template id="example-template">
+        <div>
+            <h5>Template Content</h5>
+            <p>This content is from a template.</p>
+        </div>
+    </template>
+
+    <slot name="dynamic-content">Default slot content</slot>
+
+    <search>
+        <form role="search">
+            <label for="search-input">Search:</label>
+            <input type="search" id="search-input" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </search>
+
+    <noscript>
+        <p>JavaScript is disabled in your browser. Some features may not work properly.</p>
+    </noscript>
+</body>
+</html>
