@@ -1,0 +1,88 @@
+{
+  "validates": false,
+  "errorCount": 7,
+  "messageCount": 8,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 32,
+      "lastColumn": 28,
+      "firstColumn": 17,
+      "message": "Element “figcaption” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <figcaption>Figure",
+      "hiliteStart": 10,
+      "hiliteLength": 12
+    },
+    {
+      "type": "error",
+      "lastLine": 59,
+      "lastColumn": 42,
+      "firstColumn": 17,
+      "message": "Element “optgroup” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <optgroup label=\"Group 1\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "error",
+      "lastLine": 69,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "          <rp>Ruby p",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 69,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Element “rp” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <rp>Ruby p",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 75,
+      "lastColumn": 23,
+      "firstColumn": 17,
+      "message": "Element “style” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <style>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "info",
+      "lastLine": 13,
+      "lastColumn": 17,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "Section lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all sections, or else use a “div” element instead for any cases where no heading is needed.",
+      "extract": ">\n        <section>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 47,
+      "lastColumn": 42,
+      "firstColumn": 17,
+      "message": "The value of the “for” attribute of the “label” element must be the ID of a non-hidden form control.",
+      "extract": "          <label for=\"exampleLabel\">Label ",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "error",
+      "lastLine": 40,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "The heading “h3” (with computed level 3) follows the heading “h1” (with computed level 1), skipping 1 heading level.",
+      "extract": "          <h3>Headin",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

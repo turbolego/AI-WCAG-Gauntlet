@@ -218,8 +218,7 @@ if ! (
     cd "$SCRIPT_DIR"
     node "$RESOURCES/run-qualweb.mjs" \
         "$TARGET_DIR/index.html" \
-        "$TARGET_DIR/qualweb_report.json" \
-        > /dev/null 2>&1
+        "$TARGET_DIR/qualweb_report.json"
 ); then
     echo "Warning: qualweb failed; continuing with empty report"
     echo '{"failedCount":0,"results":[],"error":"qualweb script failed"}' > "$TARGET_DIR/qualweb_report.json"

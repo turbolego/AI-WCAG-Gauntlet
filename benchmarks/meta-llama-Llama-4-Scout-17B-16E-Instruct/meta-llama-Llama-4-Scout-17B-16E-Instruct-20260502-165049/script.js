@@ -1,1 +1,0 @@
-const canvas = document.getElementById('myCanvas'); const ctx = canvas.getContext('2d'); ctx.fillStyle = 'rgba(255, 0, 0, 1)'; ctx.fillRect(10, 10, 50, 50);

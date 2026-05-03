@@ -220,7 +220,14 @@ async function readFeedback(previousDir) {
   }
 
   const feedbackParts = [];
-  const files = ["test_results.json", "html5_tag_report.json", "axe_report.json", "pa11y_report.json"];
+  const files = [
+    "test_results.json",
+    "html5_tags_report.json",
+    "w3c_report.json",
+    "axe_report.json",
+    "pa11y_report.json",
+    "qualweb_report.json",
+  ];
   for (const filename of files) {
     const fullPath = path.join(previousDir, filename);
     try {

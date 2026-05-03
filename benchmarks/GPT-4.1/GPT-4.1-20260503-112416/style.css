@@ -1,0 +1,54 @@
+/* Table column and footer styles for accessibility (WCAG 2.2 SC 1.4.12) */
+.col1 {
+    background-color: #e0e0e0;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.6 !important;
+}
+.col2 {
+    background-color: #f0f0f0;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.6 !important;
+}
+.table-footer {
+    background-color: #222;
+    color: #fff;
+    border-top: 2px solid #000;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.6 !important;
+}
+.section2-header {
+    background-color: #000;
+    color: #fff;
+    padding: 8px;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.6 !important;
+}
+/* Visually hidden class for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}

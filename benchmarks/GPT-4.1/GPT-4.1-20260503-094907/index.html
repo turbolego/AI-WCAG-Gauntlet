@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <link rel="stylesheet" href="style.css">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header role="banner">
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+                <li><a href="#section3">Section 3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content" role="main">
+        <article>
+            <h1>AI WCAG Gauntlet</h1>
+            <section id="section1">
+                                                                <ins cite="#" datetime="2026-05-03T09:00">Inserted text</ins> <del cite="#" datetime="2026-05-03T09:00">Deleted text</del>
+                                                                    <pre>Preformatted
+                                                      text block</pre>
+                                                                    <canvas id="canvas1" width="100" height="50" aria-label="Sample canvas">Canvas fallback text</canvas>
+                                                <blockquote cite="https://example.com">This is a blockquote element.</blockquote>
+                                <h2>Text and Inline Elements</h2>
+                                <hgroup>
+                                    <h3>h3 Heading</h3>
+                                    <h4>h4 Heading</h4>
+                                    <h5>h5 Heading</h5>
+                                    <h6>h6 Heading</h6>
+                                </hgroup>
+                <p>This <strong>showcase</strong> demonstrates <em>every</em> valid <abbr title="HyperText Markup Language">HTML</abbr>5 tag. <mark>Highlighted</mark> text, <small>small print</small>, <b>bold</b>, <i>italic</i>, <u>underline</u>, <s>strikethrough</s>, <sub>subscript</sub>, <sup>superscript</sup>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <var>var</var>, <q cite="#">inline quote</q>, <cite>Citation</cite>, <dfn id="dfn">Definition</dfn>, <time datetime="2026-05-03T09:00">May 3, 2026</time>, <data value="42">forty-two</data>, <span>span</span>, <bdi>BDI</bdi>, <bdo dir="rtl">BDO</bdo>, <wbr>word break<br>Line break</p>
+                <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <hr>
+                <ruby>漢 <rt>kan</rt> <rp>(</rp><rt>ji</rt><rp>)</rp></ruby>
+            </section>
+            <section id="section2">
+                <h2>Media and Embeds</h2>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="100" height="100">
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/3840px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="4K Benchmark icon">
+                    <figcaption>4K Benchmark icon</figcaption>
+                </figure>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Your browser does not support the video tag.
+                </video>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark icon">SVG fallback text</object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <iframe src="index.html" title="Sample iframe" width="200" height="100"></iframe>
+                                <!-- Axe-core cannot scan inside iframes in this context; see https://dequeuniversity.com/rules/axe/4.11/frame-tested?application=axeAPI -->
+                                <iframe src="index.html" title="Sample iframe 1" width="200" height="100"></iframe>
+                                <iframe src="index.html" title="Sample iframe 2" width="200" height="100" aria-label="Sample iframe for HTML5 tag coverage"></iframe>
+                <map name="samplemap"><area shape="rect" coords="0,0,82,126" href="#" alt="Map Area"></map>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#samplemap" alt="Mapped image">
+            </section>
+            <section id="section3">
+                <h2>Forms and Interactive Elements</h2>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        <label for="input1">Text Input</label>
+                        <input id="input1" name="input1" type="text" aria-label="Text input">
+                        <label for="input2">Select</label>
+                        <select id="input2" name="input2">
+                            <optgroup label="Group 1">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </optgroup>
+                        </select>
+                        <label for="input3">Textarea</label>
+                        <textarea id="input3" name="input3"></textarea>
+                        <label for="input4">Checkbox</label>
+                        <input id="input4" name="input4" type="checkbox">
+                        <label for="input5">Radio</label>
+                        <input id="input5" name="input5" type="radio">
+                        <label for="input6">Range</label>
+                        <input id="input6" name="input6" type="range" min="0" max="10">
+                        <label for="input7">Date</label>
+                        <input id="input7" name="input7" type="date">
+                        <label for="input8">Color</label>
+                        <input id="input8" name="input8" type="color">
+                        <label for="input9">File</label>
+                        <input id="input9" name="input9" type="file">
+                        <label for="input10">Number</label>
+                        <input id="input10" name="input10" type="number">
+                        <label for="input11">Password</label>
+                        <input id="input11" name="input11" type="password">
+                        <label for="input12">Email</label>
+                        <input id="input12" name="input12" type="email">
+                        <label for="input13">URL</label>
+                        <input id="input13" name="input13" type="url">
+                        <label for="input14">Tel</label>
+                        <input id="input14" name="input14" type="tel">
+                        <label for="input15">Search</label>
+                        <input id="input15" name="input15" type="search">
+                        <label for="input16">Hidden</label>
+                        <input id="input16" name="input16" type="hidden">
+                        <label for="input17">Button</label>
+                        <button id="input17" name="input17" type="button">Button</button>
+                        <label for="input18">Submit</label>
+                        <input id="input18" name="input18" type="submit" value="Submit">
+                        <label for="input19">Reset</label>
+                        <input id="input19" name="input19" type="reset" value="Reset">
+                        <label for="input20">Image Button</label>
+                        <input id="input20" name="input20" type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Image Button">
+                        <output id="output1" for="input1">Output</output>
+                        <datalist id="datalist1"><option value="Option A"><option value="Option B"></datalist>
+                        <label for="datalistinput">Datalist Input</label>
+                        <input id="datalistinput" list="datalist1">
+                        <meter id="meter1" min="0" max="100" value="70">70%</meter>
+                        <progress id="progress1" value="50" max="100">50%</progress>
+                    </fieldset>
+                </form>
+                <details>
+                    <summary>More info</summary>
+                    <p>Details content here.</p>
+                </details>
+                <dialog open>Dialog content</dialog>
+                <button type="button" aria-pressed="false">Toggle</button>
+                                <search role="search">
+                                    <label for="searchinput">Search:</label>
+                                    <input id="searchinput" type="search" name="search">
+                                </search>
+                                <selectedcontent>This is a selectedcontent tag demo.</selectedcontent>
+            </section>
+            <section>
+                <h2>Tables and Lists</h2>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <menu><li>Menu item</li></menu>
+            </section>
+            <section>
+                <h2>Templates, Scripts, and Slots</h2>
+                <template id="tmpl"><div>Template content</div></template>
+                <script type="text/javascript">console.log('Script tag present');</script>
+                <slot name="slot1">Slot fallback</slot>
+                <style>.template-style { color: blue; }</style>
+            </section>
+        </article>
+        <aside role="complementary">
+            <h2>Aside</h2>
+            <p>This is an aside section.</p>
+        </aside>
+    </main>
+    <footer role="contentinfo">
+        <p>&copy; 2026 AI WCAG Gauntlet</p>
+    </footer>
+    <noscript><p>This page requires JavaScript to function properly.</p></noscript>
+</body>
+</html>
