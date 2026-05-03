@@ -69,6 +69,9 @@ TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 
 echo "Running tests for: $TARGET_DIR"
 
+# Clear any cached data to ensure the latest changes are applied
+rm -rf "$TARGET_DIR/.cache"
+
 # --- Validate ---
 if [ ! -d "$TARGET_DIR" ]; then
     echo "Error: target folder not found"
@@ -145,7 +148,7 @@ if ! (
     sed -i '/<\/head>/i <script>window.alert=window.confirm=window.prompt=()=>null;</script>' index.html
     
     axe "$TARGET_HTTP_URL" \
-        --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
+        --chrome-options='--no-sandbox,--disable-dev-shm-usage,--disable-gpu' \
         --timeout 60000 \
         --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \
         --save axe_report.json \

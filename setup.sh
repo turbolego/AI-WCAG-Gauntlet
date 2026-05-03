@@ -76,6 +76,7 @@ cat <<EOF > "$BENCHMARK_FOLDER/index.html"
 </head>
 <body>
     <h1>AI WCAG Gauntlet</h1>
+    <p style="color: #f0f0f0; background-color: #ffffff;">This text has insufficient color contrast and should be caught by qualweb.</p>
 </body>
 </html>
 EOF
@@ -112,4 +113,4 @@ EOF
 
 echo "Benchmark setup complete: $BENCHMARK_FOLDER"
 echo "Run tests with:"
-echo "./test-suite.sh $BENCHMARK_FOLDER"
+echo "./run-in-docker.sh $BENCHMARK_FOLDER"

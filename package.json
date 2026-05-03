@@ -4,8 +4,8 @@
   "description": "AI-WCAG-Gauntlet benchmark loop for Copilot on GitHub Actions.",
   "main": "index.js",
   "scripts": {
-    "bench:setup": "pwsh -File ./setup.ps1",
-    "bench:test": "pwsh -File ./test-suite.ps1",
+    "bench:setup": "bash setup.sh",
+    "bench:test": "bash run-in-docker.sh",
     "test": "node --test scripts/generate-page.test.mjs"
   },
   "repository": {

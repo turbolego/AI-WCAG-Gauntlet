@@ -27,3 +27,6 @@ jobs:
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci
+
+      - name: Build benchmark Docker image
+        run: docker build -t wcag-bench .

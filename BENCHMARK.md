@@ -31,26 +31,28 @@ You must address all axe violations reported by the test suite. For details on e
 All accessibility fixes and code changes must be justified with reference to the relevant WCAG 2.2 guideline, success criterion, or technique. When logging changes, cite the specific guideline (e.g., "Fixed color contrast — WCAG 2.2 SC 1.4.6").
 
 ## Execution Rules
-1. **Tool Access**: You are granted permission to use the terminal to run `test-suite.sh`.
+1. **Tool Access**: You are granted permission to use the terminal to run `run-in-docker.sh`.
 2. **Iteration Cap**: You have a maximum of 20 iterations to reach 0 errors.
 3. **Logging**: Every attempt must be logged in `benchmark_log.md` with the specific reasoning for code changes.
-4. **Self-Termination**: You must only stop when the output of `test-suite.sh` contains `STATUS: PASS` **or** `STATUS: FAIL — Maximum iterations`. Stopping for any other reason is a protocol violation.
+4. **Self-Termination**: You must only stop when the output of `run-in-docker.sh` contains `STATUS: PASS` **or** `STATUS: FAIL — Maximum iterations`. Stopping for any other reason is a protocol violation.
 5. **WCAG Reference**: For every accessibility-related code change, cite the relevant WCAG 2.2 guideline or success criterion in your log entry (see above).
-
-**Important Note:** Never use `-ExecutionPolicy Bypass` when running PowerShell scripts. This ensures that popups or interruptions related to execution policies are avoided.
+6. **No mid-loop pauses**: Do NOT stop to summarise progress, ask for confirmation, or say "let me know if you want to continue". Edit the files and call `run-in-docker.sh` again immediately.
 
 ## Required tools
-In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`npm install -g pa11y`), **qualweb** (`npm install -g @qualweb/cli`), and **w3c-html-validator** (included via `npm ci`). Pa11y is run against an HTTP URL (via a local `python3 -m http.server` instance) with the WCAG2AAA standard and the axe runner — the same approach used for axe-core. Serving via HTTP is required because generated pages include `<base href="/AI-WCAG-Gauntlet/">`, which causes CSS and media resources to resolve to wrong paths under `file://`, making color-contrast and other style-dependent checks unreliable.
+All tools run inside the Docker container built from the repo's `Dockerfile` — no host installs required beyond Docker itself. The container includes Chrome, ChromeDriver, axe-core CLI, pa11y, qualweb, w3c-html-validator, python3, jq, and bc.
+
+Serving via HTTP is required because generated pages include `<base href="/AI-WCAG-Gauntlet/">`, which causes CSS and media resources to resolve to wrong paths under `file://`, making color-contrast and other style-dependent checks unreliable.
 
 ## Loop Protocol (follow exactly)
-1. Run `test-suite.sh`.
+1. Run `run-in-docker.sh <benchmark-folder>`.
 2. Read the `STATUS:` line at the bottom of its output.
    - `STATUS: PASS` → Stop. The benchmark is complete.
    - `STATUS: FAIL — Maximum iterations` → Stop. Report the final results.
-   - `STATUS: FAIL — Fix the errors` → Edit `index.html` and/or `style.css` to fix the reported errors, then go to step 1.
+   - `STATUS: FAIL — Fix the errors` → Edit `index.html` and/or `style.css` to fix the reported errors, then **immediately** go to step 1. Do not pause. Do not summarise. Do not ask for permission.
 3. **Never stop early.** The script always exits with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line.
 4. **Never declare completion based on "false positives".** If `AXE_VIOLATIONS` or `PA11Y_ISSUES` is non-zero in the test output, they are real failures that must be fixed. You are not permitted to stop and claim the remaining issues are false positives — keep iterating until the counts reach 0 or the 20-iteration cap is hit.
 5. **Never stop because the task feels done.** As long as `STATUS: FAIL — Fix the errors` is printed and iterations remain, you must continue the loop without asking for confirmation.
+6. **Never stop to summarise mid-loop.** Do not write messages like "let me know if you want to continue", "here is what I fixed so far", or "should I proceed?". Edit the files and run the next iteration immediately.
 
 ## Media resources
 HTML5 tags that require media (`<audio>`, `<video>`, `<img>`, `<picture>`, `<source>`, `<track>`, `<embed>`, `<object>`) **must use files from the `resources/` folder** at the repo root.

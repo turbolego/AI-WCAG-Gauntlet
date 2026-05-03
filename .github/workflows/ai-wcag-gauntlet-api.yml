@@ -45,90 +45,137 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install tools
+      - name: Install Node dependencies
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci
 
+      - name: Build benchmark Docker image
+        run: docker build -t wcag-bench .
+
+      - name: Initialize benchmark run folder
+        id: init-benchmark
+        run: |
+          set -euo pipefail
+
+          MODEL="${{ inputs.model }}"
+
+          # Sanitize the model name for filesystem use.
+          SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
+
+          # Patch setup.sh at runtime to inject the correct provider variables
+          # without relying on env-var overrides (setup.sh uses direct assignments).
+          make_setup_script() {
+            local tmp
+            tmp=$(mktemp /tmp/setup_XXXXXX.sh)
+            {
+              printf 'MODEL_NAME=%q\n'     "$SAFE_MODEL"
+              printf 'PROVIDER=%q\n'       "openai"
+              printf 'PROVIDER_LABEL=%q\n' "OpenAI"
+              printf 'TOOL=%q\n'           "github-actions"
+              grep -vE '^#?(MODEL_NAME|PROVIDER|PROVIDER_LABEL|TOOL)=' setup.sh
+            } > "$tmp"
+            echo "$tmp"
+          }
+
+          SETUP_TMP=$(make_setup_script)
+          RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
+          rm -f "$SETUP_TMP"
+
+          if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
+            echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
+            exit 1
+          fi
+          echo "Created benchmark folder: $RUN_DIR"
+
+          # Restore the human-readable model name in metadata.json.
+          METADATA="$RUN_DIR/metadata.json"
+          if [ -f "$METADATA" ]; then
+            _tmp=$(mktemp)
+            jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+          fi
+
+          echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
+          echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
+
       - name: Execute benchmark loop and generate dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MODELS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           KEY_GITHUB_TOKEN: ${{ secrets.KEY_GITHUB_TOKEN }}
-        shell: pwsh
         run: |
-          $iterations = [int]::Parse("${{ inputs.iterations }}")
-          if ($iterations -lt 1) {
-            throw "iterations must be at least 1"
-          }
-          if ($iterations -gt 100) {
-            throw "iterations must be 100 or less"
-          }
+          # Disable errexit so a single failed test run does not abort the loop.
+          set +e
+          set -uo pipefail
 
-          $model = "${{ inputs.model }}"
-          $previousRunDir = $null
-          $foundPassingRun = $false
+          ITERATIONS="${{ inputs.iterations }}"
+          MODEL="${{ inputs.model }}"
+          RUN_DIR="${{ steps.init-benchmark.outputs.run_dir }}"
 
-          function Try-ParseJson {
-            param([string]$json)
-            try {
-              return $json | ConvertFrom-Json
-            } catch {
-              # Attempt to repair common issues (e.g., trailing commas)
-              $fixed = $json -replace ',\s*([\]}])', '$1'
-              try {
-                return $fixed | ConvertFrom-Json
-              } catch {
-                Write-Host "Failed to parse JSON after repair attempts."
-                return $null
-              }
-            }
-          }
+          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
+            echo "Error: iterations must be between 1 and 100"
+            exit 1
+          fi
 
-          for ($i = 1; $i -le $iterations; $i++) {
-            Write-Host "Starting iteration $i/$iterations for model $model"
-            $runDir = ./setup.ps1 -ModelName $model -Iteration $i -PreviousRunDir $previousRunDir -Provider openai -ProviderKey openai -ProviderLabel 'OpenAI' | Select-Object -Last 1
+          echo "Benchmark folder: $RUN_DIR"
 
-            # Detect rate-limit / generation failure — discard the run and stop
-            $generationPath = Join-Path $runDir "generation.json"
-            if (Test-Path $generationPath) {
-              $generationRaw = Get-Content $generationPath -Raw
-              $generation = Try-ParseJson $generationRaw
-              if ($null -eq $generation) {
-                Write-Host "Model generation output is not valid JSON. Discarding this run."
-                Remove-Item -Recurse -Force $runDir
-                break
-              }
-              if (-not $generation.generatedByModel) {
-                Write-Host "Model generation failed at iteration $i (rate limit or API error). Discarding this run."
-                Remove-Item -Recurse -Force $runDir
-                break
-              }
-            }
+          FOUND_PASSING_RUN=false
 
-            ./test-suite.ps1 -TargetDir $runDir -AllowFailures
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL ━━━"
 
-            $resultPath = Join-Path $runDir "test_results.json"
-            if (-not (Test-Path $resultPath)) {
-              Write-Host "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
-              $previousRunDir = $runDir
+            node scripts/generate-page.mjs \
+              --model "$MODEL" \
+              --provider openai \
+              --outputDir "$RUN_DIR" \
+              --iteration "$i" \
+              --previousDir "$RUN_DIR"
+
+            GENERATION_JSON="$RUN_DIR/generation.json"
+            if [ ! -f "$GENERATION_JSON" ]; then
+              echo "Error: generation.json missing after model generation."
+              exit 1
+            fi
+
+            GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
+            if [ "$GENERATED_BY_MODEL" != "true" ]; then
+              GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
+              echo "Error: model did not generate content this iteration: $GEN_ERROR"
+              exit 1
+            fi
+
+            # Run tests inside Docker for a consistent Linux environment.
+            docker run --rm \
+              -v "$GITHUB_WORKSPACE:/workspace" \
+              -w /workspace \
+              wcag-bench \
+              bash test-suite.sh "$RUN_DIR"
+            TEST_EXIT=$?
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
               continue
-            }
-            $result = Get-Content $resultPath -Raw | ConvertFrom-Json
-            if ($result.status -eq "pass") {
-              Write-Host "Stopping early after iteration $i because tests passed."
-              $foundPassingRun = $true
+            fi
+
+            RESULTS_JSON="$RUN_DIR/test_results.json"
+            if [ ! -f "$RESULTS_JSON" ]; then
+              echo "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
+              continue
+            fi
+
+            STATUS=$(jq -r '.[-1].status' "$RESULTS_JSON")
+            echo "Iteration $i result: $STATUS"
+
+            if [ "$STATUS" = "pass" ]; then
+              echo "Stopping early after iteration $i — all tests passed."
+              FOUND_PASSING_RUN=true
               break
-            }
+            fi
+          done
 
-            $previousRunDir = $runDir
-          }
+          if [ "$FOUND_PASSING_RUN" = false ]; then
+            echo "No fully passing run found after $ITERATIONS iterations."
+          fi
 
-          if (-not $foundPassingRun) {
-            Write-Host "No fully passing run found after $iterations iterations."
-          }
-
-          ./generate-dashboard.ps1
+          bash generate-dashboard.sh
 
       - name: Commit and push benchmark webpages
         shell: bash
