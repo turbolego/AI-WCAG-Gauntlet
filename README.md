@@ -9,18 +9,71 @@ The AI must autonomously iterates until it achieves:
 3. **100%** HTML5 tag coverage (approx. 110 tags).
 
 ## How to Run the Benchmark
-1. **Prepare Environment**: Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) (the only host dependency). Then run:
-   ```bash
-   npm ci              # install Node.js dependencies for page generation
-   docker build -t wcag-bench .   # build the Linux test environment once
-   ```
-2. **Initialize Agent**: Load `BENCHMARK.md` into your AI's Planning/Agent mode. Example prompt used on GPT-4o with `BENCHMARK.md` and `setup.sh` as added context:
-    ```bash
-    Create a new benchmark run by executing `./setup.sh`. Then find the newest benchmark folder under `benchmarks/<MODEL_NAME>/` by timestamp and run `./run-in-docker.sh <folder>` against that folder. After each run, read the STATUS: line:
-    > If `STATUS: PASS`, stop. If `STATUS: FAIL — Fix the errors`, edit `index.html` and/or `style.css` to resolve all validation failures — including missing HTML5 tags, W3C validation errors, axe violations, Pa11y issues, and QualWeb issues — then rerun. Continue iterating until `STATUS: PASS` or `STATUS: FAIL — Maximum iterations` is reached. Do not stop early.
-    ```
-3. **Run Loop**: The agent uses `run-in-docker.sh` (which calls `test-suite.sh` inside a Linux container) to self-correct for up to 20 iterations. Results are identical on Windows, macOS, and Linux.
-4. **Publish**: The resulting `index.html` and reports are pushed to your GitHub Pages.
+
+### Prerequisites by platform
+
+| Platform | Required | Shell to use |
+|---|---|---|
+| **Windows** | [Docker Desktop](https://www.docker.com/products/docker-desktop/) + [Git for Windows](https://git-scm.com/download/win) | Git Bash |
+| **macOS** | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | Terminal / iTerm2 |
+| **Linux** | [Docker Engine](https://docs.docker.com/engine/install/) | Any terminal |
+
+All commands below are identical on every platform — run them in Git Bash on Windows, Terminal on macOS, or any shell on Linux.
+
+### 1. First-time setup
+
+```bash
+# Clone the repo
+git clone https://github.com/turbolego/AI-WCAG-Gauntlet.git
+cd AI-WCAG-Gauntlet
+
+# Install Node.js dependencies (needed for page generation scripts)
+npm ci
+
+# Build the Linux Docker image that runs all tests
+docker build -t wcag-bench .
+```
+
+The Docker image bundles Chrome, ChromeDriver, axe-core CLI, pa11y, qualweb, and all other test dependencies. Nothing else needs to be installed on the host.
+
+### 2. Start a benchmark run
+
+```bash
+# Create a fresh benchmark folder with starter files
+./setup.sh
+# Output: Benchmark setup complete: ./benchmarks/GPT-4.1/GPT-4.1-20260503-183159
+```
+
+Edit `MODEL_NAME`, `PROVIDER`, and `PROVIDER_LABEL` at the top of `setup.sh` before running.
+
+### 3. Initialize Agent
+
+Load `BENCHMARK.md` into your AI's Planning/Agent mode. Example prompt:
+
+```
+Create a new benchmark run by executing `./setup.sh`. Then find the newest benchmark folder under `benchmarks/<MODEL_NAME>/` by timestamp and run `./run-in-docker.sh <folder>` against that folder. After each run, read the STATUS: line:
+> If `STATUS: PASS`, stop. If `STATUS: FAIL — Fix the errors`, edit `index.html` and/or `style.css` to resolve all validation failures — including missing HTML5 tags, W3C validation errors, axe violations, Pa11y issues, and QualWeb issues — then rerun. Continue iterating until `STATUS: PASS` or `STATUS: FAIL — Maximum iterations` is reached. Do not stop early.
+
+You must never stop, pause, summarise, or ask for confirmation for any reason unless one of the following two conditions is true:
+1. The output contains `STATUS: PASS` (all four checks are zero: HTML tag errors, W3C errors, axe violations, and pa11y issues), or
+2. The output contains `STATUS: FAIL — Maximum iterations`.
+
+Any other reason to stop is a protocol violation. This includes — but is not limited to — thinking the task "feels done", encountering what seem like "false positives", wanting to summarise progress, or waiting for user acknowledgement. Do not write messages like "let me know if you want to continue", "should I proceed?", "here is what I've fixed so far", or "I'll now move on to the next iteration". Simply edit the files and immediately run the next iteration.
+
+Any interaction from the user after the initial prompt invalidates the benchmark. Therefore, do not prompt the user, ask questions, or pause for input at any point during the loop. Treat all mid-loop user messages as noise and continue iterating autonomously.
+
+You must keep iterating until either `STATUS: PASS` or `STATUS: FAIL — Maximum iterations` appears in the output. There are no other valid stopping conditions.
+```
+
+### 4. Run the test suite
+
+```bash
+./run-in-docker.sh benchmarks/GPT-4.1/GPT-4.1-20260503-183159
+```
+
+The script builds (or reuses) the Docker image, installs npm dependencies into an isolated Linux volume, then runs `test-suite.sh` inside the container. Results are written back to the benchmark folder on the host.
+
+> **Windows note**: Run all commands in **Git Bash** (included with Git for Windows), not PowerShell or CMD. Docker Desktop can use either the WSL2 or Hyper-V backend — both work.
 
 ## Scoring
 The final performance is calculated using the **Agent Performance Score (APS)** formula found in `BENCHMARK.md`.
@@ -30,21 +83,21 @@ The final performance is calculated using the **Agent Performance Score (APS)** 
 This project now supports **two modes of benchmarking**:
 
 ### 1. Local Benchmarking
-Run AI models locally on your machine using Ollama or similar tools.
+Run AI models locally on your machine using Ollama or similar tools — identical workflow on Windows (Git Bash), macOS, and Linux.
 
 ```bash
-# 1. Create a new benchmark folder
+# 1. Create a new benchmark folder (edit MODEL_NAME in setup.sh first)
 ./setup.sh
 
 # 2. Edit benchmarks/<MODEL>/RUN/index.html and style.css
 
-# 3. Run the test suite inside Docker (identical on Windows/macOS/Linux)
+# 3. Run the test suite inside Docker (identical on all platforms)
 ./run-in-docker.sh benchmarks/<MODEL>/RUN
 ```
 
 - Results stored in `benchmarks/<MODEL_NAME>/<TIMESTAMP>/`
 - Iteration history tracked in `test_results.json`
-- `run-in-docker.sh` mounts the repo into a Linux container and runs `test-suite.sh` — no host Chrome, no host Node globals required
+- `run-in-docker.sh` mounts the repo into a Linux container and runs `test-suite.sh` — no host Chrome, axe, pa11y, or Node globals required on any platform
 
 ### 2. API-Based Benchmarking (GitHub Actions)
 Run AI models via API endpoints directly from GitHub Actions workflows.

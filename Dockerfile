@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PUPPETEER_SKIP_DOWNLOAD=1 \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome \
+    CHROME_PATH=/usr/bin/google-chrome
 
 # Install a ChromeDriver version that matches the installed Chrome,
 # then the test-suite CLI tools: axe, pa11y, qualweb.

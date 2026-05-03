@@ -183,14 +183,14 @@ AXE_VERSION=$(jq -r '
 echo "Running pa11y..."
 if ! (
     cd "$TARGET_DIR"
-    # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
-    # puppeteer-core finds a working Chrome binary.
+    # PUPPETEER_EXECUTABLE_PATH and CHROME_PATH are exported above so pa11y
+    # finds a working Chrome binary. --config points to the repo-root config
+    # which sets no-sandbox flags required inside Docker/CI.
     pa11y \
-        --runner axe \
-        --standard WCAG2AAA \
+        --config "$SCRIPT_DIR/pa11y.config.js" \
         --reporter json \
         "$TARGET_HTTP_URL" \
-        > pa11y_report.json 2>/dev/null || true
+        > pa11y_report.json 2>&1 || true
     # pa11y exits non-zero when issues are found — that's expected
 ); then
     echo "Warning: pa11y exited with an error; continuing with empty report"
@@ -337,12 +337,12 @@ echo "--------------------------------"
 # a test failure as a fatal script error. Agents must read the STATUS line below
 # to decide whether to iterate or stop.
 if [ "$ITERATION_STATUS" = "pass" ]; then
-    echo "STATUS: PASS — All tests passed successfully. Do not run test-suite.sh again."
+    echo "STATUS: PASS — All tests passed successfully. Do not run run-in-docker.sh again."
     exit 0
 elif [ "$ITERATIONS" -ge 20 ]; then
     echo "STATUS: FAIL — Maximum iterations (20) reached. Stop and report final results."
     exit 0
 else
-    echo "STATUS: FAIL — Fix the errors above, edit index.html and style.css as needed, then run test-suite.sh again."
+    echo "STATUS: FAIL — Fix the errors above, edit index.html and style.css as needed, then run run-in-docker.sh again."
     exit 0
 fi

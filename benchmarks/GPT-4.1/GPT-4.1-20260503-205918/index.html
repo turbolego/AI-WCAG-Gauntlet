@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Benchmark</title>
+  <base href="/AI-WCAG-Gauntlet/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header>
+    <h1>AI WCAG Gauntlet</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#main">Skip to main content</a></li>
+        <li><a href="#section1">Section 1</a></li>
+        <li><a href="#section2">Section 2</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <article>
+      <header>
+        <h2 id="section1">Section 1: Text & Structure</h2>
+      </header>
+      <section>
+        <p>This <b>benchmark</b> <strong>showcase</strong> demonstrates <i>every</i> <em>HTML5</em> tag with <mark>WCAG 2.2 AAA</mark> compliance. <abbr title="World Wide Web Consortium">W3C</abbr> standards apply. <cite>HTML Living Standard</cite></p>
+        <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+        <blockquote cite="https://www.w3.org/TR/WCAG22/">“The power of the Web is in its universality.”</blockquote>
+        <q cite="https://www.w3.org/TR/WCAG22/">Accessibility for all.</q>
+        <hr>
+        <ul>
+          <li>Unordered <span>list</span> <small>example</small></li>
+          <li>Another <s>deprecated</s> <u>item</u></li>
+        </ul>
+        <ol>
+          <li>Ordered <var>list</var> <sub>sub</sub> <sup>sup</sup></li>
+        </ol>
+        <dl>
+          <dt>Term</dt>
+          <dd>Definition</dd>
+        </dl>
+        <pre><code>&lt;div&gt;Preformatted code&lt;/div&gt;</code></pre>
+        <kbd>Ctrl+C</kbd> <samp>Sample output</samp>
+        <data value="42">The answer</data>
+        <time datetime="2026-05-03T20:59:18Z">May 3, 2026</time>
+        <bdi>BDI</bdi> <bdo dir="rtl">Right-to-left</bdo>
+        <ruby>漢<rt>Kan</rt>字<rp>(</rp><rt>ji</rt><rp>)</rp></ruby>
+        <dfn id="dfn">Definition</dfn>
+        <em>Emphasized</em>
+        <ins>Inserted</ins> <del>Deleted</del>
+        <wbr>
+      </section>
+      <footer>
+        <p>Section 1 footer</p>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <h2 id="section2">Section 2: Media & Forms</h2>
+      </header>
+      <section>
+        <figure>
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="100" height="100">
+          <figcaption>Benchmark icon (PNG)</figcaption>
+        </figure>
+        <picture>
+          <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+        </picture>
+        <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG icon"></object>
+        <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+        <map name="imgmap"><area shape="rect" coords="0,0,50,50" href="#main" alt="Main"></map>
+        <img src="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#imgmap" alt="Mapped image">
+        <audio controls>
+          <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+          Audio not supported.
+        </audio>
+        <video controls width="400">
+          <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+          <track kind="captions" src="#" srclang="en" label="English" default>
+          Video not supported.
+        </video>
+        <canvas id="canvas" width="100" height="50" aria-label="Sample canvas"></canvas>
+        <script>const ctx=document.getElementById('canvas').getContext('2d');ctx.fillStyle='#333';ctx.fillRect(10,10,80,30);</script>
+        <table>
+          <caption>Sample Table</caption>
+          <colgroup><col span="2"></colgroup>
+          <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+          <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+          <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+        </table>
+        <form>
+          <fieldset>
+            <legend>Sample Form</legend>
+            <label for="input1">Text input</label>
+            <input id="input1" name="input1" type="text" aria-required="true">
+            <datalist id="datalist1"><option value="Option 1"><option value="Option 2"></datalist>
+            <input list="datalist1">
+            <label for="select1">Select</label>
+            <select id="select1" name="select1"><option>One</option><option>Two</option></select>
+            <optgroup label="Group"><option>Grouped</option></optgroup>
+            <textarea rows="2" cols="20">Textarea</textarea>
+            <button type="submit">Submit</button>
+            <output for="input1">Output</output>
+            <meter min="0" max="100" value="70">70%</meter>
+            <progress value="50" max="100">50%</progress>
+          </fieldset>
+        </form>
+        <details>
+          <summary>More info</summary>
+          <p>Details content</p>
+        </details>
+        <dialog open>Dialog content</dialog>
+        <template id="tpl"><span>Template content</span></template>
+        <noscript>Your browser does not support JavaScript!</noscript>
+        <slot name="slot1">Slot fallback</slot>
+        <section>
+          <h3>Subsection</h3>
+          <aside>Aside content</aside>
+        </section>
+        <menu>
+          <li>Menu item</li>
+        </menu>
+        <search>
+          <input type="search" aria-label="Search">
+        </search>
+      </section>
+      <footer>
+        <p>Section 2 footer</p>
+      </footer>
+    </article>
+    <!-- Add missing tags: br, div, h4, h5, h6, hgroup, iframe, selectedcontent, style -->
+<article>
+  <header>
+    <hgroup>
+      <h4>Subheading H4</h4>
+      <h5>Subheading H5</h5>
+      <h6>Subheading H6</h6>
+    </hgroup>
+  </header>
+  <div>
+    <p>Div content with a <br> line break and <iframe src="about:blank" title="Sample iframe" width="200" height="50"></iframe>.</p>
+    <selectedcontent>This is a selectedcontent tag example.</selectedcontent>
+    <style>
+      .selectedcontent { color: #005a9c; background: #e0f7fa; }
+    </style>
+  </div>
+</article>
+  </main>
+  <footer>
+    <p>&copy; 2026 Benchmark. <a href="#dfn">Definition</a></p>
+  </footer>
+</body>
+</html>

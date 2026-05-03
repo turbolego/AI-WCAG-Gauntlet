@@ -12,9 +12,15 @@
 # On first run the image is built and Node dependencies are installed inside
 # a named Docker volume so Linux binaries never conflict with host binaries.
 
+
 set -euo pipefail
 
+# Define SCRIPT_DIR as the directory of this script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Git Bash on Windows converts Unix paths to Windows paths before passing them
+# to docker, which breaks volume mounts. This disables that conversion.
+export MSYS_NO_PATHCONV=1
 IMAGE_NAME="wcag-bench"
 # Separate volume keeps Linux node_modules isolated from the host tree,
 # preventing binary incompatibilities on macOS/Windows.
