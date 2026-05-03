@@ -1,0 +1,50 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 4,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 61,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 65,
+      "lastColumn": 98,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 91,
+      "lastColumn": 97,
+      "firstColumn": 21,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <textarea id=\"message\" name=\"message\" rows=\"5\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "error",
+      "lastLine": 114,
+      "lastColumn": 62,
+      "firstColumn": 58,
+      "message": "The “big” element is obsolete. Use CSS instead.",
+      "extract": "mall> and <big>big te",
+      "hiliteStart": 10,
+      "hiliteLength": 5
+    }
+  ]
+}

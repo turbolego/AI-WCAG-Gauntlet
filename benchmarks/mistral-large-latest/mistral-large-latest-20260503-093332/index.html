@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Accessible Single-Page Web App</title>
+    <meta name="description" content="An accessibility-focused single-page web application">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline style for critical CSS */
+        :root {
+            --primary-color: #0056b3;
+            --primary-contrast: #ffffff;
+            --secondary-color: #6c757d;
+            --secondary-contrast: #ffffff;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --text-light: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --border-radius: 0.25rem;
+            --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --focus-outline: 0.2rem solid #0056b3;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <h1>Accessible Web Application</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome</h2>
+            <article>
+                <h3>Introduction</h3>
+                <p>This is an <abbr title="Accessible Rich Internet Applications">ARIA</abbr>-enhanced single-page application designed with accessibility in mind.</p>
+                <p>Current time: <time datetime="2026-05-03T12:00:00">May 3, 2026, 12:00 PM</time></p>
+            </article>
+        </section>
+
+        <section aria-labelledby="form-heading">
+            <h2 id="form-heading">Contact Form</h2>
+            <form id="contact-form" aria-labelledby="form-heading">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Preferences</legend>
+                    <div>
+                        <label for="preference">Preferred Contact Method:</label>
+                        <select id="preference" name="preference">
+                            <optgroup label="Digital">
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                            </optgroup>
+                            <option value="mail">Postal Mail</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="newsletter" checked>
+                            Subscribe to newsletter
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                </div>
+                
+                <div>
+                    <label for="rating">Satisfaction Rating:</label>
+                    <input type="range" id="rating" name="rating" min="0" max="10" value="5">
+                    <output for="rating" id="rating-output">5</output>
+                </div>
+                
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+        </section>
+
+        <section aria-labelledby="content-heading">
+            <h2 id="content-heading">Content Section</h2>
+            <div>
+                <p><strong>Important:</strong> This section contains various HTML5 elements for demonstration.</p>
+                
+                <h3>Text Formatting</h3>
+                <p>This is <b>bold text</b>, <i>italic text</i>, <u>underlined text</u>, <s>strikethrough text</s>, and <mark>highlighted text</mark>.</p>
+                <p>This is <del>deleted text</del> and <ins>inserted text</ins>.</p>
+                <p>This is <sub>subscript</sub> and <sup>superscript</sup> text.</p>
+                <p>This is <small>small text</small> and <big>big text</big> (deprecated).</p>
+                
+                <h3>Code Examples</h3>
+                <p>The following is a code sample: <code>function example() { return true; }</code></p>
+                <p>Keyboard input: <kbd>Ctrl + C</kbd></p>
+                <p>Sample output: <samp>Error: File not found</samp></p>
+                <p>Variable: <var>x</var> = <var>y</var> + 2</p>
+                
+                <h3>Quotations</h3>
+                <p>Inline quote: <q>To be or not to be</q></p>
+                <blockquote cite="https://example.com">
+                    <p>This is a block quotation. It should be indented and clearly separated from the surrounding text.</p>
+                    <footer>— <cite>Example Source</cite></footer>
+                </blockquote>
+                
+                <h3>Definitions</h3>
+                <p><dfn>HTML</dfn> is the standard markup language for creating web pages.</p>
+                
+                <h3>Abbreviations</h3>
+                <p>The <abbr title="World Wide Web Consortium">W3C</abbr> is an international community.</p>
+                
+                <h3>Bi-directional Text</h3>
+                <p>Mixed text: <bdi>إيان</bdi> wrote 10 articles.</p>
+                <p>Text direction: <bdo dir="rtl">This text will go right-to-left.</bdo></p>
+                
+                <h3>Details and Summary</h3>
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>This is additional content that can be expanded or collapsed.</p>
+                </details>
+                
+                <h3>Dialog</h3>
+                <button id="open-dialog">Open Dialog</button>
+                <dialog id="example-dialog" aria-labelledby="dialog-heading">
+                    <h3 id="dialog-heading">Example Dialog</h3>
+                    <p>This is a modal dialog.</p>
+                    <button id="close-dialog">Close</button>
+                </dialog>
+                
+                <h3>Figures and Images</h3>
+                <figure>
+                    <img src="https://via.placeholder.com/300x200" alt="Placeholder image showing 300 by 200 pixels" width="300" height="200">
+                    <figcaption>A placeholder image with caption</figcaption>
+                </figure>
+                
+                <h3>Embedded Content</h3>
+                <div>
+                    <object type="image/svg+xml" data="https://via.placeholder.com/100x100.svg" aria-label="SVG placeholder">
+                        <img src="https://via.placeholder.com/100x100" alt="Fallback image for SVG placeholder">
+                    </object>
+                </div>
+                
+                <div>
+                    <embed type="image/svg+xml" src="https://via.placeholder.com/100x100.svg" aria-label="Embedded SVG placeholder" width="100" height="100">
+                </div>
+                
+                <div>
+                    <iframe src="about:blank" title="Embedded content example" width="300" height="200" allowfullscreen></iframe>
+                </div>
+                
+                <h3>Audio and Video</h3>
+                <div>
+                    <audio controls>
+                        <source src="audio.mp3" type="audio/mpeg">
+                        <source src="audio.ogg" type="audio/ogg">
+                        <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div>
+                    <video controls width="300" height="200">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        <track kind="subtitles" src="subtitles.vtt" srclang="en" label="English">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+                
+                <h3>Interactive Elements</h3>
+                <div>
+                    <button aria-expanded="false" aria-controls="menu-content">Toggle Menu</button>
+                    <menu id="menu-content" hidden>
+                        <li><button>Menu Item 1</button></li>
+                        <li><button>Menu Item 2</button></li>
+                        <li><button>Menu Item 3</button></li>
+                    </menu>
+                </div>
+                
+                <h3>Data and Meter</h3>
+                <div>
+                    <p>Progress: <progress value="70" max="100">70%</progress></p>
+                    <p>Storage used: <meter value="65" min="0" max="100" low="30" high="80" optimum="50">65 out of 100</meter></p>
+                </div>
+                
+                <h3>Lists</h3>
+                <div>
+                    <h4>Ordered List</h4>
+                    <ol>
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                    </ol>
+                </div>
+                
+                <div>
+                    <h4>Unordered List</h4>
+                    <ul>
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Description List</h4>
+                    <dl>
+                        <dt>Term 1</dt>
+                        <dd>Description of term 1</dd>
+                        <dt>Term 2</dt>
+                        <dd>Description of term 2</dd>
+                    </dl>
+                </div>
+                
+                <h3>Tables</h3>
+                <div>
+                    <table>
+                        <caption>Sample Table</caption>
+                        <colgroup>
+                            <col span="2" style="background-color: #f8f9fa;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Header 1</th>
+                                <th scope="col">Header 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Row 1, Cell 1</td>
+                                <td>Row 1, Cell 2</td>
+                            </tr>
+                            <tr>
+                                <td>Row 2, Cell 1</td>
+                                <td>Row 2, Cell 2</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Footer 1</td>
+                                <td>Footer 2</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <h3>Search</h3>
+                <search>
+                    <form role="search">
+                        <label for="search-input">Search:</label>
+                        <input type="search" id="search-input" name="search">
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+            </div>
+        </section>
+    </main>
+
+    <aside aria-labelledby="related-heading">
+        <h2 id="related-heading">Related Information</h2>
+        <article>
+            <h3>Additional Resources</h3>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a></li>
+                <li><a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) 2.1</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN Web Accessibility</a></li>
+            </ul>
+        </article>
+    </aside>
+
+    <footer>
+        <address>
+            Contact us at <a href="mailto:contact@example.com">contact@example.com</a><br>
+            Visit us at:<br>
+            Example Street<br>
+            Example City, EX 12345
+        </address>
+        <p><small>&copy; 2026 Accessible Web App. All rights reserved.</small></p>
+    </footer>
+
+    <template id="example-template">
+        <div class="template-content">
+            <h4>Template Content</h4>
+            <p>This content is from a template.</p>
+        </div>
+    </template>
+
+    <noscript>
+        <div class="noscript-message">
+            <p>JavaScript is disabled in your browser. Some features may not work properly.</p>
+        </div>
+    </noscript>
+
+    <script>
+        // Script content will be provided in the js field
+    </script>
+</body>
+</html>
