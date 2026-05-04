@@ -1,3 +1,12 @@
+
+// Support .env for local testing (dotenv is a dev dependency)
+try {
+  if (process.env.NODE_ENV !== "production") {
+    await import("dotenv").then(dotenv => dotenv.config());
+  }
+} catch (e) {
+  // Ignore if dotenv is not installed
+}
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -621,6 +630,70 @@ async function main() {
     } else {
       modelError = "No MISTRAL_TOKEN available for Mistral request.";
     }
+  } else if (provider === "llm7") {
+    // LLM7 provider: OpenAI-compatible API at https://api.llm7.io/v1
+    // Uses process.env.LLM7_TOKEN for authentication
+    const llm7Token = process.env.LLM7_TOKEN;
+    if (llm7Token) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        // Use OpenAI-compatible API (like generateWithOpenRouter, but with different base_url and token)
+        const prompt = [
+          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+          "Requirements:",
+          "- Use every required HTML5 tag at least once in the generated HTML.",
+          "- Required tags:",
+          REQUIRED_HTML5_TAGS.join(", "),
+          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+          "- Do not include markdown fences or explanations.",
+          "- Output ONLY the raw JSON object, no markdown code fences.",
+          `- This is iteration ${iteration}.`,
+          feedback ? "- Improve based on previous reports provided below." : ""
+        ].filter(Boolean).join("\n");
+
+        const messages = [
+          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+        ];
+
+        const response = await fetch("https://api.llm7.io/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${llm7Token}`
+          },
+          body: JSON.stringify({ model: modelArg, messages, max_tokens: 8000, response_format: { type: "json_object" } })
+        });
+
+        if (!response.ok) {
+          const errorBody = (await response.text()).trim();
+          throw new Error(`LLM7 request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+        }
+
+        const payload = await response.json();
+        const messageContent = payload?.choices?.[0]?.message?.content;
+        if (!messageContent) {
+          throw new Error("LLM7 response did not include content.");
+        }
+
+        const jsonStr = extractAndRepairJson(messageContent);
+        const parsed = JSON.parse(jsonStr);
+        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+          throw new Error("LLM7 response JSON missing html/css/js fields.");
+        }
+
+        generated = {
+          html: String(parsed.html),
+          css: String(parsed.css),
+          js: String(parsed.js)
+        };
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No LLM7_TOKEN available for LLM7 request.";
+    }
   } else if (provider === "huggingface" || provider === "groq") {
     const hfToken = provider === "groq"
       ? (process.env.GROQ_TOKEN || process.env.HUGGINGFACE_TOKEN)
@@ -668,6 +741,15 @@ async function main() {
     } else {
       modelError = "No GITHUB_TOKEN, MODELS_TOKEN, or KEY_GITHUB_TOKEN available for model request.";
     }
+  }
+
+  // Support .env for local testing (dotenv is a dev dependency)
+  try {
+    if (process.env.NODE_ENV !== "production") {
+      await import("dotenv").then(dotenv => dotenv.config());
+    }
+  } catch (e) {
+    // Ignore if dotenv is not installed
   }
 
   await writePage(outputDir, generated);
