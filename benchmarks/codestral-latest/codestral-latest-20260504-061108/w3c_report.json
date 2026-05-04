@@ -1,0 +1,37 @@
+{
+  "validates": false,
+  "errorCount": 3,
+  "messageCount": 3,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 8,
+      "lastColumn": 19,
+      "firstColumn": 5,
+      "message": "The “base” element must come before any “link” or “script” elements in the document.",
+      "extract": "css\">\n    <base href=\"/\">\n</hea",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "error",
+      "lastLine": 14,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Iterat",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 16,
+      "firstColumn": 9,
+      "message": "Stray end tag “embed”.",
+      "extract": ">\n        </embed>\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 8
+    }
+  ]
+}

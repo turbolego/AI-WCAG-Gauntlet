@@ -1,0 +1,8 @@
+{
+  "model": "codestral-latest",
+  "provider": "mistral",
+  "providerLabel": "Mistral AI",
+  "tool": "github-actions",
+  "timestamp": "2026-05-04T06:11:08Z",
+  "folder": "codestral-latest-20260504-061108"
+}

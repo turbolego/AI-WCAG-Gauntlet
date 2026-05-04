@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin-right: 1rem;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+main {
+    padding: 1rem;
+}
+section {
+    margin-bottom: 2rem;
+}
+h1, h2, h3 {
+    color: #333;
+}
+form fieldset {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+form input, form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #45a049;
+}
+figure {
+    margin: 0;
+}
+figcaption {
+    text-align: center;
+    font-style: italic;
+}
+audio, video {
+    display: block;
+    margin-bottom: 1rem;
+}
+details {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+dialog {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+canvas {
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+iframe, object, embed {
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+footer a {
+    color: white;
+}
+footer a:hover {
+    text-decoration: underline;
+}
