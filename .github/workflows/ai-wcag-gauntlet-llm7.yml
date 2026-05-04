@@ -11,11 +11,13 @@ on:
         description: Model to benchmark via LLM7
         required: true
         type: choice
-        default: default
+        default: gpt-oss-20b
         options:
-          - default
-          - fast
-          - pro
+          - gpt-oss-20b
+          - meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
+          - codestral-latest
+          - ministral-8b-2512
+          - GLM-4.6V-Flash
 
 concurrency:
   group: ai-wcag-gauntlet-llm7
