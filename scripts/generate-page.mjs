@@ -609,238 +609,50 @@ async function main() {
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
       }
+    let providerHandler;
+    let providerResult;
+    if (provider === "openrouter") {
+      providerHandler = (await import("./providers/openrouter.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+    } else if (provider === "mistral") {
+      providerHandler = (await import("./providers/mistral.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+    } else if (provider === "llm7") {
+      providerHandler = (await import("./providers/llm7.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+    } else if (provider === "huggingface" || provider === "groq") {
+      providerHandler = (await import("./providers/huggingface.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir, provider });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+    } else if (provider === "opencode") {
+      providerHandler = (await import("./providers/opencode.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+    } else if (provider === "cohere") {
+      providerHandler = (await import("./providers/cohere.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
     } else {
-      modelError = "No OPENROUTER_TOKEN available for OpenRouter request.";
+      providerHandler = (await import("./providers/default.js")).default;
+      providerResult = await providerHandler({ modelArg, iteration, previousDir });
+      generated = providerResult.generated;
+      generatedByModel = providerResult.generatedByModel;
+      modelError = providerResult.modelError;
+      resolvedModel = providerResult.resolvedModel || resolvedModel;
     }
-  } else if (provider === "mistral") {
-    const mistralToken = process.env.MISTRAL_TOKEN;
-    if (mistralToken) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        generated = await generateWithMistral({
-          model: modelArg,
-          token: mistralToken,
-          iteration,
-          feedback
-        });
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    } else {
-      modelError = "No MISTRAL_TOKEN available for Mistral request.";
-    }
-  } else if (provider === "llm7") {
-    // LLM7 provider: OpenAI-compatible API at https://api.llm7.io/v1
-    // Uses process.env.LLM7_TOKEN for authentication
-    const llm7Token = process.env.LLM7_TOKEN;
-    if (llm7Token) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        // Use OpenAI-compatible API (like generateWithOpenRouter, but with different base_url and token)
-        const prompt = [
-          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-          "Requirements:",
-          "- Use every required HTML5 tag at least once in the generated HTML.",
-          "- Required tags:",
-          REQUIRED_HTML5_TAGS.join(", "),
-          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-          "- Do not include markdown fences or explanations.",
-          "- Output ONLY the raw JSON object, no markdown code fences.",
-          `- This is iteration ${iteration}.`,
-          feedback ? "- Improve based on previous reports provided below." : ""
-        ].filter(Boolean).join("\n");
 
-        const messages = [
-          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-        ];
-
-        const response = await fetch("https://api.llm7.io/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${llm7Token}`
-          },
-          body: JSON.stringify({ model: modelArg, messages, max_tokens: 8000, response_format: { type: "json_object" } })
-        });
-
-        if (!response.ok) {
-          const errorBody = (await response.text()).trim();
-          throw new Error(`LLM7 request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-        }
-
-        const payload = await response.json();
-        const messageContent = payload?.choices?.[0]?.message?.content;
-        if (!messageContent) {
-          throw new Error("LLM7 response did not include content.");
-        }
-
-        const jsonStr = extractAndRepairJson(messageContent);
-        const parsed = JSON.parse(jsonStr);
-        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-          throw new Error("LLM7 response JSON missing html/css/js fields.");
-        }
-
-        generated = {
-          html: String(parsed.html),
-          css: String(parsed.css),
-          js: String(parsed.js)
-        };
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    } else {
-      modelError = "No LLM7_TOKEN available for LLM7 request.";
-    }
-  } else if (provider === "huggingface" || provider === "groq") {
-    const hfToken = provider === "groq"
-      ? (process.env.GROQ_TOKEN || process.env.HUGGINGFACE_TOKEN)
-      : process.env.HUGGINGFACE_TOKEN;
-    if (hfToken) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        generated = await generateWithHuggingFace({
-          model: modelArg,
-          token: hfToken,
-          iteration,
-          feedback,
-          inferenceProvider: provider === "groq" ? "groq" : undefined
-        });
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    } else {
-      modelError = provider === "groq"
-        ? "No GROQ_TOKEN or HUGGINGFACE_TOKEN available for Groq request."
-        : "No HUGGINGFACE_TOKEN available for Hugging Face request.";
-    }
-  } else if (provider === "opencode") {
-    // OpenCode Zen provider: OpenAI-compatible API at https://opencode.ai/zen/v1/chat/completions
-    // Uses process.env.OPENCODE_TOKEN for authentication
-    // Model list: https://opencode.ai/zen/v1/models (see docs)
-    const opencodeToken = process.env.OPENCODE_TOKEN;
-    if (opencodeToken) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        const prompt = [
-          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-          "Requirements:",
-          "- Use every required HTML5 tag at least once in the generated HTML.",
-          "- Required tags:",
-          REQUIRED_HTML5_TAGS.join(", "),
-          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-          "- Do not include markdown fences or explanations.",
-          "- Output ONLY the raw JSON object, no markdown code fences.",
-          `- This is iteration ${iteration}.`,
-          feedback ? "- Improve based on previous reports provided below." : ""
-        ].filter(Boolean).join("\n");
-
-        const messages = [
-          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-        ];
-
-        const response = await fetch("https://opencode.ai/zen/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${opencodeToken}`
-          },
-          body: JSON.stringify({ model: modelArg, messages, max_tokens: 8000, response_format: { type: "json_object" } })
-        });
-
-        if (!response.ok) {
-          const errorBody = (await response.text()).trim();
-          throw new Error(`OpenCode request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-        }
-
-        const payload = await response.json();
-        const messageContent = payload?.choices?.[0]?.message?.content;
-        if (!messageContent) {
-          throw new Error("OpenCode response did not include content.");
-        }
-
-        const jsonStr = extractAndRepairJson(messageContent);
-        const parsed = JSON.parse(jsonStr);
-        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-          throw new Error("OpenCode response JSON missing html/css/js fields.");
-        }
-
-        generated = {
-          html: String(parsed.html),
-          css: String(parsed.css),
-          js: String(parsed.js)
-        };
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    } else {
-      modelError = "No OPENCODE_TOKEN available for OpenCode request.";
-    }
-  } else {
-    const normalizedModel = normalizeModel(modelArg);
-    resolvedModel = normalizedModel;
-    const token = process.env.GITHUB_TOKEN || process.env.MODELS_TOKEN;
-    const keyToken = process.env.KEY_GITHUB_TOKEN;
-
-    if (token || keyToken) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        generated = await generateWithModel({
-          model: modelArg,
-          normalizedModel,
-          token,
-          keyToken,
-          iteration,
-          feedback
-        });
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    } else {
-      modelError = "No GITHUB_TOKEN, MODELS_TOKEN, or KEY_GITHUB_TOKEN available for model request.";
-    }
-  }
-
-  // Support .env for local testing (dotenv is a dev dependency)
-  try {
-    if (process.env.NODE_ENV !== "production") {
-      await import("dotenv").then(dotenv => dotenv.config());
-    }
-  } catch (e) {
-    // Ignore if dotenv is not installed
-  }
-
-  await writePage(outputDir, generated);
-  await fs.writeFile(
-    path.join(outputDir, "generation.json"),
-    JSON.stringify(
-      {
-        requestedModel: modelArg,
-        resolvedModel,
-        provider,
-        generatedByModel,
-        generationError: modelError
-      },
-      null,
-      2
-    ),
-    "utf8"
-  );
-
-  if (!generatedByModel) {
-    console.warn(`Model generation fallback used: ${modelError}`);
-  }
-}
-
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((error) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exit(1);
-  });
-}

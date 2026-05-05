@@ -10,6 +10,7 @@ on:
       - AI-WCAG-Gauntlet (Mistral)
       - AI-WCAG-Gauntlet (OpenCode)
       - AI-WCAG-Gauntlet (OpenRouter)
+      - AI-WCAG-Gauntlet (Cohere)
     types:
       - completed
   push:

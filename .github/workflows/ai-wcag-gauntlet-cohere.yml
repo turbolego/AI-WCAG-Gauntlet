@@ -1,0 +1,196 @@
+name: AI-WCAG-Gauntlet (Cohere)
+
+on:
+  workflow_dispatch:
+    inputs:
+      iterations:
+        description: Number of benchmark iterations to run
+        required: true
+        default: "3"
+      model:
+        description: Model to benchmark via Cohere
+        required: true
+        type: choice
+        default: command-a-03-2025
+        options:
+          - c4ai-aya-expanse-32b
+          - c4ai-aya-vision-32b
+          - command-a-03-2025
+          - command-a-reasoning-08-2025
+          - command-a-translate-08-2025
+          - command-a-vision-07-2025
+          - command-r-08-2024
+          - command-r-plus-08-2024
+          - command-r7b-12-2024
+          - command-r7b-arabic-02-2025
+
+concurrency:
+  group: ai-wcag-gauntlet-cohere
+  cancel-in-progress: false
+
+jobs:
+  a11y-bench-cohere:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install Node dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: npm ci
+
+      - name: Build benchmark Docker image
+        run: docker build -t wcag-bench .
+
+      - name: Initialize benchmark run folder
+        id: init-benchmark
+        run: |
+          set -euo pipefail
+
+          MODEL="${{ inputs.model }}"
+
+          # Sanitize the model name for filesystem use.
+          SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
+
+          make_setup_script() {
+            local tmp
+            tmp=$(mktemp /tmp/setup_XXXXXX.sh)
+            {
+              printf 'MODEL_NAME=%q\n'     "$SAFE_MODEL"
+              printf 'PROVIDER=%q\n'       "cohere"
+              printf 'PROVIDER_LABEL=%q\n' "Cohere"
+              printf 'TOOL=%q\n'           "github-actions"
+              grep -vE '^#?(MODEL_NAME|PROVIDER|PROVIDER_LABEL|TOOL)=' setup.sh
+            } > "$tmp"
+            echo "$tmp"
+          }
+
+          SETUP_TMP=$(make_setup_script)
+          RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
+          rm -f "$SETUP_TMP"
+
+          if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
+            echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
+            exit 1
+          fi
+          echo "Created benchmark folder: $RUN_DIR"
+
+          METADATA="$RUN_DIR/metadata.json"
+          if [ -f "$METADATA" ]; then
+            _tmp=$(mktemp)
+            jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+          fi
+
+          echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
+          echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
+
+      - name: Execute benchmark loop and generate dashboard
+        env:
+          COHERE_TOKEN: ${{ secrets.COHERE_TOKEN }}
+        run: |
+          set +e
+          set -uo pipefail
+
+          ITERATIONS="${{ inputs.iterations }}"
+          MODEL="${{ inputs.model }}"
+          SAFE_MODEL="${{ steps.init-benchmark.outputs.safe_model }}"
+          RUN_DIR="${{ steps.init-benchmark.outputs.run_dir }}"
+
+          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
+            echo "Error: iterations must be between 1 and 100"
+            exit 1
+          fi
+
+          echo "Benchmark folder: $RUN_DIR"
+
+          FOUND_PASSING_RUN=false
+
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
+
+            node scripts/generate-page.mjs \
+              --model "$MODEL" \
+              --provider cohere \
+              --outputDir "$RUN_DIR" \
+              --iteration "$i" \
+              --previousDir "$RUN_DIR"
+
+            GENERATION_JSON="$RUN_DIR/generation.json"
+            if [ ! -f "$GENERATION_JSON" ]; then
+              echo "Error: generation.json missing after model generation."
+              exit 1
+            fi
+
+            GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
+            if [ "$GENERATED_BY_MODEL" != "true" ]; then
+              GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
+              echo "Error: model did not generate content this iteration: $GEN_ERROR"
+              exit 1
+            fi
+
+            docker run --rm \
+              -v "$GITHUB_WORKSPACE:/workspace" \
+              -w /workspace \
+              wcag-bench \
+              bash test-suite.sh "$RUN_DIR"
+            TEST_EXIT=$?
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
+              continue
+            fi
+
+            RESULTS_JSON="$RUN_DIR/test_results.json"
+            if [ ! -f "$RESULTS_JSON" ]; then
+              echo "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
+              continue
+            fi
+
+            STATUS=$(jq -r '.[-1].status' "$RESULTS_JSON")
+            echo "Iteration $i result: $STATUS"
+
+            if [ "$STATUS" = "pass" ]; then
+              echo "Stopping early after iteration $i — all tests passed."
+              FOUND_PASSING_RUN=true
+              break
+            fi
+          done
+
+          if [ "$FOUND_PASSING_RUN" = false ]; then
+            echo "No fully passing run found after $ITERATIONS iterations."
+          fi
+
+          bash generate-dashboard.sh
+
+      - name: Commit and push benchmark results
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html benchmarks docs/stats/benchmark_stats.json
+          if git diff --cached --quiet; then
+            echo "No benchmark changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(ai-wcag-gauntlet): publish benchmark run (${{ inputs.model }}, iterations=${{ inputs.iterations }}, provider=cohere)"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              break
+            fi
+            echo "Push failed (attempt $attempt/3). Rebasing on latest main and retrying..."
+            git pull --rebase origin main
+          done
+          echo "Failed to push benchmark results after 3 attempts."
+          exit 1
