@@ -640,4 +640,14 @@ async function main() {
     modelError = providerResult.modelError;
     resolvedModel = providerResult.resolvedModel || resolvedModel;
   }
+
+  // Write the generated page to disk
+  await writePage(outputDir, generated);
+// Call main() if this script is run directly
+if (import.meta.url === `file://${process.argv[1]}` || require?.main === module) {
+  main().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}
 }
