@@ -11,6 +11,7 @@ on:
       - AI-WCAG-Gauntlet (OpenCode)
       - AI-WCAG-Gauntlet (OpenRouter)
       - AI-WCAG-Gauntlet (Cohere)
+      - AI-WCAG-Gauntlet (Cloudflare)
     types:
       - completed
   push:

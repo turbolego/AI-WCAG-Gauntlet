@@ -870,6 +870,111 @@ async function main() {
     } else {
       modelError = "No COHERE_TOKEN available for Cohere request.";
     }
+  } else if (provider === "cloudflare") {
+    const cfToken = process.env.CLOUDFLARE_TOKEN;
+    const cfAccountId = process.env.CLOUDFLARE_ACCOUNT_ID;
+    if (cfToken && cfAccountId) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        const prompt = [
+          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+          "Requirements:",
+          "- Use every required HTML5 tag at least once in the generated HTML.",
+          "- Required tags:",
+          REQUIRED_HTML5_TAGS.join(", "),
+          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+          "- Do not include markdown fences or explanations.",
+          "- Output ONLY the raw JSON object, no markdown code fences.",
+          `- This is iteration ${iteration}.`,
+          feedback ? "- Improve based on previous reports provided below." : ""
+        ].filter(Boolean).join("\n");
+
+        const messages = [
+          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+        ];
+
+        const response = await fetch(
+          `https://api.cloudflare.com/client/v4/accounts/${cfAccountId}/ai/run/${modelArg}`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              "authorization": `Bearer ${cfToken}`
+            },
+            body: JSON.stringify({
+              messages,
+              max_tokens: 8000
+            })
+          }
+        );
+
+        if (!response.ok) {
+          const errorBody = (await response.text()).trim();
+          throw new Error(`Cloudflare request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+        }
+
+        const payload = await response.json();
+        let messageContent = null;
+        
+        // Cloudflare AI returns result in different formats depending on the model
+        if (payload?.result?.response) {
+          messageContent = payload.result.response;
+        } else if (payload?.result) {
+          messageContent = typeof payload.result === 'string' ? payload.result : JSON.stringify(payload.result);
+        }
+        
+        if (!messageContent) {
+          throw new Error("Cloudflare response did not include content.");
+        }
+
+        let jsonStr;
+        try {
+          jsonStr = extractAndRepairJson(messageContent);
+        } catch (extractError) {
+          throw new Error(`Failed to extract JSON from Cloudflare response: ${extractError instanceof Error ? extractError.message : String(extractError)}. Response preview: ${messageContent.slice(0, 300)}`);
+        }
+
+        let parsed;
+        try {
+          parsed = JSON.parse(jsonStr);
+        } catch (parseError) {
+          // If JSON parsing fails, try regex-based extraction as a fallback
+          const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          
+          if (htmlMatch && cssMatch && jsMatch) {
+            // Unescape the extracted values
+            const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\\//g, '/').replace(/\\\\/g, '\\');
+            parsed = {
+              html: unescape(htmlMatch[1]),
+              css: unescape(cssMatch[1]),
+              js: unescape(jsMatch[1])
+            };
+          } else {
+            throw new Error(`Failed to parse Cloudflare JSON and regex extraction failed: ${parseError instanceof Error ? parseError.message : String(parseError)}. Attempted to parse: ${jsonStr.slice(0, 300)}`);
+          }
+        }
+
+        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+          throw new Error("Cloudflare response JSON missing html/css/js fields.");
+        }
+
+        generated = {
+          html: String(parsed.html),
+          css: String(parsed.css),
+          js: String(parsed.js)
+        };
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = cfToken
+        ? "No CLOUDFLARE_ACCOUNT_ID available for Cloudflare request."
+        : "No CLOUDFLARE_TOKEN available for Cloudflare request.";
+    }
   } else {
     const normalizedModel = normalizeModel(modelArg);
     resolvedModel = normalizedModel;
