@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Accessible Single-Page Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="An accessible single-page web application demonstrating all required HTML5 tags.">
+    <noscript>
+        <div role="alert">JavaScript is disabled. Some features may not work properly.</div>
+    </noscript>
+    <style>
+        /* Inline style for critical CSS */
+        :root {
+            --primary-color: #0056b3;
+            --primary-contrast: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+            --background-color: #ffffff;
+            --border-color: #dddddd;
+            --error-color: #d32f2f;
+            --success-color: #388e3c;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>Accessible Web App</h1>
+            <h2>Demonstrating all HTML5 tags with accessibility in mind</h2>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main-content" class="skip-link">Skip to content</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#data">Data Presentation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="introduction">
+            <article>
+                <header>
+                    <h3>Introduction</h3>
+                </header>
+                <p>This single-page application demonstrates the use of all required HTML5 tags while maintaining accessibility standards. Below you'll find examples of forms, media, and data presentation.</p>
+                <p>Current date and time: <time datetime="2023-11-15T14:30:00">November 15, 2023, 2:30 PM</time></p>
+                <p>Contact us at: <address><a href="mailto:contact@example.com">contact@example.com</a></address></p>
+                <p>Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></p>
+                <p>Bi-directional text: <bdo dir="rtl">This text will go right-to-left</bdo></p>
+                <p>Highlight: <mark>Important information</mark> is highlighted.</p>
+                <p>Keyboard input: Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.</p>
+                <p>Sample output: <samp>Command completed successfully</samp></p>
+                <p>Variable: The value of <var>x</var> is 5.</p>
+                <p>Deleted: <del>This text has been deleted</del></p>
+                <p>Inserted: <ins>This text has been inserted</ins></p>
+                <p>Subscript: H<sub>2</sub>O</p>
+                <p>Superscript: E=mc<sup>2</sup></p>
+                <p>Small text: <small>This is small print</small></p>
+                <p>Italic: <i>This text is italic</i></p>
+                <p>Bold: <b>This text is bold</b></p>
+                <p>Underline: <u>This text is underlined</u></p>
+                <p>Strikethrough: <s>This text is no longer accurate</s></p>
+                <p>Definition: The <dfn>HTML</dfn> specification is maintained by the W3C.</p>
+                <p>Citation: <cite>To Kill a Mockingbird</cite> by Harper Lee</p>
+                <p>Code: <code>console.log("Hello, world!");</code></p>
+                <p>Preformatted: <pre>
+function example() {
+    return "This is preformatted text";
+}
+                </pre></p>
+                <blockquote cite="https://example.com">
+                    <p>This is a block quotation. It should be indented and attributed to its source.</p>
+                </blockquote>
+                <hr>
+                <p>Below is an example of a details element with a summary:</p>
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>This is additional content that can be expanded or collapsed.</p>
+                </details>
+            </article>
+        </section>
+
+        <section id="forms">
+            <article>
+                <header>
+                    <h3>Accessible Forms</h3>
+                </header>
+                <form id="contact-form" aria-labelledby="form-heading">
+                    <fieldset>
+                        <legend id="form-heading">Contact Information</legend>
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required aria-describedby="name-help">
+                            <span id="name-help">Enter your full name</span>
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                        </div>
+                        <div>
+                            <label for="country">Country:</label>
+                            <select id="country" name="country">
+                                <option value="">Select a country</option>
+                                <optgroup label="North America">
+                                    <option value="us">United States</option>
+                                    <option value="ca">Canada</option>
+                                </optgroup>
+                                <optgroup label="Europe">
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="fr">France</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="subscribe" checked>
+                                Subscribe to newsletter
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="gender" value="male"> Male
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="female"> Female
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="other"> Other
+                            </label>
+                        </div>
+                        <div>
+                            <label for="rating">Rating (1-10):</label>
+                            <input type="range" id="rating" name="rating" min="1" max="10" value="5">
+                            <output for="rating" name="rating-output">5</output>
+                        </div>
+                        <div>
+                            <label for="color">Favorite color:</label>
+                            <input type="color" id="color" name="color" value="#0056b3">
+                        </div>
+                        <div>
+                            <label for="birthdate">Birthdate:</label>
+                            <input type="date" id="birthdate" name="birthdate">
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <div>
+                    <label for="search">Search:</label>
+                    <input type="search" id="search" name="search" list="search-suggestions">
+                    <datalist id="search-suggestions">
+                        <option value="HTML5">
+                        <option value="Accessibility">
+                        <option value="Web Standards">
+                    </datalist>
+                </div>
+                <div>
+                    <label for="progress">Progress:</label>
+                    <progress id="progress" value="70" max="100">70%</progress>
+                </div>
+                <div>
+                    <label for="meter">Disk usage:</label>
+                    <meter id="meter" value="0.6">60%</meter>
+                </div>
+            </article>
+        </section>
+
+        <section id="media">
+            <article>
+                <header>
+                    <h3>Media Elements</h3>
+                </header>
+                <figure>
+                    <figcaption>Example image with alt text</figcaption>
+                    <img src="placeholder.img" alt="A placeholder image demonstrating proper alt text usage" width="300" height="200">
+                </figure>
+                <figure>
+                    <figcaption>Audio player</figcaption>
+                    <audio controls>
+                        <source src="audio.mp3" type="audio/mpeg">
+                        <source src="audio.ogg" type="audio/ogg">
+                        <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                        Your browser does not support the audio element.
+                    </audio>
+                </figure>
+                <figure>
+                    <figcaption>Video player with captions</figcaption>
+                    <video controls width="300" height="200">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                        <track kind="descriptions" src="descriptions.vtt" srclang="en" label="English">
+                        Your browser does not support the video element.
+                    </video>
+                </figure>
+                <figure>
+                    <figcaption>Embedded content</figcaption>
+                    <embed type="image/svg+xml" src="image.svg" width="200" height="200" aria-label="Embedded SVG image">
+                </figure>
+                <figure>
+                    <figcaption>Interactive map</figcaption>
+                    <div>
+                        <map name="example-map">
+                            <area shape="rect" coords="34,44,270,350" href="https://example.com" alt="Example area" aria-label="Example clickable area">
+                        </map>
+                        <img src="map.png" alt="Example map with clickable areas" usemap="#example-map" width="300" height="400">
+                    </div>
+                </figure>
+                <figure>
+                    <figcaption>Object element</figcaption>
+                    <object type="application/pdf" data="document.pdf" width="300" height="200" aria-label="PDF document">
+                        <p>Your browser does not support PDFs. <a href="document.pdf">Download the PDF</a> instead.</p>
+                    </object>
+                </figure>
+                <figure>
+                    <figcaption>Canvas element</figcaption>
+                    <canvas id="example-canvas" width="300" height="200" aria-label="Example canvas drawing">
+                        Your browser does not support the canvas element.
+                    </canvas>
+                </figure>
+                <figure>
+                    <figcaption>Iframe content</figcaption>
+                    <iframe src="about:blank" title="Example iframe" width="300" height="200"></iframe>
+                </figure>
+                <figure>
+                    <figcaption>Picture element with sources</figcaption>
+                    <picture>
+                        <source media="(min-width: 800px)" srcset="large.jpg">
+                        <source media="(min-width: 480px)" srcset="medium.jpg">
+                        <img src="small.jpg" alt="Responsive image example" width="300" height="200">
+                    </picture>
+                </figure>
+            </article>
+        </section>
+
+        <section id="data">
+            <article>
+                <header>
+                    <h3>Data Presentation</h3>
+                </header>
+                <div>
+                    <h4>Definition List</h4>
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets</dd>
+                    </dl>
+                </div>
+                <div>
+                    <h4>Ordered List</h4>
+                    <ol>
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                    </ol>
+                </div>
+                <div>
+                    <h4>Unordered List</h4>
+                    <ul>
+                        <li>Item one</li>
+                        <li>Item two</li>
+                        <li>Item three</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Menu</h4>
+                    <menu>
+                        <li><button>New</button></li>
+                        <li><button>Open</button></li>
+                        <li><button>Save</button></li>
+                    </menu>
+                </div>
+                <div>
+                    <h4>Table with Accessible Markup</h4>
+                    <table>
+                        <caption>Employee Information</caption>
+                        <colgroup>
+                            <col span="2" style="background-color: #f4f4f4;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>Developer</td>
+                                <td>Engineering</td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>Designer</td>
+                                <td>Creative</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Last updated: <time datetime="2023-11-15">November 15, 2023</time></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div>
+                    <h4>Ruby Annotation</h4>
+                    <ruby>
+                        漢字 <rp>(</rp><rt>kanji</rt><rp>)</rp>
+                    </ruby>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <aside aria-label="Supplementary content">
+        <h4>Related Links</h4>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a></li>
+            <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+            <li><a href="https://www.w3.org/TR/html52/">HTML5 Specification</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>&copy; <span id="current-year">2023</span> Accessible Web App. All rights reserved.</p>
+        <address>
+            Contact us at <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+        <p><small>Last updated: <time datetime="2023-11-15">November 15, 2023</time></small></p>
+    </footer>
+
+    <template id="example-template">
+        <div class="template-content">
+            <h5>Template Content</h5>
+            <p>This content comes from a template.</p>
+        </div>
+    </template>
+
+    <div hidden>
+        <p>This content is hidden but still in the DOM.</p>
+    </div>
+
+    <slot name="dynamic-content">Default slot content</slot>
+
+    <div role="search">
+        <label for="global-search">Search the site:</label>
+        <input type="search" id="global-search" name="q">
+        <button type="submit">Search</button>
+    </div>
+</body>
+</html>
