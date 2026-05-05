@@ -3,7 +3,13 @@ name: Update Benchmark Stats
 on:
   workflow_run:
     workflows:
+      - AI-WCAG-Gauntlet (Azure APIs)
       - AI-WCAG-Gauntlet (Groq LPU)
+      - AI-WCAG-Gauntlet (Hugging Face)
+      - AI-WCAG-Gauntlet (LLM7)
+      - AI-WCAG-Gauntlet (Mistral)
+      - AI-WCAG-Gauntlet (OpenCode)
+      - AI-WCAG-Gauntlet (OpenRouter)
     types:
       - completed
   push:
