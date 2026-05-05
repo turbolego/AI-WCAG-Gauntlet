@@ -799,9 +799,7 @@ async function main() {
           feedback ? "- Improve based on previous reports provided below." : ""
         ].filter(Boolean).join("\n");
 
-        const messages = [
-          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-        ];
+        const message = `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`;
 
         const response = await fetch("https://api.cohere.ai/v1/chat", {
           method: "POST",
@@ -811,11 +809,8 @@ async function main() {
           },
           body: JSON.stringify({
             model: modelArg,
-            messages,
-            max_tokens: 8000,
-            response_format: {
-              type: "json_object"
-            }
+            message,
+            max_tokens: 8000
           })
         });
 
@@ -825,14 +820,9 @@ async function main() {
         }
 
         const payload = await response.json();
-        let messageContent = null;
-        if (payload?.message?.content && Array.isArray(payload.message.content) && payload.message.content[0]?.text) {
-          messageContent = payload.message.content[0].text;
-        } else if (payload?.choices?.[0]?.message?.content) {
-          messageContent = payload.choices[0].message.content;
-        }
+        const messageContent = payload?.text;
         if (!messageContent) {
-          throw new Error("Cohere response did not include content.");
+          throw new Error("Cohere response did not include text field.");
         }
 
         const jsonStr = extractAndRepairJson(messageContent);
