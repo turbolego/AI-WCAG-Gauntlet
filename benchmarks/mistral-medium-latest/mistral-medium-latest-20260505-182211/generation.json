@@ -1,0 +1,7 @@
+{
+  "requestedModel": "mistral-medium-latest",
+  "resolvedModel": "mistral-medium-latest",
+  "provider": "mistral",
+  "generatedByModel": true,
+  "generationError": null
+}

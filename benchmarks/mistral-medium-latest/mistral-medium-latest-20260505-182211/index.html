@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Web App</title>
+    <base href="/">
+    <link rel="stylesheet" href="styles.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header>
+        <h1>Accessible Web App</h1>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="main-content">
+        <section aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome</h2>
+            <p>Welcome to our accessible web app. This app is designed with accessibility in mind.</p>
+        </section>
+
+        <section aria-labelledby="video-heading">
+            <h2 id="video-heading">Video</h2>
+            <video controls>
+                <source src="example.mp4" type="video/mp4">
+                <track label="English" kind="captions" srclang="en" src="captions.vtt" default>
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section aria-labelledby="audio-heading">
+            <h2 id="audio-heading">Audio</h2>
+            <audio controls>
+                <source src="example.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </section>
+
+        <section aria-labelledby="form-heading">
+            <h2 id="form-heading">Form</h2>
+            <form>
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section aria-labelledby="table-heading">
+            <h2 id="table-heading">Table</h2>
+            <table>
+                <caption>Sample Table</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john.doe@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane.smith@example.com</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>2</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section aria-labelledby="code-heading">
+            <h2 id="code-heading">Code</h2>
+            <pre><code>function greet(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+        </section>
+
+        <aside aria-labelledby="sidebar-heading">
+            <h3 id="sidebar-heading">Sidebar</h3>
+            <p>Additional information goes here.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <address>
+            Contact us at <a href="mailto:contact@example.com">contact@example.com</a>
+        </address>
+        <p>&copy; 2023 Accessible Web App. All rights reserved.</p>
+    </footer>
+</body>
+</html>
