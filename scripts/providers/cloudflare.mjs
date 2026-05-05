@@ -1,8 +1,20 @@
 import { parseResponseJson, extractAndRepairJson } from "../utils.mjs";
+import { readFeedback } from "../utils.mjs";
 
 export default async function generateWithCloudflare({ model, token, accountId, iteration, feedback }) {
   if (!token || !accountId) {
     throw new Error("Missing CLOUDFLARE_TOKEN or CLOUDFLARE_ACCOUNT_ID.");
+  }
+
+  // Debug: log what feedback we received
+  if (feedback) {
+    const hasHtml5 = feedback.includes('html5_tags_report');
+    const hasAxe = feedback.includes('axe_report');
+    const hasPa11y = feedback.includes('pa11y_report');
+    const hasQualweb = feedback.includes('qualweb_report');
+    console.log(`[Cloudflare] Feedback received: ${feedback.length} chars - html5:${hasHtml5} axe:${hasAxe} pa11y:${hasPa11y} qualweb:${hasQualweb}`);
+  } else {
+    console.log(`[Cloudflare] No feedback provided (iteration ${iteration})`);
   }
 
   // Ultra-minimal prompt for Cloudflare small models
@@ -15,8 +27,11 @@ Iteration ${iteration}. NO MARKDOWN, NO EXPLANATIONS, ONLY JSON.`;
 
   const messages = [
     { role: "system", content: "Output only valid JSON." },
-    { role: "user", content: prompt }
+    { role: "user", content: prompt + (feedback ? `\n\nContext from prior test results:\n${feedback}` : "") }
   ];
+
+  // Debug: log what the model will receive
+  console.log(`[Cloudflare] Sending message to model (system + user combined): ${prompt.length + (feedback ? feedback.length : 0)} total chars`);
 
   const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`;
   const response = await fetch(url, {
