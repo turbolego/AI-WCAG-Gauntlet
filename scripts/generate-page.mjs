@@ -825,8 +825,20 @@ async function main() {
           throw new Error("Cohere response did not include text field.");
         }
 
-        const jsonStr = extractAndRepairJson(messageContent);
-        const parsed = JSON.parse(jsonStr);
+        let jsonStr;
+        try {
+          jsonStr = extractAndRepairJson(messageContent);
+        } catch (extractError) {
+          throw new Error(`Failed to extract JSON from Cohere response: ${extractError instanceof Error ? extractError.message : String(extractError)}. Response preview: ${messageContent.slice(0, 300)}`);
+        }
+
+        let parsed;
+        try {
+          parsed = JSON.parse(jsonStr);
+        } catch (parseError) {
+          throw new Error(`Failed to parse Cohere JSON: ${parseError instanceof Error ? parseError.message : String(parseError)}. Attempted to parse: ${jsonStr.slice(0, 300)}`);
+        }
+
         if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
           throw new Error("Cohere response JSON missing html/css/js fields.");
         }
