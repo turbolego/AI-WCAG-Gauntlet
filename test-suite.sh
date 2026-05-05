@@ -57,7 +57,6 @@ if [ -z "${PUPPETEER_EXECUTABLE_PATH:-}" ]; then
 fi
 export PUPPETEER_EXECUTABLE_PATH
 
-# --- Input folder ---
 TARGET_DIR="${1:-}"
 
 if [ -z "$TARGET_DIR" ]; then
@@ -98,6 +97,12 @@ echo "$ITERATIONS" > "$ITERATIONS_FILE"
 # Generated pages use <base href="/AI-WCAG-Gauntlet/"> which needs an HTTP
 # context. Serve from the parent of the project root so /AI-WCAG-Gauntlet/
 # resolves to the correct directory, matching the GitHub Pages deployment.
+
+# --- Filter axe_report.json to only include violations ---
+if [ -f "$TARGET_DIR/axe_report.json" ]; then
+        # Overwrite axe_report.json with only the violations array
+        jq 'if type == "array" then [.[].violations] | flatten else .violations end' "$TARGET_DIR/axe_report.json" > "$TARGET_DIR/axe_report.json.tmp" && mv "$TARGET_DIR/axe_report.json.tmp" "$TARGET_DIR/axe_report.json"
+fi
 PARENT_DIR="$(dirname "$SCRIPT_DIR")"
 PROJECT_NAME="$(basename "$SCRIPT_DIR")"
 SERVE_PORT="${A11Y_SERVE_PORT:-28763}"

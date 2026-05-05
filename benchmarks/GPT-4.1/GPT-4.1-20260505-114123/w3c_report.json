@@ -1,0 +1,308 @@
+{
+  "validates": false,
+  "errorCount": 28,
+  "messageCount": 30,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 34,
+      "lastColumn": 37,
+      "firstColumn": 29,
+      "message": "Stray start tag “caption”.",
+      "extract": "          <caption>Sample",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 34,
+      "lastColumn": 67,
+      "firstColumn": 58,
+      "message": "Stray end tag “caption”.",
+      "extract": "le Caption</caption>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 37,
+      "lastColumn": 38,
+      "firstColumn": 29,
+      "message": "Stray start tag “colgroup”.",
+      "extract": "          <colgroup><col s",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 37,
+      "lastColumn": 52,
+      "firstColumn": 39,
+      "message": "Stray start tag “col”.",
+      "extract": "<colgroup><col span=\"2\"></colg",
+      "hiliteStart": 10,
+      "hiliteLength": 14
+    },
+    {
+      "type": "error",
+      "lastLine": 37,
+      "lastColumn": 63,
+      "firstColumn": 53,
+      "message": "Stray end tag “colgroup”.",
+      "extract": " span=\"2\"></colgroup>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 11
+    },
+    {
+      "type": "error",
+      "lastLine": 47,
+      "lastColumn": 167,
+      "firstColumn": 160,
+      "message": "Stray end tag “embed”.",
+      "extract": "le embed\"></embed>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 8
+    },
+    {
+      "type": "error",
+      "lastLine": 49,
+      "lastColumn": 40,
+      "firstColumn": 29,
+      "message": "Element “figcaption” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <figcaption>Figure",
+      "hiliteStart": 10,
+      "hiliteLength": 12
+    },
+    {
+      "type": "error",
+      "lastLine": 59,
+      "lastColumn": 58,
+      "firstColumn": 55,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "up H1</h1><h2>Hgroup",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 68,
+      "lastColumn": 36,
+      "firstColumn": 29,
+      "message": "Element “legend” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <legend>Legend",
+      "hiliteStart": 10,
+      "hiliteLength": 8
+    },
+    {
+      "type": "error",
+      "lastLine": 69,
+      "lastColumn": 32,
+      "firstColumn": 29,
+      "message": "Element “li” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <li>List i",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 71,
+      "lastColumn": 34,
+      "firstColumn": 29,
+      "message": "The “main” element must not appear as a descendant of the “section” element.",
+      "extract": "          <main>Main c",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 71,
+      "lastColumn": 34,
+      "firstColumn": 29,
+      "message": "The “main” element must not appear as a descendant of the “main” element.",
+      "extract": "          <main>Main c",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 71,
+      "lastColumn": 34,
+      "firstColumn": 29,
+      "message": "A document must not include more than one visible “main” element.",
+      "extract": "          <main>Main c",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 75,
+      "lastColumn": 49,
+      "message": "A “charset” attribute on a “meta” element found after the first 1024 bytes.",
+      "extract": " charset=\"UTF-8\">\n            ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 75,
+      "lastColumn": 50,
+      "firstColumn": 29,
+      "message": "Attribute “charset” not allowed on element “meta” at this point.",
+      "extract": "          <meta charset=\"UTF-8\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 75,
+      "lastColumn": 50,
+      "firstColumn": 29,
+      "message": "Element “meta” is missing one or more of the following attributes: “content”, “itemprop”, “property”.",
+      "extract": "          <meta charset=\"UTF-8\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 75,
+      "lastColumn": 50,
+      "firstColumn": 29,
+      "message": "A document must not include more than one “meta” element with a “charset” attribute.",
+      "extract": "          <meta charset=\"UTF-8\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 81,
+      "lastColumn": 52,
+      "firstColumn": 29,
+      "message": "Element “optgroup” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <optgroup label=\"Group\"><optio",
+      "hiliteStart": 10,
+      "hiliteLength": 24
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 32,
+      "firstColumn": 29,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "          <rp>(</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 32,
+      "firstColumn": 29,
+      "message": "Element “rp” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <rp>(</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 42,
+      "firstColumn": 39,
+      "message": "Start tag “rt” seen without a “ruby” element being open.",
+      "extract": "<rp>(</rp><rt>Ruby T",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 42,
+      "firstColumn": 39,
+      "message": "Element “rt” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "<rp>(</rp><rt>Ruby T",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 60,
+      "firstColumn": 57,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": " Text</rt><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 91,
+      "lastColumn": 60,
+      "firstColumn": 57,
+      "message": "Element “rp” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": " Text</rt><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 97,
+      "lastColumn": 37,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Section lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all sections, or else use a “div” element instead for any cases where no heading is needed.",
+      "extract": "          <section>Sectio",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 101,
+      "lastColumn": 135,
+      "firstColumn": 29,
+      "message": "Element “source” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <source src=\"/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav\" type=\"audio/wav\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 107
+    },
+    {
+      "type": "error",
+      "lastLine": 104,
+      "lastColumn": 35,
+      "firstColumn": 29,
+      "message": "Element “style” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <style>/* Sam",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 106,
+      "lastColumn": 37,
+      "firstColumn": 29,
+      "message": "Element “summary” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <summary>Summar",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 113,
+      "lastColumn": 96,
+      "firstColumn": 29,
+      "message": "Element “track” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <track kind=\"captions\" src=\"#\" srclang=\"en\" label=\"English\" default>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 68
+    },
+    {
+      "type": "info",
+      "lastLine": 59,
+      "lastColumn": 40,
+      "firstColumn": 37,
+      "subType": "warning",
+      "message": "Consider using the “h1” element as a top-level heading only — or else use the “headingoffset” attribute (otherwise, all “h1” elements are treated as top-level headings by many screen readers and other tools).",
+      "extract": "  <hgroup><h1>Hgroup",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}
