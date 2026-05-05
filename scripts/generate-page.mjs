@@ -12,7 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { InferenceClient } from "@huggingface/inference";
 
-const REQUIRED_HTML5_TAGS = [
+export const REQUIRED_HTML5_TAGS = [
   "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
   "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
   "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure",
@@ -223,7 +223,7 @@ function defaultPage() {
   };
 }
 
-async function readFeedback(previousDir) {
+export async function readFeedback(previousDir) {
   if (!previousDir) {
     return "";
   }
@@ -597,45 +597,45 @@ async function main() {
   let providerHandler;
   let providerResult;
   if (provider === "openrouter") {
-    providerHandler = (await import("./providers/openrouter.js")).default;
+    providerHandler = (await import("./providers/openrouter.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else if (provider === "mistral") {
-    providerHandler = (await import("./providers/mistral.js")).default;
+    providerHandler = (await import("./providers/mistral.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else if (provider === "llm7") {
-    providerHandler = (await import("./providers/llm7.js")).default;
+    providerHandler = (await import("./providers/llm7.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else if (provider === "huggingface" || provider === "groq") {
-    providerHandler = (await import("./providers/huggingface.js")).default;
+    providerHandler = (await import("./providers/huggingface.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir, provider });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else if (provider === "opencode") {
-    providerHandler = (await import("./providers/opencode.js")).default;
+    providerHandler = (await import("./providers/opencode.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else if (provider === "cohere") {
-    providerHandler = (await import("./providers/cohere.js")).default;
+    providerHandler = (await import("./providers/cohere.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
   } else {
-    providerHandler = (await import("./providers/default.js")).default;
+    providerHandler = (await import("./providers/default.mjs")).default;
     providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    generated = providerResult.generated;
+    if (providerResult.generated) generated = providerResult.generated;
     generatedByModel = providerResult.generatedByModel;
     modelError = providerResult.modelError;
     resolvedModel = providerResult.resolvedModel || resolvedModel;
@@ -643,11 +643,33 @@ async function main() {
 
   // Write the generated page to disk
   await writePage(outputDir, generated);
+
+  // Write metadata and generation status
+  await fs.writeFile(
+    path.join(outputDir, "generation.json"),
+    JSON.stringify(
+      {
+        requestedModel: modelArg,
+        resolvedModel,
+        provider,
+        generatedByModel,
+        generationError: modelError
+      },
+      null,
+      2
+    ),
+    "utf8"
+  );
+
+  if (!generatedByModel) {
+    console.warn(`Model generation fallback used: ${modelError}`);
+  }
+}
+
 // Call main() if this script is run directly
-if (import.meta.url === `file://${process.argv[1]}` || require?.main === module) {
-  main().catch(err => {
-    console.error(err);
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
     process.exit(1);
   });
-}
 }

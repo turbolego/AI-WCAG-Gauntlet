@@ -17,7 +17,7 @@ export default async function handleMistral({ modelArg, iteration, previousDir }
         "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
         "- Do not include markdown fences or explanations.",
         "- Output ONLY the raw JSON object, no markdown code fences.",
-        `- This is iteration ${iteration}.",
+        `- This is iteration ${iteration}.`,
         feedback ? "- Improve based on previous reports provided below." : ""
       ].filter(Boolean).join("\n");
 
