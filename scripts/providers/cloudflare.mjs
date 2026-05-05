@@ -1,26 +1,21 @@
-import { parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
+import { parseResponseJson, extractAndRepairJson } from "../utils.mjs";
 
 export default async function generateWithCloudflare({ model, token, accountId, iteration, feedback }) {
   if (!token || !accountId) {
     throw new Error("Missing CLOUDFLARE_TOKEN or CLOUDFLARE_ACCOUNT_ID.");
   }
 
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
+  // Ultra-minimal prompt for Cloudflare small models
+  const prompt = `Output ONLY a JSON object with three string fields: html, css, js. 
+html: a complete accessible HTML page with header, main, footer, button, form, and input.
+css: basic styles for the page.
+js: event handler for button clicks.
+Must use valid HTML5 tags and be accessible (labels, semantic HTML, keyboard support).
+Iteration ${iteration}. NO MARKDOWN, NO EXPLANATIONS, ONLY JSON.`;
 
   const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+    { role: "system", content: "Output only valid JSON." },
+    { role: "user", content: prompt }
   ];
 
   const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`;
@@ -30,7 +25,7 @@ export default async function generateWithCloudflare({ model, token, accountId, 
       "content-type": "application/json",
       authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ messages, max_tokens: 8000 })
+    body: JSON.stringify({ messages, max_tokens: 2000 })
   });
 
   if (!response.ok) {
@@ -43,9 +38,37 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   if (!messageContent && typeof payload?.result === "string") {
     messageContent = payload.result;
   }
+  // Try reasoning field if content is null (some models use this)
+  if (!messageContent && payload?.result?.choices?.[0]?.message?.reasoning) {
+    messageContent = payload.result.choices[0].message.reasoning;
+  }
   if (!messageContent) {
-    throw new Error("Cloudflare response did not include content.");
+    throw new Error(`Cloudflare response did not include content. Payload: ${JSON.stringify(payload).slice(0, 500)}`);
   }
 
-  return parseResponseJson(messageContent);
+  // Extract and repair JSON with lenient fallback
+  try {
+    // First try standard repair/parse
+    return parseResponseJson(messageContent);
+  } catch (parseError) {
+    // Lenient regex fallback for malformed JSON
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    
+    if (htmlMatch && cssMatch && jsMatch) {
+      const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\\//g, '/').replace(/\\\\/g, '\\');
+      return {
+        html: unescape(htmlMatch[1]),
+        css: unescape(cssMatch[1]),
+        js: unescape(jsMatch[1])
+      };
+    }
+
+    // Throw detailed error
+    throw new Error(
+      `Cloudflare response parsing failed: ${parseError instanceof Error ? parseError.message : String(parseError)}. ` +
+      `Response: ${messageContent.slice(0, 300)}`
+    );
+  }
 }
