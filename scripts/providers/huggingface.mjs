@@ -2,6 +2,17 @@ import { InferenceClient } from "@huggingface/inference";
 import { parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
 
 export default async function generateWithHuggingFace({ model, token, iteration, feedback, isGroq }) {
+  // Debug: log what feedback we received
+  if (feedback) {
+    const hasHtml5 = feedback.includes('html5_tags_report');
+    const hasAxe = feedback.includes('axe_report');
+    const hasPa11y = feedback.includes('pa11y_report');
+    const hasQualweb = feedback.includes('qualweb_report');
+    console.log(`[HuggingFace] Feedback received: ${feedback.length} chars - html5:${hasHtml5} axe:${hasAxe} pa11y:${hasPa11y} qualweb:${hasQualweb}`);
+  } else {
+    console.log(`[HuggingFace] No feedback provided (iteration ${iteration})`);
+  }
+
   const prompt = [
     "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
     "Requirements:",
@@ -19,6 +30,10 @@ export default async function generateWithHuggingFace({ model, token, iteration,
     { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
     { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
   ];
+
+  // Debug: log total message size
+  const totalChars = JSON.stringify(messages).length;
+  console.log(`[HuggingFace] Sending message to model: ${totalChars} total chars`);
 
   const client = new InferenceClient(token);
   const chatOptions = {

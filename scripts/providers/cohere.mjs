@@ -1,6 +1,17 @@
 import { parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
 
 export default async function generateWithCohere({ model, token, iteration, feedback }) {
+  // Debug: log what feedback we received
+  if (feedback) {
+    const hasHtml5 = feedback.includes('html5_tags_report');
+    const hasAxe = feedback.includes('axe_report');
+    const hasPa11y = feedback.includes('pa11y_report');
+    const hasQualweb = feedback.includes('qualweb_report');
+    console.log(`[Cohere] Feedback received: ${feedback.length} chars - html5:${hasHtml5} axe:${hasAxe} pa11y:${hasPa11y} qualweb:${hasQualweb}`);
+  } else {
+    console.log(`[Cohere] No feedback provided (iteration ${iteration})`);
+  }
+
   const prompt = [
     "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
     "Requirements:",
@@ -14,6 +25,10 @@ export default async function generateWithCohere({ model, token, iteration, feed
     feedback ? "- Improve based on previous reports provided below." : ""
   ].filter(Boolean).join("\n");
 
+  // Debug: log total message size (Cohere uses 'message' field instead of messages array)
+  const fullMessage = `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`;
+  console.log(`[Cohere] Sending message to model: ${fullMessage.length} total chars`);
+
   const response = await fetch("https://api.cohere.ai/v1/chat", {
     method: "POST",
     headers: {
@@ -22,7 +37,7 @@ export default async function generateWithCohere({ model, token, iteration, feed
     },
     body: JSON.stringify({
       model,
-      message: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`,
+      message: fullMessage,
       max_tokens: 8000
     })
   });

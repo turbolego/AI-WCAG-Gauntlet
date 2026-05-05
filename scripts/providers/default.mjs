@@ -48,7 +48,22 @@ function buildGitHubEndpoints(normalizedModel, primaryToken, fallbackToken) {
   return endpoints;
 }
 
-async function tryGitHubEndpoints(endpoints, messages) {
+async function tryGitHubEndpoints(endpoints, messages, feedbackInfo) {
+  // Debug: log what feedback we received
+  if (feedbackInfo.feedback) {
+    const hasHtml5 = feedbackInfo.feedback.includes('html5_tags_report');
+    const hasAxe = feedbackInfo.feedback.includes('axe_report');
+    const hasPa11y = feedbackInfo.feedback.includes('pa11y_report');
+    const hasQualweb = feedbackInfo.feedback.includes('qualweb_report');
+    console.log(`[GitHub] Feedback received: ${feedbackInfo.feedback.length} chars - html5:${hasHtml5} axe:${hasAxe} pa11y:${hasPa11y} qualweb:${hasQualweb}`);
+  } else {
+    console.log(`[GitHub] No feedback provided (iteration ${feedbackInfo.iteration})`);
+  }
+
+  // Debug: log total message size
+  const totalChars = JSON.stringify(messages).length;
+  console.log(`[GitHub] Sending message to model: ${totalChars} total chars`);
+
   let lastError = null;
   for (const endpoint of endpoints) {
     try {
@@ -120,6 +135,6 @@ export default async function generateWithGitHub({ model, token, fallbackToken, 
     { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
   ];
 
-  const messageContent = await tryGitHubEndpoints(endpoints, messages);
+  const messageContent = await tryGitHubEndpoints(endpoints, messages, { feedback, iteration });
   return parseResponseJson(messageContent);
 }
