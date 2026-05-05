@@ -6,7 +6,7 @@ on:
       iterations:
         description: Number of benchmark iterations to run
         required: true
-        default: "3"
+        default: "20"
       model:
         description: Model to benchmark via LLM7
         required: true
