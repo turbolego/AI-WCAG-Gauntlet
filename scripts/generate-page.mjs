@@ -332,7 +332,7 @@ async function generateWithHuggingFace({ model, token, iteration, feedback, infe
   if (inferenceProvider) {
     chatOptions.provider = inferenceProvider;
   }
-  
+
   let response;
   try {
     response = await client.chatCompletion(chatOptions);
@@ -594,65 +594,50 @@ async function main() {
   let modelError = null;
   let resolvedModel = modelArg;
 
+  let providerHandler;
+  let providerResult;
   if (provider === "openrouter") {
-    const orToken = process.env.OPENROUTER_TOKEN;
-    if (orToken) {
-      const feedback = await readFeedback(previousDir);
-      try {
-        generated = await generateWithOpenRouter({
-          model: modelArg,
-          token: orToken,
-          iteration,
-          feedback
-        });
-        generatedByModel = true;
-      } catch (error) {
-        modelError = error instanceof Error ? error.message : String(error);
-      }
-    let providerHandler;
-    let providerResult;
-    if (provider === "openrouter") {
-      providerHandler = (await import("./providers/openrouter.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else if (provider === "mistral") {
-      providerHandler = (await import("./providers/mistral.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else if (provider === "llm7") {
-      providerHandler = (await import("./providers/llm7.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else if (provider === "huggingface" || provider === "groq") {
-      providerHandler = (await import("./providers/huggingface.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir, provider });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else if (provider === "opencode") {
-      providerHandler = (await import("./providers/opencode.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else if (provider === "cohere") {
-      providerHandler = (await import("./providers/cohere.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-    } else {
-      providerHandler = (await import("./providers/default.js")).default;
-      providerResult = await providerHandler({ modelArg, iteration, previousDir });
-      generated = providerResult.generated;
-      generatedByModel = providerResult.generatedByModel;
-      modelError = providerResult.modelError;
-      resolvedModel = providerResult.resolvedModel || resolvedModel;
-    }
-
+    providerHandler = (await import("./providers/openrouter.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else if (provider === "mistral") {
+    providerHandler = (await import("./providers/mistral.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else if (provider === "llm7") {
+    providerHandler = (await import("./providers/llm7.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else if (provider === "huggingface" || provider === "groq") {
+    providerHandler = (await import("./providers/huggingface.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir, provider });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else if (provider === "opencode") {
+    providerHandler = (await import("./providers/opencode.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else if (provider === "cohere") {
+    providerHandler = (await import("./providers/cohere.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+  } else {
+    providerHandler = (await import("./providers/default.js")).default;
+    providerResult = await providerHandler({ modelArg, iteration, previousDir });
+    generated = providerResult.generated;
+    generatedByModel = providerResult.generatedByModel;
+    modelError = providerResult.modelError;
+    resolvedModel = providerResult.resolvedModel || resolvedModel;
+  }
+}
