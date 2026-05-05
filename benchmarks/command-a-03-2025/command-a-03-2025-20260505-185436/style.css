@@ -1,0 +1,11 @@
+body { color: #333; background-color: #fff; margin: 0; padding: 0; }
+header, footer { padding: 20px; background-color: #f0f0f0; }
+main { padding: 20px; }
+h1, h2, h3, h4, h5, h6 { color: #222; }
+a { color: #007bff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+button:hover { background-color: #0056b3; }
+img { max-width: 100%; height: auto; }
+video, audio { width: 100%; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }

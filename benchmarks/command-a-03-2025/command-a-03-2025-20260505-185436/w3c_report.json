@@ -1,0 +1,68 @@
+{
+  "validates": false,
+  "errorCount": 5,
+  "messageCount": 6,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 10,
+      "lastColumn": 15,
+      "firstColumn": 13,
+      "message": "Bad start tag in “p” in “noscript” in “head”.",
+      "extract": "<noscript><p>JavaSc",
+      "hiliteStart": 10,
+      "hiliteLength": 3
+    },
+    {
+      "type": "error",
+      "lastLine": 10,
+      "lastColumn": 76,
+      "firstColumn": 66,
+      "message": "Stray end tag “noscript”.",
+      "extract": "ality.</p></noscript>\n  <st",
+      "hiliteStart": 10,
+      "hiliteLength": 11
+    },
+    {
+      "type": "error",
+      "lastLine": 11,
+      "lastColumn": 9,
+      "firstColumn": 3,
+      "message": "Element “style” not allowed as child of element “body” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "script>\n  <style>body {",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 12,
+      "lastColumn": 7,
+      "firstColumn": 1,
+      "message": "Stray end tag “head”.",
+      "extract": "}</style>\n</head>\n<body",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 13,
+      "lastColumn": 6,
+      "firstColumn": 1,
+      "message": "Start tag “body” seen but an element of the same type was already open.",
+      "extract": ">\n</head>\n<body>\n  <he",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "info",
+      "lastLine": 14,
+      "lastColumn": 24,
+      "firstColumn": 3,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n<body>\n  <header role='banner'>\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    }
+  ]
+}
