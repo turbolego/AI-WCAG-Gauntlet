@@ -594,57 +594,292 @@ async function main() {
   let modelError = null;
   let resolvedModel = modelArg;
 
-  let providerHandler;
-  let providerResult;
   if (provider === "openrouter") {
-    providerHandler = (await import("./providers/openrouter.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    const orToken = process.env.OPENROUTER_TOKEN;
+    if (orToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithOpenRouter({
+          model: modelArg,
+          token: orToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No OPENROUTER_TOKEN available for OpenRouter request.";
+    }
   } else if (provider === "mistral") {
-    providerHandler = (await import("./providers/mistral.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    const mistralToken = process.env.MISTRAL_TOKEN;
+    if (mistralToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithMistral({
+          model: modelArg,
+          token: mistralToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No MISTRAL_TOKEN available for Mistral request.";
+    }
   } else if (provider === "llm7") {
-    providerHandler = (await import("./providers/llm7.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    // LLM7 provider: OpenAI-compatible API at https://api.llm7.io/v1
+    // Uses process.env.LLM7_TOKEN for authentication
+    const llm7Token = process.env.LLM7_TOKEN;
+    if (llm7Token) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        // Use OpenAI-compatible API (like generateWithOpenRouter, but with different base_url and token)
+        const prompt = [
+          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+          "Requirements:",
+          "- Use every required HTML5 tag at least once in the generated HTML.",
+          "- Required tags:",
+          REQUIRED_HTML5_TAGS.join(", "),
+          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+          "- Do not include markdown fences or explanations.",
+          "- Output ONLY the raw JSON object, no markdown code fences.",
+          `- This is iteration ${iteration}.`,
+          feedback ? "- Improve based on previous reports provided below." : ""
+        ].filter(Boolean).join("\n");
+
+        const messages = [
+          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+        ];
+
+        const response = await fetch("https://api.llm7.io/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${llm7Token}`
+          },
+          body: JSON.stringify({ model: modelArg, messages, max_tokens: 8000, response_format: { type: "json_object" } })
+        });
+
+        if (!response.ok) {
+          const errorBody = (await response.text()).trim();
+          throw new Error(`LLM7 request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+        }
+
+        const payload = await response.json();
+        const messageContent = payload?.choices?.[0]?.message?.content;
+        if (!messageContent) {
+          throw new Error("LLM7 response did not include content.");
+        }
+
+        const jsonStr = extractAndRepairJson(messageContent);
+        const parsed = JSON.parse(jsonStr);
+        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+          throw new Error("LLM7 response JSON missing html/css/js fields.");
+        }
+
+        generated = {
+          html: String(parsed.html),
+          css: String(parsed.css),
+          js: String(parsed.js)
+        };
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No LLM7_TOKEN available for LLM7 request.";
+    }
   } else if (provider === "huggingface" || provider === "groq") {
-    providerHandler = (await import("./providers/huggingface.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir, provider });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    const hfToken = provider === "groq"
+      ? (process.env.GROQ_TOKEN || process.env.HUGGINGFACE_TOKEN)
+      : process.env.HUGGINGFACE_TOKEN;
+    if (hfToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithHuggingFace({
+          model: modelArg,
+          token: hfToken,
+          iteration,
+          feedback,
+          inferenceProvider: provider === "groq" ? "groq" : undefined
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = provider === "groq"
+        ? "No GROQ_TOKEN or HUGGINGFACE_TOKEN available for Groq request."
+        : "No HUGGINGFACE_TOKEN available for Hugging Face request.";
+    }
   } else if (provider === "opencode") {
-    providerHandler = (await import("./providers/opencode.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    // OpenCode Zen provider: OpenAI-compatible API at https://opencode.ai/zen/v1/chat/completions
+    // Uses process.env.OPENCODE_TOKEN for authentication
+    // Model list: https://opencode.ai/zen/v1/models (see docs)
+    const opencodeToken = process.env.OPENCODE_TOKEN;
+    if (opencodeToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        const prompt = [
+          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+          "Requirements:",
+          "- Use every required HTML5 tag at least once in the generated HTML.",
+          "- Required tags:",
+          REQUIRED_HTML5_TAGS.join(", "),
+          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+          "- Do not include markdown fences or explanations.",
+          "- Output ONLY the raw JSON object, no markdown code fences.",
+          `- This is iteration ${iteration}.`,
+          feedback ? "- Improve based on previous reports provided below." : ""
+        ].filter(Boolean).join("\n");
+
+        const messages = [
+          { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+        ];
+
+        const response = await fetch("https://opencode.ai/zen/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${opencodeToken}`
+          },
+          body: JSON.stringify({ model: modelArg, messages, max_tokens: 8000, response_format: { type: "json_object" } })
+        });
+
+        if (!response.ok) {
+          const errorBody = (await response.text()).trim();
+          throw new Error(`OpenCode request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+        }
+
+        const payload = await response.json();
+        const messageContent = payload?.choices?.[0]?.message?.content;
+        if (!messageContent) {
+          throw new Error("OpenCode response did not include content.");
+        }
+
+        const jsonStr = extractAndRepairJson(messageContent);
+        const parsed = JSON.parse(jsonStr);
+        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+          throw new Error("OpenCode response JSON missing html/css/js fields.");
+        }
+
+        generated = {
+          html: String(parsed.html),
+          css: String(parsed.css),
+          js: String(parsed.js)
+        };
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No OPENCODE_TOKEN available for OpenCode request.";
+    }
   } else if (provider === "cohere") {
-    providerHandler = (await import("./providers/cohere.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
+    const cohereToken = process.env.COHERE_TOKEN;
+    if (cohereToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        const prompt = [
+          "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+          "Requirements:",
+          "- Use every required HTML5 tag at least once in the generated HTML.",
+          "- Required tags:",
+          REQUIRED_HTML5_TAGS.join(", "),
+          "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+          "- Do not include markdown fences or explanations.",
+          "- Output ONLY the raw JSON object, no markdown code fences.",
+          `- This is iteration ${iteration}.`,
+          feedback ? "- Improve based on previous reports provided below." : ""
+        ].filter(Boolean).join("\n");
+
+        const messages = [
+          { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+        ];
+
+        const response = await fetch("https://api.cohere.ai/v1/chat", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "authorization": `Bearer ${cohereToken}`
+          },
+          body: JSON.stringify({
+            model: modelArg,
+            messages,
+            max_tokens: 8000,
+            response_format: {
+              type: "json_object"
+            }
+          })
+        });
+
+        if (!response.ok) {
+          const errorBody = (await response.text()).trim();
+          throw new Error(`Cohere request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+        }
+
+        const payload = await response.json();
+        let messageContent = null;
+        if (payload?.message?.content && Array.isArray(payload.message.content) && payload.message.content[0]?.text) {
+          messageContent = payload.message.content[0].text;
+        } else if (payload?.choices?.[0]?.message?.content) {
+          messageContent = payload.choices[0].message.content;
+        }
+        if (!messageContent) {
+          throw new Error("Cohere response did not include content.");
+        }
+
+        const jsonStr = extractAndRepairJson(messageContent);
+        const parsed = JSON.parse(jsonStr);
+        if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+          throw new Error("Cohere response JSON missing html/css/js fields.");
+        }
+
+        generated = {
+          html: String(parsed.html),
+          css: String(parsed.css),
+          js: String(parsed.js)
+        };
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No COHERE_TOKEN available for Cohere request.";
+    }
   } else {
-    providerHandler = (await import("./providers/default.mjs")).default;
-    providerResult = await providerHandler({ modelArg, iteration, previousDir });
-    if (providerResult.generated) generated = providerResult.generated;
-    generatedByModel = providerResult.generatedByModel;
-    modelError = providerResult.modelError;
-    resolvedModel = providerResult.resolvedModel || resolvedModel;
+    const normalizedModel = normalizeModel(modelArg);
+    resolvedModel = normalizedModel;
+    const token = process.env.GITHUB_TOKEN || process.env.MODELS_TOKEN;
+    const keyToken = process.env.KEY_GITHUB_TOKEN;
+
+    if (token || keyToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithModel({
+          model: modelArg,
+          normalizedModel,
+          token,
+          keyToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No GITHUB_TOKEN, MODELS_TOKEN, or KEY_GITHUB_TOKEN available for model request.";
+    }
   }
 
-  // Write the generated page to disk
   await writePage(outputDir, generated);
-
-  // Write metadata and generation status
   await fs.writeFile(
     path.join(outputDir, "generation.json"),
     JSON.stringify(
@@ -666,7 +901,6 @@ async function main() {
   }
 }
 
-// Call main() if this script is run directly
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch((error) => {
     console.error(error instanceof Error ? error.message : String(error));
