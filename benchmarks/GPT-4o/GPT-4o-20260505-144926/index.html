@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <h1>AI WCAG Gauntlet</h1>
+
+    <!-- Corrected ARIA roles and structure -->
+    <nav aria-label="Main navigation">
+        <ul role="menubar">
+            <li role="none"><a href="#" role="menuitem" aria-label="Go to Home">Home</a></li>
+            <li role="none"><a href="#" role="menuitem" aria-label="Learn About Us">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Adding accessible names to ARIA elements -->
+    <button aria-label="Toggle menu">Toggle</button>
+
+    <!-- Adding accessible names to ARIA progress bars and toggle fields -->
+    <progress id="file-progress" value="50" max="100" aria-label="File upload progress">50%</progress>
+
+    <button aria-label="Toggle dark mode">Dark Mode</button>
+
+    <dialog aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <h2 id="dialog-title">Dialog Title</h2>
+        <p id="dialog-description">This is a sample dialog content.</p>
+        <button aria-label="Close dialog">Close</button>
+    </dialog>
+
+    <form aria-labelledby="form-label">
+        <label id="form-label" for="name">Name:</label>
+        <input type="text" id="name" name="name" aria-required="true" aria-label="Enter your name">
+        <button aria-label="Submit form">Submit</button>
+    </form>
+
+    <!-- Ensuring input buttons have discernible text -->
+    <button aria-label="Submit form">Submit</button>
+
+    <!-- Adding alternative text to <input type='image'> elements -->
+    <input type="image" src="submit-icon.png" alt="Submit form">
+
+    <!-- Adding alternative text to [role='img'] elements -->
+    <div role="img" aria-label="Decorative image description"></div>
+
+    <div tabindex="0" style="overflow: auto; max-height: 200px;">
+        <p>Scrollable content goes here.</p>
+    </div>
+
+    <div aria-hidden="true" tabindex="-1">
+        <p>This content is hidden and not focusable.</p>
+    </div>
+
+    <table>
+        <caption>Sample Table</caption>
+        <colgroup>
+            <col span="2" style="background-color: #f2f2f2">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">Column 1</th>
+                <th scope="col">Column 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <section>
+        <h2>Section Heading</h2>
+        <p>Content within the section.</p>
+    </section>
+
+    <!-- Adding accessible names to ARIA tooltips and treeitems -->
+    <div role="tooltip" id="tooltip1" aria-label="Tooltip description">Tooltip content</div>
+
+    <ul role="tree">
+        <li role="treeitem" aria-label="Tree item 1">Item 1</li>
+        <li role="treeitem" aria-label="Tree item 2">Item 2</li>
+    </ul>
+
+    <!-- Ensuring <dt> and <dd> are contained within a <dl> -->
+    <dl>
+        <dt>Term 1</dt>
+        <dd>Definition 1</dd>
+        <dt>Term 2</dt>
+        <dd>Definition 2</dd>
+    </dl>
+
+    <!-- Ensuring links with the same name serve similar purposes -->
+    <a href="home.html" aria-label="Go to homepage">Home</a>
+    <a href="about.html" aria-label="Learn about us">About</a>
+
+    <!-- Updating <iframe> elements with focusable content -->
+    <iframe src="example.html" title="Example iframe" tabindex="0"></iframe>
+
+    <!-- Ensuring skip links have focusable targets -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <main id="main-content">
+        <p>Main content goes here.</p>
+    </main>
+
+    <!-- Ensuring landmarks are at the top level -->
+    <header>
+        <h1>Website Title</h1>
+    </header>
+
+    <footer>
+        <p>Footer information.</p>
+    </footer>
+</body>
+</html>
