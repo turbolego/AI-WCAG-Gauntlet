@@ -836,7 +836,22 @@ async function main() {
         try {
           parsed = JSON.parse(jsonStr);
         } catch (parseError) {
-          throw new Error(`Failed to parse Cohere JSON: ${parseError instanceof Error ? parseError.message : String(parseError)}. Attempted to parse: ${jsonStr.slice(0, 300)}`);
+          // If JSON parsing fails, try regex-based extraction as a fallback
+          const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+          
+          if (htmlMatch && cssMatch && jsMatch) {
+            // Unescape the extracted values
+            const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\\//g, '/').replace(/\\\\/g, '\\');
+            parsed = {
+              html: unescape(htmlMatch[1]),
+              css: unescape(cssMatch[1]),
+              js: unescape(jsMatch[1])
+            };
+          } else {
+            throw new Error(`Failed to parse Cohere JSON and regex extraction failed: ${parseError instanceof Error ? parseError.message : String(parseError)}. Attempted to parse: ${jsonStr.slice(0, 300)}`);
+          }
         }
 
         if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
