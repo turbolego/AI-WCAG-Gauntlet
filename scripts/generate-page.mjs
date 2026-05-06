@@ -626,7 +626,9 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
 
       const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
       if (missingFields.length > 0) {
-        throw new Error(`Mistral response JSON missing fields: ${missingFields.join(", ")} (finish_reason=${finishReason}, content length=${messageContent.length}). This may occur when the model context is too large or API is overloaded.`);
+        const error = new Error(`Mistral response JSON missing fields: ${missingFields.join(", ")} (finish_reason=${finishReason}, content length=${messageContent.length}). This may occur when the model context is too large or API is overloaded.`);
+        error.isRetriable = true; // Mark as retriable for finish_reason=stop cases
+        throw error;
       }
 
       return {
@@ -639,7 +641,9 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
         throw error;
       }
       const errorMsg = error instanceof Error ? error.message : String(error);
-      if (errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5")) {
+      const isRetriable = (error instanceof Error && (error as any).isRetriable) || errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5");
+      
+      if (isRetriable) {
         console.warn(`${errorMsg} (attempt ${attempt}/${maxRetries}). Retrying...`);
         await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
         continue;
