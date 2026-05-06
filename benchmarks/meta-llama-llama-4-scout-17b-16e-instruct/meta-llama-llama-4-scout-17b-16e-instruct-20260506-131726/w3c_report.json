@@ -1,0 +1,71 @@
+{
+  "validates": false,
+  "errorCount": 2,
+  "messageCount": 6,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 216,
+      "firstColumn": 202,
+      "message": "The “base” element must come before any “link” or “script” elements in the document.",
+      "extract": " href='#'><base href='#'><style",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 306,
+      "firstColumn": 285,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "ead><body><header role='banner'><h1>Ac",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 395,
+      "firstColumn": 392,
+      "message": "Element “h4” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "ading</h3><h4>Groupe",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 454,
+      "firstColumn": 437,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "></header><main role='main'><artic",
+      "hiliteStart": 10,
+      "hiliteLength": 18
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 551,
+      "firstColumn": 524,
+      "subType": "warning",
+      "message": "The “complementary” role is unnecessary for element “aside”.",
+      "extract": "</article><aside role='complementary'><h2>As",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 628,
+      "firstColumn": 606,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": "p></aside><nav role='navigation'><ul><l",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    }
+  ]
+}
