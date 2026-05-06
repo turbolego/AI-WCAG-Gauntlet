@@ -220,26 +220,74 @@ async function readFeedback(previousDir) {
     return "";
   }
 
-  const feedbackParts = [];
-  const files = [
-    "test_results.json",
-    "html5_tags_report.json",
-    "w3c_report.json",
-    "axe_report.json",
-    "pa11y_report.json",
-    "qualweb_report.json",
-  ];
-  for (const filename of files) {
-    const fullPath = path.join(previousDir, filename);
-    try {
-      const content = await fs.readFile(fullPath, "utf8");
-      feedbackParts.push(`## ${filename}\n${content.slice(0, MAX_FEEDBACK_CHARS)}`);
-    } catch {
-      // ignore
+  try {
+    // Read test results to get latest iteration's metrics
+    const testResultsPath = path.join(previousDir, "test_results.json");
+    const testResults = await fs.readFile(testResultsPath, "utf8");
+    const results = JSON.parse(testResults);
+    
+    if (!Array.isArray(results) || results.length === 0) {
+      return "";
     }
-  }
 
-  return feedbackParts.join("\n\n");
+    // Only use latest iteration to prevent context bloat
+    const latest = results[results.length - 1];
+    
+    // Extract key metrics for the model to learn from
+    const feedbackParts = [];
+    
+    // Show score progression (help model see if it's improving)
+    if (results.length > 1) {
+      const scores = results.map(r => `${r.iteration}:${r.score}`).join(", ");
+      feedbackParts.push(`Score progression: ${scores}`);
+    }
+    
+    // Current iteration metrics
+    feedbackParts.push(`Current iteration ${latest.iteration}:`);
+    feedbackParts.push(`  Score: ${latest.score}/100`);
+    
+    if (latest.html_tag_errors > 0) {
+      feedbackParts.push(`  Missing HTML5 tags: ${latest.html_tag_errors}`);
+      if (latest.missing_tags && Array.isArray(latest.missing_tags)) {
+        const tags = latest.missing_tags.slice(0, 15).join(", ");
+        feedbackParts.push(`  Add these tags: ${tags}`);
+      }
+    }
+    
+    if (latest.w3c_errors > 0) {
+      feedbackParts.push(`  W3C HTML validation errors: ${latest.w3c_errors}`);
+    }
+    
+    if (latest.axe_violations > 0) {
+      feedbackParts.push(`  Accessibility violations (axe): ${latest.axe_violations}`);
+    }
+    
+    if (latest.pa11y_issues > 0) {
+      feedbackParts.push(`  Accessibility issues (pa11y): ${latest.pa11y_issues}`);
+    }
+    
+    return feedbackParts.join("\n");
+  } catch {
+    // Fallback to raw file reading if parsing fails
+    const feedbackParts = [];
+    const files = [
+      "test_results.json",
+      "html5_tags_report.json",
+      "w3c_report.json",
+      "axe_report.json",
+      "pa11y_report.json",
+    ];
+    for (const filename of files) {
+      const fullPath = path.join(previousDir, filename);
+      try {
+        const content = await fs.readFile(fullPath, "utf8");
+        feedbackParts.push(`## ${filename}\n${content.slice(0, MAX_FEEDBACK_CHARS)}`);
+      } catch {
+        // ignore
+      }
+    }
+    return feedbackParts.join("\n\n");
+  }
 }
 
 export function buildEndpoints(model, normalizedModel, token, keyToken) {
@@ -522,44 +570,83 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
     { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
   ];
 
-  const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ model, messages, max_tokens: 24576, response_format: { type: "json_object" } })
-  });
+  // Retry logic for transient Mistral API failures
+  const maxRetries = 2;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ model, messages, max_tokens: 24576, response_format: { type: "json_object" } })
+      });
 
-  if (!response.ok) {
-    const errorBody = (await response.text()).trim();
-    throw new Error(`Mistral request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+      if (!response.ok) {
+        const errorBody = (await response.text()).trim();
+        const error = `Mistral request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`;
+        if (attempt < maxRetries && response.status >= 500) {
+          console.warn(`${error} (attempt ${attempt}/${maxRetries}). Retrying...`);
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
+          continue;
+        }
+        throw new Error(error);
+      }
+
+      const payload = await response.json();
+      const choice = payload?.choices?.[0];
+      const finishReason = choice?.finish_reason ?? "unknown";
+      const messageContent = choice?.message?.content;
+      if (!messageContent) {
+        throw new Error(`Mistral response did not include content (finish_reason=${finishReason}).`);
+      }
+
+      if (finishReason === "length") {
+        console.warn(`Mistral response truncated (finish_reason=length, content length=${messageContent.length}). Attempting repair.`);
+      }
+      
+      if (finishReason === "error") {
+        console.warn(`Mistral API error (finish_reason=error). Response content length: ${messageContent.length}. This may indicate API overload or model limits. Attempting to parse partial response.`);
+      }
+
+      let jsonStr;
+      try {
+        jsonStr = extractAndRepairJson(messageContent);
+      } catch (e) {
+        throw new Error(`Failed to extract JSON from Mistral response (finish_reason=${finishReason}): ${e instanceof Error ? e.message : String(e)}`);
+      }
+
+      let parsed;
+      try {
+        parsed = JSON.parse(jsonStr);
+      } catch (e) {
+        throw new Error(`Failed to parse Mistral JSON (finish_reason=${finishReason}, content length=${messageContent.length}): ${e instanceof Error ? e.message : String(e)}`);
+      }
+
+      const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
+      if (missingFields.length > 0) {
+        throw new Error(`Mistral response JSON missing fields: ${missingFields.join(", ")} (finish_reason=${finishReason}, content length=${messageContent.length}). This may occur when the model context is too large or API is overloaded.`);
+      }
+
+      return {
+        html: String(parsed.html),
+        css: String(parsed.css),
+        js: String(parsed.js)
+      };
+    } catch (error) {
+      if (attempt === maxRetries) {
+        throw error;
+      }
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      if (errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5")) {
+        console.warn(`${errorMsg} (attempt ${attempt}/${maxRetries}). Retrying...`);
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
+        continue;
+      }
+      throw error;
+    }
   }
-
-  const payload = await response.json();
-  const choice = payload?.choices?.[0];
-  const finishReason = choice?.finish_reason ?? "unknown";
-  const messageContent = choice?.message?.content;
-  if (!messageContent) {
-    throw new Error(`Mistral response did not include content (finish_reason=${finishReason}).`);
-  }
-
-  if (finishReason === "length") {
-    console.warn(`Mistral response truncated (finish_reason=length, content length=${messageContent.length}). Attempting repair.`);
-  }
-
-  const jsonStr = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(jsonStr);
-  const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
-  if (missingFields.length > 0) {
-    throw new Error(`Mistral response JSON missing fields: ${missingFields.join(", ")} (finish_reason=${finishReason}, content length=${messageContent.length}).`);
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
 }
 
 async function writePage(outputDir, page) {
