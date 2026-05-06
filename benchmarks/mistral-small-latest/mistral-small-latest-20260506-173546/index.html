@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>Accessible Single Page App</title>
+    <meta name="description" content="An accessible single-page web application demonstrating proper HTML5 usage and accessibility best practices">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#ffffff">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    
+    <header role="banner">
+        <hgroup>
+            <h1>Accessible Web Application</h1>
+            <p><small>Demonstrating proper HTML5 structure and accessibility</small></p>
+        </hgroup>
+        
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#intro" aria-current="page">Introduction</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#interactive">Interactive Elements</a></li>
+                <li><a href="#media">Media Content</a></li>
+                <li><a href="#data">Data Tables</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section id="intro" aria-labelledby="intro-heading">
+            <h2 id="intro-heading">Introduction</h2>
+            <article>
+                <p>This single-page application demonstrates comprehensive HTML5 usage with a strong focus on accessibility. All required HTML5 tags are included, and the page follows WCAG 2.1 AA standards.</p>
+                
+                <blockquote cite="https://www.w3.org/WAI/standards-guidelines/">
+                    <p>"Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them."</p>
+                    <footer>
+                        <cite>W3C Web Accessibility Initiative</cite>
+                    </footer>
+                </blockquote>
+                
+                <p>This page includes semantic HTML5 elements, proper heading hierarchy, ARIA landmarks, and keyboard navigation support.</p>
+            </article>
+        </section>
+        
+        <section id="features" aria-labelledby="features-heading">
+            <h2 id="features-heading">Key Features</h2>
+            
+            <figure>
+                <img src="https://via.placeholder.com/800x400?text=Accessibility+Features" alt="Diagram showing accessibility features: keyboard navigation, screen reader support, color contrast, and semantic HTML" width="800" height="400">
+                <figcaption>Visual representation of accessibility features in web applications</figcaption>
+            </figure>
+            
+            <hr>
+            
+            <div class="feature-grid">
+                <article>
+                    <h3>Semantic Structure</h3>
+                    <p>Proper use of HTML5 elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;section&gt;</code> provides clear document structure for assistive technologies.</p>
+                </article>
+                
+                <article>
+                    <h3>Keyboard Navigation</h3>
+                    <p>All interactive elements are keyboard-operable with visible focus indicators and logical tab order.</p>
+                </article>
+                
+                <article>
+                    <h3>ARIA Landmarks</h3>
+                    <p>Landmark roles like <code>banner</code>, <code>navigation</code>, <code>main</code>, and <code>contentinfo</code> help screen reader users navigate efficiently.</p>
+                </article>
+                
+                <article>
+                    <h3>Form Accessibility</h3>
+                    <p>All form controls have associated labels, proper input types, and validation messages that are accessible to screen readers.</p>
+                </article>
+            </div>
+        </section>
+        
+        <section id="interactive" aria-labelledby="interactive-heading">
+            <h2 id="interactive-heading">Interactive Elements</h2>
+            
+            <form id="user-feedback" aria-labelledby="feedback-heading">
+                <fieldset>
+                    <legend id="feedback-heading">User Feedback</legend>
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select id="rating" name="rating" required aria-required="true">
+                            <optgroup label="Quality">
+                                <option value="excellent">Excellent</option>
+                                <option value="good">Good</option>
+                                <option value="average">Average</option>
+                            </optgroup>
+                            <optgroup label="Experience">
+                                <option value="great">Great Experience</option>
+                                <option value="poor">Poor Experience</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments">Comments:</label>
+                        <textarea id="comments" name="comments" rows="4" required aria-required="true"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Subscribe to newsletter:</legend>
+                            <div>
+                                <input type="radio" id="subscribe-yes" name="subscribe" value="yes">
+                                <label for="subscribe-yes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="subscribe-no" name="subscribe" value="no" checked>
+                                <label for="subscribe-no">No</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="favorite-color">Favorite Color:</label>
+                        <datalist id="color-list">
+                            <option value="red">
+                            <option value="blue">
+                            <option value="green">
+                            <option value="yellow">
+                            <option value="purple">
+                        </datalist>
+                        <input type="text" id="favorite-color" name="favorite-color" list="color-list">
+                    </div>
+                    
+                    <button type="submit">Submit Feedback</button>
+                    <button type="reset">Reset Form</button>
+                </fieldset>
+            </form>
+            
+            <details>
+                <summary>Advanced Options</summary>
+                <div class="details-content">
+                    <p>Additional form controls can be revealed here for users who need them.</p>
+                    <div class="form-group">
+                        <label for="preferences">Additional Preferences:</label>
+                        <select id="preferences" name="preferences" multiple size="3">
+                            <option value="notifications">Email Notifications</option>
+                            <option value="updates">Product Updates</option>
+                            <option value="promotions">Special Offers</option>
+                            <option value="events">Event Invitations</option>
+                        </select>
+                    </div>
+                </div>
+            </details>
+        </section>
+        
+        <section id="media" aria-labelledby="media-heading">
+            <h2 id="media-heading">Media Content</h2>
+            
+            <div class="media-container">
+                <div class="media-item">
+                    <h3>Audio Content</h3>
+                    <audio controls aria-label="Sample audio clip">
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="media-item">
+                    <h3>Video Content</h3>
+                    <video controls aria-label="Sample video clip" poster="https://via.placeholder.com/640x360?text=Video+Poster">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                        <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                        <track kind="subtitles" src="subtitles.vtt" srclang="es" label="Spanish">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+                
+                <div class="media-item">
+                    <h3>Embedded Content</h3>
+                    <iframe src="https://example.com/embedded-content" title="Embedded external content" aria-label="Embedded external content frame" width="600" height="400" allowfullscreen></iframe>
+                </div>
+                
+                <div class="media-item">
+                    <h3>Interactive Map</h3>
+                    <div class="map-container">
+                        <img src="https://via.placeholder.com/600x400?text=Interactive+Map" usemap="#interactive-map" alt="Interactive map showing locations" width="600" height="400">
+                        <map name="interactive-map">
+                            <area shape="rect" coords="50,50,150,150" href="#location1" alt="Location 1" aria-label="Location 1: Downtown Office">
+                            <area shape="circle" coords="300,200,50" href="#location2" alt="Location 2" aria-label="Location 2: Central Park">
+                            <area shape="poly" coords="400,100,450,150,400,200,350,150" href="#location3" alt="Location 3" aria-label="Location 3: City Hall">
+                        </map>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <h3>Object Embed</h3>
+                    <object type="application/pdf" data="https://example.com/sample.pdf" width="600" height="400" aria-label="PDF document viewer">
+                        <p>Your browser does not support PDF embedding. <a href="https://example.com/sample.pdf">Download the PDF instead</a>.</p>
+                    </object>
+                </div>
+            </div>
+        </section>
+        
+        <section id="data" aria-labelledby="data-heading">
+            <h2 id="data-heading">Data Tables</h2>
+            
+            <div class="table-container">
+                <table>
+                    <caption>Website Accessibility Statistics</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Compliance Level</th>
+                            <th scope="col">Implementation Status</th>
+                            <th scope="col">WCAG Reference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Semantic HTML</th>
+                            <td><meter value="1" min="0" max="1" aria-label="Semantic HTML compliance">100%</meter></td>
+                            <td>✅ Implemented</td>
+                            <td><a href="https://www.w3.org/TR/WCAG21/#semantics">1.3.1 Info and Relationships</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Keyboard Navigation</th>
+                            <td><meter value="0.9" min="0" max="1" aria-label="Keyboard navigation compliance">90%</meter></td>
+                            <td>✅ Implemented</td>
+                            <td><a href="https://www.w3.org/TR/WCAG21/#keyboard">2.1 Keyboard Accessible</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Color Contrast</th>
+                            <td><meter value="1" min="0" max="1" aria-label="Color contrast compliance">100%</meter></td>
+                            <td>✅ Implemented</td>
+                            <td><a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">1.4.3 Contrast (Minimum)</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Screen Reader Support</th>
+                            <td><meter value="0.85" min="0" max="1" aria-label="Screen reader support compliance">85%</meter></td>
+                            <td>✅ Implemented</td>
+                            <td><a href="https://www.w3.org/TR/WCAG21/#name-role-value">4.1 Compatible</a></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Total Compliance</th>
+                            <td colspan="3"><progress value="0.92" max="1" aria-label="Overall compliance">92%</progress></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        
+        <section id="feedback" aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading">User Feedback</h2>
+            
+            <form id="quick-feedback" aria-labelledby="quick-feedback-heading">
+                <h3 id="quick-feedback-heading">Quick Feedback</h3>
+                
+                <div class="form-group">
+                    <label for="quick-rating">How would you rate this page?</label>
+                    <select id="quick-rating" name="quick-rating">
+                        <option value="5">Excellent</option>
+                        <option value="4">Good</option>
+                        <option value="3">Average</option>
+                        <option value="2">Poor</option>
+                        <option value="1">Very Poor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quick-comments">Comments (optional):</label>
+                    <textarea id="quick-comments" name="quick-comments" rows="2"></textarea>
+                </div>
+                
+                <button type="submit">Submit Quick Feedback</button>
+            </form>
+            
+            <address>
+                <p>For questions or feedback, contact us at:
+                <a href="mailto:accessibility@example.com">accessibility@example.com</a></p>
+                <p>Follow us on <a href="https://social.example.com/accessibility" aria-label="Follow us on social media">social media</a>.</p>
+            </address>
+        </section>
+    </main>
+    
+    <footer role="contentinfo">
+        <p><small>&copy; <time datetime="2023">2023</time> Accessible Web Applications. All rights reserved.</small></p>
+        <p><small>Last updated: <time datetime="2023-11-15">November 15, 2023</time></small></p>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#top">Back to top</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="accessibility.html">Accessibility Statement</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <script src="script.js" defer></script>
+    
+    <noscript>
+        <div class="noscript-message">
+            <p><strong>JavaScript is disabled in your browser.</strong></p>
+            <p>This application requires JavaScript for full functionality. Please enable JavaScript or use a browser with JavaScript support.</p>
+            <p>For keyboard-only users: Use the skip link at the top of the page to navigate directly to main content.</p>
+        </div>
+    </noscript>
+</body>
+</html>

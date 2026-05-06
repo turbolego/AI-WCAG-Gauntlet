@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-06T16:54:50.606Z",
-  "total_runs": 10,
-  "total_models": 4,
+  "generated_at": "2026-05-06T18:00:54.579Z",
+  "total_runs": 12,
+  "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -68,6 +68,27 @@
       "rank": 3
     },
     {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260506-190246",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-06T17:02:46Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html",
+      "rank": 4
+    },
+    {
       "model": "gpt-4o",
       "run_id": "GPT-4o-20260503-090800",
       "source": "local",
@@ -86,7 +107,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
-      "rank": 4
+      "rank": 5
     },
     {
       "model": "gpt-4o",
@@ -107,7 +128,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 5
+      "rank": 6
     },
     {
       "model": "gpt-4o",
@@ -128,7 +149,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
-      "rank": 6
+      "rank": 7
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -149,7 +170,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 7
+      "rank": 8
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -170,7 +191,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 8
+      "rank": 9
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -191,7 +212,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 9
+      "rank": 10
     },
     {
       "model": "mistral-large-latest",
@@ -212,7 +233,28 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 10
+      "rank": 11
+    },
+    {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260506-173546",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-06T17:35:46Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
+      "rank": 12
     }
   ],
   "runs_by_model": [
@@ -266,6 +308,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-03T09:24:16Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260506-190246",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-06T17:02:46Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html"
     },
     {
       "model": "gpt-4o",
@@ -385,6 +444,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T10:46:34Z",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html"
+    },
+    {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260506-173546",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-06T17:35:46Z",
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -1000,6 +1076,21 @@
             "timestamp": "2026-05-03T09:24:16Z"
           }
         ]
+      },
+      {
+        "run_id": "GPT-4.1-20260506-190246",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T17:02:46Z"
+          }
+        ]
       }
     ],
     "gpt-4o": [
@@ -1112,6 +1203,23 @@
           }
         ]
       }
+    ],
+    "mistral-small-latest": [
+      {
+        "run_id": "mistral-small-latest-20260506-173546",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T17:35:46Z"
+          }
+        ]
+      }
     ]
   },
   "error_breakdown": [
@@ -1150,6 +1258,15 @@
       "axe_violations": 0,
       "pa11y_issues": 0,
       "qualweb_issues": 0
+    },
+    {
+      "model": "mistral-small-latest",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
     }
   ],
   "tag_coverage_by_model": [
@@ -1173,6 +1290,12 @@
     },
     {
       "model": "mistral-large-latest",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "mistral-small-latest",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100

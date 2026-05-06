@@ -1,0 +1,137 @@
+{
+  "validates": false,
+  "errorCount": 2,
+  "messageCount": 12,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 15,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n    \n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 21,
+      "lastColumn": 60,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": " \n        <nav role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 52
+    },
+    {
+      "type": "info",
+      "lastLine": 33,
+      "lastColumn": 40,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "\n    \n    <main id=\"main-content\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "info",
+      "lastLine": 36,
+      "lastColumn": 21,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Article lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all articles.",
+      "extract": "          <article>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "info",
+      "lastLine": 92,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 97,
+      "lastColumn": 98,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 102,
+      "lastColumn": 88,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <select id=\"rating\" name=\"rating\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 64
+    },
+    {
+      "type": "error",
+      "lastLine": 112,
+      "lastColumn": 33,
+      "firstColumn": 25,
+      "message": "A “select” element with a “required” attribute, and without a “multiple” attribute, and without a “size” attribute whose value is greater than “1”, must have a child “option” element.",
+      "extract": "          </select>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "info",
+      "lastLine": 117,
+      "lastColumn": 103,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <textarea id=\"comments\" name=\"comments\" rows=\"4\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 79
+    },
+    {
+      "type": "error",
+      "lastLine": 268,
+      "lastColumn": 38,
+      "firstColumn": 13,
+      "message": "Duplicate ID “feedback-heading”.",
+      "extract": "          <h2 id=\"feedback-heading\">User F",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "info",
+      "lastLine": 88,
+      "lastColumn": 50,
+      "firstColumn": 21,
+      "subType": "warning",
+      "message": "The first occurrence of ID “feedback-heading” was here.",
+      "extract": "          <legend id=\"feedback-heading\">User F",
+      "hiliteStart": 10,
+      "hiliteLength": 30
+    },
+    {
+      "type": "info",
+      "lastLine": 300,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n    \n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}
