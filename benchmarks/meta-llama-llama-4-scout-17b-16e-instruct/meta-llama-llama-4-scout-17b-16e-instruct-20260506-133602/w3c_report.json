@@ -1,0 +1,50 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 4,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 224,
+      "firstColumn": 210,
+      "message": "The “base” element must come before any “link” or “script” elements in the document.",
+      "extract": "tyle.css'><base href='/'><link ",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 295,
+      "firstColumn": 274,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "ead><body><header role='banner'><h1>Ac",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 352,
+      "firstColumn": 330,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": "d SPA</h1><nav role='navigation'><ul><l",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 482,
+      "firstColumn": 455,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "></header><main id='main' role='main'><secti",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    }
+  ]
+}
