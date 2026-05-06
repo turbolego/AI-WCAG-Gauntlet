@@ -6,7 +6,7 @@ on:
       iterations:
         description: Number of benchmark iterations to run
         required: true
-        default: "3"
+        default: "20"
       model:
         description: Hugging Face model to benchmark (must be available on HF inference API)
         required: true
