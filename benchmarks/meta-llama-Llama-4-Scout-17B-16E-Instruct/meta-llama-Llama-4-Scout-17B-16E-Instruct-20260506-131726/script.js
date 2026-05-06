@@ -1,0 +1,1 @@
+const form = document.querySelector('form'); form.addEventListener('submit', (e) => { e.preventDefault(); alert('Form submitted'); }); const button = document.querySelector('button'); button.addEventListener('click', () => { alert('Button clicked'); });

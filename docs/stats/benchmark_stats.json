@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-06T11:31:15.945192Z",
-  "total_runs": 8,
+  "generated_at": "2026-05-06T13:20:44.304747Z",
+  "total_runs": 9,
   "total_models": 4,
   "total_tags": 113,
   "leaderboard": [
@@ -138,6 +138,28 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 33.0,
+      "html_tag_errors": 80,
+      "w3c_errors": 2,
+      "axe_violations": 2,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-06T13:20:40Z",
+      "tag_coverage_pct": 29.2,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726/index.html",
+      "rank": 7
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
       "source": "local",
       "provider": "groq",
@@ -156,7 +178,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html",
-      "rank": 7
+      "rank": 8
     },
     {
       "model": "GPT-4o",
@@ -178,7 +200,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 8
+      "rank": 9
     }
   ],
   "runs_by_model": [
@@ -292,6 +314,24 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 33.0,
+      "final_html_errors": 80,
+      "final_w3c_errors": 2,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-06T13:20:40Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
       "source": "local",
       "provider": "groq",
@@ -330,503 +370,503 @@
   "missing_tags_frequency": [
     {
       "tag": "tfoot",
-      "miss_count": 5,
-      "miss_pct": 62.5
+      "miss_count": 6,
+      "miss_pct": 66.7
     },
     {
       "tag": "caption",
-      "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 55.6
     },
     {
       "tag": "col",
-      "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 55.6
     },
     {
       "tag": "colgroup",
-      "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_count": 5,
+      "miss_pct": 55.6
     },
     {
       "tag": "data",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "meter",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "object",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "pre",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "selectedcontent",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "track",
+      "miss_count": 5,
+      "miss_pct": 55.6
+    },
+    {
+      "tag": "address",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "audio",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "bdi",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "bdo",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "br",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "datalist",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "dd",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "dfn",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "dialog",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "dl",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "dt",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "embed",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "h6",
+      "miss_count": 4,
+      "miss_pct": 44.4
     },
     {
       "tag": "hgroup",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "iframe",
+      "tag": "hr",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "meter",
+      "tag": "kbd",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "object",
+      "tag": "menu",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "pre",
+      "tag": "noscript",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "selectedcontent",
+      "tag": "ol",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "track",
+      "tag": "progress",
       "miss_count": 4,
-      "miss_pct": 50.0
+      "miss_pct": 44.4
     },
     {
-      "tag": "address",
+      "tag": "rp",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "rt",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "ruby",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "samp",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "search",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "select",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "slot",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "small",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "span",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "strong",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "sub",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "sup",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "table",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "tbody",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "td",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "template",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "textarea",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "th",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "thead",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "time",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "tr",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "video",
+      "miss_count": 4,
+      "miss_pct": 44.4
+    },
+    {
+      "tag": "abbr",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "audio",
+      "tag": "b",
       "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "bdi",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "bdo",
-      "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
       "tag": "blockquote",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "br",
+      "tag": "canvas",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "datalist",
+      "tag": "cite",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "dd",
+      "tag": "code",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "dfn",
+      "tag": "del",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "dialog",
+      "tag": "details",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "dl",
+      "tag": "div",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "dt",
+      "tag": "em",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "embed",
+      "tag": "fieldset",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "h6",
+      "tag": "h5",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "hr",
+      "tag": "i",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "kbd",
+      "tag": "ins",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "menu",
+      "tag": "legend",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "noscript",
+      "tag": "output",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "ol",
+      "tag": "picture",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "progress",
+      "tag": "q",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "rp",
+      "tag": "s",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "rt",
+      "tag": "source",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "ruby",
+      "tag": "summary",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "samp",
+      "tag": "u",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "search",
+      "tag": "var",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "select",
+      "tag": "wbr",
       "miss_count": 3,
-      "miss_pct": 37.5
+      "miss_pct": 33.3
     },
     {
-      "tag": "slot",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "small",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "span",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "strong",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "sub",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "sup",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "table",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "tbody",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "td",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "template",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "textarea",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "th",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "thead",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "time",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "tr",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "video",
-      "miss_count": 3,
-      "miss_pct": 37.5
-    },
-    {
-      "tag": "abbr",
+      "tag": "area",
       "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "b",
-      "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "button",
       "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "canvas",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "cite",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "code",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "del",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "details",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "div",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "em",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "fieldset",
-      "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "figcaption",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "figure",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "form",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "h2",
       "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "h5",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "i",
-      "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "img",
       "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "ins",
-      "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "label",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
-      "tag": "legend",
+      "tag": "map",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
-      "tag": "output",
+      "tag": "mark",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
-      "tag": "picture",
+      "tag": "optgroup",
       "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
-      "tag": "q",
+      "tag": "option",
       "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "s",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "source",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "summary",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "u",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "var",
-      "miss_count": 2,
-      "miss_pct": 25.0
-    },
-    {
-      "tag": "wbr",
-      "miss_count": 2,
-      "miss_pct": 25.0
+      "miss_pct": 22.2
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 12.5
-    },
-    {
-      "tag": "area",
-      "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "article",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "base",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "h3",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "h4",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "input",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 12.5
-    },
-    {
-      "tag": "map",
-      "miss_count": 1,
-      "miss_pct": 12.5
-    },
-    {
-      "tag": "mark",
-      "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 12.5
-    },
-    {
-      "tag": "optgroup",
-      "miss_count": 1,
-      "miss_pct": 12.5
-    },
-    {
-      "tag": "option",
-      "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "script",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "style",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 12.5
+      "miss_pct": 11.1
     },
     {
       "tag": "aside",
@@ -1935,6 +1975,231 @@
             "timestamp": "2026-05-06T10:44:43Z"
           }
         ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 24.0,
+            "html_tag_errors": 91,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:17:38Z"
+          },
+          {
+            "iteration": 2,
+            "score": 25.0,
+            "html_tag_errors": 91,
+            "w3c_errors": 2,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:17:46Z"
+          },
+          {
+            "iteration": 3,
+            "score": 25.82,
+            "html_tag_errors": 90,
+            "w3c_errors": 2,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:17:54Z"
+          },
+          {
+            "iteration": 4,
+            "score": 31.64,
+            "html_tag_errors": 78,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:02Z"
+          },
+          {
+            "iteration": 5,
+            "score": 90.0,
+            "html_tag_errors": 4,
+            "w3c_errors": 2,
+            "axe_violations": 12,
+            "pa11y_issues": 12,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:14Z"
+          },
+          {
+            "iteration": 6,
+            "score": 91.64,
+            "html_tag_errors": 3,
+            "w3c_errors": 2,
+            "axe_violations": 9,
+            "pa11y_issues": 9,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:27Z"
+          },
+          {
+            "iteration": 7,
+            "score": 69.64,
+            "html_tag_errors": 34,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:38Z"
+          },
+          {
+            "iteration": 8,
+            "score": 34.55,
+            "html_tag_errors": 72,
+            "w3c_errors": 2,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:47Z"
+          },
+          {
+            "iteration": 9,
+            "score": 36.73,
+            "html_tag_errors": 75,
+            "w3c_errors": 2,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:18:55Z"
+          },
+          {
+            "iteration": 10,
+            "score": 38.36,
+            "html_tag_errors": 71,
+            "w3c_errors": 2,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:04Z"
+          },
+          {
+            "iteration": 11,
+            "score": 63.0,
+            "html_tag_errors": 37,
+            "w3c_errors": 2,
+            "axe_violations": 5,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:17Z"
+          },
+          {
+            "iteration": 12,
+            "score": 26.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 2,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:25Z"
+          },
+          {
+            "iteration": 13,
+            "score": 22.0,
+            "html_tag_errors": 91,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:33Z"
+          },
+          {
+            "iteration": 14,
+            "score": 33.27,
+            "html_tag_errors": 76,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:41Z"
+          },
+          {
+            "iteration": 15,
+            "score": 84.27,
+            "html_tag_errors": 10,
+            "w3c_errors": 2,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:19:53Z"
+          },
+          {
+            "iteration": 16,
+            "score": 25.82,
+            "html_tag_errors": 90,
+            "w3c_errors": 2,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:20:02Z"
+          },
+          {
+            "iteration": 17,
+            "score": 26.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 2,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:20:10Z"
+          },
+          {
+            "iteration": 18,
+            "score": 25.27,
+            "html_tag_errors": 87,
+            "w3c_errors": 2,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:20:18Z"
+          },
+          {
+            "iteration": 19,
+            "score": 85.91,
+            "html_tag_errors": 9,
+            "w3c_errors": 2,
+            "axe_violations": 11,
+            "pa11y_issues": 8,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:20:32Z"
+          },
+          {
+            "iteration": 20,
+            "score": 33.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 2,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-06T13:20:40Z"
+          }
+        ]
       }
     ],
     "mistral-large-latest": [
@@ -2195,10 +2460,10 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "score": 28.64,
-      "html_tag_errors": 89,
-      "w3c_errors": 0,
-      "axe_violations": 1,
+      "score": 33.0,
+      "html_tag_errors": 80,
+      "w3c_errors": 2,
+      "axe_violations": 2,
       "pa11y_issues": 0,
       "qualweb_issues": 0
     }
@@ -2224,9 +2489,9 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "used_count": 24,
-      "missing_count": 89,
-      "coverage_pct": 21.2
+      "used_count": 33,
+      "missing_count": 80,
+      "coverage_pct": 29.2
     }
   ]
 }
