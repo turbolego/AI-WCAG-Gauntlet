@@ -27,6 +27,11 @@ function parseArgs(argv) {
   return args;
 }
 
+/** Normalize model name to lowercase for case-insensitive grouping */
+function normalizeModelName(name) {
+  return name.toLowerCase();
+}
+
 function readJSON(filePath) {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -198,11 +203,12 @@ function main() {
     benchmark_url: entry.benchmark_url,
   }));
 
-  // error_breakdown: best run per model
+  // error_breakdown: best run per model (case-insensitive grouping)
   const bestPerModel = {};
   for (const entry of leaderboard) {
-    if (!bestPerModel[entry.model] || entry.score > bestPerModel[entry.model].score) {
-      bestPerModel[entry.model] = entry;
+    const normalizedModel = normalizeModelName(entry.model);
+    if (!bestPerModel[normalizedModel] || entry.score > bestPerModel[normalizedModel].score) {
+      bestPerModel[normalizedModel] = entry;
     }
   }
   const errorBreakdown = Object.values(bestPerModel).map(e => ({
@@ -215,7 +221,7 @@ function main() {
     qualweb_issues: e.qualweb_issues,
   }));
 
-  // tag_coverage_by_model: best run per model
+  // tag_coverage_by_model: best run per model (case-insensitive grouping)
   const tagCoverageByModel = Object.values(bestPerModel).map(e => ({
     model: e.model,
     used_count: TOTAL_TAGS - e.html_tag_errors,
@@ -239,11 +245,12 @@ function main() {
     miss_pct: totalRuns > 0 ? +((tagMissCounts[tag] / totalRuns) * 100).toFixed(1) : 0,
   }));
 
-  // model_progress: keyed by model → array of session objects with iterations
+  // model_progress: keyed by normalized model name → array of session objects with iterations
   const modelProgress = {};
   for (const session of allSessions) {
-    if (!modelProgress[session.model]) modelProgress[session.model] = [];
-    modelProgress[session.model].push({
+    const normalizedModel = normalizeModelName(session.model);
+    if (!modelProgress[normalizedModel]) modelProgress[normalizedModel] = [];
+    modelProgress[normalizedModel].push({
       run_id: session.run_id,
       iterations: session.iterations.map(it => ({
         iteration: it.iteration,
@@ -259,7 +266,7 @@ function main() {
     });
   }
 
-  const uniqueModels = new Set(leaderboard.map(e => e.model));
+  const uniqueModels = new Set(leaderboard.map(e => normalizeModelName(e.model)));
 
   const stats = {
     generated_at: new Date().toISOString(),

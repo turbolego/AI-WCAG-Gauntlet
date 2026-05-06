@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-06T13:39:22.533Z",
+  "generated_at": "2026-05-06T14:40:23.632Z",
   "total_runs": 10,
-  "total_models": 5,
+  "total_models": 4,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -173,7 +173,7 @@
       "rank": 8
     },
     {
-      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602",
       "source": "local",
       "provider": "groq",
@@ -190,7 +190,7 @@
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
       "rank": 9
     },
     {
@@ -353,7 +353,7 @@
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726/index.html"
     },
     {
-      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
       "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602",
       "source": "local",
       "provider": "groq",
@@ -367,7 +367,7 @@
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T13:36:02Z",
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html"
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html"
     },
     {
       "model": "mistral-large-latest",
@@ -955,7 +955,7 @@
     }
   ],
   "model_progress": {
-    "GPT-4.1": [
+    "gpt-4.1": [
       {
         "run_id": "GPT-4.1-20260503-094502",
         "iterations": [
@@ -1002,7 +1002,7 @@
         ]
       }
     ],
-    "GPT-4o": [
+    "gpt-4o": [
       {
         "run_id": "GPT-4o-20260503-090800",
         "iterations": [
@@ -1049,7 +1049,7 @@
         ]
       }
     ],
-    "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
+    "meta-llama-llama-4-scout-17b-16e-instruct": [
       {
         "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
         "iterations": [
@@ -1079,9 +1079,7 @@
             "timestamp": "2026-05-06T13:17:26Z"
           }
         ]
-      }
-    ],
-    "meta-llama-llama-4-scout-17b-16e-instruct": [
+      },
       {
         "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602",
         "iterations": [
@@ -1145,15 +1143,6 @@
       "qualweb_issues": 0
     },
     {
-      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0
-    },
-    {
       "model": "mistral-large-latest",
       "score": 200,
       "html_tag_errors": 0,
@@ -1178,12 +1167,6 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
-    },
-    {
-      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100
