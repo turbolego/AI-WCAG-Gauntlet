@@ -1,0 +1,62 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 5,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 11,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n    \n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 15,
+      "lastColumn": 40,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "\n    \n    <main id=\"main-content\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "info",
+      "lastLine": 25,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 30,
+      "lastColumn": 98,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 50,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n    \n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}

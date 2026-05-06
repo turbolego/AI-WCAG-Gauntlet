@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Form App</title>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    
+    <header role="banner">
+        <h1>Accessible Form Application</h1>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section aria-labelledby="form-section-heading">
+            <h2 id="form-section-heading">User Information</h2>
+            
+            <form id="user-form" aria-labelledby="form-section-heading">
+                <fieldset>
+                    <legend>Personal Details</legend>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" min="18" max="120">
+                    </div>
+                </fieldset>
+                
+                <button type="button" id="submit-btn" class="primary-btn">Submit</button>
+                <button type="reset" id="reset-btn">Reset</button>
+            </form>
+        </section>
+        
+        <section aria-labelledby="results-heading">
+            <h2 id="results-heading">Results</h2>
+            <div id="results" role="region" aria-live="polite"></div>
+        </section>
+    </main>
+    
+    <footer role="contentinfo">
+        <p>&copy; 2023 Accessible Form App. All rights reserved.</p>
+    </footer>
+</body>
+</html>
