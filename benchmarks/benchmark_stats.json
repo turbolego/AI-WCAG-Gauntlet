@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-06T10:44:45.951Z",
-  "total_runs": 7,
-  "total_models": 3,
+  "generated_at": "2026-05-06T11:31:15.766Z",
+  "total_runs": 8,
+  "total_models": 4,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -150,6 +150,27 @@
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html",
       "rank": 7
+    },
+    {
+      "model": "mistral-large-latest",
+      "run_id": "mistral-large-latest-20260506-104634",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-06T10:46:34Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
+      "rank": 8
     }
   ],
   "runs_by_model": [
@@ -271,6 +292,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T10:41:43Z",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html"
+    },
+    {
+      "model": "mistral-large-latest",
+      "run_id": "mistral-large-latest-20260506-104634",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-06T10:46:34Z",
+      "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -951,6 +989,23 @@
           }
         ]
       }
+    ],
+    "mistral-large-latest": [
+      {
+        "run_id": "mistral-large-latest-20260506-104634",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T10:46:34Z"
+          }
+        ]
+      }
     ]
   },
   "error_breakdown": [
@@ -980,6 +1035,15 @@
       "axe_violations": 0,
       "pa11y_issues": 0,
       "qualweb_issues": 0
+    },
+    {
+      "model": "mistral-large-latest",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
     }
   ],
   "tag_coverage_by_model": [
@@ -997,6 +1061,12 @@
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "mistral-large-latest",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100

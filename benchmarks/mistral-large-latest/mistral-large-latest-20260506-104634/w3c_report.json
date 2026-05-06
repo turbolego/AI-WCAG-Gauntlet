@@ -1,0 +1,17 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 1,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 33,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Demons",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}
