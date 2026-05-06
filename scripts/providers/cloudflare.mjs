@@ -22,8 +22,8 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   
   const exampleJson = {
     html: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Page</title></head><body><header><h1>Header</h1></header><main><p>Main</p><button>Button</button><form><label for="i">Label</label><input id="i" type="text"></form></main><footer>Footer</footer></body></html>`,
-    css: `body { font-family: Arial, sans-serif; margin: 0; padding: 20px; } header, footer { background: #f0f0f0; padding: 10px; } button { padding: 10px 20px; cursor: pointer; } input { padding: 8px; }`,
-    js: `document.querySelector('button').addEventListener('click', function() { alert('Button clicked'); });`
+    css: `body{font-family:Arial,sans-serif;margin:0;padding:20px}header,footer{background:#f0f0f0;padding:10px}button{padding:10px 20px;cursor:pointer}input{padding:8px}`,
+    js: `document.querySelector('button').addEventListener('click',function(){alert('clicked');});`
   };
   
   const userPrompt = feedback
@@ -45,7 +45,7 @@ export default async function generateWithCloudflare({ model, token, accountId, 
       "content-type": "application/json",
       authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ messages, max_tokens: 2000 })
+    body: JSON.stringify({ messages, max_tokens: 4000 })
   });
 
   if (!response.ok) {
@@ -57,6 +57,10 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   let messageContent = payload?.result?.response;
   if (!messageContent && typeof payload?.result === "string") {
     messageContent = payload.result;
+  }
+  // Try OpenAI-style format (choices array)
+  if (!messageContent && payload?.result?.choices?.[0]?.message?.content) {
+    messageContent = payload.result.choices[0].message?.content;
   }
   // Try reasoning field if content is null (some models use this)
   if (!messageContent && payload?.result?.choices?.[0]?.message?.reasoning) {
