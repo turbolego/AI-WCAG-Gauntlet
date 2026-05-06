@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T16:01:15.859Z",
+  "generated_at": "2026-05-06T16:54:50.606Z",
   "total_runs": 10,
   "total_models": 4,
   "total_tags": 113,
@@ -132,7 +132,7 @@
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -148,12 +148,12 @@
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html",
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
       "rank": 7
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -169,7 +169,7 @@
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726/index.html",
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
       "rank": 8
     },
     {
@@ -320,7 +320,7 @@
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -333,11 +333,11 @@
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T10:41:43Z",
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html"
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html"
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726",
       "source": "local",
       "provider": "groq",
       "providerLabel": "Groq LPU",
@@ -350,7 +350,7 @@
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T13:17:26Z",
-      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726/index.html"
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html"
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1051,7 +1051,7 @@
     ],
     "meta-llama-llama-4-scout-17b-16e-instruct": [
       {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
+        "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
         "iterations": [
           {
             "iteration": 1,
@@ -1066,7 +1066,7 @@
         ]
       },
       {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-131726",
+        "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726",
         "iterations": [
           {
             "iteration": 1,
