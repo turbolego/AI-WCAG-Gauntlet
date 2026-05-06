@@ -30,7 +30,7 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   ];
 
   // Debug: log what the model will receive
-  console.log(`[Cloudflare] Sending message to model (system + user combined): ${prompt.length + (feedback ? feedback.length : 0)} total chars`);
+  console.log(`[Cloudflare] Sending message to model (system + user combined): ${systemPrompt.length + userPrompt.length} total chars`);
 
   const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`;
   const response = await fetch(url, {
