@@ -653,6 +653,168 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
   }
 }
 
+async function generateWithCohere({ model, token, iteration, feedback }) {
+  const prompt = [
+    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+    "Requirements:",
+    "- Use every required HTML5 tag at least once in the generated HTML.",
+    "- Required tags:",
+    REQUIRED_HTML5_TAGS.join(", "),
+    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+    "- Do not include markdown fences or explanations.",
+    "- Output ONLY the raw JSON object, no markdown code fences.",
+    `- This is iteration ${iteration}.`,
+    feedback ? "- Improve based on previous reports provided below." : ""
+  ].filter(Boolean).join("\n");
+
+  const messages = [
+    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+  ];
+
+  const response = await fetch("https://api.cohere.ai/compatibility/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ model, messages, max_tokens: 8000, response_format: { type: "json_object" } })
+  });
+
+  if (!response.ok) {
+    const errorBody = (await response.text()).trim();
+    throw new Error(`Cohere request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+  }
+
+  const payload = await response.json();
+  const messageContent = payload?.choices?.[0]?.message?.content;
+  if (!messageContent) {
+    throw new Error("Cohere response did not include content.");
+  }
+
+  const repaired = extractAndRepairJson(messageContent);
+  const parsed = JSON.parse(repaired);
+  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+    throw new Error("Cohere response JSON missing html/css/js fields.");
+  }
+
+  return {
+    html: String(parsed.html),
+    css: String(parsed.css),
+    js: String(parsed.js)
+  };
+}
+
+async function generateWithCloudflare({ model, token, accountId, iteration, feedback }) {
+  const prompt = [
+    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+    "Requirements:",
+    "- Use every required HTML5 tag at least once in the generated HTML.",
+    "- Required tags:",
+    REQUIRED_HTML5_TAGS.join(", "),
+    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+    "- Do not include markdown fences or explanations.",
+    "- Output ONLY the raw JSON object, no markdown code fences.",
+    `- This is iteration ${iteration}.`,
+    feedback ? "- Improve based on previous reports provided below." : ""
+  ].filter(Boolean).join("\n");
+
+  const messages = [
+    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+  ];
+
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/v1/chat/completions`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ model, messages, max_tokens: 8000 })
+    }
+  );
+
+  if (!response.ok) {
+    const errorBody = (await response.text()).trim();
+    throw new Error(`Cloudflare request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+  }
+
+  const payload = await response.json();
+  const messageContent = payload?.result?.response || payload?.choices?.[0]?.message?.content;
+  if (!messageContent) {
+    throw new Error("Cloudflare response did not include content.");
+  }
+
+  const repaired = extractAndRepairJson(messageContent);
+  const parsed = JSON.parse(repaired);
+  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+    throw new Error("Cloudflare response JSON missing html/css/js fields.");
+  }
+
+  return {
+    html: String(parsed.html),
+    css: String(parsed.css),
+    js: String(parsed.js)
+  };
+}
+
+async function generateWithAlibaba({ model, token, iteration, feedback }) {
+  const prompt = [
+    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
+    "Requirements:",
+    "- Use every required HTML5 tag at least once in the generated HTML.",
+    "- Required tags:",
+    REQUIRED_HTML5_TAGS.join(", "),
+    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
+    "- Do not include markdown fences or explanations.",
+    "- Output ONLY the raw JSON object, no markdown code fences.",
+    `- This is iteration ${iteration}.`,
+    feedback ? "- Improve based on previous reports provided below." : ""
+  ].filter(Boolean).join("\n");
+
+  const messages = [
+    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
+    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+  ];
+
+  const response = await fetch(
+    "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ model, messages, max_tokens: 8000, response_format: { type: "json_object" } })
+    }
+  );
+
+  if (!response.ok) {
+    const errorBody = (await response.text()).trim();
+    throw new Error(`Alibaba DashScope request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
+  }
+
+  const payload = await response.json();
+  const messageContent = payload?.choices?.[0]?.message?.content;
+  if (!messageContent) {
+    throw new Error("Alibaba DashScope response did not include content.");
+  }
+
+  const repaired = extractAndRepairJson(messageContent);
+  const parsed = JSON.parse(repaired);
+  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
+    throw new Error("Alibaba DashScope response JSON missing html/css/js fields.");
+  }
+
+  return {
+    html: String(parsed.html),
+    css: String(parsed.css),
+    js: String(parsed.js)
+  };
+}
+
 async function writePage(outputDir, page) {
   await fs.mkdir(outputDir, { recursive: true });
   await fs.writeFile(path.join(outputDir, "index.html"), page.html, "utf8");
@@ -712,6 +874,62 @@ async function main() {
       }
     } else {
       modelError = "No MISTRAL_TOKEN available for Mistral request.";
+    }
+  } else if (provider === "cohere") {
+    const cohereToken = process.env.COHERE_TOKEN;
+    if (cohereToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithCohere({
+          model: modelArg,
+          token: cohereToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No COHERE_TOKEN available for Cohere request.";
+    }
+  } else if (provider === "cloudflare") {
+    const cloudflareToken = process.env.CLOUDFLARE_TOKEN;
+    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
+    if (cloudflareToken && accountId) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithCloudflare({
+          model: modelArg,
+          token: cloudflareToken,
+          accountId,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = cloudflareToken ? "No CLOUDFLARE_ACCOUNT_ID available for Cloudflare request." : "No CLOUDFLARE_TOKEN available for Cloudflare request.";
+    }
+  } else if (provider === "alibaba") {
+    const alibabaToken = process.env.ALIBABA_TOKEN;
+    if (alibabaToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        generated = await generateWithAlibaba({
+          model: modelArg,
+          token: alibabaToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+      }
+    } else {
+      modelError = "No ALIBABA_TOKEN available for Alibaba DashScope request.";
     }
   } else if (provider === "huggingface" || provider === "groq") {
     const hfToken = provider === "groq"

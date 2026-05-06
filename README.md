@@ -16,9 +16,10 @@ The AI must autonomously iterates until it achieves:
    ```
 2. **Initialize Agent**: Load `BENCHMARK.md` into your AI's Planning/Agent mode.
     > Example prompt used on GPT-4o with `BENCHMARK.md`, `test-suite.ps1` and `setup.ps1` as added context:
-    >
-    > Create a new benchmark run by executing setup.ps1 or setup.sh. Then find the newest benchmark folder under benchmarks/<MODEL_NAME>/ by timestamp and run test-suite.ps1 or test-suite.sh against that folder. After each run, read the STATUS: line:
+    ```
+    Create a new benchmark run by executing setup.ps1 or setup.sh. Then find the newest benchmark folder under benchmarks/<MODEL_NAME>/ by timestamp and run test-suite.ps1 or test-suite.sh against that folder. After each run, read the STATUS: line:
     > If STATUS: PASS, stop. If STATUS: FAIL — Fix the errors, edit index.html and/or style.css to resolve all validation failures, including missing HTML5 tags, W3C validation errors, Axe violations, Pa11y issues, and QualWeb issues, then rerun. Continue iterating until STATUS: PASS or STATUS: FAIL — Maximum iterations is reached. Do not stop early.
+    ```
 3. **Run Loop**: The agent will use `test-suite.sh` to self-correct for up to 20 iterations.
 4. **Publish**: The resulting `index.html` and `benchmark_log.md` are pushed to your GitHub Pages.
 

@@ -1,0 +1,208 @@
+name: AI-WCAG-Gauntlet (Cloudflare)
+
+on:
+  workflow_dispatch:
+    inputs:
+      iterations:
+        description: Number of benchmark iterations to run
+        required: true
+        default: "20"
+      model:
+        description: Cloudflare model to benchmark (via Workers AI)
+        required: true
+        type: choice
+        default: "@cf/meta/llama-3.1-8b-instruct"
+        options:
+          - "@cf/meta/llama-3.1-8b-instruct"
+          - "@cf/meta/llama-3.1-70b-instruct"
+          - "@cf/mistral/mistral-7b-instruct-v0.2"
+          - "@cf/mistral/mistral-nemo-language-model"
+          - kimi-k2.6
+          - gemma-4-26b-a4b-it
+          - nemotron-3-120b-a12b
+          - kimi-k2.5
+          - glm-4.7-flash
+          - granite-4.0-h-micro
+          - gpt-oss-20b
+          - gpt-oss-120b
+          - qwen3-30b-a3b-fp8
+          - llama-4-scout-17b-16e-instruct
+          - mistral-small-3.1-24b-instruct
+          - llama-3.3-70b-instruct-fp8-fast
+          - hermes-2-pro-mistral-7b
+
+concurrency:
+  group: ai-wcag-gauntlet-cloudflare
+  cancel-in-progress: false
+
+jobs:
+  a11y-bench-cloudflare:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
+        run: |
+          npm ci
+          npm install -g pa11y @qualweb/cli
+
+          CHROME_MAJOR=$(/usr/bin/google-chrome --version 2>/dev/null \
+            | grep -oP '\d+' | head -1)
+          echo "System Chrome major version: $CHROME_MAJOR"
+
+          npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli
+
+          echo "ChromeDriver version: $(chromedriver --version)"
+
+      - name: Initialize benchmark run folder
+        id: init-benchmark
+        run: |
+          set -euo pipefail
+
+          MODEL="${{ inputs.model }}"
+
+          SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
+
+          make_setup_script() {
+            local tmp
+            tmp=$(mktemp /tmp/setup_XXXXXX.sh)
+            {
+              printf 'MODEL_NAME=%q\n'     "$SAFE_MODEL"
+              printf 'PROVIDER=%q\n'       "cloudflare"
+              printf 'PROVIDER_LABEL=%q\n' "Cloudflare AI"
+              printf 'TOOL=%q\n'           "github-actions"
+              grep -vE '^#?(MODEL_NAME|PROVIDER|PROVIDER_LABEL|TOOL)=' setup.sh
+            } > "$tmp"
+            echo "$tmp"
+          }
+
+          SETUP_TMP=$(make_setup_script)
+          RUN_DIR=$(bash "$SETUP_TMP" | tee /dev/stderr | grep -oP '(?<=Benchmark setup complete: ).*')
+          rm -f "$SETUP_TMP"
+
+          if [ -z "$RUN_DIR" ] || [ ! -d "$RUN_DIR" ]; then
+            echo "Error: setup.sh did not produce a valid benchmark folder. Aborting."
+            exit 1
+          fi
+          echo "Created benchmark folder: $RUN_DIR"
+
+          METADATA="$RUN_DIR/metadata.json"
+          if [ -f "$METADATA" ]; then
+            _tmp=$(mktemp)
+            jq --arg m "$MODEL" '.model = $m' "$METADATA" > "$_tmp" && mv "$_tmp" "$METADATA"
+          fi
+
+          echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
+          echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
+
+      - name: Execute benchmark loop and generate dashboard
+        env:
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+        run: |
+          set +e
+          set -uo pipefail
+
+          ITERATIONS="${{ inputs.iterations }}"
+          MODEL="${{ inputs.model }}"
+          SAFE_MODEL="${{ steps.init-benchmark.outputs.safe_model }}"
+          RUN_DIR="${{ steps.init-benchmark.outputs.run_dir }}"
+
+          if [ "$ITERATIONS" -lt 1 ] || [ "$ITERATIONS" -gt 100 ]; then
+            echo "Error: iterations must be between 1 and 100"
+            exit 1
+          fi
+
+          echo "Benchmark folder: $RUN_DIR"
+
+          FOUND_PASSING_RUN=false
+
+          for i in $(seq 1 "$ITERATIONS"); do
+            echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
+
+            node scripts/generate-page.mjs \
+              --model "$MODEL" \
+              --provider cloudflare \
+              --outputDir "$RUN_DIR" \
+              --iteration "$i" \
+              --previousDir "$RUN_DIR"
+
+            GENERATION_JSON="$RUN_DIR/generation.json"
+            if [ ! -f "$GENERATION_JSON" ]; then
+              echo "Error: generation.json missing after model generation."
+              exit 1
+            fi
+
+            GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
+            if [ "$GENERATED_BY_MODEL" != "true" ]; then
+              GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
+              echo "Error: model did not generate content this iteration: $GEN_ERROR"
+              exit 1
+            fi
+
+            bash test-suite.sh "$RUN_DIR"
+            TEST_EXIT=$?
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
+              continue
+            fi
+
+            RESULTS_JSON="$RUN_DIR/test_results.json"
+            if [ ! -f "$RESULTS_JSON" ]; then
+              echo "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
+              continue
+            fi
+
+            STATUS=$(jq -r '.[-1].status' "$RESULTS_JSON")
+            echo "Iteration $i result: $STATUS"
+
+            if [ "$STATUS" = "pass" ]; then
+              echo "Stopping early after iteration $i — all tests passed."
+              FOUND_PASSING_RUN=true
+              break
+            fi
+          done
+
+          if [ "$FOUND_PASSING_RUN" = false ]; then
+            echo "No fully passing run found after $ITERATIONS iterations."
+          fi
+
+          pwsh -File ./generate-dashboard.ps1
+
+      - name: Commit and push benchmark webpages
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html benchmarks docs/stats/benchmark_stats.json
+          if git diff --cached --quiet; then
+            echo "No benchmark changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(ai-wcag-gauntlet): publish benchmark run (${{ inputs.model }}, iterations=${{ inputs.iterations }}, provider=cloudflare)"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              break
+            fi
+            echo "Push failed (attempt $attempt/3). Rebasing on latest main and retrying..."
+            git pull --rebase origin main
+          done
+          echo "Failed to push benchmark results after 3 attempts."
+          exit 1
