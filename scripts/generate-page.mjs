@@ -641,7 +641,7 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
         throw error;
       }
       const errorMsg = error instanceof Error ? error.message : String(error);
-      const isRetriable = (error instanceof Error && (error as any).isRetriable) || errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5");
+      const isRetriable = (error instanceof Error && error.isRetriable) || errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5");
       
       if (isRetriable) {
         console.warn(`${errorMsg} (attempt ${attempt}/${maxRetries}). Retrying...`);
