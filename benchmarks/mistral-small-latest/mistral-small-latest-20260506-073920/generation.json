@@ -1,0 +1,6 @@
+{
+  "requestedModel": "mistral-small-latest",
+  "resolvedModel": "mistral-small-latest",
+  "provider": "mistral",
+  "generatedByModel": true
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Form App</title>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    
+    <header role="banner">
+        <h1>Accessible Form Application</h1>
+    </header>
+    
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#main-content">Main Content</a></li>
+            <li><a href="#footer">Footer</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main-content" role="main">
+        <form id="user-form" aria-labelledby="form-title">
+            <fieldset>
+                <legend id="form-title">User Information</legend>
+                
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+                </div>
+                
+                <button type="submit" id="submit-btn" class="primary-btn">Submit</button>
+                <button type="button" id="reset-btn" class="secondary-btn">Reset</button>
+            </fieldset>
+        </form>
+        
+        <section aria-labelledby="output-title">
+            <h2 id="output-title">Output</h2>
+            <div id="output" role="status" aria-live="polite"></div>
+        </section>
+    </main>
+    
+    <footer id="footer" role="contentinfo">
+        <p>&copy; 2023 Accessible Form App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-06T06:13:59.542Z",
-  "total_runs": 14,
+  "generated_at": "2026-05-06T07:45:58.146Z",
+  "total_runs": 15,
   "total_models": 8,
   "total_tags": 113,
   "leaderboard": [
@@ -297,6 +297,27 @@
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-060643/index.html",
       "rank": 14
+    },
+    {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260506-073920",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-06T07:39:20Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-073920/index.html",
+      "rank": 15
     }
   ],
   "runs_by_model": [
@@ -537,6 +558,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T06:06:43Z",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-060643/index.html"
+    },
+    {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260506-073920",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-06T07:39:20Z",
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-073920/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -1329,6 +1367,21 @@
             "pa11y_issues": 0,
             "qualweb_issues": 0,
             "timestamp": "2026-05-06T06:06:43Z"
+          }
+        ]
+      },
+      {
+        "run_id": "mistral-small-latest-20260506-073920",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T07:39:20Z"
           }
         ]
       }
