@@ -63,6 +63,11 @@ function mergeCD(opts) {
   };
 }
 
+/* ── Case-insensitive model name normalization ────────────── */
+function normalizeModelName(name) {
+  return String(name ?? '').toLowerCase();
+}
+
 /* ── Helpers ─────────────────────────────────────────────────── */
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '')
@@ -180,8 +185,9 @@ function drawLeaderboard() {
   if (lbShowBestOnly) {
     const bestPerModel = {};
     for (const row of lbData) {
-      if (!bestPerModel[row.model] || row.score > bestPerModel[row.model].score) {
-        bestPerModel[row.model] = row;
+      const normalizedModel = normalizeModelName(row.model);
+      if (!bestPerModel[normalizedModel] || row.score > bestPerModel[normalizedModel].score) {
+        bestPerModel[normalizedModel] = row;
       }
     }
     dataToDisplay = Object.values(bestPerModel);
