@@ -103,7 +103,7 @@ function groupRunsIntoSessions(modelDir, modelName) {
     if (iteration === 1 || !currentSession) {
       // Start new session
       currentSession = {
-        model: modelName,
+        model: normalizeModelName(modelName),
         run_id: folderName,
         folder: folderName,
         iterations: [iterData],
