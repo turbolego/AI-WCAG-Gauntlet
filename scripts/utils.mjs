@@ -122,7 +122,129 @@ export function extractAndRepairJson(raw) {
 }
 
 /**
- * Read feedback from previous test results
+ * Safely truncate JSON to a max length while preserving structure
+ */
+function safeJsonTruncate(jsonStr, maxLength) {
+  if (jsonStr.length <= maxLength) return jsonStr;
+  
+  try {
+    const truncated = jsonStr.slice(0, maxLength);
+    
+    // For arrays: find the last complete object
+    if (truncated.trim().startsWith("[")) {
+      // Find the last closing brace before maxLength
+      const lastBrace = truncated.lastIndexOf("}");
+      const lastBracket = truncated.lastIndexOf("]");
+      
+      if (lastBrace > 10) {
+        // Check if we need to close the array
+        const afterBrace = truncated.slice(lastBrace + 1).trim();
+        if (afterBrace.endsWith(",") || afterBrace === "") {
+          return truncated.slice(0, lastBrace + 1) + "]";
+        }
+      }
+    }
+    
+    // For objects: similar approach
+    if (truncated.trim().startsWith("{")) {
+      const lastBrace = truncated.lastIndexOf("}");
+      if (lastBrace > 10) {
+        return truncated.slice(0, lastBrace + 1);
+      }
+    }
+    
+    return jsonStr.slice(0, maxLength);
+  } catch {
+    return jsonStr.slice(0, maxLength);
+  }
+}
+
+/**
+ * Filter axe report to keep only violations, removing metadata noise
+ */
+function filterAxeReport(content) {
+  try {
+    const data = JSON.parse(content);
+    if (!Array.isArray(data) || data.length === 0) return "";
+    
+    const report = data[0];
+    const violations = report.violations || [];
+    const incomplete = report.incomplete || [];
+    
+    // Compact format: just id, impact, and node count
+    const result = {
+      violations: violations.map(v => ({
+        id: v.id,
+        impact: v.impact,
+        nodes: (v.nodes || []).length,
+      })),
+      incomplete: incomplete.slice(0, 5), // Keep first 5 incomplete
+    };
+    
+    return JSON.stringify(result);
+  } catch {
+    return content;
+  }
+}
+
+/**
+ * Filter W3C report to keep only errors (more aggressive filtering)
+ */
+function filterW3CReport(content) {
+  try {
+    const data = JSON.parse(content);
+    
+    // W3C report format: { errorCount, messages: [...] }
+    if (data.messages && Array.isArray(data.messages)) {
+      const errors = data.messages.filter(item => item.type === "error");
+      
+      // Create compact format with only essential fields
+      const reduced = errors.slice(0, 8).map(e => ({
+        line: e.line,
+        column: e.column,
+        message: e.message?.slice(0, 120), // Shorter message
+      }));
+      
+      return JSON.stringify({
+        errorCount: errors.length,
+        errors: reduced,
+      });
+    }
+    
+    return content;
+  } catch {
+    return content;
+  }
+}
+
+/**
+ * Filter test results to keep only latest iteration metrics
+ */
+function filterTestResults(content) {
+  try {
+    const data = JSON.parse(content);
+    if (!Array.isArray(data) || data.length === 0) return "";
+    
+    // Keep only the latest iteration
+    const latest = data[data.length - 1];
+    return JSON.stringify({
+      iteration: latest.iteration,
+      status: latest.status,
+      score: latest.score,
+      html_tag_errors: latest.html_tag_errors,
+      w3c_errors: latest.w3c_errors,
+      axe_violations: latest.axe_violations,
+      pa11y_issues: latest.pa11y_issues,
+      qualweb_issues: latest.qualweb_issues,
+      missing_tags: latest.missing_tags?.slice(0, 20), // Limit tags
+    });
+  } catch {
+    return content;
+  }
+}
+
+/**
+ * Read feedback from previous test results, optimized to remove noise
  */
 export async function readFeedback(previousDir) {
   if (!previousDir) {
@@ -130,21 +252,35 @@ export async function readFeedback(previousDir) {
   }
 
   const feedbackParts = [];
-  const files = [
-    "test_results.json",
-    "html5_tags_report.json",
-    "w3c_report.json",
-    "axe_report.json",
-    "pa11y_report.json",
-    "qualweb_report.json",
-  ];
-  for (const filename of files) {
+  
+  // Define file processors: filename -> { processor, description }
+  const fileProcessors = {
+    "test_results.json": { processor: filterTestResults, priority: 1 },
+    "axe_report.json": { processor: filterAxeReport, priority: 2 },
+    "pa11y_report.json": { processor: (c) => c, priority: 3 },
+    "w3c_report.json": { processor: filterW3CReport, priority: 4 },
+    "html5_tags_report.json": { processor: (c) => c, priority: 5 },
+    "qualweb_report.json": { processor: (c) => c, priority: 6 },
+  };
+
+  for (const [filename, { processor }] of Object.entries(fileProcessors)) {
     const fullPath = path.join(previousDir, filename);
     try {
-      const content = await fs.readFile(fullPath, "utf8");
-      feedbackParts.push(`## ${filename}\n${content.slice(0, MAX_FEEDBACK_CHARS)}`);
+      let content = await fs.readFile(fullPath, "utf8");
+      
+      // Apply file-specific filter to remove noise
+      content = processor(content);
+      
+      // Safely truncate if needed
+      if (content.length > MAX_FEEDBACK_CHARS) {
+        content = safeJsonTruncate(content, MAX_FEEDBACK_CHARS);
+      }
+      
+      if (content.trim()) {
+        feedbackParts.push(`## ${filename}\n${content}`);
+      }
     } catch {
-      // ignore
+      // File doesn't exist or can't be processed, skip it
     }
   }
 
