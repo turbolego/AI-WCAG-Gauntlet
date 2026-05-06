@@ -17,14 +17,18 @@ export default async function generateWithCloudflare({ model, token, accountId, 
     console.log(`[Cloudflare] No feedback provided (iteration ${iteration})`);
   }
 
-  // Cloudflare models: provide template and ask to complete/improve it
-  const systemPrompt = `You complete JSON. Output ONLY JSON. Start with { end with }. No other text.`;
+  // Cloudflare: provide complete valid JSON example, ask to output it
+  const systemPrompt = `RESPOND ONLY WITH VALID JSON. NO EXPLANATIONS. Output starts with { ends with }`;
   
-  const baseHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Accessible Page</title></head><body><header><h1>Welcome</h1></header><main><p>Content area</p><button id="btn">Action</button><form><label for="inp">Input:</label><input id="inp" type="text"></form></main><footer><p>Footer</p></footer></body></html>`;
+  const exampleJson = {
+    html: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Page</title></head><body><header><h1>Header</h1></header><main><p>Main</p><button>Button</button><form><label for="i">Label</label><input id="i" type="text"></form></main><footer>Footer</footer></body></html>`,
+    css: `body { font-family: Arial, sans-serif; margin: 0; padding: 20px; } header, footer { background: #f0f0f0; padding: 10px; } button { padding: 10px 20px; cursor: pointer; } input { padding: 8px; }`,
+    js: `document.querySelector('button').addEventListener('click', function() { alert('Button clicked'); });`
+  };
   
   const userPrompt = feedback
-    ? `Improve this JSON (accessibility issues to fix: ${feedback.slice(0, 150)}): {"html":"${baseHtml.replace(/"/g, '\\"')}","css":"body{font-family:sans-serif}","js":"document.getElementById('btn').onclick=function(){alert('ok')}"}`
-    : `Complete this JSON structure for an accessible page: {"html":"${baseHtml.replace(/"/g, '\\"')}","css":"","js":""}`;
+    ? `Return valid JSON with improved html/css/js based on: ${feedback.slice(0, 100)}`
+    : `Return this JSON:${JSON.stringify(exampleJson)}`;
 
   const messages = [
     { role: "system", content: systemPrompt },
