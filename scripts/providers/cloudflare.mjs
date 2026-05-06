@@ -17,12 +17,14 @@ export default async function generateWithCloudflare({ model, token, accountId, 
     console.log(`[Cloudflare] No feedback provided (iteration ${iteration})`);
   }
 
-  // Cloudflare models need very strict JSON-only instruction
-  const systemPrompt = `ONLY output JSON. No words. No explanation. Just: {json}`;
+  // Cloudflare models: provide template and ask to complete/improve it
+  const systemPrompt = `You complete JSON. Output ONLY JSON. Start with { end with }. No other text.`;
+  
+  const baseHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Accessible Page</title></head><body><header><h1>Welcome</h1></header><main><p>Content area</p><button id="btn">Action</button><form><label for="inp">Input:</label><input id="inp" type="text"></form></main><footer><p>Footer</p></footer></body></html>`;
   
   const userPrompt = feedback
-    ? `JSON with html, css, js fields. HTML: accessible page, iteration ${iteration}, based on this feedback: ${feedback.slice(0, 200)}`
-    : `JSON with html, css, js fields. HTML: complete accessible page with header main footer button form input`; 
+    ? `Improve this JSON (accessibility issues to fix: ${feedback.slice(0, 150)}): {"html":"${baseHtml.replace(/"/g, '\\"')}","css":"body{font-family:sans-serif}","js":"document.getElementById('btn').onclick=function(){alert('ok')}"}`
+    : `Complete this JSON structure for an accessible page: {"html":"${baseHtml.replace(/"/g, '\\"')}","css":"","js":""}`;
 
   const messages = [
     { role: "system", content: systemPrompt },
