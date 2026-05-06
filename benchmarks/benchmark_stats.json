@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-02T21:24:53.322Z",
-  "total_runs": 15,
-  "total_models": 7,
+  "generated_at": "2026-05-06T10:44:45.951Z",
+  "total_runs": 7,
+  "total_models": 3,
   "total_tags": 113,
   "leaderboard": [
     {
-      "model": "Claude Haiku 4.5",
-      "run_id": "Claude Haiku 4.5-20260430-134439",
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260503-094502",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -18,16 +18,16 @@
       "pa11y_issues": 0,
       "qualweb_issues": 0,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T11:44:39Z",
+      "timestamp": "2026-05-03T07:45:02Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260430-134439/index.html",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094502/index.html",
       "rank": 1
     },
     {
       "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-132600",
+      "run_id": "GPT-4.1-20260503-094907",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -39,16 +39,16 @@
       "pa11y_issues": 0,
       "qualweb_issues": 0,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T11:26:00Z",
+      "timestamp": "2026-05-03T07:49:07Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094907/index.html",
       "rank": 2
     },
     {
       "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-135739",
+      "run_id": "GPT-4.1-20260503-112416",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -60,16 +60,16 @@
       "pa11y_issues": 0,
       "qualweb_issues": 0,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T11:57:39Z",
+      "timestamp": "2026-05-03T09:24:16Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html",
       "rank": 3
     },
     {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-140850",
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260503-090800",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -81,16 +81,16 @@
       "pa11y_issues": 0,
       "qualweb_issues": 1,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T12:08:50Z",
+      "timestamp": "2026-05-03T07:08:00Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
       "rank": 4
     },
     {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-180130",
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260503-091943",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -100,18 +100,18 @@
       "w3c_errors": 0,
       "axe_violations": 0,
       "pa11y_issues": 0,
-      "qualweb_issues": 0,
+      "qualweb_issues": 1,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T16:01:30Z",
+      "timestamp": "2026-05-03T07:19:43Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-180130/index.html",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
       "rank": 5
     },
     {
       "model": "GPT-4o",
-      "run_id": "GPT-4o-20260430-182140",
+      "run_id": "GPT-4o-20260503-093139",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -123,207 +123,39 @@
       "pa11y_issues": 0,
       "qualweb_issues": 0,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T16:21:40Z",
+      "timestamp": "2026-05-03T07:31:39Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-182140/index.html",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
       "rank": 6
     },
     {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260430-183237",
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
       "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
       "score": 200,
       "html_tag_errors": 0,
       "w3c_errors": 0,
       "axe_violations": 0,
       "pa11y_issues": 0,
-      "qualweb_issues": 2,
+      "qualweb_issues": 0,
       "iterations_used": 1,
-      "timestamp": "2026-04-30T16:32:37Z",
+      "timestamp": "2026-05-06T10:41:43Z",
       "tag_coverage_pct": 100,
       "axe_version": null,
       "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-183237/index.html",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html",
       "rank": 7
-    },
-    {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260501-084921",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 2,
-      "iterations_used": 1,
-      "timestamp": "2026-05-01T06:49:21Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260501-084921/index.html",
-      "rank": 8
-    },
-    {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260502-151421",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T13:14:21Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260502-151421/index.html",
-      "rank": 9
-    },
-    {
-      "model": "Gemini 3 Flash (Preview)",
-      "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-04-30T12:53:13Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html",
-      "rank": 10
-    },
-    {
-      "model": "codestral-latest",
-      "run_id": "codestral-latest-20260502-195938",
-      "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 3,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T19:59:38Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260502-195938/index.html",
-      "rank": 11
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 2,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T16:50:49Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html",
-      "rank": 12
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T18:40:00Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000/index.html",
-      "rank": 13
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 1,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T18:47:42Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742/index.html",
-      "rank": 14
-    },
-    {
-      "model": "mistral-large-latest",
-      "run_id": "mistral-large-latest-20260502-204335",
-      "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
-      "tool": "github-actions",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0,
-      "iterations_used": 1,
-      "timestamp": "2026-05-02T20:43:35Z",
-      "tag_coverage_pct": 100,
-      "axe_version": null,
-      "pa11y_version": null,
-      "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260502-204335/index.html",
-      "rank": 15
     }
   ],
   "runs_by_model": [
     {
-      "model": "Claude Haiku 4.5",
-      "run_id": "Claude Haiku 4.5-20260430-134439",
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260503-094502",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -335,12 +167,12 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:44:39Z",
-      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260430-134439/index.html"
+      "timestamp": "2026-05-03T07:45:02Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094502/index.html"
     },
     {
       "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-132600",
+      "run_id": "GPT-4.1-20260503-094907",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -352,12 +184,12 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:26:00Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-132600/index.html"
+      "timestamp": "2026-05-03T07:49:07Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094907/index.html"
     },
     {
       "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-135739",
+      "run_id": "GPT-4.1-20260503-112416",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -369,12 +201,12 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T11:57:39Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-135739/index.html"
+      "timestamp": "2026-05-03T09:24:16Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html"
     },
     {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-140850",
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260503-090800",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
@@ -386,169 +218,16 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 1,
-      "timestamp": "2026-04-30T12:08:50Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-140850/index.html"
-    },
-    {
-      "model": "GPT-4.1",
-      "run_id": "GPT-4.1-20260430-180130",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T16:01:30Z",
-      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260430-180130/index.html"
+      "timestamp": "2026-05-03T07:08:00Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html"
     },
     {
       "model": "GPT-4o",
-      "run_id": "GPT-4o-20260430-182140",
+      "run_id": "GPT-4o-20260503-091943",
       "source": "local",
       "provider": "github-copilot",
       "providerLabel": "GitHub Copilot",
       "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T16:21:40Z",
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-182140/index.html"
-    },
-    {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260430-183237",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 2,
-      "timestamp": "2026-04-30T16:32:37Z",
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260430-183237/index.html"
-    },
-    {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260501-084921",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 2,
-      "timestamp": "2026-05-01T06:49:21Z",
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260501-084921/index.html"
-    },
-    {
-      "model": "GPT-4o",
-      "run_id": "GPT-4o-20260502-151421",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-05-02T13:14:21Z",
-      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260502-151421/index.html"
-    },
-    {
-      "model": "Gemini 3 Flash (Preview)",
-      "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
-      "source": "local",
-      "provider": "github-copilot",
-      "providerLabel": "GitHub Copilot",
-      "tool": "vscode",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-04-30T12:53:13Z",
-      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260430-145313/index.html"
-    },
-    {
-      "model": "codestral-latest",
-      "run_id": "codestral-latest-20260502-195938",
-      "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
-      "tool": "github-actions",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 3,
-      "timestamp": "2026-05-02T19:59:38Z",
-      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260502-195938/index.html"
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 2,
-      "timestamp": "2026-05-02T16:50:49Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049/index.html"
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
-      "total_iterations": 1,
-      "final_score": 200,
-      "final_html_errors": 0,
-      "final_w3c_errors": 0,
-      "final_axe_violations": 0,
-      "final_pa11y_issues": 0,
-      "final_qualweb_issues": 0,
-      "timestamp": "2026-05-02T18:40:00Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000/index.html"
-    },
-    {
-      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
-      "source": "local",
-      "provider": "groq",
-      "providerLabel": "Groq LPU",
-      "tool": "github-actions",
       "total_iterations": 1,
       "final_score": 200,
       "final_html_errors": 0,
@@ -556,15 +235,32 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 1,
-      "timestamp": "2026-05-02T18:47:42Z",
-      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742/index.html"
+      "timestamp": "2026-05-03T07:19:43Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html"
     },
     {
-      "model": "mistral-large-latest",
-      "run_id": "mistral-large-latest-20260502-204335",
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260503-093139",
       "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-03T07:31:39Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
       "tool": "github-actions",
       "total_iterations": 1,
       "final_score": 200,
@@ -573,8 +269,8 @@
       "final_axe_violations": 0,
       "final_pa11y_issues": 0,
       "final_qualweb_issues": 0,
-      "timestamp": "2026-05-02T20:43:35Z",
-      "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260502-204335/index.html"
+      "timestamp": "2026-05-06T10:41:43Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143/index.html"
     }
   ],
   "missing_tags_frequency": [
@@ -1145,26 +841,9 @@
     }
   ],
   "model_progress": {
-    "Claude Haiku 4.5": [
-      {
-        "run_id": "Claude Haiku 4.5-20260430-134439",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:44:39Z"
-          }
-        ]
-      }
-    ],
     "GPT-4.1": [
       {
-        "run_id": "GPT-4.1-20260430-132600",
+        "run_id": "GPT-4.1-20260503-094502",
         "iterations": [
           {
             "iteration": 1,
@@ -1174,12 +853,12 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:26:00Z"
+            "timestamp": "2026-05-03T07:45:02Z"
           }
         ]
       },
       {
-        "run_id": "GPT-4.1-20260430-135739",
+        "run_id": "GPT-4.1-20260503-094907",
         "iterations": [
           {
             "iteration": 1,
@@ -1189,27 +868,12 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T11:57:39Z"
+            "timestamp": "2026-05-03T07:49:07Z"
           }
         ]
       },
       {
-        "run_id": "GPT-4.1-20260430-140850",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 1,
-            "timestamp": "2026-04-30T12:08:50Z"
-          }
-        ]
-      },
-      {
-        "run_id": "GPT-4.1-20260430-180130",
+        "run_id": "GPT-4.1-20260503-112416",
         "iterations": [
           {
             "iteration": 1,
@@ -1219,140 +883,14 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-04-30T16:01:30Z"
+            "timestamp": "2026-05-03T09:24:16Z"
           }
         ]
       }
     ],
     "GPT-4o": [
       {
-        "run_id": "GPT-4o-20260430-182140",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-04-30T16:21:40Z"
-          }
-        ]
-      },
-      {
-        "run_id": "GPT-4o-20260430-183237",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 2,
-            "timestamp": "2026-04-30T16:32:37Z"
-          }
-        ]
-      },
-      {
-        "run_id": "GPT-4o-20260501-084921",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 2,
-            "timestamp": "2026-05-01T06:49:21Z"
-          }
-        ]
-      },
-      {
-        "run_id": "GPT-4o-20260502-151421",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-05-02T13:14:21Z"
-          }
-        ]
-      }
-    ],
-    "Gemini 3 Flash (Preview)": [
-      {
-        "run_id": "Gemini 3 Flash (Preview)-20260430-145313",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-04-30T12:53:13Z"
-          }
-        ]
-      }
-    ],
-    "codestral-latest": [
-      {
-        "run_id": "codestral-latest-20260502-195938",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 3,
-            "timestamp": "2026-05-02T19:59:38Z"
-          }
-        ]
-      }
-    ],
-    "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
-      {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-165049",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 2,
-            "timestamp": "2026-05-02T16:50:49Z"
-          }
-        ]
-      },
-      {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184000",
-        "iterations": [
-          {
-            "iteration": 1,
-            "score": 200,
-            "html_tag_errors": 0,
-            "w3c_errors": 0,
-            "axe_violations": 0,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "timestamp": "2026-05-02T18:40:00Z"
-          }
-        ]
-      },
-      {
-        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260502-184742",
+        "run_id": "GPT-4o-20260503-090800",
         "iterations": [
           {
             "iteration": 1,
@@ -1362,14 +900,27 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 1,
-            "timestamp": "2026-05-02T18:47:42Z"
+            "timestamp": "2026-05-03T07:08:00Z"
           }
         ]
-      }
-    ],
-    "mistral-large-latest": [
+      },
       {
-        "run_id": "mistral-large-latest-20260502-204335",
+        "run_id": "GPT-4o-20260503-091943",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "timestamp": "2026-05-03T07:19:43Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260503-093139",
         "iterations": [
           {
             "iteration": 1,
@@ -1379,22 +930,30 @@
             "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
-            "timestamp": "2026-05-02T20:43:35Z"
+            "timestamp": "2026-05-03T07:31:39Z"
+          }
+        ]
+      }
+    ],
+    "meta-llama-Llama-4-Scout-17B-16E-Instruct": [
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-104143",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T10:41:43Z"
           }
         ]
       }
     ]
   },
   "error_breakdown": [
-    {
-      "model": "Claude Haiku 4.5",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0
-    },
     {
       "model": "GPT-4.1",
       "score": 200,
@@ -1411,37 +970,10 @@
       "w3c_errors": 0,
       "axe_violations": 0,
       "pa11y_issues": 0,
-      "qualweb_issues": 0
-    },
-    {
-      "model": "Gemini 3 Flash (Preview)",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 0
-    },
-    {
-      "model": "codestral-latest",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 3
+      "qualweb_issues": 1
     },
     {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "score": 200,
-      "html_tag_errors": 0,
-      "w3c_errors": 0,
-      "axe_violations": 0,
-      "pa11y_issues": 0,
-      "qualweb_issues": 2
-    },
-    {
-      "model": "mistral-large-latest",
       "score": 200,
       "html_tag_errors": 0,
       "w3c_errors": 0,
@@ -1452,12 +984,6 @@
   ],
   "tag_coverage_by_model": [
     {
-      "model": "Claude Haiku 4.5",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
-    },
-    {
       "model": "GPT-4.1",
       "used_count": 113,
       "missing_count": 0,
@@ -1470,25 +996,7 @@
       "coverage_pct": 100
     },
     {
-      "model": "Gemini 3 Flash (Preview)",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
-    },
-    {
-      "model": "codestral-latest",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
-    },
-    {
       "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
-      "used_count": 113,
-      "missing_count": 0,
-      "coverage_pct": 100
-    },
-    {
-      "model": "mistral-large-latest",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100
