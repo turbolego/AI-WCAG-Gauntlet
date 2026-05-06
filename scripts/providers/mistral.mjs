@@ -13,21 +13,40 @@ export default async function generateWithMistral({ model, token, iteration, fee
   }
 
   const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
+    "Create a single-page web app as JSON with keys: html, css, js.",
+    "- html: complete accessible HTML5 page with header, main, footer, button, form, input",
+    "- css: basic styling",
+    "- js: button click handler",
+    "- Use semantic HTML, labels, landmarks, keyboard support",
+    "- Output ONLY raw JSON, no markdown fences.",
+    `- Iteration ${iteration}.`,
+    feedback ? "- Improve based on previous test results." : ""
   ].filter(Boolean).join("\n");
 
+  // Extract key metrics from feedback to keep it concise
+  let feedbackSummary = "";
+  if (feedback) {
+    const missingMatch = feedback.match(/MISSING_TAGS\s*=\s*([^\n]+)/);
+    const scoreMatch = feedback.match(/SCORE\s*=\s*([\d.]+)/);
+    const errorsMatch = feedback.match(/HTML_TAG_ERRORS\s*=\s*(\d+)/);
+    const axeMatch = feedback.match(/AXE_VIOLATIONS\s*=\s*(\d+)/);
+    const pa11yMatch = feedback.match(/PA11Y_ISSUES\s*=\s*(\d+)/);
+    
+    const parts = [];
+    if (errorsMatch) parts.push(`HTML tags missing: ${errorsMatch[1]}`);
+    if (axeMatch) parts.push(`Axe issues: ${axeMatch[1]}`);
+    if (pa11yMatch) parts.push(`Pa11y issues: ${pa11yMatch[1]}`);
+    if (missingMatch) {
+      const tags = missingMatch[1].split(',').slice(0, 15).join(',').trim();
+      parts.push(`Add: ${tags}`);
+    }
+    if (scoreMatch) parts.push(`Score: ${scoreMatch[1]}`);
+    feedbackSummary = parts.join(" | ");
+  }
+
   const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+    { role: "system", content: "Output ONLY valid JSON with string fields html, css, js. No markdown, no explanations." },
+    { role: "user", content: `${prompt}${feedbackSummary ? `\n\nContext: ${feedbackSummary}` : ""}` }
   ];
 
   // Debug: log total message size
@@ -56,5 +75,34 @@ export default async function generateWithMistral({ model, token, iteration, fee
     throw new Error(`Mistral response did not include content (finish_reason=${finishReason}).`);
   }
 
-  return parseResponseJson(messageContent);
+  // Try to parse JSON - with lenient fallback
+  try {
+    return parseResponseJson(messageContent);
+  } catch (parseError) {
+    // Try to extract JSON object from response
+    const jsonMatch = messageContent.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        return parseResponseJson(jsonMatch[0]);
+      } catch (e) {
+        // If still invalid, continue
+      }
+    }
+
+    // Lenient regex fallback
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    
+    if (htmlMatch && cssMatch && jsMatch) {
+      const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      return {
+        html: unescape(htmlMatch[1]),
+        css: unescape(cssMatch[1]),
+        js: unescape(jsMatch[1])
+      };
+    }
+
+    throw parseError;
+  }
 }
