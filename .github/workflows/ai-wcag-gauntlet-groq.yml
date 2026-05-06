@@ -11,13 +11,16 @@ on:
         description: Model to benchmark via Groq LPU
         required: true
         type: choice
-        default: meta-llama/Llama-4-Scout-17B-16E-Instruct
+        default: meta-llama/llama-4-scout-17b-16e-instruct
         options:
-          - meta-llama/Llama-4-Scout-17B-16E-Instruct
-          - meta-llama/Llama-3.3-70B-Instruct
-          - Qwen/Qwen3-32B
+          - meta-llama/llama-4-scout-17b-16e-instruct
+          - llama-3.3-70b-versatile
+          - llama-3.1-8b-instant
+          - qwen/qwen3-32b
+          - allam-2-7b
           - openai/gpt-oss-120b
           - openai/gpt-oss-20b
+          - openai/gpt-oss-safeguard-20b
 
 concurrency:
   group: ai-wcag-gauntlet-groq
