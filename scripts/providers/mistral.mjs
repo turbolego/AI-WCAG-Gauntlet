@@ -1,4 +1,5 @@
-import { parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
+import { parseResponseJson } from "../utils.mjs";
+import { SYSTEM_PROMPT, buildUserPrompt, extractFeedbackSummary } from "../common-prompt.mjs";
 
 export default async function generateWithMistral({ model, token, iteration, feedback }) {
   // Debug: log what feedback we received

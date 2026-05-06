@@ -1,5 +1,6 @@
 import { parseResponseJson, extractAndRepairJson } from "../utils.mjs";
 import { readFeedback } from "../utils.mjs";
+import { SYSTEM_PROMPT, buildUserPrompt, extractFeedbackSummary } from "../common-prompt.mjs";
 
 export default async function generateWithCloudflare({ model, token, accountId, iteration, feedback }) {
   if (!token || !accountId) {
@@ -18,39 +19,17 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   }
 
   // Cloudflare: provide complete valid JSON example, ask to output it
-  const systemPrompt = `RESPOND ONLY WITH VALID JSON. NO EXPLANATIONS. Output starts with { ends with }`;
-  
-  const exampleJson = {
-    html: `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Page</title></head><body><header><h1>Header</h1></header><main><p>Main</p><button>Button</button><form><label for="i">Label</label><input id="i" type="text"></form></main><footer>Footer</footer></body></html>`,
-    css: `body{font-family:Arial,sans-serif;margin:0;padding:20px}header,footer{background:#f0f0f0;padding:10px}button{padding:10px 20px;cursor:pointer}input{padding:8px}`,
-    js: `document.querySelector('button').addEventListener('click',function(){alert('clicked');});`
-  };
-  
-  // Extract key issues from feedback to keep prompt short
-  let feedbackSummary = "";
-  if (feedback) {
-    const missingMatch = feedback.match(/MISSING_TAGS\s*=\s*([^\n]+)/);
-    const scoreMatch = feedback.match(/SCORE\s*=\s*([\d.]+)/);
-    if (missingMatch) {
-      const tags = missingMatch[1].split(',').slice(0, 10).join(','); // First 10 tags
-      feedbackSummary = `Add tags: ${tags}`;
-    }
-    if (scoreMatch) {
-      feedbackSummary += ` (score: ${scoreMatch[1]})`;
-    }
-  }
-
+  const feedbackSummary = extractFeedbackSummary(feedback);
   const userPrompt = feedbackSummary
     ? `Return JSON with improved html/css/js: ${feedbackSummary}`
-    : `Return this JSON:${JSON.stringify(exampleJson)}`;
+    : `Return this JSON:{"html":"<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Page</title></head><body><header><h1>Header</h1></header><main><p>Main</p><button>Button</button><form><label for=\"i\">Label</label><input id=\"i\" type=\"text\"></form></main><footer>Footer</footer></body></html>","css":"body{font-family:Arial,sans-serif;margin:0;padding:20px}header,footer{background:#f0f0f0;padding:10px}button{padding:10px 20px;cursor:pointer}input{padding:8px}","js":"document.querySelector('button').addEventListener('click',function(){alert('clicked');});"}`;
 
   const messages = [
-    { role: "system", content: systemPrompt },
+    { role: "system", content: SYSTEM_PROMPT },
     { role: "user", content: userPrompt }
   ];
 
-  // Debug: log what the model will receive
-  console.log(`[Cloudflare] Sending message to model (system + user combined): ${systemPrompt.length + userPrompt.length} total chars`);
+  console.log(`[Cloudflare] Sending message to model (system + user combined): ${SYSTEM_PROMPT.length + userPrompt.length} total chars`);
 
   const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`;
   const response = await fetch(url, {

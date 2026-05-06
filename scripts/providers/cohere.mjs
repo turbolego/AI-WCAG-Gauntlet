@@ -1,4 +1,5 @@
-import { parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
+import { parseResponseJson } from "../utils.mjs";
+import { SYSTEM_PROMPT, buildUserPrompt, extractFeedbackSummary } from "../common-prompt.mjs";
 
 export default async function generateWithCohere({ model, token, iteration, feedback }) {
   // Debug: log what feedback we received
@@ -12,21 +13,16 @@ export default async function generateWithCohere({ model, token, iteration, feed
     console.log(`[Cohere] No feedback provided (iteration ${iteration})`);
   }
 
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
+  const feedbackSummary = extractFeedbackSummary(feedback);
+  const userPrompt = buildUserPrompt(iteration, feedbackSummary);
+
+  const messages = [
+    { role: "system", content: SYSTEM_PROMPT },
+    { role: "user", content: userPrompt }
+  ];
 
   // Debug: log total message size (Cohere uses 'message' field instead of messages array)
-  const fullMessage = `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`;
+  const fullMessage = `${messages[0].content}\n\n${messages[1].content}`;
   console.log(`[Cohere] Sending message to model: ${fullMessage.length} total chars`);
 
   const response = await fetch("https://api.cohere.ai/v1/chat", {
@@ -38,7 +34,7 @@ export default async function generateWithCohere({ model, token, iteration, feed
     body: JSON.stringify({
       model,
       message: fullMessage,
-      max_tokens: 8000
+      max_tokens: 16384
     })
   });
 
@@ -53,5 +49,34 @@ export default async function generateWithCohere({ model, token, iteration, feed
     throw new Error("Cohere response did not include text.");
   }
 
-  return parseResponseJson(messageContent);
+  // Try to parse JSON - with lenient fallback
+  try {
+    return parseResponseJson(messageContent);
+  } catch (parseError) {
+    // Try to extract JSON object from response
+    const jsonMatch = messageContent.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        return parseResponseJson(jsonMatch[0]);
+      } catch (e) {
+        // If still invalid, continue
+      }
+    }
+
+    // Lenient regex fallback
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    
+    if (htmlMatch && cssMatch && jsMatch) {
+      const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      return {
+        html: unescape(htmlMatch[1]),
+        css: unescape(cssMatch[1]),
+        js: unescape(jsMatch[1])
+      };
+    }
+
+    throw parseError;
+  }
 }

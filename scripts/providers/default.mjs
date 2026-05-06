@@ -1,4 +1,5 @@
-import { normalizeModel, parseResponseJson, REQUIRED_HTML5_TAGS } from "../utils.mjs";
+import { normalizeModel, parseResponseJson } from "../utils.mjs";
+import { SYSTEM_PROMPT, buildUserPrompt, extractFeedbackSummary } from "../common-prompt.mjs";
 
 function normalizeGitHubModel(modelName) {
   const mapping = {
@@ -117,24 +118,44 @@ export default async function generateWithGitHub({ model, token, fallbackToken, 
     throw new Error("No GitHub API tokens available.");
   }
 
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
+  const feedbackSummary = extractFeedbackSummary(feedback);
+  const userPrompt = buildUserPrompt(iteration, feedbackSummary);
 
   const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+    { role: "system", content: SYSTEM_PROMPT },
+    { role: "user", content: userPrompt }
   ];
 
   const messageContent = await tryGitHubEndpoints(endpoints, messages, { feedback, iteration });
-  return parseResponseJson(messageContent);
+  
+  // Try to parse JSON - with lenient fallback
+  try {
+    return parseResponseJson(messageContent);
+  } catch (parseError) {
+    // Try to extract JSON object from response
+    const jsonMatch = messageContent.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        return parseResponseJson(jsonMatch[0]);
+      } catch (e) {
+        // If still invalid, continue
+      }
+    }
+
+    // Lenient regex fallback
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    const jsMatch = messageContent.match(/"js"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
+    
+    if (htmlMatch && cssMatch && jsMatch) {
+      const unescape = (s) => s.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      return {
+        html: unescape(htmlMatch[1]),
+        css: unescape(cssMatch[1]),
+        js: unescape(jsMatch[1])
+      };
+    }
+
+    throw parseError;
+  }
 }

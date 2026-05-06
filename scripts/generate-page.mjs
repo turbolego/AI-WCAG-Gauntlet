@@ -184,8 +184,7 @@ async function main() {
         break;
       }
 
-      case "github":
-      default: {
+      case "github": {
         const primaryToken = process.env.GITHUB_TOKEN;
         const fallbackToken = process.env.MODELS_TOKEN || process.env.KEY_GITHUB_TOKEN;
         if (!primaryToken && !fallbackToken) {
@@ -205,6 +204,11 @@ async function main() {
         } catch (error) {
           modelError = error instanceof Error ? error.message : String(error);
         }
+        break;
+      }
+
+      default: {
+        modelError = `Unknown provider: ${provider}. Supported providers: openrouter, mistral, opencode, llm7, huggingface, groq, cohere, cloudflare, github`;
         break;
       }
     }
