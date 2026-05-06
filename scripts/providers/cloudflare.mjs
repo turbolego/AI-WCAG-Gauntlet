@@ -17,12 +17,12 @@ export default async function generateWithCloudflare({ model, token, accountId, 
     console.log(`[Cloudflare] No feedback provided (iteration ${iteration})`);
   }
 
-  // Ultra-minimal prompt for Cloudflare small models
-  const systemPrompt = `You are a JSON generator. ALWAYS output ONLY valid JSON with no text before or after. Never explain, never comment, never output markdown. Just JSON.`;
+  // Cloudflare models need very strict JSON-only instruction
+  const systemPrompt = `ONLY output JSON. No words. No explanation. Just: {json}`;
   
   const userPrompt = feedback
-    ? `Generate a JSON object with fields: html, css, js. The html must be a complete, accessible HTML5 page with header, main, footer, button, form, input using semantic tags and labels. Iteration ${iteration}.\n\nPrior test failures:\n${feedback}\n\nOutput ONLY valid JSON, nothing else:`
-    : `Generate a JSON object with fields: html, css, js. The html must be a complete, accessible HTML5 page with header, main, footer, button, form, input using semantic tags and labels. Iteration ${iteration}. Output ONLY valid JSON:`;
+    ? `JSON with html, css, js fields. HTML: accessible page, iteration ${iteration}, based on this feedback: ${feedback.slice(0, 200)}`
+    : `JSON with html, css, js fields. HTML: complete accessible page with header main footer button form input`; 
 
   const messages = [
     { role: "system", content: systemPrompt },
