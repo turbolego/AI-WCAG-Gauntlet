@@ -1,0 +1,40 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 3,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 198,
+      "firstColumn": 177,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "ead><body><header role='banner'><h1>Si",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 253,
+      "firstColumn": 236,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "></header><main role='main'><form ",
+      "hiliteStart": 10,
+      "hiliteLength": 18
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 429,
+      "firstColumn": 403,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "rm></main><footer role='contentinfo'><p>&co",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}

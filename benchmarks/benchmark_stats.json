@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-06T07:45:58.146Z",
-  "total_runs": 15,
+  "generated_at": "2026-05-06T07:59:21.782Z",
+  "total_runs": 16,
   "total_models": 8,
   "total_tags": 113,
   "leaderboard": [
@@ -215,6 +215,27 @@
       "rank": 10
     },
     {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-06T07:56:10Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610/index.html",
+      "rank": 11
+    },
+    {
       "model": "mistral-large-latest",
       "run_id": "mistral-large-latest-20260503-205837",
       "source": "local",
@@ -233,7 +254,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260503-205837/index.html",
-      "rank": 11
+      "rank": 12
     },
     {
       "model": "mistral-large-latest",
@@ -254,7 +275,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260505-131506/index.html",
-      "rank": 12
+      "rank": 13
     },
     {
       "model": "mistral-medium-latest",
@@ -275,7 +296,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260505-182211/index.html",
-      "rank": 13
+      "rank": 14
     },
     {
       "model": "mistral-small-latest",
@@ -296,7 +317,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-060643/index.html",
-      "rank": 14
+      "rank": 15
     },
     {
       "model": "mistral-small-latest",
@@ -317,7 +338,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-073920/index.html",
-      "rank": 15
+      "rank": 16
     }
   ],
   "runs_by_model": [
@@ -490,6 +511,23 @@
       "final_qualweb_issues": 1,
       "timestamp": "2026-05-04T01:06:41Z",
       "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260504-010641/index.html"
+    },
+    {
+      "model": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-06T07:56:10Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-4-Scout-17B-16E-Instruct/meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610/index.html"
     },
     {
       "model": "mistral-large-latest",
@@ -1301,6 +1339,21 @@
             "pa11y_issues": 0,
             "qualweb_issues": 1,
             "timestamp": "2026-05-04T01:06:41Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-06T07:56:10Z"
           }
         ]
       }

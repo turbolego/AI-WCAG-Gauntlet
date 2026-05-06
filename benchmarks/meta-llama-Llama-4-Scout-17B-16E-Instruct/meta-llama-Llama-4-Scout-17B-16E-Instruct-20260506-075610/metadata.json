@@ -1,0 +1,8 @@
+{
+  "model": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+  "provider": "groq",
+  "providerLabel": "Groq LPU",
+  "tool": "github-actions",
+  "timestamp": "2026-05-06T07:56:10Z",
+  "folder": "meta-llama-Llama-4-Scout-17B-16E-Instruct-20260506-075610"
+}

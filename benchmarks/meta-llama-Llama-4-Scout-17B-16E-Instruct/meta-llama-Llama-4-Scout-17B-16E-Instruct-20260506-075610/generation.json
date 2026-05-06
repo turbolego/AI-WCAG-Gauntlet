@@ -1,0 +1,6 @@
+{
+  "requestedModel": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+  "resolvedModel": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+  "provider": "groq",
+  "generatedByModel": true
+}

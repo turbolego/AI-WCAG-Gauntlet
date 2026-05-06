@@ -1,0 +1,1 @@
+document.getElementById('myButton').addEventListener('click', function(event) { event.preventDefault(); var input = document.getElementById('myInput'); console.log(input.value); }); document.getElementById('myButton').addEventListener('keydown', function(event) { if (event.key === 'Enter') { this.click(); } });
