@@ -26,8 +26,22 @@ export default async function generateWithCloudflare({ model, token, accountId, 
     js: `document.querySelector('button').addEventListener('click',function(){alert('clicked');});`
   };
   
-  const userPrompt = feedback
-    ? `Return valid JSON with improved html/css/js based on: ${feedback.slice(0, 100)}`
+  // Extract key issues from feedback to keep prompt short
+  let feedbackSummary = "";
+  if (feedback) {
+    const missingMatch = feedback.match(/MISSING_TAGS\s*=\s*([^\n]+)/);
+    const scoreMatch = feedback.match(/SCORE\s*=\s*([\d.]+)/);
+    if (missingMatch) {
+      const tags = missingMatch[1].split(',').slice(0, 10).join(','); // First 10 tags
+      feedbackSummary = `Add tags: ${tags}`;
+    }
+    if (scoreMatch) {
+      feedbackSummary += ` (score: ${scoreMatch[1]})`;
+    }
+  }
+
+  const userPrompt = feedbackSummary
+    ? `Return JSON with improved html/css/js: ${feedbackSummary}`
     : `Return this JSON:${JSON.stringify(exampleJson)}`;
 
   const messages = [
@@ -57,6 +71,10 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   let messageContent = payload?.result?.response;
   if (!messageContent && typeof payload?.result === "string") {
     messageContent = payload.result;
+  }
+  // Try reasoning_content field first (some models output here)
+  if (!messageContent && payload?.result?.choices?.[0]?.message?.reasoning_content) {
+    messageContent = payload.result.choices[0].message.reasoning_content;
   }
   // Try OpenAI-style format (choices array)
   if (!messageContent && payload?.result?.choices?.[0]?.message?.content) {
