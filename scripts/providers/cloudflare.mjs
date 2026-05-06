@@ -18,16 +18,15 @@ export default async function generateWithCloudflare({ model, token, accountId, 
   }
 
   // Ultra-minimal prompt for Cloudflare small models
-  const prompt = `Output ONLY a JSON object with three string fields: html, css, js. 
-html: a complete accessible HTML page with header, main, footer, button, form, and input.
-css: basic styles for the page.
-js: event handler for button clicks.
-Must use valid HTML5 tags and be accessible (labels, semantic HTML, keyboard support).
-Iteration ${iteration}. NO MARKDOWN, NO EXPLANATIONS, ONLY JSON.`;
+  const systemPrompt = `You are a JSON generator. ALWAYS output ONLY valid JSON with no text before or after. Never explain, never comment, never output markdown. Just JSON.`;
+  
+  const userPrompt = feedback
+    ? `Generate a JSON object with fields: html, css, js. The html must be a complete, accessible HTML5 page with header, main, footer, button, form, input using semantic tags and labels. Iteration ${iteration}.\n\nPrior test failures:\n${feedback}\n\nOutput ONLY valid JSON, nothing else:`
+    : `Generate a JSON object with fields: html, css, js. The html must be a complete, accessible HTML5 page with header, main, footer, button, form, input using semantic tags and labels. Iteration ${iteration}. Output ONLY valid JSON:`;
 
   const messages = [
-    { role: "system", content: "Output only valid JSON." },
-    { role: "user", content: prompt + (feedback ? `\n\nContext from prior test results:\n${feedback}` : "") }
+    { role: "system", content: systemPrompt },
+    { role: "user", content: userPrompt }
   ];
 
   // Debug: log what the model will receive
@@ -66,6 +65,16 @@ Iteration ${iteration}. NO MARKDOWN, NO EXPLANATIONS, ONLY JSON.`;
     // First try standard repair/parse
     return parseResponseJson(messageContent);
   } catch (parseError) {
+    // Try to find and extract JSON object from response
+    const jsonMatch = messageContent.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        return parseResponseJson(jsonMatch[0]);
+      } catch (e) {
+        // If still invalid, continue to regex fallback
+      }
+    }
+
     // Lenient regex fallback for malformed JSON
     const htmlMatch = messageContent.match(/"html"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
     const cssMatch = messageContent.match(/"css"\s*:\s*"((?:[^"\\]|\\.)*?)"\s*[,}]/s);
