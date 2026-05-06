@@ -15,7 +15,8 @@ const REQUIRED_HTML5_TAGS = [
   "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
 ];
 // Keeps prompt size bounded while preserving enough context from prior reports.
-const MAX_FEEDBACK_CHARS = 2500;
+// Reduced to allow more room for model output (especially for Mistral which has strict token limits).
+const MAX_FEEDBACK_CHARS = 1500;
 
 /**
  * Extract the outermost JSON object from a string that may contain leading/
@@ -527,7 +528,7 @@ async function generateWithMistral({ model, token, iteration, feedback }) {
       "content-type": "application/json",
       authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ model, messages, max_tokens: 16384, response_format: { type: "json_object" } })
+    body: JSON.stringify({ model, messages, max_tokens: 24576, response_format: { type: "json_object" } })
   });
 
   if (!response.ok) {
