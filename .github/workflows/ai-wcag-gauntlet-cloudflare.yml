@@ -23,6 +23,7 @@ on:
           - kimi-k2.5
           - glm-4.7-flash
           - "@cf/zhipu/chatglm-6b-v8.0"
+          - "@cf/qwen/qwen3-30b-a3b-fp8"
           - granite-4.0-h-micro
           - gpt-oss-20b
           - gpt-oss-120b
