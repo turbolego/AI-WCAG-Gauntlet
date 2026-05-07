@@ -22,7 +22,7 @@ on:
           - nemotron-3-120b-a12b
           - kimi-k2.5
           - glm-4.7-flash
-          - @cf/zhipu/chatglm-6b-v8.0
+          - "@cf/zhipu/chatglm-6b-v8.0"
           - granite-4.0-h-micro
           - gpt-oss-20b
           - gpt-oss-120b
