@@ -203,7 +203,7 @@ jobs:
 
       - name: Upload benchmark logs as artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: benchmark-logs-${{ steps.init-benchmark.outputs.safe_model }}-${{ github.run_id }}
           path: ${{ steps.init-benchmark.outputs.run_dir }}/logs/
