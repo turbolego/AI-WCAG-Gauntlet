@@ -2,6 +2,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { InferenceClient } from "@huggingface/inference";
+import { generateWithMistral } from "./providers/mistral.mjs";
+import { generateWithOpenRouter } from "./providers/openrouter.mjs";
+import { generateWithCohere } from "./providers/cohere.mjs";
+import { generateWithCloudflare } from "./providers/cloudflare.mjs";
+import { generateWithAlibaba } from "./providers/alibaba.mjs";
+import { generateWithHuggingFace } from "./providers/huggingface.mjs";
+import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
 
 const REQUIRED_HTML5_TAGS = [
   "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
@@ -191,6 +198,23 @@ export function normalizeModel(modelName) {
   return mapping[modelName] ?? modelName;
 }
 
+/**
+ * Write AI input/output logs to the logs directory for debugging and token usage analysis.
+ */
+async function logProviderInteraction(outputDir, iteration, messageType, data) {
+  try {
+    const logDir = path.join(outputDir, "logs");
+    await fs.mkdir(logDir, { recursive: true });
+    const timestamp = Math.floor(Date.now() / 1000);
+    const filename = `${messageType}_${timestamp}_iteration_${iteration}.json`;
+    const logPath = path.join(logDir, filename);
+    await fs.writeFile(logPath, JSON.stringify(data, null, 2), "utf8");
+  } catch (error) {
+    // Non-fatal: log errors don't abort the benchmark
+    console.warn(`Failed to write ${messageType} log: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 function defaultPage() {
   return {
     html: `<!doctype html>
@@ -290,531 +314,6 @@ async function readFeedback(previousDir) {
   }
 }
 
-export function buildEndpoints(model, normalizedModel, token, keyToken) {
-  const endpoints = [];
-
-  if (token) {
-    const copilotEndpoint = {
-      name: "copilot-api",
-      url: "https://api.githubcopilot.com/chat/completions",
-      model,
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        authorization: `Bearer ${token}`,
-        "x-github-api-version": "2023-11-08"
-      }
-    };
-
-    const modelsEndpoint = {
-      name: "models-inference",
-      url: "https://models.github.ai/inference/chat/completions",
-      model: normalizedModel,
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        authorization: `Bearer ${token}`
-      }
-    };
-
-    // gpt-4.1, gpt-5 family, and reasoning models are not supported by the Copilot chat API
-    // (returns "invalid apiVersion"). Route them directly to the GitHub Models inference API.
-    const skipCopilot = /^openai\/(gpt-4\.1|gpt-5|o[134])/.test(normalizedModel);
-    if (skipCopilot) {
-      endpoints.push(modelsEndpoint);
-    } else {
-      endpoints.push(copilotEndpoint, modelsEndpoint);
-    }
-  }
-
-  if (keyToken) {
-    endpoints.push({
-      name: "azure-models-inference",
-      url: "https://models.inference.ai.azure.com/chat/completions",
-      model,
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-        authorization: `Bearer ${keyToken}`
-      }
-    });
-  }
-
-  return endpoints;
-}
-
-async function generateWithHuggingFace({ model, token, iteration, feedback, inferenceProvider }) {
-  const client = new InferenceClient(token);
-
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  const chatOptions = {
-    model,
-    messages,
-    max_tokens: 8000
-  };
-  if (inferenceProvider) {
-    chatOptions.provider = inferenceProvider;
-  }
-  
-  let response;
-  try {
-    response = await client.chatCompletion(chatOptions);
-  } catch (error) {
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    const errorDetails = error instanceof Error ? (error.cause || error.stack || '') : '';
-    throw new Error(
-      `Hugging Face API error for model "${model}"${inferenceProvider ? ` (provider: ${inferenceProvider})` : ''}: ${errorMsg}${errorDetails ? ` — ${errorDetails.split('\n')[0]}` : ''}`
-    );
-  }
-
-  const messageContent = response?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("Hugging Face response did not include content.");
-  }
-
-  // Extract the JSON object from the response.  Models may prefix/suffix the
-  // JSON with markdown fences, explanatory text, or other noise.  We locate
-  // the outermost { … } and repair escape issues inside string values.
-  let jsonStr;
-  try {
-    jsonStr = extractAndRepairJson(messageContent);
-  } catch (error) {
-    throw new Error(`Failed to extract JSON from Hugging Face response: ${error instanceof Error ? error.message : String(error)}`);
-  }
-
-  let parsed;
-  try {
-    parsed = JSON.parse(jsonStr);
-  } catch (error) {
-    throw new Error(`Failed to parse Hugging Face JSON: ${error instanceof Error ? error.message : String(error)}. Attempted to parse: ${jsonStr.slice(0, 200)}`);
-  }
-
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
-    throw new Error(`Hugging Face response JSON missing fields: ${missingFields.join(", ")}. Parsed keys: ${Object.keys(parsed || {}).join(", ")}`);
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
-async function generateWithModel({ model, normalizedModel, token, keyToken, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    {
-      role: "system",
-      content: "You produce only valid JSON with string fields html, css, js."
-    },
-    {
-      role: "user",
-      content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`
-    }
-  ];
-
-  // The Copilot API uses the short model name (e.g. "gpt-4o"), while the
-  // GitHub Models inference API requires the provider-prefixed name (e.g. "openai/gpt-4o").
-  const endpoints = buildEndpoints(model, normalizedModel, token, keyToken);
-
-  // Models that don't support custom temperature (reasoning models and gpt-5 family)
-  const noTemperatureModels = /^(o[134]-|gpt-5)/;
-  const supportsTemperature = !noTemperatureModels.test(model);
-
-  const endpointErrors = [];
-  let payload = null;
-  for (const endpoint of endpoints) {
-    const requestBody = {
-      model: endpoint.model,
-      response_format: { type: "json_object" },
-      messages
-    };
-    if (supportsTemperature) {
-      requestBody.temperature = 0.2;
-    }
-    const body = JSON.stringify(requestBody);
-    const response = await fetch(endpoint.url, {
-      method: "POST",
-      headers: endpoint.headers,
-      body
-    });
-
-    if (response.ok) {
-      payload = await response.json();
-      break;
-    }
-
-    const errorBody = (await response.text()).trim();
-    endpointErrors.push(`${endpoint.name} (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-  }
-
-  if (!payload) {
-    throw new Error(`Model request failed: ${endpointErrors.join(" | ")}`);
-  }
-
-  const messageContent = payload?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("Model response did not include content.");
-  }
-
-  const repaired = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(repaired);
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    throw new Error("Model response JSON missing html/css/js fields.");
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
-async function generateWithOpenRouter({ model, token, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ model, messages, max_tokens: 8000 })
-  });
-
-  if (!response.ok) {
-    const errorBody = (await response.text()).trim();
-    throw new Error(`OpenRouter request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-  }
-
-  const payload = await response.json();
-  const messageContent = payload?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("OpenRouter response did not include content.");
-  }
-
-  const jsonStr = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(jsonStr);
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    throw new Error("OpenRouter response JSON missing html/css/js fields.");
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
-async function generateWithMistral({ model, token, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  // Retry logic for transient Mistral API failures
-  const maxRetries = 2;
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-    try {
-      const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ model, messages, max_tokens: 24576, response_format: { type: "json_object" } })
-      });
-
-      if (!response.ok) {
-        const errorBody = (await response.text()).trim();
-        const error = `Mistral request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`;
-        if (attempt < maxRetries && response.status >= 500) {
-          console.warn(`${error} (attempt ${attempt}/${maxRetries}). Retrying...`);
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
-          continue;
-        }
-        throw new Error(error);
-      }
-
-      const payload = await response.json();
-      const choice = payload?.choices?.[0];
-      const finishReason = choice?.finish_reason ?? "unknown";
-      const messageContent = choice?.message?.content;
-      if (!messageContent) {
-        throw new Error(`Mistral response did not include content (finish_reason=${finishReason}).`);
-      }
-
-      if (finishReason === "length") {
-        console.warn(`Mistral response truncated (finish_reason=length, content length=${messageContent.length}). Attempting repair.`);
-      }
-      
-      if (finishReason === "error") {
-        console.warn(`Mistral API error (finish_reason=error). Response content length: ${messageContent.length}. This may indicate API overload or model limits. Attempting to parse partial response.`);
-      }
-
-      let jsonStr;
-      try {
-        jsonStr = extractAndRepairJson(messageContent);
-      } catch (e) {
-        throw new Error(`Failed to extract JSON from Mistral response (finish_reason=${finishReason}): ${e instanceof Error ? e.message : String(e)}`);
-      }
-
-      let parsed;
-      try {
-        parsed = JSON.parse(jsonStr);
-      } catch (e) {
-        throw new Error(`Failed to parse Mistral JSON (finish_reason=${finishReason}, content length=${messageContent.length}): ${e instanceof Error ? e.message : String(e)}`);
-      }
-
-      const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
-      if (missingFields.length > 0) {
-        const error = new Error(`Mistral response JSON missing fields: ${missingFields.join(", ")} (finish_reason=${finishReason}, content length=${messageContent.length}). This may occur when the model context is too large or API is overloaded.`);
-        error.isRetriable = true; // Mark as retriable for finish_reason=stop cases
-        throw error;
-      }
-
-      return {
-        html: String(parsed.html),
-        css: String(parsed.css),
-        js: String(parsed.js)
-      };
-    } catch (error) {
-      if (attempt === maxRetries) {
-        throw error;
-      }
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      const isRetriable = (error instanceof Error && error.isRetriable) || errorMsg.includes("finish_reason=error") || errorMsg.includes("status 5");
-      
-      if (isRetriable) {
-        console.warn(`${errorMsg} (attempt ${attempt}/${maxRetries}). Retrying...`);
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
-        continue;
-      }
-      throw error;
-    }
-  }
-}
-
-async function generateWithCohere({ model, token, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  const response = await fetch("https://api.cohere.ai/compatibility/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ model, messages, max_tokens: 8000, response_format: { type: "json_object" } })
-  });
-
-  if (!response.ok) {
-    const errorBody = (await response.text()).trim();
-    throw new Error(`Cohere request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-  }
-
-  const payload = await response.json();
-  const messageContent = payload?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("Cohere response did not include content.");
-  }
-
-  const repaired = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(repaired);
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    throw new Error("Cohere response JSON missing html/css/js fields.");
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
-async function generateWithCloudflare({ model, token, accountId, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  const response = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/v1/chat/completions`,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ model, messages, max_tokens: 8000 })
-    }
-  );
-
-  if (!response.ok) {
-    const errorBody = (await response.text()).trim();
-    throw new Error(`Cloudflare request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-  }
-
-  const payload = await response.json();
-  const messageContent = payload?.result?.response || payload?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("Cloudflare response did not include content.");
-  }
-
-  const repaired = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(repaired);
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    throw new Error("Cloudflare response JSON missing html/css/js fields.");
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
-async function generateWithAlibaba({ model, token, iteration, feedback }) {
-  const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
-  ].filter(Boolean).join("\n");
-
-  const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
-  ];
-
-  const response = await fetch(
-    "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ model, messages, max_tokens: 8000, response_format: { type: "json_object" } })
-    }
-  );
-
-  if (!response.ok) {
-    const errorBody = (await response.text()).trim();
-    throw new Error(`Alibaba DashScope request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`);
-  }
-
-  const payload = await response.json();
-  const messageContent = payload?.choices?.[0]?.message?.content;
-  if (!messageContent) {
-    throw new Error("Alibaba DashScope response did not include content.");
-  }
-
-  const repaired = extractAndRepairJson(messageContent);
-  const parsed = JSON.parse(repaired);
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    throw new Error("Alibaba DashScope response JSON missing html/css/js fields.");
-  }
-
-  return {
-    html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
-  };
-}
-
 async function writePage(outputDir, page) {
   await fs.mkdir(outputDir, { recursive: true });
   await fs.writeFile(path.join(outputDir, "index.html"), page.html, "utf8");
@@ -844,6 +343,13 @@ async function main() {
     if (orToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "openrouter",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithOpenRouter({
           model: modelArg,
           token: orToken,
@@ -851,8 +357,23 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "openrouter",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "openrouter",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = "No OPENROUTER_TOKEN available for OpenRouter request.";
@@ -862,6 +383,13 @@ async function main() {
     if (mistralToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "mistral",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithMistral({
           model: modelArg,
           token: mistralToken,
@@ -869,8 +397,23 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "mistral",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "mistral",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = "No MISTRAL_TOKEN available for Mistral request.";
@@ -880,6 +423,13 @@ async function main() {
     if (cohereToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "cohere",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithCohere({
           model: modelArg,
           token: cohereToken,
@@ -887,8 +437,23 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "cohere",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "cohere",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = "No COHERE_TOKEN available for Cohere request.";
@@ -899,6 +464,13 @@ async function main() {
     if (cloudflareToken && accountId) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "cloudflare",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithCloudflare({
           model: modelArg,
           token: cloudflareToken,
@@ -907,8 +479,23 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "cloudflare",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "cloudflare",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = cloudflareToken ? "No CLOUDFLARE_ACCOUNT_ID available for Cloudflare request." : "No CLOUDFLARE_TOKEN available for Cloudflare request.";
@@ -918,6 +505,13 @@ async function main() {
     if (alibabaToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "alibaba",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithAlibaba({
           model: modelArg,
           token: alibabaToken,
@@ -925,8 +519,23 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "alibaba",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "alibaba",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = "No ALIBABA_TOKEN available for Alibaba DashScope request.";
@@ -938,6 +547,13 @@ async function main() {
     if (hfToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: provider === "groq" ? "groq" : "huggingface",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithHuggingFace({
           model: modelArg,
           token: hfToken,
@@ -946,8 +562,23 @@ async function main() {
           inferenceProvider: provider === "groq" ? "groq" : undefined
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: provider === "groq" ? "groq" : "huggingface",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: provider === "groq" ? "groq" : "huggingface",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = provider === "groq"
@@ -963,6 +594,14 @@ async function main() {
     if (token || keyToken) {
       const feedback = await readFeedback(previousDir);
       try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "github",
+          model: modelArg,
+          normalizedModel,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
         generated = await generateWithModel({
           model: modelArg,
           normalizedModel,
@@ -972,8 +611,25 @@ async function main() {
           feedback
         });
         generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "github",
+          model: modelArg,
+          normalizedModel,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "github",
+          model: modelArg,
+          normalizedModel,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
       }
     } else {
       modelError = "No GITHUB_TOKEN, MODELS_TOKEN, or KEY_GITHUB_TOKEN available for model request.";

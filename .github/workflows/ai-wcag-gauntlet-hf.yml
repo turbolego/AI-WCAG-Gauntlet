@@ -119,7 +119,7 @@ jobs:
             Write-Host "No fully passing run found after $iterations iterations."
           }
 
-          ./generate-dashboard.ps1
+          bash ./generate-dashboard.sh
 
       - name: Commit and push benchmark webpages
         shell: bash

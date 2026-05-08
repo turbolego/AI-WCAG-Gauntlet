@@ -198,7 +198,7 @@ jobs:
             echo "No fully passing run found after $ITERATIONS iterations."
           fi
 
-          pwsh -File ./generate-dashboard.ps1
+          bash ./generate-dashboard.sh
 
       - name: Commit and push benchmark results
         run: |

@@ -114,6 +114,10 @@ jobs:
           echo "run_dir=$RUN_DIR" >> "$GITHUB_OUTPUT"
           echo "safe_model=$SAFE_MODEL" >> "$GITHUB_OUTPUT"
 
+      - name: Create logs directory
+        run: |
+          mkdir -p "${{ steps.init-benchmark.outputs.run_dir }}/logs"
+
       - name: Execute benchmark loop and generate dashboard
         env:
           MISTRAL_TOKEN: ${{ secrets.MISTRAL_TOKEN }}
@@ -195,7 +199,15 @@ jobs:
             echo "No fully passing run found after $ITERATIONS iterations."
           fi
 
-          pwsh -File ./generate-dashboard.ps1
+          bash ./generate-dashboard.sh
+
+      - name: Upload benchmark logs as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-logs-${{ steps.init-benchmark.outputs.safe_model }}-${{ github.run_id }}
+          path: ${{ steps.init-benchmark.outputs.run_dir }}/logs/
+          retention-days: 7
 
       - name: Commit and push benchmark webpages
         shell: bash
