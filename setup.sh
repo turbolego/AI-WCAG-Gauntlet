@@ -37,8 +37,8 @@ fi
 # ── FILL IN THESE VARIABLES BEFORE RUNNING ───────────────────────────────────
 # The model name used for benchmarking (used as the folder name)
 #MODEL_NAME="Claude Haiku 4.5"
-MODEL_NAME="GPT-4.1"
-#MODEL_NAME="GPT-4o"
+#MODEL_NAME="GPT-4.1"
+MODEL_NAME="GPT-4o"
 #MODEL_NAME="Gemini 3 Flash (Preview)"
 
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"

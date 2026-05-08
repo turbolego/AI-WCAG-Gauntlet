@@ -1,0 +1,289 @@
+{
+  "validates": false,
+  "errorCount": 26,
+  "messageCount": 28,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 21,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Subhea",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 100,
+      "lastColumn": 40,
+      "firstColumn": 9,
+      "message": "Element “base” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <base href=\"/AI-WCAG-Gauntlet/\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 32
+    },
+    {
+      "type": "error",
+      "lastLine": 104,
+      "lastColumn": 17,
+      "firstColumn": 9,
+      "message": "Stray start tag “caption”.",
+      "extract": ">\n        <caption>Table ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 104,
+      "lastColumn": 40,
+      "firstColumn": 31,
+      "message": "Stray end tag “caption”.",
+      "extract": "le Caption</caption>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 106,
+      "lastColumn": 18,
+      "firstColumn": 9,
+      "message": "Stray start tag “colgroup”.",
+      "extract": ">\n        <colgroup>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 60,
+      "firstColumn": 13,
+      "message": "Stray start tag “col”.",
+      "extract": "          <col span=\"2\" style=\"background-color: #f2f2f2\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 48
+    },
+    {
+      "type": "error",
+      "lastLine": 108,
+      "lastColumn": 19,
+      "firstColumn": 9,
+      "message": "Stray end tag “colgroup”.",
+      "extract": ">\n        </colgroup>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 11
+    },
+    {
+      "type": "error",
+      "lastLine": 150,
+      "lastColumn": 34,
+      "firstColumn": 9,
+      "message": "Element “optgroup” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <optgroup label=\"Group 1\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "error",
+      "lastLine": 159,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": ">\n        <rp>Ruby p",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 159,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "Element “rp” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <rp>Ruby p",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 160,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "Start tag “rt” seen without a “ruby” element being open.",
+      "extract": ">\n        <rt>Ruby t",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 160,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "Element “rt” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <rt>Ruby t",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 179,
+      "lastColumn": 17,
+      "firstColumn": 9,
+      "message": "Element “summary” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <summary>Summar",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 185,
+      "lastColumn": 15,
+      "firstColumn": 9,
+      "message": "Stray start tag “tfoot”.",
+      "extract": ">\n        <tfoot>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 186,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Stray start tag “tr”.",
+      "extract": "          <tr>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 187,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Stray start tag “td”.",
+      "extract": "          <td>Footer",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 187,
+      "lastColumn": 33,
+      "firstColumn": 29,
+      "message": "Stray end tag “td”.",
+      "extract": "d>Footer 1</td>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 5
+    },
+    {
+      "type": "error",
+      "lastLine": 188,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Stray start tag “td”.",
+      "extract": "          <td>Footer",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 188,
+      "lastColumn": 33,
+      "firstColumn": 29,
+      "message": "Stray end tag “td”.",
+      "extract": "d>Footer 2</td>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 5
+    },
+    {
+      "type": "error",
+      "lastLine": 189,
+      "lastColumn": 17,
+      "firstColumn": 13,
+      "message": "Stray end tag “tr”.",
+      "extract": "          </tr>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 5
+    },
+    {
+      "type": "error",
+      "lastLine": 190,
+      "lastColumn": 16,
+      "firstColumn": 9,
+      "message": "Stray end tag “tfoot”.",
+      "extract": ">\n        </tfoot>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 8
+    },
+    {
+      "type": "error",
+      "lastLine": 192,
+      "lastColumn": 93,
+      "firstColumn": 9,
+      "message": "Element “track” not allowed as child of element “section” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">\n        <track kind=\"subtitles\" src=\"/AI-WCAG-Gauntlet/resources/subtitles.vtt\" srclang=\"en\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 85
+    },
+    {
+      "type": "error",
+      "lastLine": 203,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Subhea",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 202,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Consider using the “h1” element as a top-level heading only — or else use the “headingoffset” attribute (otherwise, all “h1” elements are treated as top-level headings by many screen readers and other tools).",
+      "extract": "          <h1>Group ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 20,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Consider using the “h1” element as a top-level heading only — or else use the “headingoffset” attribute (otherwise, all “h1” elements are treated as top-level headings by many screen readers and other tools).",
+      "extract": "          <h1>Group ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 18,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "The heading “h6” (with computed level 6) follows the heading “h1” (with computed level 1), skipping 4 heading levels.",
+      "extract": ">\n        <h6>Final ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 95,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "The heading “h5” (with computed level 5) follows the heading “h3” (with computed level 3), skipping 1 heading level.",
+      "extract": ">\n        <h5>More T",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 234,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "The heading “h4” (with computed level 4) follows the heading “h2” (with computed level 2), skipping 1 heading level.",
+      "extract": ">\n        <h4>Subsec",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}
