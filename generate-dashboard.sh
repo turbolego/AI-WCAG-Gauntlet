@@ -22,11 +22,20 @@ CSS_CONTENT=$(cat "$DASHBOARD_DIR/style.css")
 JS_CONTENT=$(cat "$DASHBOARD_DIR/app.js")
 TEMPLATE_PATH="$DASHBOARD_DIR/template.html"
 
-# Use a temporary file for safer sed replacement
-_tmp=$(mktemp)
-sed -e "s|/\* __INLINE_CSS__ \*/|${CSS_CONTENT//\\/\\\\}|g" "$TEMPLATE_PATH" > "$_tmp"
-sed -e "s|/\* __INLINE_JS__ \*/|${JS_CONTENT//\\/\\\\}|g" "$_tmp" > "$DASHBOARD_HTML_PATH"
-rm -f "$_tmp"
+
+
+# Use awk to insert CSS and JS file contents at the placeholder lines
+awk -v css_file="$DASHBOARD_DIR/style.css" -v js_file="$DASHBOARD_DIR/app.js" '
+  /\/\* __INLINE_CSS__ \*\// {
+    while ((getline line < css_file) > 0) print line;
+    next
+  }
+  /\/\* __INLINE_JS__ \*\// {
+    while ((getline line < js_file) > 0) print line;
+    next
+  }
+  { print }
+' "$TEMPLATE_PATH" > "$DASHBOARD_HTML_PATH"
 
 echo "Dashboard generated: $DASHBOARD_HTML_PATH"
 

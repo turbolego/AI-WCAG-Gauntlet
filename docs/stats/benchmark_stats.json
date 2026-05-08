@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-06T18:00:54.798937Z",
-  "total_runs": 12,
+  "generated_at": "2026-05-08T19:33:15.044936Z",
+  "total_runs": 13,
   "total_models": 5,
   "total_tags": 113,
   "leaderboard": [
@@ -94,6 +94,28 @@
     },
     {
       "model": "GPT-4o",
+      "run_id": "GPT-4o-20260506-192633",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 91.64,
+      "html_tag_errors": 1,
+      "w3c_errors": 26,
+      "axe_violations": 7,
+      "pa11y_issues": 5,
+      "qualweb_issues": 2,
+      "iterations_used": 19,
+      "status": "fail",
+      "timestamp": "2026-05-06T17:36:32Z",
+      "tag_coverage_pct": 99.1,
+      "axe_version": "4.11.2",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html",
+      "rank": 5
+    },
+    {
+      "model": "GPT-4o",
       "run_id": "GPT-4o-20260503-093139",
       "source": "local",
       "provider": "github-copilot",
@@ -112,7 +134,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
-      "rank": 5
+      "rank": 6
     },
     {
       "model": "mistral-large-latest",
@@ -134,7 +156,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 6
+      "rank": 7
     },
     {
       "model": "GPT-4o",
@@ -156,7 +178,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
-      "rank": 7
+      "rank": 8
     },
     {
       "model": "mistral-small-latest",
@@ -178,7 +200,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 8
+      "rank": 9
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -200,7 +222,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 9
+      "rank": 10
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -222,7 +244,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 10
+      "rank": 11
     },
     {
       "model": "GPT-4o",
@@ -244,7 +266,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 11
+      "rank": 12
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -266,7 +288,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 12
+      "rank": 13
     }
   ],
   "runs_by_model": [
@@ -341,6 +363,24 @@
       "status": "fail",
       "timestamp": "2026-05-06T17:05:22Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260506-192633",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 19,
+      "final_score": 91.64,
+      "final_html_errors": 1,
+      "final_w3c_errors": 26,
+      "final_axe_violations": 7,
+      "final_pa11y_issues": 5,
+      "final_qualweb_issues": 2,
+      "status": "fail",
+      "timestamp": "2026-05-06T17:36:32Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html"
     },
     {
       "model": "GPT-4o",
@@ -489,509 +529,509 @@
   ],
   "missing_tags_frequency": [
     {
+      "tag": "selectedcontent",
+      "miss_count": 8,
+      "miss_pct": 61.5
+    },
+    {
       "tag": "col",
       "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_pct": 53.8
     },
     {
       "tag": "colgroup",
       "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_pct": 53.8
     },
     {
       "tag": "data",
       "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_pct": 53.8
     },
     {
       "tag": "pre",
       "miss_count": 7,
-      "miss_pct": 58.3
-    },
-    {
-      "tag": "selectedcontent",
-      "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_pct": 53.8
     },
     {
       "tag": "tfoot",
       "miss_count": 7,
-      "miss_pct": 58.3
+      "miss_pct": 53.8
     },
     {
       "tag": "bdi",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "bdo",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "br",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "dd",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "dfn",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "dialog",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "dl",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "dt",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "embed",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "h6",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "iframe",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "kbd",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "menu",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "meter",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "object",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "ol",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "rp",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "rt",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "ruby",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "samp",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "search",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "slot",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "span",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "sub",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "sup",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "template",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "track",
       "miss_count": 6,
-      "miss_pct": 50.0
+      "miss_pct": 46.2
     },
     {
       "tag": "abbr",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "address",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "audio",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "b",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "canvas",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "datalist",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "del",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "em",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "h5",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "hgroup",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "hr",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "i",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "ins",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "noscript",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "output",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "picture",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "progress",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "q",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "s",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "select",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "small",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "strong",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "table",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "tbody",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "td",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "textarea",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "th",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "thead",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "time",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "tr",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "u",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "var",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "video",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "wbr",
       "miss_count": 5,
-      "miss_pct": 41.7
+      "miss_pct": 38.5
     },
     {
       "tag": "blockquote",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "cite",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "code",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "details",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "div",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "fieldset",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "legend",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "mark",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "source",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "summary",
       "miss_count": 4,
-      "miss_pct": 33.3
+      "miss_pct": 30.8
     },
     {
       "tag": "area",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "button",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "figcaption",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "figure",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "form",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "h4",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "img",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "label",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "map",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "optgroup",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "option",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "style",
       "miss_count": 3,
-      "miss_pct": 25.0
+      "miss_pct": 23.1
     },
     {
       "tag": "h2",
       "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 16.7
+      "miss_pct": 15.4
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "article",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "aside",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "base",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "h3",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "script",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 8.3
+      "miss_pct": 7.7
     },
     {
       "tag": "body",
@@ -1904,6 +1944,220 @@
             "qualweb_issues": 0,
             "status": "fail",
             "timestamp": "2026-05-03T07:40:23Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260506-192633",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 4.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 26,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:26:50Z"
+          },
+          {
+            "iteration": 2,
+            "score": 19.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 26,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:27:22Z"
+          },
+          {
+            "iteration": 3,
+            "score": 36.0,
+            "html_tag_errors": 69,
+            "w3c_errors": 26,
+            "axe_violations": 4,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:27:49Z"
+          },
+          {
+            "iteration": 4,
+            "score": 89.18,
+            "html_tag_errors": 4,
+            "w3c_errors": 26,
+            "axe_violations": 8,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:28:30Z"
+          },
+          {
+            "iteration": 5,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 8,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:28:55Z"
+          },
+          {
+            "iteration": 6,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 8,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:29:45Z"
+          },
+          {
+            "iteration": 7,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 8,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:30:13Z"
+          },
+          {
+            "iteration": 8,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:30:42Z"
+          },
+          {
+            "iteration": 9,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:31:11Z"
+          },
+          {
+            "iteration": 10,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:31:41Z"
+          },
+          {
+            "iteration": 11,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:32:13Z"
+          },
+          {
+            "iteration": 12,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:32:41Z"
+          },
+          {
+            "iteration": 13,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:33:12Z"
+          },
+          {
+            "iteration": 14,
+            "score": 88.36,
+            "html_tag_errors": 5,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:33:51Z"
+          },
+          {
+            "iteration": 15,
+            "score": 88.36,
+            "html_tag_errors": 5,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:34:21Z"
+          },
+          {
+            "iteration": 16,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:34:54Z"
+          },
+          {
+            "iteration": 17,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:35:23Z"
+          },
+          {
+            "iteration": 18,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:36:00Z"
+          },
+          {
+            "iteration": 19,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 26,
+            "axe_violations": 7,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-06T17:36:32Z"
           }
         ]
       }
@@ -3041,12 +3295,12 @@
     },
     {
       "model": "GPT-4o",
-      "score": 89.91,
-      "html_tag_errors": 8,
-      "w3c_errors": 0,
-      "axe_violations": 3,
-      "pa11y_issues": 3,
-      "qualweb_issues": 0
+      "score": 91.64,
+      "html_tag_errors": 1,
+      "w3c_errors": 26,
+      "axe_violations": 7,
+      "pa11y_issues": 5,
+      "qualweb_issues": 2
     },
     {
       "model": "mistral-large-latest",
@@ -3085,9 +3339,9 @@
     },
     {
       "model": "GPT-4o",
-      "used_count": 105,
-      "missing_count": 8,
-      "coverage_pct": 92.9
+      "used_count": 112,
+      "missing_count": 1,
+      "coverage_pct": 99.1
     },
     {
       "model": "mistral-large-latest",
