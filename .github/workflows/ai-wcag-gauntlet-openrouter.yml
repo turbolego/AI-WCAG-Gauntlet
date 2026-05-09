@@ -51,78 +51,73 @@ jobs:
       - name: Execute benchmark loop and generate dashboard
         env:
           OPENROUTER_TOKEN: ${{ secrets.OPENROUTER_TOKEN }}
-        shell: pwsh
+        shell: bash
         run: |
-          $iterations = [int]::Parse("${{ inputs.iterations }}")
-          if ($iterations -lt 1) {
-            throw "iterations must be at least 1"
-          }
-          if ($iterations -gt 100) {
-            throw "iterations must be 100 or less"
-          }
+          iterations="${{ inputs.iterations }}"
+          if [ "$iterations" -lt 1 ]; then
+            echo "iterations must be at least 1" >&2
+            exit 1
+          fi
+          if [ "$iterations" -gt 100 ]; then
+            echo "iterations must be 100 or less" >&2
+            exit 1
+          fi
 
-          $model = "${{ inputs.model }}"
-          $previousRunDir = $null
-          $foundPassingRun = $false
+          model="${{ inputs.model }}"
+          previousRunDir=""
+          foundPassingRun=0
 
-          function Try-ParseJson {
-            param([string]$json)
-            try {
-              return $json | ConvertFrom-Json
-            } catch {
-              # Attempt to repair common issues (e.g., trailing commas)
-              $fixed = $json -replace ',\s*([\]}])', '$1'
-              try {
-                return $fixed | ConvertFrom-Json
-              } catch {
-                Write-Host "Failed to parse JSON after repair attempts."
-                return $null
+          try_parse_json() {
+            # Try to parse JSON, repair trailing commas if needed
+            local json="$1"
+            echo "$json" | jq . 2>/dev/null || \
+              echo "$json" | sed 's/,\s*\([}\]]\)/\1/g' | jq . 2>/dev/null || {
+                echo "Failed to parse JSON after repair attempts." >&2
+                return 1
               }
-            }
           }
 
-          for ($i = 1; $i -le $iterations; $i++) {
-            Write-Host "Starting iteration $i/$iterations for model $model"
-            $runDir = ./setup.ps1 -ModelName $model -Iteration $i -PreviousRunDir $previousRunDir -Provider openrouter -ProviderKey openrouter -ProviderLabel 'OpenRouter' | Select-Object -Last 1
+          for ((i=1; i<=iterations; i++)); do
+            echo "Starting iteration $i/$iterations for model $model"
+            runDir=$(./setup.sh --model "$model" --iteration "$i" --previous "$previousRunDir" --provider openrouter --provider-key openrouter --provider-label 'OpenRouter' | tail -n 1)
 
             # Detect rate-limit / generation failure — discard the run and stop
-            $generationPath = Join-Path $runDir "generation.json"
-            if (Test-Path $generationPath) {
-              $generationRaw = Get-Content $generationPath -Raw
-              $generation = Try-ParseJson $generationRaw
-              if ($null -eq $generation) {
-                Write-Host "Model generation output is not valid JSON. Discarding this run."
-                Remove-Item -Recurse -Force $runDir
+            generationPath="$runDir/generation.json"
+            if [ -f "$generationPath" ]; then
+              generationRaw=$(cat "$generationPath")
+              if ! generation=$(try_parse_json "$generationRaw"); then
+                echo "Model generation output is not valid JSON. Discarding this run."
+                rm -rf "$runDir"
                 break
-              }
-              if (-not $generation.generatedByModel) {
-                Write-Host "Model generation failed at iteration $i (rate limit or API error). Discarding this run."
-                Remove-Item -Recurse -Force $runDir
+              fi
+              if ! echo "$generation" | jq -e '.generatedByModel' >/dev/null; then
+                echo "Model generation failed at iteration $i (rate limit or API error). Discarding this run."
+                rm -rf "$runDir"
                 break
-              }
-            }
+              fi
+            fi
 
-            ./test-suite.ps1 -TargetDir $runDir -AllowFailures
+            ./test-suite.ps1 -TargetDir "$runDir" -AllowFailures
 
-            $resultPath = Join-Path $runDir "test_results.json"
-            if (-not (Test-Path $resultPath)) {
-              Write-Host "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
-              $previousRunDir = $runDir
+            resultPath="$runDir/test_results.json"
+            if [ ! -f "$resultPath" ]; then
+              echo "Warning: test_results.json missing (test runner crashed). Skipping to next iteration."
+              previousRunDir="$runDir"
               continue
-            }
-            $result = Get-Content $resultPath -Raw | ConvertFrom-Json
-            if ($result.status -eq "pass") {
-              Write-Host "Stopping early after iteration $i because tests passed."
-              $foundPassingRun = $true
+            fi
+            result=$(cat "$resultPath")
+            if [ "$(echo "$result" | jq -r .status)" = "pass" ]; then
+              echo "Stopping early after iteration $i because tests passed."
+              foundPassingRun=1
               break
-            }
+            fi
 
-            $previousRunDir = $runDir
-          }
+            previousRunDir="$runDir"
+          done
 
-          if (-not $foundPassingRun) {
-            Write-Host "No fully passing run found after $iterations iterations."
-          }
+          if [ "$foundPassingRun" -eq 0 ]; then
+            echo "No fully passing run found after $iterations iterations."
+          fi
 
           bash ./generate-dashboard.sh
 
