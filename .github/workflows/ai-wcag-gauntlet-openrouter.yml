@@ -59,18 +59,12 @@ jobs:
           CHROME_MAJOR=$(echo "$CHROME_FULL_VERSION" | cut -d. -f1)
           echo "Detected Chrome version: $CHROME_FULL_VERSION (major: $CHROME_MAJOR)"
           
-          # For Chrome 147, we need chromedriver 147.0.7727.57 to match 147.0.7727.55
           # Uninstall any existing chromedriver first to avoid conflicts
           npm uninstall -g chromedriver 2>/dev/null || true
           
-          # Install exact chromedriver version for Chrome 147
-          if [ "$CHROME_MAJOR" = "147" ]; then
-            echo "Installing chromedriver 147.0.7727 for Chrome 147.0.7727.55"
-            npm install -g chromedriver@147.0.7727
-          else
-            echo "Installing chromedriver matching Chrome $CHROME_MAJOR"
-            npm install -g "chromedriver@$CHROME_MAJOR" || npm install -g chromedriver@147.0.7727
-          fi
+          # Install chromedriver matching Chrome major version
+          # For Chrome 147.0.7727.55, this will install the latest available 147.x.x chromedriver
+          npm install -g "chromedriver@^$CHROME_MAJOR.0.0" || npm install -g "chromedriver@$CHROME_MAJOR"
           
           # Verify chromedriver version
           CHROMEDRIVER_VERSION=$(chromedriver --version 2>&1 | head -1)
