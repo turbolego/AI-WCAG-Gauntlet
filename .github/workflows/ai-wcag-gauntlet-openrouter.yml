@@ -1,4 +1,4 @@
-name: AI-WCAG-Gauntlet (OpenRouter)
+name: AI-WCAG-Gauntlet (OpenRouter Free)
 
 on:
   workflow_dispatch:
@@ -8,20 +8,21 @@ on:
         required: true
         default: "20"
       model:
-        description: Model to benchmark via OpenRouter
+        description: Free Model to benchmark via OpenRouter
         required: true
         type: choice
-        default: anthropic/claude-sonnet-4
+        default: openrouter/free
         options:
-          - anthropic/claude-sonnet-4
-          - anthropic/claude-3.5-sonnet
-          - google/gemini-2.5-flash
-          - google/gemini-2.5-pro
-          - meta-llama/llama-4-scout
-          - meta-llama/llama-4-maverick
-          - deepseek/deepseek-r1
-          - qwen/qwen3-235b-a22b
-          - mistralai/mistral-medium-3
+          - openrouter/free
+          - google/gemma-4-31b-it:free
+          - nvidia/nemotron-3-super-120b-a12b:free
+          - openai/gpt-oss-120b:free
+          - meta-llama/llama-3.3-70b-instruct:free
+          - deepseek/deepseek-r1:free
+          - qwen/qwen3-coder:free
+          - minimax/minimax-m2.5:free
+          - z-ai/glm-4.5-air:free
+          - liquid/lfm-2.5-1.2b-thinking:free
 
 concurrency:
   group: ai-wcag-gauntlet-openrouter
