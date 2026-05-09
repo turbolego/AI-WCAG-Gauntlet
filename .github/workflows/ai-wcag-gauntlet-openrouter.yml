@@ -97,7 +97,7 @@ jobs:
               fi
             fi
 
-            ./test-suite.ps1 -TargetDir "$runDir" -AllowFailures
+            ./test-suite.sh -TargetDir "$runDir" -AllowFailures
 
             resultPath="$runDir/test_results.json"
             if [ ! -f "$resultPath" ]; then
