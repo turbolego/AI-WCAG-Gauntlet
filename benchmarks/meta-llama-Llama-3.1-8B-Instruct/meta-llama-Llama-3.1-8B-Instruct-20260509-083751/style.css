@@ -1,0 +1,356 @@
+
+    /* Add styles for missing tags */
+    a, abbr, address, area, article, aside, audio, b, base, bdi, bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup, data, datalist, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, head, header, hgroup, hr, html, i, iframe, img, input, ins, kbd, label, legend, li, link, main, map, mark, menu, meta, meter, nav, noscript, object, ol, optgroup, option, output, p, param, picture, pre, progress, q, rp, rt, ruby, s, samp, script, search, section, select, slot, small, source, span, strong, style, sub, summary, sup, table, tbody, td, template, textarea, tfoot, th, thead, time, title, tr, track, u, ul, var, video, wbr {
+      display: none;
+    }
+    /* Default styles for missing tags */
+    a {
+      text-decoration: none;
+      color: #337ab7;
+    }
+    abbr {
+      border-bottom: 1px dotted #337ab7;
+    }
+    address {
+      font-style: italic;
+    }
+    area {
+      width: 100%;
+    }
+    article {
+      display: block;
+    }
+    aside {
+      float: right;
+    }
+    audio {
+      width: 100%;
+    }
+    b {
+      font-weight: bold;
+    }
+    base {
+      margin: 0;
+    }
+    bdi {
+      direction: ltr;
+    }
+    bdo {
+      direction: ltr;
+    }
+    blockquote {
+      border-left: 2px solid #337ab7;
+    }
+    body {
+      margin: 0;
+    }
+    br {
+      display: block;
+    }
+    button {
+      background-color: #337ab7;
+      color: #fff;
+    }
+    canvas {
+      width: 100%;
+    }
+    caption {
+      font-size: 1.1em;
+    }
+    cite {
+      font-style: normal;
+    }
+    code {
+      font-family: monospace;
+    }
+    col {
+      width: 33.33%;
+    }
+    colgroup {
+      display: table-column-group;
+    }
+    data {
+      display: block;
+    }
+    datalist {
+      display: inline-block;
+    }
+    dd {
+      margin-left: 40px;
+    }
+    del {
+      text-decoration: line-through;
+    }
+    details {
+      display: block;
+    }
+    dfn {
+      font-style: italic;
+    }
+    dialog {
+      display: block;
+    }
+    div {
+      display: block;
+    }
+    dl {
+      display: block;
+    }
+    dt {
+      font-weight: bold;
+    }
+    em {
+      font-style: italic;
+    }
+    embed {
+      width: 100%;
+    }
+    fieldset {
+      border: 1px solid #337ab7;
+    }
+    figcaption {
+      font-size: 1.1em;
+    }
+    figure {
+      display: block;
+    }
+    footer {
+      clear: both;
+    }
+    form {
+      display: block;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 0.67em 0;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin: 0.75em 0;
+    }
+    h3 {
+      font-size: 1.17em;
+      margin: 0.83em 0;
+    }
+    h4 {
+      font-size: 1em;
+      margin: 1em 0;
+    }
+    h5 {
+      font-size: 0.83em;
+      margin: 1.33em 0;
+    }
+    h6 {
+      font-size: 0.67em;
+      margin: 1.66em 0;
+    }
+    head {
+      display: block;
+    }
+    header {
+      float: left;
+    }
+    hgroup {
+      display: block;
+    }
+    hr {
+      display: block;
+      height: 1px;
+    }
+    html {
+      font-family: Arial, sans-serif;
+    }
+    i {
+      font-style: italic;
+    }
+    iframe {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+    input {
+      display: inline-block;
+    }
+    ins {
+      text-decoration: underline;
+    }
+    kbd {
+      font-family: monospace;
+    }
+    label {
+      display: inline-block;
+    }
+    legend {
+      font-weight: bold;
+    }
+    li {
+      display: list-item;
+    }
+    link {
+      text-decoration: none;
+      color: #337ab7;
+    }
+    main {
+      display: block;
+    }
+    map {
+      display: block;
+    }
+    mark {
+      background-color: #ddd;
+    }
+    menu {
+      display: block;
+    }
+    meta {
+      display: none;
+    }
+    meter {
+      width: 100%;
+    }
+    nav {
+      float: left;
+    }
+    noscript {
+      display: none;
+    }
+    object {
+      width: 100%;
+    }
+    ol {
+      display: block;
+    }
+    optgroup {
+      display: block;
+    }
+    option {
+      display: inline-block;
+    }
+    output {
+      display: inline-block;
+    }
+    p {
+      display: block;
+    }
+    param {
+      display: block;
+    }
+    picture {
+      display: block;
+   }
+    pre {
+      display: block;
+    }
+    progress {
+      width: 100%;
+    }
+    q {
+      cite: https://www.example.com/FAQ/;
+    }
+    rp {
+      display: none;
+    }
+    rt {
+      display: none;
+    }
+    ruby {
+      display: inline-block;
+    }
+    s {
+      text-decoration: line-through;
+    }
+    samp {
+      font-family: monospace;
+    }
+    script {
+      display: none;
+    }
+    search {
+      display: none;
+    }
+    section {
+      display: block;
+    }
+    select {
+      display: inline-block;
+    }
+    slot {
+      display: inline-block;
+    }
+    small {
+      font-size: 0.83em;
+    }
+    source {
+      display: block;
+    }
+    span {
+      display: inline-block;
+    }
+    strong {
+      font-weight: bold;
+    }
+    style {
+      display: block;
+    }
+    sub {
+      vertical-align: sub;
+    }
+    summary {
+      display: block;
+    }
+    sup {
+      vertical-align: super;
+    }
+    table {
+      display: table;
+    }
+    tbody {
+      display: table-row-group;
+    }
+    td {
+      display: table-cell;
+    }
+    template {
+      display: table;
+    }
+    textarea {
+      display: inline-block;
+    }
+    tfoot {
+      display: table-footer-group;
+    }
+    th {
+      display: table-cell;
+    }
+    thead {
+      display: table-header-group;
+    }
+    time {
+      date and time: 2024-01-01;
+    }
+    title {
+      display: block;
+    }
+    tr {
+      display: table-row;
+    }
+    track {
+      display: block;
+    }
+    u {
+      text-decoration: underline;
+    }
+    ul {
+      display: block;
+    }
+    var {
+      font-style: italic;
+    }
+    video {
+      width: 100%;
+    }
+    wbr {
+      display: inline-block;
+    }
+  

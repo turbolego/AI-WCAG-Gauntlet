@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-09T05:58:21.617351Z",
-  "total_runs": 14,
-  "total_models": 6,
+  "generated_at": "2026-05-09T08:40:30.372153Z",
+  "total_runs": 15,
+  "total_models": 7,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -203,6 +203,28 @@
       "rank": 9
     },
     {
+      "model": "meta-llama-Llama-3.1-8B-Instruct",
+      "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+      "source": "local",
+      "provider": "huggingface",
+      "providerLabel": "Hugging Face API",
+      "tool": "github-actions",
+      "score": 57.45,
+      "html_tag_errors": 45,
+      "w3c_errors": 4,
+      "axe_violations": 5,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-09T08:40:30Z",
+      "tag_coverage_pct": 60.2,
+      "axe_version": "4.11.4",
+      "pa11y_version": "unknown",
+      "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html",
+      "rank": 10
+    },
+    {
       "model": "mistral-small-latest",
       "run_id": "mistral-small-latest-20260506-173546",
       "source": "local",
@@ -222,7 +244,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 10
+      "rank": 11
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -244,7 +266,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 11
+      "rank": 12
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -266,7 +288,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 12
+      "rank": 13
     },
     {
       "model": "GPT-4o",
@@ -288,7 +310,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 13
+      "rank": 14
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -310,7 +332,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 14
+      "rank": 15
     }
   ],
   "runs_by_model": [
@@ -477,6 +499,24 @@
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html"
     },
     {
+      "model": "meta-llama-Llama-3.1-8B-Instruct",
+      "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+      "source": "local",
+      "provider": "huggingface",
+      "providerLabel": "Hugging Face API",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 57.45,
+      "final_html_errors": 45,
+      "final_w3c_errors": 4,
+      "final_axe_violations": 5,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 1,
+      "status": "fail",
+      "timestamp": "2026-05-09T08:40:30Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html"
+    },
+    {
       "model": "mistral-small-latest",
       "run_id": "mistral-small-latest-20260506-173546",
       "source": "local",
@@ -570,513 +610,518 @@
   "missing_tags_frequency": [
     {
       "tag": "selectedcontent",
-      "miss_count": 9,
-      "miss_pct": 64.3
+      "miss_count": 10,
+      "miss_pct": 66.7
     },
     {
       "tag": "data",
-      "miss_count": 8,
-      "miss_pct": 57.1
+      "miss_count": 9,
+      "miss_pct": 60.0
     },
     {
       "tag": "pre",
-      "miss_count": 8,
-      "miss_pct": 57.1
+      "miss_count": 9,
+      "miss_pct": 60.0
     },
     {
       "tag": "tfoot",
+      "miss_count": 9,
+      "miss_pct": 60.0
+    },
+    {
+      "tag": "col",
       "miss_count": 8,
-      "miss_pct": 57.1
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "colgroup",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "dd",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "dl",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "dt",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "embed",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "h6",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "menu",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "object",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "rp",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "search",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "span",
+      "miss_count": 8,
+      "miss_pct": 53.3
+    },
+    {
+      "tag": "b",
+      "miss_count": 7,
+      "miss_pct": 46.7
     },
     {
       "tag": "bdi",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
       "tag": "br",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "col",
+      "tag": "dfn",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "colgroup",
+      "tag": "em",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "dd",
+      "tag": "h5",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "dl",
+      "tag": "hgroup",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "dt",
+      "tag": "i",
       "miss_count": 7,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "embed",
-      "miss_count": 7,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "h6",
-      "miss_count": 7,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "iframe",
-      "miss_count": 7,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "menu",
-      "miss_count": 7,
-      "miss_pct": 50.0
-    },
-    {
-      "tag": "object",
-      "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
       "tag": "ol",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "rp",
+      "tag": "s",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "search",
+      "tag": "slot",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "span",
+      "tag": "strong",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
       "tag": "sub",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
       "tag": "sup",
       "miss_count": 7,
-      "miss_pct": 50.0
+      "miss_pct": 46.7
     },
     {
-      "tag": "b",
-      "miss_count": 6,
-      "miss_pct": 42.9
+      "tag": "template",
+      "miss_count": 7,
+      "miss_pct": 46.7
+    },
+    {
+      "tag": "u",
+      "miss_count": 7,
+      "miss_pct": 46.7
     },
     {
       "tag": "bdo",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
+    },
+    {
+      "tag": "blockquote",
+      "miss_count": 6,
+      "miss_pct": 40.0
     },
     {
       "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
-      "tag": "dfn",
+      "tag": "cite",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
+    },
+    {
+      "tag": "del",
+      "miss_count": 6,
+      "miss_pct": 40.0
     },
     {
       "tag": "dialog",
       "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "em",
-      "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "h5",
-      "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "hgroup",
-      "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "hr",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
-      "tag": "i",
+      "tag": "ins",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "kbd",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "meter",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
+    },
+    {
+      "tag": "noscript",
+      "miss_count": 6,
+      "miss_pct": 40.0
+    },
+    {
+      "tag": "output",
+      "miss_count": 6,
+      "miss_pct": 40.0
     },
     {
       "tag": "picture",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "q",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "rt",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "ruby",
       "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "s",
-      "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "samp",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "select",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
-      "tag": "slot",
+      "tag": "small",
       "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "strong",
-      "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "template",
-      "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "textarea",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "track",
       "miss_count": 6,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "u",
-      "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "wbr",
       "miss_count": 6,
-      "miss_pct": 42.9
+      "miss_pct": 40.0
     },
     {
       "tag": "abbr",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "address",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "audio",
       "miss_count": 5,
-      "miss_pct": 35.7
-    },
-    {
-      "tag": "blockquote",
-      "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "canvas",
       "miss_count": 5,
-      "miss_pct": 35.7
-    },
-    {
-      "tag": "cite",
-      "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "datalist",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
-      "tag": "del",
+      "tag": "div",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
-      "tag": "ins",
+      "tag": "h4",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "mark",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
-      "tag": "noscript",
+      "tag": "optgroup",
       "miss_count": 5,
-      "miss_pct": 35.7
-    },
-    {
-      "tag": "output",
-      "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "progress",
       "miss_count": 5,
-      "miss_pct": 35.7
-    },
-    {
-      "tag": "small",
-      "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "table",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "tbody",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "td",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "th",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "thead",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "time",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "tr",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "var",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
     },
     {
       "tag": "video",
       "miss_count": 5,
-      "miss_pct": 35.7
+      "miss_pct": 33.3
+    },
+    {
+      "tag": "area",
+      "miss_count": 4,
+      "miss_pct": 26.7
     },
     {
       "tag": "code",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
       "tag": "details",
       "miss_count": 4,
-      "miss_pct": 28.6
-    },
-    {
-      "tag": "div",
-      "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
       "tag": "fieldset",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
-      "tag": "h4",
+      "tag": "figcaption",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
+    },
+    {
+      "tag": "figure",
+      "miss_count": 4,
+      "miss_pct": 26.7
     },
     {
       "tag": "legend",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
-      "tag": "optgroup",
+      "tag": "map",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
       "tag": "source",
       "miss_count": 4,
-      "miss_pct": 28.6
+      "miss_pct": 26.7
     },
     {
       "tag": "summary",
       "miss_count": 4,
-      "miss_pct": 28.6
-    },
-    {
-      "tag": "area",
-      "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 26.7
     },
     {
       "tag": "button",
       "miss_count": 3,
-      "miss_pct": 21.4
-    },
-    {
-      "tag": "figcaption",
-      "miss_count": 3,
-      "miss_pct": 21.4
-    },
-    {
-      "tag": "figure",
-      "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "form",
       "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "img",
       "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "label",
       "miss_count": 3,
-      "miss_pct": 21.4
-    },
-    {
-      "tag": "map",
-      "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "option",
       "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "style",
       "miss_count": 3,
-      "miss_pct": 21.4
+      "miss_pct": 20.0
     },
     {
       "tag": "article",
       "miss_count": 2,
-      "miss_pct": 14.3
+      "miss_pct": 13.3
     },
     {
       "tag": "aside",
       "miss_count": 2,
-      "miss_pct": 14.3
+      "miss_pct": 13.3
     },
     {
       "tag": "h2",
       "miss_count": 2,
-      "miss_pct": 14.3
+      "miss_pct": 13.3
     },
     {
       "tag": "h3",
       "miss_count": 2,
-      "miss_pct": 14.3
+      "miss_pct": 13.3
     },
     {
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 14.3
+      "miss_pct": 13.3
+    },
+    {
+      "tag": "link",
+      "miss_count": 2,
+      "miss_pct": 13.3
+    },
+    {
+      "tag": "script",
+      "miss_count": 2,
+      "miss_pct": 13.3
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 7.1
+      "miss_pct": 6.7
     },
     {
       "tag": "base",
       "miss_count": 1,
-      "miss_pct": 7.1
+      "miss_pct": 6.7
+    },
+    {
+      "tag": "h1",
+      "miss_count": 1,
+      "miss_pct": 6.7
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 7.1
-    },
-    {
-      "tag": "link",
-      "miss_count": 1,
-      "miss_pct": 7.1
+      "miss_pct": 6.7
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 7.1
-    },
-    {
-      "tag": "script",
-      "miss_count": 1,
-      "miss_pct": 7.1
+      "miss_pct": 6.7
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 7.1
+      "miss_pct": 6.7
     },
     {
       "tag": "body",
@@ -1085,11 +1130,6 @@
     },
     {
       "tag": "footer",
-      "miss_count": 0,
-      "miss_pct": 0.0
-    },
-    {
-      "tag": "h1",
       "miss_count": 0,
       "miss_pct": 0.0
     },
@@ -2429,6 +2469,233 @@
         ]
       }
     ],
+    "meta-llama-Llama-3.1-8B-Instruct": [
+      {
+        "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 72.82,
+            "html_tag_errors": 27,
+            "w3c_errors": 4,
+            "axe_violations": 11,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:09Z"
+          },
+          {
+            "iteration": 2,
+            "score": 36.0,
+            "html_tag_errors": 69,
+            "w3c_errors": 4,
+            "axe_violations": 6,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:14Z"
+          },
+          {
+            "iteration": 3,
+            "score": 2.0,
+            "html_tag_errors": 113,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:19Z"
+          },
+          {
+            "iteration": 4,
+            "score": 82.64,
+            "html_tag_errors": 15,
+            "w3c_errors": 4,
+            "axe_violations": 10,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:26Z"
+          },
+          {
+            "iteration": 5,
+            "score": 4.45,
+            "html_tag_errors": 110,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:32Z"
+          },
+          {
+            "iteration": 6,
+            "score": 2.0,
+            "html_tag_errors": 113,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:37Z"
+          },
+          {
+            "iteration": 7,
+            "score": 75.27,
+            "html_tag_errors": 22,
+            "w3c_errors": 4,
+            "axe_violations": 9,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:38:44Z"
+          },
+          {
+            "iteration": 8,
+            "score": 76.91,
+            "html_tag_errors": 21,
+            "w3c_errors": 4,
+            "axe_violations": 6,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:18Z"
+          },
+          {
+            "iteration": 9,
+            "score": 31.09,
+            "html_tag_errors": 75,
+            "w3c_errors": 4,
+            "axe_violations": 7,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:24Z"
+          },
+          {
+            "iteration": 10,
+            "score": 44.55,
+            "html_tag_errors": 61,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:31Z"
+          },
+          {
+            "iteration": 11,
+            "score": 2.0,
+            "html_tag_errors": 113,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:36Z"
+          },
+          {
+            "iteration": 12,
+            "score": 2.82,
+            "html_tag_errors": 112,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:43Z"
+          },
+          {
+            "iteration": 13,
+            "score": 21.82,
+            "html_tag_errors": 90,
+            "w3c_errors": 4,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:48Z"
+          },
+          {
+            "iteration": 14,
+            "score": 37.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:39:54Z"
+          },
+          {
+            "iteration": 15,
+            "score": 57.27,
+            "html_tag_errors": 43,
+            "w3c_errors": 4,
+            "axe_violations": 13,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:00Z"
+          },
+          {
+            "iteration": 16,
+            "score": 2.0,
+            "html_tag_errors": 113,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:06Z"
+          },
+          {
+            "iteration": 17,
+            "score": 2.82,
+            "html_tag_errors": 112,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:12Z"
+          },
+          {
+            "iteration": 18,
+            "score": 34.55,
+            "html_tag_errors": 74,
+            "w3c_errors": 4,
+            "axe_violations": 5,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:17Z"
+          },
+          {
+            "iteration": 19,
+            "score": 2.82,
+            "html_tag_errors": 112,
+            "w3c_errors": 4,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:23Z"
+          },
+          {
+            "iteration": 20,
+            "score": 57.45,
+            "html_tag_errors": 45,
+            "w3c_errors": 4,
+            "axe_violations": 5,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-09T08:40:30Z"
+          }
+        ]
+      }
+    ],
     "meta-llama-llama-4-scout-17b-16e-instruct": [
       {
         "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
@@ -3588,6 +3855,15 @@
       "qualweb_issues": 1
     },
     {
+      "model": "meta-llama-Llama-3.1-8B-Instruct",
+      "score": 57.45,
+      "html_tag_errors": 45,
+      "w3c_errors": 4,
+      "axe_violations": 5,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1
+    },
+    {
       "model": "mistral-small-latest",
       "score": 54.0,
       "html_tag_errors": 47,
@@ -3630,6 +3906,12 @@
       "used_count": 71,
       "missing_count": 43,
       "coverage_pct": 62.8
+    },
+    {
+      "model": "meta-llama-Llama-3.1-8B-Instruct",
+      "used_count": 69,
+      "missing_count": 45,
+      "coverage_pct": 61.1
     },
     {
       "model": "mistral-small-latest",

@@ -1,0 +1,7 @@
+{
+  "requestedModel": "meta-llama/Llama-3.1-8B-Instruct",
+  "resolvedModel": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "huggingface",
+  "generatedByModel": true,
+  "generationError": null
+}

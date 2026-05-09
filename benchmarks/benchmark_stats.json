@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-09T05:58:21.567Z",
-  "total_runs": 14,
-  "total_models": 6,
+  "generated_at": "2026-05-09T08:40:30.321Z",
+  "total_runs": 15,
+  "total_models": 7,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -194,6 +194,27 @@
       "rank": 9
     },
     {
+      "model": "meta-llama-llama-3.1-8b-instruct",
+      "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+      "source": "local",
+      "provider": "huggingface",
+      "providerLabel": "Hugging Face API",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1,
+      "iterations_used": 1,
+      "timestamp": "2026-05-09T08:37:51Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html",
+      "rank": 10
+    },
+    {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
       "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
       "source": "local",
@@ -212,7 +233,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 10
+      "rank": 11
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -233,7 +254,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 11
+      "rank": 12
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -254,7 +275,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 12
+      "rank": 13
     },
     {
       "model": "mistral-large-latest",
@@ -275,7 +296,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 13
+      "rank": 14
     },
     {
       "model": "mistral-small-latest",
@@ -296,7 +317,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 14
+      "rank": 15
     }
   ],
   "runs_by_model": [
@@ -452,6 +473,23 @@
       "final_qualweb_issues": 1,
       "timestamp": "2026-05-09T05:45:49Z",
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260509-054549/index.html"
+    },
+    {
+      "model": "meta-llama-llama-3.1-8b-instruct",
+      "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+      "source": "local",
+      "provider": "huggingface",
+      "providerLabel": "Hugging Face API",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 1,
+      "timestamp": "2026-05-09T08:37:51Z",
+      "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html"
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1248,6 +1286,23 @@
         ]
       }
     ],
+    "meta-llama-llama-3.1-8b-instruct": [
+      {
+        "run_id": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "timestamp": "2026-05-09T08:37:51Z"
+          }
+        ]
+      }
+    ],
     "meta-llama-llama-4-scout-17b-16e-instruct": [
       {
         "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
@@ -1359,6 +1414,15 @@
       "qualweb_issues": 1
     },
     {
+      "model": "meta-llama-llama-3.1-8b-instruct",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1
+    },
+    {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
       "score": 200,
       "html_tag_errors": 0,
@@ -1401,6 +1465,12 @@
     },
     {
       "model": "command-a-reasoning-08-2025",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "meta-llama-llama-3.1-8b-instruct",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100

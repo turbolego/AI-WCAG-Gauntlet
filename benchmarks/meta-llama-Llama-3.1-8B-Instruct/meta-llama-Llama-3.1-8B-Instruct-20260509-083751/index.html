@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility-Focused Web App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    h1 {
+      color: #333;
+    }
+    mark {
+      background-color: #ddd;
+    }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header>
+    <nav role="navigation">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Section Headline</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <button>Click Me</button>
+    </section>
+    <aside>
+      <article>
+        <h3>Article Headline</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+        <time datetime="2024-01-01">January 1, 2024</time>
+        <abbr title="JavaScript">JS</abbr>
+        <address>
+          John Doe
+          <a href="mailto:johndoe@example.com">johndoe@example.com</a>
+          <br/>
+          123 Main St
+          Anytown, USA 12345
+        </address>
+      </article>
+    </aside>
+    <audio controls>
+      <source src="audio_file.mp3" type="audio/mp3">
+      Your browser does not support the audio tag.
+      <track kind="captions" src="captions.vtt" srclang="en" label="English">
+    </audio>
+    <canvas width="200" height="100"></canvas>
+    <video controls>
+      <source src="video_file.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <img src="image.jpg" alt="An image" width="200" height="100">
+    <picture>
+      <source srcset="image-webp.webp" type="image/webp">
+      <img src="image.jpg" alt="An image" width="200" height="100">
+    </picture>
+    <progress max="100" value="50"></progress>
+    <meter value="0.5"></meter>
+    <details>
+      <summary>Summary</summary>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </details>
+    <dialog open>
+      <h2>Dialog Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </dialog>
+    <input type="text" placeholder="Input field">
+    <input type="checkbox" id="checkbox" name="checkbox">
+    <label for="checkbox">Checkbox Label</label>
+    <input type="radio" id="radio" name="radio" value="radio">
+    <label for="radio">Radio Button Label</label>
+    <select>
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+    </select>
+    <datalist id="datalist">
+      <option value="option1"></option>
+      <option value="option2"></option>
+    </datalist>
+    <option value="option">Option 3</option>
+    <input type="file" multiple>
+    <input type="range" min="0" max="100">
+    <input type="color" value="#ff00ff">
+    <input type="date">
+    <input type="month">
+    <input type="week">
+    <input type="time">
+    <input type="datetime-local">
+    <input type="email" placeholder="Email address">
+    <input type="url" placeholder="URL">
+    <input type="search" placeholder="Search input">
+    <textarea placeholder="Textarea"></textarea>
+    <button type="button">Button</button>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <form>
+      <fieldset>
+        <legend>Legend</legend>
+        <input type="text" placeholder="Field 1">
+        <input type="text" placeholder="Field 2">
+      </fieldset>
+    </form>
+    <table>
+      <caption>Table Caption</caption>
+      <thead>
+        <tr>
+          <th>Heading 1</th>
+          <th>Heading 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><a href="#">Item 1</a></li>
+      <li><a href="#">Item 2</a></li>
+    </ul>
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ol>
+    <nav id="nav">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="#">Item 1</a></li>
+        <li><a href="#">Item 2</a></li>
+      </ul>
+    </nav>
+    <button aria-haspopup="true">Menu Button</button>
+  </main>
+  <footer>
+    <p>&copy; 2024 Accessibility-Focused Web App</p>
+  </footer>
+  <hr/>
+  <base href="https://www.example.com/" target="_blank">
+  <base href="https://www.example.com/FAQ/" target="_self">
+  <bdi>Bi-directional isolation text</bdi>
+  <bdo dir="rtl">Right-to-left text</bdo>
+  <time datetime="2024-01-01">January 1, 2024</time>
+  <ruby>
+    <rb>Ruby text</rb>
+    <rt>Text</rt>
+  </ruby>
+  <sup>Superscript text</sup>
+  <sub>Subscript text</sub>
+  <mark>Marked text</mark>
+  <q cite="https://www.example.com/FAQ/">Quotation</q>
+  <code>
+    console.log('Hello, World!');
+  </code>
+  <kbd>Keyboard text</kbd>
+  <samp>Sampled text</samp>
+  <var>Variable text</var>
+  <wbr>
+</body>
+</html>
