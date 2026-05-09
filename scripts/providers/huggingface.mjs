@@ -66,14 +66,39 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
   try {
     jsonStr = extractAndRepairJson(messageContent);
   } catch (error) {
-    throw new Error(`Failed to extract JSON from Hugging Face response: ${error instanceof Error ? error.message : String(error)}`);
+    // fallback to regex extraction if needed
+    const extractError = error instanceof Error ? error.message : String(error);
+    // Try to find valid JSON structures in the response
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    const cssMatch = messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    const jsMatch = messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    if (htmlMatch && cssMatch && jsMatch) {
+      return {
+        html: htmlMatch[1] || htmlMatch[0] || "<h1>Error</h1>",
+        css: cssMatch[1] || cssMatch[0] || "body{font-family:sans-serif}",
+        js: jsMatch[1] || jsMatch[0] || ""
+      };
+    }
+    throw new Error(`Failed to extract JSON from Hugging Face response: ${extractError}`);
   }
 
   let parsed;
   try {
     parsed = JSON.parse(jsonStr);
   } catch (error) {
-    throw new Error(`Failed to parse Hugging Face JSON: ${error instanceof Error ? error.message : String(error)}. Attempted to parse: ${jsonStr.slice(0, 200)}`);
+    // fallback to regex extraction if needed
+    const parseError = error instanceof Error ? error.message : String(error);
+    const htmlMatch = messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    const cssMatch = messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    const jsMatch = messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    if (htmlMatch && cssMatch && jsMatch) {
+      return {
+        html: htmlMatch[1] || htmlMatch[0] || "<h1>Error</h1>",
+        css: cssMatch[1] || cssMatch[0] || "body{font-family:sans-serif}",
+        js: jsMatch[1] || jsMatch[0] || ""
+      };
+    }
+    throw new Error(`Failed to parse Hugging Face JSON: ${parseError}. Attempted to parse: ${jsonStr.slice(0, 200)}`);
   }
 
   if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
