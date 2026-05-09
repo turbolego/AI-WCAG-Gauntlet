@@ -49,6 +49,9 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci
 
+      - name: Install axe-core CLI
+        run: npm install -g @axe-core/cli
+
       - name: Initialize benchmark run folder
         id: init-benchmark
         run: |
