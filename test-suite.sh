@@ -57,6 +57,20 @@ if [ -z "${PUPPETEER_EXECUTABLE_PATH:-}" ]; then
 fi
 export PUPPETEER_EXECUTABLE_PATH
 
+# --- Ensure chromedriver is in PATH (for axe-core) ---
+# Ensure the global npm bin directory is in PATH so axe can find chromedriver
+NPM_GLOBAL_BIN=$(npm config get prefix 2>/dev/null)/bin
+if [ -d "$NPM_GLOBAL_BIN" ]; then
+    export PATH="$NPM_GLOBAL_BIN:$PATH"
+    echo "[DEBUG] Added npm global bin to PATH: $NPM_GLOBAL_BIN"
+fi
+
+# Debug: Show which chromedriver will be used
+echo "[DEBUG] chromedriver in PATH:"
+which chromedriver || echo "[DEBUG] chromedriver not found in PATH"
+echo "[DEBUG] axe in PATH:"
+which axe || echo "[DEBUG] axe not found in PATH"
+
 # --- Input folder ---
 TARGET_DIR="${1:-}"
 
@@ -136,6 +150,11 @@ W3C_ERRORS=$(jq '.errorCount // 0' "$TARGET_DIR/w3c_report.json" || echo 0)
 
 # --- Axe validation ---
 echo "Running axe..."
+# Debug: show chromedriver version before running axe
+echo "[DEBUG] Verifying ChromeDriver before axe scan:"
+CHROMEDRIVER_VERSION=$(chromedriver --version 2>&1 | head -1 || echo "unknown")
+echo "[DEBUG] ChromeDriver version: $CHROMEDRIVER_VERSION"
+
 # Retry logic for axe (known to crash after ~4 minutes in CI environments)
 AXE_RETRY_COUNT=0
 AXE_MAX_RETRIES=2
