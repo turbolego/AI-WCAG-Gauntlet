@@ -49,8 +49,20 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: npm ci
 
-      - name: Install axe-core CLI
-        run: npm install -g @axe-core/cli
+      - name: Install axe-core CLI and matching ChromeDriver
+        run: |
+          # Install axe-core/cli first to get its dependencies
+          npm install -g @axe-core/cli
+          
+          # Detect installed Chrome version and install matching ChromeDriver
+          CHROME_VERSION=$(google-chrome --version 2>/dev/null | grep -oP '\d+(?=\.)' | head -1 || echo "147")
+          echo "Detected Chrome major version: $CHROME_VERSION"
+          
+          # Install matching chromedriver (force latest patch version for the major version)
+          npm install -g "chromedriver@~$CHROME_VERSION" || npm install -g "chromedriver@147"
+          
+          # Verify chromedriver is available
+          chromedriver --version || (echo "Warning: chromedriver not in PATH" && which chromedriver)
 
       - name: Initialize benchmark run folder
         id: init-benchmark

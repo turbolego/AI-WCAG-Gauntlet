@@ -136,24 +136,46 @@ W3C_ERRORS=$(jq '.errorCount // 0' "$TARGET_DIR/w3c_report.json" || echo 0)
 
 # --- Axe validation ---
 echo "Running axe..."
-if ! (
-    cd "$TARGET_DIR"
-    
-    # Disable alert/confirm/prompt to prevent UnexpectedAlertOpenError during axe scan.
-    # Models sometimes generate code with alerts or error handlers that trigger alerts,
-    # which causes Selenium to abort the scan. Suppress them here.
-    sed -i '/<\/head>/i <script>window.alert=window.confirm=window.prompt=()=>null;</script>' index.html
-    
-    axe "$TARGET_HTTP_URL" \
-        --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
-        --timeout 60000 \
-        --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \
-        --save axe_report.json \
-        > /dev/null
-); then
-    echo "Error: axe failed"
-    exit 1
-fi
+# Retry logic for axe (known to crash after ~4 minutes in CI environments)
+AXE_RETRY_COUNT=0
+AXE_MAX_RETRIES=2
+while [ $AXE_RETRY_COUNT -lt $AXE_MAX_RETRIES ]; do
+    if (
+        cd "$TARGET_DIR"
+        
+        # Disable alert/confirm/prompt to prevent UnexpectedAlertOpenError during axe scan.
+        # Models sometimes generate code with alerts or error handlers that trigger alerts,
+        # which causes Selenium to abort the scan. Suppress them here.
+        sed -i '/<\/head>/i <script>window.alert=window.confirm=window.prompt=()=>null;</script>' index.html
+        
+        # Run axe with a 3-minute timeout (180s) to catch hangs before the 4-minute tab crash
+        timeout 180 axe "$TARGET_HTTP_URL" \
+            --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
+            --timeout 60000 \
+            --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \
+            --save axe_report.json \
+            > /dev/null
+    ); then
+        break
+    else
+        AXE_EXIT=$?
+        AXE_RETRY_COUNT=$((AXE_RETRY_COUNT + 1))
+        if [ $AXE_RETRY_COUNT -lt $AXE_MAX_RETRIES ]; then
+            if [ $AXE_EXIT -eq 124 ]; then
+                echo "Warning: axe scan timed out (likely tab crash). Retrying (attempt $((AXE_RETRY_COUNT + 1))/$AXE_MAX_RETRIES)..."
+                sleep 2
+                continue
+            else
+                echo "Warning: axe failed with exit code $AXE_EXIT. Retrying (attempt $((AXE_RETRY_COUNT + 1))/$AXE_MAX_RETRIES)..."
+                sleep 2
+                continue
+            fi
+        else
+            echo "Error: axe failed after $AXE_MAX_RETRIES attempts"
+            exit 1
+        fi
+    fi
+done
 
 if ! jq empty "$TARGET_DIR/axe_report.json" 2>/dev/null; then
     echo "Error: axe_report.json invalid"
@@ -166,7 +188,7 @@ AXE_VIOLATIONS=$(jq '
   else
     [.violations[]?] | length
   end
-' "$TARGET_DIR/axe_report.json" || echo 0)
+' "$TARGET_DIR/axe_report.json" 2>/dev/null || echo 0)
 
 AXE_VERSION=$(jq -r '
   if type == "array" then
@@ -174,7 +196,7 @@ AXE_VERSION=$(jq -r '
   else
     .testEngine.version // "unknown"
   end
-' "$TARGET_DIR/axe_report.json")
+' "$TARGET_DIR/axe_report.json" 2>/dev/null || echo "unknown")
 
 # --- Pa11y validation ---
 echo "Running pa11y..."
