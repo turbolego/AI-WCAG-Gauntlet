@@ -62,11 +62,22 @@ jobs:
           # Uninstall any existing chromedriver first to avoid conflicts
           npm uninstall -g chromedriver 2>/dev/null || true
           
-          # Install chromedriver matching Chrome major version
-          # For Chrome 147.0.7727.55, this will install the latest available 147.x.x chromedriver
-          npm install -g "chromedriver@^$CHROME_MAJOR.0.0" || npm install -g "chromedriver@$CHROME_MAJOR"
+          # Try to install matching chromedriver versions in order of preference
+          # Start with earlier patch versions that are more compatible
+          for version_spec in "147.0.7720" "147.0" "147"; do
+            echo "Attempting to install chromedriver@$version_spec..."
+            if npm install -g "chromedriver@$version_spec" 2>/dev/null; then
+              echo "Successfully installed chromedriver@$version_spec"
+              break
+            fi
+          done
           
-          # Verify chromedriver version
+          # Verify chromedriver version and that it's found in PATH
+          if ! command -v chromedriver >/dev/null 2>&1; then
+            echo "Error: chromedriver not found in PATH after installation"
+            exit 1
+          fi
+          
           CHROMEDRIVER_VERSION=$(chromedriver --version 2>&1 | head -1)
           echo "Installed: $CHROMEDRIVER_VERSION"
 
