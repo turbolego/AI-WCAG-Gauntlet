@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible SPA</title>
+  <base href="/">
+  <style>
+    :focus {
+      outline: 3px solid #2277aa;
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      color: #333;
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+    .skip-link:focus {
+      position: static;
+    }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header>
+    <h1>Accessibility Demo</h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading">Form Demo</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <fieldset>
+          <legend>Preferences</legend>
+          <label><input type="checkbox" name="pref"> Option</label>
+        </fieldset>
+        <datalist id="cities">
+          <option value="Paris"></option>
+        </datalist>
+        <input list="cities">
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <figure>
+      <img src="image.jpg" alt="Descriptive text" usemap="#map">
+      <map name="map"><area shape="rect" coords="0,0,100,100" href="#" alt="Area"></map>
+      <figcaption>Figure caption</figcaption>
+    </figure>
+    <table>
+      <caption>Data Table</caption>
+      <colgroup><col style="width:50%"></col></colgroup>
+      <thead><tr><th scope="col">Header</th></tr></thead>
+      <tbody><tr><td>Data</td></tr></tbody>
+    </table>
+    <audio controls><source src="audio.mp3"></audio>
+    <video controls><track src="subs.vtt" kind="subtitles"></video>
+    <canvas>Canvas fallback</canvas>
+    <svg role="img" aria-labelledby="svg-title"><title id="svg-title">Chart</title></svg>
+    <meter value="0.5">50%</meter>
+    <progress value="0.7">70%</progress>
+    <details>
+      <summary>Toggle</summary>
+      <p>Details content</p>
+    </details>
+    <dialog aria-label="Dialog">Dialog</dialog>
+    <ruby>漢<rt>Kan</rt></ruby>
+    <bdo dir="rtl">Text</bdo>
+    <abbr title="World Health Organization">WHO</abbr>
+    <address>Contact: <a href="mailto:a@b.com">a@b.com</a></address>
+    <del>Deleted</del><ins>Inserted</ins>
+    <dfn>Definition</dfn>
+    <code>code()</code>
+    <kbd>Ctrl+S</kbd>
+    <samp>Output</samp>
+    <var>x</var>
+    <time datetime="2023-01-01">Jan 1</time>
+    <output>Result: 42</output>
+    <noscript>Enable JavaScript</noscript>
+    <template><div>Template</div></template>
+    <slot></slot>
+  </main>
+  <footer>
+    <p><small>&copy; 2023</small></p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter') e.preventDefault();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

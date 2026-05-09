@@ -1,0 +1,7 @@
+{
+  "requestedModel": "command-a-reasoning-08-2025",
+  "resolvedModel": "command-a-reasoning-08-2025",
+  "provider": "cohere",
+  "generatedByModel": true,
+  "generationError": null
+}

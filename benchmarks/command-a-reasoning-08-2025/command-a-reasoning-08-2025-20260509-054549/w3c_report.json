@@ -1,0 +1,17 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 1,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 61,
+      "lastColumn": 45,
+      "firstColumn": 40,
+      "message": "Stray end tag “col”.",
+      "extract": "idth:50%\"></col></colg",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    }
+  ]
+}

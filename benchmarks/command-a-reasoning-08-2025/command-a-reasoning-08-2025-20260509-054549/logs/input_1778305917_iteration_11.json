@@ -1,0 +1,7 @@
+{
+  "provider": "cohere",
+  "model": "command-a-reasoning-08-2025",
+  "iteration": 11,
+  "hasFeedback": true,
+  "timestamp": "2026-05-09T05:51:57.325Z"
+}
