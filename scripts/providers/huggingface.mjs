@@ -29,10 +29,29 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
     feedback ? "- Improve based on previous reports provided below." : ""
   ].filter(Boolean).join("\n");
 
+  const systemMessage = "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences.";
+  const userMessage = `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}`;
+  
   const messages = [
-    { role: "system", content: "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences." },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+    { role: "system", content: systemMessage },
+    { role: "user", content: userMessage }
   ];
+
+  // Debug logging
+  console.error("\n" + "=".repeat(80));
+  console.error("[HF_DEBUG] Iteration:", iteration);
+  console.error("[HF_DEBUG] Model:", model);
+  console.error("[HF_DEBUG] Inference Provider:", inferenceProvider || "default");
+  console.error("[HF_DEBUG] System Message:", systemMessage);
+  console.error("-".repeat(80));
+  console.error("[HF_DEBUG] User Prompt (first 500 chars):");
+  console.error(prompt.substring(0, 500) + (prompt.length > 500 ? "..." : ""));
+  if (feedback) {
+    console.error("-".repeat(80));
+    console.error("[HF_DEBUG] Feedback/Reports Provided (first 800 chars):");
+    console.error(feedback.substring(0, 800) + (feedback.length > 800 ? "..." : ""));
+  }
+  console.error("=".repeat(80) + "\n");
 
   const chatOptions = {
     model,
@@ -56,8 +75,20 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
 
   const messageContent = response?.choices?.[0]?.message?.content;
   if (!messageContent) {
+    console.error("\n" + "=".repeat(80));
+    console.error("[HF_DEBUG_ERROR] Hugging Face API returned no content");
+    console.error("[HF_DEBUG_ERROR] Full response object (first 1000 chars):");
+    console.error(JSON.stringify(response, null, 2).substring(0, 1000));
+    console.error("=".repeat(80) + "\n");
     throw new Error("Hugging Face response did not include content.");
   }
+
+  // Debug: Log raw API response
+  console.error("\n" + "=".repeat(80));
+  console.error("[HF_DEBUG_RESPONSE] Raw Model Output (first 1500 chars):");
+  console.error(messageContent.substring(0, 1500) + (messageContent.length > 1500 ? "\n... [truncated]" : ""));
+  console.error("[HF_DEBUG_RESPONSE] Total response length:", messageContent.length, "characters");
+  console.error("=".repeat(80) + "\n");
 
   // Extract the JSON object from the response.  Models may prefix/suffix the
   // JSON with markdown fences, explanatory text, or other noise.  We locate
@@ -65,47 +96,86 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
   let jsonStr;
   try {
     jsonStr = extractAndRepairJson(messageContent);
+    console.error("[HF_DEBUG] Successfully extracted JSON (length:", jsonStr.length, "characters)");
   } catch (error) {
     // fallback to regex extraction if needed
     const extractError = error instanceof Error ? error.message : String(error);
+    console.error("\n" + "=".repeat(80));
+    console.error("[HF_DEBUG_ERROR] JSON extraction failed:", extractError);
+    console.error("[HF_DEBUG_ERROR] Attempting regex fallback...");
+    
     // Try to find valid JSON structures in the response
     const htmlMatch = messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
     const cssMatch = messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
     const jsMatch = messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    
+    console.error("[HF_DEBUG_ERROR] Regex matches - html:", htmlMatch.length > 0 ? "found" : "not found", 
+                  ", css:", cssMatch.length > 0 ? "found" : "not found",
+                  ", js:", jsMatch.length > 0 ? "found" : "not found");
+    
     if (htmlMatch && cssMatch && jsMatch) {
+      console.error("[HF_DEBUG_ERROR] Regex fallback successful, using extracted fields");
+      console.error("=".repeat(80) + "\n");
       return {
         html: htmlMatch[1] || htmlMatch[0] || "<h1>Error</h1>",
         css: cssMatch[1] || cssMatch[0] || "body{font-family:sans-serif}",
         js: jsMatch[1] || jsMatch[0] || ""
       };
     }
+    console.error("[HF_DEBUG_ERROR] Regex fallback also failed");
+    console.error("=".repeat(80) + "\n");
     throw new Error(`Failed to extract JSON from Hugging Face response: ${extractError}`);
   }
 
   let parsed;
   try {
     parsed = JSON.parse(jsonStr);
+    console.error("[HF_DEBUG] Successfully parsed JSON");
+    console.error("[HF_DEBUG] Parsed keys:", Object.keys(parsed || {}).join(", "));
   } catch (error) {
     // fallback to regex extraction if needed
     const parseError = error instanceof Error ? error.message : String(error);
+    console.error("\n" + "=".repeat(80));
+    console.error("[HF_DEBUG_ERROR] JSON parsing failed:", parseError);
+    console.error("[HF_DEBUG_ERROR] Attempted JSON string (first 500 chars):");
+    console.error(jsonStr.substring(0, 500));
+    console.error("[HF_DEBUG_ERROR] Attempting regex fallback...");
+    
     const htmlMatch = messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"html"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
     const cssMatch = messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"css"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
     const jsMatch = messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\.[^\"]*)*)"/) || messageContent.match(/"js"\s*:\s*"([^\"]*(?:\\"[^"]*)*)"/) || [];
+    
+    console.error("[HF_DEBUG_ERROR] Regex matches - html:", htmlMatch.length > 0 ? "found" : "not found",
+                  ", css:", cssMatch.length > 0 ? "found" : "not found",
+                  ", js:", jsMatch.length > 0 ? "found" : "not found");
+    
     if (htmlMatch && cssMatch && jsMatch) {
+      console.error("[HF_DEBUG_ERROR] Regex fallback successful, using extracted fields");
+      console.error("=".repeat(80) + "\n");
       return {
         html: htmlMatch[1] || htmlMatch[0] || "<h1>Error</h1>",
         css: cssMatch[1] || cssMatch[0] || "body{font-family:sans-serif}",
         js: jsMatch[1] || jsMatch[0] || ""
       };
     }
+    console.error("[HF_DEBUG_ERROR] Regex fallback also failed");
+    console.error("=".repeat(80) + "\n");
     throw new Error(`Failed to parse Hugging Face JSON: ${parseError}. Attempted to parse: ${jsonStr.slice(0, 200)}`);
   }
 
   if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
     const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
+    console.error("\n" + "=".repeat(80));
+    console.error("[HF_DEBUG_ERROR] Missing required fields in parsed JSON");
+    console.error("[HF_DEBUG_ERROR] Missing fields:", missingFields.join(", "));
+    console.error("[HF_DEBUG_ERROR] Available fields:", Object.keys(parsed || {}).join(", "));
+    console.error("[HF_DEBUG_ERROR] Parsed object (first 500 chars):");
+    console.error(JSON.stringify(parsed, null, 2).substring(0, 500));
+    console.error("=".repeat(80) + "\n");
     throw new Error(`Hugging Face response JSON missing fields: ${missingFields.join(", ")}. Parsed keys: ${Object.keys(parsed || {}).join(", ")}`);
   }
 
+  console.error("[HF_DEBUG] All required fields present, returning parsed content");
   return {
     html: String(parsed.html),
     css: String(parsed.css),
