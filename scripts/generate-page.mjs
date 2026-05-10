@@ -10,6 +10,30 @@ import { generateWithAlibaba } from "./providers/alibaba.mjs";
 import { generateWithHuggingFace } from "./providers/huggingface.mjs";
 import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
 
+/**
+ * Format axe-core violations into a compact feedback string for the AI model.
+ * For each node only the `html` snippet and the `message` from the checks
+ * (any/all/none) are included — enough for the model to locate and fix the issue
+ * without the large amount of metadata axe attaches to every node.
+ *
+ * @param {Array} violations - the `violations` array from an axe report
+ * @returns {string}
+ */
+export function formatAxeViolations(violations) {
+  if (!Array.isArray(violations) || violations.length === 0) return "";
+  const lines = [`Axe-core violations (${violations.length}):`,];
+  for (const v of violations.slice(0, 8)) {
+    lines.push(`- [${v.impact}] ${v.id}: ${v.help}`);
+    for (const node of (v.nodes || []).slice(0, 3)) {
+      const checks = [...(node.any || []), ...(node.all || []), ...(node.none || [])];
+      const message = checks[0]?.message ?? "";
+      const html = (node.html ?? "").slice(0, 80);
+      lines.push(`  html: \`${html}\`${message ? ` — ${message}` : ""}`);
+    }
+  }
+  return lines.join("\n");
+}
+
 const REQUIRED_HTML5_TAGS = [
   "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
   "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
@@ -257,39 +281,74 @@ async function readFeedback(previousDir) {
     // Only use latest iteration to prevent context bloat
     const latest = results[results.length - 1];
     
-    // Extract key metrics for the model to learn from
     const feedbackParts = [];
     
-    // Show score progression (help model see if it's improving)
+    // Show score progression
     if (results.length > 1) {
       const scores = results.map(r => `${r.iteration}:${r.score}`).join(", ");
       feedbackParts.push(`Score progression: ${scores}`);
     }
-    
-    // Current iteration metrics
-    feedbackParts.push(`Current iteration ${latest.iteration}:`);
-    feedbackParts.push(`  Score: ${latest.score}/100`);
-    
+    feedbackParts.push(`Current iteration ${latest.iteration}: Score ${latest.score}/100`);
+
+    // Missing HTML5 tags
     if (latest.html_tag_errors > 0) {
-      feedbackParts.push(`  Missing HTML5 tags: ${latest.html_tag_errors}`);
-      if (latest.missing_tags && Array.isArray(latest.missing_tags)) {
-        const tags = latest.missing_tags.slice(0, 15).join(", ");
-        feedbackParts.push(`  Add these tags: ${tags}`);
+      const tags = latest.missing_tags && Array.isArray(latest.missing_tags)
+        ? latest.missing_tags.join(", ")
+        : `${latest.html_tag_errors} tags missing`;
+      feedbackParts.push(`\nMissing HTML5 tags (${latest.html_tag_errors}): ${tags}`);
+    }
+
+    // W3C validation errors with details
+    try {
+      const w3cPath = path.join(previousDir, "w3c_report.json");
+      const w3cData = JSON.parse(await fs.readFile(w3cPath, "utf8"));
+      const w3cErrors = (w3cData.messages || []).filter(m => m.type === "error").slice(0, 8);
+      if (w3cErrors.length > 0) {
+        feedbackParts.push(`\nW3C HTML validation errors (${w3cData.errorCount}):`);
+        for (const err of w3cErrors) {
+          const ctx = err.extract ? ` — \`${err.extract.trim().slice(0, 60)}\`` : "";
+          feedbackParts.push(`- Line ${err.lastLine}: ${err.message}${ctx}`);
+        }
       }
-    }
-    
-    if (latest.w3c_errors > 0) {
-      feedbackParts.push(`  W3C HTML validation errors: ${latest.w3c_errors}`);
-    }
-    
-    if (latest.axe_violations > 0) {
-      feedbackParts.push(`  Accessibility violations (axe): ${latest.axe_violations}`);
-    }
-    
-    if (latest.pa11y_issues > 0) {
-      feedbackParts.push(`  Accessibility issues (pa11y): ${latest.pa11y_issues}`);
-    }
-    
+    } catch { /* ignore */ }
+
+    // Axe-core violations with element details
+    try {
+      const axePath = path.join(previousDir, "axe_report.json");
+      const axeData = JSON.parse(await fs.readFile(axePath, "utf8"));
+      const violations = (axeData[0]?.violations || axeData?.violations || []);
+      const axeFeedback = formatAxeViolations(violations);
+      if (axeFeedback) feedbackParts.push(`\n${axeFeedback}`);
+    } catch { /* ignore */ }
+
+    // Pa11y issues with context
+    try {
+      const pa11yPath = path.join(previousDir, "pa11y_report.json");
+      const pa11yData = JSON.parse(await fs.readFile(pa11yPath, "utf8"));
+      const issues = Array.isArray(pa11yData) ? pa11yData : (pa11yData.issues || []);
+      if (issues.length > 0) {
+        feedbackParts.push(`\nPa11y issues (${issues.length}):`);
+        for (const issue of issues.slice(0, 6)) {
+          feedbackParts.push(`- ${issue.message}`);
+          if (issue.context) feedbackParts.push(`  Context: \`${issue.context.slice(0, 80)}\``);
+          if (issue.selector) feedbackParts.push(`  Selector: ${issue.selector}`);
+        }
+      }
+    } catch { /* ignore */ }
+
+    // QualWeb failures
+    try {
+      const qualwebPath = path.join(previousDir, "qualweb_report.json");
+      const qualwebData = JSON.parse(await fs.readFile(qualwebPath, "utf8"));
+      const failures = (qualwebData.results || []).filter(r => r.outcome === "failed");
+      if (failures.length > 0) {
+        feedbackParts.push(`\nQualWeb ACT rule failures (${failures.length}):`);
+        for (const f of failures.slice(0, 5)) {
+          feedbackParts.push(`- ${f.ruleId}: ${f.description}`);
+        }
+      }
+    } catch { /* ignore */ }
+
     return feedbackParts.join("\n");
   } catch {
     // Fallback to raw file reading if parsing fails

@@ -48,8 +48,8 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
   console.error(prompt.substring(0, 500) + (prompt.length > 500 ? "..." : ""));
   if (feedback) {
     console.error("-".repeat(80));
-    console.error("[HF_DEBUG] Feedback/Reports Provided (first 800 chars):");
-    console.error(feedback.substring(0, 800) + (feedback.length > 800 ? "..." : ""));
+    console.error("[HF_DEBUG] Feedback/Reports Provided (first 2000 chars):");
+    console.error(feedback.substring(0, 2000) + (feedback.length > 2000 ? "..." : ""));
   }
   console.error("=".repeat(80) + "\n");
 
