@@ -7,6 +7,7 @@ import { generateWithOpenRouter } from "./providers/openrouter.mjs";
 import { generateWithCohere } from "./providers/cohere.mjs";
 import { generateWithCloudflare } from "./providers/cloudflare.mjs";
 import { generateWithAlibaba } from "./providers/alibaba.mjs";
+import { generateWithGroq } from "./providers/groq.mjs";
 import { generateWithHuggingFace } from "./providers/huggingface.mjs";
 import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
 
@@ -599,30 +600,27 @@ async function main() {
     } else {
       modelError = "No ALIBABA_TOKEN available for Alibaba DashScope request.";
     }
-  } else if (provider === "huggingface" || provider === "groq") {
-    const hfToken = provider === "groq"
-      ? (process.env.GROQ_TOKEN || process.env.HUGGINGFACE_TOKEN)
-      : process.env.HUGGINGFACE_TOKEN;
-    if (hfToken) {
+  } else if (provider === "groq") {
+    const groqToken = process.env.GROQ_TOKEN;
+    if (groqToken) {
       const feedback = await readFeedback(previousDir);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
-          provider: provider === "groq" ? "groq" : "huggingface",
+          provider: "groq",
           model: modelArg,
           iteration,
           hasFeedback: Boolean(feedback),
           timestamp: new Date().toISOString()
         });
-        generated = await generateWithHuggingFace({
+        generated = await generateWithGroq({
           model: modelArg,
-          token: hfToken,
+          token: groqToken,
           iteration,
-          feedback,
-          inferenceProvider: provider === "groq" ? "groq" : undefined
+          feedback
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
-          provider: provider === "groq" ? "groq" : "huggingface",
+          provider: "groq",
           model: modelArg,
           iteration,
           success: true,
@@ -632,7 +630,7 @@ async function main() {
       } catch (error) {
         modelError = error instanceof Error ? error.message : String(error);
         await logProviderInteraction(outputDir, iteration, "error", {
-          provider: provider === "groq" ? "groq" : "huggingface",
+          provider: "groq",
           model: modelArg,
           iteration,
           error: modelError,
@@ -640,9 +638,47 @@ async function main() {
         });
       }
     } else {
-      modelError = provider === "groq"
-        ? "No GROQ_TOKEN or HUGGINGFACE_TOKEN available for Groq request."
-        : "No HUGGINGFACE_TOKEN available for Hugging Face request.";
+      modelError = "No GROQ_TOKEN available for Groq request.";
+    }
+  } else if (provider === "huggingface") {
+    const hfToken = process.env.HUGGINGFACE_TOKEN;
+    if (hfToken) {
+      const feedback = await readFeedback(previousDir);
+      try {
+        await logProviderInteraction(outputDir, iteration, "input", {
+          provider: "huggingface",
+          model: modelArg,
+          iteration,
+          hasFeedback: Boolean(feedback),
+          timestamp: new Date().toISOString()
+        });
+        generated = await generateWithHuggingFace({
+          model: modelArg,
+          token: hfToken,
+          iteration,
+          feedback
+        });
+        generatedByModel = true;
+        await logProviderInteraction(outputDir, iteration, "output", {
+          provider: "huggingface",
+          model: modelArg,
+          iteration,
+          success: true,
+          generatedKeys: Object.keys(generated).sort(),
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        modelError = error instanceof Error ? error.message : String(error);
+        await logProviderInteraction(outputDir, iteration, "error", {
+          provider: "huggingface",
+          model: modelArg,
+          iteration,
+          error: modelError,
+          timestamp: new Date().toISOString()
+        });
+      }
+    } else {
+      modelError = "No HUGGINGFACE_TOKEN available for Hugging Face request.";
     }
   } else {
     const normalizedModel = normalizeModel(modelArg);
