@@ -3,7 +3,14 @@ name: Update Benchmark Stats
 on:
   workflow_run:
     workflows:
+      - AI-WCAG-Gauntlet (Alibaba)
+      - AI-WCAG-Gauntlet (API)
+      - AI-WCAG-Gauntlet (Cloudflare)
+      - AI-WCAG-Gauntlet (Cohere)
       - AI-WCAG-Gauntlet (Groq LPU)
+      - AI-WCAG-Gauntlet (HF)
+      - AI-WCAG-Gauntlet (Mistral)
+      - AI-WCAG-Gauntlet (Openrouter)
     types:
       - completed
   push:
