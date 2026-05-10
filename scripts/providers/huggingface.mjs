@@ -163,22 +163,44 @@ export async function generateWithHuggingFace({ model, token, iteration, feedbac
     throw new Error(`Failed to parse Hugging Face JSON: ${parseError}. Attempted to parse: ${jsonStr.slice(0, 200)}`);
   }
 
-  if (parsed?.html == null || parsed?.css == null || parsed?.js == null) {
-    const missingFields = ["html", "css", "js"].filter(f => parsed?.[f] == null);
+  if (parsed?.html == null) {
     console.error("\n" + "=".repeat(80));
-    console.error("[HF_DEBUG_ERROR] Missing required fields in parsed JSON");
-    console.error("[HF_DEBUG_ERROR] Missing fields:", missingFields.join(", "));
+    console.error("[HF_DEBUG_ERROR] Missing 'html' field in parsed JSON");
     console.error("[HF_DEBUG_ERROR] Available fields:", Object.keys(parsed || {}).join(", "));
     console.error("[HF_DEBUG_ERROR] Parsed object (first 500 chars):");
     console.error(JSON.stringify(parsed, null, 2).substring(0, 500));
     console.error("=".repeat(80) + "\n");
-    throw new Error(`Hugging Face response JSON missing fields: ${missingFields.join(", ")}. Parsed keys: ${Object.keys(parsed || {}).join(", ")}`);
+    throw new Error(`Hugging Face response JSON missing 'html' field. Parsed keys: ${Object.keys(parsed || {}).join(", ")}`);
+  }
+
+  let css = parsed.css != null ? String(parsed.css) : null;
+  let js = parsed.js != null ? String(parsed.js) : null;
+
+  // Model embedded CSS/JS inline in the HTML rather than using separate keys.
+  // Extract them from <style> / <script> blocks so the benchmark can continue.
+  if (css == null || js == null) {
+    const htmlStr = String(parsed.html);
+    const missingFields = ["css", "js"].filter(f => parsed?.[f] == null);
+    console.error("\n" + "=".repeat(80));
+    console.error("[HF_DEBUG] Missing fields:", missingFields.join(", "), "— extracting from inline HTML");
+    if (css == null) {
+      const styleMatches = [...htmlStr.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)];
+      css = styleMatches.map(m => m[1]).join("\n").trim();
+      console.error("[HF_DEBUG] Extracted CSS from", styleMatches.length, "<style> block(s):", css.length, "chars");
+    }
+    if (js == null) {
+      // Only match inline <script> blocks (skip those with a src= attribute)
+      const scriptMatches = [...htmlStr.matchAll(/<script(?![^>]*\bsrc\s*=)[^>]*>([\s\S]*?)<\/script>/gi)];
+      js = scriptMatches.map(m => m[1]).join("\n").trim();
+      console.error("[HF_DEBUG] Extracted JS from", scriptMatches.length, "inline <script> block(s):", js.length, "chars");
+    }
+    console.error("=".repeat(80) + "\n");
   }
 
   console.error("[HF_DEBUG] All required fields present, returning parsed content");
   return {
     html: String(parsed.html),
-    css: String(parsed.css),
-    js: String(parsed.js)
+    css,
+    js
   };
 }
