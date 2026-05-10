@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Accessible Single-Page Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/no-js" />
+    </noscript>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a id="skip-link" href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <hgroup>
+            <h1>Accessible Web Solutions</h1>
+            <h2>Making the web accessible for everyone</h2>
+        </hgroup>
+        
+        <nav role="navigation" aria-label="Main navigation">
+            <ul role="menubar">
+                <li role="none"><a href="#home" class="nav-link" id="home-link" role="menuitem" aria-current="page">Home</a></li>
+                <li role="none"><a href="#about" class="nav-link" id="about-link" role="menuitem">About <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a></li>
+                <li role="none"><a href="#services" class="nav-link" id="services-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="#contact" class="nav-link" id="contact-link" role="menuitem">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section aria-labelledby="welcome-heading">
+            <h3 id="welcome-heading">Welcome to our accessible website</h3>
+            <p>We specialize in creating <strong>fully accessible</strong> web experiences that comply with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 AA standards.</p>
+            
+            <article>
+                <h4>Latest News</h4>
+                <p><time datetime="2023-11-15">November 15, 2023</time> - We've updated our accessibility statement to include new compliance measures.</p>
+                <details>
+                    <summary>Read more about our accessibility commitment</summary>
+                    <p>Our team has undergone additional training in <abbr title="Accessible Rich Internet Applications">ARIA</abbr> patterns and keyboard navigation techniques.</p>
+                </details>
+            </article>
+        </section>
+        
+        <section aria-labelledby="services-heading">
+            <h3 id="services-heading">Our Services</h3>
+            <div role="region" aria-labelledby="services-list-heading">
+                <h4 id="services-list-heading">Available Services</h4>
+                <ul>
+                    <li>Audits & Compliance Testing</li>
+                    <li>Remediation Services</li>
+                    <li>Training & Workshops</li>
+                    <li>Document Accessibility</li>
+                </ul>
+            </div>
+            
+            <figure>
+                <img src="accessibility-icon.png" alt="Accessibility icon showing a person in a wheelchair with a checkmark" width="200" height="200">
+                <figcaption>Our commitment to accessibility</figcaption>
+            </figure>
+        </section>
+        
+        <section aria-labelledby="embedded-heading">
+            <h3 id="embedded-heading">Embedded Content</h3>
+            <div role="application" aria-label="Interactive content area">
+                <canvas id="interactive-canvas" width="400" height="200" aria-label="Interactive canvas showing accessibility statistics"></canvas>
+                
+                <audio controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    <source src="audio.ogg" type="audio/ogg">
+                    <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                    <p>Your browser does not support the audio element. <a href="audio.mp3">Download the audio file</a>.</p>
+                </audio>
+                
+                <video controls width="400">
+                    <source src="video.mp4" type="video/mp4">
+                    <source src="video.webm" type="video/webm">
+                    <track kind="subtitles" src="subtitles.vtt" srclang="en" label="English">
+                    <p>Your browser does not support the video element. <a href="video.mp4">Download the video file</a>.</p>
+                </video>
+                
+                <picture>
+                    <source media="(min-width: 800px)" srcset="large-image.jpg">
+                    <source media="(min-width: 480px)" srcset="medium-image.jpg">
+                    <img src="small-image.jpg" alt="Accessibility testing in progress" width="400" height="300">
+                </picture>
+                
+                <iframe src="https://example.com" title="Example website demonstrating accessibility features" width="600" height="400"></iframe>
+            </div>
+        </section>
+        
+        <section aria-labelledby="form-heading">
+            <h3 id="form-heading">Contact Us</h3>
+            <form id="contact-form" aria-labelledby="form-heading">
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Your Message</legend>
+                    
+                    <div>
+                        <label for="subject">Subject:</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="audit">Accessibility Audit</option>
+                            <option value="training">Training Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                    </div>
+                </fieldset>
+                
+                <div>
+                    <label>
+                        <input type="checkbox" name="newsletter" checked>
+                        Subscribe to our newsletter
+                    </label>
+                </div>
+                
+                <div>
+                    <button type="submit">Send Message</button>
+                    <button type="reset">Reset Form</button>
+                </div>
+                
+                <output name="form-result" for="name email message" aria-live="polite"></output>
+            </form>
+        </section>
+        
+        <section aria-labelledby="data-heading">
+            <h3 id="data-heading">Accessibility Data</h3>
+            <table>
+                <caption>Accessibility Compliance Statistics</caption>
+                <colgroup>
+                    <col span="1" style="width: 30%;">
+                    <col span="1" style="width: 70%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Metric</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 AA Pass Rate</th>
+                        <td><data value="98.7">98.7%</data></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Average Contrast Ratio</th>
+                        <td>8.2:1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Keyboard Navigation Success</th>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Overall Accessibility Score</th>
+                        <td>99.2%</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <dl>
+                <dt>Screen Reader Compatibility</dt>
+                <dd>Fully compatible with JAWS, NVDA, and VoiceOver</dd>
+                
+                <dt>Keyboard Navigation</dt>
+                <dd>All interactive elements are keyboard accessible</dd>
+            </dl>
+            
+            <div role="search">
+                <label for="site-search">Search the site:</label>
+                <input type="search" id="site-search" name="q" aria-label="Search through site content">
+                <button type="submit">Search</button>
+            </div>
+        </section>
+    </main>
+    
+    <aside role="complementary" aria-labelledby="related-heading">
+        <h3 id="related-heading">Related Resources</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/">W3C Web Accessibility Initiative</a></li>
+            <li><a href="https://www.section508.gov/">Section 508</a></li>
+            <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 Guidelines</a></li>
+        </ul>
+        
+        <div role="alert" aria-live="assertive" id="status-message" class="visually-hidden"></div>
+    </aside>
+    
+    <footer role="contentinfo">
+        <address>
+            Contact us at <a href="mailto:info@accessibleweb.com">info@accessibleweb.com</a><br>
+            Phone: <a href="tel:+15551234567">(555) 123-4567</a>
+        </address>
+        
+        <p><small>&copy; 2023 Accessible Web Solutions. All rights reserved.</small></p>
+        
+        <nav role="navigation" aria-label="Footer navigation">
+            <ul>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/accessibility-statement">Accessibility Statement</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <dialog id="sample-dialog" aria-labelledby="dialog-heading">
+        <h4 id="dialog-heading">Sample Dialog</h4>
+        <p>This is a sample dialog demonstrating accessible modal implementation.</p>
+        <form method="dialog">
+            <button type="submit">Close</button>
+        </form>
+    </dialog>
+    
+    <div role="region" aria-label="Special content" class="special-content">
+        <p><bdi>محتوى خاص باللغة العربية</bdi></p>
+        <p><bdo dir="rtl">This text will appear right-to-left</bdo></p>
+        <blockquote cite="https://www.w3.org/WAI/">
+            <p>The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.</p>
+            <footer>— <cite>Tim Berners-Lee</cite>, W3C Director and inventor of the World Wide Web</footer>
+        </blockquote>
+        
+        <p>Here's some <code>sample code</code> demonstrating proper markup:</p>
+        <pre><code>&lt;button aria-label="Close dialog"&gt;X&lt;/button&gt;</code></pre>
+        
+        <p>This text contains a <q>short quotation</q> that should be properly marked up.</p>
+        
+        <p>Ruby annotation example: <ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby></p>
+        
+        <p>Here's some <s>strikethrough text</s> and <del>deleted content</del> with <ins>inserted content</ins>.</p>
+        
+        <p>Keyboard input: <kbd>Ctrl</kbd> + <kbd>C</kbd></p>
+        
+        <p>Sample output: <samp>Error: File not found</samp></p>
+        
+        <p>Variable example: <var>x</var> = <var>y</var> + 2</p>
+        
+        <p>This text contains a <wbr>word&nbsp;break&nbsp;opportunity</p>
+        
+        <p>Here's a <mark>highlighted</mark> word for emphasis.</p>
+        
+        <p>Progress: <progress value="70" max="100">70%</progress></p>
+        
+        <p>Meter: <meter value="0.6">60%</meter></p>
+        
+        <p>This text contains <sub>subscript</sub> and <sup>superscript</sup> elements.</p>
+        
+        <p>Here's some <u>underlined text</u> for non-semantic styling.</p>
+        
+        <p>This text contains a <br>line break for specific formatting needs.</p>
+        
+        <p>Here's an example of <i>italic text</i> and <b>bold text</b> used appropriately.</p>
+        
+        <p>This text contains <small>small print</small> for legal disclaimers.</p>
+        
+        <p><strong>Important:</strong> Always test your website with real users.</p>
+        
+        <p><em>Note:</em> Accessibility is not just about compliance, but about creating inclusive experiences.</p>
+    </div>
+    
+    <template id="tooltip-template">
+        <div role="tooltip" class="tooltip">
+            <slot></slot>
+        </div>
+    </template>
+    
+    <script src="app.js"></script>
+</body>
+</html>

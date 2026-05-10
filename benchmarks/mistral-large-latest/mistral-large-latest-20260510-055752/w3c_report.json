@@ -1,0 +1,126 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 11,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 10,
+      "lastColumn": 61,
+      "firstColumn": 9,
+      "message": "Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.",
+      "extract": ">\n        <meta http-equiv=\"refresh\" content=\"0; url=/no-js\" />\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 53
+    },
+    {
+      "type": "info",
+      "lastLine": 16,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n    \n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 19,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>Making",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 22,
+      "lastColumn": 60,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": " \n        <nav role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 52
+    },
+    {
+      "type": "info",
+      "lastLine": 32,
+      "lastColumn": 40,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "\n    \n    <main id=\"main-content\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "info",
+      "lastLine": 102,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 107,
+      "lastColumn": 98,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 131,
+      "lastColumn": 101,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <textarea id=\"message\" name=\"message\" rows=\"5\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "info",
+      "lastLine": 203,
+      "lastColumn": 66,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “complementary” role is unnecessary for element “aside”.",
+      "extract": "\n    \n    <aside role=\"complementary\" aria-labelledby=\"related-heading\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 62
+    },
+    {
+      "type": "info",
+      "lastLine": 214,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n    \n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    },
+    {
+      "type": "info",
+      "lastLine": 222,
+      "lastColumn": 62,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": " \n        <nav role=\"navigation\" aria-label=\"Footer navigation\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 54
+    }
+  ]
+}
