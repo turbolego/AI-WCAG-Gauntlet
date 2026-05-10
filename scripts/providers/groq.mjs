@@ -1,6 +1,6 @@
 import { extractAndRepairJson } from "../generate-page.mjs";
 
-export async function generateWithGroq({ model, token, iteration, feedback }) {
+export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 4000 }) {
   const REQUIRED_HTML5_TAGS = [
     "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
     "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
@@ -58,7 +58,7 @@ export async function generateWithGroq({ model, token, iteration, feedback }) {
           "content-type": "application/json",
           authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ model, messages, max_tokens: 24576 })
+        body: JSON.stringify({ model, messages, max_tokens: maxTokens })
       });
 
       if (!response.ok) {
@@ -166,7 +166,8 @@ export async function generateWithGroq({ model, token, iteration, feedback }) {
       return {
         html: String(parsed.html),
         css,
-        js
+        js,
+        usage: payload?.usage || {}
       };
     } catch (error) {
       if (attempt === maxRetries) {

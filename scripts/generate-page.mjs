@@ -264,6 +264,43 @@ function defaultPage() {
   };
 }
 
+/**
+ * Calculate optimal max_tokens for the next iteration based on previous usage.
+ * Reads the previous generation.json, extracts completion tokens, applies a 20% buffer,
+ * rounds up to nearest 100, and caps within a safe range.
+ */
+async function calculateOptimalMaxTokens(previousDir) {
+  const MIN_TOKENS = 2000;
+  const MAX_TOKENS = 12000;
+  const DEFAULT_TOKENS = 4000;
+  const BUFFER_MULTIPLIER = 1.2;
+
+  if (!previousDir) {
+    return DEFAULT_TOKENS;
+  }
+
+  try {
+    const generationJsonPath = path.join(previousDir, "generation.json");
+    const generationData = JSON.parse(await fs.readFile(generationJsonPath, "utf8"));
+    
+    const completionTokens = generationData?.usage?.completion_tokens;
+    if (typeof completionTokens !== "number" || completionTokens <= 0) {
+      return DEFAULT_TOKENS;
+    }
+
+    // Apply buffer and round up to nearest 100
+    const buffered = completionTokens * BUFFER_MULTIPLIER;
+    const rounded = Math.ceil(buffered / 100) * 100;
+    const clamped = Math.max(MIN_TOKENS, Math.min(MAX_TOKENS, rounded));
+    
+    console.error(`[TOKEN_CALC] Previous: ${completionTokens}, Buffered: ${buffered.toFixed(0)}, Rounded: ${rounded}, Clamped: ${clamped}`);
+    return clamped;
+  } catch (error) {
+    console.warn(`[TOKEN_CALC] Failed to calculate optimal tokens: ${error instanceof Error ? error.message : String(error)}`);
+    return DEFAULT_TOKENS;
+  }
+}
+
 async function readFeedback(previousDir) {
   if (!previousDir) {
     return "";
@@ -604,27 +641,32 @@ async function main() {
     const groqToken = process.env.GROQ_TOKEN;
     if (groqToken) {
       const feedback = await readFeedback(previousDir);
+      const maxTokens = await calculateOptimalMaxTokens(previousDir);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "groq",
           model: modelArg,
           iteration,
+          maxTokens,
           hasFeedback: Boolean(feedback),
           timestamp: new Date().toISOString()
         });
-        generated = await generateWithGroq({
+        const result = await generateWithGroq({
           model: modelArg,
           token: groqToken,
           iteration,
-          feedback
+          feedback,
+          maxTokens
         });
+        generated = result;
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
           provider: "groq",
           model: modelArg,
           iteration,
           success: true,
-          generatedKeys: Object.keys(generated).sort(),
+          generatedKeys: Object.keys(result).filter(k => k !== "usage").sort(),
+          usage: result?.usage,
           timestamp: new Date().toISOString()
         });
       } catch (error) {
@@ -732,19 +774,22 @@ async function main() {
   }
 
   await writePage(outputDir, generated);
+  const generationData = {
+    requestedModel: modelArg,
+    resolvedModel,
+    provider,
+    generatedByModel,
+    generationError: modelError
+  };
+  
+  // Include usage metrics if available (from providers like Groq)
+  if (generated?.usage) {
+    generationData.usage = generated.usage;
+  }
+  
   await fs.writeFile(
     path.join(outputDir, "generation.json"),
-    JSON.stringify(
-      {
-        requestedModel: modelArg,
-        resolvedModel,
-        provider,
-        generatedByModel,
-        generationError: modelError
-      },
-      null,
-      2
-    ),
+    JSON.stringify(generationData, null, 2),
     "utf8"
   );
 
