@@ -153,12 +153,26 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
   // Check TPM capacity before sending any request.
   // This proactively prevents 413/429 errors instead of retrying after they occur.
   let currentMaxTokens = maxTokens;
-  const estimatedTokens = estimateTokens(messages, currentMaxTokens);
-  const { shouldWait, waitMs } = checkTPMCapacity(estimatedTokens);
+  let estimatedTokens = estimateTokens(messages, currentMaxTokens);
+  let { shouldWait, waitMs } = checkTPMCapacity(estimatedTokens);
   
   if (shouldWait) {
     console.error(`[GROQ_TPM] Waiting ${Math.ceil(waitMs / 1000)}s before sending request...`);
     await new Promise(resolve => setTimeout(resolve, waitMs + 1000)); // +1s buffer
+  }
+  
+  // Even after waiting, if we know the TPM limit, ensure estimated request won't exceed it
+  if (tpmState.limit && estimatedTokens > tpmState.limit) {
+    const availableTokens = tpmState.limit - tpmState.used - 500; // Conservative buffer
+    if (availableTokens > 0) {
+      const reducedMaxTokens = Math.max(2000, Math.floor(availableTokens));
+      console.warn(
+        `[GROQ_TPM] Estimated request (${estimatedTokens} tokens) exceeds TPM limit (${tpmState.limit}). ` +
+        `Reducing max_tokens from ${currentMaxTokens} to ${reducedMaxTokens}`
+      );
+      currentMaxTokens = reducedMaxTokens;
+      estimatedTokens = estimateTokens(messages, currentMaxTokens);
+    }
   }
 
   // Retry logic for transient Groq API failures (500+ errors only, not rate limits)
@@ -166,6 +180,16 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
   
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
+      // Recheck TPM capacity before each attempt (including retries)
+      if (attempt > 1) {
+        const retryEstimatedTokens = estimateTokens(messages, currentMaxTokens);
+        const retryCheck = checkTPMCapacity(retryEstimatedTokens);
+        if (retryCheck.shouldWait) {
+          console.error(`[GROQ_TPM] Retry attempt needs to wait ${Math.ceil(retryCheck.waitMs / 1000)}s for TPM reset...`);
+          await new Promise(resolve => setTimeout(resolve, retryCheck.waitMs + 1000));
+        }
+      }
+      
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -222,14 +246,12 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
       const messageContent = choice?.message?.content;
       const reasoning = choice?.message?.reasoning;
       
-      // If finish_reason is "length" and content is empty but reasoning exists,
-      // retry with significantly higher tokens
+      // If finish_reason is "length" (output truncated), it typically means we asked for too many tokens
+      // Don't retry with more tokens as that may hit TPM limits. Instead, continue with what we have.
       if (finishReason === "length" && !messageContent && reasoning && attempt < maxRetries) {
-        const increasedTokens = Math.min(12000, currentMaxTokens * 2);
-        console.warn(`[GROQ_REASONING] Model used reasoning but ran out of tokens. Content empty, finish_reason=length. Retrying with ${increasedTokens} tokens...`);
-        currentMaxTokens = increasedTokens;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        continue;
+        // Model used reasoning but ran out of tokens for actual output
+        console.warn(`[GROQ_REASONING] Model used reasoning (extended thinking) but produced no output content. Finish reason: length. Continuing with partial response...`);
+        // Don't retry - attempting to increase tokens will just hit TPM limits again
       }
       
       if (!messageContent) {

@@ -47,6 +47,9 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Trust RTK project filters
+        run: rtk trust -y || true
+
       - name: Install dependencies and matching ChromeDriver
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
