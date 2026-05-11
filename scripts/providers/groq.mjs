@@ -25,7 +25,7 @@ function extractTPMInfo(errorMessage) {
   return null;
 }
 
-export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 4000 }) {
+export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
   const REQUIRED_HTML5_TAGS = [
     "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
     "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
@@ -142,13 +142,30 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
       const choice = payload?.choices?.[0];
       const finishReason = choice?.finish_reason ?? "unknown";
       const messageContent = choice?.message?.content;
+      const reasoning = choice?.message?.reasoning;
+      
+      // If finish_reason is "length" and content is empty but reasoning exists,
+      // retry with significantly higher tokens
+      if (finishReason === "length" && !messageContent && reasoning && attempt < maxRetries) {
+        const increasedTokens = Math.min(12000, currentMaxTokens * 2);
+        console.warn(`[GROQ_REASONING] Model used reasoning but ran out of tokens. Content empty, finish_reason=length. Retrying with ${increasedTokens} tokens...`);
+        currentMaxTokens = increasedTokens;
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        continue;
+      }
+      
       if (!messageContent) {
         console.error("\n" + "=".repeat(80));
         console.error("[GROQ_DEBUG_ERROR] Groq API returned no content");
+        if (reasoning) {
+          console.error("[GROQ_DEBUG_ERROR] Model produced reasoning (extended thinking) but no output content");
+          console.error("[GROQ_DEBUG_ERROR] Reasoning (first 500 chars):");
+          console.error(reasoning.substring(0, 500));
+        }
         console.error("[GROQ_DEBUG_ERROR] Full response object (first 1000 chars):");
         console.error(JSON.stringify(payload, null, 2).substring(0, 1000));
         console.error("=".repeat(80) + "\n");
-        throw new Error(`Groq response did not include content (finish_reason=${finishReason}).`);
+        throw new Error(`Groq response did not include content (finish_reason=${finishReason}, has_reasoning=${!!reasoning}).`);
       }
 
       // Debug: Log raw API response

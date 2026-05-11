@@ -270,9 +270,9 @@ function defaultPage() {
  * rounds up to nearest 100, and caps within a safe range.
  */
 async function calculateOptimalMaxTokens(previousDir) {
-  const MIN_TOKENS = 2000;
+  const MIN_TOKENS = 4000;
   const MAX_TOKENS = 12000;
-  const DEFAULT_TOKENS = 4000;
+  const DEFAULT_TOKENS = 6000; // Higher default to accommodate reasoning tokens
   const BUFFER_MULTIPLIER = 1.2;
 
   if (!previousDir) {
@@ -296,7 +296,11 @@ async function calculateOptimalMaxTokens(previousDir) {
     console.error(`[TOKEN_CALC] Previous: ${completionTokens}, Buffered: ${buffered.toFixed(0)}, Rounded: ${rounded}, Clamped: ${clamped}`);
     return clamped;
   } catch (error) {
-    console.warn(`[TOKEN_CALC] Failed to calculate optimal tokens: ${error instanceof Error ? error.message : String(error)}`);
+    // ENOENT on first iteration is normal, just return default
+    const isFirstIteration = error instanceof Error && error.code === 'ENOENT';
+    if (!isFirstIteration) {
+      console.warn(`[TOKEN_CALC] Failed to calculate optimal tokens: ${error instanceof Error ? error.message : String(error)}`);
+    }
     return DEFAULT_TOKENS;
   }
 }
