@@ -1,28 +1,105 @@
 import { extractAndRepairJson } from "../generate-page.mjs";
 
 /**
- * Extract retry-after delay (in seconds) from Groq rate limit error message.
- * Example: "Please try again in 30.81s" → 30.81
+ * Track TPM (Tokens Per Minute) state across requests.
+ * Structure: { limit, resetTime, used, lastUpdate }
+ * - limit: TPM limit for this model/tier
+ * - resetTime: Epoch ms when TPM counter resets
+ * - used: Tokens used so far in current minute
+ * - lastUpdate: When we last saw TPM info from API
  */
-function extractRetryDelay(errorMessage) {
-  const match = errorMessage.match(/try again in ([\d.]+)s/i);
-  return match ? parseFloat(match[1]) : null;
-}
+let tpmState = {
+  limit: null,
+  resetTime: null,
+  used: 0,
+  lastUpdate: 0
+};
 
 /**
- * Extract TPM info from rate limit error to help reduce future requests.
+ * Extract TPM info from rate limit error to track capacity.
  * Returns { limit, used, requested } or null
+ * Works for both 429 (rate limit) and 413 (request too large) errors
  */
 function extractTPMInfo(errorMessage) {
-  const match = errorMessage.match(/Limit (\d+), Used (\d+), Requested (\d+)/);
+  const match = errorMessage.match(/Limit (\d+),\s*(?:Used (\d+),\s*)?Requested (\d+)/);
   if (match) {
     return {
       limit: parseInt(match[1], 10),
-      used: parseInt(match[2], 10),
+      used: match[2] ? parseInt(match[2], 10) : 0,
       requested: parseInt(match[3], 10)
     };
   }
   return null;
+}
+
+/**
+ * Estimate total tokens for a request (prompt + max_tokens).
+ * Rough approximation: 1 token ≈ 4 characters.
+ */
+function estimateTokens(messages, maxTokens) {
+  let promptChars = 0;
+  if (Array.isArray(messages)) {
+    for (const msg of messages) {
+      if (msg.content) {
+        promptChars += String(msg.content).length;
+      }
+    }
+  }
+  const promptTokens = Math.ceil(promptChars / 4);
+  return promptTokens + maxTokens;
+}
+
+/**
+ * Update TPM state when we receive TPM info from the API.
+ * Sets reset time to 1 minute from now.
+ */
+function updateTPMState(tpmInfo) {
+  if (!tpmInfo) return;
+  tpmState.limit = tpmInfo.limit;
+  tpmState.used = tpmInfo.used;
+  tpmState.resetTime = Date.now() + 60000; // Reset in 1 minute
+  tpmState.lastUpdate = Date.now();
+  console.error(`[GROQ_TPM] Updated state — Limit: ${tpmInfo.limit}, Used: ${tpmInfo.used}, Reset in: ~60s`);
+}
+
+/**
+ * Check if we should wait before sending a request to avoid exceeding TPM.
+ * Returns { shouldWait, waitMs } where waitMs is how long to wait (if shouldWait=true).
+ */
+function checkTPMCapacity(estimatedTokens) {
+  if (!tpmState.limit) {
+    // Don't know TPM limit yet, proceed cautiously
+    return { shouldWait: false, waitMs: 0 };
+  }
+
+  const now = Date.now();
+  const timeUntilReset = Math.max(0, tpmState.resetTime - now);
+
+  // If TPM counter has reset, reset our tracked usage
+  if (timeUntilReset === 0) {
+    console.error("[GROQ_TPM] TPM counter reset detected, resetting tracked usage");
+    tpmState.used = 0;
+    tpmState.resetTime = now + 60000;
+  }
+
+  const projectedUsage = tpmState.used + estimatedTokens;
+  const available = tpmState.limit - tpmState.used;
+
+  console.error(
+    `[GROQ_TPM_CHECK] Limit: ${tpmState.limit}, Currently used: ${tpmState.used}, ` +
+    `Estimated: ${estimatedTokens}, Projected: ${projectedUsage}, Available: ${available}`
+  );
+
+  if (projectedUsage > tpmState.limit) {
+    const overageTokens = projectedUsage - tpmState.limit;
+    console.warn(
+      `[GROQ_TPM_WAIT] Request would exceed TPM by ${overageTokens} tokens. ` +
+      `Waiting ${Math.ceil(timeUntilReset / 1000)}s for TPM reset...`
+    );
+    return { shouldWait: true, waitMs: timeUntilReset };
+  }
+
+  return { shouldWait: false, waitMs: 0 };
 }
 
 export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
@@ -73,9 +150,19 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
   }
   console.error("=".repeat(80) + "\n");
 
-  // Retry logic for transient Groq API failures and rate limits
-  const maxRetries = 3;
+  // Check TPM capacity before sending any request.
+  // This proactively prevents 413/429 errors instead of retrying after they occur.
   let currentMaxTokens = maxTokens;
+  const estimatedTokens = estimateTokens(messages, currentMaxTokens);
+  const { shouldWait, waitMs } = checkTPMCapacity(estimatedTokens);
+  
+  if (shouldWait) {
+    console.error(`[GROQ_TPM] Waiting ${Math.ceil(waitMs / 1000)}s before sending request...`);
+    await new Promise(resolve => setTimeout(resolve, waitMs + 1000)); // +1s buffer
+  }
+
+  // Retry logic for transient Groq API failures (500+ errors only, not rate limits)
+  const maxRetries = 2;
   
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -92,45 +179,36 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
         const errorBody = (await response.text()).trim();
         const error = `Groq request failed (${response.status})${errorBody ? `: ${errorBody}` : ""}`;
         
-        // Handle 429 rate limit errors specifically
-        if (response.status === 429) {
-          let retryDelay = 5; // Default 5 second backoff
-          let tpmInfo = null;
-          
-          try {
-            const errorObj = JSON.parse(errorBody);
-            const errorMessage = errorObj?.error?.message || errorBody;
-            
-            // Try to extract suggested retry delay
-            const suggestedDelay = extractRetryDelay(errorMessage);
-            if (suggestedDelay) {
-              retryDelay = Math.ceil(suggestedDelay + 1); // Add 1s buffer
-              console.warn(`[GROQ_RATE_LIMIT] API suggests waiting ${suggestedDelay}s, using ${retryDelay}s`);
-            }
-            
-            // Extract TPM info to reduce max_tokens on retry
-            tpmInfo = extractTPMInfo(errorMessage);
-            if (tpmInfo) {
-              const remaining = tpmInfo.limit - tpmInfo.used;
-              const reducedTokens = Math.max(1000, Math.floor(remaining * 0.8)); // Use 80% of remaining
-              console.warn(`[GROQ_RATE_LIMIT] TPM: Limit=${tpmInfo.limit}, Used=${tpmInfo.used}, Requested=${tpmInfo.requested}`);
-              console.warn(`[GROQ_RATE_LIMIT] Reducing max_tokens from ${currentMaxTokens} to ${reducedTokens}`);
-              currentMaxTokens = reducedTokens;
-            }
-          } catch (e) {
-            console.warn(`[GROQ_RATE_LIMIT] Could not parse error details: ${e instanceof Error ? e.message : String(e)}`);
+        // Extract and update TPM info from error (both 413 and 429 include this)
+        let tpmInfo = null;
+        try {
+          const errorObj = JSON.parse(errorBody);
+          const errorMessage = errorObj?.error?.message || errorBody;
+          tpmInfo = extractTPMInfo(errorMessage);
+          if (tpmInfo) {
+            updateTPMState(tpmInfo);
           }
-          
-          if (attempt < maxRetries) {
-            console.warn(`Rate limit hit (attempt ${attempt}/${maxRetries}). Waiting ${retryDelay}s before retry...`);
-            await new Promise(resolve => setTimeout(resolve, retryDelay * 1000));
-            continue;
-          }
+        } catch (e) {
+          // Couldn't parse error details, continue with error handling
+        }
+
+        // For rate limit errors (413, 429), we've already checked TPM before sending.
+        // If we still hit a limit, it means Groq has stricter limits or the
+        // estimate was off. Reduce max_tokens and try again (once).
+        if ((response.status === 413 || response.status === 429) && attempt < maxRetries) {
+          const reducedTokens = Math.max(2000, Math.floor(currentMaxTokens * 0.6));
+          console.warn(
+            `[GROQ_TPM] Hit ${response.status} despite pre-check. Reducing max_tokens ` +
+            `from ${currentMaxTokens} to ${reducedTokens} and retrying once...`
+          );
+          currentMaxTokens = reducedTokens;
+          await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2s before retry
+          continue;
         }
         
-        // For other 5xx errors, retry with backoff
+        // For other 5xx errors, retry with exponential backoff
         if (attempt < maxRetries && response.status >= 500) {
-          const backoff = Math.pow(2, attempt - 1) * 1000; // 1s, 2s, 4s
+          const backoff = Math.pow(2, attempt - 1) * 1000; // 1s, 2s
           console.warn(`${error} (attempt ${attempt}/${maxRetries}). Retrying in ${backoff}ms...`);
           await new Promise(resolve => setTimeout(resolve, backoff));
           continue;
