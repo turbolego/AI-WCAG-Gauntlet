@@ -103,36 +103,28 @@ function checkTPMCapacity(estimatedTokens) {
 }
 
 export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
-  const REQUIRED_HTML5_TAGS = [
-    "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
-    "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
-    "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure",
-    "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i",
-    "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "menu",
-    "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture",
-    "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "search", "section", "select", "slot",
-    "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template",
-    "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
-  ];
-
   const prompt = [
-    "Create an accessibility-focused single-page web app output as strict JSON with keys: html, css, js.",
-    "Requirements:",
-    "- Use every required HTML5 tag at least once in the generated HTML.",
-    "- Required tags:",
-    REQUIRED_HTML5_TAGS.join(", "),
-    "- Keep the page valid and as accessible as possible (labels, landmarks, alt text, headings order, contrast-safe defaults, keyboard-usable controls).",
-    "- Do not include markdown fences or explanations.",
-    "- Output ONLY the raw JSON object, no markdown code fences.",
-    `- This is iteration ${iteration}.`,
-    feedback ? "- Improve based on previous reports provided below." : ""
+    "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
+    "",
+    "Generate an accessible single-page web app HTML with semantic HTML5 elements:",
+    "- Use diverse structural tags: article, aside, nav, section, header, footer, main",
+    "- Use semantic text tags: article, aside, details, mark, time, figure, figcaption",
+    "- Use form elements: form, input, button, label, fieldset, legend, select, textarea, datalist",
+    "- Use media tags: audio, video, source, track, picture, img",
+    "- Use interactive tags: dialog, embed, iframe, object, map, area",
+    "- Use data/list tags: table, tbody, thead, tfoot, tr, td, th, ol, ul, li, dl, dt, dd",
+    "- Use ruby, ruby text, and special tags: code, pre, kbd, samp, var, sub, sup, small, strong, em, b, i, u, s, mark, ins, del, abbr, address, blockquote, cite, q, dfn, bdo, bdi",
+    "- Keep HTML valid, well-nested, and fully accessible.",
+    "",
+    `Iteration ${iteration}.`,
+    feedback ? `Improve based on these reports: ${feedback}` : "Make a comprehensive demo page showing diverse semantic HTML5 usage."
   ].filter(Boolean).join("\n");
 
-  const systemMessage = "You produce only valid JSON with string fields html, css, js. Never wrap the output in markdown code fences.";
+  const systemMessage = "Output only valid JSON with html, css, js string keys. No explanations, no code fences. Start with {";
 
   const messages = [
     { role: "system", content: systemMessage },
-    { role: "user", content: `${prompt}${feedback ? `\n\nPrevious reports:\n${feedback}` : ""}` }
+    { role: "user", content: prompt }
   ];
 
   // Debug logging
