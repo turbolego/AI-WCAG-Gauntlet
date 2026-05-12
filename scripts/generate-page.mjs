@@ -132,6 +132,14 @@ export function extractAndRepairJson(raw) {
         continue;
       }
 
+      // Handle single quotes in HTML attributes within JSON strings
+      // Model often outputs HTML like <html lang='en'> with single quotes in attributes
+      // Escape them using unicode escape to prevent JSON parsing issues
+      if (stringDelimiter === '"' && ch === "'") {
+        result += "\\u0027";
+        continue;
+      }
+
       // Raw control character inside a string value
       const code = ch.charCodeAt(0);
       if (code <= 0x1f) {
