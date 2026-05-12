@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Single-Page Web App</title>
+  <link rel="stylesheet" href="styles.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header>
+    <h1>Accessible Web App</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home" class="nav-link" role="button" aria-label="Home" style="padding: 12px 24px; font-size: 18px;">Home</a></li>
+        <li><a href="#about" class="nav-link" role="button" aria-label="About" style="padding: 12px 24px; font-size: 18px;">About</a></li>
+        <li><a href="#contact" class="nav-link" role="button" aria-label="Contact" style="padding: 12px 24px; font-size: 18px;">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Main Content</h2>
+      <section>
+        <h3>Section 1</h3>
+        <p>This is a paragraph with <strong>strong</strong> and <em>emphasized</em> text.</p>
+        <audio controls>
+          <source src="audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </section>
+      <section>
+        <h3>Section 2</h3>
+        <table>
+          <caption>Sample Table</caption>
+          <thead>
+            <tr>
+              <th scope="col">Header 1</th>
+              <th scope="col">Header 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+    <aside>
+      <h2>Related Links</h2>
+      <ul>
+        <li><a href="#" style="padding: 16px 32px; font-size: 18px; color: #007BFF; background-color: #f0f0f0;">Link 1</a></li>
+        <li><a href="#" style="padding: 16px 32px; font-size: 18px; color: #007BFF; background-color: #f0f0f0;">Link 2</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <address>
+      Contact us at <a href="mailto:info@example.com">info@example.com</a>
+    </address>
+    <form action="#" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <button type="submit" style="padding: 12px 24px; font-size: 16px;">Submit</button>
+    </form>
+  </footer>
+</body>
+</html>

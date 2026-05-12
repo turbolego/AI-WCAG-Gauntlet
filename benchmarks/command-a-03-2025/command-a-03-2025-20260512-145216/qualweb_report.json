@@ -1,0 +1,15 @@
+{
+  "failedCount": 2,
+  "results": [
+    {
+      "ruleId": "QW-ACT-R37",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    },
+    {
+      "ruleId": "QW-ACT-R76",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    }
+  ]
+}

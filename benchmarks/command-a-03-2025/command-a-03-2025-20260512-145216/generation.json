@@ -1,0 +1,22 @@
+{
+  "requestedModel": "command-a-03-2025",
+  "resolvedModel": "command-a-03-2025",
+  "provider": "cohere",
+  "generatedByModel": true,
+  "generationError": null,
+  "usage": {
+    "prompt_tokens": 771,
+    "completion_tokens": 1269,
+    "total_tokens": 2040,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  }
+}
