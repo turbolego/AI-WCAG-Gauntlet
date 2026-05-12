@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "provider": "groq",
+  "providerLabel": "Groq LPU",
+  "tool": "github-actions",
+  "timestamp": "2026-05-12T05:07:45Z",
+  "folder": "openai-gpt-oss-120b-20260512-050745"
+}

@@ -1,0 +1,8 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "iteration": 1,
+  "maxTokens": 6000,
+  "hasFeedback": false,
+  "timestamp": "2026-05-12T05:07:45.673Z"
+}

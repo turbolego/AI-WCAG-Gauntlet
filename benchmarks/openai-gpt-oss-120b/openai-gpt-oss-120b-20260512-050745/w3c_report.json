@@ -1,0 +1,60 @@
+{
+  "validates": false,
+  "errorCount": 2,
+  "messageCount": 5,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 79,
+      "lastColumn": 77,
+      "firstColumn": 7,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "el>\n      <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 81,
+      "lastColumn": 80,
+      "firstColumn": 7,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "el>\n      <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 83,
+      "lastColumn": 74,
+      "firstColumn": 7,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "el>\n      <textarea id=\"message\" name=\"message\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 68
+    },
+    {
+      "type": "error",
+      "lastLine": 90,
+      "lastColumn": 11,
+      "firstColumn": 6,
+      "message": "End of file seen and there were open elements.",
+      "extract": "ter>\n  <p>&copy;",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 89,
+      "lastColumn": 8,
+      "firstColumn": 1,
+      "message": "Unclosed element “footer”.",
+      "extract": "\n</main>\n\n<footer>\n  <p>",
+      "hiliteStart": 10,
+      "hiliteLength": 8
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Accessible Demo App</title>
+<link rel="stylesheet" href="styles.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+<header>
+  <h1>Demo Web Application</h1>
+  <nav aria-label="Primary">
+    <ul class="nav-list">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="home">
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We provide <b>high-quality</b> solutions. Our mission is to <abbr title="Make the web accessible">MWA</abbr> for everyone.</p>
+    <blockquote cite="https://example.com">
+      <p>“Accessibility is not a luxury, it’s a necessity.”</p>
+      <footer>— Jane Doe, <cite>Web Advocate</cite></footer>
+    </blockquote>
+  </section>
+
+  <article id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Consulting</li>
+      <li>Development</li>
+      <li>Design</li>
+    </ul>
+    <table>
+      <caption>Pricing Table</caption>
+      <thead>
+        <tr><th>Service</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Consulting</td><td>$100/hr</td></tr>
+        <tr><td>Development</td><td>$150/hr</td></tr>
+        <tr><td>Design</td><td>$120/hr</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <aside>
+    <h2>Quick Links</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <section id="media">
+    <h2>Media</h2>
+    <figure>
+      <img src="placeholder.jpg" alt="Sample image description">
+      <figcaption>Sample Image</figcaption>
+    </figure>
+    <audio controls>
+      <source src="sample.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <map name="samplemap">
+      <area shape="rect" coords="0,0,100,100" href="https://example.com" alt="Example link">
+    </map>
+    <img src="placeholder-map.jpg" usemap="#samplemap" alt="Image map example">
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form" novalidate>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required aria-required="true">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required aria-required="true">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required aria-required="true"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy;
