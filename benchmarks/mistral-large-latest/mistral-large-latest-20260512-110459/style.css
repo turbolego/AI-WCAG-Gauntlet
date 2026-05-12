@@ -1,0 +1,350 @@
+@charset "UTF-8";
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --error-color: #e74c3c;
+    --border-radius: 4px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--dark-color);
+}
+
+h1 { font-size: 2.5rem; }
+
+h2 { font-size: 2rem; }
+
+h3 { font-size: 1.75rem; }
+
+h4 { font-size: 1.5rem; }
+
+h5 { font-size: 1.25rem; }
+
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover, a:focus {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: var(--box-shadow);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: white;
+    padding: 0.75rem 1rem;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover, .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+article, aside, div {
+    margin-bottom: 1.5rem;
+}
+
+button, input, select, textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+button, [type="button"], [type="submit"], [type="reset"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0.75rem 1.5rem;
+}
+
+button:hover, button:focus,
+[type="button"]:hover, [type="button"]:focus,
+[type="submit"]:hover, [type="submit"]:focus,
+[type="reset"]:hover, [type="reset"]:focus {
+    background-color: var(--secondary-color);
+    outline: none;
+}
+
+button:disabled, [type="button"]:disabled,
+[type="submit"]:disabled, [type="reset"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select, textarea {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 1rem;
+}
+
+[type="checkbox"], [type="radio"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+legend {
+    padding: 0 0.5rem;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--light-color);
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+figure {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+figcaption {
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+img, video, audio, canvas, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
+progress, meter {
+    width: 100%;
+    max-width: 500px;
+    height: 1.5rem;
+}
+
+dialog {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    max-width: 500px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    max-width: 300px;
+}
+
+.menu li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.menu li:last-child {
+    border-bottom: none;
+}
+
+.menu button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.menu button:hover, .menu button:focus {
+    background-color: var(--light-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.noscript-warning {
+    background-color: var(--warning-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Ensure sufficient color contrast */
+body, input, button, select, textarea {
+    color: #333;
+}
+
+a, button, [type="button"], [type="submit"], [type="reset"] {
+    color: white;
+}
+
+/* Fix for canvas text contrast */
+#example-canvas {
+    background-color: white;
+}
+
+/* Fix for dialog contrast */
+dialog {
+    color: #333;
+}
+
+/* Fix for SVG text contrast */
+svg text {
+    fill: #333;
+}
+
+/* Ensure touch targets are large enough */
+.nav-link, button, [type="button"], [type="submit"], [type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Focus styles for better visibility */
+:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}

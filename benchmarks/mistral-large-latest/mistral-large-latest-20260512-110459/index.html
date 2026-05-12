@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Accessible Single-Page Web App</title>
+    <meta name="description" content="An accessibility-focused single-page web application demonstrating all required HTML5 tags.">
+    <link rel="stylesheet" href="styles.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <hgroup>
+            <h1>Accessible Web App</h1>
+            <p>Demonstrating all required HTML5 tags with accessibility in mind</p>
+        </hgroup>
+        
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#main-content" class="nav-link">Home</a></li>
+                <li><a href="#media-section" class="nav-link">Media</a></li>
+                <li><a href="#forms-section" class="nav-link">Forms</a></li>
+                <li><a href="#text-section" class="nav-link">Text</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section aria-labelledby="intro-heading">
+            <h2 id="intro-heading">Introduction</h2>
+            <article>
+                <p>This single-page application demonstrates all required HTML5 tags while maintaining accessibility standards. Every element includes proper labeling, keyboard navigation, and semantic structure.</p>
+                
+                <aside>
+                    <h3>Accessibility Features</h3>
+                    <ul>
+                        <li>Keyboard navigable controls</li>
+                        <li>Proper heading hierarchy</li>
+                        <li>Sufficient color contrast</li>
+                        <li>ARIA attributes where needed</li>
+                    </ul>
+                </aside>
+            </article>
+        </section>
+        
+        <section id="text-section" aria-labelledby="text-heading">
+            <h2 id="text-heading">Text Elements</h2>
+            
+            <div>
+                <h3>Semantic Text Elements</h3>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> includes many <strong>semantic</strong> elements like <em>this</em> and <mark>this</mark>.</p>
+                
+                <p>Here's some <code>inline code</code> and a <kbd>keyboard input</kbd> example.</p>
+                
+                <p>The <var>x</var> variable in <samp>function(x)</samp> should be defined.</p>
+                
+                <p>This text is <del>deleted</del> and this is <ins>inserted</ins>.</p>
+                
+                <p>H<sub>2</sub>O is water while E=mc<sup>2</sup> is Einstein's equation.</p>
+                
+                <p>This is a <b>bold</b> statement and this is <i>italicized</i>.</p>
+                
+                <p>This text has a <u>underline</u> and this is <s>strikethrough</s>.</p>
+                
+                <p><small>This is small text</small> compared to normal text.</p>
+                
+                <blockquote cite="https://example.com">
+                    <p>This is a block quotation. It should be indented and properly attributed.</p>
+                    <footer>— <cite>Example Source</cite></footer>
+                </blockquote>
+                
+                <pre>
+function example() {
+    // This is preformatted text
+    // It preserves whitespace and line breaks
+    return "Hello, world!";
+}
+                </pre>
+                
+                <p>Here's a definition: <dfn id="html-def">HTML</dfn> is the standard markup language for creating web pages.</p>
+                
+                <p>Contact information: <address>Email: <a href="mailto:contact@example.com">contact@example.com</a></address></p>
+            </div>
+            
+            <div>
+                <h3>Lists</h3>
+                <ul>
+                    <li>Unordered list item 1</li>
+                    <li>Unordered list item 2</li>
+                    <li>Unordered list item 3</li>
+                </ul>
+                
+                <ol>
+                    <li>Ordered list item 1</li>
+                    <li>Ordered list item 2</li>
+                    <li>Ordered list item 3</li>
+                </ol>
+                
+                <dl>
+                    <dt>Term 1</dt>
+                    <dd>Definition of term 1</dd>
+                    <dt>Term 2</dt>
+                    <dd>Definition of term 2</dd>
+                </dl>
+            </div>
+            
+            <div>
+                <h3>Ruby Annotations</h3>
+                <ruby>
+                    漢 <rp>(</rp><rt>kan</rt><rp>)</rp>
+                    字 <rp>(</rp><rt>ji</rt><rp>)</rp>
+                </ruby>
+            </div>
+        </section>
+        
+        <section id="media-section" aria-labelledby="media-heading">
+            <h2 id="media-heading">Media Elements</h2>
+            
+            <div>
+                <h3>Images</h3>
+                <figure>
+                    <img src="https://via.placeholder.com/300x200" alt="Placeholder image showing 300 by 200 pixels" width="300" height="200">
+                    <figcaption>A placeholder image with proper alt text</figcaption>
+                </figure>
+                
+                <picture>
+                    <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400">
+                    <img src="https://via.placeholder.com/400x200" alt="Responsive image that changes based on screen size">
+                </picture>
+            </div>
+            
+            <div>
+                <h3>Audio and Video</h3>
+                <figure>
+                    <audio controls>
+                        <source src="audio.mp3" type="audio/mpeg">
+                        <source src="audio.ogg" type="audio/ogg">
+                        <p>Your browser doesn't support HTML5 audio. <a href="audio.mp3">Download the audio file</a> instead.</p>
+                    </audio>
+                    <figcaption>Example audio player with fallback</figcaption>
+                </figure>
+                
+                <figure>
+                    <video controls width="400">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English">
+                        <p>Your browser doesn't support HTML5 video. <a href="video.mp4">Download the video</a> instead.</p>
+                    </video>
+                    <figcaption>Example video player with captions</figcaption>
+                </figure>
+            </div>
+            
+            <div>
+                <h3>Embedded Content</h3>
+                <figure>
+                    <embed src="demo.pdf" type="application/pdf" width="400" height="300" aria-label="Embedded PDF document">
+                    <figcaption>Embedded PDF document</figcaption>
+                </figure>
+                
+                <figure>
+                    <object data="demo.svg" type="image/svg+xml" width="400" height="200" aria-label="Embedded SVG image">
+                        <p>Your browser doesn't support SVG. <a href="demo.svg">Download the SVG file</a> instead.</p>
+                    </object>
+                    <figcaption>Embedded SVG with fallback</figcaption>
+                </figure>
+                
+                <figure>
+                    <iframe src="about:blank" title="Example iframe showing blank content" width="400" height="200" aria-label="Example iframe"></iframe>
+                    <figcaption>Example iframe</figcaption>
+                </figure>
+                
+                <figure>
+                    <canvas id="example-canvas" width="400" height="200" aria-label="Example canvas showing a rectangle">
+                        <p>Your browser doesn't support HTML5 canvas. Here's a description: A blue rectangle on a white background.</p>
+                    </canvas>
+                    <figcaption>Example canvas with fallback</figcaption>
+                </figure>
+            </div>
+        </section>
+        
+        <section id="forms-section" aria-labelledby="forms-heading">
+            <h2 id="forms-heading">Forms</h2>
+            
+            <form id="example-form" aria-labelledby="forms-heading">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="birthdate">Birthdate:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                    
+                    <div>
+                        <label for="color">Favorite Color:</label>
+                        <input type="color" id="color" name="color" value="#ff0000">
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Preferences</legend>
+                    
+                    <div>
+                        <label for="country">Country:</label>
+                        <select id="country" name="country">
+                            <option value="">Select a country</option>
+                            <optgroup label="North America">
+                                <option value="us">United States</option>
+                                <option value="ca">Canada</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                                <option value="uk">United Kingdom</option>
+                                <option value="fr">France</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="bio">Biography:</label>
+                        <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="language">Programming Language:</label>
+                        <input list="languages" id="language" name="language">
+                        <datalist id="languages">
+                            <option value="JavaScript">
+                            <option value="Python">
+                            <option value="Java">
+                            <option value="C#">
+                            <option value="PHP">
+                        </datalist>
+                    </div>
+                </fieldset>
+                
+                <div>
+                    <label>
+                        <input type="checkbox" name="terms" required aria-required="true">
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                
+                <div>
+                    <fieldset>
+                        <legend>Subscription</legend>
+                        <label>
+                            <input type="radio" name="subscription" value="weekly" checked>
+                            Weekly
+                        </label>
+                        <label>
+                            <input type="radio" name="subscription" value="monthly">
+                            Monthly
+                        </label>
+                    </fieldset>
+                </div>
+                
+                <div>
+                    <label for="rating">Rating (1-10):</label>
+                    <input type="range" id="rating" name="rating" min="1" max="10" value="5">
+                    <output for="rating" id="rating-output">5</output>
+                </div>
+                
+                <div>
+                    <label for="file">Upload a file:</label>
+                    <input type="file" id="file" name="file">
+                </div>
+                
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                </div>
+                
+                <div>
+                    <label for="progress">Progress:</label>
+                    <progress id="progress" value="70" max="100">70%</progress>
+                </div>
+                
+                <div>
+                    <label for="meter">Disk usage:</label>
+                    <meter id="meter" value="0.6">60%</meter>
+                </div>
+                
+                <div>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </section>
+        
+        <section aria-labelledby="tables-heading">
+            <h2 id="tables-heading">Tables</h2>
+            
+            <table>
+                <caption>Example Table with Accessible Structure</caption>
+                <colgroup>
+                    <col span="2" style="background-color: #f4f4f4;">
+                    <col style="background-color: #e9e9e9;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Header 1</th>
+                        <th scope="col">Header 2</th>
+                        <th scope="col">Header 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1, Cell 1</td>
+                        <td>Row 1, Cell 2</td>
+                        <td>Row 1, Cell 3</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2, Cell 1</td>
+                        <td>Row 2, Cell 2</td>
+                        <td>Row 2, Cell 3</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Table footer with summary information</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        
+        <section aria-labelledby="interactive-heading">
+            <h2 id="interactive-heading">Interactive Elements</h2>
+            
+            <div>
+                <h3>Details and Summary</h3>
+                <details>
+                    <summary>Click to show more information</summary>
+                    <p>This is additional information that can be revealed by clicking the summary element.</p>
+                </details>
+            </div>
+            
+            <div>
+                <h3>Dialog</h3>
+                <button id="open-dialog" aria-haspopup="dialog">Open Dialog</button>
+                <dialog id="example-dialog" aria-labelledby="dialog-heading">
+                    <h3 id="dialog-heading">Example Dialog</h3>
+                    <p>This is a modal dialog. It can be closed by clicking the button below.</p>
+                    <button id="close-dialog">Close</button>
+                </dialog>
+            </div>
+            
+            <div>
+                <h3>Menu</h3>
+                <menu>
+                    <li><button>Menu Item 1</button></li>
+                    <li><button>Menu Item 2</button></li>
+                    <li><button>Menu Item 3</button></li>
+                </menu>
+            </div>
+        </section>
+        
+        <section aria-labelledby="misc-heading">
+            <h2 id="misc-heading">Miscellaneous Elements</h2>
+            
+            <div>
+                <h3>Time</h3>
+                <p>The event starts at <time datetime="2023-12-25T19:00">7:00 PM on Christmas Day</time>.</p>
+            </div>
+            
+            <div>
+                <h3>Data</h3>
+                <p>Product: <data value="12345">Premium Widget</data></p>
+            </div>
+            
+            <div>
+                <h3>WBR</h3>
+                <p>ThisIsAVeryLongWordThatMightNeed<wbr>BreakingInSomeContexts</p>
+            </div>
+            
+            <div>
+                <h3>BDI and BDO</h3>
+                <p>Default direction: Hello <bdi>World</bdi></p>
+                <p>Reversed direction: <bdo dir="rtl">Hello World</bdo></p>
+            </div>
+            
+            <div>
+                <h3>Slot and Template</h3>
+                <template id="example-template">
+                    <div>
+                        <h4>Template Content</h4>
+                        <p>This content is from a template.</p>
+                    </div>
+                </template>
+                
+                <div>
+                    <slot name="example-slot">Default slot content</slot>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Search</h3>
+                <search>
+                    <form role="search">
+                        <label for="site-search">Search the site:</label>
+                        <input type="search" id="site-search" name="q">
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+            </div>
+        </section>
+    </main>
+    
+    <footer role="contentinfo">
+        <address>
+            Contact us at <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+        
+        <p><small>&copy; 2023 Accessible Web App. All rights reserved.</small></p>
+        
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Accessibility Statement</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <noscript>
+        <div class="noscript-warning">
+            <p>JavaScript is disabled in your browser. Some features may not work properly.</p>
+        </div>
+    </noscript>
+</body>
+</html>

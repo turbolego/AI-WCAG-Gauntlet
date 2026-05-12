@@ -1,0 +1,105 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 9,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 14,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n    \n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 20,
+      "lastColumn": 60,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": " \n        <nav role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 52
+    },
+    {
+      "type": "info",
+      "lastLine": 30,
+      "lastColumn": 40,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "\n    \n    <main id=\"main-content\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "info",
+      "lastLine": 33,
+      "lastColumn": 21,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Article lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all articles.",
+      "extract": "          <article>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 84,
+      "lastColumn": 130,
+      "firstColumn": 127,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "</address></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "info",
+      "lastLine": 193,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 198,
+      "lastColumn": 98,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 74
+    },
+    {
+      "type": "info",
+      "lastLine": 250,
+      "lastColumn": 90,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"checkbox\" name=\"terms\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 66
+    },
+    {
+      "type": "info",
+      "lastLine": 420,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n    \n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}
