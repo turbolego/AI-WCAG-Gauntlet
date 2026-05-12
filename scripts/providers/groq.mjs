@@ -103,24 +103,34 @@ function checkTPMCapacity(estimatedTokens) {
 }
 
 export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
-  const prompt = [
-    "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
-    "Do not use reasoning or extended thinking. Output JSON immediately.",
-    "",
-    "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
-    "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
-    "Ensure proper nesting, valid attributes, and WCAG compliance.",
-    "You do not need to include every possible HTML5 tag—focus on semantic structure and accessibility.",
-    "",
-    `Iteration ${iteration}.`,
-    feedback ? `Fix these issues: ${feedback}` : "Create a diverse, accessible HTML page."
-  ].filter(Boolean).join("\n");
+  const buildPrompt = (feedbackText, trimmed = false) => {
+    const lines = [
+      "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
+      "Do not use reasoning or extended thinking. Output JSON immediately.",
+      "",
+      "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
+      "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
+      "Ensure proper nesting, valid attributes, and WCAG compliance.",
+      trimmed ? "Focus on fixing the top 1-2 critical issues only." : "You do not need to include every possible HTML5 tag—focus on semantic structure and accessibility.",
+      "",
+      `Iteration ${iteration}.`,
+    ];
+    if (feedbackText) {
+      const displayFeedback = trimmed ? feedbackText.substring(0, 500) : feedbackText;
+      lines.push(`Issues to fix: ${displayFeedback}`);
+    } else {
+      lines.push("Create a diverse, accessible HTML page.");
+    }
+    return lines.filter(Boolean).join("\n");
+  };
 
-  const systemMessage = "Output only valid JSON with html, css, js string keys. No explanations, no code fences. Start with {";
+  let currentPrompt = buildPrompt(feedback, false);
 
-  const messages = [
+  const systemMessage = "You MUST output ONLY valid JSON. Nothing else. No thinking, no explanations, no reasoning, no planning. Start with { immediately. Output the JSON object with keys: html, css, js (all as strings). Valid JSON only. No markdown fences. No apologies. Just JSON.";
+
+  let currentMessages = [
     { role: "system", content: systemMessage },
-    { role: "user", content: prompt }
+    { role: "user", content: currentPrompt }
   ];
 
   // Debug logging
@@ -130,7 +140,7 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
   console.error("[GROQ_DEBUG] System Message:", systemMessage);
   console.error("-".repeat(80));
   console.error("[GROQ_DEBUG] User Prompt (first 500 chars):");
-  console.error(prompt.substring(0, 500) + (prompt.length > 500 ? "..." : ""));
+  console.error(currentPrompt.substring(0, 500) + (currentPrompt.length > 500 ? "..." : ""));
   if (feedback) {
     console.error("-".repeat(80));
     console.error("[GROQ_DEBUG] Feedback/Reports Provided (first 2000 chars):");
@@ -141,7 +151,7 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
   // Check TPM capacity before sending any request.
   // This proactively prevents 413/429 errors instead of retrying after they occur.
   let currentMaxTokens = maxTokens;
-  let estimatedTokens = estimateTokens(messages, currentMaxTokens);
+  let estimatedTokens = estimateTokens(currentMessages, currentMaxTokens);
   let { shouldWait, waitMs } = checkTPMCapacity(estimatedTokens);
   
   if (shouldWait) {
@@ -159,7 +169,7 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
         `Reducing max_tokens from ${currentMaxTokens} to ${reducedMaxTokens}`
       );
       currentMaxTokens = reducedMaxTokens;
-      estimatedTokens = estimateTokens(messages, currentMaxTokens);
+      estimatedTokens = estimateTokens(currentMessages, currentMaxTokens);
     }
   }
 
@@ -184,7 +194,7 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
           "content-type": "application/json",
           authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ model, messages, max_tokens: currentMaxTokens })
+        body: JSON.stringify({ model, messages: currentMessages, max_tokens: currentMaxTokens })
       });
 
       if (!response.ok) {
@@ -206,15 +216,26 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
 
         // For rate limit errors (413, 429), we've already checked TPM before sending.
         // If we still hit a limit, it means Groq has stricter limits or the
-        // estimate was off. Reduce max_tokens and try again (once).
+        // estimate was off. On retry, use more conservative settings to prevent
+        // the model from entering reasoning mode (which triggers token overage).
         if ((response.status === 413 || response.status === 429) && attempt < maxRetries) {
-          const reducedTokens = Math.max(2000, Math.floor(currentMaxTokens * 0.6));
+          // For second attempt, use very conservative max_tokens to avoid reasoning mode
+          const reducedTokens = Math.max(1500, Math.floor(currentMaxTokens * 0.5));
           console.warn(
             `[GROQ_TPM] Hit ${response.status} despite pre-check. Reducing max_tokens ` +
-            `from ${currentMaxTokens} to ${reducedTokens} and retrying once...`
+            `from ${currentMaxTokens} to ${reducedTokens} and trimming feedback for safer retry...`
           );
           currentMaxTokens = reducedTokens;
-          await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2s before retry
+          
+          // Rebuild prompt with trimmed feedback to reduce token pressure
+          currentPrompt = buildPrompt(feedback, true);
+          currentMessages = [
+            { role: "system", content: systemMessage },
+            { role: "user", content: currentPrompt }
+          ];
+          
+          // Wait longer to ensure TPM has more room
+          await new Promise(resolve => setTimeout(resolve, 3000));
           continue;
         }
         
