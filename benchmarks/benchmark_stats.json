@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-12T11:47:28.457Z",
-  "total_runs": 20,
-  "total_models": 9,
+  "generated_at": "2026-05-12T12:22:52.280Z",
+  "total_runs": 21,
+  "total_models": 10,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -383,6 +383,27 @@
       "rank": 18
     },
     {
+      "model": "mistral-medium-latest",
+      "run_id": "mistral-medium-latest-20260512-115848",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1,
+      "iterations_used": 1,
+      "timestamp": "2026-05-12T11:58:48Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html",
+      "rank": 19
+    },
+    {
       "model": "mistral-small-latest",
       "run_id": "mistral-small-latest-20260506-173546",
       "source": "local",
@@ -401,7 +422,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 19
+      "rank": 20
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -422,7 +443,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 20
+      "rank": 21
     }
   ],
   "runs_by_model": [
@@ -731,6 +752,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-12T11:04:59Z",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260512-110459/index.html"
+    },
+    {
+      "model": "mistral-medium-latest",
+      "run_id": "mistral-medium-latest-20260512-115848",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 1,
+      "timestamp": "2026-05-12T11:58:48Z",
+      "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html"
     },
     {
       "model": "mistral-small-latest",
@@ -1619,6 +1657,23 @@
         ]
       }
     ],
+    "mistral-medium-latest": [
+      {
+        "run_id": "mistral-medium-latest-20260512-115848",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "timestamp": "2026-05-12T11:58:48Z"
+          }
+        ]
+      }
+    ],
     "mistral-small-latest": [
       {
         "run_id": "mistral-small-latest-20260506-173546",
@@ -1719,6 +1774,15 @@
       "qualweb_issues": 0
     },
     {
+      "model": "mistral-medium-latest",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1
+    },
+    {
       "model": "mistral-small-latest",
       "score": 200,
       "html_tag_errors": 0,
@@ -1776,6 +1840,12 @@
     },
     {
       "model": "mistral-large-latest",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "mistral-medium-latest",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100

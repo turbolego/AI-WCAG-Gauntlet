@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Web App</title>
+    <base href="/">
+    <link rel="stylesheet" href="styles.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header>
+        <h1>Accessible Web App</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>Welcome to our accessible web app. This is a demo of a single-page web app that focuses on accessibility.</p>
+            <article>
+                <h3>Latest News</h3>
+                <p>This is the latest news article. It contains important information about our services.</p>
+            </article>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a company that focuses on creating accessible web applications.</p>
+            <address>
+                Contact us at <a href="mailto:contact@example.com">contact@example.com</a>
+            </address>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We offer a variety of services to help make your web applications more accessible.</p>
+            <aside>
+                <h3>Additional Information</h3>
+                <p>This is additional information about our services.</p>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Media Content</h2>
+            <figure>
+                <img src="image.jpg" alt="Description of the image">
+                <figcaption>This is a description of the image.</figcaption>
+            </figure>
+            <audio controls>
+                <source src="audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <video controls>
+                <source src="video.mp4" type="video/mp4">
+                <track src="captions.vtt" kind="subtitles" srclang="en" label="English">
+                Your browser does not support the video element.
+            </video>
+        </section>
+
+        <section>
+            <h2>Embedded Content</h2>
+            <iframe src="embedded-content.html" title="Embedded Content" width="600" height="400"></iframe>
+        </section>
+
+        <section>
+            <h2>PDF Content</h2>
+            <object data="document.pdf" type="application/pdf" width="600" height="400">
+                <p>PDF content goes here.</p>
+            </object>
+        </section>
+
+        <section>
+            <h2>Form</h2>
+            <form>
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Data List</h2>
+            <input list="browsers" name="browser" id="browser">
+            <datalist id="browsers">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+            </datalist>
+        </section>
+
+        <section>
+            <h2>Table</h2>
+            <table>
+                <caption>Sample Table</caption>
+                <thead>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Accessible Web App. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
