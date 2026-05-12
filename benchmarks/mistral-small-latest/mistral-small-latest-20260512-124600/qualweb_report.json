@@ -1,0 +1,20 @@
+{
+  "failedCount": 3,
+  "results": [
+    {
+      "ruleId": "QW-ACT-R37",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    },
+    {
+      "ruleId": "QW-ACT-R65",
+      "outcome": "failed",
+      "description": "The element has descendants in the flat tree that are part of sequential focus navigation."
+    },
+    {
+      "ruleId": "QW-ACT-R76",
+      "outcome": "failed",
+      "description": "Element has contrast ratio lower than minimum."
+    }
+  ]
+}

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessibility-focused single-page web app demonstrating HTML5 features and accessibility best practices">
+    <title>Accessibility Demo</title>
+    <base href="./">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Critical CSS for performance */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --contrast-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --error-color: #c0392b;
+            --focus-outline: 3px solid #f1c40f;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav li {
+            flex: 1 1 auto;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        nav a:hover, nav a:focus {
+            background-color: var(--secondary-color);
+            outline: none;
+        }
+        
+        nav a:focus {
+            box-shadow: var(--focus-outline);
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+        
+        p, li, blockquote {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        a:focus {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
+        }
+        
+        button, [role="button"] {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover, [role="button"]:hover,
+        button:focus, [role="button"]:focus {
+            background-color: #2980b9;
+            outline: none;
+        }
+        
+        button:focus, [role="button"]:focus {
+            box-shadow: var(--focus-outline);
+        }
+        
+        button:disabled, [role="button"][aria-disabled="true"] {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: var(--focus-outline);
+            border-color: var(--secondary-color);
+        }
+        
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        legend {
+            font-weight: bold;
+            padding: 0 0.5rem;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        .contrast-checker {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .contrast-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        
+        .contrast-pass {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .contrast-fail {
+            background-color: var(--error-color);
+            color: white;
+        }
+        
+        .contrast-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e6e6e6;
+        }
+        
+        figure {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        figcaption {
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .accessibility-map {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .map-area {
+            position: absolute;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .map-area:hover {
+            opacity: 0.8;
+        }
+        
+        .map-area:focus {
+            outline: var(--focus-outline);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        
+        .visually-hidden {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+            white-space: nowrap;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header role="banner">
+        <h1>Accessibility Demo</h1>
+        <nav aria-label="Main navigation">
+            <ul role="menubar">
+                <li role="none"><a href="#purpose" role="menuitem">Purpose</a></li>
+                <li role="none"><a href="#structure" role="menuitem">Structure</a></li>
+                <li role="none"><a href="#forms" role="menuitem">Forms</a></li>
+                <li role="none"><a href="#media" role="menuitem">Media</a></li>
+                <li role="none"><a href="#metrics" role="menuitem">Metrics</a></li>
+                <li role="none"><a href="#checklist" role="menuitem">Checklist</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main role="main">
+        <section id="purpose" aria-labelledby="purpose-heading">
+            <h2 id="purpose-heading">Purpose of This Demo</h2>
+            <p>This single-page application demonstrates HTML5 features with a strong focus on accessibility. It includes proper heading hierarchy, semantic markup, keyboard navigation, and contrast considerations.</p>
+            
+            <article>
+                <h3>Why Accessibility Matters</h3>
+                <p>Web accessibility ensures that people with disabilities can perceive, understand, navigate, and interact with the web. This includes those using screen readers, keyboard navigation, or other assistive technologies.</p>
+                
+                <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
+                    <p>Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them.</p>
+                    <footer>— <cite>W3C Web Accessibility Initiative</cite></footer>
+                </blockquote>
+            </article>
+        </section>
+        
+        <section id="structure" aria-labelledby="structure-heading">
+            <h2 id="structure-heading">Document Structure</h2>
+            <p>Proper document structure is fundamental for accessibility. Screen readers use heading levels to navigate content.</p>
+            
+            <div role="region" aria-labelledby="semantic-elements-heading">
+                <h3 id="semantic-elements-heading">Semantic HTML Elements</h3>
+                <p>Using semantic elements helps assistive technologies understand the page structure.</p>
+                
+                <ul>
+                    <li><strong>header</strong> - Contains introductory content</li>
+                    <li><strong>nav</strong> - Contains navigation links</li>
+                    <li><strong>main</strong> - Contains the main content</li>
+                    <li><strong>section</strong> - Contains thematic grouping of content</li>
+                    <li><strong>article</strong> - Contains self-contained composition</li>
+                    <li><strong>aside</strong> - Contains content tangentially related to the main content</li>
+                    <li><strong>footer</strong> - Contains footer content</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="landmarks-heading">
+                <h3 id="landmarks-heading">Landmarks</h3>
+                <p>Landmarks help users navigate pages more efficiently by providing a way to jump to specific sections.</p>
+                
+                <ul>
+                    <li><code>&lt;header role="banner"&gt;</code> - Site header</li>
+                    <li><code>&lt;nav role="navigation"&gt;</code> - Navigation</li>
+                    <li><code>&lt;main role="main"&gt;</code> - Main content</li>
+                    <li><code>&lt;aside role="complementary"&gt;</code> - Complementary content</li>
+                    <li><code>&lt;footer role="contentinfo"&gt;</code> - Footer</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="tables-heading">
+                <h3 id="tables-heading">Tables</h3>
+                <p>Tables should be used for tabular data, not for layout. Proper table structure includes headers and captions.</p>
+                
+                <table aria-label="Sample data table">
+                    <caption>Sample Data Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Semantic HTML</td>
+                            <td>Using proper HTML elements for content</td>
+                            <td><span aria-label="complete">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>ARIA Attributes</td>
+                            <td>Using ARIA roles and properties</td>
+                            <td><span aria-label="complete">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Keyboard Navigation</td>
+                            <td>All interactive elements are keyboard accessible</td>
+                            <td><span aria-label="complete">✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="forms" aria-labelledby="forms-heading">
+            <h2 id="forms-heading">Forms and Inputs</h2>
+            <p>Forms are critical for user interaction. Proper labeling and structure ensure accessibility.</p>
+            
+            <form id="demo-form" aria-labelledby="form-heading">
+                <h3 id="form-heading">Accessibility Feedback Form</h3>
+                
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div>
+                        <label for="name">Full Name <abbr title="required">*</abbr></label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email Address <abbr title="required">*</abbr></label>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-help">
+                        <small id="email-help">We'll never share your email with anyone else.</small>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Accessibility Features</legend>
+                    
+                    <div>
+                        <label for="contrast">Contrast Checker</label>
+                        <input type="color" id="contrast" name="contrast" value="#ffffff">
+                        <output id="contrast-value" for="contrast">#ffffff</output>
+                    </div>
+                    
+                    <div>
+                        <label for="font-size">Font Size</label>
+                        <select id="font-size" name="font-size">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Feedback</legend>
+                    
+                    <div>
+                        <label for="feedback">Your Feedback <abbr title="required">*</abbr></label>
+                        <textarea id="feedback" name="feedback" rows="4" required aria-required="true"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label>
+                            <input type="checkbox" name="subscribe" checked> Subscribe to newsletter
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <div>
+                    <button type="submit">Submit Feedback</button>
+                    <button type="reset">Reset Form</button>
+                </div>
+            </form>
+            
+            <div class="contrast-checker" role="region" aria-labelledby="contrast-heading">
+                <h3 id="contrast-heading">Contrast Checker</h3>
+                <p>Check the contrast ratio between text and background colors.</p>
+                
+                <div>
+                    <label for="text-color">Text Color:</label>
+                    <input type="color" id="text-color" name="text-color" value="#333333">
+                </div>
+                
+                <div>
+                    <label for="bg-color">Background Color:</label>
+                    <input type="color" id="bg-color" name="bg-color" value="#ffffff">
+                </div>
+                
+                <button id="check-contrast">Check Contrast</button>
+                
+                <div id="contrast-result" class="contrast-result" aria-live="polite">
+                    <p>Contrast ratio will appear here after checking.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="media" aria-labelledby="media-heading">
+            <h2 id="media-heading">Media Elements</h2>
+            <p>Media elements should include proper alternatives and controls for accessibility.</p>
+            
+            <div role="region" aria-labelledby="image-heading">
+                <h3 id="image-heading">Images</h3>
+                <p>All images should have meaningful alt text or be marked as decorative.</p>
+                
+                <figure>
+                    <img src="https://via.placeholder.com/600x300" alt="Diagram showing HTML5 document structure with semantic elements" width="600" height="300">
+                    <figcaption>HTML5 Document Structure</figcaption>
+                </figure>
+                
+                <p><em>Decorative image example:</em></p>
+                <figure>
+                    <img src="https://via.placeholder.com/100x100" alt="" role="presentation" width="100" height="100">
+                    <figcaption>Decorative spacer image</figcaption>
+                </figure>
+            </div>
+            
+            <div role="region" aria-labelledby="audio-heading">
+                <h3 id="audio-heading">Audio</h3>
+                <p>Audio content should include transcripts or captions.</p>
+                
+                <audio controls aria-label="Sample audio demonstrating accessibility">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                </audio>
+                
+                <p><a href="transcript.html">View transcript</a></p>
+            </div>
+            
+            <div role="region" aria-labelledby="video-heading">
+                <h3 id="video-heading">Video</h3>
+                <p>Video content should include captions and audio descriptions.</p>
+                
+                <video controls aria-label="Accessibility demonstration video" poster="https://via.placeholder.com/600x338?text=Accessibility+Demo">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <track kind="captions" src="captions.vtt" srclang="en" label="English" default>
+                    <track kind="descriptions" src="descriptions.vtt" srclang="en" label="English">
+                    Your browser does not support the video element.
+                </video>
+                
+                <p><a href="transcript-video.html">View video transcript</a></p>
+            </div>
+            
+            <div role="region" aria-labelledby="map-heading">
+                <h3 id="map-heading">Image Maps</h3>
+                <p>Image maps should have alternative text and be keyboard navigable.</p>
+                
+                <div class="accessibility-map" role="img" aria-label="Accessibility features map">
+                    <img src="https://via.placeholder.com/500x200" alt="Accessibility features map showing different sections of the page" usemap="#accessibility-map" width="500" height="200">
+                    
+                    <map name="accessibility-map">
+                        <area shape="rect" coords="50,50,150,150" href="#purpose" alt="Purpose section" tabindex="0">
+                        <area shape="circle" coords="250,100,50" href="#structure" alt="Structure section" tabindex="0">
+                        <area shape="poly" coords="400,50,450,150,350,150" href="#forms" alt="Forms section" tabindex="0">
+                    </map>
+                </div>
+            </div>
+        </section>
+        
+        <section id="metrics" aria-labelledby="metrics-heading">
+            <h2 id="metrics-heading">Accessibility Metrics</h2>
+            <p>Understanding accessibility metrics helps evaluate and improve web content.</p>
+            
+            <div role="region" aria-labelledby="wcag-heading">
+                <h3 id="wcag-heading">WCAG Guidelines</h3>
+                <p>The Web Content Accessibility Guidelines (WCAG) provide standards for accessibility.</p>
+                
+                <table aria-label="WCAG 2.1 guidelines">
+                    <thead>
+                        <tr>
+                            <th scope="col">Principle</th>
+                            <th scope="col">Guidelines</th>
+                            <th scope="col">Success Criteria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">Perceivable</td>
+                            <td rowspan="4">Make content perceivable to all users</td>
+                            <td>1.1.1 Non-text Content</td>
+                        </tr>
+                        <tr>
+                            <td>1.2.2 Captions (Prerecorded)</td>
+                        </tr>
+                        <tr>
+                            <td>1.3.1 Info and Relationships</td>
+                        </tr>
+                        <tr>
+                            <td>1.4.3 Contrast (Minimum)</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Operable</td>
+                            <td rowspan="3">Make interface components operable</td>
+                            <td>2.1.1 Keyboard</td>
+                        </tr>
+                        <tr>
+                            <td>2.2.2 Pause, Stop, Hide</td>
+                        </tr>
+                        <tr>
+                            <td>2.4.1 Bypass Blocks</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Understandable</td>
+                            <td rowspan="3">Make content understandable</td>
+                            <td>3.1.1 Language of Page</td>
+                        </tr>
+                        <tr>
+                            <td>3.2.2 On Input</td>
+                        </tr>
+                        <tr>
+                            <td>3.3.2 Labels or Instructions</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Robust</td>
+                            <td rowspan="2">Maximize compatibility with current and future user agents</td>
+                            <td>4.1.1 Parsing</td>
+                        </tr>
+                        <tr>
+                            <td>4.1.2 Name, Role, Value</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div role="region" aria-labelledby="contrast-metrics-heading">
+                <h3 id="contrast-metrics-heading">Contrast Metrics</h3>
+                <p>Contrast ratios measure the difference in perceived brightness between two colors.</p>
+                
+                <ul>
+                    <li><strong>4.5:1</strong> - Minimum contrast for normal text (AA)</li>
+                    <li><strong>7:1</strong> - Enhanced contrast for normal text (AAA)</li>
+                    <li><strong>3:1</strong> - Minimum contrast for large text (AA)</li>
+                    <li><strong>4.5:1</strong> - Minimum contrast for large text (AAA)</li>
+                </ul>
+                
+                <div class="contrast-checker">
+                    <h4>Quick Contrast Checker</h4>
+                    <p>Enter two colors to check their contrast ratio:</p>
+                    
+                    <div>
+                        <label for="color1">Color 1:</label>
+                        <input type="color" id="color1" name="color1" value="#000000">
+                    </div>
+                    
+                    <div>
+                        <label for="color2">Color 2:</label>
+                        <input type="color" id="color2" name="color2" value="#ffffff">
+                    </div>
+                    
+                    <button id="quick-contrast-check">Check Contrast</button>
+                    
+                    <div id="quick-contrast-result" class="contrast-result" aria-live="polite">
+                        <p>Contrast ratio will appear here after checking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <aside aria-labelledby="aside-heading">
+            <h2 id="aside-heading">Accessibility Checklist</h2>
+            <p>Quick reference for accessibility best practices.</p>
+            
+            <div role="region" aria-labelledby="keyboard-heading">
+                <h3 id="keyboard-heading">Keyboard Navigation</h3>
+                <ul>
+                    <li>✓ All interactive elements are keyboard accessible</li>
+                    <li>✓ Focus indicators are visible and clear</li>
+                    <li>✓ Tab order follows logical document structure</li>
+                    <li>✓ Skip links allow bypassing repetitive content</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="semantics-heading">
+                <h3 id="semantics-heading">Semantic HTML</h3>
+                <ul>
+                    <li>✓ Proper heading hierarchy (h1 > h2 > h3, etc.)</li>
+                    <li>✓ Semantic elements used appropriately</li>
+                    <li>✓ ARIA roles used where needed</li>
+                    <li>✓ Landmarks properly defined</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="forms-heading">
+                <h3 id="forms-heading">Forms</h3>
+                <ul>
+                    <li>✓ All form controls have associated labels</li>
+                    <li>✓ Required fields are clearly marked</li>
+                    <li>✓ Error messages are descriptive</li>
+                    <li>✓ Form controls have appropriate types</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="media-heading">
+                <h3 id="media-heading">Media</h3>
+                <ul>
+                    <li>✓ Images have meaningful alt text or are decorative</li>
+                    <li>✓ Videos have captions and transcripts</li>
+                    <li>✓ Audio has transcripts</li>
+                    <li>✓ Color is not the only means of conveying information</li>
+                </ul>
+            </div>
+            
+            <div role="region" aria-labelledby="contrast-heading">
+                <h3 id="contrast-heading">Contrast</h3>
+                <ul>
+                    <li>✓ Text meets minimum contrast ratios</li>
+                    <li>✓ Interactive elements are clearly visible</li>
+                    <li>✓ Focus indicators are visible</li>
+                    <li>✓ Color combinations are tested</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+    
+    <footer role="contentinfo">
+        <address>
+            <p>Created for accessibility demonstration purposes.</p>
+            <p>Contact: <a href="mailto:accessibility@example.com">accessibility@example.com</a></p>
+        </address>
+        <p>&copy; <time datetime="2023">2023</time> Accessibility Demo. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Main application script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up contrast checker
+            const checkContrastBtn = document.getElementById('check-contrast');
+            const contrastResult = document.getElementById('contrast-result');
+            const textColorInput = document.getElementById('text-color');
+            const bgColorInput = document.getElementById('bg-color');
+            
+            if (checkContrastBtn && contrastResult && textColorInput && bgColorInput) {
+                checkContrastBtn.addEventListener('click', function() {
+                    const textColor = textColorInput.value;
+                    const bgColor = bgColorInput.value;
+                    
+                    const contrastRatio = calculateContrastRatio(textColor, bgColor);
+                    const resultClass = getContrastResultClass(contrastRatio);
+                    
+                    contrastResult.className = `contrast-result ${resultClass}`;
+                    contrastResult.innerHTML = `
+                        <p>Contrast ratio: ${contrastRatio.toFixed(2)}:1</p>
+                        <p>${getContrastDescription(contrastRatio)}</p>
+                    `;
+                });
+            }
+            
+            // Set up quick contrast checker
+            const quickCheckBtn = document.getElementById('quick-contrast-check');
+            const quickResult = document.getElementById('quick-contrast-result');
+            const color1Input = document.getElementById('color1');
+            const color2Input = document.getElementById('color2');
+            
+            if (quickCheckBtn && quickResult && color1Input && color2Input) {
+                quickCheckBtn.addEventListener('click', function() {
+                    const color1 = color1Input.value;
+                    const color2 = color2Input.value;
+                    
+                    const contrastRatio = calculateContrastRatio(color1, color2);
+                    const resultClass = getContrastResultClass(contrastRatio);
+                    
+                    quickResult.className = `contrast-result ${resultClass}`;
+                    quickResult.innerHTML = `
+                        <p>Contrast ratio: ${contrastRatio.toFixed(2)}:1</p>
+                        <p>${getContrastDescription(contrastRatio)}</p>
+                    `;
+                });
+            }
+            
+            // Set up form validation
+            const demoForm = document.getElementById('demo-form');
+            if (demoForm) {
+                demoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple validation feedback
+                    const name = document.getElementById('name');
+                    const email = document.getElementById('email');
+                    const feedback = document.getElementById('feedback');
+                    
+                    if (!name.value.trim()) {
+                        name.setCustomValidity('Please enter your name');
+                        name.reportValidity();
+                    } else if (!email.value.trim()) {
+                        email.setCustomValidity('Please enter your email');
+                        email.reportValidity();
+                    } else if (!feedback.value.trim()) {
+                        feedback.setCustomValidity('Please enter your feedback');
+                        feedback.reportValidity();
+                    } else {
+                        // Form would be submitted here
+                        alert('Form submitted successfully!');
+                        demoForm.reset();
+                    }
+                });
+            }
+            
+            // Color input value display
+            const contrastValue = document.getElementById('contrast-value');
+            const contrastInput = document.getElementById('contrast');
+            if (contrastValue && contrastInput) {
+                contrastInput.addEventListener('input', function() {
+                    contrastValue.textContent = contrastInput.value;
+                });
+            }
+            
+            // Helper functions for contrast calculation
+            function calculateContrastRatio(color1, color2) {
+                // Convert hex to RGB
+                const rgb1 = hexToRgb(color1);
+                const rgb2 = hexToRgb(color2);
+                
+                if (!rgb1 || !rgb2) return 0;
+                
+                // Calculate relative luminance
+                const l1 = calculateLuminance(rgb1.r, rgb1.g, rgb1.b);
+                const l2 = calculateLuminance(rgb2.r, rgb2.g, rgb2.b);
+                
+                // Calculate contrast ratio
+                const lighter = Math.max(l1, l2);
+                const darker = Math.min(l1, l2);
+                
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+            
+            function hexToRgb(hex) {
+                // Remove # if present
+                hex = hex.replace('#', '');
+                
+                // Parse r, g, b values
+                let r, g, b;
+                if (hex.length === 3) {
+                    r = parseInt(hex[0] + hex[0], 16);
+                    g = parseInt(hex[1] + hex[1], 16);
+                    b = parseInt(hex[2] + hex[2], 16);
+                } else if (hex.length === 6) {
+                    r = parseInt(hex.substring(0, 2), 16);
+                    g = parseInt(hex.substring(2, 4), 16);
+                    b = parseInt(hex.substring(4, 6), 16);
+                } else {
+                    return null;
+                }
+                
+                return { r, g, b };
+            }
+            
+            function calculateLuminance(r, g, b) {
+                // Convert RGB values to sRGB
+                const sr = r / 255;
+                const sg = g / 255;
+                const sb = b / 255;
+                
+                // Apply gamma correction
+                const rsrgb = sr <= 0.03928 ? sr / 12.92 : Math.pow((sr + 0.055) / 1.055, 2.4);
+                const gsrgb = sg <= 0.03928 ? sg / 12.92 : Math.pow((sg + 0.055) / 1.055, 2.4);
+                const bsrgb = sb <= 0.03928 ? sb / 12.92 : Math.pow((sb + 0.055) / 1.055, 2.4);
+                
+                // Calculate relative luminance
+                return 0.2126 * rsrgb + 0.7152 * gsrgb + 0.0722 * bsrgb;
+            }
+            
+            function getContrastResultClass(ratio) {
+                if (ratio >= 7) return 'contrast-pass';
+                if (ratio >= 4.5) return 'contrast-pass';
+                if (ratio >= 3) return 'contrast-warning';
+                return 'contrast-fail';
+            }
+            
+            function getContrastDescription(ratio) {
+                if (ratio >= 7) return 'Excellent contrast - meets AAA standards for all text sizes';
+                if (ratio >= 4.5) return 'Good contrast - meets AA standards for normal text';
+                if (ratio >= 3) return 'Minimum contrast - meets AA standards for large text only';
+                return 'Insufficient contrast - fails accessibility standards';
+            }
+            
+            // Skip link functionality
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main';
+            skipLink.className = 'skip-link';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.style.position = 'absolute';
+            skipLink.style.left = '-9999px';
+            skipLink.style.top = '0';
+            skipLink.style.backgroundColor = '#f1c40f';
+            skipLink.style.color = '#000';
+            skipLink.style.padding = '0.5rem 1rem';
+            skipLink.style.zIndex = '1000';
+            
+            skipLink.addEventListener('focus', function() {
+                this.style.left = '0';
+            });
+            
+            skipLink.addEventListener('blur', function() {
+                this.style.left = '-9999px';
+            });
+            
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Add keyboard navigation support for image map areas
+            const mapAreas = document.querySelectorAll('area[tabindex="0"]');
+            mapAreas.forEach(area => {
+                area.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const link = document.createElement('a');
+                        link.href = this.href;
+                        link.click();
+                    }
+                });
+            });
+            
+            // Add keyboard navigation support for buttons
+            const buttons = document.querySelectorAll('button, [role="button"]');
+            buttons.forEach(button => {
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

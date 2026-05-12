@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-12T12:22:52.331505Z",
-  "total_runs": 21,
+  "generated_at": "2026-05-12T13:11:31.587299Z",
+  "total_runs": 22,
   "total_models": 10,
   "total_tags": 113,
   "leaderboard": [
@@ -291,6 +291,28 @@
       "rank": 13
     },
     {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260512-124600",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "score": 49.91,
+      "html_tag_errors": 52,
+      "w3c_errors": 12,
+      "axe_violations": 6,
+      "pa11y_issues": 26,
+      "qualweb_issues": 3,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-12T13:11:31Z",
+      "tag_coverage_pct": 54.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260512-124600/index.html",
+      "rank": 14
+    },
+    {
       "model": "mistral-medium-latest",
       "run_id": "mistral-medium-latest-20260512-115848",
       "source": "local",
@@ -310,7 +332,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html",
-      "rank": 14
+      "rank": 15
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -332,7 +354,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 15
+      "rank": 16
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -354,7 +376,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html",
-      "rank": 16
+      "rank": 17
     },
     {
       "model": "codestral-latest",
@@ -376,7 +398,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260510-113944/index.html",
-      "rank": 17
+      "rank": 18
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -398,7 +420,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 18
+      "rank": 19
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -420,7 +442,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 19
+      "rank": 20
     },
     {
       "model": "GPT-4o",
@@ -442,7 +464,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 20
+      "rank": 21
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -464,7 +486,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 21
+      "rank": 22
     }
   ],
   "runs_by_model": [
@@ -703,6 +725,24 @@
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html"
     },
     {
+      "model": "mistral-small-latest",
+      "run_id": "mistral-small-latest-20260512-124600",
+      "source": "local",
+      "provider": "mistral",
+      "providerLabel": "Mistral AI",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 49.91,
+      "final_html_errors": 52,
+      "final_w3c_errors": 12,
+      "final_axe_violations": 6,
+      "final_pa11y_issues": 26,
+      "final_qualweb_issues": 3,
+      "status": "fail",
+      "timestamp": "2026-05-12T13:11:31Z",
+      "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260512-124600/index.html"
+    },
+    {
       "model": "mistral-medium-latest",
       "run_id": "mistral-medium-latest-20260512-115848",
       "source": "local",
@@ -850,518 +890,518 @@
   "missing_tags_frequency": [
     {
       "tag": "selectedcontent",
-      "miss_count": 16,
-      "miss_pct": 76.2
+      "miss_count": 17,
+      "miss_pct": 77.3
+    },
+    {
+      "tag": "data",
+      "miss_count": 14,
+      "miss_pct": 63.6
+    },
+    {
+      "tag": "embed",
+      "miss_count": 14,
+      "miss_pct": 63.6
+    },
+    {
+      "tag": "h6",
+      "miss_count": 14,
+      "miss_pct": 63.6
+    },
+    {
+      "tag": "menu",
+      "miss_count": 14,
+      "miss_pct": 63.6
+    },
+    {
+      "tag": "pre",
+      "miss_count": 14,
+      "miss_pct": 63.6
+    },
+    {
+      "tag": "search",
+      "miss_count": 14,
+      "miss_pct": 63.6
     },
     {
       "tag": "span",
       "miss_count": 14,
-      "miss_pct": 66.7
-    },
-    {
-      "tag": "data",
-      "miss_count": 13,
-      "miss_pct": 61.9
-    },
-    {
-      "tag": "embed",
-      "miss_count": 13,
-      "miss_pct": 61.9
-    },
-    {
-      "tag": "h6",
-      "miss_count": 13,
-      "miss_pct": 61.9
-    },
-    {
-      "tag": "menu",
-      "miss_count": 13,
-      "miss_pct": 61.9
-    },
-    {
-      "tag": "pre",
-      "miss_count": 13,
-      "miss_pct": 61.9
-    },
-    {
-      "tag": "search",
-      "miss_count": 13,
-      "miss_pct": 61.9
+      "miss_pct": 63.6
     },
     {
       "tag": "tfoot",
-      "miss_count": 13,
-      "miss_pct": 61.9
+      "miss_count": 14,
+      "miss_pct": 63.6
     },
     {
       "tag": "br",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "col",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "colgroup",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "dd",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "dfn",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "dl",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "dt",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "h5",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "hr",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "object",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "ol",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "rp",
-      "miss_count": 12,
-      "miss_pct": 57.1
+      "miss_count": 13,
+      "miss_pct": 59.1
     },
     {
       "tag": "bdi",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "i",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "q",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "s",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "slot",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "sub",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "sup",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "template",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "u",
+      "miss_count": 12,
+      "miss_pct": 54.5
+    },
+    {
+      "tag": "b",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "bdo",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "del",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "dialog",
+      "miss_count": 11,
+      "miss_pct": 50.0
     },
     {
       "tag": "em",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "i",
+      "tag": "hgroup",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "iframe",
+      "tag": "ins",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "q",
+      "tag": "kbd",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "s",
+      "tag": "meter",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "slot",
+      "tag": "noscript",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "optgroup",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "picture",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "rt",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "ruby",
+      "miss_count": 11,
+      "miss_pct": 50.0
+    },
+    {
+      "tag": "samp",
+      "miss_count": 11,
+      "miss_pct": 50.0
     },
     {
       "tag": "strong",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "sub",
+      "tag": "wbr",
       "miss_count": 11,
-      "miss_pct": 52.4
+      "miss_pct": 50.0
     },
     {
-      "tag": "sup",
-      "miss_count": 11,
-      "miss_pct": 52.4
-    },
-    {
-      "tag": "template",
-      "miss_count": 11,
-      "miss_pct": 52.4
-    },
-    {
-      "tag": "u",
-      "miss_count": 11,
-      "miss_pct": 52.4
-    },
-    {
-      "tag": "b",
+      "tag": "canvas",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
-      "tag": "bdo",
+      "tag": "datalist",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
-      "tag": "del",
+      "tag": "mark",
       "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "dialog",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "hgroup",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "ins",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "kbd",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "meter",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "noscript",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "optgroup",
-      "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
       "tag": "output",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
-      "tag": "picture",
+      "tag": "progress",
       "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "rt",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "ruby",
-      "miss_count": 10,
-      "miss_pct": 47.6
-    },
-    {
-      "tag": "samp",
-      "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
       "tag": "select",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
       "tag": "small",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
-      "tag": "wbr",
+      "tag": "var",
       "miss_count": 10,
-      "miss_pct": 47.6
+      "miss_pct": 45.5
     },
     {
       "tag": "area",
       "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "blockquote",
       "miss_count": 9,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "canvas",
-      "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "cite",
       "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
-      "tag": "datalist",
+      "tag": "details",
       "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "map",
       "miss_count": 9,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "mark",
-      "miss_count": 9,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "progress",
-      "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "style",
       "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
+    },
+    {
+      "tag": "summary",
+      "miss_count": 9,
+      "miss_pct": 40.9
     },
     {
       "tag": "textarea",
       "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "time",
       "miss_count": 9,
-      "miss_pct": 42.9
-    },
-    {
-      "tag": "var",
-      "miss_count": 9,
-      "miss_pct": 42.9
+      "miss_pct": 40.9
     },
     {
       "tag": "code",
       "miss_count": 8,
-      "miss_pct": 38.1
-    },
-    {
-      "tag": "details",
-      "miss_count": 8,
-      "miss_pct": 38.1
+      "miss_pct": 36.4
     },
     {
       "tag": "div",
       "miss_count": 8,
-      "miss_pct": 38.1
+      "miss_pct": 36.4
     },
     {
       "tag": "h4",
       "miss_count": 8,
-      "miss_pct": 38.1
-    },
-    {
-      "tag": "summary",
-      "miss_count": 8,
-      "miss_pct": 38.1
+      "miss_pct": 36.4
     },
     {
       "tag": "track",
       "miss_count": 8,
-      "miss_pct": 38.1
+      "miss_pct": 36.4
     },
     {
       "tag": "abbr",
       "miss_count": 7,
-      "miss_pct": 33.3
+      "miss_pct": 31.8
     },
     {
       "tag": "address",
       "miss_count": 7,
-      "miss_pct": 33.3
+      "miss_pct": 31.8
     },
     {
       "tag": "caption",
       "miss_count": 7,
-      "miss_pct": 33.3
+      "miss_pct": 31.8
     },
     {
       "tag": "fieldset",
       "miss_count": 7,
-      "miss_pct": 33.3
+      "miss_pct": 31.8
     },
     {
       "tag": "legend",
       "miss_count": 7,
-      "miss_pct": 33.3
+      "miss_pct": 31.8
     },
     {
       "tag": "audio",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "option",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "table",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "tbody",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "td",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "th",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "thead",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "tr",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "video",
       "miss_count": 6,
-      "miss_pct": 28.6
+      "miss_pct": 27.3
     },
     {
       "tag": "figcaption",
       "miss_count": 5,
-      "miss_pct": 23.8
+      "miss_pct": 22.7
     },
     {
       "tag": "figure",
       "miss_count": 5,
-      "miss_pct": 23.8
+      "miss_pct": 22.7
     },
     {
       "tag": "script",
       "miss_count": 5,
-      "miss_pct": 23.8
+      "miss_pct": 22.7
     },
     {
       "tag": "button",
       "miss_count": 4,
-      "miss_pct": 19.0
+      "miss_pct": 18.2
     },
     {
       "tag": "form",
       "miss_count": 4,
-      "miss_pct": 19.0
+      "miss_pct": 18.2
     },
     {
       "tag": "img",
       "miss_count": 4,
-      "miss_pct": 19.0
+      "miss_pct": 18.2
     },
     {
       "tag": "label",
       "miss_count": 4,
-      "miss_pct": 19.0
+      "miss_pct": 18.2
     },
     {
       "tag": "source",
       "miss_count": 4,
-      "miss_pct": 19.0
+      "miss_pct": 18.2
     },
     {
       "tag": "base",
       "miss_count": 3,
-      "miss_pct": 14.3
+      "miss_pct": 13.6
     },
     {
       "tag": "h3",
       "miss_count": 3,
-      "miss_pct": 14.3
+      "miss_pct": 13.6
     },
     {
       "tag": "input",
       "miss_count": 3,
-      "miss_pct": 14.3
+      "miss_pct": 13.6
     },
     {
       "tag": "link",
       "miss_count": 3,
-      "miss_pct": 14.3
+      "miss_pct": 13.6
     },
     {
       "tag": "article",
       "miss_count": 2,
-      "miss_pct": 9.5
+      "miss_pct": 9.1
     },
     {
       "tag": "aside",
       "miss_count": 2,
-      "miss_pct": 9.5
+      "miss_pct": 9.1
     },
     {
       "tag": "h2",
       "miss_count": 2,
-      "miss_pct": 9.5
+      "miss_pct": 9.1
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 4.8
+      "miss_pct": 4.5
     },
     {
       "tag": "h1",
       "miss_count": 1,
-      "miss_pct": 4.8
+      "miss_pct": 4.5
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 4.8
+      "miss_pct": 4.5
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 4.8
+      "miss_pct": 4.5
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 4.8
+      "miss_pct": 4.5
     },
     {
       "tag": "body",
@@ -5181,6 +5221,231 @@
             "qualweb_issues": 0,
             "status": "fail",
             "timestamp": "2026-05-06T18:00:51Z"
+          }
+        ]
+      },
+      {
+        "run_id": "mistral-small-latest-20260512-124600",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 58.09,
+            "html_tag_errors": 42,
+            "w3c_errors": 12,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:47:00Z"
+          },
+          {
+            "iteration": 2,
+            "score": 48.27,
+            "html_tag_errors": 54,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 6,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:47:41Z"
+          },
+          {
+            "iteration": 3,
+            "score": 40.09,
+            "html_tag_errors": 64,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:48:30Z"
+          },
+          {
+            "iteration": 4,
+            "score": 61.36,
+            "html_tag_errors": 38,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:49:34Z"
+          },
+          {
+            "iteration": 5,
+            "score": 62.18,
+            "html_tag_errors": 37,
+            "w3c_errors": 12,
+            "axe_violations": 4,
+            "pa11y_issues": 2,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:51:48Z"
+          },
+          {
+            "iteration": 6,
+            "score": 50.73,
+            "html_tag_errors": 51,
+            "w3c_errors": 12,
+            "axe_violations": 2,
+            "pa11y_issues": 31,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:53:44Z"
+          },
+          {
+            "iteration": 7,
+            "score": 38.45,
+            "html_tag_errors": 66,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 1,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:54:46Z"
+          },
+          {
+            "iteration": 8,
+            "score": 65.45,
+            "html_tag_errors": 33,
+            "w3c_errors": 12,
+            "axe_violations": 9,
+            "pa11y_issues": 45,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:56:21Z"
+          },
+          {
+            "iteration": 9,
+            "score": 51.55,
+            "html_tag_errors": 50,
+            "w3c_errors": 12,
+            "axe_violations": 4,
+            "pa11y_issues": 2,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:57:12Z"
+          },
+          {
+            "iteration": 10,
+            "score": 42.55,
+            "html_tag_errors": 61,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:58:07Z"
+          },
+          {
+            "iteration": 11,
+            "score": 45.0,
+            "html_tag_errors": 58,
+            "w3c_errors": 12,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T12:59:23Z"
+          },
+          {
+            "iteration": 12,
+            "score": 50.73,
+            "html_tag_errors": 51,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:00:19Z"
+          },
+          {
+            "iteration": 13,
+            "score": 71.18,
+            "html_tag_errors": 27,
+            "w3c_errors": 12,
+            "axe_violations": 3,
+            "pa11y_issues": 13,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:01:54Z"
+          },
+          {
+            "iteration": 14,
+            "score": 39.27,
+            "html_tag_errors": 65,
+            "w3c_errors": 12,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:03:24Z"
+          },
+          {
+            "iteration": 15,
+            "score": 36.0,
+            "html_tag_errors": 69,
+            "w3c_errors": 12,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:04:26Z"
+          },
+          {
+            "iteration": 16,
+            "score": 50.73,
+            "html_tag_errors": 51,
+            "w3c_errors": 12,
+            "axe_violations": 1,
+            "pa11y_issues": 4,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:05:40Z"
+          },
+          {
+            "iteration": 17,
+            "score": 54.0,
+            "html_tag_errors": 48,
+            "w3c_errors": 12,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:07:32Z"
+          },
+          {
+            "iteration": 18,
+            "score": 60.55,
+            "html_tag_errors": 39,
+            "w3c_errors": 12,
+            "axe_violations": 8,
+            "pa11y_issues": 3,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:09:09Z"
+          },
+          {
+            "iteration": 19,
+            "score": 42.55,
+            "html_tag_errors": 62,
+            "w3c_errors": 12,
+            "axe_violations": 4,
+            "pa11y_issues": 33,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:10:12Z"
+          },
+          {
+            "iteration": 20,
+            "score": 49.91,
+            "html_tag_errors": 52,
+            "w3c_errors": 12,
+            "axe_violations": 6,
+            "pa11y_issues": 26,
+            "qualweb_issues": 3,
+            "status": "fail",
+            "timestamp": "2026-05-12T13:11:31Z"
           }
         ]
       }

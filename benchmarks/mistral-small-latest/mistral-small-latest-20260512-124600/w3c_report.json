@@ -1,0 +1,226 @@
+{
+  "validates": false,
+  "errorCount": 12,
+  "messageCount": 21,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 333,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "body>\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 347,
+      "lastColumn": 22,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "\n    \n    <main role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 18
+    },
+    {
+      "type": "error",
+      "lastLine": 412,
+      "lastColumn": 60,
+      "firstColumn": 33,
+      "message": "The “aria-label” attribute must not be specified on any “span” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "      <td><span aria-label=\"complete\">✓</spa",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "error",
+      "lastLine": 417,
+      "lastColumn": 60,
+      "firstColumn": 33,
+      "message": "The “aria-label” attribute must not be specified on any “span” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "      <td><span aria-label=\"complete\">✓</spa",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "error",
+      "lastLine": 422,
+      "lastColumn": 60,
+      "firstColumn": 33,
+      "message": "The “aria-label” attribute must not be specified on any “span” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "      <td><span aria-label=\"complete\">✓</spa",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "info",
+      "lastLine": 441,
+      "lastColumn": 95,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name\" name=\"name\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "info",
+      "lastLine": 446,
+      "lastColumn": 128,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required aria-required=\"true\" aria-describedby=\"email-help\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 104
+    },
+    {
+      "type": "info",
+      "lastLine": 475,
+      "lastColumn": 103,
+      "firstColumn": 25,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <textarea id=\"feedback\" name=\"feedback\" rows=\"4\" required aria-required=\"true\"></text",
+      "hiliteStart": 10,
+      "hiliteLength": 79
+    },
+    {
+      "type": "error",
+      "lastLine": 528,
+      "lastColumn": 119,
+      "firstColumn": 21,
+      "message": "An “img” element with a “role” attribute must not have an “alt” attribute whose value is the empty string.",
+      "extract": "          <img src=\"https://via.placeholder.com/100x100\" alt=\"\" role=\"presentation\" width=\"100\" height=\"100\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 99
+    },
+    {
+      "type": "error",
+      "lastLine": 540,
+      "lastColumn": 91,
+      "firstColumn": 21,
+      "message": "Element “track” not allowed as child of element “audio” in this context. (Suppressing further errors from this subtree.) Note: The “audio” element has a transparent content model; its allowed content is inherited from its parent element.",
+      "extract": "          <track kind=\"captions\" src=\"captions.vtt\" srclang=\"en\" label=\"English\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "error",
+      "lastLine": 565,
+      "lastColumn": 192,
+      "firstColumn": 21,
+      "message": "The element “img” with the attribute “usemap” must not appear as a descendant of an element with the attribute “role=img”.",
+      "extract": "          <img src=\"https://via.placeholder.com/500x200\" alt=\"Accessibility features map showing different sections of the page\" usemap=\"#accessibility-map\" width=\"500\" height=\"200\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 172
+    },
+    {
+      "type": "error",
+      "lastLine": 568,
+      "lastColumn": 117,
+      "firstColumn": 25,
+      "message": "An element with the attribute “tabindex” must not appear as a descendant of an element with the attribute “role=img”.",
+      "extract": "          <area shape=\"rect\" coords=\"50,50,150,150\" href=\"#purpose\" alt=\"Purpose section\" tabindex=\"0\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 93
+    },
+    {
+      "type": "error",
+      "lastLine": 569,
+      "lastColumn": 120,
+      "firstColumn": 25,
+      "message": "An element with the attribute “tabindex” must not appear as a descendant of an element with the attribute “role=img”.",
+      "extract": "          <area shape=\"circle\" coords=\"250,100,50\" href=\"#structure\" alt=\"Structure section\" tabindex=\"0\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 96
+    },
+    {
+      "type": "error",
+      "lastLine": 570,
+      "lastColumn": 122,
+      "firstColumn": 25,
+      "message": "An element with the attribute “tabindex” must not appear as a descendant of an element with the attribute “role=img”.",
+      "extract": "          <area shape=\"poly\" coords=\"400,50,450,150,350,150\" href=\"#forms\" alt=\"Forms section\" tabindex=\"0\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 98
+    },
+    {
+      "type": "error",
+      "lastLine": 700,
+      "lastColumn": 39,
+      "firstColumn": 17,
+      "message": "Duplicate ID “forms-heading”.",
+      "extract": "          <h3 id=\"forms-heading\">Forms<",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "info",
+      "lastLine": 430,
+      "lastColumn": 35,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "The first occurrence of ID “forms-heading” was here.",
+      "extract": "          <h2 id=\"forms-heading\">Forms ",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "error",
+      "lastLine": 710,
+      "lastColumn": 39,
+      "firstColumn": 17,
+      "message": "Duplicate ID “media-heading”.",
+      "extract": "          <h3 id=\"media-heading\">Media<",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "info",
+      "lastLine": 514,
+      "lastColumn": 35,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "The first occurrence of ID “media-heading” was here.",
+      "extract": "          <h2 id=\"media-heading\">Media ",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "error",
+      "lastLine": 720,
+      "lastColumn": 42,
+      "firstColumn": 17,
+      "message": "Duplicate ID “contrast-heading”.",
+      "extract": "          <h3 id=\"contrast-heading\">Contra",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "info",
+      "lastLine": 492,
+      "lastColumn": 42,
+      "firstColumn": 17,
+      "subType": "warning",
+      "message": "The first occurrence of ID “contrast-heading” was here.",
+      "extract": "          <h3 id=\"contrast-heading\">Contra",
+      "hiliteStart": 10,
+      "hiliteLength": 26
+    },
+    {
+      "type": "info",
+      "lastLine": 731,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n    \n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}
