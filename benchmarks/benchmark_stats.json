@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-12T05:20:12.301Z",
-  "total_runs": 18,
+  "generated_at": "2026-05-12T05:31:26.954Z",
+  "total_runs": 19,
   "total_models": 9,
   "total_tags": 113,
   "leaderboard": [
@@ -299,6 +299,27 @@
       "rank": 14
     },
     {
+      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-12T05:28:44Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html",
+      "rank": 15
+    },
+    {
       "model": "mistral-large-latest",
       "run_id": "mistral-large-latest-20260506-104634",
       "source": "local",
@@ -317,7 +338,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 15
+      "rank": 16
     },
     {
       "model": "mistral-large-latest",
@@ -338,7 +359,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260510-055752/index.html",
-      "rank": 16
+      "rank": 17
     },
     {
       "model": "mistral-small-latest",
@@ -359,7 +380,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 17
+      "rank": 18
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -380,7 +401,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 18
+      "rank": 19
     }
   ],
   "runs_by_model": [
@@ -621,6 +642,23 @@
       "final_qualweb_issues": 0,
       "timestamp": "2026-05-06T13:36:02Z",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html"
+    },
+    {
+      "model": "meta-llama-llama-4-scout-17b-16e-instruct",
+      "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
+      "source": "local",
+      "provider": "groq",
+      "providerLabel": "Groq LPU",
+      "tool": "github-actions",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-12T05:28:44Z",
+      "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html"
     },
     {
       "model": "mistral-large-latest",
@@ -1477,6 +1515,21 @@
             "pa11y_issues": 0,
             "qualweb_issues": 0,
             "timestamp": "2026-05-06T13:36:02Z"
+          }
+        ]
+      },
+      {
+        "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-12T05:28:44Z"
           }
         ]
       }

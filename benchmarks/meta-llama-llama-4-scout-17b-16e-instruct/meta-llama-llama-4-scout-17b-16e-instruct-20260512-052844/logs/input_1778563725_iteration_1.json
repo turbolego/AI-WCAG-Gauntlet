@@ -1,0 +1,8 @@
+{
+  "provider": "groq",
+  "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "iteration": 1,
+  "maxTokens": 6000,
+  "hasFeedback": false,
+  "timestamp": "2026-05-12T05:28:45.139Z"
+}
