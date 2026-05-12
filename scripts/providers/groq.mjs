@@ -105,19 +105,15 @@ function checkTPMCapacity(estimatedTokens) {
 export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
   const prompt = [
     "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
+    "Do not use reasoning or extended thinking. Output JSON immediately.",
     "",
-    "Generate an accessible single-page web app HTML with semantic HTML5 elements:",
-    "- Use diverse structural tags: article, aside, nav, section, header, footer, main",
-    "- Use semantic text tags: article, aside, details, mark, time, figure, figcaption",
-    "- Use form elements: form, input, button, label, fieldset, legend, select, textarea, datalist",
-    "- Use media tags: audio, video, source, track, picture, img",
-    "- Use interactive tags: dialog, embed, iframe, object, map, area",
-    "- Use data/list tags: table, tbody, thead, tfoot, tr, td, th, ol, ul, li, dl, dt, dd",
-    "- Use ruby, ruby text, and special tags: code, pre, kbd, samp, var, sub, sup, small, strong, em, b, i, u, s, mark, ins, del, abbr, address, blockquote, cite, q, dfn, bdo, bdi",
-    "- Keep HTML valid, well-nested, and fully accessible.",
+    "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
+    "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
+    "Ensure proper nesting, valid attributes, and WCAG compliance.",
+    "You do not need to include every possible HTML5 tag—focus on semantic structure and accessibility.",
     "",
     `Iteration ${iteration}.`,
-    feedback ? `Improve based on these reports: ${feedback}` : "Make a comprehensive demo page showing diverse semantic HTML5 usage."
+    feedback ? `Fix these issues: ${feedback}` : "Create a diverse, accessible HTML page."
   ].filter(Boolean).join("\n");
 
   const systemMessage = "Output only valid JSON with html, css, js string keys. No explanations, no code fences. Start with {";

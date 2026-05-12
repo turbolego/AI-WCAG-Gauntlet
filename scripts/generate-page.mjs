@@ -332,12 +332,14 @@ async function readFeedback(previousDir) {
     }
     feedbackParts.push(`Current iteration ${latest.iteration}: Score ${latest.score}/100`);
 
-    // Missing HTML5 tags
+    // Missing HTML5 tags — limit to top 5 to avoid overwhelming model
     if (latest.html_tag_errors > 0) {
-      const tags = latest.missing_tags && Array.isArray(latest.missing_tags)
-        ? latest.missing_tags.join(", ")
-        : `${latest.html_tag_errors} tags missing`;
-      feedbackParts.push(`\nMissing HTML5 tags (${latest.html_tag_errors}): ${tags}`);
+      const tagList = latest.missing_tags && Array.isArray(latest.missing_tags)
+        ? latest.missing_tags
+        : [];
+      const topTags = tagList.slice(0, 5).join(", ");
+      const moreText = tagList.length > 5 ? ` (and ${tagList.length - 5} more)` : "";
+      feedbackParts.push(`\nMissing HTML5 tags (${latest.html_tag_errors}): ${topTags}${moreText}`);
     }
 
     // W3C validation errors with details
