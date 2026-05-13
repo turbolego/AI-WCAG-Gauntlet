@@ -1,7 +1,0 @@
-{
-  "provider": "mistral",
-  "model": "codestral-latest",
-  "iteration": 4,
-  "hasFeedback": true,
-  "timestamp": "2026-05-10T11:40:39.439Z"
-}

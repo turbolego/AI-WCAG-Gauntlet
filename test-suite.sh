@@ -165,10 +165,19 @@ while [ $AXE_RETRY_COUNT -lt $AXE_MAX_RETRIES ]; do
         # Disable alert/confirm/prompt to prevent UnexpectedAlertOpenError during axe scan.
         # Models sometimes generate code with alerts or error handlers that trigger alerts,
         # which causes Selenium to abort the scan. Suppress them here.
-        sed -i '/<\/head>/i <script>window.alert=window.confirm=window.prompt=()=>null;</script>' index.html
+        # Use perl for cross-platform compatibility (macOS and Linux)
+        perl -i -pe 's{</head>}{<script>window.alert=window.confirm=window.prompt=()=>null;</script>\n</head>}i' index.html
         
         # Run axe with a 3-minute timeout (180s) to catch hangs before the 4-minute tab crash
-        timeout 180 axe "$TARGET_HTTP_URL" \
+        # Use gtimeout if available (GNU coreutils on macOS), otherwise use timeout or run without
+        TIMEOUT_CMD=""
+        if command -v gtimeout >/dev/null 2>&1; then
+            TIMEOUT_CMD="gtimeout 180"
+        elif command -v timeout >/dev/null 2>&1; then
+            TIMEOUT_CMD="timeout 180"
+        fi
+        
+        $TIMEOUT_CMD axe "$TARGET_HTTP_URL" \
             --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
             --timeout 60000 \
             --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \

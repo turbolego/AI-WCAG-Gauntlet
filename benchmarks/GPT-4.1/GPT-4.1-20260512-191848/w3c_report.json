@@ -1,0 +1,18 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 1,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 29,
+      "lastColumn": 13,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "Article lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all articles.",
+      "extract": "\"-1\">\n    <article>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    }
+  ]
+}

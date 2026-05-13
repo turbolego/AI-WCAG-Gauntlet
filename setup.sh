@@ -60,6 +60,50 @@ PROVIDER_LABEL="GitHub Copilot"
 TOOL="vscode"
 # ─────────────────────────────────────────────────────────────────────────────
 
+# ── Install dependencies (same method as CI workflows) ──────────────────────
+# Install npm dependencies from package.json, then detect and install a
+# Chrome-version-matching chromedriver to avoid ChromeDriver version mismatches.
+echo "[setup] Installing npm dependencies..."
+npm ci >/dev/null 2>&1 || {
+    echo "Warning: npm ci failed, attempting npm install instead..."
+    npm install >/dev/null 2>&1 || true
+}
+
+echo "[setup] Installing global testing tools (pa11y, @qualweb/cli)..."
+npm install -g pa11y @qualweb/cli >/dev/null 2>&1 || true
+
+# On macOS, install GNU coreutils to provide gtimeout command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "[setup] Checking for timeout command (installing GNU coreutils if needed)..."
+    if ! command -v timeout >/dev/null 2>&1 && ! command -v gtimeout >/dev/null 2>&1; then
+        echo "[setup] Installing GNU coreutils (provides timeout/gtimeout)..."
+        if command -v brew >/dev/null 2>&1; then
+            brew install coreutils >/dev/null 2>&1 || echo "Warning: brew install coreutils failed"
+        else
+            echo "Warning: Homebrew not found. Cannot install GNU coreutils for timeout command."
+        fi
+    fi
+fi
+
+# Detect the major version of the system Chrome to install matching chromedriver
+echo "[setup] Detecting system Chrome version..."
+CHROME_MAJOR=$(/usr/bin/google-chrome --version 2>/dev/null | sed 's/[^0-9]*\([0-9]*\).*/\1/')
+if [ -z "$CHROME_MAJOR" ]; then
+    # Fallback: check for Chrome on macOS
+    CHROME_MAJOR=$("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --version 2>/dev/null | sed 's/[^0-9]*\([0-9]*\).*/\1/')
+fi
+
+if [ -n "$CHROME_MAJOR" ]; then
+    echo "[setup] System Chrome major version: $CHROME_MAJOR"
+    echo "[setup] Installing chromedriver@^${CHROME_MAJOR} and @axe-core/cli..."
+    npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli >/dev/null 2>&1 || true
+    echo "[setup] ChromeDriver version: $(chromedriver --version 2>/dev/null || echo 'unknown')"
+else
+    echo "Warning: Could not detect Chrome version. Installing latest chromedriver..."
+    npm install -g chromedriver @axe-core/cli >/dev/null 2>&1 || true
+fi
+# ─────────────────────────────────────────────────────────────────────────────
+
 TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
 
 # e.g. ./benchmarks/GPT-4o/GPT-4o-20260405-155342

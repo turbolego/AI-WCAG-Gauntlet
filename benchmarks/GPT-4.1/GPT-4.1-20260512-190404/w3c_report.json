@@ -1,0 +1,137 @@
+{
+  "validates": false,
+  "errorCount": 13,
+  "messageCount": 13,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "          <rp>(</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Element “rp” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <rp>(</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 30,
+      "firstColumn": 27,
+      "message": "Start tag “rt” seen without a “ruby” element being open.",
+      "extract": "<rp>(</rp><rt>text</",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 30,
+      "firstColumn": 27,
+      "message": "Element “rt” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "<rp>(</rp><rt>text</",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 43,
+      "firstColumn": 40,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": ">text</rt><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 107,
+      "lastColumn": 43,
+      "firstColumn": 40,
+      "message": "Element “rp” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": ">text</rt><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 126,
+      "lastColumn": 22,
+      "firstColumn": 17,
+      "message": "The “main” element must not appear as a descendant of the “article” element.",
+      "extract": "          <main>Nested",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 126,
+      "lastColumn": 22,
+      "firstColumn": 17,
+      "message": "The “main” element must not appear as a descendant of the “section” element.",
+      "extract": "          <main>Nested",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 126,
+      "lastColumn": 22,
+      "firstColumn": 17,
+      "message": "The “main” element must not appear as a descendant of the “main” element.",
+      "extract": "          <main>Nested",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 126,
+      "lastColumn": 22,
+      "firstColumn": 17,
+      "message": "A document must not include more than one visible “main” element.",
+      "extract": "          <main>Nested",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 136,
+      "lastColumn": 46,
+      "firstColumn": 17,
+      "message": "Element “optgroup” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <optgroup label=\"Extra Group\"><optio",
+      "hiliteStart": 10,
+      "hiliteLength": 30
+    },
+    {
+      "type": "error",
+      "lastLine": 138,
+      "lastColumn": 53,
+      "firstColumn": 34,
+      "message": "Text not allowed in element “selectedcontent” in this context.",
+      "extract": "edcontent>Selected content tag</sele",
+      "hiliteStart": 10,
+      "hiliteLength": 20
+    },
+    {
+      "type": "error",
+      "lastLine": 139,
+      "lastColumn": 23,
+      "firstColumn": 17,
+      "message": "Element “style” not allowed as child of element “article” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <style>body {",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    }
+  ]
+}

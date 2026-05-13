@@ -1,0 +1,129 @@
+/* Ensure sufficient color contrast for section1 */
+#section1 {
+  background: #fff !important;
+  color: #000 !important;
+}
+/* Highlighted column style for table */
+.col-highlight {
+  background-color: #eee !important;
+}
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Add styles for all new elements to ensure accessibility and visual clarity */
+header, nav, main, section, article, aside, footer {
+  display: block;
+  margin: 1em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+}
+table, th, td, caption {
+  border: 1px solid #333;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+caption {
+  font-weight: bold;
+}
+figure, figcaption {
+  margin: 0.5em 0;
+}
+pre, code, kbd, samp, var {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  background: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 0.85em;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+hr {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 2em 0;
+}
+input, select, textarea, button, meter, progress {
+  margin: 0.5em 0;
+  padding: 0.3em;
+  font-size: 1em;
+}
+label {
+  font-weight: 600;
+}
+a {
+  color: #0053a0;
+  text-decoration: underline;
+}
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid #0053a0;
+  outline-offset: 2px;
+}
+[role="main"], main {
+  outline: 2px dashed #0053a0;
+  padding: 1em;
+}
+menu, ul, ol {
+  margin: 1em 0 1em 2em;
+}
+li {
+  margin: 0.25em 0;
+}
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 2em;
+}
+blockquote {
+  border-left: 4px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+  color: #555;
+}
+img, video, audio, embed, object, picture, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+iframe {
+  border: 1px solid #ccc;
+  width: 100%;
+  min-height: 100px;
+}
+dialog {
+  border: 2px solid #0053a0;
+  border-radius: 5px;
+  padding: 1em;
+  background: #fff;
+  color: #333;
+}
+summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+/* End of additional styles */

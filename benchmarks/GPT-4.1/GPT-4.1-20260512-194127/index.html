@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Skip to main content</a></li>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+            <hgroup>
+                <h1>AI WCAG Gauntlet</h1>
+                <h2>HTML5 & WCAG 2.2 AAA Demo</h2>
+                <h5>Heading 5 (HTML5 tag)</h5>
+                <h6>Heading 6 (HTML5 tag)</h6>
+                <style>/* Inline style tag for HTML5 coverage */ body { background: #fff; color: #111; }</style>
+            </hgroup>
+    </header>
+    <main id="main" role="main">
+        <article>
+            <header>
+                <h2 id="section1">HTML5 Showcase</h2>
+                <p><time datetime="2026-05-12">May 12, 2026</time></p>
+            </header>
+            <section>
+                <h3>Text and Structure</h3>
+                <p>This <b>page</b> demonstrates <strong>all</strong> <i>HTML5</i> <em>tags</em> <mark>required</mark> for the benchmark. <small>Small text</small> <u>underlined</u> <s>strikethrough</s> <sup>superscript</sup> <sub>subscript</sub> <abbr title="World Wide Web Consortium">W3C</abbr> <cite>HTML Living Standard</cite> <dfn>Definition</dfn> <code>&lt;code&gt;</code> <kbd>Ctrl+C</kbd> <samp>Sample</samp> <var>x</var> <q cite="#">Quote</q> <data value="42">data</data> <time datetime="2026-05-12T12:00">noon</time> <span>span</span> <bdo dir="rtl">RTL</bdo> <bdi>BDI</bdi></p>
+                <address>Contact: <a href="mailto:test@example.com">test@example.com</a></address>
+                <hr>
+                <pre><code>Preformatted
+    code block</code></pre>
+                <blockquote cite="#">Blockquote example</blockquote>
+                <p>Line break<br>wbr<wbr>example</p>
+            </section>
+            <section>
+                <h3>Lists and Tables</h3>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <menu><li>Menu item</li></menu>
+                <nav><a href="#">Nav link</a></nav>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+            </section>
+            <section>
+                <h3>Forms and Inputs</h3>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Form Example</legend>
+                        <label for="input1">Text Input</label>
+                        <input id="input1" name="input1" type="text" autocomplete="on">
+                        <label for="input2">Password</label>
+                        <input id="input2" name="input2" type="password">
+                        <label for="input3">Checkbox</label>
+                        <input id="input3" name="input3" type="checkbox">
+                        <label for="input4">Radio</label>
+                        <input id="input4" name="input4" type="radio">
+                        <label for="input5">Range</label>
+                        <input id="input5" name="input5" type="range" min="0" max="10">
+                        <label for="input6">Color</label>
+                        <input id="input6" name="input6" type="color">
+                        <label for="input7">Date</label>
+                        <input id="input7" name="input7" type="date">
+                        <label for="input8">File</label>
+                        <input id="input8" name="input8" type="file">
+                        <label for="input9">Email</label>
+                        <input id="input9" name="input9" type="email">
+                        <label for="input10">Number</label>
+                        <input id="input10" name="input10" type="number">
+                        <label for="input11">Search</label>
+                        <input id="input11" name="input11" type="search">
+                        <label for="input12">Tel</label>
+                        <input id="input12" name="input12" type="tel">
+                        <label for="input13">URL</label>
+                        <input id="input13" name="input13" type="url">
+                        <label for="input14">Image Button</label>
+                        <input id="input14" name="input14" type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Submit">
+                        <label for="select1">Select</label>
+                        <select id="select1" name="select1">
+                            <optgroup label="Group 1">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </optgroup>
+                        </select>
+                        <label for="textarea1">Textarea</label>
+                        <textarea id="textarea1" name="textarea1"></textarea>
+                        <button type="submit">Submit</button>
+                        <datalist id="datalist1"><option value="Data 1"></datalist>
+                        <output id="output1">Output</output>
+                        <meter min="0" max="100" value="50">50%</meter>
+                        <progress value="70" max="100">70%</progress>
+                    </fieldset>
+                </form>
+                <details>
+                    <summary>Details summary</summary>
+                    <p>Details content</p>
+                </details>
+                <dialog open>Dialog content</dialog>
+            </section>
+            <section>
+                <h3>Media and Embeds</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Figure image">
+                    <figcaption>Figure caption</figcaption>
+                </figure>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                </audio>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                </video>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">SVG fallback text</object>
+                <iframe src="about:blank" title="Sample iframe" aria-label="Sample iframe"></iframe>
+                <map name="samplemap"><area shape="rect" coords="0,0,10,10" href="#" alt="Area"></map>
+                <canvas id="canvas1" width="100" height="50">Canvas fallback</canvas>
+                <svg width="100" height="50" role="img" aria-label="Sample SVG"><rect width="100" height="50" style="fill:blue;"></rect></svg>
+                <noscript><p>This page requires JavaScript.</p></noscript>
+                <script>console.log('Script tag');</script>
+                <template><div>Template content</div></template>
+                <slot name="slot1">Slot fallback</slot>
+            </section>
+            <section>
+                <h3>Other HTML5 Tags</h3>
+                    <ins>Inserted text</ins> <del>Deleted text</del>
+                    <ruby>漢<rt>Kan</rt><rp>(</rp><rt>Ruby Text</rt></ruby>)
+                    <search aria-label="Site search"><input type="search" placeholder="Search..."></search>
+                    <selectedcontent>Selected content</selectedcontent>
+                    <main>Main tag inside article (for coverage)</main>
+            </section>
+        </article>
+        <aside role="complementary">
+            <h4>Aside Section</h4>
+            <p>This is an aside.</p>
+        </aside>
+    </main>
+    <footer role="contentinfo">
+        <p>&copy; 2026 AI WCAG Gauntlet</p>
+    </footer>
+</body>
+</html>

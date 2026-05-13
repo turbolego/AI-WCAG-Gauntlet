@@ -1,7 +1,0 @@
-{
-  "requestedModel": "codestral-latest",
-  "resolvedModel": "codestral-latest",
-  "provider": "mistral",
-  "generatedByModel": true,
-  "generationError": null
-}

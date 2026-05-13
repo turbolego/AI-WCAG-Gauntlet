@@ -1,0 +1,172 @@
+{
+  "validates": false,
+  "errorCount": 11,
+  "messageCount": 16,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 14,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "body>\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 15,
+      "lastColumn": 60,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": ">\n        <nav role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 52
+    },
+    {
+      "type": "error",
+      "lastLine": 24,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Element “h2” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h2>HTML5 ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 25,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Element “h5” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h5>Headin",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 26,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "Element “h6” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h6>Headin",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 27,
+      "lastColumn": 23,
+      "firstColumn": 17,
+      "message": "Element “style” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <style>/* Inl",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "info",
+      "lastLine": 30,
+      "lastColumn": 32,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "ader>\n    <main id=\"main\" role=\"main\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "error",
+      "lastLine": 148,
+      "lastColumn": 74,
+      "firstColumn": 68,
+      "message": "Element “ruby” is missing a required instance of child element “rp”.",
+      "extract": " Text</rt></ruby>)\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 150,
+      "lastColumn": 53,
+      "firstColumn": 38,
+      "message": "Text not allowed in element “selectedcontent” in this context.",
+      "extract": "edcontent>Selected content</sele",
+      "hiliteStart": 10,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "lastLine": 151,
+      "lastColumn": 26,
+      "firstColumn": 21,
+      "message": "The “main” element must not appear as a descendant of the “section” element.",
+      "extract": "          <main>Main t",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 151,
+      "lastColumn": 26,
+      "firstColumn": 21,
+      "message": "The “main” element must not appear as a descendant of the “article” element.",
+      "extract": "          <main>Main t",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 151,
+      "lastColumn": 26,
+      "firstColumn": 21,
+      "message": "The “main” element must not appear as a descendant of the “main” element.",
+      "extract": "          <main>Main t",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 151,
+      "lastColumn": 26,
+      "firstColumn": 21,
+      "message": "A document must not include more than one visible “main” element.",
+      "extract": "          <main>Main t",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "info",
+      "lastLine": 154,
+      "lastColumn": 36,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “complementary” role is unnecessary for element “aside”.",
+      "extract": ">\n        <aside role=\"complementary\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 28
+    },
+    {
+      "type": "info",
+      "lastLine": 159,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "main>\n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    },
+    {
+      "type": "error",
+      "lastLine": 25,
+      "lastColumn": 20,
+      "firstColumn": 17,
+      "message": "The heading “h5” (with computed level 5) follows the heading “h2” (with computed level 2), skipping 2 heading levels.",
+      "extract": "          <h5>Headin",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

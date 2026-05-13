@@ -1,0 +1,27 @@
+article .contrast-btn {
+    background: #111 !important;
+    color: #fff !important;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+article {
+    background: #fff !important;
+    color: #111 !important;
+}
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
