@@ -1,0 +1,8 @@
+{
+  "model": "command-a-reasoning-08-2025",
+  "provider": "cohere",
+  "providerLabel": "Cohere",
+  "tool": "github-actions",
+  "timestamp": "2026-05-13T04:43:48Z",
+  "folder": "command-a-reasoning-08-2025-20260513-044348"
+}

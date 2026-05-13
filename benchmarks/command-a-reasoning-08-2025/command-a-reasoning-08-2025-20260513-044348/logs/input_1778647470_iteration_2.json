@@ -1,0 +1,9 @@
+{
+  "provider": "cohere",
+  "model": "command-a-reasoning-08-2025",
+  "iteration": 2,
+  "maxTokens": 4000,
+  "hasFeedback": true,
+  "feedbackLength": 579,
+  "timestamp": "2026-05-13T04:44:30.959Z"
+}

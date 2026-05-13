@@ -1,0 +1,28 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 2,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 10,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "body>\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 46,
+      "lastColumn": 107,
+      "firstColumn": 104,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "</address></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

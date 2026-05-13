@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-12T15:00:36.287261Z",
-  "total_runs": 23,
-  "total_models": 11,
+  "generated_at": "2026-05-13T04:57:32.606996Z",
+  "total_runs": 29,
+  "total_models": 10,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -28,6 +28,28 @@
     },
     {
       "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-191848",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 98.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 10,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:33:37Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-191848/index.html",
+      "rank": 2
+    },
+    {
+      "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260503-094907",
       "source": "local",
       "provider": "github-copilot",
@@ -46,7 +68,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094907/index.html",
-      "rank": 2
+      "rank": 3
     },
     {
       "model": "GPT-4.1",
@@ -68,7 +90,29 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html",
-      "rank": 3
+      "rank": 4
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-194127",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 94.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 11,
+      "axe_violations": 6,
+      "pa11y_issues": 3,
+      "qualweb_issues": 1,
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:53:09Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html",
+      "rank": 5
     },
     {
       "model": "GPT-4.1",
@@ -90,7 +134,29 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html",
-      "rank": 4
+      "rank": 6
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-190404",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 92.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 13,
+      "axe_violations": 5,
+      "pa11y_issues": 1,
+      "qualweb_issues": 0,
+      "iterations_used": 10,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:12:05Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-190404/index.html",
+      "rank": 7
     },
     {
       "model": "GPT-4o",
@@ -112,7 +178,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html",
-      "rank": 5
+      "rank": 8
     },
     {
       "model": "GPT-4o",
@@ -134,7 +200,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
-      "rank": 6
+      "rank": 9
     },
     {
       "model": "mistral-large-latest",
@@ -156,7 +222,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260512-110459/index.html",
-      "rank": 7
+      "rank": 10
     },
     {
       "model": "mistral-large-latest",
@@ -178,7 +244,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260510-055752/index.html",
-      "rank": 8
+      "rank": 11
     },
     {
       "model": "mistral-large-latest",
@@ -200,7 +266,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 9
+      "rank": 12
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-224010",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 67.64,
+      "html_tag_errors": 34,
+      "w3c_errors": 0,
+      "axe_violations": 4,
+      "pa11y_issues": 3,
+      "qualweb_issues": 2,
+      "iterations_used": 13,
+      "status": "fail",
+      "timestamp": "2026-05-12T20:50:58Z",
+      "tag_coverage_pct": 69.9,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-224010/index.html",
+      "rank": 13
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -222,7 +310,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260509-054549/index.html",
-      "rank": 10
+      "rank": 14
     },
     {
       "model": "GPT-4o",
@@ -244,7 +332,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
-      "rank": 11
+      "rank": 15
     },
     {
       "model": "meta-llama-Llama-3.1-8B-Instruct",
@@ -266,7 +354,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "unknown",
       "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html",
-      "rank": 12
+      "rank": 16
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-210242",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 57.36,
+      "html_tag_errors": 49,
+      "w3c_errors": 0,
+      "axe_violations": 3,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 15,
+      "status": "fail",
+      "timestamp": "2026-05-12T19:16:30Z",
+      "tag_coverage_pct": 56.6,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-210242/index.html",
+      "rank": 17
     },
     {
       "model": "mistral-small-latest",
@@ -288,7 +398,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 13
+      "rank": 18
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-201910",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 51.55,
+      "html_tag_errors": 61,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 1,
+      "qualweb_issues": 0,
+      "iterations_used": 16,
+      "status": "fail",
+      "timestamp": "2026-05-12T18:30:32Z",
+      "tag_coverage_pct": 46.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-201910/index.html",
+      "rank": 19
     },
     {
       "model": "mistral-small-latest",
@@ -310,7 +442,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260512-124600/index.html",
-      "rank": 14
+      "rank": 20
     },
     {
       "model": "mistral-medium-latest",
@@ -332,7 +464,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html",
-      "rank": 15
+      "rank": 21
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -354,7 +486,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 16
+      "rank": 22
+    },
+    {
+      "model": "command-a-reasoning-08-2025",
+      "run_id": "command-a-reasoning-08-2025-20260513-044348",
+      "source": "local",
+      "provider": "cohere",
+      "providerLabel": "Cohere",
+      "tool": "github-actions",
+      "score": 40.73,
+      "html_tag_errors": 73,
+      "w3c_errors": 1,
+      "axe_violations": 1,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 20,
+      "status": "fail",
+      "timestamp": "2026-05-13T04:57:32Z",
+      "tag_coverage_pct": 35.4,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260513-044348/index.html",
+      "rank": 23
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -376,29 +530,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html",
-      "rank": 17
-    },
-    {
-      "model": "codestral-latest",
-      "run_id": "codestral-latest-20260510-113944",
-      "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
-      "tool": "github-actions",
-      "score": 34.64,
-      "html_tag_errors": 78,
-      "w3c_errors": 2,
-      "axe_violations": 1,
-      "pa11y_issues": 1,
-      "qualweb_issues": 0,
-      "iterations_used": 20,
-      "status": "fail",
-      "timestamp": "2026-05-10T11:47:54Z",
-      "tag_coverage_pct": 31.0,
-      "axe_version": "4.11.4",
-      "pa11y_version": "9.1.1",
-      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260510-113944/index.html",
-      "rank": 18
+      "rank": 24
     },
     {
       "model": "command-a-03-2025",
@@ -420,7 +552,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/command-a-03-2025/command-a-03-2025-20260512-145216/index.html",
-      "rank": 19
+      "rank": 25
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -442,7 +574,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 20
+      "rank": 26
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -464,7 +596,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 21
+      "rank": 27
     },
     {
       "model": "GPT-4o",
@@ -486,7 +618,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 22
+      "rank": 28
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -508,7 +640,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 23
+      "rank": 29
     }
   ],
   "runs_by_model": [
@@ -529,6 +661,24 @@
       "status": "fail",
       "timestamp": "2026-05-03T07:47:50Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094502/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-191848",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 10,
+      "final_score": 98.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:33:37Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-191848/index.html"
     },
     {
       "model": "GPT-4.1",
@@ -568,6 +718,24 @@
     },
     {
       "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-194127",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 94.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 11,
+      "final_axe_violations": 6,
+      "final_pa11y_issues": 3,
+      "final_qualweb_issues": 1,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:53:09Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html"
+    },
+    {
+      "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260506-190246",
       "source": "local",
       "provider": "github-copilot",
@@ -583,6 +751,24 @@
       "status": "fail",
       "timestamp": "2026-05-06T17:05:22Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260512-190404",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 10,
+      "final_score": 92.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 13,
+      "final_axe_violations": 5,
+      "final_pa11y_issues": 1,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-12T17:12:05Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-190404/index.html"
     },
     {
       "model": "GPT-4o",
@@ -675,6 +861,24 @@
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html"
     },
     {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-224010",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 13,
+      "final_score": 67.64,
+      "final_html_errors": 34,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 4,
+      "final_pa11y_issues": 3,
+      "final_qualweb_issues": 2,
+      "status": "fail",
+      "timestamp": "2026-05-12T20:50:58Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-224010/index.html"
+    },
+    {
       "model": "command-a-reasoning-08-2025",
       "run_id": "command-a-reasoning-08-2025-20260509-054549",
       "source": "local",
@@ -729,6 +933,24 @@
       "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html"
     },
     {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-210242",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 15,
+      "final_score": 57.36,
+      "final_html_errors": 49,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 3,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-12T19:16:30Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-210242/index.html"
+    },
+    {
       "model": "mistral-small-latest",
       "run_id": "mistral-small-latest-20260506-173546",
       "source": "local",
@@ -745,6 +967,24 @@
       "status": "fail",
       "timestamp": "2026-05-06T18:00:51Z",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html"
+    },
+    {
+      "model": "GPT-4o",
+      "run_id": "GPT-4o-20260512-201910",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 16,
+      "final_score": 51.55,
+      "final_html_errors": 61,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 1,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-12T18:30:32Z",
+      "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-201910/index.html"
     },
     {
       "model": "mistral-small-latest",
@@ -801,6 +1041,24 @@
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html"
     },
     {
+      "model": "command-a-reasoning-08-2025",
+      "run_id": "command-a-reasoning-08-2025-20260513-044348",
+      "source": "local",
+      "provider": "cohere",
+      "providerLabel": "Cohere",
+      "tool": "github-actions",
+      "total_iterations": 20,
+      "final_score": 40.73,
+      "final_html_errors": 73,
+      "final_w3c_errors": 1,
+      "final_axe_violations": 1,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T04:57:32Z",
+      "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260513-044348/index.html"
+    },
+    {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
       "run_id": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "source": "local",
@@ -817,24 +1075,6 @@
       "status": "fail",
       "timestamp": "2026-05-12T05:31:26Z",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html"
-    },
-    {
-      "model": "codestral-latest",
-      "run_id": "codestral-latest-20260510-113944",
-      "source": "local",
-      "provider": "mistral",
-      "providerLabel": "Mistral AI",
-      "tool": "github-actions",
-      "total_iterations": 20,
-      "final_score": 34.64,
-      "final_html_errors": 78,
-      "final_w3c_errors": 2,
-      "final_axe_violations": 1,
-      "final_pa11y_issues": 1,
-      "final_qualweb_issues": 0,
-      "status": "fail",
-      "timestamp": "2026-05-10T11:47:54Z",
-      "benchmark_url": "benchmarks/codestral-latest/codestral-latest-20260510-113944/index.html"
     },
     {
       "model": "command-a-03-2025",
@@ -930,518 +1170,523 @@
   "missing_tags_frequency": [
     {
       "tag": "selectedcontent",
-      "miss_count": 18,
-      "miss_pct": 78.3
+      "miss_count": 21,
+      "miss_pct": 72.4
     },
     {
       "tag": "data",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "embed",
-      "miss_count": 15,
-      "miss_pct": 65.2
+      "miss_count": 18,
+      "miss_pct": 62.1
     },
     {
       "tag": "h6",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "menu",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "pre",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "search",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "span",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "tfoot",
-      "miss_count": 15,
-      "miss_pct": 65.2
-    },
-    {
-      "tag": "br",
-      "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_count": 18,
+      "miss_pct": 62.1
     },
     {
       "tag": "col",
-      "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_count": 17,
+      "miss_pct": 58.6
     },
     {
       "tag": "colgroup",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "embed",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "h5",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "menu",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "pre",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "search",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "tfoot",
+      "miss_count": 17,
+      "miss_pct": 58.6
+    },
+    {
+      "tag": "br",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "dfn",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "hgroup",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "hr",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "object",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "ol",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "rp",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "span",
+      "miss_count": 16,
+      "miss_pct": 55.2
+    },
+    {
+      "tag": "bdi",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "bdo",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "dialog",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "i",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "optgroup",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "q",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "s",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "slot",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "template",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "u",
+      "miss_count": 15,
+      "miss_pct": 51.7
+    },
+    {
+      "tag": "b",
       "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_pct": 48.3
+    },
+    {
+      "tag": "datalist",
+      "miss_count": 14,
+      "miss_pct": 48.3
     },
     {
       "tag": "dd",
       "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_pct": 48.3
     },
     {
-      "tag": "dfn",
+      "tag": "del",
       "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_pct": 48.3
     },
     {
       "tag": "dl",
       "miss_count": 14,
-      "miss_pct": 60.9
+      "miss_pct": 48.3
     },
     {
       "tag": "dt",
       "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "h5",
-      "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "hr",
-      "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "object",
-      "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "ol",
-      "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "rp",
-      "miss_count": 14,
-      "miss_pct": 60.9
-    },
-    {
-      "tag": "bdi",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "i",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "iframe",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "q",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "s",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "slot",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "sub",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "sup",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "template",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "u",
-      "miss_count": 13,
-      "miss_pct": 56.5
-    },
-    {
-      "tag": "b",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "bdo",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "del",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "dialog",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "hgroup",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "ins",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "kbd",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "meter",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "noscript",
-      "miss_count": 12,
-      "miss_pct": 52.2
-    },
-    {
-      "tag": "optgroup",
-      "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_pct": 48.3
     },
     {
       "tag": "picture",
-      "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_count": 14,
+      "miss_pct": 48.3
     },
     {
       "tag": "rt",
-      "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_count": 14,
+      "miss_pct": 48.3
     },
     {
       "tag": "ruby",
+      "miss_count": 14,
+      "miss_pct": 48.3
+    },
+    {
+      "tag": "sub",
+      "miss_count": 14,
+      "miss_pct": 48.3
+    },
+    {
+      "tag": "sup",
+      "miss_count": 14,
+      "miss_pct": 48.3
+    },
+    {
+      "tag": "wbr",
+      "miss_count": 14,
+      "miss_pct": 48.3
+    },
+    {
+      "tag": "canvas",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "cite",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "div",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "em",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "ins",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "kbd",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "meter",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "noscript",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "output",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "select",
+      "miss_count": 13,
+      "miss_pct": 44.8
+    },
+    {
+      "tag": "area",
       "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_pct": 41.4
+    },
+    {
+      "tag": "details",
+      "miss_count": 12,
+      "miss_pct": 41.4
+    },
+    {
+      "tag": "h4",
+      "miss_count": 12,
+      "miss_pct": 41.4
+    },
+    {
+      "tag": "map",
+      "miss_count": 12,
+      "miss_pct": 41.4
+    },
+    {
+      "tag": "progress",
+      "miss_count": 12,
+      "miss_pct": 41.4
     },
     {
       "tag": "samp",
       "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_pct": 41.4
     },
     {
-      "tag": "wbr",
+      "tag": "small",
       "miss_count": 12,
-      "miss_pct": 52.2
+      "miss_pct": 41.4
     },
     {
-      "tag": "canvas",
-      "miss_count": 11,
-      "miss_pct": 47.8
+      "tag": "strong",
+      "miss_count": 12,
+      "miss_pct": 41.4
     },
     {
-      "tag": "datalist",
-      "miss_count": 11,
-      "miss_pct": 47.8
+      "tag": "style",
+      "miss_count": 12,
+      "miss_pct": 41.4
     },
     {
-      "tag": "em",
-      "miss_count": 11,
-      "miss_pct": 47.8
+      "tag": "summary",
+      "miss_count": 12,
+      "miss_pct": 41.4
+    },
+    {
+      "tag": "textarea",
+      "miss_count": 12,
+      "miss_pct": 41.4
     },
     {
       "tag": "mark",
       "miss_count": 11,
-      "miss_pct": 47.8
+      "miss_pct": 37.9
     },
     {
-      "tag": "output",
+      "tag": "track",
       "miss_count": 11,
-      "miss_pct": 47.8
-    },
-    {
-      "tag": "progress",
-      "miss_count": 11,
-      "miss_pct": 47.8
-    },
-    {
-      "tag": "select",
-      "miss_count": 11,
-      "miss_pct": 47.8
-    },
-    {
-      "tag": "small",
-      "miss_count": 11,
-      "miss_pct": 47.8
-    },
-    {
-      "tag": "strong",
-      "miss_count": 11,
-      "miss_pct": 47.8
+      "miss_pct": 37.9
     },
     {
       "tag": "var",
       "miss_count": 11,
-      "miss_pct": 47.8
-    },
-    {
-      "tag": "area",
-      "miss_count": 10,
-      "miss_pct": 43.5
+      "miss_pct": 37.9
     },
     {
       "tag": "blockquote",
       "miss_count": 10,
-      "miss_pct": 43.5
+      "miss_pct": 34.5
     },
     {
-      "tag": "cite",
+      "tag": "fieldset",
       "miss_count": 10,
-      "miss_pct": 43.5
+      "miss_pct": 34.5
     },
     {
-      "tag": "details",
+      "tag": "legend",
       "miss_count": 10,
-      "miss_pct": 43.5
+      "miss_pct": 34.5
     },
     {
-      "tag": "map",
-      "miss_count": 10,
-      "miss_pct": 43.5
-    },
-    {
-      "tag": "style",
-      "miss_count": 10,
-      "miss_pct": 43.5
-    },
-    {
-      "tag": "summary",
-      "miss_count": 10,
-      "miss_pct": 43.5
-    },
-    {
-      "tag": "textarea",
-      "miss_count": 10,
-      "miss_pct": 43.5
-    },
-    {
-      "tag": "time",
-      "miss_count": 10,
-      "miss_pct": 43.5
+      "tag": "abbr",
+      "miss_count": 9,
+      "miss_pct": 31.0
     },
     {
       "tag": "code",
       "miss_count": 9,
-      "miss_pct": 39.1
+      "miss_pct": 31.0
     },
     {
-      "tag": "div",
+      "tag": "option",
       "miss_count": 9,
-      "miss_pct": 39.1
+      "miss_pct": 31.0
     },
     {
-      "tag": "h4",
+      "tag": "time",
       "miss_count": 9,
-      "miss_pct": 39.1
+      "miss_pct": 31.0
     },
     {
-      "tag": "track",
-      "miss_count": 9,
-      "miss_pct": 39.1
-    },
-    {
-      "tag": "abbr",
+      "tag": "base",
       "miss_count": 8,
-      "miss_pct": 34.8
+      "miss_pct": 27.6
     },
     {
-      "tag": "fieldset",
+      "tag": "script",
       "miss_count": 8,
-      "miss_pct": 34.8
+      "miss_pct": 27.6
     },
     {
-      "tag": "legend",
+      "tag": "video",
       "miss_count": 8,
-      "miss_pct": 34.8
+      "miss_pct": 27.6
     },
     {
       "tag": "address",
       "miss_count": 7,
-      "miss_pct": 30.4
-    },
-    {
-      "tag": "caption",
-      "miss_count": 7,
-      "miss_pct": 30.4
-    },
-    {
-      "tag": "option",
-      "miss_count": 7,
-      "miss_pct": 30.4
-    },
-    {
-      "tag": "video",
-      "miss_count": 7,
-      "miss_pct": 30.4
+      "miss_pct": 24.1
     },
     {
       "tag": "audio",
+      "miss_count": 7,
+      "miss_pct": 24.1
+    },
+    {
+      "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 26.1
+      "miss_pct": 20.7
     },
     {
       "tag": "figcaption",
       "miss_count": 6,
-      "miss_pct": 26.1
+      "miss_pct": 20.7
     },
     {
       "tag": "figure",
       "miss_count": 6,
-      "miss_pct": 26.1
+      "miss_pct": 20.7
     },
     {
-      "tag": "script",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "table",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "tbody",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "td",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "th",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "thead",
-      "miss_count": 6,
-      "miss_pct": 26.1
-    },
-    {
-      "tag": "tr",
-      "miss_count": 6,
-      "miss_pct": 26.1
+      "tag": "h3",
+      "miss_count": 5,
+      "miss_pct": 17.2
     },
     {
       "tag": "img",
       "miss_count": 5,
-      "miss_pct": 21.7
+      "miss_pct": 17.2
     },
     {
-      "tag": "base",
-      "miss_count": 4,
-      "miss_pct": 17.4
+      "tag": "source",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "table",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "tbody",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "td",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "th",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "thead",
+      "miss_count": 5,
+      "miss_pct": 17.2
+    },
+    {
+      "tag": "tr",
+      "miss_count": 5,
+      "miss_pct": 17.2
     },
     {
       "tag": "button",
       "miss_count": 4,
-      "miss_pct": 17.4
+      "miss_pct": 13.8
     },
     {
       "tag": "form",
       "miss_count": 4,
-      "miss_pct": 17.4
+      "miss_pct": 13.8
     },
     {
       "tag": "label",
       "miss_count": 4,
-      "miss_pct": 17.4
-    },
-    {
-      "tag": "source",
-      "miss_count": 4,
-      "miss_pct": 17.4
-    },
-    {
-      "tag": "h3",
-      "miss_count": 3,
-      "miss_pct": 13.0
-    },
-    {
-      "tag": "input",
-      "miss_count": 3,
-      "miss_pct": 13.0
+      "miss_pct": 13.8
     },
     {
       "tag": "link",
+      "miss_count": 4,
+      "miss_pct": 13.8
+    },
+    {
+      "tag": "aside",
       "miss_count": 3,
-      "miss_pct": 13.0
+      "miss_pct": 10.3
+    },
+    {
+      "tag": "h2",
+      "miss_count": 3,
+      "miss_pct": 10.3
     },
     {
       "tag": "article",
       "miss_count": 2,
-      "miss_pct": 8.7
+      "miss_pct": 6.9
     },
     {
-      "tag": "aside",
+      "tag": "input",
       "miss_count": 2,
-      "miss_pct": 8.7
-    },
-    {
-      "tag": "h2",
-      "miss_count": 2,
-      "miss_pct": 8.7
+      "miss_pct": 6.9
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 4.3
+      "miss_pct": 3.4
     },
     {
       "tag": "h1",
       "miss_count": 1,
-      "miss_pct": 4.3
+      "miss_pct": 3.4
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 4.3
+      "miss_pct": 3.4
+    },
+    {
+      "tag": "main",
+      "miss_count": 1,
+      "miss_pct": 3.4
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 4.3
+      "miss_pct": 3.4
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 4.3
+      "miss_pct": 3.4
     },
     {
       "tag": "body",
@@ -1465,11 +1710,6 @@
     },
     {
       "tag": "html",
-      "miss_count": 0,
-      "miss_pct": 0.0
-    },
-    {
-      "tag": "main",
       "miss_count": 0,
       "miss_pct": 0.0
     },
@@ -1722,6 +1962,285 @@
             "qualweb_issues": 0,
             "status": "fail",
             "timestamp": "2026-05-06T17:05:22Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260512-190404",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 4.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 13,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:04:21Z"
+          },
+          {
+            "iteration": 2,
+            "score": 84.27,
+            "html_tag_errors": 10,
+            "w3c_errors": 13,
+            "axe_violations": 8,
+            "pa11y_issues": 6,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:06:20Z"
+          },
+          {
+            "iteration": 3,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:07:52Z"
+          },
+          {
+            "iteration": 4,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:08:20Z"
+          },
+          {
+            "iteration": 5,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:08:50Z"
+          },
+          {
+            "iteration": 6,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:09:40Z"
+          },
+          {
+            "iteration": 7,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:10:06Z"
+          },
+          {
+            "iteration": 8,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:10:40Z"
+          },
+          {
+            "iteration": 9,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:11:16Z"
+          },
+          {
+            "iteration": 10,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 13,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:12:05Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260512-191848",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:19:11Z"
+          },
+          {
+            "iteration": 2,
+            "score": 84.64,
+            "html_tag_errors": 12,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:21:40Z"
+          },
+          {
+            "iteration": 3,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:22:47Z"
+          },
+          {
+            "iteration": 4,
+            "score": 95.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:23:45Z"
+          },
+          {
+            "iteration": 5,
+            "score": 95.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:24:42Z"
+          },
+          {
+            "iteration": 6,
+            "score": 94.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:26:18Z"
+          },
+          {
+            "iteration": 7,
+            "score": 94.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:27:07Z"
+          },
+          {
+            "iteration": 8,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:30:44Z"
+          },
+          {
+            "iteration": 9,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:32:00Z"
+          },
+          {
+            "iteration": 10,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:33:37Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260512-194127",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 4.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 11,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:47:47Z"
+          },
+          {
+            "iteration": 2,
+            "score": 90.82,
+            "html_tag_errors": 4,
+            "w3c_errors": 11,
+            "axe_violations": 5,
+            "pa11y_issues": 3,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:50:29Z"
+          },
+          {
+            "iteration": 3,
+            "score": 91.64,
+            "html_tag_errors": 3,
+            "w3c_errors": 11,
+            "axe_violations": 5,
+            "pa11y_issues": 3,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:52:27Z"
+          },
+          {
+            "iteration": 4,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 11,
+            "axe_violations": 6,
+            "pa11y_issues": 3,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-12T17:53:09Z"
           }
         ]
       }
@@ -2560,231 +3079,503 @@
             "timestamp": "2026-05-06T17:36:32Z"
           }
         ]
-      }
-    ],
-    "codestral-latest": [
+      },
       {
-        "run_id": "codestral-latest-20260510-113944",
+        "run_id": "GPT-4o-20260512-201910",
         "iterations": [
           {
             "iteration": 1,
-            "score": 31.36,
-            "html_tag_errors": 82,
-            "w3c_errors": 2,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
             "axe_violations": 2,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
             "status": "fail",
-            "timestamp": "2026-05-10T11:40:01Z"
+            "timestamp": "2026-05-12T18:19:29Z"
           },
           {
             "iteration": 2,
-            "score": 31.55,
-            "html_tag_errors": 83,
-            "w3c_errors": 2,
-            "axe_violations": 1,
+            "score": 21.45,
+            "html_tag_errors": 99,
+            "w3c_errors": 0,
+            "axe_violations": 0,
             "pa11y_issues": 0,
             "qualweb_issues": 0,
             "status": "fail",
-            "timestamp": "2026-05-10T11:40:13Z"
+            "timestamp": "2026-05-12T18:22:56Z"
           },
           {
             "iteration": 3,
-            "score": 82.64,
-            "html_tag_errors": 12,
-            "w3c_errors": 2,
-            "axe_violations": 4,
-            "pa11y_issues": 5,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:40:39Z"
-          },
-          {
-            "iteration": 4,
-            "score": 86.45,
-            "html_tag_errors": 11,
-            "w3c_errors": 2,
-            "axe_violations": 2,
-            "pa11y_issues": 3,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:41:02Z"
-          },
-          {
-            "iteration": 5,
-            "score": 75.27,
-            "html_tag_errors": 21,
-            "w3c_errors": 2,
-            "axe_violations": 4,
-            "pa11y_issues": 22,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:41:24Z"
-          },
-          {
-            "iteration": 6,
-            "score": 91.64,
-            "html_tag_errors": 2,
-            "w3c_errors": 2,
-            "axe_violations": 8,
-            "pa11y_issues": 25,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:42:45Z"
-          },
-          {
-            "iteration": 7,
-            "score": 44.55,
-            "html_tag_errors": 64,
-            "w3c_errors": 2,
-            "axe_violations": 2,
-            "pa11y_issues": 4,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:43:01Z"
-          },
-          {
-            "iteration": 8,
-            "score": 84.27,
-            "html_tag_errors": 10,
-            "w3c_errors": 2,
-            "axe_violations": 4,
-            "pa11y_issues": 4,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:43:29Z"
-          },
-          {
-            "iteration": 9,
-            "score": 55.0,
-            "html_tag_errors": 47,
-            "w3c_errors": 2,
-            "axe_violations": 4,
-            "pa11y_issues": 3,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:43:48Z"
-          },
-          {
-            "iteration": 10,
-            "score": 83.18,
-            "html_tag_errors": 15,
-            "w3c_errors": 2,
-            "axe_violations": 2,
-            "pa11y_issues": 3,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:44:14Z"
-          },
-          {
-            "iteration": 11,
-            "score": 65.64,
-            "html_tag_errors": 34,
-            "w3c_errors": 2,
-            "axe_violations": 5,
-            "pa11y_issues": 2,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:44:38Z"
-          },
-          {
-            "iteration": 12,
-            "score": 76.91,
-            "html_tag_errors": 20,
-            "w3c_errors": 2,
-            "axe_violations": 6,
-            "pa11y_issues": 9,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:45:04Z"
-          },
-          {
-            "iteration": 13,
-            "score": 84.45,
-            "html_tag_errors": 11,
-            "w3c_errors": 2,
-            "axe_violations": 3,
-            "pa11y_issues": 4,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:45:28Z"
-          },
-          {
-            "iteration": 14,
-            "score": 50.09,
-            "html_tag_errors": 53,
-            "w3c_errors": 2,
-            "axe_violations": 4,
-            "pa11y_issues": 3,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:45:45Z"
-          },
-          {
-            "iteration": 15,
-            "score": 84.82,
-            "html_tag_errors": 13,
-            "w3c_errors": 2,
-            "axe_violations": 2,
-            "pa11y_issues": 3,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:46:15Z"
-          },
-          {
-            "iteration": 16,
-            "score": 85.91,
-            "html_tag_errors": 9,
-            "w3c_errors": 2,
-            "axe_violations": 2,
-            "pa11y_issues": 8,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:46:42Z"
-          },
-          {
-            "iteration": 17,
-            "score": 85.09,
-            "html_tag_errors": 11,
-            "w3c_errors": 2,
-            "axe_violations": 3,
-            "pa11y_issues": 5,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:47:07Z"
-          },
-          {
-            "iteration": 18,
-            "score": 82.82,
-            "html_tag_errors": 15,
-            "w3c_errors": 2,
-            "axe_violations": 3,
-            "pa11y_issues": 4,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:47:32Z"
-          },
-          {
-            "iteration": 19,
-            "score": 34.82,
-            "html_tag_errors": 79,
-            "w3c_errors": 2,
-            "axe_violations": 1,
-            "pa11y_issues": 0,
-            "qualweb_issues": 0,
-            "status": "fail",
-            "timestamp": "2026-05-10T11:47:43Z"
-          },
-          {
-            "iteration": 20,
-            "score": 34.64,
-            "html_tag_errors": 78,
-            "w3c_errors": 2,
-            "axe_violations": 1,
+            "score": 22.91,
+            "html_tag_errors": 96,
+            "w3c_errors": 0,
+            "axe_violations": 0,
             "pa11y_issues": 1,
             "qualweb_issues": 0,
             "status": "fail",
-            "timestamp": "2026-05-10T11:47:54Z"
+            "timestamp": "2026-05-12T18:23:22Z"
+          },
+          {
+            "iteration": 4,
+            "score": 25.36,
+            "html_tag_errors": 93,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:23:52Z"
+          },
+          {
+            "iteration": 5,
+            "score": 33.55,
+            "html_tag_errors": 83,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:24:22Z"
+          },
+          {
+            "iteration": 6,
+            "score": 36.82,
+            "html_tag_errors": 79,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:24:52Z"
+          },
+          {
+            "iteration": 7,
+            "score": 38.45,
+            "html_tag_errors": 77,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:25:24Z"
+          },
+          {
+            "iteration": 8,
+            "score": 40.09,
+            "html_tag_errors": 75,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:25:56Z"
+          },
+          {
+            "iteration": 9,
+            "score": 41.73,
+            "html_tag_errors": 73,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:26:28Z"
+          },
+          {
+            "iteration": 10,
+            "score": 43.36,
+            "html_tag_errors": 71,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:27:02Z"
+          },
+          {
+            "iteration": 11,
+            "score": 45.0,
+            "html_tag_errors": 69,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:27:36Z"
+          },
+          {
+            "iteration": 12,
+            "score": 46.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:28:10Z"
+          },
+          {
+            "iteration": 13,
+            "score": 46.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:28:47Z"
+          },
+          {
+            "iteration": 14,
+            "score": 46.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:29:25Z"
+          },
+          {
+            "iteration": 15,
+            "score": 49.09,
+            "html_tag_errors": 64,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:29:58Z"
+          },
+          {
+            "iteration": 16,
+            "score": 51.55,
+            "html_tag_errors": 61,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T18:30:32Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260512-210242",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:03:01Z"
+          },
+          {
+            "iteration": 2,
+            "score": 21.09,
+            "html_tag_errors": 97,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:09:27Z"
+          },
+          {
+            "iteration": 3,
+            "score": 26.0,
+            "html_tag_errors": 91,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:09:56Z"
+          },
+          {
+            "iteration": 4,
+            "score": 28.45,
+            "html_tag_errors": 88,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:10:24Z"
+          },
+          {
+            "iteration": 5,
+            "score": 29.91,
+            "html_tag_errors": 85,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:10:54Z"
+          },
+          {
+            "iteration": 6,
+            "score": 32.18,
+            "html_tag_errors": 81,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:11:24Z"
+          },
+          {
+            "iteration": 7,
+            "score": 33.0,
+            "html_tag_errors": 80,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:11:54Z"
+          },
+          {
+            "iteration": 8,
+            "score": 34.64,
+            "html_tag_errors": 78,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:12:25Z"
+          },
+          {
+            "iteration": 9,
+            "score": 37.09,
+            "html_tag_errors": 75,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:12:58Z"
+          },
+          {
+            "iteration": 10,
+            "score": 42.82,
+            "html_tag_errors": 68,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:13:32Z"
+          },
+          {
+            "iteration": 11,
+            "score": 43.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:14:06Z"
+          },
+          {
+            "iteration": 12,
+            "score": 44.45,
+            "html_tag_errors": 66,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:14:40Z"
+          },
+          {
+            "iteration": 13,
+            "score": 45.27,
+            "html_tag_errors": 65,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:15:15Z"
+          },
+          {
+            "iteration": 14,
+            "score": 46.09,
+            "html_tag_errors": 64,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:15:52Z"
+          },
+          {
+            "iteration": 15,
+            "score": 57.36,
+            "html_tag_errors": 49,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-12T19:16:30Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4o-20260512-224010",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:40:30Z"
+          },
+          {
+            "iteration": 2,
+            "score": 25.64,
+            "html_tag_errors": 89,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:41:00Z"
+          },
+          {
+            "iteration": 3,
+            "score": 35.45,
+            "html_tag_errors": 77,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:41:31Z"
+          },
+          {
+            "iteration": 4,
+            "score": 44.45,
+            "html_tag_errors": 66,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:42:04Z"
+          },
+          {
+            "iteration": 5,
+            "score": 43.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:45:36Z"
+          },
+          {
+            "iteration": 6,
+            "score": 50.18,
+            "html_tag_errors": 59,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 1,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:46:13Z"
+          },
+          {
+            "iteration": 7,
+            "score": 51.64,
+            "html_tag_errors": 56,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:46:50Z"
+          },
+          {
+            "iteration": 8,
+            "score": 55.73,
+            "html_tag_errors": 51,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:47:28Z"
+          },
+          {
+            "iteration": 9,
+            "score": 72.91,
+            "html_tag_errors": 31,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:48:13Z"
+          },
+          {
+            "iteration": 10,
+            "score": 67.64,
+            "html_tag_errors": 34,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:48:54Z"
+          },
+          {
+            "iteration": 11,
+            "score": 72.91,
+            "html_tag_errors": 31,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 2,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:49:42Z"
+          },
+          {
+            "iteration": 12,
+            "score": 67.64,
+            "html_tag_errors": 34,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:50:27Z"
+          },
+          {
+            "iteration": 13,
+            "score": 67.64,
+            "html_tag_errors": 34,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-12T20:50:58Z"
           }
         ]
       }
@@ -3239,6 +4030,231 @@
             "qualweb_issues": 1,
             "status": "fail",
             "timestamp": "2026-05-09T05:58:21Z"
+          }
+        ]
+      },
+      {
+        "run_id": "command-a-reasoning-08-2025-20260513-044348",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 40.73,
+            "html_tag_errors": 73,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:44:30Z"
+          },
+          {
+            "iteration": 2,
+            "score": 45.64,
+            "html_tag_errors": 67,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:45:11Z"
+          },
+          {
+            "iteration": 3,
+            "score": 39.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:45:50Z"
+          },
+          {
+            "iteration": 4,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:46:39Z"
+          },
+          {
+            "iteration": 5,
+            "score": 40.55,
+            "html_tag_errors": 72,
+            "w3c_errors": 1,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:47:30Z"
+          },
+          {
+            "iteration": 6,
+            "score": 41.55,
+            "html_tag_errors": 72,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:48:11Z"
+          },
+          {
+            "iteration": 7,
+            "score": 39.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:48:45Z"
+          },
+          {
+            "iteration": 8,
+            "score": 41.55,
+            "html_tag_errors": 72,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:49:26Z"
+          },
+          {
+            "iteration": 9,
+            "score": 48.09,
+            "html_tag_errors": 64,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:50:29Z"
+          },
+          {
+            "iteration": 10,
+            "score": 39.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:50:56Z"
+          },
+          {
+            "iteration": 11,
+            "score": 42.36,
+            "html_tag_errors": 71,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:51:29Z"
+          },
+          {
+            "iteration": 12,
+            "score": 43.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:52:04Z"
+          },
+          {
+            "iteration": 13,
+            "score": 44.0,
+            "html_tag_errors": 69,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:52:44Z"
+          },
+          {
+            "iteration": 14,
+            "score": 43.82,
+            "html_tag_errors": 68,
+            "w3c_errors": 1,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:53:31Z"
+          },
+          {
+            "iteration": 15,
+            "score": 42.36,
+            "html_tag_errors": 71,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:54:14Z"
+          },
+          {
+            "iteration": 16,
+            "score": 42.18,
+            "html_tag_errors": 70,
+            "w3c_errors": 1,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:54:46Z"
+          },
+          {
+            "iteration": 17,
+            "score": 40.73,
+            "html_tag_errors": 73,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:55:34Z"
+          },
+          {
+            "iteration": 18,
+            "score": 39.73,
+            "html_tag_errors": 73,
+            "w3c_errors": 1,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:56:14Z"
+          },
+          {
+            "iteration": 19,
+            "score": 39.91,
+            "html_tag_errors": 74,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:56:59Z"
+          },
+          {
+            "iteration": 20,
+            "score": 40.73,
+            "html_tag_errors": 73,
+            "w3c_errors": 1,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T04:57:32Z"
           }
         ]
       }
@@ -6028,15 +7044,6 @@
       "qualweb_issues": 0
     },
     {
-      "model": "codestral-latest",
-      "score": 34.64,
-      "html_tag_errors": 78,
-      "w3c_errors": 2,
-      "axe_violations": 1,
-      "pa11y_issues": 1,
-      "qualweb_issues": 0
-    },
-    {
       "model": "command-a-03-2025",
       "score": 33.45,
       "html_tag_errors": 77,
@@ -6100,12 +7107,6 @@
       "used_count": 33,
       "missing_count": 80,
       "coverage_pct": 29.2
-    },
-    {
-      "model": "codestral-latest",
-      "used_count": 35,
-      "missing_count": 78,
-      "coverage_pct": 31.0
     },
     {
       "model": "command-a-03-2025",
