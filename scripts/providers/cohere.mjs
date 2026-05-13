@@ -96,11 +96,17 @@ export async function generateWithCohere({ model, token, iteration, feedback, ma
     "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
   ];
 
-  const systemMessage = "You MUST output ONLY valid JSON. Nothing else. No thinking, no explanations, no reasoning, no planning. Start with { immediately. Output the JSON object with keys: html, css, js (all as strings). Valid JSON only. No markdown fences. No apologies. Just JSON.";
+  // Adjust system message for reasoning models
+  const isReasoningModel = modelConfig.hasReasoningMode || model.includes("reasoning");
+  const systemMessage = isReasoningModel 
+    ? "You MUST output ONLY valid JSON. Output the JSON object with keys: html, css, js (all as strings). Valid JSON only. No markdown fences."
+    : "You MUST output ONLY valid JSON. Nothing else. No thinking, no explanations, no reasoning, no planning. Start with { immediately. Output the JSON object with keys: html, css, js (all as strings). Valid JSON only. No markdown fences. No apologies. Just JSON.";
 
   const prompt = [
     "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
-    "Do not use reasoning or extended thinking. Output JSON immediately.",
+    isReasoningModel 
+      ? "Output JSON immediately."
+      : "Do not use reasoning or extended thinking. Output JSON immediately.",
     "",
     "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
     "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
