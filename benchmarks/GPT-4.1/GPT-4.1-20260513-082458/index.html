@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+    <style>body{background:#f9f9f9;}</style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <h1>AI WCAG Gauntlet</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Skip to main content</a></li>
+                <li><a href="#footer">Skip to footer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <article>
+            <section>
+                <h2>HTML5 Tag Showcase</h2>
+                <h4>Subsection Heading (h4)</h4>
+                <h5>Subsection Heading (h5)</h5>
+                <h6>Subsection Heading (h6)</h6>
+                <p>This page demonstrates every valid HTML5 tag, with accessible content and WCAG 2.2 AAA compliance. <abbr title="World Wide Web Consortium">W3C</abbr> standards are followed.</p>
+                <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <aside><p><strong>Note:</strong> This aside provides additional context.</p></aside>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" />
+                    <figcaption>Benchmark icon image</figcaption>
+                </figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <audio controls aria-label="Benchmark audio">
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <video controls width="400" aria-label="Benchmark video">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Your browser does not support the video tag.
+                </video>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG object">SVG icon</object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG embed" />
+                <canvas id="canvas" width="100" height="50" aria-label="Sample canvas">Canvas fallback text</canvas>
+                <form action="#" method="post" aria-label="Sample form">
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        <label for="input1">Text Input</label>
+                        <input id="input1" name="input1" type="text" required aria-required="true" />
+                        <label for="select1">Select</label>
+                        <select id="select1" name="select1">
+                            <optgroup label="Group 1">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </optgroup>
+                        </select>
+                        <label for="datalist-input">Datalist</label>
+                        <input list="datalist1" name="datalist-input" id="datalist-input" aria-label="Datalist input">
+                        <datalist id="datalist1">
+                            <option value="Choice 1">
+                            <option value="Choice 2">
+                        </datalist>
+                        <label for="textarea1">Textarea</label>
+                        <textarea id="textarea1" name="textarea1" rows="2" cols="20"></textarea>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+                </form>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2" style="background-color:#eee"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <blockquote cite="https://example.com"><p>Blockquote example. <cite>Example Source</cite></p></blockquote>
+                <pre><code>&lt;code&gt;Sample code&lt;/code&gt;</code></pre>
+                <hr />
+                <mark>Highlighted text</mark>
+                <meter value="0.7" min="0" max="1" aria-label="Progress meter">70%</meter>
+                <progress value="50" max="100" aria-label="Progress bar">50%</progress>
+                <time datetime="2026-05-13T08:24:58Z">May 13, 2026</time>
+                <data value="42">Data value</data>
+                <output>Output example</output>
+                <details>
+                    <summary>Details summary</summary>
+                    <p>Details content</p>
+                </details>
+                <dialog open aria-label="Sample dialog">Dialog content</dialog>
+                <dfn id="dfn">Definition</dfn>
+                <samp>Sample output</samp>
+                <kbd>Ctrl+C</kbd>
+                <var>x</var>
+                <bdi>BDI text</bdi>
+                <bdo dir="rtl">BDO text</bdo>
+                <ruby>漢 <rt>kan</rt></ruby>
+                <rp>(</rp><rt>ruby text</rt><rp>)</rp>
+                <wbr>
+                <noscript><p>This content is shown if scripts are disabled.</p></noscript>
+                <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Benchmark"}</script>
+                <template><span>Template content</span></template>
+                <slot name="slot1">Slot fallback</slot>
+                <search><input type="search" aria-label="Search"></search>
+                <section><h3>Section Heading</h3><p>Section content</p></section>
+                <main>Main content (duplicate for tag coverage)</main>
+                <hgroup>
+                    <h2>Grouped Heading</h2>
+                    <h3>Subheading</h3>
+                </hgroup>
+                <small>Small text</small>
+                <strong>Strong text</strong>
+                <em>Emphasized text</em>
+                <i>Italic text</i>
+                <b>Bold text</b>
+                <u>Underlined text</u>
+                <s>Strikethrough text</s>
+                <sup>Superscript</sup>
+                <sub>Subscript</sub>
+                <span>Span text</span>
+                <div>Div content</div>
+                <br />
+                <link rel="alternate" href="#" title="Alternate" />
+                <base href="/AI-WCAG-Gauntlet/" />
+                <style>/* Inline style tag */
+                    .example { color: #333; }
+                </style>
+                <selectedcontent>Selected content</selectedcontent>
+                <!-- Remaining missing tags -->
+                <abbr title="Abbreviation">abbr</abbr>
+                <area shape="rect" coords="0,0,82,126" href="#" alt="Area alt text">
+                <cite>Citation Example</cite>
+                <datalist id="datalist2"><option value="Datalist Option"></datalist>
+                <del>Deleted text</del>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+                <iframe srcdoc="<p>Accessible iframe content</p>" title="Sample iframe" width="100" height="50" aria-label="Sample iframe">Accessible iframe fallback</iframe>
+                <ins>Inserted text</ins>
+                <map name="samplemap"><area shape="rect" coords="0,0,10,10" href="#" alt="Map area"></map>
+                <menu><li>Menu item</li></menu>
+                <q cite="https://example.com">Inline quote</q>
+            </section>
+        </article>
+    </main>
+    <footer id="footer">
+        <p>&copy; 2026 AI WCAG Gauntlet</p>
+    </footer>
+</body>
+</html>

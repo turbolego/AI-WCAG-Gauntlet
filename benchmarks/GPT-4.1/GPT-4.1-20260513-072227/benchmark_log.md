@@ -1,0 +1,71 @@
+## Iteration 4
+- **Test results:**
+  - HTML_TAG_ERRORS: 0
+  - W3C_ERRORS: 0
+  - AXE_VIOLATIONS: 1
+  - PA11Y_ISSUES: 2
+  - QUALWEB_ISSUES: 0
+- **Reasoning:**
+  - All HTML5 tags are now present.
+  - Color contrast issue remains in <section> (WCAG 2.2 SC 1.4.6).
+  - Frame not tested with axe-core (informational, not a failure).
+- **Planned fixes:**
+  - Further improve color contrast in <section> and all text for AAA compliance.
+  - Review and address any remaining accessibility issues.
+  - Reference WCAG 2.2 guidelines for each fix.
+## Iteration 3
+- **Test results:**
+  - HTML_TAG_ERRORS: 1 (missing: base)
+  - W3C_ERRORS: 0
+  - AXE_VIOLATIONS: 1
+  - PA11Y_ISSUES: 2
+  - QUALWEB_ISSUES: 0
+- **Reasoning:**
+  - Only <base> tag is missing.
+  - Color contrast issue remains in <section> (WCAG 2.2 SC 1.4.6).
+  - Frame not tested with axe-core (informational, not a failure).
+- **Planned fixes:**
+  - Add <base> tag to <head>.
+  - Further improve color contrast in <section> and ensure all text meets AAA contrast.
+  - Reference WCAG 2.2 guidelines for each fix.
+# Benchmark Log — GPT-4.1-20260513-072227
+
+## Iteration 1
+- **Test results:**
+  - HTML_TAG_ERRORS: 107
+  - W3C_ERRORS: 0
+  - AXE_VIOLATIONS: 2
+  - PA11Y_ISSUES: 0
+  - QUALWEB_ISSUES: 0
+- **Reasoning:**
+  - Only 6 HTML5 tags are present (`body`, `h1`, `head`, `html`, `meta`, `title`).
+  - 107 tags missing (see html5_tags_report.json).
+  - Axe violations present (details in axe_report.json).
+- **Planned fixes:**
+  - Add all missing HTML5 tags to index.html with valid, accessible content.
+  - Ensure all tags are used in a way that passes WCAG 2.2 AAA (see axe rules).
+  - Address any accessibility issues as they arise in subsequent iterations.
+  - All changes will reference the relevant WCAG 2.2 guideline or success criterion.
+
+## Iteration 2
+- **Test results:**
+  - HTML_TAG_ERRORS: 15 (missing: base, br, col, colgroup, del, hgroup, hr, ins, link, optgroup, pre, rp, search, selectedcontent, style)
+  - W3C_ERRORS: 0
+  - AXE_VIOLATIONS: 3
+  - PA11Y_ISSUES: 4
+  - QUALWEB_ISSUES: 1
+- **Reasoning:**
+  - Most HTML5 tags are now present, but 15 remain missing.
+  - Accessibility issues detected:
+    - Textarea missing label (WCAG 2.2 SC 1.3.1, 4.1.2)
+    - Select missing accessible name (WCAG 2.2 SC 1.3.1, 4.1.2)
+    - Color contrast issue in <section> (WCAG 2.2 SC 1.4.6)
+    - Frame not tested with axe-core (informational)
+    - QualWeb: missing accessible name
+- **Planned fixes:**
+  - Add all remaining missing tags with valid, accessible content.
+  - Add <label> for <textarea> and accessible name for <select>.
+  - Improve color contrast in <section>.
+  - Add <style> and <link> tags.
+  - Add <hr>, <br>, <pre>, <col>, <colgroup>, <del>, <ins>, <rp>, <optgroup>, <hgroup>, <search>, <selectedcontent>.
+  - Reference WCAG 2.2 guidelines for each fix.

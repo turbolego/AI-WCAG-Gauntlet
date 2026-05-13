@@ -1,0 +1,8 @@
+{
+  "model": "GPT-4.1",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-05-13T10:22:58Z",
+  "folder": "GPT-4.1-20260513-122258"
+}

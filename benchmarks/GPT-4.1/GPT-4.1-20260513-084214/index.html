@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main" accesskey="1">Skip to main content</a></li>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+        <h1>AI WCAG Gauntlet</h1>
+    </header>
+    <main id="main">
+        <article>
+            <header>
+                <h2 id="section1">Article Heading</h2>
+                <p><time datetime="2026-05-13">May 13, 2026</time></p>
+            </header>
+            <section>
+                <h3>Introduction <mark>HTML5</mark> <small>demo</small></h3>
+                <p>This page demonstrates <strong>all HTML5 tags</strong> with <em>WCAG 2.2 AAA</em> compliance. <abbr title="World Wide Web Consortium">W3C</abbr> standards are followed.</p>
+                <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Accessibility is essential for developers and organizations that want to create high-quality websites and web tools.</p>
+                    <cite>W3C WCAG 2.2</cite>
+                </blockquote>
+                <hr>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="200" height="200">
+                    <figcaption>Benchmark icon image (<code>img</code>, <code>figcaption</code>)</figcaption>
+                </figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 800px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Your browser does not support the video tag.
+                </video>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark Icon">SVG fallback text</object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <canvas id="canvasDemo" width="200" height="100" aria-label="Canvas demo">Canvas not supported</canvas>
+                <noscript><p>This page requires JavaScript enabled.</p></noscript>
+                <details>
+                    <summary>More info</summary>
+                    <p>This uses <var>details</var> and <var>summary</var> tags.</p>
+                </details>
+                <dialog open>Dialog example. <button onclick="this.parentElement.close()">Close</button></dialog>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        <label for="input1">Text input</label>
+                        <input id="input1" name="input1" type="text" autocomplete="on" required aria-required="true">
+                        <label for="input2">Email</label>
+                        <input id="input2" name="input2" type="email" autocomplete="email">
+                        <label for="input3">Choose a number</label>
+                        <input id="input3" name="input3" type="number" min="1" max="10">
+                        <label for="input4">Choose a file</label>
+                        <input id="input4" name="input4" type="file">
+                        <label for="input5">Image button</label>
+                        <input id="input5" name="input5" type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Submit image">
+                        <label for="input6">Password</label>
+                        <input id="input6" name="input6" type="password">
+                        <label for="input7">Range</label>
+                        <input id="input7" name="input7" type="range" min="0" max="100">
+                        <label for="input8">Color</label>
+                        <input id="input8" name="input8" type="color">
+                        <label for="input9">Checkbox</label>
+                        <input id="input9" name="input9" type="checkbox">
+                        <label for="input10">Radio</label>
+                        <input id="input10" name="input10" type="radio">
+                        <label for="input11">Date</label>
+                        <input id="input11" name="input11" type="date">
+                        <label for="input12">Time</label>
+                        <input id="input12" name="input12" type="time">
+                        <label for="input13">Month</label>
+                        <input id="input13" name="input13" type="month">
+                        <label for="input14">Week</label>
+                        <input id="input14" name="input14" type="week">
+                        <label for="input15">Tel</label>
+                        <input id="input15" name="input15" type="tel">
+                        <label for="input16">URL</label>
+                        <input id="input16" name="input16" type="url">
+                        <label for="input17">Search</label>
+                        <input id="input17" name="input17" type="search">
+                        <label for="select1">Select</label>
+                        <select id="select1" name="select1">
+                            <optgroup label="Group 1">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </optgroup>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label for="textarea1">Textarea</label>
+                        <textarea id="textarea1" name="textarea1" rows="2" cols="20"></textarea>
+                        <button type="submit">Submit</button>
+                        <output for="input1 input2">Output example</output>
+                        <meter min="0" max="100" value="70">70%</meter>
+                        <progress value="50" max="100">50%</progress>
+                        <datalist id="datalist1">
+                            <option value="Option A">
+                            <option value="Option B">
+                        </datalist>
+                    </fieldset>
+                </form>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead>
+                        <tr><th>Header 1</th><th>Header 2</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cell 1</td><td>Cell 2</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><td colspan="2">Footer</td></tr>
+                    </tfoot>
+                </table>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <ruby>漢 <rt>kan</rt></ruby>
+                <samp>Sample output</samp>
+                <kbd>Ctrl+C</kbd>
+                <var>x</var>
+                <sub>sub</sub><sup>sup</sup>
+                <span>Span text</span>
+                <bdi>BDI text</bdi>
+                <bdo dir="rtl">BDO RTL</bdo>
+                <wbr>
+                <template>Template content</template>
+                <script type="application/ld+json">{"@context":"https://schema.org"}</script>
+                <style>/* Inline style tag */</style>
+                <section id="section2">
+                    <h4>Section Heading</h4>
+                    <p>Section content with <code>code</code> and <mark>mark</mark>.</p>
+                </section>
+                <aside>
+                    <h5>Aside Heading</h5>
+                    <p>Aside content.</p>
+                </aside>
+                <footer>
+                    <h6>Footer Heading</h6>
+                    <p>&copy; 2026 Example. <small>All rights reserved.</small></p>
+                </footer>
+            </section>
+        </article>
+    </main>
+    <nav aria-label="Secondary navigation">
+        <menu>
+            <li><a href="#">Menu item 1</a></li>
+            <li><a href="#">Menu item 2</a></li>
+        </menu>
+    </nav>
+    <output id="output1">Output tag</output>
+    <hr>
+    <div hidden>Hidden div for <mark>hidden</mark> attribute</div>
+    <slot name="slot1">Slot fallback</slot>
+</body>
+</html>

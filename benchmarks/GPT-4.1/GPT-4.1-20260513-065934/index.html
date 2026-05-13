@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header role="banner">
+        <h1>AI WCAG Gauntlet</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Skip to main content</a></li>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" role="main">
+        <article>
+            <section id="section1">
+                <h2>Section 1: Text and Inline Elements</h2>
+                <p>This <b>benchmark</b> <strong>showcase</strong> demonstrates <i>every</i> <em>HTML5</em> <u>tag</u> <mark>required</mark> <small>by</small> <abbr title="World Wide Web Consortium">W3C</abbr> <cite>standards</cite>. <span lang="la">Exempli gratia</span>, <dfn id="dfn-html">HTML</dfn> is <var>HyperText Markup Language</var>. <s>This text is no longer accurate</s>. <ins>Inserted text</ins> <del>Deleted text</del> <sup>Superscript</sup> <sub>Subscript</sub> <kbd>Ctrl+C</kbd> <samp>Sample output</samp> <code>&lt;code&gt;</code> <time datetime="2026-05-13T12:00">May 13, 2026</time> <data value="42">forty-two</data> <output>Result</output> <wbr> <bdi>BDI</bdi> <bdo dir="rtl">RTL</bdo> <q cite="#dfn-html">HTML is a markup language</q> <ruby>漢 <rt>hàn</rt></ruby> <rp>(</rp><rt>hàn</rt><rp>)</rp> <br> <hr></p>
+                <address>Contact: <a href="mailto:info@example.com">info@example.com</a></address>
+                <blockquote cite="https://www.w3.org/">W3C is the main international standards organization for the World Wide Web.</blockquote>
+                <pre><code>function hello() { return 'Hello, world!'; }</code></pre>
+                <details>
+                    <summary>More info</summary>
+                    <p>This uses <mark>details</mark> and <summary> tags.</p>
+                </details>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language</dd>
+                </dl>
+                <ol>
+                    <li>First</li>
+                    <li>Second</li>
+                </ol>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+                <menu>
+                    <li>Menu item</li>
+                </menu>
+                <nav aria-label="Secondary navigation">
+                    <a href="#">Secondary link</a>
+                </nav>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+                    <figcaption>Benchmark icon image</figcaption>
+                </figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark icon">SVG fallback</object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <canvas id="canvas" width="100" height="50">Canvas not supported</canvas>
+                <svg width="100" height="50" role="img" aria-label="SVG Rectangle"><rect width="100" height="50" style="fill:blue;"></rect></svg>
+                <map name="samplemap"><area shape="rect" coords="0,0,50,50" href="#" alt="Sample area"></map>
+                <meter min="0" max="100" value="70">70%</meter>
+                <progress value="50" max="100">50%</progress>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        <label for="input1">Text input</label>
+                        <input id="input1" name="input1" type="text" autocomplete="on">
+                        <label for="select1">Select</label>
+                        <select id="select1" name="select1">
+                            <optgroup label="Group 1">
+                                <option value="1">Option 1</option>
+                            </optgroup>
+                        </select>
+                        <label for="textarea1">Textarea</label>
+                        <textarea name="textarea1" id="textarea1"></textarea>
+                        <label for="range1">Range</label>
+                        <input id="range1" type="range" min="0" max="10" value="5">
+                        <label for="color1">Color</label>
+                        <input id="color1" type="color" value="#ff0000">
+                        <label for="date1">Date</label>
+                        <input id="date1" type="date">
+                        <label for="datetime1">Datetime</label>
+                        <input id="datetime1" type="datetime-local">
+                        <label for="email1">Email</label>
+                        <input id="email1" type="email">
+                        <label for="file1">File</label>
+                        <input id="file1" type="file">
+                        <input type="hidden">
+                        <label for="month1">Month</label>
+                        <input id="month1" type="month">
+                        <label for="number1">Number</label>
+                        <input id="number1" type="number">
+                        <label for="password1">Password</label>
+                        <input id="password1" type="password">
+                        <input type="reset">
+                        <label for="search1">Search</label>
+                        <input id="search1" type="search">
+                        <input type="submit">
+                        <label for="tel1">Tel</label>
+                        <input id="tel1" type="tel">
+                        <label for="time1">Time</label>
+                        <input id="time1" type="time">
+                        <label for="url1">URL</label>
+                        <input id="url1" type="url">
+                        <label for="week1">Week</label>
+                        <input id="week1" type="week">
+                        <output name="result">42</output>
+                        <label for="cb1">Checkbox</label>
+                        <input type="checkbox" id="cb1" name="cb1">
+                        <label for="r1">Radio</label>
+                        <input type="radio" id="r1" name="radio">
+                        <input type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Submit image">
+                        <datalist id="browsers">
+                            <option value="Chrome">
+                            <option value="Firefox">
+                            <option value="Safari">
+                            <option value="Edge">
+                        </datalist>
+                        <dialog open>Dialog example: This is a dialog element.</dialog>
+                    </fieldset>
+                </form>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+                <aside>
+                    <h4>Aside Section</h4>
+                    <p>This is an <code>aside</code> element.</p>
+                </aside>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                    Your browser does not support the video tag.
+                </video>
+                <iframe src="about:blank" title="Sample iframe" aria-label="Sample iframe for demo" tabindex="0"></iframe>
+                <noscript><p>This page requires JavaScript.</p></noscript>
+                <script>console.log('Script tag present');</script>
+                <style>.hidden { display: none; }</style>
+                <template id="tpl"><div>Template content</div></template>
+                <slot name="slot1">Slot fallback</slot>
+                <search><input type="search" aria-label="Search"></search>
+                <selectedcontent>This is a selectedcontent tag (custom demo).</selectedcontent>
+                                        <label for="range1">Range</label>
+                                        <input id="range1" type="range" min="0" max="10" value="5">
+                                        <label for="color1">Color</label>
+                                        <input id="color1" type="color" value="#ff0000">
+                                        <label for="date1">Date</label>
+                                        <input id="date1" type="date">
+                                        <label for="datetime1">Datetime</label>
+                                        <input id="datetime1" type="datetime-local">
+                                        <label for="email1">Email</label>
+                                        <input id="email1" type="email">
+                                        <label for="file1">File</label>
+                                        <input id="file1" type="file">
+                                        <label for="month1">Month</label>
+                                        <input id="month1" type="month">
+                                        <label for="number1">Number</label>
+                                        <input id="number1" type="number">
+                                        <label for="password1">Password</label>
+                                        <input id="password1" type="password">
+                                        <label for="search1">Search</label>
+                                        <input id="search1" type="search">
+                                        <label for="tel1">Tel</label>
+                                        <input id="tel1" type="tel">
+                                        <label for="time1">Time</label>
+                                        <input id="time1" type="time">
+                                        <label for="url1">URL</label>
+                                        <input id="url1" type="url">
+                                        <label for="week1">Week</label>
+                                        <input id="week1" type="week">
+                <h4>Aside Section</h4>
+                                <iframe src="about:blank" title="Sample iframe" aria-label="Sample iframe for demo" tabindex="0"></iframe>
+            </aside>
+        </article>
+        <footer role="contentinfo">
+            <p>&copy; 2026 AI WCAG Gauntlet</p>
+        </footer>
+    </main>
+</body>
+</html>

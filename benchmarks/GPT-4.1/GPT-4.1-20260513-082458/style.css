@@ -1,0 +1,43 @@
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #111;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+section, article, main, aside, nav, header, footer {
+    background: #fff;
+    color: #111;
+}
+
+section {
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+a {
+    color: #0050b3;
+    text-decoration: underline;
+}
+
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid #0050b3;
+    outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body, section, article, main, aside, nav, header, footer {
+        background: #111;
+        color: #fff;
+    }
+    a { color: #4eaaff; }
+}

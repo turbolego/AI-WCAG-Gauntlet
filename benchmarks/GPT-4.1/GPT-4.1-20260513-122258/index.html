@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/AI-WCAG-Gauntlet/">
+    <title>Benchmark</title>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+        <!-- Landmark navigation for accessibility (WCAG 2.2 SC 1.3.1, 2.4.1) -->
+        <header>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#main">Skip to main content</a></li>
+                    <li><a href="#section1">Section 1</a></li>
+                    <li><a href="#section2">Section 2</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="main">
+            <h1>AI WCAG Gauntlet</h1>
+            <section id="section1" style="background:#fff; color:#000;">
+                <h2>HTML5 Tag Showcase</h2>
+                <article>
+                    <h3>Text and Inline Elements</h3>
+                    <p>This <b>page</b> demonstrates <strong>every</strong> <i>HTML5</i> <em>tag</em> <mark>required</mark> by the benchmark. <abbr title="World Wide Web Consortium">W3C</abbr> <cite>HTML Living Standard</cite> <code>&lt;code&gt;</code> <kbd>Ctrl+C</kbd> <samp>Sample output</samp> <var>x</var> <dfn id="dfn">Definition</dfn> <s>Strikethrough</s> <u>Underline</u> <small>Small text</small> <sub>Subscript</sub> <sup>Superscript</sup> <time datetime="2026-05-13T12:00">May 13, 2026</time> <data value="42">Data</data> <span>Span</span> <bdi>BDI</bdi> <bdo dir="rtl">BDO</bdo> <q cite="#dfn">Short quote</q> <blockquote cite="#dfn">Blockquote example</blockquote> <br> <wbr> <ins>Inserted</ins> <del>Deleted</del></p>
+                    <address>Contact: <a href="mailto:test@example.com">test@example.com</a></address>
+                </article>
+                <aside>
+                    <h4>Aside Example</h4>
+                    <p>This is an <strong>aside</strong> element.</p>
+                </aside>
+                <figure>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+                    <figcaption>Figure caption for the benchmark icon.</figcaption>
+                </figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <video controls width="400">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                </video>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                </audio>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark Icon">SVG fallback text</object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+                <canvas id="canvas" width="100" height="50">Canvas fallback</canvas>
+                <map name="samplemap"><area shape="rect" coords="0,0,50,50" href="#" alt="Area"></map>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#samplemap" alt="Mapped image">
+                <iframe srcdoc="<p>Iframe content<script src='https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.11.4/axe.min.js'></script></p>" title="Sample iframe"></iframe>
+                <hr>
+                <details>
+                    <summary>Details summary</summary>
+                    <p>Details content</p>
+                </details>
+                <dialog open>Dialog content</dialog>
+                <form>
+                    <label for="input1">Input:</label>
+                    <input id="input1" name="input1" type="text" aria-label="Input field">
+                    <button type="submit">Submit</button>
+                    <fieldset>
+                        <legend>Fieldset legend</legend>
+                        <input type="checkbox" id="cb1" name="cb1"><label for="cb1">Checkbox</label>
+                    </fieldset>
+                    <label for="select1">Select:</label>
+                    <select id="select1" name="select1" aria-label="Select field"><optgroup label="Group 1"><option>Option 1</option></optgroup></select>
+                    <label for="textarea1">Textarea:</label>
+                    <textarea id="textarea1" rows="2" cols="20">Textarea</textarea>
+                    <output>Output</output>
+                    <meter min="0" max="100" value="50">50%</meter>
+                    <progress value="70" max="100">70%</progress>
+                    <datalist id="dl"><option value="A"></option></datalist>
+                    <!-- Insert missing HTML5 tags for coverage -->
+                    <div>Div tag example</div>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                    <hgroup>
+                        <h1>Grouped Heading</h1>
+                        <h2>Subheading</h2>
+                    </hgroup>
+                    <link rel="stylesheet" href="#" title="Sample link tag">
+                    <menu><li>Menu item</li></menu>
+                    <pre>Preformatted text</pre>
+                    <ruby>漢 <rt>kan</rt><rp>(</rp><rt>ji</rt><rp>)</rp></ruby>
+                    <search><input type="search" aria-label="Search"></search>
+                    <selectedcontent>Selected content example</selectedcontent>
+                    <style>/* Style tag example */
+                        .example { color: #222; }
+                    </style>
+                </form>
+                <table>
+                    <caption>Sample Table</caption>
+                    <colgroup><col span="2"></colgroup>
+                    <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+                    <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+                    <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+                </table>
+                <ul><li>Unordered list item</li></ul>
+                <ol><li>Ordered list item</li></ol>
+                <dl><dt>Term</dt><dd>Definition</dd></dl>
+                <nav aria-label="Secondary navigation"><a href="#">Nav link</a></nav>
+                <section id="section2">
+                    <h2>Section 2</h2>
+                    <p>Section content</p>
+                </section>
+                <main id="main2">Nested main (for tag coverage)</main>
+                <footer>
+                    <p>Footer content</p>
+                </footer>
+                <template>Template content</template>
+                <script type="application/json">{"key":"value"}</script>
+                <noscript>JavaScript is disabled.</noscript>
+                <slot name="slot1">Slot content</slot>
+            </section>
+        </main>
+</body>
+</html>

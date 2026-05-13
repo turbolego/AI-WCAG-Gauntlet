@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation" style="background:#000;">
+            <ul>
+                <li><a href="#main" accesskey="1" style="color:#fff;">Skip to main content</a></li>
+                <li><a href="#section1" style="color:#fff;">Section 1</a></li>
+                <li><a href="#section2" style="color:#fff;">Section 2</a></li>
+            </ul>
+        </nav>
+        <h1>AI WCAG Gauntlet</h1>
+    </header>
+    <main id="main">
+        <section id="section1">
+            <h2>Text and Structure</h2>
+            <article style="background:#000; color:#fff; padding:1em; border-radius:8px;">
+                <h3>Basic Text Elements</h3>
+                <p>This <b>benchmark</b> <strong>showcases</strong> <i>every</i> <em>HTML5</em> <u>tag</u> <s>required</s> <mark>by</mark> the <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <dfn id="dfn1">specification</dfn> <var>x</var> <kbd>Ctrl+C</kbd> <samp>Sample output</samp> <code>&lt;code&gt;</code> <sub>sub</sub><sup>sup</sup> <small>small</small> <q cite="#">quote</q> <cite>cite</cite> <time datetime="2026-05-13T09:01:26Z">May 13, 2026</time> <data value="42">forty-two</data> <output>output</output> <bdi>BDI</bdi> <bdo dir="rtl">RTL</bdo> <span>span</span>.</p>
+                <blockquote cite="#">This is a blockquote.</blockquote>
+                <hr>
+                <address style="background:#000;">
+                    <a href="mailto:info@example.com" style="color:#fff;">info@example.com</a>
+                </address>
+                <pre>Preformatted text</pre>
+                <br>
+                <wbr>
+                <!-- Add missing tags: div, h5, h6, hgroup -->
+                    <address style="background:#000;">
+                    <a href="mailto:info@example.com" style="color:#fff; text-decoration:underline;">info@example.com</a>
+                </address>
+                    <hgroup>
+                        <h5>Fifth Level Heading</h5>
+                        <h6>Sixth Level Heading</h6>
+                    </hgroup>
+                </div>
+            <aside>
+                <h4>Aside Section</h4>
+                <p>This is an <strong>aside</strong> for additional info.</p>
+            </aside>
+            <details>
+                <summary>More info</summary>
+                <p>Details content here.</p>
+            </details>
+            <dialog open>Dialog content</dialog>
+            <figure>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+                <figcaption>Benchmark icon image</figcaption>
+            </figure>
+            <picture>
+                <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+            </picture>
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG icon">SVG fallback</object>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+            <map name="imgmap"><area shape="rect" coords="0,0,10,10" href="#" alt="Area"></map>
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#imgmap" alt="Mapped image">
+            <canvas id="canvas1" width="100" height="50" aria-label="Sample canvas"></canvas>
+            <svg role="img" aria-label="SVG icon"><circle cx="25" cy="25" r="20" fill="blue"/></svg>
+            <audio controls>
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                Audio not supported.
+            </audio>
+            <video controls width="400">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="#" srclang="en" label="English" default>
+                Video not supported.
+            </video>
+            <iframe src="https://www.example.com" title="Example iframe for accessibility" width="300" height="100"></iframe>
+            <noscript>Your browser does not support JavaScript!</noscript>
+            <template id="tpl"><p>Template content</p></template>
+            <script type="text/javascript">/* script tag present */</script>
+            <style>/* style tag present */</style>
+            <link rel="alternate" href="#" title="Alt"></link>
+            <meta name="description" content="Benchmark page">
+            <base href="/AI-WCAG-Gauntlet/">
+            <!-- Table and related tags -->
+            <table>
+                <caption>Sample Table</caption>
+                <colgroup>
+                    <col span="2">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Header 1</th>
+                        <th scope="col">Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Footer</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <!-- Ruby annotation tags -->
+            <ruby>漢 <rt>kan</rt><rp>(</rp><rt>ji</rt><rp>)</rp></ruby>
+            <!-- datalist -->
+            <label for="browser">Choose browser:</label>
+            <input id="browser" list="browsers" name="browser">
+            <datalist id="browsers">
+                <option value="Chrome">
+                <option value="Firefox">
+                <option value="Safari">
+            </datalist>
+            <!-- del/ins -->
+            <p><del datetime="2026-05-12">Old text</del> <ins datetime="2026-05-13">New text</ins></p>
+            <!-- search -->
+            <search>
+                <label for="searchbox">Search:</label>
+                <input id="searchbox" name="searchbox" type="search">
+            </search>
+            <!-- selectedcontent, slot -->
+            <selectedcontent>Selected content tag</selectedcontent>
+            <slot name="slot1">Slot fallback content</slot>
+        </section>
+        <section id="section2">
+            <h2>Forms and Lists</h2>
+                <article style="background:#000; color:#fff; padding:1em; border-radius:8px;">
+                <fieldset>
+                    <legend>Form legend</legend>
+                    <label for="input1">Text input</label>
+                    <input id="input1" name="input1" type="text" autocomplete="on">
+                    <label for="input2">Checkbox</label>
+                    <input id="input2" name="input2" type="checkbox">
+                    <label for="input3">Radio</label>
+                    <input id="input3" name="input3" type="radio">
+                    <label for="input4">Range</label>
+                    <input id="input4" name="input4" type="range" min="0" max="10">
+                    <label for="input5">Color</label>
+                    <input id="input5" name="input5" type="color">
+                    <label for="input6">Date</label>
+                    <input id="input6" name="input6" type="date">
+                    <label for="input7">Email</label>
+                    <input id="input7" name="input7" type="email">
+                    <label for="input8">File</label>
+                    <input id="input8" name="input8" type="file">
+                    <label for="input9">Number</label>
+                    <input id="input9" name="input9" type="number">
+                    <label for="input10">Password</label>
+                    <input id="input10" name="input10" type="password">
+                    <label for="input11">Search</label>
+                    <input id="input11" name="input11" type="search">
+                    <label for="input12">Tel</label>
+                    <input id="input12" name="input12" type="tel">
+                    <label for="input13">Time</label>
+                    <input id="input13" name="input13" type="time">
+                    <label for="input14">URL</label>
+                    <input id="input14" name="input14" type="url">
+                    <label for="input15">Week</label>
+                    <input id="input15" name="input15" type="week">
+                    <label for="input16">Image button</label>
+                    <input id="input16" name="input16" type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Submit image">
+                    <button type="submit">Submit</button>
+                    <meter min="0" max="100" value="50">50%</meter>
+                    <progress value="70" max="100">70%</progress>
+                    <label for="select1">Select an option:</label>
+                    <select id="select1" name="select1">
+                        <optgroup label="Group 1">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                        </optgroup>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <label for="textarea1">Textarea:</label>
+                    <textarea id="textarea1" name="textarea1">Textarea content</textarea>
+                </fieldset>
+            </form>
+            <dl>
+                <dt>Term</dt>
+                <dd>Definition</dd>
+            </dl>
+            <ul>
+                <li>Unordered list item</li>
+            </ul>
+            <ol>
+                <li>Ordered list item</li>
+            </ol>
+            <menu>
+                <li>Menu item</li>
+            </menu>
+            <nav aria-label="Secondary navigation" style="background:#000;">
+                <ul>
+                    <li><a href="#">Secondary link</a></li>
+                </ul>
+            </nav>
+            <section>
+                <h3>Section inside section</h3>
+                <p>Section content.</p>
+            </section>
+            <main id="main2">Nested main (for tag coverage)</main>
+            <footer>
+                <p>Footer content</p>
+            </footer>
+        </section>
+    </main>
+    <script type="text/javascript">/* script tag present */</script>
+</body>
+<!-- Standalone div and form for tag coverage -->
+<div tabindex="0" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Invisible div for tag coverage</div>
+<form aria-label="Standalone form for tag coverage" tabindex="0" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    <input type="text" aria-label="Hidden form input">
+</form>
+</html>
