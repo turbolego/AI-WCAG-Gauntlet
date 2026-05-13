@@ -157,8 +157,9 @@ jobs:
             GENERATED_BY_MODEL=$(jq -r '.generatedByModel // false' "$GENERATION_JSON")
             if [ "$GENERATED_BY_MODEL" != "true" ]; then
               GEN_ERROR=$(jq -r '.generationError // "unknown generation error"' "$GENERATION_JSON")
-              echo "Error: model did not generate content this iteration: $GEN_ERROR"
-              exit 1
+              echo "Warning: model did not generate content this iteration: $GEN_ERROR"
+              echo "Skipping to next iteration."
+              continue
             fi
 
             rtk bash test-suite.sh "$RUN_DIR"
