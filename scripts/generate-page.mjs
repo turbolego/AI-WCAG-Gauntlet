@@ -10,6 +10,7 @@ import { generateWithAlibaba } from "./providers/alibaba.mjs";
 import { generateWithGroq } from "./providers/groq.mjs";
 import { generateWithHuggingFace } from "./providers/huggingface.mjs";
 import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
+import { isLowTokenModel } from "./model-config.mjs";
 
 /**
  * Format axe-core violations into a compact feedback string for the AI model.
@@ -47,8 +48,9 @@ const REQUIRED_HTML5_TAGS = [
   "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
 ];
 // Keeps prompt size bounded while preserving enough context from prior reports.
-// Reduced to allow more room for model output (especially for Mistral which has strict token limits).
+// Reduced to allow more room for model output (especially for models with low token limits).
 const MAX_FEEDBACK_CHARS = 1500;
+const MAX_FEEDBACK_CHARS_LOW_TOKEN = 600; // Aggressive limit for models with 4096-token limit
 
 /**
  * Extract the outermost JSON object from a string that may contain leading/
@@ -313,10 +315,12 @@ async function calculateOptimalMaxTokens(previousDir) {
   }
 }
 
-async function readFeedback(previousDir) {
+async function readFeedback(previousDir, model = null) {
   if (!previousDir) {
     return "";
   }
+
+  const maxFeedbackChars = model && isLowTokenModel(model) ? MAX_FEEDBACK_CHARS_LOW_TOKEN : MAX_FEEDBACK_CHARS;
 
   try {
     // Read test results to get latest iteration's metrics
@@ -401,7 +405,7 @@ async function readFeedback(previousDir) {
       }
     } catch { /* ignore */ }
 
-    return feedbackParts.join("\n");
+    return feedbackParts.join("\n").slice(0, maxFeedbackChars);
   } catch {
     // Fallback to raw file reading if parsing fails
     const feedbackParts = [];
@@ -416,12 +420,12 @@ async function readFeedback(previousDir) {
       const fullPath = path.join(previousDir, filename);
       try {
         const content = await fs.readFile(fullPath, "utf8");
-        feedbackParts.push(`## ${filename}\n${content.slice(0, MAX_FEEDBACK_CHARS)}`);
+        feedbackParts.push(`## ${filename}\n${content.slice(0, maxFeedbackChars)}`);
       } catch {
         // ignore
       }
     }
-    return feedbackParts.join("\n\n");
+    return feedbackParts.join("\n\n").slice(0, maxFeedbackChars);
   }
 }
 
@@ -532,20 +536,24 @@ async function main() {
   } else if (provider === "cohere") {
     const cohereToken = process.env.COHERE_TOKEN;
     if (cohereToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg);
+      const maxTokens = await calculateOptimalMaxTokens(previousDir);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "cohere",
           model: modelArg,
           iteration,
+          maxTokens,
           hasFeedback: Boolean(feedback),
+          feedbackLength: feedback.length,
           timestamp: new Date().toISOString()
         });
         generated = await generateWithCohere({
           model: modelArg,
           token: cohereToken,
           iteration,
-          feedback
+          feedback,
+          maxTokens
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -553,7 +561,8 @@ async function main() {
           model: modelArg,
           iteration,
           success: true,
-          generatedKeys: Object.keys(generated).sort(),
+          generatedKeys: Object.keys(generated).filter(k => k !== "usage").sort(),
+          usage: generated?.usage,
           timestamp: new Date().toISOString()
         });
       } catch (error) {

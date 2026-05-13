@@ -1,6 +1,89 @@
 import { extractAndRepairJson } from "../generate-page.mjs";
+import { getModelConfig, getSafeMaxTokens } from "../model-config.mjs";
 
-export async function generateWithCohere({ model, token, iteration, feedback }) {
+/**
+ * Track TPM (Tokens Per Minute) state across requests.
+ * Structure: { limit, resetTime, used, lastUpdate }
+ */
+let tpmState = {
+  limit: null,
+  resetTime: null,
+  used: 0,
+  lastUpdate: 0
+};
+
+/**
+ * Extract TPM info from rate limit error to track capacity.
+ * Cohere includes rate limit info in error messages.
+ */
+function extractTPMInfo(errorMessage) {
+  // Try to extract rate limit info from Cohere error messages
+  // Cohere may include TPM info in rate limit responses
+  const match = errorMessage.match(/rate limit|too many|limit (\d+)|used (\d+)/i);
+  if (match) {
+    return { limited: true };
+  }
+  return null;
+}
+
+/**
+ * Estimate total tokens for a request (prompt + max_tokens).
+ * Rough approximation: 1 token ≈ 4 characters.
+ */
+function estimateTokens(messages, maxTokens) {
+  let promptChars = 0;
+  if (Array.isArray(messages)) {
+    for (const msg of messages) {
+      if (msg.content) {
+        promptChars += String(msg.content).length;
+      }
+    }
+  }
+  const promptTokens = Math.ceil(promptChars / 4);
+  return promptTokens + maxTokens;
+}
+
+/**
+ * Check if we should wait before sending a request to avoid exceeding TPM.
+ */
+function checkTPMCapacity(estimatedTokens) {
+  if (!tpmState.limit) {
+    return { shouldWait: false, waitMs: 0 };
+  }
+
+  const now = Date.now();
+  const timeUntilReset = Math.max(0, tpmState.resetTime - now);
+
+  if (timeUntilReset === 0) {
+    console.error("[COHERE_TPM] TPM counter reset detected, resetting tracked usage");
+    tpmState.used = 0;
+    tpmState.resetTime = now + 60000;
+  }
+
+  const projectedUsage = tpmState.used + estimatedTokens;
+  const available = tpmState.limit - tpmState.used;
+
+  console.error(
+    `[COHERE_TPM_CHECK] Limit: ${tpmState.limit}, Currently used: ${tpmState.used}, ` +
+    `Estimated: ${estimatedTokens}, Projected: ${projectedUsage}, Available: ${available}`
+  );
+
+  if (projectedUsage > tpmState.limit) {
+    const overageTokens = projectedUsage - tpmState.limit;
+    console.warn(
+      `[COHERE_TPM_WAIT] Request would exceed TPM by ${overageTokens} tokens. ` +
+      `Waiting ${Math.ceil(timeUntilReset / 1000)}s for TPM reset...`
+    );
+    return { shouldWait: true, waitMs: timeUntilReset };
+  }
+
+  return { shouldWait: false, waitMs: 0 };
+}
+
+export async function generateWithCohere({ model, token, iteration, feedback, maxTokens = null }) {
+  const modelConfig = getModelConfig(model);
+  const safeMaxTokens = maxTokens ?? getSafeMaxTokens(model);
+  
   const REQUIRED_HTML5_TAGS = [
     "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
     "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
@@ -28,15 +111,12 @@ export async function generateWithCohere({ model, token, iteration, feedback }) 
     feedback ? `Issues to fix: ${feedback}` : "Create a diverse, accessible HTML page."
   ].filter(Boolean).join("\n");
 
-  const messages = [
-    { role: "system", content: systemMessage },
-    { role: "user", content: prompt }
-  ];
-
   // Debug logging
   console.error("\n" + "=".repeat(80));
   console.error("[COHERE_DEBUG] Iteration:", iteration);
   console.error("[COHERE_DEBUG] Model:", model);
+  console.error("[COHERE_DEBUG] Max tokens:", safeMaxTokens);
+  console.error("[COHERE_DEBUG] Low token limit model:", modelConfig.lowTokenLimit);
   console.error("[COHERE_DEBUG] System Message:", systemMessage);
   console.error("-".repeat(80));
   console.error("[COHERE_DEBUG] User Prompt (first 500 chars):");
@@ -48,6 +128,21 @@ export async function generateWithCohere({ model, token, iteration, feedback }) 
   }
   console.error("=".repeat(80) + "\n");
 
+  const messages = [
+    { role: "system", content: systemMessage },
+    { role: "user", content: prompt }
+  ];
+
+  // Check TPM capacity before sending
+  let currentMaxTokens = safeMaxTokens;
+  let estimatedTokens = estimateTokens(messages, currentMaxTokens);
+  let { shouldWait, waitMs } = checkTPMCapacity(estimatedTokens);
+  
+  if (shouldWait) {
+    console.error(`[COHERE_TPM] Waiting ${Math.ceil(waitMs / 1000)}s before sending request...`);
+    await new Promise(resolve => setTimeout(resolve, waitMs + 1000));
+  }
+
   const maxRetries = 2;
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -55,8 +150,7 @@ export async function generateWithCohere({ model, token, iteration, feedback }) 
       const requestBody = {
         model,
         messages,
-        max_tokens: 8000
-        // Note: removed response_format as it's not supported by all Cohere models
+        max_tokens: currentMaxTokens
       };
 
       console.error("[COHERE_DEBUG] Request attempt", attempt, "- Body keys:", Object.keys(requestBody).join(", "));
@@ -81,13 +175,29 @@ export async function generateWithCohere({ model, token, iteration, feedback }) 
         console.error(errorBody.substring(0, 1000) + (errorBody.length > 1000 ? "\n... [truncated]" : ""));
         console.error("=".repeat(80) + "\n");
 
-        // Check if this is a model-specific error and should not retry
-        if (response.status === 400 && errorBody.includes("response_format")) {
-          console.error("[COHERE_DEBUG] Model does not support response_format. Retrying without it.");
-          if (attempt < maxRetries) {
-            // Continue to retry without response_format (already removed above)
+        // Handle "too many tokens" errors by reducing max_tokens and retrying
+        if (response.status === 400 && errorBody.includes("too many tokens")) {
+          const match = errorBody.match(/less than or equal to (\d+)/);
+          if (match && attempt < maxRetries) {
+            const maxAllowed = parseInt(match[1], 10);
+            const newMax = Math.max(2000, Math.floor(maxAllowed * 0.9));
+            console.error(`[COHERE_DEBUG] Token limit error detected. Max allowed: ${maxAllowed}, reducing to: ${newMax}`);
+            currentMaxTokens = newMax;
             continue;
           }
+        }
+
+        // For other 4xx errors, don't retry
+        if (response.status >= 400 && response.status < 500 && response.status !== 429) {
+          throw new Error(error);
+        }
+
+        // For rate limit (429) or 5xx errors, retry with backoff
+        if (attempt < maxRetries && (response.status === 429 || response.status >= 500)) {
+          const backoffMs = Math.pow(2, attempt) * 1000;
+          console.error(`[COHERE_DEBUG] Retryable error (${response.status}), waiting ${backoffMs}ms before retry ${attempt + 1}/${maxRetries}`);
+          await new Promise(resolve => setTimeout(resolve, backoffMs));
+          continue;
         }
 
         throw new Error(error);

@@ -44,19 +44,35 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install dependencies
+      - name: Install RTK (Token-Optimized CLI)
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Trust RTK project filters (non-interactive)
+        run: echo "y" | rtk trust || true
+
+      - name: Install dependencies and matching ChromeDriver
         env:
           PUPPETEER_SKIP_DOWNLOAD: "1"
         run: |
-          npm ci
-          npm install -g pa11y @qualweb/cli
+          rtk npm ci
+          rtk npm install -g pa11y @qualweb/cli
 
+          # Detect the major version of the system Chrome so we can install a
+          # matching chromedriver. @axe-core/cli uses whatever chromedriver is
+          # first on PATH, so putting a version-matched one there prevents the
+          # "ChromeDriver only supports Chrome version N" mismatch.
           CHROME_MAJOR=$(/usr/bin/google-chrome --version 2>/dev/null \
             | grep -oP '\d+' | head -1)
           echo "System Chrome major version: $CHROME_MAJOR"
 
-          npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli
+          # Install chromedriver at the matching major version, then axe CLI.
+          # npm installs the chromedriver binary into node_modules/.bin/ and
+          # also into the global bin — @axe-core/cli will pick it up from PATH.
+          rtk npm install -g "chromedriver@^${CHROME_MAJOR}" @axe-core/cli
 
+          # Confirm the versions match
           echo "ChromeDriver version: $(chromedriver --version)"
 
       - name: Initialize benchmark run folder
@@ -125,7 +141,7 @@ jobs:
           for i in $(seq 1 "$ITERATIONS"); do
             echo "━━━ Iteration $i/$ITERATIONS — model: $MODEL (folder name: $SAFE_MODEL) ━━━"
 
-            node scripts/generate-page.mjs \
+            rtk node scripts/generate-page.mjs \
               --model "$MODEL" \
               --provider cohere \
               --outputDir "$RUN_DIR" \
@@ -145,7 +161,7 @@ jobs:
               exit 1
             fi
 
-            bash test-suite.sh "$RUN_DIR"
+            rtk bash test-suite.sh "$RUN_DIR"
             TEST_EXIT=$?
             if [ "$TEST_EXIT" -ne 0 ]; then
               echo "Warning: test-suite.sh failed with exit code $TEST_EXIT. Skipping to next iteration."
@@ -174,27 +190,32 @@ jobs:
 
           bash ./generate-dashboard.sh
 
-      - name: Commit and push benchmark webpages
-        shell: bash
+      - name: Commit and push benchmark results
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html benchmarks docs/stats/benchmark_stats.json
-          if git diff --cached --quiet; then
+          rtk git add index.html benchmarks docs/stats/benchmark_stats.json
+          if rtk git diff --cached --quiet; then
             echo "No benchmark changes to commit."
             exit 0
           fi
-          git commit -m "chore(ai-wcag-gauntlet): publish benchmark run (${{ inputs.model }}, iterations=${{ inputs.iterations }}, provider=cohere)"
+          rtk git commit -m "chore(ai-wcag-gauntlet): publish benchmark run (${{ inputs.model }}, iterations=${{ inputs.iterations }}, provider=cohere)"
           for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
+            if rtk git push origin HEAD:main; then
               exit 0
             fi
             if [ "$attempt" -eq 3 ]; then
               break
             fi
             echo "Push failed (attempt $attempt/3). Rebasing on latest main and retrying..."
-            git pull --rebase origin main
+            rtk git pull --rebase origin main
           done
           echo "Failed to push benchmark results after 3 attempts."
           exit 1
+
+      - name: Report RTK token savings
+        if: always()
+        run: |
+          echo "━━━ RTK Token Savings Report ━━━"
+          rtk gain --format json || true
