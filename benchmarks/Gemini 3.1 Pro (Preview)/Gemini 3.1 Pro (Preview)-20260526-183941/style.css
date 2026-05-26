@@ -1,0 +1,17 @@
+
+/* Basic high contrast reset */
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 1rem;
+}
+a {
+    color: #004499;
+}
+a:focus, button:focus, input:focus, select:focus, textarea:focus, [tabindex]:focus {
+    outline: 3px solid #004499;
+    outline-offset: 2px;
+}

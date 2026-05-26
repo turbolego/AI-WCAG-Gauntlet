@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+    <link rel="stylesheet" href="style.css">
+    <base href="/AI-WCAG-Gauntlet/">
+
+    <style>
+        body { background: #fff; color: #000; font-family: sans-serif; }
+        .hidden { display: none; }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <h1>AI WCAG Gauntlet</h1>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#main">Go to main content</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+
+        <article>
+            <header>
+                <h2>Article Title</h2>
+            </header>
+            <section aria-labelledby="section-heading">
+                <h3 id="section-heading">Section Content</h3>
+                <p>This is a <dfn>definition</dfn> of an <abbr title="Abbreviation">abbr</abbr>.</p>
+                <p>Sometimes you need a <br> break or a <wbr> word break.</p>
+                <p>Here is some <del>deleted</del> and <ins>inserted</ins> text.</p>
+                <p>Quotes: <q>Short quote</q> and blockquote:</p>
+                <blockquote cite="http://example.com">
+                    Block quote content.
+                </blockquote>
+                <p>Citations: <cite>Cite title</cite>.</p>
+                <p>Code: <code>code block</code>, <kbd>keyboard</kbd>, <samp>sample</samp>, <var>variable</var>.</p>
+                <p>Sub and Sup: H<sub>2</sub>O and E=mc<sup>2</sup>.</p>
+                <p>Emphasis: <em>em</em>, <strong>strong</strong>, <b>bold</b>, <i>italic</i>, <u>underline</u>, <s>strikethrough</s>, <small>small text</small>, <mark>mark</mark>.</p>
+                <p>Text direction: <bdo dir="rtl">bdo</bdo>, <bdi>bdi</bdi>.</p>
+                <p>Ruby: <ruby>漢<rt>かん</rt></ruby>, <ruby>字<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>.</p>
+                <p>Address: <address>Address</address></p>
+                <p>Data: <data value="1">Data</data>, Time: <time datetime="2026-05-26">May 26</time></p>
+            </section>
+        </article>
+
+        <aside aria-label="Sidebar">
+            <h4>Sidebar</h4>
+            <div role="group" aria-label="Generic group">A div</div>
+            <span >A span</span>
+            <search>
+                <form action="#" method="GET">
+                    <fieldset>
+                        <legend>Search Form</legend>
+                        <label for="search-input">Search:</label>
+                        <input type="search" id="search-input" name="q" placeholder="Keywords">
+                        <button type="submit">Go</button>
+                    </fieldset>
+                </form>
+            </search>
+        </aside>
+
+        <section aria-labelledby="media-heading">
+            <h5 id="media-heading">Media</h5>
+            <figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+                <figcaption>Benchmark Icon</figcaption>
+            </figure>
+            <audio controls title="Benchmark Audio">
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+            </audio>
+            <video controls width="400" title="Benchmark Video">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="#" srclang="en" label="English" default>
+            </video>
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Object"><p>Fallback text</p></object>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="SVG Embed">
+            <iframe src="about:blank" title="Empty iframe"></iframe>
+            <canvas width="10" height="10" aria-label="Canvas element">Canvas</canvas>
+            <map name="workmap">
+                <area shape="rect" coords="0,0,10,10" href="#" alt="Map Area">
+            </map>
+        </section>
+
+        <section aria-labelledby="form-heading">
+            <h6 id="form-heading">Forms & Interactivity</h6>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Contact Info</legend>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" autocomplete="name">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" autocomplete="email">
+                    </div>
+                    <div>
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" name="bio"></textarea>
+                    </div>
+                    <div>
+                        <label for="browser">Browser:</label>
+                        <input list="browsers" name="browser" id="browser">
+                        <datalist id="browsers">
+                            <option value="Edge">
+                            <option value="Firefox">
+                            <option value="Chrome">
+                            <option value="Opera">
+                            <option value="Safari">
+                        </datalist>
+                    </div>
+                    <div>
+                        <label for="cars">Cars:</label>
+                        <select id="cars" name="cars">
+                            <optgroup label="Swedish Cars">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="range">Range:</label>
+                        <input type="range" id="range" name="range" min="0" max="100" value="50">
+                        <output for="range" name="x">50</output>
+                    </div>
+                    <div>
+                        <label for="color">Color:</label>
+                        <input type="color" id="color" name="color" title="Pick a color">
+                    </div>
+                    <div>
+                        <label for="checkbox">Checkbox:</label>
+                        <input type="checkbox" id="checkbox" name="checkbox">
+                    </div>
+                    <div>
+                        <label for="file">File:</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password">
+                    </div>
+                </fieldset>
+            </form>
+            
+            <details>
+                <summary>Details Summary</summary>
+                <p>Hidden details.</p>
+            </details>
+            <dialog id="favDialog" aria-label="Favorite Dialog">
+                <p>Dialog box</p>
+                <form method="dialog">
+                    <button>OK</button>
+                </form>
+            </dialog>
+            <meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50" title="Fuel Level">at 50/100</meter>
+            <label for="file-progress">Progress:</label>
+            <progress id="file-progress" max="100" value="70"> 70% </progress>
+        </section>
+
+        <section aria-labelledby="list-heading">
+            <h2 id="list-heading">Lists and Tables</h2>
+            <ul>
+                <li>Unordered List Item</li>
+            </ul>
+            <ol>
+                <li>Ordered List Item</li>
+            </ol>
+            <dl>
+                <dt>Definition Term</dt>
+                <dd>Definition Description</dd>
+            </dl>
+            <menu>
+                <li><button type="button">Menu Button</button></li>
+            </menu>
+            <table>
+                <caption>Sample Table</caption>
+                <colgroup>
+                    <col span="2">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Header 1</th>
+                        <th scope="col">Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Foot 1</td>
+                        <td>Foot 2</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section aria-labelledby="scripting-heading">
+            <h3 id="scripting-heading">Scripting</h3>
+            <script>
+                document.write("<!-- inline script execution -->");
+            </script>
+            <noscript>
+                <p>No script enabled.</p>
+            </noscript>
+            <template>
+                <p>Template Content</p>
+            </template>
+        </section>
+        
+        <div class="hidden">
+            <selectedcontent></selectedcontent>
+            <slot></slot>
+            <pre>preformatted code</pre>
+            <hgroup>
+                <h4>Hgroup Heading</h4>
+                <p>Hgroup sub-heading</p>
+            </hgroup>
+            <hr>
+        </div>
+    </main>
+    <footer>
+        <p>Copyright 2026</p>
+    </footer>
+</body>
+</html>

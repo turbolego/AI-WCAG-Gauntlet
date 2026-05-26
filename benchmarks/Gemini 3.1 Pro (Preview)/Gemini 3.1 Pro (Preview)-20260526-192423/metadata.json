@@ -1,0 +1,8 @@
+{
+  "model": "Gemini 3.1 Pro (Preview)",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-05-26T17:24:23Z",
+  "folder": "Gemini 3.1 Pro (Preview)-20260526-192423"
+}

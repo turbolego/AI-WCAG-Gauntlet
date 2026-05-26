@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI WCAG Gauntlet Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/Gemini%203.1%20Pro%20(Preview)/Gemini%203.1%20Pro%20(Preview)-20260526-182335/style.css">
+    <style>
+        body { background: #000000; color: #FFFFFF; font-family: sans-serif; }
+        a { color: #88FFFF; text-decoration: underline; }
+        a:visited { color: #FF88FF; }
+        a:hover, a:focus { color: #FFFFFF; text-decoration: none; }
+        caption, th, td { border: 1px solid #FFFFFF; padding: 0.5rem; text-align: left; }
+        table { border-collapse: collapse; width: 100%; border: 1px solid #FFFFFF; }
+        input, textarea, select, button { border: 2px solid #FFFFFF; background: #222222; color: #FFFFFF; padding: 4px; }
+        fieldset { border: 2px solid #FFFFFF; }
+        mark { background-color: #FFFF00; color: #000000; }
+        h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <h1>Benchmark Setup</h1>
+        <nav aria-label="Main Navigation"><ul><li><a href="#main-content">Skip to content</a></li></ul></nav>
+    </header>
+    <aside aria-label="Related Info">
+        <p>Some aside content.</p>
+    </aside>
+    <main id="main-content">
+        <section aria-labelledby="section-1">
+            <h2 id="section-1">Text and Formatting</h2>
+            <p>Here is an <abbr title="Abbreviation">abbr</abbr>, and a <bdo dir="rtl">bdo</bdo>.</p>
+            <address>Address: 123 Main St</address>
+            <article aria-labelledby="article-h">
+                <h3 id="article-h">An Article</h3>
+                <blockquote><p>A blockquote.</p></blockquote>
+            </article>
+            <p>Bold <b>text</b>, italic <i>text</i>, underlined <u>text</u>, big <strong>text</strong>, emp <em>text</em>, small <small>text</small>.</p>
+            <p>Code: <code>code content</code>, sample: <samp>sample</samp>, keyboard: <kbd>kbd</kbd>, var: <var>variable</var>.</p>
+            <pre>Preformatted text area.</pre>
+            <p>Line<br>Break.</p>
+            <p>Citation: <cite>A Book</cite>, Definition: <dfn>Term</dfn>.</p>
+            <p>Deleted <del>old text</del> and inserted <ins>new text</ins>, strikethrough <s>striked</s>, mark <mark>marked text</mark>.</p>
+            <p>Subscript <sub>sub</sub> and superscript <sup>sup</sup>.</p>
+            <p>Time <time datetime="2026-05-26">May 26, 2026</time>, wbr: <wbr>break here.</p>
+            <p>Isolated text <bdi>test</bdi>.</p>
+            <p><q>A short quote.</q></p>
+        </section>
+
+        <section aria-labelledby="section-lists">
+            <h2 id="section-lists">Lists and Tables</h2>
+            <dl>
+                <dt>Term</dt>
+                <dd>Definition</dd>
+            </dl>
+            <ol>
+                <li>Item 1</li>
+            </ol>
+            <ul>
+                <li>Item A</li>
+            </ul>
+            <menu>
+                <li>Menu Item</li>
+            </menu>
+            <table>
+                <caption>Test Table</caption>
+                <colgroup><col></colgroup>
+                <thead><tr><th scope="col">Header</th></tr></thead>
+                <tbody><tr><td>Data</td></tr></tbody>
+                <tfoot><tr><th scope="col">Foot</th></tr></tfoot>
+            </table>
+        </section>
+
+        <section aria-labelledby="media-section">
+            <h2 id="media-section">Media Elements</h2>
+            <figure>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="250" height="250">
+                <figcaption>A benchmark icon</figcaption>
+            </figure>
+            <picture>
+                <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon" width="250" height="250">
+            </picture>
+            <p>
+                <audio controls title="Test Audio">
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support audio.
+                </audio>
+            </p>
+            <p>
+                <video controls width="400" title="Test Video">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="data:text/vtt;charset=utf-8,WEBVTT%0A%0A1%0A00%3A00%3A00.000%20--%3E%2000%3A00%3A10.000%0ACaptions%20here" srclang="en" label="English" default>
+                    Your browser does not support video.
+                </video>
+            </p>
+            <p aria-label="SVG object wrapper">
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="SVG object">
+                    Object fallback
+                </object>
+            </p>
+            <p aria-label="SVG embed wrapper">
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="SVG embed">
+            </p>
+            <p>
+                <iframe src="about:blank" title="Empty iframe"></iframe>
+            </p>
+            <p>
+                <canvas width="100" height="100" aria-label="A blank canvas">Fallback canvas text here for screen readers</canvas>
+            </p>
+            <p>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Map image" usemap="#testmap" width="250" height="250">
+                <map name="testmap" id="testmap">
+                    <area shape="rect" coords="0,0,10,10" alt="Link to top" href="#main-content">
+                </map>
+            </p>
+        </section>
+
+        <section aria-labelledby="form-section">
+            <h2 id="form-section">Form Elements</h2>
+            <search>
+                <form action="#main-content" novalidate>
+                    <fieldset>
+                        <legend>Search fields</legend>
+                        <label for="search-input">Search:</label>
+                        <input type="search" id="search-input" name="q" autocomplete="on">
+                        <button type="submit">Go</button>
+                    </fieldset>
+                </form>
+            </search>
+            <form action="#main-content" novalidate>
+                <fieldset>
+                    <legend>Text Inputs</legend>
+                    <label for="text-input">Text input:</label>
+                    <input type="text" id="text-input" name="text_input" autocomplete="on"><br>
+                    
+                    <label for="date-input">Datalist input:</label>
+                    <input type="date" id="date-input" list="dates-list">
+                    <datalist id="dates-list">
+                        <option value="2026-05-26">Today</option>
+                    </datalist>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Other Inputs</legend>
+                    <label for="textarea-input">Textarea:</label>
+                    <textarea id="textarea-input" name="comments" aria-label="Comments"></textarea><br>
+
+                    <label for="select-input">Select:</label>
+                    <select id="select-input" name="options" aria-label="Selector">
+                        <optgroup label="Group 1">
+                            <option value="1">Option 1</option>
+                        </optgroup>
+                    </select><br>
+
+                    <label for="meter-id">Meter:</label>
+                    <meter id="meter-id" value="0.5" aria-label="Meter label text here">0.5</meter><br>
+
+                    <label for="progress-id">Progress:</label>
+                    <progress id="progress-id" value="0.5" aria-label="Progress test here">0.5</progress><br>
+
+                    <label for="out-id">Output:</label>
+                    <output id="out-id" aria-label="Output text">Output text</output>
+                </fieldset>
+            </form>
+        </section>
+
+        <section aria-labelledby="other-section">
+            <h2 id="other-section">Other Elements</h2>
+            <details>
+                <summary>More Info</summary>
+                <p>Hello details.</p>
+            </details>
+            <dialog id="test-dialog" aria-label="Test Dialog">
+                <p>Dialog content</p>
+            </dialog>
+            <hr>
+            <ruby>漢<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>
+            <hgroup>
+                <h3 id="h3-id-grp">Header 3</h3>
+                <p>Subtitle</p>
+            </hgroup>
+            <h4 id="h4-id">Header 4</h4>
+            <h5 id="h5-id">Header 5</h5>
+            <h6 id="h6-id">Header 6</h6>
+
+            <script>
+                // A script tag
+                console.log('test');
+            </script>
+            <noscript>
+                <p>JavaScript is disabled.</p>
+            </noscript>
+            <div>
+                <span>Some span.</span>
+                <data value="test">Some data</data>
+            </div>
+            
+            <template id="tmpl">
+                <p>Template content</p>
+            </template>
+            <div id="slot-container">
+                <slot name="slottie">Slot default</slot>
+            </div>
+            <p>
+                <selectedcontent>Selected content text</selectedcontent>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright 2026</p>
+    </footer>
+</body>
+</html>

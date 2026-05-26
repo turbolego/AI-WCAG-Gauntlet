@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete HTML5 Element Test</title>
+  <link rel="stylesheet" href="style.css">
+  <base href="/">
+  <style>
+    /* Inline styles for the specific test requirements */
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+    a {
+      color: #004499;
+      text-decoration: underline;
+    }
+    a:focus, button:focus, input:focus, select:focus, textarea:focus, [tabindex]:focus {
+      outline: 3px solid #004499;
+      outline-offset: 2px;
+    }
+  </style>
+  <script>
+    // Empty script for testing
+  </script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header role="banner">
+    <h1>HTML5 Tags Accessibility Benchmarking</h1>
+    <nav role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="#content">Skip to content</a></li>
+      </ul>
+      <menu>
+        <li><button type="button">Menu Button</button></li>
+      </menu>
+    </nav>
+  </header>
+
+  <main id="content" role="main">
+    <search role="search">
+        <form action="#" method="get">
+            <label for="search_input">Search Site:</label>
+            <input type="search" id="search_input" name="q">
+            <button type="submit">Go</button>
+        </form>
+    </search>
+
+    <article>
+        <h2>Text Content Elements</h2>
+        <section>
+            <h3>Formatting</h3>
+            <p>This paragraph<br>contains various elements.</p>
+            <p>
+                <b>Bold text</b>, <i>italic text</i>, <u>underlined text</u>, <s>strikethrough</s>.
+                <strong>Strong emphasis</strong> and <em>emphasis</em>.
+                <mark>Marked text</mark>, <small>small print</small>.
+                H<sub>2</sub>O and E=mc<sup>2</sup>.
+            </p>
+            <p>
+                <dfn title="Definition">DFN</dfn> element, <abbr title="Abbreviation">ABBR</abbr>.
+                <cite>Citation text</cite>, <q cite="https://example.com">Quote text</q>.
+                <kbd>Ctrl+C</kbd>, <samp>Sample output</samp>, <code>Code text</code>, <var>variable</var>.
+            </p>
+        </section>
+        
+        <section>
+            <h3>Blocks and Groupings</h3>
+            <hr>
+            <blockquote>
+                <p>A blockquote containing paragraph.</p>
+            </blockquote>
+            <address>
+                Address element details.
+            </address>
+            <pre>Preformatted text</pre>
+            
+            <dl>
+                <dt>Description Term</dt>
+                <dd>Description details.</dd>
+            </dl>
+            
+            <ol>
+                <li>Ordered list item</li>
+            </ol>
+            <ul>
+                <li>Unordered list item</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h3>Interactive Elements</h3>
+            <details>
+                <summary>Details Summary</summary>
+                <p>Hidden content inside details.</p>
+            </details>
+            <dialog id="test-dialog">
+                <p>Dialog box content.</p>
+                <form method="dialog">
+                    <button>Close</button>
+                </form>
+            </dialog>
+            <button onclick="document.getElementById('test-dialog').showModal()">Open Dialog</button>
+        </section>
+
+        <section>
+            <h3>Media Elements</h3>
+            <figure>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="benchmark icon">
+                <figcaption>Benchmark icon figure caption</figcaption>
+            </figure>
+            
+             <picture>
+                <source srcset="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 800px)">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Fallback icon">
+             </picture>
+             
+             <map name="testmap">
+                <area shape="rect" coords="0,0,10,10" href="https://example.com" alt="Area link">
+             </map>
+             <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="mapped image" usemap="#testmap">
+             
+             <audio controls>
+                 <source src="dummy.mp3" type="audio/mpeg">
+                 <track kind="captions" src="dummy.vtt" srclang="en" label="English">
+                 <a href="dummy.mp3">Download Audio</a>
+             </audio>
+             
+             <video controls aria-label="dummy video">
+                 <source src="dummy.mp4" type="video/mp4">
+                 <track kind="captions" src="dummy.vtt" srclang="en" label="English">
+                 <a href="dummy.mp4">Download Video</a>
+             </video>
+
+             <iframe src="about:blank" title="Blank Test Iframe"></iframe>
+             <object data="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" type="image/png" title="Object Icon"></object>
+             <embed src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" type="image/png" title="Embed Icon">
+        </section>
+        
+        <section>
+            <h3>Forms</h3>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Fieldset Legend</legend>
+                    <label for="text_input">Text Input</label>
+                    <input type="text" id="text_input" name="text_input">
+                    
+                    <label for="textarea_input">Textarea</label>
+                    <textarea id="textarea_input" name="textarea_input"></textarea>
+                    
+                    <label for="select_input">Select</label>
+                    <select id="select_input" name="select_input">
+                        <optgroup label="Group 1">
+                            <option value="1">Option 1</option>
+                        </optgroup>
+                    </select>
+                    
+                    <label for="datalist_input">Datalist Input</label>
+                    <input list="browsers" id="datalist_input" name="datalist_input">
+                    <datalist id="browsers">
+                      <option value="Chrome">
+                      <option value="Firefox">
+                    </datalist>
+                    
+                    <label for="range_input">Range</label>
+                    <input type="range" id="range_input" min="0" max="10" name="range_input">
+                    <output for="range_input" id="result_output">5</output>
+                 </fieldset>
+            </form>
+            <progress value="50" max="100">50%</progress>
+            <meter value="0.6">60%</meter>
+        </section>
+        
+        <section>
+            <h3>Tables</h3>
+            <table>
+                <caption>Table Caption</caption>
+                <colgroup>
+                    <col style="background-color: #f0f0f0;">
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Header 1</th>
+                        <th scope="col">Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                     <tr>
+                        <td>Foot 1</td>
+                        <td>Foot 2</td>
+                     </tr>
+                </tfoot>
+            </table>
+        </section>
+        
+        <section>
+            <h3>Other elements</h3>
+            <canvas id="myCanvas" aria-label="Test Canvas">Fallback content</canvas>
+            <ruby>
+              漢 <rt> ㄏㄢˋ </rt>
+              <rp>(</rp><rt>han</rt><rp>)</rp>
+            </ruby>
+            <bdi>User generated content</bdi>
+            <bdo dir="rtl">Right to left</bdo>
+            <data value="21053">21053</data>
+            <time datetime="2024-01-01">January 1st</time>
+            <del>Deleted text</del>
+            <ins>Inserted text</ins>
+            <div>A div element</div>
+            <span>A span element</span>
+            <wbr>
+            <template>
+                <p>Template content</p>
+            </template>
+            <noscript>
+                <p>JS is disabled.</p>
+            </noscript>
+            <div>
+               <h4>H4 Header</h4>
+               <h5>H5 Header</h5>
+               <h6>H6 Header</h6>
+               <hgroup>
+                 <h2>Hgroup Heading</h2>
+                 <p>Hgroup sub-heading description</p>
+               </hgroup>
+            </div>
+            <!-- Custom elements test slot -->
+            <div><slot name="my-text">Default slotted content</slot></div>
+            <select aria-label="Test selection">
+                <option value="1">Option 1</option>
+                <selectedcontent>1</selectedcontent>
+            </select>
+        </section>
+    </article>
+  </main>
+  
+  <aside>
+      <h3>Related Information</h3>
+      <p>This is related info sidebar.</p>
+  </aside>
+
+  <footer role="contentinfo">
+    <p>&copy; 2026 Test Benchmark</p>
+  </footer>
+</body>
+</html>
