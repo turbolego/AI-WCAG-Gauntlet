@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/GPT-5.4/GPT-5.4-20260526-133225/style.css">
+    <style>
+        :root {
+            --inline-accent: #6b2600;
+        }
+    </style>
+    <title>AI WCAG Gauntlet - HTML5 and WCAG 2.2 AAA Benchmark</title>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <script>
+        window.alert = window.confirm = window.prompt = () => null;
+    </script>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Main content</a></li>
+                <li><a href="#text-content">Text tags</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#footer">Footer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <search>
+        <form role="search">
+            <label for="search-input">Search page content</label>
+            <input type="search" id="search-input" name="search" placeholder="Search showcase content">
+            <button type="submit">Search</button>
+        </form>
+    </search>
+
+    <main id="main">
+        <article>
+            <h1>AI WCAG Gauntlet - Complete HTML5 Tag Showcase</h1>
+
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p>This single page demonstrates every required HTML5 tag while keeping the content organized inside landmarks for assistive technology users.</p>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>WCAG 2.2 defines how to make web content more accessible to people with disabilities.</p>
+                </blockquote>
+            </section>
+
+            <section id="text-content">
+                <h2>Text Content Tags</h2>
+                <p>This demonstrates <strong>strong</strong> emphasis and <em>emphasis</em> tags with <b>bold</b>, <i>italic</i>, <u>underline</u>, <s>strikethrough</s>, and <mark>highlighted</mark> text.</p>
+                <p><small>Small text</small> can sit beside a <span>span wrapper</span> without changing semantics.</p>
+                <p>Inline code looks like <code>const total = 110;</code>.</p>
+                <pre><code>function example() {
+    return "preformatted code";
+}</code></pre>
+                <p>Abbreviations include <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr>.</p>
+                <p><cite>The HTML Living Standard</cite> defines these elements, and <q cite="https://html.spec.whatwg.org/">quoted text</q> can appear inline.</p>
+                <p>Variables: <var>x</var> + <var>y</var> = <var>z</var>. Keyboard input: <kbd>Ctrl</kbd> + <kbd>C</kbd>. Sample output: <samp>Output: Success.</samp></p>
+                <p>Subscript: H<sub>2</sub>O. Superscript: E = mc<sup>2</sup>.</p>
+                <p><ins datetime="2026-05-26T10:00:00Z">Inserted content</ins> and <del datetime="2026-05-26T09:00:00Z">deleted content</del> are both represented.</p>
+                <address>
+                    Contact: <a href="mailto:info@example.com">info@example.com</a>
+                </address>
+                <p><dfn>Accessibility</dfn> means people can use the content effectively. Bidirectional examples: <bdi>مرحبا</bdi> and <bdo dir="rtl">مرحبا</bdo>.</p>
+                <p>Line break example:<br>This sentence begins on a new line.</p>
+                <p>Word break example: superlongtokenwithoutspaces<wbr>continues safely after a suggested break.</p>
+                <p>With a horizontal rule below:</p>
+                <hr>
+            </section>
+
+            <section id="semantic">
+                <h2>Semantic Structure Tags</h2>
+                <article>
+                    <header>
+                        <h3>Nested Article Example</h3>
+                        <h4>Subheading Level Four</h4>
+                        <time datetime="2026-05-26">May 26, 2026</time>
+                    </header>
+                    <p>This nested article demonstrates article-specific structure.</p>
+                    <footer>
+                        <p>Article author: Example Author</p>
+                    </footer>
+                </article>
+
+                <hgroup>
+                    <h2>Heading Group Example</h2>
+                </hgroup>
+
+                <h3>Heading Level Three</h3>
+                <p>Hierarchy stays intact across the document.</p>
+                <h4>Heading Level Four</h4>
+                <p>This level adds more detail.</p>
+                <h5>Heading Level Five</h5>
+                <p>Lower levels remain readable.</p>
+                <h6>Heading Level Six</h6>
+                <p>Even the smallest heading is included.</p>
+
+                <section>
+                    <h3>Data Example</h3>
+                    <p>Price: <data value="29.99">$29.99</data></p>
+                </section>
+
+                <figure>
+                    <figcaption>Figure 1: Semantic figure with caption</figcaption>
+                    <p>This figure demonstrates standalone captioned content.</p>
+                </figure>
+            </section>
+
+            <section id="lists">
+                <h2>List Tags</h2>
+                <h3>Unordered List</h3>
+                <ul>
+                    <li>Item one</li>
+                    <li>Item two</li>
+                    <li>Item three</li>
+                </ul>
+
+                <h3>Ordered List</h3>
+                <ol>
+                    <li>First step</li>
+                    <li>Second step</li>
+                    <li>Third step</li>
+                </ol>
+
+                <h3>Definition List</h3>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language</dd>
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets</dd>
+                </dl>
+
+                <h3>Menu</h3>
+                <menu>
+                    <li><a href="#option1">Option 1</a></li>
+                    <li><a href="#option2">Option 2</a></li>
+                </menu>
+            </section>
+
+            <section id="tables">
+                <h2>Table Tags</h2>
+                <table>
+                    <caption>Sample Data Table</caption>
+                    <colgroup>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Header 1</th>
+                            <th scope="col">Header 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data 1</td>
+                            <td>Data 2</td>
+                        </tr>
+                        <tr>
+                            <td>Data 3</td>
+                            <td>Data 4</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Total 1</th>
+                            <th scope="row">Total 2</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+            <section id="media">
+                <h2>Media Tags</h2>
+
+                <h3>Image</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+
+                <h3>Picture with Responsive Sources</h3>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <source srcset="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+
+                <h3>Audio</h3>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <h3>Video</h3>
+                <video controls width="400" height="300">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#captions" srclang="en" label="English captions" default>
+                    Your browser does not support the video element.
+                </video>
+
+                <h3>Embedded Content</h3>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+
+                <h3>Object</h3>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG benchmark icon">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Fallback benchmark icon">
+                </object>
+
+                <h3>Image Map</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#imagemap" alt="Clickable benchmark map">
+                <map name="imagemap">
+                    <area shape="rect" coords="0,0,100,50" href="#target1" alt="Area 1">
+                    <area shape="circle" coords="150,75,25" href="#target2" alt="Area 2">
+                </map>
+
+                <h3>Inline Frame</h3>
+                <iframe src="about:blank" title="Embedded content" width="400" height="300"></iframe>
+            </section>
+
+            <section id="graphics">
+                <h2>Graphics</h2>
+
+                <h3>Canvas</h3>
+                <canvas id="mycanvas" width="200" height="100" aria-label="Canvas drawing example">
+                    Canvas not supported
+                </canvas>
+
+                <h3>SVG Example</h3>
+                <svg width="100" height="100" aria-label="Simple SVG circle">
+                    <circle cx="50" cy="50" r="40" fill="blue">
+                        <title>Blue Circle</title>
+                    </circle>
+                </svg>
+            </section>
+
+            <section id="forms">
+                <h2>Form Tags</h2>
+                <form>
+                    <fieldset>
+                        <legend>Personal Information</legend>
+
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div>
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="0" max="120">
+                        </div>
+
+                        <div>
+                            <label for="birthday">Birthday</label>
+                            <input type="date" id="birthday" name="birthday">
+                        </div>
+
+                        <div>
+                            <label for="color">Favorite Color</label>
+                            <input type="color" id="color" name="color">
+                        </div>
+
+                        <div>
+                            <label for="range">Satisfaction (1-10)</label>
+                            <input type="range" id="range" name="range" min="1" max="10">
+                        </div>
+
+                        <div>
+                            <label for="rating">Rating</label>
+                            <meter id="rating" min="0" max="10" value="7" low="3" high="8">7 out of 10</meter>
+                        </div>
+
+                        <div>
+                            <label for="progress">Progress</label>
+                            <progress id="progress" max="100" value="75">75%</progress>
+                        </div>
+
+                        <div>
+                            <label for="country">Country</label>
+                            <datalist id="countries">
+                                <option value="USA"></option>
+                                <option value="Canada"></option>
+                                <option value="Mexico"></option>
+                            </datalist>
+                            <input list="countries" id="country" name="country">
+                        </div>
+
+                        <div>
+                            <label for="select">Choose Option</label>
+                            <select id="select" name="select">
+                                <optgroup label="Group 1">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                </optgroup>
+                                <optgroup label="Group 2">
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="comments">Comments</label>
+                            <textarea name="comments" id="comments" rows="4" cols="50" placeholder="Enter comments"></textarea>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="agree" name="agree">
+                            <label for="agree">I agree to the terms</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="radio1" name="choice" value="option1">
+                            <label for="radio1">Option 1</label>
+                            <input type="radio" id="radio2" name="choice" value="option2">
+                            <label for="radio2">Option 2</label>
+                        </div>
+
+                        <div>
+                            <label for="telephone">Telephone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+
+                        <div>
+                            <label for="site-url">Website URL</label>
+                            <input type="url" id="site-url" name="site-url">
+                        </div>
+
+                        <div>
+                            <label for="file-upload">File Upload</label>
+                            <input type="file" id="file-upload" name="file-upload">
+                        </div>
+
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+
+                        <div>
+                            <label for="image-submit">Image Submit</label>
+                            <input type="image" id="image-submit" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Submit the form">
+                        </div>
+
+                        <div>
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                            <button type="button">Button</button>
+                        </div>
+
+                        <div>
+                            <label for="output">Result</label>
+                            <output id="output" name="output">0</output>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section id="interactive">
+                <h2>Interactive Elements</h2>
+                <h3>Details and Summary</h3>
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>This is the detailed content that appears when expanded.</p>
+                </details>
+
+                <h3>Dialog Box</h3>
+                <dialog id="dialog" open>
+                    <p>This is a dialog element.</p>
+                    <button type="button" onclick="document.getElementById('dialog').close()">Close dialog</button>
+                </dialog>
+
+                <h3>Ruby Text</h3>
+                <ruby>
+                    漢字
+                    <rp>(</rp>
+                    <rt>kanji</rt>
+                    <rp>)</rp>
+                </ruby>
+
+                <h3>Selected Content</h3>
+                <p>The <selectedcontent></selectedcontent> element is included for coverage.</p>
+            </section>
+
+            <section id="template-section">
+                <h2>Template and Slots</h2>
+                <template id="card-template">
+                    <div>Template content</div>
+                </template>
+                <div role="article">
+                    <slot name="title">Default title</slot>
+                    <slot>Default content</slot>
+                </div>
+            </section>
+
+            <section id="miscellaneous">
+                <h2>Additional Required Tags</h2>
+                <p id="target1">Target one for image map navigation.</p>
+                <p id="target2">Target two for image map navigation.</p>
+                <p>This page includes a <time datetime="2026-05-26T14:00:00">scheduled example time</time>.</p>
+                <p><small>Inline accent sample</small> with <span style="color: var(--inline-accent);">consistent contrast</span>.</p>
+            </section>
+
+            <noscript>
+                <p>This page requires JavaScript for the dialog close button, but all content remains available without scripting.</p>
+            </noscript>
+        </article>
+    </main>
+
+    <aside>
+        <h2>Sidebar Content</h2>
+        <p>This complementary content is placed at the top level so it remains a valid landmark region.</p>
+    </aside>
+
+    <footer id="footer">
+        <h2>Footer</h2>
+        <p>&copy; 2026 AI WCAG Gauntlet. This page demonstrates comprehensive HTML5 and WCAG 2.2 AAA compliance goals.</p>
+    </footer>
+</body>
+</html>

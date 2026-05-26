@@ -1,0 +1,301 @@
+/* WCAG 2.2 AAA-oriented benchmark styling */
+
+:root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --border-color: #333333;
+    --link-color: #0047ab;
+    --link-visited: #5c0d5c;
+    --accent-color: #9c4a00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 1rem;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f2 100%);
+    color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 1rem 0 0.5rem;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.9rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.35rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+p,
+li,
+dd,
+dt,
+label,
+button,
+input,
+select,
+textarea,
+summary {
+    font-size: 1rem;
+}
+
+header,
+search,
+main,
+article,
+section,
+aside,
+footer,
+figure,
+details,
+dialog,
+fieldset,
+table {
+    margin-bottom: 1.5rem;
+}
+
+header,
+search,
+aside,
+footer,
+article,
+details,
+fieldset,
+dialog {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+a:hover,
+a:focus {
+    background-color: #e9f0ff;
+    outline: 3px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--text-secondary);
+}
+
+code,
+pre,
+kbd,
+samp {
+    font-family: "Courier New", monospace;
+}
+
+code,
+kbd,
+samp,
+output {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    padding: 0.15rem 0.35rem;
+}
+
+pre {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+address,
+menu,
+figure {
+    background-color: var(--bg-secondary);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+}
+
+menu {
+    list-style: none;
+    padding-left: 0.75rem;
+}
+
+img,
+video,
+audio,
+iframe,
+canvas,
+object,
+embed,
+svg,
+picture {
+    display: block;
+    max-width: 100%;
+    margin: 0.75rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption,
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+thead {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+tbody tr:nth-child(even),
+tfoot {
+    background-color: var(--bg-secondary);
+}
+
+form {
+    display: block;
+}
+
+div {
+    margin-bottom: 0.75rem;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="color"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[list],
+select,
+textarea {
+    width: min(100%, 28rem);
+    padding: 0.6rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.4rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 0.4rem;
+}
+
+input[type="range"],
+meter,
+progress {
+    width: min(100%, 28rem);
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+    border: 2px solid #111111;
+    border-radius: 999px;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 0.7rem 1.1rem;
+    font-weight: 700;
+}
+
+button:hover,
+button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+    outline: 3px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+summary {
+    font-weight: 700;
+}
+
+mark {
+    background-color: #fff45c;
+    color: #000000;
+}
+
+del {
+    background-color: #ffd9d9;
+}
+
+ins {
+    background-color: #d8ffd8;
+}
+
+@media (max-width: 720px) {
+    body {
+        padding: 0.75rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
