@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="./">
+    <title>AI WCAG Gauntlet | HTML5 Tag Showcase</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header class="hero panel" id="top">
+        <hgroup>
+            <h1>AI WCAG Gauntlet</h1>
+            <p>HTML5 tag coverage with accessible structure, media, forms, and tables.</p>
+        </hgroup>
+
+        <search class="search-panel" aria-labelledby="search-title">
+            <h2 id="search-title">Search the showcase</h2>
+            <form class="search-form" action="#forms">
+                <label for="search-field">Find a section</label>
+                <input id="search-field" name="query" type="search" list="search-suggestions" placeholder="Forms, media, tables, and more">
+                <datalist id="search-suggestions">
+                    <option value="Forms"></option>
+                    <option value="Media"></option>
+                    <option value="Tables"></option>
+                    <option value="Code samples"></option>
+                </datalist>
+                <button type="submit">Jump</button>
+            </form>
+            <menu class="quick-menu" aria-label="Quick links">
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#table">Table</a></li>
+            </menu>
+        </search>
+    </header>
+
+    <nav class="panel site-nav" aria-label="Primary">
+        <ul>
+            <li><a href="#intro">Semantic intro</a></li>
+            <li><a href="#media">Media lab</a></li>
+            <li><a href="#forms">Form lab</a></li>
+            <li><a href="#table">Data table</a></li>
+            <li><a href="#advanced">Advanced elements</a></li>
+        </ul>
+    </nav>
+
+    <main class="layout" id="main-content">
+        <section class="panel" id="intro" aria-labelledby="intro-title">
+            <article>
+                <h2 id="intro-title">Semantic baseline</h2>
+                <p>
+                    This page demonstrates <strong>semantic HTML</strong> with <em>accessible</em> structure,
+                    <abbr title="World Wide Web">WWW</abbr> terminology, and careful text-level semantics.
+                    The benchmark timestamp is <time datetime="2026-05-26T20:05:46Z">20:05 UTC</time> and the tag budget targets <data value="110">110 HTML tags</data>.
+                </p>
+                <p>
+                    Use <code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;K&lt;/kbd&gt;</code> to search, observe the
+                    <mark>highlighted</mark> cue, and compare <b>bold</b>, <i>italic</i>, <u>underlined</u>,
+                    and <s>struck</s> text alongside <small>supplemental notes</small>.
+                </p>
+                <p>
+                    The Latin formula <var>a</var> + <var>b</var> = <var>c</var> appears here, as does a quote:
+                    <q cite="https://html.spec.whatwg.org/">The standard matters more than the shortcut.</q>
+                    The first line breaks with <wbr>allowed<wbr>points<wbr>helpfully.
+                </p>
+
+                <dl>
+                    <dt><dfn>Region</dfn></dt>
+                    <dd>A landmark that groups related content for navigation.</dd>
+                    <dt><dfn>Progress</dfn></dt>
+                    <dd>Current work state shown with a labeled <meter>gauge</meter> or <progress>bar</progress>.</dd>
+                </dl>
+
+                <p>
+                    Bidirectional examples: <bdi>user_123</bdi> and <bdo dir="rtl">This text is forced right-to-left.</bdo>
+                    A ruby note follows: <ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp>字<rp>(</rp><rt>ji</rt><rp>)</rp></ruby>.
+                </p>
+
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Accessibility is strongest when semantics, structure, and affordances line up.</p>
+                </blockquote>
+
+                <details>
+                    <summary>Why this page exists</summary>
+                    <p>
+                        The benchmark requires every valid HTML5 tag to appear at least once while keeping the
+                        document understandable, keyboard-friendly, and screen-reader-friendly.
+                    </p>
+                </details>
+
+                <h3>Heading ladder</h3>
+                <h4>Layer four</h4>
+                <h5>Layer five</h5>
+                <h6>Layer six</h6>
+
+                <p>
+                    Press <kbd>Enter</kbd> to confirm, the console may show <samp>STATUS: PASS</samp>, and formulas
+                    such as H<sub>2</sub>O and E = mc<sup>2</sup> stay explicit.
+                </p>
+
+                <ol>
+                    <li>Use landmarks for navigation.</li>
+                    <li>Label every control.</li>
+                    <li>Provide text alternatives for embedded media.</li>
+                </ol>
+            </article>
+        </section>
+
+        <section class="panel" id="media" aria-labelledby="media-title">
+            <h2 id="media-title">Media and embedded content</h2>
+
+            <figure class="media-figure">
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 900px)">
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark pinhead icon used as a responsive image example">
+                </picture>
+                <figcaption>Responsive imagery with <code>picture</code>, <code>source</code>, and descriptive alt text.</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+                <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Image map source for clickable benchmark regions" usemap="#benchmark-map">
+                <map name="benchmark-map">
+                    <area shape="rect" coords="0,0,250,250" href="#forms" alt="Jump to the form section">
+                    <area shape="rect" coords="250,0,500,250" href="#table" alt="Jump to the table section">
+                </map>
+                <figcaption>An image map with alternative text on each area.</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+                <audio controls preload="none" aria-label="Benchmark audio sample">
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    <p>
+                        Your browser does not support audio playback. See the transcript in the surrounding text.
+                    </p>
+                </audio>
+                <figcaption>An audio control with a linked source from the resources folder.</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+                <video controls preload="metadata" width="480" aria-label="Benchmark video sample">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="/AI-WCAG-Gauntlet/resources/benchmark-captions.vtt" srclang="en" label="English captions" default>
+                    <p>Your browser does not support video playback.</p>
+                </video>
+                <figcaption>Video with captions and a resource-backed source.</figcaption>
+            </figure>
+
+            <div class="embed-grid" aria-label="Additional embedded examples">
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="Object-embedded benchmark icon">
+                    Fallback content for object embedding.
+                </object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="Embedded benchmark icon">
+                <iframe title="Inline benchmark explanation" srcdoc="<!doctype html><html lang='en'><body><h3>Inline frame</h3><p>This iframe demonstrates the tag while remaining self-contained.</p></body></html>"></iframe>
+            </div>
+
+            <canvas id="benchmark-canvas" width="480" height="220" role="img" aria-label="Canvas illustration of benchmark status">Canvas fallback text describing the benchmark illustration.</canvas>
+
+            <p>
+                A media note can also be placed in a <code>figure</code> with <code>figcaption</code>, and a
+                <cite>resource citation</cite> keeps the provenance clear.
+            </p>
+        </section>
+
+        <section class="panel" id="forms" aria-labelledby="forms-title">
+            <h2 id="forms-title">Accessible controls</h2>
+
+            <form id="benchmark-form" class="form-grid">
+                <fieldset>
+                    <legend>Baseline inputs</legend>
+                    <p>
+                        <label for="full-name">Full name</label>
+                        <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Ada Lovelace">
+                    </p>
+                    <p>
+                        <label for="email-address">Email address</label>
+                        <input id="email-address" name="email-address" type="email" autocomplete="email" placeholder="ada@example.com">
+                    </p>
+                    <p>
+                        <label for="reference-url">Project URL</label>
+                        <input id="reference-url" name="reference-url" type="url" placeholder="https://example.com">
+                    </p>
+                    <p>
+                        <label for="benchmark-notes">Notes</label>
+                        <textarea id="benchmark-notes" name="benchmark-notes" rows="5" cols="30" placeholder="Describe the accessibility changes here."></textarea>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Selection controls</legend>
+                    <p>
+                        <label for="theme-select">Theme</label>
+                        <select id="theme-select" name="theme-select">
+                            <button type="button"><selectedcontent></selectedcontent></button>
+                            <optgroup label="Light schemes">
+                                <option value="paper" selected label="Paper">Paper</option>
+                                <option value="sand" label="Sand">Sand</option>
+                            </optgroup>
+                            <hr>
+                            <optgroup label="High contrast">
+                                <option value="ink" label="Ink">Ink</option>
+                                <option value="signal" label="Signal">Signal</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="genre-picker">Genre hint</label>
+                        <input id="genre-picker" name="genre-picker" list="genre-options" placeholder="Narrative">
+                        <datalist id="genre-options">
+                            <option value="Narrative"></option>
+                            <option value="Technical"></option>
+                            <option value="Reference"></option>
+                            <option value="Showcase"></option>
+                        </datalist>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Choice controls</legend>
+                    <p>
+                        <label><input type="checkbox" name="reviewed" checked> Mark as reviewed</label>
+                    </p>
+                    <p>
+                        <label><input type="radio" name="priority" value="low" checked> Low priority</label>
+                        <label><input type="radio" name="priority" value="high"> High priority</label>
+                    </p>
+                    <p>
+                        <label for="progress-step">Iteration progress</label>
+                        <progress id="progress-step" value="1" max="20">5%</progress>
+                    </p>
+                    <p>
+                        <label for="quality-meter">Quality score</label>
+                        <meter id="quality-meter" min="0" max="100" low="50" high="85" optimum="95" value="88">88 out of 100</meter>
+                    </p>
+                    <p>
+                        <label for="result-output">Calculated result</label>
+                        <output id="result-output" name="result-output" for="full-name email-address">Ready</output>
+                    </p>
+                    <p>
+                        <label for="volume-range">Detail level</label>
+                        <input id="volume-range" type="range" min="0" max="100" value="65">
+                    </p>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="submit">Save form state</button>
+                    <button type="reset">Reset form</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel" id="table" aria-labelledby="table-title">
+            <h2 id="table-title">Structured data</h2>
+            <table>
+                <caption>Example coverage matrix for the benchmark page</caption>
+                <colgroup>
+                    <col class="column-tag">
+                    <col class="column-purpose">
+                    <col class="column-note">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Purpose</th>
+                        <th scope="col">Accessibility note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">main</th>
+                        <td>Primary landmark</td>
+                        <td>Keeps page content inside a named landmark.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">figure</th>
+                        <td>Media grouping</td>
+                        <td>Pairs visual media with captions.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">form</th>
+                        <td>Interactive controls</td>
+                        <td>Every control has an explicit label.</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">All rows remain keyboard navigable and screen-reader friendly.</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <pre><code>&lt;main&gt;
+    &lt;section&gt;
+        &lt;figure&gt;
+            &lt;img alt="Descriptive text"&gt;
+        &lt;/figure&gt;
+    &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+        </section>
+
+        <section class="panel" id="advanced" aria-labelledby="advanced-title">
+            <h2 id="advanced-title">Advanced elements</h2>
+
+            <div class="advanced-grid">
+                <dialog open aria-labelledby="dialog-title">
+                    <h3 id="dialog-title">Open dialog sample</h3>
+                    <p>The dialog is open by default so the tag is present and named.</p>
+                    <form method="dialog">
+                        <button type="submit">Close</button>
+                    </form>
+                </dialog>
+
+                <template id="demo-template">
+                    <p>Template content stays inert until cloned.</p>
+                    <slot name="template-slot"></slot>
+                </template>
+
+                <section class="callout" aria-label="Template and slot example">
+                    <p>
+                        The <code>template</code> above includes a <code>slot</code> for projected content.
+                    </p>
+                    <p>
+                        <span slot="template-slot">Projected content would appear here in a custom element.</span>
+                    </p>
+                </section>
+
+                <article>
+                    <h3>Editorial text</h3>
+                    <p>
+                        <del datetime="2026-05-26T19:50:00Z">Old iteration notes were too sparse.</del>
+                        <ins datetime="2026-05-26T20:05:46Z">This version is a full semantic showcase.</ins>
+                    </p>
+                    <p>
+                        <address>
+                            Benchmark contact: <a href="mailto:benchmark@example.com">benchmark@example.com</a><br>
+                            100 Accessibility Way<br>
+                            WCAG City
+                        </address>
+                    </p>
+                    <p>
+                        The <span class="inline-note">span</span> wrapper is used for inline styling only.
+                    </p>
+                </article>
+            </div>
+
+            <hr>
+
+            <div class="aside-note">
+                <h3>Reference note</h3>
+                <p>
+                    This showcase is intentionally verbose so the benchmark can detect coverage across the full HTML5 set.
+                </p>
+                <ul>
+                    <li><em>Article</em> and <strong>section</strong> define the document structure.</li>
+                    <li><code>noscript</code> keeps a fallback visible without JavaScript.</li>
+                    <li><small>Small-print copy remains readable and high contrast.</small></li>
+                </ul>
+            </div>
+
+            <noscript>
+                <p>This page remains readable even if scripting is disabled.</p>
+            </noscript>
+        </section>
+    </main>
+
+    <aside class="panel sidebar" aria-labelledby="sidebar-title">
+        <h2 id="sidebar-title">Supplemental notes</h2>
+        <p>
+            The showcase also exercises phrasing, grouping, and interactive tags like <b>menu</b>, <i>search</i>,
+            and <u>details</u> while keeping the content contained by landmarks.
+        </p>
+        <menu>
+            <li><a href="#top">Back to top</a></li>
+            <li><a href="#media">View media</a></li>
+            <li><a href="#forms">Edit the form</a></li>
+        </menu>
+    </aside>
+
+    <footer class="panel site-footer">
+        <p>Built for the AI WCAG Gauntlet benchmark.</p>
+        <p><small>Generated on <time datetime="2026-05-26">May 26, 2026</time>.</small></p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('benchmark-form');
+        const output = document.getElementById('result-output');
+        const canvas = document.getElementById('benchmark-canvas');
+
+        function updateOutput() {
+            if (!form || !output) {
+                return;
+            }
+
+            const fullName = document.getElementById('full-name');
+            const emailAddress = document.getElementById('email-address');
+            const nameValue = fullName ? fullName.value.trim() : '';
+            const emailValue = emailAddress ? emailAddress.value.trim() : '';
+
+            output.value = nameValue && emailValue ? `${nameValue} <${emailValue}>` : 'Ready';
+        }
+
+        function drawCanvas() {
+            if (!canvas || !canvas.getContext) {
+                return;
+            }
+
+            const context = canvas.getContext('2d');
+            if (!context) {
+                return;
+            }
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            const gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#0f172a');
+            gradient.addColorStop(1, '#0f766e');
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.fillStyle = 'rgba(255, 255, 255, 0.12)';
+            context.beginPath();
+            context.arc(120, 110, 70, 0, Math.PI * 2);
+            context.fill();
+
+            context.strokeStyle = '#f8fafc';
+            context.lineWidth = 6;
+            context.beginPath();
+            context.moveTo(60, 160);
+            context.lineTo(180, 60);
+            context.stroke();
+
+            context.fillStyle = '#f8fafc';
+            context.font = 'bold 20px system-ui';
+            context.fillText('Canvas demo', 240, 96);
+            context.font = '16px system-ui';
+            context.fillText('Accessible fallback text is also present.', 240, 128);
+        }
+
+        if (form) {
+            form.addEventListener('input', updateOutput);
+            updateOutput();
+        }
+
+        drawCanvas();
+    </script>
+</body>
+</html>

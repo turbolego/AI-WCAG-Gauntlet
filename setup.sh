@@ -42,8 +42,9 @@ fi
 #MODEL_NAME="GPT-4.1"
 #MODEL_NAME="GPT-4o"
 #MODEL_NAME="GPT-5.4"
+MODEL_NAME="GPT-5.4 mini (Preview)"
 #MODEL_NAME="Gemini 3 Flash (Preview)"
-MODEL_NAME="Gemini 3.1 Pro (Preview)"
+#MODEL_NAME="Gemini 3.1 Pro (Preview)"
 
 
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
