@@ -1,0 +1,53 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 4,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 371,
+      "lastColumn": 24,
+      "firstColumn": 3,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "=== -->\n  <header role=\"banner\">\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 744,
+      "firstLine": 737,
+      "lastColumn": 43,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input\n              type=\"text\"\n              id=\"full-name\"\n              name=\"full-name\"\n              autocomplete=\"name\"\n              required\n              aria-required=\"true\"\n              aria-describedby=\"name-hint\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 228
+    },
+    {
+      "type": "info",
+      "lastLine": 757,
+      "firstLine": 750,
+      "lastColumn": 44,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input\n              type=\"email\"\n              id=\"email-address\"\n              name=\"email\"\n              autocomplete=\"email\"\n              required\n              aria-required=\"true\"\n              placeholder=\"you@example.com\">\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 231
+    },
+    {
+      "type": "info",
+      "lastLine": 1125,
+      "lastColumn": 29,
+      "firstColumn": 3,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "TER -->\n  <footer role=\"contentinfo\">\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}
