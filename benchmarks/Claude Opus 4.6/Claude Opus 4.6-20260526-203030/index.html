@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/AI-WCAG-Gauntlet/">
+    <title>HTML5 Technical Showcase — WCAG 2.2 AAA Compliant</title>
+    <link rel="stylesheet" href="benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-203030/style.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <hgroup>
+            <h1>HTML5 Technical Showcase</h1>
+            <p>A comprehensive demonstration of every HTML5 element with WCAG 2.2 AAA compliance</p>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#text-section">Text Elements</a></li>
+                <li><a href="#forms-section">Forms</a></li>
+                <li><a href="#media-section">Media</a></li>
+                <li><a href="#tables-section">Tables</a></li>
+                <li><a href="#interactive-section">Interactive</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article>
+            <h2 id="text-section">Text and Inline Elements</h2>
+
+            <section aria-labelledby="text-section">
+                <p>This page demonstrates <strong>every valid HTML5 tag</strong> while conforming to <em>WCAG 2.2 Level AAA</em> standards. Here is an <abbr title="Abbreviation">abbr</abbr> element and a <dfn>definition term</dfn>.</p>
+
+                <p>Visit the <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 specification</a> for more information. This text contains a <b>bold phrase</b>, an <i>idiomatic phrase</i>, a <u>unarticulated annotation</u>, and a <s>strikethrough</s> element.</p>
+
+                <p>Here is some <code>inline code</code>, a <kbd>Ctrl+S</kbd> keyboard shortcut, <samp>sample output</samp>, and a <var>variable</var>. The formula is E = mc<sup>2</sup> and H<sub>2</sub>O is water.</p>
+
+                <p><small>This is a small print disclaimer.</small> Here is a <q>short inline quotation</q> and a <cite>Citation Source</cite>. The word <mark>highlighted</mark> is marked. This is a <span>span element</span> with a <br>line break.</p>
+
+                <p>The event starts at <time datetime="2026-06-15T09:00:00Z">June 15, 2026 at 9:00 AM</time>. The price is <data value="49.99">$49.99</data>. This long word can break here: Supercali<wbr>fragilistic<wbr>expialidocious.</p>
+
+                <p lang="ja"><bdi>テスト</bdi> is a bidirectional isolate example.</p>
+                <p><bdo dir="ltr">This text is left-to-right.</bdo></p>
+
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Web Content Accessibility Guidelines (WCAG) 2.2 covers a wide range of recommendations for making Web content more accessible.</p>
+                </blockquote>
+
+                <address>
+                    Contact: <a href="mailto:info@example.com">info@example.com</a>
+                </address>
+
+                <pre><code>function greet(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+
+                <p>Here is an <ins datetime="2026-01-01">inserted text</ins> and a <del datetime="2026-01-01">deleted text</del> example.</p>
+
+                <hr>
+
+                <h3>Ruby Annotation</h3>
+                <p><ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp>字<rp>(</rp><rt>ji</rt><rp>)</rp></ruby> means Chinese characters.</p>
+
+                <h4>Additional Text Details</h4>
+                <h5>Subheading Level 5</h5>
+                <p>This demonstrates the h5 element for fine-grained document structure.</p>
+
+                <h6>Subheading Level 6</h6>
+                <p>This demonstrates the h6 element, the smallest heading level available.</p>
+            </section>
+        </article>
+
+        <article>
+            <h2 id="forms-section">Forms and Inputs</h2>
+
+            <section aria-labelledby="forms-section">
+                <search>
+                    <form action="#" method="get" role="search" aria-label="Site search">
+                        <fieldset>
+                            <legend>Search the site</legend>
+                            <label for="search-input">Search query</label>
+                            <input type="search" id="search-input" name="q" autocomplete="off">
+                            <button type="submit">Search</button>
+                        </fieldset>
+                    </form>
+                </search>
+
+                <form action="#" method="post" aria-label="Contact form">
+                    <fieldset>
+                        <legend>Contact Information</legend>
+
+                        <p>
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="name" autocomplete="name" required>
+                        </p>
+                        <p>
+                            <label for="email-input">Email Address</label>
+                            <input type="email" id="email-input" name="email" autocomplete="email" required>
+                        </p>
+                        <p>
+                            <label for="phone-input">Phone Number</label>
+                            <input type="tel" id="phone-input" name="phone" autocomplete="tel">
+                        </p>
+                        <p>
+                            <label for="dob-input">Date of Birth</label>
+                            <input type="date" id="dob-input" name="dob" autocomplete="bday">
+                        </p>
+                        <p>
+                            <label for="website-input">Website URL</label>
+                            <input type="url" id="website-input" name="website" autocomplete="url">
+                        </p>
+                        <p>
+                            <label for="age-input">Age (number)</label>
+                            <input type="number" id="age-input" name="age" min="0" max="150">
+                        </p>
+                        <p>
+                            <label for="satisfaction">Satisfaction level</label>
+                            <input type="range" id="satisfaction" name="satisfaction" min="0" max="100" value="50">
+                            <output for="satisfaction">50</output>
+                        </p>
+                        <p>
+                            <label for="fav-color">Favorite color</label>
+                            <input type="color" id="fav-color" name="color" value="#336699">
+                        </p>
+                        <p>
+                            <label for="password-input">Password</label>
+                            <input type="password" id="password-input" name="password" autocomplete="new-password">
+                        </p>
+                        <p>
+                            <label for="file-input">Upload a file</label>
+                            <input type="file" id="file-input" name="file">
+                        </p>
+                        <p>
+                            <input type="hidden" name="csrf_token" value="abc123">
+                        </p>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Preferences</legend>
+                        <p>
+                            <label for="browser-select">Preferred Browser</label>
+                            <select id="browser-select" name="browser">
+                                <optgroup label="Chromium-based">
+                                    <option value="chrome">Chrome</option>
+                                    <option value="edge">Edge</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="firefox">Firefox</option>
+                                    <option value="safari">Safari</option>
+                                </optgroup>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="framework-input">Framework</label>
+                            <input type="text" id="framework-input" name="framework" list="frameworks-list">
+                            <datalist id="frameworks-list">
+                                <option value="React">
+                                <option value="Vue">
+                                <option value="Angular">
+                                <option value="Svelte">
+                            </datalist>
+                        </p>
+                        <p>
+                            <label for="message-area">Message</label>
+                            <textarea id="message-area" name="message" rows="4" cols="40"></textarea>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="agree-check" name="agree" value="yes">
+                            <label for="agree-check">I agree to the terms</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="opt-in" name="newsletter" value="yes">
+                            <label for="opt-in">Subscribe to newsletter</label>
+                            <input type="radio" id="opt-out" name="newsletter" value="no">
+                            <label for="opt-out">No thanks</label>
+                        </p>
+                    </fieldset>
+
+                    <p>
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button>
+                    </p>
+                </form>
+
+                <h3>Progress and Meter</h3>
+                <p>
+                    <label for="task-progress">Task completion</label>
+                    <progress id="task-progress" value="70" max="100">70%</progress>
+                </p>
+                <p>
+                    <label for="disk-meter">Disk usage</label>
+                    <meter id="disk-meter" value="0.6" min="0" max="1" low="0.3" high="0.8" optimum="0.5">60%</meter>
+                </p>
+            </section>
+        </article>
+
+        <article>
+            <h2 id="media-section">Media and Embedded Content</h2>
+
+            <section aria-labelledby="media-section">
+                <h3>Images</h3>
+                <figure>
+                    <picture>
+                        <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark pinhead icon showing a triangular marker" width="250" height="250">
+                    </picture>
+                    <figcaption>Figure 1: The Ordnance Survey benchmark icon in responsive format</figcaption>
+                </figure>
+
+                <h3>Image Map</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark with clickable regions" usemap="#icon-map" width="960" height="960">
+                <map name="icon-map">
+                    <area shape="circle" coords="480,480,200" href="#media-section" alt="Center region of benchmark icon">
+                </map>
+
+                <h3>Audio</h3>
+                <audio controls aria-label="Audio pronunciation of the word benchmarking">
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <h3>Video</h3>
+                <video controls width="400" aria-label="IPCC climate projections video">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="resources/captions.vtt" srclang="en" label="English" default>
+                    Your browser does not support the video element.
+                </video>
+
+                <h3>Embedded Content</h3>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="100" height="100" aria-label="SVG benchmark icon embedded as object">
+                    <p>SVG benchmark icon (fallback text for object element)</p>
+                </object>
+
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="100" height="100" aria-label="SVG benchmark icon embedded with embed element">
+
+                <h3>Iframe</h3>
+                <iframe src="about:blank" title="Empty iframe for demonstration" width="300" height="100"></iframe>
+
+                <h3>Canvas</h3>
+                <canvas id="demo-canvas" width="200" height="100" aria-label="Decorative canvas element">
+                    Your browser does not support the canvas element.
+                </canvas>
+            </section>
+        </article>
+
+        <article>
+            <h2 id="tables-section">Tables</h2>
+
+            <section aria-labelledby="tables-section">
+                <table>
+                    <caption>HTML5 Element Categories</caption>
+                    <colgroup>
+                        <col span="1">
+                        <col span="1">
+                        <col span="1">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Category</th>
+                            <th scope="col">Example Elements</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Text-level semantics</td>
+                            <td>a, em, strong, code</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>Grouping content</td>
+                            <td>p, div, pre, blockquote</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Forms</td>
+                            <td>input, select, textarea</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td>—</td>
+                            <td>110</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </article>
+
+        <article>
+            <h2 id="interactive-section">Interactive Elements</h2>
+
+            <section aria-labelledby="interactive-section">
+                <h3>Details and Summary</h3>
+                <details>
+                    <summary>Click to expand additional information</summary>
+                    <p>This content is revealed when the details element is toggled open. It demonstrates the details and summary elements.</p>
+                </details>
+
+                <h3>Dialog</h3>
+                <dialog id="demo-dialog" aria-labelledby="dialog-title">
+                    <h4 id="dialog-title">Example Dialog</h4>
+                    <p>This is a native HTML5 dialog element.</p>
+                    <form method="dialog">
+                        <button type="submit">Close Dialog</button>
+                    </form>
+                </dialog>
+                <button type="button" id="open-dialog-btn">Open Dialog</button>
+
+                <h3>Lists</h3>
+                <h4>Ordered List</h4>
+                <ol>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ol>
+
+                <h4>Unordered List</h4>
+                <ul>
+                    <li>Item A</li>
+                    <li>Item B</li>
+                    <li>Item C</li>
+                </ul>
+
+                <h4>Description List</h4>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language — the standard markup language for web pages.</dd>
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets — used for describing the presentation of a document.</dd>
+                    <dt>WCAG</dt>
+                    <dd>Web Content Accessibility Guidelines — recommendations for making web content accessible.</dd>
+                </dl>
+
+                <h4>Menu</h4>
+                <menu>
+                    <li><button type="button">Copy</button></li>
+                    <li><button type="button">Paste</button></li>
+                    <li><button type="button">Cut</button></li>
+                </menu>
+
+                <h3>Miscellaneous Elements</h3>
+                <div>
+                    <p>This is a div container element.</p>
+                </div>
+
+                <noscript>
+                    <p>This content is shown when JavaScript is disabled.</p>
+                </noscript>
+
+                <template id="card-template">
+                    <div class="card">
+                        <h4><slot name="title">Default Title</slot></h4>
+                        <p><slot name="content">Default content</slot></p>
+                        <selectedcontent></selectedcontent>
+                    </div>
+                </template>
+
+                <script>
+                    // Canvas drawing
+                    (function() {
+                        var canvas = document.getElementById('demo-canvas');
+                        if (canvas && canvas.getContext) {
+                            var ctx = canvas.getContext('2d');
+                            ctx.fillStyle = '#1a1a2e';
+                            ctx.fillRect(0, 0, 200, 100);
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = '16px Arial';
+                            ctx.fillText('Canvas Demo', 50, 55);
+                        }
+                        // Dialog open button
+                        var btn = document.getElementById('open-dialog-btn');
+                        var dialog = document.getElementById('demo-dialog');
+                        if (btn && dialog) {
+                            btn.addEventListener('click', function() {
+                                dialog.showModal();
+                            });
+                        }
+                    })();
+                </script>
+            </section>
+        </article>
+
+        <aside aria-label="Related resources">
+            <h2>Related Resources</h2>
+            <ul>
+                <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Specification</a></li>
+                <li><a href="https://html.spec.whatwg.org/">HTML Living Standard</a></li>
+                <li><a href="https://github.com/dequelabs/axe-core">axe-core on GitHub</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 HTML5 Technical Showcase. All rights reserved.</small></p>
+    </footer>
+</body>
+</html>

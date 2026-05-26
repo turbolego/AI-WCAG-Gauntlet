@@ -1,0 +1,8 @@
+{
+  "model": "Claude Opus 4.6",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-05-26T18:52:17Z",
+  "folder": "Claude Opus 4.6-20260526-205217"
+}
