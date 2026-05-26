@@ -35,41 +35,86 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESOURCES="$SCRIPT_DIR/resources"
 
-# --- Detect Chrome for pa11y and QualWeb ---
-# pa11y uses its own puppeteer-core which needs a valid Chrome binary.
-# Honour PUPPETEER_EXECUTABLE_PATH if already set; otherwise auto-detect.
-if [ -z "${PUPPETEER_EXECUTABLE_PATH:-}" ]; then
+# --- Resolve a single shared Chrome for Testing binary (all tools use this) ---
+CHROME_FOR_TESTING_PATH="${CHROME_FOR_TESTING_PATH:-}"
+if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
     _HOME="${HOME:-/root}"
-    for _candidate in \
-        "${_HOME}/.cache/puppeteer/chrome/mac-147.0.7727.56/chrome-mac-x64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
-        "${_HOME}/.cache/puppeteer/chrome/mac-127.0.6533.88/chrome-mac-x64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-        "/usr/bin/google-chrome-stable" \
-        "/usr/bin/google-chrome" \
-        "/usr/bin/chromium-browser" \
-        "/usr/bin/chromium"
-    do
+
+    # macOS cache layout
+    while IFS= read -r _candidate; do
         if [ -x "$_candidate" ]; then
-            PUPPETEER_EXECUTABLE_PATH="$_candidate"
+            CHROME_FOR_TESTING_PATH="$_candidate"
             break
         fi
+    done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-mac-*/"Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" 2>/dev/null | sort -Vr)
+
+    # Linux cache layout fallback
+    if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
+        while IFS= read -r _candidate; do
+            if [ -x "$_candidate" ]; then
+                CHROME_FOR_TESTING_PATH="$_candidate"
+                break
+            fi
+        done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-linux*/chrome 2>/dev/null | sort -Vr)
+    fi
+fi
+
+if [ -z "$CHROME_FOR_TESTING_PATH" ] || [ ! -x "$CHROME_FOR_TESTING_PATH" ]; then
+    echo "Error: Chrome for Testing not found."
+    echo "Run setup.sh first (it installs Chrome for Testing), then retry."
+    exit 1
+fi
+
+# Force all browser-based tools to use the same executable.
+export CHROME_FOR_TESTING_PATH
+export CHROME_PATH="$CHROME_FOR_TESTING_PATH"
+export PUPPETEER_EXECUTABLE_PATH="$CHROME_FOR_TESTING_PATH"
+export CHROME_BIN="$CHROME_FOR_TESTING_PATH"
+echo "[DEBUG] Shared Chrome for Testing: $CHROME_FOR_TESTING_PATH"
+
+# Clean stale macOS code-sign clone bundles to avoid temp disk growth.
+cleanup_macos_chrome_code_sign_clones() {
+    if [[ "$OSTYPE" != darwin* ]]; then
+        return 0
+    fi
+
+    local max_age_seconds="${CHROME_CLONE_MAX_AGE_SECONDS:-21600}"
+    local tmp_base="${TMPDIR%/}"
+    [ -z "$tmp_base" ] && tmp_base="/tmp"
+    local clone_root
+    clone_root="$(dirname "$tmp_base")/X/com.google.Chrome.code_sign_clone"
+
+    [ -d "$clone_root" ] || return 0
+
+    local now
+    now=$(date +%s)
+    local removed=0
+
+    for clone_dir in "$clone_root"/code_sign_clone.*; do
+        [ -d "$clone_dir" ] || continue
+        local modified
+        modified=$(stat -f %m "$clone_dir" 2>/dev/null || true)
+        [ -n "$modified" ] || continue
+
+        if [ $((now - modified)) -ge "$max_age_seconds" ]; then
+            rm -rf "$clone_dir" 2>/dev/null && removed=$((removed + 1))
+        fi
     done
-fi
-export PUPPETEER_EXECUTABLE_PATH
 
-# --- Ensure chromedriver is in PATH (for axe-core) ---
-# Ensure the global npm bin directory is in PATH so axe can find chromedriver
-NPM_GLOBAL_BIN=$(npm config get prefix 2>/dev/null)/bin
-if [ -d "$NPM_GLOBAL_BIN" ]; then
-    export PATH="$NPM_GLOBAL_BIN:$PATH"
-    echo "[DEBUG] Added npm global bin to PATH: $NPM_GLOBAL_BIN"
-fi
+    if [ "$removed" -gt 0 ]; then
+        echo "[cleanup] Removed $removed stale Chrome code-sign clone folder(s)."
+    fi
+}
 
-# Debug: Show which chromedriver will be used
-echo "[DEBUG] chromedriver in PATH:"
-which chromedriver || echo "[DEBUG] chromedriver not found in PATH"
-echo "[DEBUG] axe in PATH:"
-which axe || echo "[DEBUG] axe not found in PATH"
+cleanup_on_exit() {
+    kill "${SERVE_PID:-}" 2>/dev/null || true
+    if [ -n "${CHROME_PROFILE_ROOT:-}" ] && [ -d "$CHROME_PROFILE_ROOT" ] && [ "${KEEP_CHROME_PROFILE:-0}" != "1" ]; then
+        rm -rf "$CHROME_PROFILE_ROOT" 2>/dev/null || true
+    fi
+    cleanup_macos_chrome_code_sign_clones
+}
+
+trap cleanup_on_exit EXIT INT TERM
 
 # --- Input folder ---
 TARGET_DIR="${1:-}"
@@ -114,12 +159,15 @@ PROJECT_NAME="$(basename "$SCRIPT_DIR")"
 SERVE_PORT="${A11Y_SERVE_PORT:-28763}"
 python3 -m http.server "$SERVE_PORT" --directory "$PARENT_DIR" >/dev/null 2>&1 &
 SERVE_PID=$!
-trap "kill $SERVE_PID 2>/dev/null || true" EXIT INT TERM
 sleep 1
 REL_TARGET="${TARGET_DIR#${SCRIPT_DIR}/}"
 REL_TARGET_ENC=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1], safe='/'))" "$REL_TARGET")
 TARGET_HTTP_URL="http://localhost:$SERVE_PORT/$PROJECT_NAME/$REL_TARGET_ENC/index.html"
 echo "Testing via HTTP: $TARGET_HTTP_URL"
+
+CHROME_PROFILE_ROOT="$TARGET_DIR/.chrome-profile"
+mkdir -p "$CHROME_PROFILE_ROOT"
+export CHROME_USER_DATA_DIR="$CHROME_PROFILE_ROOT/shared"
 
 # --- HTML5 tag test ---
 echo "Running HTML5 tag test..."
@@ -150,10 +198,6 @@ W3C_ERRORS=$(jq '.errorCount // 0' "$TARGET_DIR/w3c_report.json" || echo 0)
 
 # --- Axe validation ---
 echo "Running axe..."
-# Debug: show chromedriver version before running axe
-echo "[DEBUG] Verifying ChromeDriver before axe scan:"
-CHROMEDRIVER_VERSION=$(chromedriver --version 2>&1 | head -1 || echo "unknown")
-echo "[DEBUG] ChromeDriver version: $CHROMEDRIVER_VERSION"
 
 # Retry logic for axe (known to crash after ~4 minutes in CI environments)
 AXE_RETRY_COUNT=0
@@ -177,12 +221,10 @@ while [ $AXE_RETRY_COUNT -lt $AXE_MAX_RETRIES ]; do
             TIMEOUT_CMD="timeout 180"
         fi
         
-        $TIMEOUT_CMD axe "$TARGET_HTTP_URL" \
-            --chrome-options='{"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' \
-            --timeout 60000 \
-            --tags wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice \
-            --save axe_report.json \
-            > /dev/null
+        AXE_RUN_TIMEOUT_MS=60000 \
+        A11Y_NAV_TIMEOUT_MS=120000 \
+        CHROME_USER_DATA_DIR="$CHROME_PROFILE_ROOT/axe" \
+        $TIMEOUT_CMD node "$SCRIPT_DIR/scripts/run-axe.mjs" "$TARGET_HTTP_URL" axe_report.json > /dev/null
     ); then
         break
     else
@@ -232,9 +274,11 @@ if ! (
     cd "$TARGET_DIR"
     # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
     # puppeteer-core finds a working Chrome binary.
+    PA11Y_CHROME_CONFIG=$(printf '{"executablePath":"%s","args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--user-data-dir=%s"]}' "$PUPPETEER_EXECUTABLE_PATH" "$CHROME_PROFILE_ROOT/pa11y")
     pa11y \
         --runner axe \
         --standard WCAG2AAA \
+        --chrome-launch-config "$PA11Y_CHROME_CONFIG" \
         --reporter json \
         "$TARGET_HTTP_URL" \
         > pa11y_report.json 2>/dev/null || true
@@ -266,6 +310,7 @@ PA11Y_VERSION=$(pa11y --version 2>/dev/null || echo "unknown")
 echo "Running qualweb..."
 if ! (
     cd "$SCRIPT_DIR"
+    CHROME_USER_DATA_DIR="$CHROME_PROFILE_ROOT/qualweb" \
     node "$RESOURCES/run-qualweb.mjs" \
         "$TARGET_DIR/index.html" \
         "$TARGET_DIR/qualweb_report.json"

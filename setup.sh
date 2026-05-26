@@ -72,6 +72,10 @@ npm ci >/dev/null 2>&1 || {
 echo "[setup] Installing global testing tools (pa11y, @qualweb/cli)..."
 npm install -g pa11y @qualweb/cli >/dev/null 2>&1 || true
 
+echo "[setup] Installing Chrome for Testing (shared browser for axe/pa11y/qualweb)..."
+npx -y puppeteer@24 browsers install chrome@stable >/dev/null 2>&1 || \
+    echo "Warning: Failed to install Chrome for Testing via puppeteer"
+
 # On macOS, install GNU coreutils to provide gtimeout command
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "[setup] Checking for timeout command (installing GNU coreutils if needed)..."

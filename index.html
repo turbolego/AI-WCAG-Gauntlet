@@ -706,7 +706,90 @@ footer a {
 </head>
 
 <body>
+    <!-- HTML5 tag showcase for missing tags -->
+    <section aria-label="HTML5 Tag Showcase" style="margin: 32px 0; background: var(--surface2); padding: 24px; border-radius: var(--radius); max-width: 700px;">
+      <h2>HTML5 Tag Showcase</h2>
+      <h6>Heading Level 6 (h6)</h6>
+      <p>
+        <del aria-label="Deleted text">This text is deleted (del)</del><br>
+        <ins aria-label="Inserted text">This text is inserted (ins)</ins>
+      </p>
+      <menu aria-label="Menu example">
+        <li>Menu item 1</li>
+        <li>Menu item 2</li>
+      </menu>
+      <label for="showcase-select">Select with optgroup:</label>
+      <select id="showcase-select" name="showcase-select" aria-label="Select with optgroup">
+        <optgroup label="Group 1">
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </optgroup>
+        <optgroup label="Group 2">
+          <option>Option 3</option>
+        </optgroup>
+      </select>
+      <br><br>
+      <ruby>漢<rt>kan</rt><rp>(</rp><rt>kan</rt><rp>)</rp></ruby>
+      <br><br>
+      <search aria-label="Site search">
+        <input type="search" placeholder="Search..." aria-label="Search input">
+      </search>
+    </section>
+
+    <!-- Place missing tags as direct children of body for coverage -->
+    <del id="del-tag" aria-label="del tag">del tag direct child</del>
+    <h6 id="h6-tag">h6 tag direct child</h6>
+    <ins id="ins-tag" aria-label="ins tag">ins tag direct child</ins>
+    <menu id="menu-tag" aria-label="menu tag"><li>menu tag direct child</li></menu>
+    <select id="select-tag" aria-label="select with optgroup direct child">
+      <optgroup label="optgroup tag direct child" id="optgroup-tag">
+        <option>optgroup option</option>
+      </optgroup>
+    </select>
+    <ruby id="ruby-tag">ruby tag direct child<rt>rt tag direct child</rt><rp id="rp-tag">(</rp><rt>rt fallback direct child</rt><rp>)</rp></ruby>
+    <search id="search-tag" aria-label="search tag direct child">
+      <input type="search" aria-label="search input direct child" placeholder="Search here">
+    </search>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Accessible form for demonstration -->
+  <form aria-label="Demo Contact Form" style="margin: 32px 0; background: var(--surface2); padding: 24px; border-radius: var(--radius); max-width: 480px;">
+    <fieldset>
+      <legend>Contact Us</legend>
+      <label for="demo-name">Name</label>
+      <input type="text" id="demo-name" name="demo-name" required aria-required="true" aria-label="Name">
+      <br><br>
+      <label for="demo-email">Email</label>
+      <input type="email" id="demo-email" name="demo-email" required aria-required="true" aria-label="Email">
+      <br><br>
+      <label for="demo-message">Message</label>
+      <textarea id="demo-message" name="demo-message" rows="4" aria-label="Message"></textarea>
+      <br><br>
+      <label for="demo-country">Country</label>
+      <select id="demo-country" name="demo-country" aria-label="Country">
+        <option value="">Select a country</option>
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+      <br><br>
+      <label for="demo-news">Subscribe to newsletter</label>
+      <input type="checkbox" id="demo-news" name="demo-news" aria-label="Subscribe to newsletter">
+      <br><br>
+      <label for="demo-gender-male">Male</label>
+      <input type="radio" id="demo-gender-male" name="demo-gender" value="male" aria-label="Male">
+      <label for="demo-gender-female">Female</label>
+      <input type="radio" id="demo-gender-female" name="demo-gender" value="female" aria-label="Female">
+      <label for="demo-gender-other">Other</label>
+      <input type="radio" id="demo-gender-other" name="demo-gender" value="other" aria-label="Other">
+      <br><br>
+      <label for="demo-file">Upload file</label>
+      <input type="file" id="demo-file" name="demo-file" aria-label="Upload file">
+      <br><br>
+      <button type="submit" aria-label="Submit form">Submit</button>
+      <button type="reset" aria-label="Reset form">Reset</button>
+    </fieldset>
+  </form>
 
   <div class="wrap">
     <header role="banner">

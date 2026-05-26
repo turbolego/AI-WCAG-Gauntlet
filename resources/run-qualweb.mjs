@@ -55,6 +55,11 @@ function findChrome() {
 
 const chromePath = findChrome();
 const emptyReport = { failedCount: 0, results: [], note: "QualWeb skipped — no Chrome found" };
+const chromeArgs = ["--no-sandbox", "--disable-dev-shm-usage", "--headless=new"];
+
+if (process.env.CHROME_USER_DATA_DIR) {
+  chromeArgs.push(`--user-data-dir=${process.env.CHROME_USER_DATA_DIR}`);
+}
 
 if (!chromePath) {
   console.error("run-qualweb.mjs: No Chrome binary found — writing empty report.");
@@ -80,7 +85,7 @@ const qw = new QualWeb();
 try {
   await qw.start(
     { maxConcurrency: 1, timeout: 30_000 },
-    { executablePath: chromePath, args: ["--no-sandbox", "--disable-dev-shm-usage", "--headless=new"] }
+    { executablePath: chromePath, args: chromeArgs }
   );
 
   // Use HTML injection — more reliable than file:// URLs in headless Chrome

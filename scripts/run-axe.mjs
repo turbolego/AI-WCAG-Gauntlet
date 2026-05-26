@@ -20,10 +20,16 @@ if (!chromePath) {
   process.exit(1);
 }
 
+const chromeUserDataDir = process.env.CHROME_USER_DATA_DIR;
+const launchArgs = ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"];
+if (chromeUserDataDir) {
+  launchArgs.push(`--user-data-dir=${chromeUserDataDir}`);
+}
+
 const browser = await puppeteer.launch({
   executablePath: chromePath,
   headless: true,
-  args: ["--no-sandbox", "--disable-gpu"],
+  args: launchArgs,
 });
 
 try {
