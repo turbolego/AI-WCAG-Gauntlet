@@ -1,0 +1,74 @@
+/* WCAG 2.2 AAA Compliant Styles */
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #0000ee;
+    --link-visited: #551a8b;
+    --focus-outline: #005a9c;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 5px solid var(--focus-outline);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #005a9c;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+header, footer, main, section, article, aside, nav, search {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+img, video, audio, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ensure interactive elements have sufficient size */
+button, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+}

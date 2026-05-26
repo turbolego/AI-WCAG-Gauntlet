@@ -1,0 +1,54 @@
+{
+  "validates": false,
+  "errorCount": 5,
+  "messageCount": 5,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 168,
+      "lastColumn": 69,
+      "message": "No space between attributes.",
+      "extract": "etElementById(\"dia\").showModal",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 168,
+      "lastColumn": 72,
+      "message": "Quote “\"” in attribute name. Probable cause: Matching quote missing somewhere earlier.",
+      "extract": "lementById(\"dia\").showModal()\"",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 168,
+      "lastColumn": 86,
+      "message": "Quote “\"” in attribute name. Probable cause: Matching quote missing somewhere earlier.",
+      "extract": "a\").showModal()\">Open</button>",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 168,
+      "lastColumn": 87,
+      "firstColumn": 13,
+      "message": "Attribute “dia\").showmodal()\"” not allowed on element “button” at this point.",
+      "extract": "          <button type=\"button\" onclick=\"document.getElementById(\"dia\").showModal()\">Open</",
+      "hiliteStart": 10,
+      "hiliteLength": 75
+    },
+    {
+      "type": "error",
+      "lastLine": 197,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "The heading “h4” (with computed level 4) follows the heading “h2” (with computed level 2), skipping 1 heading level.",
+      "extract": "          <h4>H4</h4",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

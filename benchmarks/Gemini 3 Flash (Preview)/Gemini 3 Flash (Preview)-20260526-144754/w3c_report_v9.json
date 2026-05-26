@@ -1,0 +1,17 @@
+{
+  "validates": false,
+  "errorCount": 1,
+  "messageCount": 1,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 41,
+      "lastColumn": 12,
+      "firstColumn": 9,
+      "message": "The heading “h3” (with computed level 3) follows the heading “h1” (with computed level 1), skipping 1 heading level.",
+      "extract": ">\n        <h3>Side N",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

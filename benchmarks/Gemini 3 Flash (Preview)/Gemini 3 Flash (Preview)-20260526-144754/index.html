@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WCAG 2.2 AAA Technical Showcase with 110+ HTML5 tags.">
+    <title>WCAG 2.2 AAA - HTML5 Tag Showcase</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/Gemini%203%20Flash%20%28Preview%29/Gemini%203%20Flash%20%28Preview%29-20260526-144754/style.css">
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            console.log("Technical showcase loaded.");
+        });
+    </script>
+    <style>
+        .showcase-only { display: block; }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <p><a href="#main-content" class="skip-link">Skip to main content</a></p>
+    <header>
+        <nav aria-label="Main Navigation">
+            <hgroup>
+                <h1>AI WCAG Gauntlet Technical Showcase</h1>
+                <p>A comprehensive demonstration of valid HTML5 tags.</p>
+            </hgroup>
+            <ul>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#text">Text</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+            </ul>
+            <menu>
+                <li><button type="button">Menu Action</button></li>
+            </menu>
+        </nav>
+    </header>
+    <aside aria-label="Complementary Information">
+        <h2>Side Note</h2>
+        <p>This is a top-level aside landmark.</p>
+    </aside>
+    <main id="main-content">
+        <section id="structure">
+            <h2>Structure</h2>
+            <article>
+                <h3>Article Title</h3>
+                <p>Content.</p>
+                <footer><p>Article Footer.</p></footer>
+            </article>
+            <hr>
+            <nav aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#structure" aria-current="page">Structure</a></li>
+                </ol>
+            </nav>
+            <search>
+                <form action="/search" method="get">
+                    <p>
+                        <label for="s">Search:</label>
+                        <input type="search" id="s" name="q" required>
+                        <button type="submit">Go</button>
+                    </p>
+                </form>
+            </search>
+        </section>
+        <section id="text">
+            <h2>Text Semantics</h2>
+            <blockquote cite="https://example.com"><p>Quote.</p></blockquote>
+            <p>
+                <abbr title="Abbr">ABBR</abbr>, <cite>Cite</cite>, <dfn id="d">DFN</dfn>, 
+                <b>B</b>, <i>I</i>, <u>U</u>, <s>S</s>, <mark>Mark</mark>, <small>Small</small>, 
+                <strong>Strong</strong>, <em>Em</em>, <code>Code</code>, <kbd>KBD</kbd>, <samp>Samp</samp>, 
+                <var>Var</var>, <data value="1">Data</data>, <time datetime="2026-05-26">Time</time>, 
+                <q>Q</q>, <span>Span</span>, <sub>Sub</sub>, <sup>Sup</sup>, <wbr>WBR, <br>BR.
+            </p>
+            <p>
+                <bdi>BDI</bdi>, <bdo dir="rtl">BDO</bdo>, 
+                <ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby>.
+            </p>
+            <p><ins>Ins</ins>, <del>Del</del>.</p>
+            <dl>
+                <dt>DT</dt>
+                <dd>DD</dd>
+            </dl>
+            <figure>
+                <pre>Pre</pre>
+                <figcaption>Figcaption</figcaption>
+            </figure>
+            <div>Div</div>
+        </section>
+        <section id="media">
+            <h2>Media Content</h2>
+            <picture>
+                <source srcset="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Icon">
+            </picture>
+            <video controls width="300">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="data:text/vtt,WEBVTT" srclang="en" label="English" default>
+                <p>No video support.</p>
+            </video>
+            <audio controls title="Audio content">
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                <p>No audio support.</p>
+            </audio>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="50" height="50" title="Embed">
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="50" height="50" title="Object">SVG</object>
+            <iframe src="about:blank" title="Iframe" width="100" height="50"></iframe>
+            <canvas id="c" width="100" height="50" aria-label="Drawing area">Canvas.</canvas>
+            <map name="m">
+                <area shape="rect" coords="0,0,50,50" href="http://localhost:28763/" alt="Area">
+            </map>
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Map img" usemap="#m">
+            <svg width="50" height="50" aria-label="SVG Tag"><circle cx="25" cy="25" r="20" fill="blue"/></svg>
+        </section>
+        <section id="forms">
+            <h2>Forms and Controls</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <p><label for="n">Name:</label> <input type="text" id="n" name="n" autocomplete="name" required></p>
+                    <p><label for="e">Email:</label> <input type="email" id="e" name="e" autocomplete="email" required></p>
+                    <p><label for="pw">Pass:</label> <input type="password" id="pw" name="pw" autocomplete="current-password"></p>
+                    <p><label for="cl">Color:</label> <input type="color" id="cl" name="cl"></p>
+                    <p><label for="f">File:</label> <input type="file" id="f" name="f"></p>
+                    <p><label for="da">Date:</label> <input type="date" id="da" name="da"></p>
+                    <p><label for="dl">Time:</label> <input type="datetime-local" id="dl" name="dl"></p>
+                    <p><label for="mo">Month:</label> <input type="month" id="mo" name="mo"></p>
+                    <p><label for="nu">Num:</label> <input type="number" id="nu" name="nu"></p>
+                    <p><label for="ra">Range:</label> <input type="range" id="ra" name="ra"></p>
+                    <p><label for="tel">Tel:</label> <input type="tel" id="tel" name="tel"></p>
+                    <p><label for="ti">Time:</label> <input type="time" id="ti" name="ti"></p>
+                    <p><label for="u">URL:</label> <input type="url" id="u" name="u"></p>
+                    <p><label for="we">Week:</label> <input type="week" id="we" name="we"></p>
+                    <p>
+                        <input type="checkbox" id="c1" name="c1"> <label for="c1">Checkbox</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="radio1" name="r1"> <label for="radio1">Radio</label>
+                    </p>
+                    <p>
+                        <input type="image" src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" name="img_btn" alt="Submit Image" width="44" height="44">
+                    </p>
+                </fieldset>
+                <p>
+                    <label for="list">Choice:</label>
+                    <input list="browsers" id="list" name="list">
+                    <datalist id="browsers"><option value="A"></datalist>
+                </p>
+                <p><label for="txt">Area:</label><br><textarea id="txt" name="txt"></textarea></p>
+                <p>
+                    <label for="sel">Select:</label>
+                    <select id="sel" name="sel">
+                        <optgroup label="Group"><option value="1">One</option></optgroup>
+                    </select>
+                </p>
+                <p>
+                    <progress value="50" max="100">50%</progress>
+                    <meter value="0.5" min="0" max="1" low="0.2" high="0.8" optimum="0.67">50%</meter>
+                    <output name="out">Output</output>
+                </p>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+            <details>
+                <summary>Summary</summary>
+                <p>Details.</p>
+            </details>
+            <dialog id="dia"><form method="dialog"><p>Dialog.</p><button type="submit">Close</button></form></dialog>
+            <p><button type="button" onclick="document.getElementById('dia').showModal()">Open</button></p>
+        </section>
+        <section id="tables">
+            <h2>Tables</h2>
+            <table>
+                <caption>Table Caption</caption>
+                <colgroup><col><col></colgroup>
+                <thead><tr><th scope="col">Head 1</th><th scope="col">Head 2</th></tr></thead>
+                <tbody><tr><th scope="row">Row 1</th><td>Data 1</td></tr></tbody>
+                <tfoot><tr><td colspan="2">Footer</td></tr></tfoot>
+            </table>
+        </section>
+        <section id="experimental">
+            <h2>Experimental & Template</h2>
+            <template id="t">
+                <p>Template content.</p>
+                <slot name="s1">Slot</slot>
+            </template>
+            <div id="select-test">
+                <label for="exp-sel">Exp:</label>
+                <select id="exp-sel" name="exp-sel">
+                    <option value="1">Valid Option</option>
+                </select>
+                <template id="exp-tags">
+                    <selectedcontent>Experimental</selectedcontent>
+                </template>
+            </div>
+            <noscript><p>No JS Support.</p></noscript>
+            <h3>Heading Hierarchy</h3>
+            <h4>H4</h4><h5>H5</h5><h6>H6</h6>
+        </section>
+    </main>
+    <footer id="main-footer">
+        <address>AI Agent<br><a href="mailto:a@b.com">Email</a></address>
+        <p>&copy; 2026</p>
+    </footer>
+</body>
+</html>
