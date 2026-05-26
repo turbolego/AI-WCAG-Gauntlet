@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/Claude%20Haiku%204.5/Claude%20Haiku%204.5-20260526-131001/style.css">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #333333;
+            --success-color: #003d00;
+            --warning-color: #664d00;
+            --danger-color: #cc0000;
+        }
+    </style>
+    <title>AI WCAG Gauntlet - HTML5 & WCAG 2.2 AAA Benchmark</title>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <script>
+        window.alert = window.confirm = window.prompt = () => null;
+    </script>
+
+    <!-- Header with navigation landmark -->
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#main">Main Content</a></li>
+                <li><a href="#text-content">Text Tags</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#footer">Footer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Search landmark -->
+    <search>
+        <form role="search">
+            <label for="search-input">Search page content:</label>
+            <input type="search" id="search-input" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </search>
+
+    <!-- Main content landmark -->
+    <main id="main">
+        <article>
+            <h1>AI WCAG Gauntlet - Complete HTML5 Tag Showcase</h1>
+            
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p>This page demonstrates all valid HTML5 tags while maintaining WCAG 2.2 Level AAA compliance.</p>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Web Content Accessibility Guidelines (WCAG) 2.2 defines how to make web content more accessible to people with disabilities.</p>
+                </blockquote>
+            </section>
+
+            <!-- Text Content Section -->
+            <section id="text-content">
+                <h2>Text Content Tags</h2>
+                
+                <p>This demonstrates <strong>strong</strong> emphasis and <em>emphasis</em> tags.</p>
+                <p>For additional emphasis: <b>bold</b>, <i>italic</i>, <u>underline</u>, <s>strikethrough</s>, <mark>highlighted</mark> text.</p>
+                <p>Small text: <small>This is smaller text for fine print</small> and normal text together.</p>
+                <p><span>Span element</span> for grouping inline content.</p>
+                
+                <p>Code examples: <code>const x = 10;</code> is inline code.</p>
+                <pre><code>function example() {
+    return "preformatted code";
+}</code></pre>
+
+                <p>Abbreviations: <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> are essential.</p>
+                
+                <p>Citations: <cite>The HTML Living Standard</cite> defines all elements.</p>
+                <p>Quoted text: <q>This is a quotation</q> in the middle of a sentence.</p>
+                
+                <p>Variables: <var>x</var> + <var>y</var> = <var>z</var></p>
+                <p>Keyboard input: Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.</p>
+                <p>Sample output: <samp>Output: Success!</samp></p>
+                
+                <p>Subscript: H<sub>2</sub>O is water.</p>
+                <p>Superscript: E=mc<sup>2</sup> is Einstein's equation.</p>
+                
+                <p>Inserted text: <ins datetime="2026-05-26T10:00:00Z" style="background-color: #ccffcc; color: #000000;">This content was added</ins></p>
+                <p>Deleted text: <del datetime="2026-05-26T09:00:00Z" style="color: #000000;">This content was removed</del></p>
+                
+                <address>
+                    Contact us at: <a href="mailto:info@example.com">info@example.com</a>
+                </address>
+
+                <p>Term definition: <dfn>Accessibility</dfn> means making content available to everyone.</p>
+                <p>Bidirectional text: <bdi>مرحبا</bdi> hello <bdo dir="rtl">مرحبا</bdo></p>
+                <p>Line break example:<br>This is on a new line.</p>
+                <p>Word break: This is a very long wordthatneedsabreakpoint<wbr>here for proper display.</p>
+                <p>With horizontal rule:</p>
+                <hr>
+            </section>
+
+            <!-- Semantic Sections -->
+            <section id="semantic">
+                <h2>Semantic Structure Tags</h2>
+                
+                <article>
+                    <header>
+                        <h3>Article Example</h3>
+                        <h4>Subheading Level 4</h4>
+                        <time datetime="2026-05-26">May 26, 2026</time>
+                    </header>
+                    <p>This is an article element with its own header and footer.</p>
+                    <footer>
+                        <p>Article by Example Author</p>
+                    </footer>
+                </article>
+
+                <hgroup>
+                    <h2>Heading Group</h2>
+                </hgroup>
+
+                <h3>Heading Level 3</h3>
+                <p>Proper heading hierarchy with h3.</p>
+
+                <h4>Heading Level 4</h4>
+                <p>Proper heading hierarchy with h4.</p>
+
+                <h5>Heading Level 5</h5>
+                <p>Proper heading hierarchy with h5.</p>
+
+                <h6>Heading Level 6</h6>
+                <p>Proper heading hierarchy with h6.</p>
+
+                <section>
+                    <h3>Data Example</h3>
+                    <p>Price: <data value="29.99">$29.99</data></p>
+                </section>
+
+                <figure>
+                    <figcaption>Figure 1: Sample Figure Caption</figcaption>
+                    <p>This figure element contains content with a caption explaining it.</p>
+                </figure>
+            </section>
+
+            <!-- Lists -->
+            <section id="lists">
+                <h2>List Tags</h2>
+                
+                <h3>Unordered List</h3>
+                <ul>
+                    <li>Item one</li>
+                    <li>Item two</li>
+                    <li>Item three</li>
+                </ul>
+
+                <h3>Ordered List</h3>
+                <ol>
+                    <li>First step</li>
+                    <li>Second step</li>
+                    <li>Third step</li>
+                </ol>
+
+                <h3>Definition List</h3>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language</dd>
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets</dd>
+                </dl>
+
+                <h3>Menu</h3>
+                <menu>
+                    <li><a href="#option1">Option 1</a></li>
+                    <li><a href="#option2">Option 2</a></li>
+                </menu>
+            </section>
+
+            <!-- Tables -->
+            <section id="tables">
+                <h2>Table Tags</h2>
+                <table>
+                    <caption>Sample Data Table</caption>
+                    <colgroup>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Header 1</th>
+                            <th>Header 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data 1</td>
+                            <td>Data 2</td>
+                        </tr>
+                        <tr>
+                            <td>Data 3</td>
+                            <td>Data 4</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total 1</th>
+                            <th>Total 2</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+            <!-- Media Section -->
+            <section id="media">
+                <h2>Media Tags</h2>
+
+                <h3>Image</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon">
+
+                <h3>Picture with Responsive Sources</h3>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                    <source srcset="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                </picture>
+
+                <h3>Audio</h3>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <h3>Video</h3>
+                <video controls width="400" height="300">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English Captions" default>
+                    Your browser does not support the video element.
+                </video>
+
+                <h3>Embedded Content</h3>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" alt="SVG Benchmark Icon">
+
+                <h3>Object</h3>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG Benchmark Icon">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Fallback image">
+                </object>
+
+                <h3>Image Map</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#imagemap" alt="Clickable benchmark map">
+                <map name="imagemap">
+                    <area shape="rect" coords="0,0,100,50" href="#target1" alt="Area 1">
+                    <area shape="circle" coords="150,75,25" href="#target2" alt="Area 2">
+                </map>
+
+                <h3>IFrame</h3>
+                <iframe src="about:blank" title="Embedded content" width="400" height="300"></iframe>
+            </section>
+
+            <!-- Canvas and SVG -->
+            <section id="graphics">
+                <h2>Graphics</h2>
+
+                <h3>Canvas</h3>
+                <canvas id="mycanvas" width="200" height="100" aria-label="Canvas drawing example">
+                    Canvas not supported
+                </canvas>
+
+                <h3>SVG Example</h3>
+                <svg width="100" height="100" aria-label="Simple SVG circle">
+                    <circle cx="50" cy="50" r="40" fill="blue">
+                        <title>Blue Circle</title>
+                    </circle>
+                </svg>
+            </section>
+
+            <!-- Forms Section -->
+            <section id="forms">
+                <h2>Form Tags</h2>
+                
+                <form>
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div>
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" min="0" max="120">
+                        </div>
+
+                        <div>
+                            <label for="birthday">Birthday:</label>
+                            <input type="date" id="birthday" name="birthday">
+                        </div>
+
+                        <div>
+                            <label for="color">Favorite Color:</label>
+                            <input type="color" id="color" name="color">
+                        </div>
+
+                        <div>
+                            <label for="range">Satisfaction (1-10):</label>
+                            <input type="range" id="range" min="1" max="10">
+                        </div>
+
+                        <div>
+                            <label for="rating">Rating:</label>
+                            <meter id="rating" min="0" max="10" value="7" low="3" high="8">7 out of 10</meter>
+                        </div>
+
+                        <div>
+                            <label for="progress">Progress:</label>
+                            <progress id="progress" max="100" value="75">75%</progress>
+                        </div>
+
+                        <div>
+                            <label for="country">Country:</label>
+                            <datalist id="countries">
+                                <option value="USA">
+                                <option value="Canada">
+                                <option value="Mexico">
+                            </datalist>
+                            <input list="countries" id="country" name="country">
+                        </div>
+
+                        <div>
+                            <label for="select">Choose Option:</label>
+                            <select id="select" name="select">
+                                <optgroup label="Group 1">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                </optgroup>
+                                <optgroup label="Group 2">
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div>
+                            <textarea name="comments" id="comments" rows="4" cols="50" placeholder="Enter comments"></textarea>
+                            <label for="comments">Comments:</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="agree" name="agree">
+                            <label for="agree">I agree to the terms</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="radio1" name="choice" value="option1">
+                            <label for="radio1">Option 1</label>
+                            <input type="radio" id="radio2" name="choice" value="option2">
+                            <label for="radio2">Option 2</label>
+                        </div>
+
+                        <div>
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                            <button type="button">Button</button>
+                        </div>
+
+                        <div>
+                            <label for="output">Result:</label>
+                            <output id="output" name="output">0</output>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- Interactive Elements -->
+            <section id="interactive">
+                <h2>Interactive Elements</h2>
+
+                <h3>Details and Summary</h3>
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>This is the detailed content that appears when expanded.</p>
+                </details>
+
+                <h3>Dialog Box</h3>
+                <dialog id="dialog" open>
+                    <p>This is a dialog element.</p>
+                    <button onclick="document.getElementById('dialog').close()">Close Dialog</button>
+                </dialog>
+
+                <h3>Time</h3>
+                <p>Event scheduled for <time datetime="2026-05-26T14:00:00">May 26, 2:00 PM</time></p>
+
+                <h3>Ruby Text (for CJK)</h3>
+                <ruby>
+                    漢字
+                    <rp>(</rp>
+                    <rt>kanji</rt>
+                    <rp>)</rp>
+                </ruby>
+
+                <h3>Selected Content</h3>
+                <p>The <selectedcontent></selectedcontent> element is included in the HTML5 specification.</p>
+            </section>
+
+            <!-- Template and Slots -->
+            <section id="template">
+                <h2>Template and Slots</h2>
+                
+                <template id="my-template">
+                    <div>Template content</div>
+                </template>
+
+                <h3>Web Component with Slots</h3>
+                <div role="article">
+                    <slot name="title">Default Title</slot>
+                    <slot>Default content</slot>
+                </div>
+            </section>
+
+            <!-- Script -->
+            <noscript>
+                <p>This page requires JavaScript to be enabled for full functionality.</p>
+            </noscript>
+        </article>
+    </main>
+
+    <!-- Aside landmark (top-level, outside main) -->
+    <aside>
+        <h2>Sidebar Content</h2>
+        <p>This is complementary content in an aside element positioned at the top level as a landmark.</p>
+        <p>This sidebar is now a top-level landmark, outside of the main element, satisfying the landmark-complementary-is-top-level requirement.</p>
+    </aside>
+
+    <!-- Footer landmark -->
+    <footer id="footer">
+        <h2>Footer</h2>
+        <p>&copy; 2026 AI WCAG Gauntlet. All rights reserved.</p>
+        <p>This page demonstrates comprehensive HTML5 and WCAG 2.2 AAA compliance.</p>
+    </footer>
+
+</body>
+</html>
