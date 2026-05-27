@@ -256,6 +256,10 @@ section:last-of-type {
 
 /* ── Leaderboard table ───────────────────────────────────────── */
 .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -271,6 +275,93 @@ section:last-of-type {
 }
 
 .filter-controls input[type="checkbox"]:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.filter-select {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 4px 8px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.filter-select:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+/* ── Back to top link ─────────────────────────────────────────── */
+.back-to-top {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2px 8px;
+    transition: color 0.15s, border-color 0.15s;
+    margin-left: auto;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.back-to-top:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+/* ── Table footer (pagination) ────────────────────────────────── */
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding: 8px 0;
+}
+
+.table-count {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.show-all-btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent2);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.show-all-btn:hover,
+.show-all-btn:focus-visible {
+    border-color: var(--accent2);
+    color: var(--text);
+}
+
+.show-all-btn:focus-visible {
     outline: var(--focus);
     outline-offset: 2px;
 }
@@ -731,5 +822,157 @@ footer a {
 
     .kpi-value {
         font-size: 40px;
+    }
+}
+
+/* ── Theme toggle button ─────────────────────────────────────── */
+.theme-toggle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    transition: border-color 0.15s;
+    margin-left: auto;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+/* ── Sparkline in table ──────────────────────────────────────── */
+.sparkline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+/* ── Export button ───────────────────────────────────────────── */
+.export-btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.export-btn:hover,
+.export-btn:focus-visible {
+    border-color: var(--pass);
+    color: var(--pass);
+}
+
+.export-btn:focus-visible {
+    outline: var(--focus);
+    outline-offset: 2px;
+}
+
+.table-footer-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ── Light theme ─────────────────────────────────────────────── */
+[data-theme="light"] {
+    --bg: #f8f9fc;
+    --surface: #ffffff;
+    --surface2: #eef0f5;
+    --border: #d4d8e3;
+    --accent: #7a8800;
+    --accent2: #0077aa;
+    --accent3: #cc3333;
+    --accent4: #7c3aed;
+    --pass: #16a34a;
+    --warn: #d97706;
+    --text: #1a1d2b;
+    --text-muted: #545b72;
+    --link: #005f8a;
+    --focus: 3px solid #7a8800;
+}
+
+[data-theme="light"] html,
+html[data-theme="light"] {
+    background-color: #f8f9fc;
+}
+
+[data-theme="light"] .logo {
+    color: #1a1d2b;
+}
+
+[data-theme="light"] .logo span[aria-hidden="true"] {
+    color: var(--accent);
+}
+
+/* ── Responsive table cards (mobile) ─────────────────────────── */
+@media (max-width: 768px) {
+    .table-wrap table thead {
+        display: none;
+    }
+
+    .table-wrap table,
+    .table-wrap table tbody,
+    .table-wrap table tr,
+    .table-wrap table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-wrap table tr {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    .table-wrap table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0;
+        border: none;
+        font-size: 13px;
+    }
+
+    .table-wrap table td::before {
+        content: attr(data-label);
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+        margin-right: 12px;
+    }
+
+    /* Hide the table-wrap overflow-x on mobile since we use cards */
+    .table-wrap {
+        overflow-x: visible;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-header {
+        flex-wrap: wrap;
+    }
+
+    .back-to-top {
+        margin-left: 0;
     }
 }

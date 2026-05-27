@@ -17,7 +17,16 @@
   <!-- Compiled CSS -->
   <link rel="stylesheet" href="./style.css">
 
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('gauntlet-theme');
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 
 <body>
@@ -32,12 +41,16 @@
           <p>AI Model Performance on WCAG 2.2 AAA &amp; HTML5 Coverage</p>
           <p>Updated <strong id="generated-at">—</strong></p>
         </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle dark/light mode">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+        </button>
       </div>
     </header>
 
     <nav aria-label="Page sections">
       <a href="#leaderboard">Leaderboard</a>
       <a href="#run-history">Run History</a>
+      <a href="#timeline">Timeline</a>
       <a href="#strategies">Strategies</a>
       <a href="#errors">Error Breakdown</a>
       <a href="#coverage">Tag Coverage</a>
@@ -85,12 +98,23 @@
         <section id="leaderboard" aria-labelledby="leaderboard-title">
           <div class="section-header">
             <h2 class="section-title" id="leaderboard-title">Leaderboard</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">All runs ranked by final score</span>
           </div>
           <div class="filter-controls">
             <label for="best-only-checkbox" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
               <input type="checkbox" id="best-only-checkbox" aria-label="Show only the best score for each model" checked>
               <span style="font-family: var(--mono); font-size: 13px; color: var(--text-muted);">Only show best score per model</span>
+            </label>
+            <label for="lb-filter-model" class="filter-label">Model
+              <select id="lb-filter-model" class="filter-select" aria-label="Filter leaderboard by model">
+                <option value="">All models</option>
+              </select>
+            </label>
+            <label for="lb-filter-source" class="filter-label">Source
+              <select id="lb-filter-source" class="filter-select" aria-label="Filter leaderboard by source">
+                <option value="">All sources</option>
+              </select>
             </label>
           </div>
           <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table - Leaderboard">
@@ -127,13 +151,33 @@
               <tbody id="leaderboard-body"></tbody>
             </table>
           </div>
+          <div class="table-footer">
+            <span id="lb-showing" class="table-count"></span>
+            <div class="table-footer-actions">
+              <button id="lb-export-csv" class="export-btn" type="button" aria-label="Export leaderboard as CSV">⬇ CSV</button>
+              <button id="lb-show-all" class="show-all-btn" type="button">Show all</button>
+            </div>
+          </div>
         </section>
 
         <!-- Run history -->
         <section id="run-history" aria-labelledby="run-history-title">
           <div class="section-header">
             <h2 class="section-title" id="run-history-title">Run History</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">All runs per model</span>
+          </div>
+          <div class="filter-controls">
+            <label for="rh-filter-model" class="filter-label">Model
+              <select id="rh-filter-model" class="filter-select" aria-label="Filter run history by model">
+                <option value="">All models</option>
+              </select>
+            </label>
+            <label for="rh-filter-source" class="filter-label">Source
+              <select id="rh-filter-source" class="filter-select" aria-label="Filter run history by source">
+                <option value="">All sources</option>
+              </select>
+            </label>
           </div>
           <div class="table-wrap run-history" tabindex="0" role="region" aria-label="Scrollable table - Run History">
             <table aria-labelledby="run-history-title">
@@ -157,12 +201,38 @@
               <tbody id="run-history-body"></tbody>
             </table>
           </div>
+          <div class="table-footer">
+            <span id="rh-showing" class="table-count"></span>
+            <div class="table-footer-actions">
+              <button id="rh-export-csv" class="export-btn" type="button" aria-label="Export run history as CSV">⬇ CSV</button>
+              <button id="rh-show-all" class="show-all-btn" type="button">Show all</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Timeline -->
+        <section id="timeline" aria-labelledby="timeline-title">
+          <div class="section-header">
+            <h2 class="section-title" id="timeline-title">Timeline</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
+            <span class="section-sub" aria-hidden="true">Model scores over calendar time</span>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-card chart-card-wide">
+              <h3 id="chart-timeline-label">Score evolution over time — all models</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px">Each point is a benchmark run plotted by date. Shows how models improve across re-tests.</p>
+              <div class="chart-wrap" style="height:380px">
+                <canvas id="chart-timeline" role="img" aria-labelledby="chart-timeline-label"></canvas>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Model Strategies -->
         <section id="strategies" aria-labelledby="strategies-title">
           <div class="section-header">
             <h2 class="section-title" id="strategies-title">Model Strategies</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">How different models approach the benchmark over time</span>
           </div>
 
@@ -240,6 +310,7 @@
         <section id="errors" aria-labelledby="errors-title">
           <div class="section-header">
             <h2 class="section-title" id="errors-title">Error Breakdown</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
           </div>
           <div class="chart-grid">
@@ -262,6 +333,7 @@
         <section id="coverage" aria-labelledby="coverage-title">
           <div class="section-header">
             <h2 class="section-title" id="coverage-title">Tag Coverage</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">Best run per model — final iteration</span>
           </div>
           <div class="chart-grid">
@@ -284,6 +356,7 @@
         <section id="missing-tags" aria-labelledby="missing-tags-title">
           <div class="section-header">
             <h2 class="section-title" id="missing-tags-title">Missing Tags Heatmap</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">How often each HTML5 tag was missing in final iterations across
               all runs</span>
           </div>
@@ -298,6 +371,7 @@
         <section id="progress" aria-labelledby="progress-title">
           <div class="section-header">
             <h2 class="section-title" id="progress-title">Iteration Progress</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
             <span class="section-sub" aria-hidden="true">Score and error trends per model over iterations</span>
           </div>
           <div id="model-tabs" class="model-tabs" role="tablist" aria-label="Select model to view iteration progress">

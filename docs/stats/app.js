@@ -1,5 +1,89 @@
 'use strict';
 
+/* ── Theme toggle ────────────────────────────────────────────── */
+function initTheme() {
+  const btn = document.querySelector('#theme-toggle');
+  if (!btn) return;
+  const icon = btn.querySelector('.theme-icon');
+  const html = document.documentElement;
+
+  function apply(theme) {
+    if (theme === 'light') {
+      html.setAttribute('data-theme', 'light');
+      btn.setAttribute('aria-label', 'Switch to dark theme');
+      if (icon) icon.textContent = '🌙';
+    } else {
+      html.removeAttribute('data-theme');
+      btn.setAttribute('aria-label', 'Switch to light theme');
+      if (icon) icon.textContent = '☀️';
+    }
+  }
+
+  const saved = localStorage.getItem('gauntlet-theme');
+  apply(saved || 'dark');
+
+  btn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('gauntlet-theme', next);
+    apply(next);
+  });
+}
+
+/* ── URL hash state (permalink filters) ──────────────────────── */
+function readHashState() {
+  const hash = location.hash.replace('#', '');
+  const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
+  return {
+    section: hash.split('?')[0] || '',
+    model: params.get('model') || '',
+    source: params.get('source') || '',
+  };
+}
+
+function writeHashState(section, filters) {
+  const params = new URLSearchParams();
+  if (filters.model) params.set('model', filters.model);
+  if (filters.source) params.set('source', filters.source);
+  const qs = params.toString();
+  const newHash = section + (qs ? '?' + qs : '');
+  history.replaceState(null, '', '#' + newHash);
+}
+
+/* ── CSV export ──────────────────────────────────────────────── */
+function downloadCSV(filename, headers, rows) {
+  const csvContent = [
+    headers.join(','),
+    ...rows.map(row => row.map(cell => {
+      const s = String(cell ?? '');
+      return s.includes(',') || s.includes('"') || s.includes('\n')
+        ? '"' + s.replace(/"/g, '""') + '"'
+        : s;
+    }).join(','))
+  ].join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* ── Sparkline SVG generator ─────────────────────────────────── */
+function sparklineSVG(scores, width = 60, height = 18) {
+  if (!scores || scores.length < 2) return '';
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
+  const range = max - min || 1;
+  const points = scores.map((s, i) => {
+    const x = (i / (scores.length - 1)) * width;
+    const y = height - ((s - min) / range) * (height - 2) - 1;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  return `<svg class="sparkline" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" aria-hidden="true"><polyline points="${points}" fill="none" stroke="var(--accent2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
 /* ── Chart palette ───────────────────────────────────────────── */
 const C = {
   accent: '#e8ff47',
@@ -98,6 +182,8 @@ function numCell(n) {
 
 /* ── Main ────────────────────────────────────────────────────── */
 async function main() {
+  initTheme();
+
   let data;
   try {
     const res = await fetch('./benchmark_stats.json');
@@ -119,17 +205,26 @@ async function main() {
   $('#app').removeAttribute('hidden');
   $('#app').style.display = 'block';
 
+  // Store model_progress globally for sparklines
+  window._modelProgress = data.model_progress ?? {};
+
   renderHeader(data);
   renderKPIs(data);
   renderLeaderboard(data.leaderboard);
   window._runHistoryData = data.runs_by_model ?? [];
+  populateFilterOptions('rh', window._runHistoryData);
   renderRunHistory(window._runHistoryData);
   setupRunHistorySort();
+  renderTimeline(data.runs_by_model);
   renderErrorBreakdown(data.error_breakdown);
   renderStrategyCharts(data.model_progress, data.runs_by_model);
   renderCoverageCharts(data.tag_coverage_by_model);
   renderMissingTagsHeatmap(data.missing_tags_frequency, data.total_runs);
   renderProgressSection(data.model_progress);
+
+  // Apply URL hash state
+  applyHashState();
+  setupExportButtons();
 }
 
 /* ── Header ──────────────────────────────────────────────────── */
@@ -156,27 +251,79 @@ function renderKPIs(data) {
 let lbData = [];
 let lbSort = { col: 'rank', dir: 1 };
 let lbShowBestOnly = true;
+let lbShowAll = false;
+let lbFilterModel = '';
+let lbFilterSource = '';
+const LB_PAGE_SIZE = 10;
 
 function renderLeaderboard(rows) {
   lbData = rows ?? [];
+  populateFilterOptions('lb', lbData);
   drawLeaderboard();
   setupLeaderboardSort();
   setupLeaderboardFilter();
+  setupLeaderboardPagination();
+}
+
+function populateFilterOptions(prefix, data) {
+  const models = [...new Set(data.map(r => r.model))].sort();
+  const sources = [...new Set(data.map(r => r.providerLabel || r.source || '').filter(Boolean))].sort();
+
+  const modelSelect = $(`#${prefix}-filter-model`);
+  const sourceSelect = $(`#${prefix}-filter-source`);
+  if (modelSelect) {
+    modelSelect.innerHTML = '<option value="">All models</option>' +
+      models.map(m => `<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  }
+  if (sourceSelect) {
+    sourceSelect.innerHTML = '<option value="">All sources</option>' +
+      sources.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+  }
 }
 
 function setupLeaderboardFilter() {
   const checkbox = $('#best-only-checkbox');
-  if (!checkbox) return;
-  
-  checkbox.addEventListener('change', () => {
-    lbShowBestOnly = checkbox.checked;
-    // Reset sort when filtering
-    lbSort = { col: 'rank', dir: 1 };
-    document.querySelectorAll('#leaderboard thead .sort-btn').forEach(b => {
-      b.removeAttribute('aria-sort');
+  if (checkbox) {
+    checkbox.addEventListener('change', () => {
+      lbShowBestOnly = checkbox.checked;
+      lbSort = { col: 'rank', dir: 1 };
+      lbShowAll = false;
+      document.querySelectorAll('#leaderboard thead .sort-btn').forEach(b => {
+        b.removeAttribute('aria-sort');
+      });
+      drawLeaderboard();
     });
-    drawLeaderboard();
-  });
+  }
+
+  const modelSelect = $('#lb-filter-model');
+  const sourceSelect = $('#lb-filter-source');
+  if (modelSelect) {
+    modelSelect.addEventListener('change', () => {
+      lbFilterModel = modelSelect.value;
+      lbShowAll = false;
+      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource });
+      drawLeaderboard();
+    });
+  }
+  if (sourceSelect) {
+    sourceSelect.addEventListener('change', () => {
+      lbFilterSource = sourceSelect.value;
+      lbShowAll = false;
+      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource });
+      drawLeaderboard();
+    });
+  }
+}
+
+function setupLeaderboardPagination() {
+  const btn = $('#lb-show-all');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      lbShowAll = !lbShowAll;
+      btn.textContent = lbShowAll ? 'Show top 10' : 'Show all';
+      drawLeaderboard();
+    });
+  }
 }
 
 function drawLeaderboard() {
@@ -195,8 +342,18 @@ function drawLeaderboard() {
     dataToDisplay = Object.values(bestPerModel);
   }
 
+  // Apply model/source filters
+  if (lbFilterModel) {
+    dataToDisplay = dataToDisplay.filter(r => r.model === lbFilterModel);
+  }
+  if (lbFilterSource) {
+    dataToDisplay = dataToDisplay.filter(r => (r.providerLabel || r.source || '') === lbFilterSource);
+  }
+
   if (dataToDisplay.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="12" class="empty">No data yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="13" class="empty">No data matches the current filters.</td></tr>`;
+    $('#lb-showing').textContent = '';
+    $('#lb-show-all').style.display = 'none';
     return;
   }
 
@@ -207,7 +364,10 @@ function drawLeaderboard() {
       : (av - bv) * lbSort.dir;
   });
 
-  tbody.innerHTML = sorted.map(r => {
+  const total = sorted.length;
+  const display = lbShowAll ? sorted : sorted.slice(0, LB_PAGE_SIZE);
+
+  tbody.innerHTML = display.map(r => {
     const rankCls = r.rank <= 3 ? `rank-${r.rank}` : 'rank-n';
     const status = r.status === 'pass'
       ? `<span class="pill pill-pass">PASS</span>`
@@ -222,24 +382,45 @@ function drawLeaderboard() {
       </div>`;
     const iterCls = r.iterations_used <= 5 ? 'num-good'
       : r.iterations_used <= 12 ? 'num-warn' : 'num-bad';
+    // Generate sparkline from model_progress data for this run
+    let spark = '';
+    const mp = window._modelProgress[r.model];
+    if (mp) {
+      const run = mp.find(rr => rr.run_id === r.run_id);
+      if (run && run.iterations.length >= 2) {
+        spark = sparklineSVG(run.iterations.map(it => it.score ?? 0));
+      }
+    }
     return `<tr>
-      <td><span class="rank-badge ${rankCls}" aria-label="Rank ${r.rank}">${r.rank}</span></td>
-      <td><span class="model-name">${esc(r.model)}</span></td>
-      <td><span class="source-badge source-${r.source}" data-provider="${esc(r.provider || '')}" title="${esc(r.providerLabel || r.source || '')}"><span class="source-provider">${esc(r.providerLabel || (r.source === 'api' ? 'API' : 'Local'))}</span></span></td>
-      <td><span class="score-val" aria-label="Score ${(r.score ?? 0).toFixed(1)}">${(r.score ?? 0).toFixed(1)}</span></td>
-      <td>${status}</td>
-      <td>${covBar}</td>
-      <td>${numCell(r.html_tag_errors)}</td>
-      <td>${numCell(r.w3c_errors)}</td>
-      <td>${numCell(r.axe_violations)}</td>
-      <td>${numCell(r.pa11y_issues ?? 0)}</td>
-      <td>${numCell(r.qualweb_issues ?? 0)}</td>
-      <td><span class="${iterCls}" aria-label="${r.iterations_used} iterations">${r.iterations_used}</span></td>
-      <td>${r.benchmark_url
+      <td data-label="Rank"><span class="rank-badge ${rankCls}" aria-label="Rank ${r.rank}">${r.rank}</span></td>
+      <td data-label="Model"><span class="model-name">${esc(r.model)}</span></td>
+      <td data-label="Source"><span class="source-badge source-${r.source}" data-provider="${esc(r.provider || '')}" title="${esc(r.providerLabel || r.source || '')}"><span class="source-provider">${esc(r.providerLabel || (r.source === 'api' ? 'API' : 'Local'))}</span></span></td>
+      <td data-label="Score"><span class="score-val" aria-label="Score ${(r.score ?? 0).toFixed(1)}">${(r.score ?? 0).toFixed(1)}</span></td>
+      <td data-label="Status">${status}</td>
+      <td data-label="Coverage">${covBar}</td>
+      <td data-label="Missing tags">${numCell(r.html_tag_errors)}</td>
+      <td data-label="W3C">${numCell(r.w3c_errors)}</td>
+      <td data-label="Axe">${numCell(r.axe_violations)}</td>
+      <td data-label="Pa11y">${numCell(r.pa11y_issues ?? 0)}</td>
+      <td data-label="QualWeb">${numCell(r.qualweb_issues ?? 0)}</td>
+      <td data-label="Iterations"><span class="${iterCls}" aria-label="${r.iterations_used} iterations">${r.iterations_used}</span>${spark}</td>
+      <td data-label="Run ID">${r.benchmark_url
         ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
         : `<span class="run-id">${esc(r.run_id)}</span>`}</td>
     </tr>`;
   }).join('');
+
+  // Update count and show-all button
+  const showingEl = $('#lb-showing');
+  const showAllBtn = $('#lb-show-all');
+  if (total > LB_PAGE_SIZE) {
+    showingEl.textContent = lbShowAll ? `Showing all ${total}` : `Showing ${display.length} of ${total}`;
+    showAllBtn.style.display = '';
+    showAllBtn.textContent = lbShowAll ? 'Show top 10' : 'Show all';
+  } else {
+    showingEl.textContent = `${total} result${total !== 1 ? 's' : ''}`;
+    showAllBtn.style.display = 'none';
+  }
 }
 
 function setupLeaderboardSort() {
@@ -265,57 +446,89 @@ function setupLeaderboardSort() {
 /* ── Run history ─────────────────────────────────────────────── */
 
 let rhSort = { col: 'timestamp', dir: -1 };
+let rhShowAll = false;
+let rhFilterModel = '';
+let rhFilterSource = '';
+const RH_PAGE_SIZE = 10;
 
 function renderRunHistory(runs) {
   const tbody = $('#run-history-body');
   if (!runs || runs.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="11" class="empty">No run history yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="12" class="empty">No run history yet.</td></tr>`;
     return;
   }
+
+  // Apply filters
+  let filtered = runs;
+  if (rhFilterModel) {
+    filtered = filtered.filter(r => r.model === rhFilterModel);
+  }
+  if (rhFilterSource) {
+    filtered = filtered.filter(r => (r.providerLabel || r.source || '') === rhFilterSource);
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="12" class="empty">No runs match the current filters.</td></tr>`;
+    $('#rh-showing').textContent = '';
+    $('#rh-show-all').style.display = 'none';
+    return;
+  }
+
   // Sort runs
-  const sorted = [...runs].sort((a, b) => {
+  const sorted = [...filtered].sort((a, b) => {
     let av = a[rhSort.col], bv = b[rhSort.col];
-    // Handle undefined/null
     if (av == null) av = '';
     if (bv == null) bv = '';
-    // Timestamp: sort by date
     if (rhSort.col === 'timestamp') {
       return (new Date(av) - new Date(bv)) * rhSort.dir;
     }
-    // Score, numbers
     if ([
       'final_score', 'total_iterations', 'final_html_errors', 'final_w3c_errors', 'final_axe_violations', 'final_pa11y_issues', 'final_qualweb_issues'
     ].includes(rhSort.col)) {
       return (parseFloat(av) - parseFloat(bv)) * rhSort.dir;
     }
-    // Status: pass/fail
     if (rhSort.col === 'status') {
       return (String(av).localeCompare(String(bv))) * rhSort.dir;
     }
-    // Default: string compare
     return String(av).localeCompare(String(bv)) * rhSort.dir;
   });
-  tbody.innerHTML = sorted.map(r => {
+
+  const total = sorted.length;
+  const display = rhShowAll ? sorted : sorted.slice(0, RH_PAGE_SIZE);
+
+  tbody.innerHTML = display.map(r => {
     const status = r.status === 'pass'
       ? `<span class="pill pill-pass">PASS</span>`
       : `<span class="pill pill-fail">FAIL</span>`;
     return `<tr>
-      <td><span class="model-name">${esc(r.model)}</span></td>
-      <td><span class="source-badge source-${r.source}" data-provider="${esc(r.provider || '')}" title="${esc(r.providerLabel || r.source || '')}"><span class="source-provider">${esc(r.providerLabel || (r.source === 'api' ? 'API' : 'Local'))}</span></span></td>
-      <td>${r.benchmark_url
+      <td data-label="Model"><span class="model-name">${esc(r.model)}</span></td>
+      <td data-label="Source"><span class="source-badge source-${r.source}" data-provider="${esc(r.provider || '')}" title="${esc(r.providerLabel || r.source || '')}"><span class="source-provider">${esc(r.providerLabel || (r.source === 'api' ? 'API' : 'Local'))}</span></span></td>
+      <td data-label="Run ID">${r.benchmark_url
         ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
         : `<span class="run-id">${esc(r.run_id)}</span>`}</td>
-      <td><span class="score-val" style="font-size:20px">${(r.final_score ?? 0).toFixed(1)}</span></td>
-      <td>${status}</td>
-      <td><span class="num-zero" style="font-family:var(--mono)">${r.total_iterations}</span></td>
-      <td>${numCell(r.final_html_errors)}</td>
-      <td>${numCell(r.final_w3c_errors)}</td>
-      <td>${numCell(r.final_axe_violations)}</td>
-      <td>${numCell(r.final_pa11y_issues ?? 0)}</td>
-      <td>${numCell(r.final_qualweb_issues ?? 0)}</td>
-      <td style="font-family:var(--mono);font-size:12px;color:var(--text-muted)">${fmtDate(r.timestamp)}</td>
+      <td data-label="Score"><span class="score-val" style="font-size:20px">${(r.final_score ?? 0).toFixed(1)}</span></td>
+      <td data-label="Status">${status}</td>
+      <td data-label="Iterations"><span class="num-zero" style="font-family:var(--mono)">${r.total_iterations}</span></td>
+      <td data-label="Missing tags">${numCell(r.final_html_errors)}</td>
+      <td data-label="W3C">${numCell(r.final_w3c_errors)}</td>
+      <td data-label="Axe">${numCell(r.final_axe_violations)}</td>
+      <td data-label="Pa11y">${numCell(r.final_pa11y_issues ?? 0)}</td>
+      <td data-label="QualWeb">${numCell(r.final_qualweb_issues ?? 0)}</td>
+      <td data-label="Timestamp" style="font-family:var(--mono);font-size:12px;color:var(--text-muted)">${fmtDate(r.timestamp)}</td>
     </tr>`;
   }).join('');
+
+  // Update count and show-all button
+  const showingEl = $('#rh-showing');
+  const showAllBtn = $('#rh-show-all');
+  if (total > RH_PAGE_SIZE) {
+    showingEl.textContent = rhShowAll ? `Showing all ${total}` : `Showing ${display.length} of ${total}`;
+    showAllBtn.style.display = '';
+    showAllBtn.textContent = rhShowAll ? 'Show last 10' : 'Show all';
+  } else {
+    showingEl.textContent = `${total} result${total !== 1 ? 's' : ''}`;
+    showAllBtn.style.display = 'none';
+  }
 }
 
 function setupRunHistorySort() {
@@ -328,15 +541,40 @@ function setupRunHistorySort() {
         rhSort.col = col;
         rhSort.dir = col === 'timestamp' ? -1 : 1;
       }
-      // Update aria-sort
       document.querySelectorAll('#run-history thead .sort-btn').forEach(b => {
         b.removeAttribute('aria-sort');
       });
       btn.setAttribute('aria-sort', rhSort.dir === 1 ? 'ascending' : 'descending');
-      // Redraw
       renderRunHistory(window._runHistoryData || []);
     });
   });
+
+  // Filters
+  const modelSelect = $('#rh-filter-model');
+  const sourceSelect = $('#rh-filter-source');
+  if (modelSelect) {
+    modelSelect.addEventListener('change', () => {
+      rhFilterModel = modelSelect.value;
+      rhShowAll = false;
+      renderRunHistory(window._runHistoryData || []);
+    });
+  }
+  if (sourceSelect) {
+    sourceSelect.addEventListener('change', () => {
+      rhFilterSource = sourceSelect.value;
+      rhShowAll = false;
+      renderRunHistory(window._runHistoryData || []);
+    });
+  }
+
+  // Show-all toggle
+  const showAllBtn = $('#rh-show-all');
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+      rhShowAll = !rhShowAll;
+      renderRunHistory(window._runHistoryData || []);
+    });
+  }
 }
 
 /* ── Error breakdown ─────────────────────────────────────────── */
@@ -1015,6 +1253,119 @@ function renderProgressCharts(runs, modelName) {
     },
     options: mergeCD({}),
   });
+}
+
+/* ── Timeline chart (scores over calendar time) ──────────────── */
+function renderTimeline(runsByModel) {
+  if (!runsByModel?.length) return;
+  const canvas = $('#chart-timeline');
+  if (!canvas) return;
+
+  const byModel = {};
+  for (const run of runsByModel) {
+    if (!byModel[run.model]) byModel[run.model] = [];
+    byModel[run.model].push(run);
+  }
+
+  const models = Object.keys(byModel);
+  const datasets = models.map((model, i) => ({
+    label: model,
+    data: byModel[model]
+      .filter(r => r.timestamp)
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+      .map(r => ({ x: r.timestamp, y: r.final_score })),
+    borderColor: modelColor(i),
+    backgroundColor: modelColor(i) + '44',
+    borderWidth: 2,
+    pointRadius: 5,
+    pointHoverRadius: 8,
+    showLine: true,
+    tension: 0.2,
+  }));
+
+  new Chart(canvas, {
+    type: 'scatter',
+    data: { datasets },
+    options: mergeCD({
+      scales: {
+        x: {
+          type: 'time',
+          time: { unit: 'day', tooltipFormat: 'dd MMM yyyy HH:mm' },
+          title: { display: true, text: 'Date', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 } },
+          grid: { color: C.border },
+        },
+        y: {
+          title: { display: true, text: 'Final score (APS)', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+        },
+      },
+      plugins: {
+        ...CD.plugins,
+        legend: { ...CD.plugins.legend, position: 'bottom' },
+        tooltip: {
+          ...CD.plugins.tooltip,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} APS`,
+          },
+        },
+      },
+    }),
+  });
+}
+
+/* ── Apply URL hash state to filters ─────────────────────────── */
+function applyHashState() {
+  const state = readHashState();
+  if (state.model) {
+    const lbModel = $('#lb-filter-model');
+    const rhModel = $('#rh-filter-model');
+    if (lbModel) { lbModel.value = state.model; lbFilterModel = state.model; }
+    if (rhModel) { rhModel.value = state.model; rhFilterModel = state.model; }
+  }
+  if (state.source) {
+    const lbSource = $('#lb-filter-source');
+    const rhSource = $('#rh-filter-source');
+    if (lbSource) { lbSource.value = state.source; lbFilterSource = state.source; }
+    if (rhSource) { rhSource.value = state.source; rhFilterSource = state.source; }
+  }
+  if (state.model || state.source) {
+    drawLeaderboard();
+    renderRunHistory(window._runHistoryData || []);
+  }
+}
+
+/* ── Export buttons ──────────────────────────────────────────── */
+function setupExportButtons() {
+  const lbBtn = $('#lb-export-csv');
+  if (lbBtn) {
+    lbBtn.addEventListener('click', () => {
+      const headers = ['Rank', 'Model', 'Source', 'Score', 'Status', 'Tag Coverage %', 'Missing Tags', 'W3C Errors', 'Axe Violations', 'Pa11y Issues', 'QualWeb Issues', 'Iterations', 'Run ID', 'Timestamp'];
+      const rows = lbData.map(r => [
+        r.rank, r.model, r.providerLabel || r.source, (r.score ?? 0).toFixed(1),
+        r.status, r.tag_coverage_pct, r.html_tag_errors, r.w3c_errors,
+        r.axe_violations, r.pa11y_issues ?? 0, r.qualweb_issues ?? 0,
+        r.iterations_used, r.run_id, r.timestamp || ''
+      ]);
+      downloadCSV('leaderboard.csv', headers, rows);
+    });
+  }
+
+  const rhBtn = $('#rh-export-csv');
+  if (rhBtn) {
+    rhBtn.addEventListener('click', () => {
+      const headers = ['Model', 'Source', 'Run ID', 'Score', 'Status', 'Iterations', 'Missing Tags', 'W3C Errors', 'Axe Violations', 'Pa11y Issues', 'QualWeb Issues', 'Timestamp'];
+      const rows = (window._runHistoryData || []).map(r => [
+        r.model, r.providerLabel || r.source, r.run_id, (r.final_score ?? 0).toFixed(1),
+        r.status, r.total_iterations, r.final_html_errors, r.final_w3c_errors,
+        r.final_axe_violations, r.final_pa11y_issues ?? 0, r.final_qualweb_issues ?? 0,
+        r.timestamp || ''
+      ]);
+      downloadCSV('run_history.csv', headers, rows);
+    });
+  }
 }
 
 main();
