@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI WCAG Gauntlet: Comprehensive HTML5 Benchmark</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260527-080929/style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ecf0f1;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+    
+    <!-- Landmark: Header with navigation -->
+    <header role="banner">
+        <h1>AI WCAG Gauntlet Benchmark</h1>
+        <nav aria-label="Main navigation">
+            <menu>
+                <li><a href="#main">Main Content</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#semantic">Semantic Elements</a></li>
+            </menu>
+        </nav>
+    </header>
+
+    <!-- Landmark: Complementary sidebar -->
+    <aside aria-label="Sidebar">
+        <h2>Quick Navigation</h2>
+        <section>
+            <h3>Topics Covered</h3>
+            <ol>
+                <li>HTML Structure</li>
+                <li>Media Elements</li>
+                <li>Form Controls</li>
+                <li>Semantic Markup</li>
+                <li>Accessibility</li>
+            </ol>
+        </section>
+    </aside>
+
+    <!-- Landmark: Main content area -->
+    <main id="main">
+        <!-- Article section -->
+        <article>
+            <h2>Complete HTML5 Tag Demonstration</h2>
+            <p>This page demonstrates all 110 HTML5 tags in a semantically correct and accessible manner, following WCAG 2.2 Level AAA standards.</p>
+            
+            <section id="features">
+                <h3>Key Features</h3>
+                <p>This benchmark includes:</p>
+                <blockquote cite="https://html.spec.whatwg.org/">
+                    A comprehensive overview of semantic HTML5 elements, form controls, media elements, and accessibility features.
+                </blockquote>
+                
+                <!-- Text formatting tags -->
+                <p>
+                    This demonstrates <strong>strong emphasis</strong>, <em>emphasis</em>, 
+                    <code>inline code</code>, <kbd>keyboard input</kbd>, <samp>sample output</samp>,
+                    <var>variable</var>, <dfn>defined term</dfn>, <cite>citation</cite>,
+                    <abbr title="abbreviation">abbr</abbr>, <mark>highlighted text</mark>,
+                    <small>small text</small>, <s>strikethrough</s>, subscript<sub>2</sub>, 
+                    superscript<sup>2</sup>, <u>underlined</u>, <b>bold</b>, <i>italic</i>,
+                    <ins>inserted text</ins>, <del>deleted text</del>, and <q>quoted text</q>.
+                    <span style="color: #003a7a;">This is a span element.</span>
+                </p>
+
+                <!-- Data and time -->
+                <p>Time element: <time datetime="2026-05-27T08:09:00">May 27, 2026</time></p>
+                <p>Data element: <data value="42">Forty-two</data></p>
+            </section>
+
+            <!-- Media section -->
+            <section id="media">
+                <h2>Media Elements</h2>
+                
+                <!-- Image with picture element -->
+                <figure>
+                    <picture>
+                        <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                        <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 400px)">
+                        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark pinhead icon" width="250" height="250">
+                    </picture>
+                    <figcaption>Benchmark icon demonstrating responsive images</figcaption>
+                </figure>
+
+                <!-- Standalone image -->
+                <img src="/AI-WCAG-Gauntlet/resources/1280px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="High-resolution benchmark icon" width="400" height="400">
+
+                <!-- Audio element -->
+                <h3>Audio Example</h3>
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <!-- Video element -->
+                <h3>Video Example</h3>
+                <video controls width="400" height="300">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="" srclang="en" label="English" default>
+                    Your browser does not support the video element.
+                </video>
+
+                <!-- Embedded object -->
+                <h3>Embedded SVG Object</h3>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="200" height="200" aria-label="Embedded SVG icon">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="SVG fallback" width="200" height="200">
+                </object>
+
+                <!-- Embed element -->
+                <h3>Embed Element</h3>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="150" height="150" aria-label="Embedded SVG via embed">
+
+                <!-- IFrame -->
+                <h3>Embedded Frame</h3>
+                <iframe src="about:blank" title="Embedded frame example" width="400" height="300" sandbox="allow-same-origin"></iframe>
+
+                <!-- Canvas -->
+                <h3>Canvas Graphics</h3>
+                <canvas id="canvas" width="200" height="200" aria-label="Canvas demonstration">
+                    Your browser does not support the canvas element.
+                </canvas>
+                <script>
+                    const canvas = document.getElementById('canvas');
+                    if (canvas && canvas.getContext) {
+                        const ctx = canvas.getContext('2d');
+                        ctx.fillStyle = '#3498db';
+                        ctx.fillRect(0, 0, 200, 200);
+                        ctx.fillStyle = '#fff';
+                        ctx.fillRect(50, 50, 100, 100);
+                    }
+                </script>
+
+                <!-- SVG via embed (map example) -->
+                <h3>Image Map</h3>
+                <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Clickable map" usemap="#mapExample" width="300" height="300">
+                <map name="mapExample">
+                    <area shape="circle" coords="150,150,100" href="#" alt="Center region">
+                </map>
+            </section>
+
+            <!-- Forms section -->
+            <section id="forms">
+                <h2>Form Elements</h2>
+                <form aria-label="Example form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        
+                        <!-- Text input -->
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+
+                        <!-- Email input -->
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <!-- Number input -->
+                        <div>
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" min="18" max="120">
+                        </div>
+
+                        <!-- Date input -->
+                        <div>
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <!-- Color input -->
+                        <div>
+                            <label for="color">Favorite Color:</label>
+                            <input type="color" id="color" name="color" value="#3498db">
+                        </div>
+
+                        <!-- Range input -->
+                        <div>
+                            <label for="range">Satisfaction (0-100):</label>
+                            <input type="range" id="range" name="range" min="0" max="100">
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div>
+                            <input type="checkbox" id="agree" name="agree" value="yes">
+                            <label for="agree">I agree to terms</label>
+                        </div>
+
+                        <!-- Radio buttons -->
+                        <fieldset>
+                            <legend>Choose an option:</legend>
+                            <div>
+                                <input type="radio" id="option1" name="options" value="opt1" checked>
+                                <label for="option1">Option 1</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="option2" name="options" value="opt2">
+                                <label for="option2">Option 2</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Select dropdown -->
+                        <div>
+                            <label for="select">Select Category:</label>
+                            <select id="select" name="category" aria-label="Category selection">
+                                <optgroup label="Fruits">
+                                    <option value="">Choose fruit...</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="banana">Banana</option>
+                                </optgroup>
+                                <optgroup label="Vegetables">
+                                    <option value="carrot">Carrot</option>
+                                    <option value="lettuce">Lettuce</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- Textarea -->
+                        <div>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                        </div>
+
+                        <!-- Datalist -->
+                        <div>
+                            <label for="browser">Browser:</label>
+                            <input list="browsers" id="browser" name="browser">
+                            <datalist id="browsers">
+                                <option value="Chrome">
+                                <option value="Firefox">
+                                <option value="Safari">
+                                <option value="Edge">
+                            </datalist>
+                        </div>
+
+                        <!-- Output -->
+                        <div>
+                            <label for="output">Calculation Result:</label>
+                            <output id="output" name="output">50</output>
+                        </div>
+
+                        <!-- Meter -->
+                        <div>
+                            <label for="meter">Performance:</label>
+                            <meter id="meter" value="6" min="0" max="10"></meter>
+                        </div>
+
+                        <!-- Progress -->
+                        <div>
+                            <label for="progress">Upload Progress:</label>
+                            <progress id="progress" value="70" max="100"></progress>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div>
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                            <button type="button">Click Me</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- Semantic elements section -->
+            <section id="semantic">
+                <h2>Semantic HTML Elements</h2>
+
+                <!-- Details and summary -->
+                <details>
+                    <summary>Click to expand details</summary>
+                    <p>This is the detailed content that can be shown or hidden.</p>
+                </details>
+
+                <!-- Dialog (non-modal in this context) -->
+                <dialog open aria-label="Sample dialog">
+                    <h3>Dialog Example</h3>
+                    <p>This demonstrates a dialog element.</p>
+                </dialog>
+
+                <!-- Search landmark -->
+                <search aria-label="Page search">
+                    <form role="search">
+                        <input type="search" name="q" placeholder="Search page...">
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+
+                <!-- Address -->
+                <address>
+                    Contact: <a href="mailto:info@example.com">info@example.com</a><br>
+                    Website: <a href="https://example.com">example.com</a>
+                </address>
+
+                <!-- HR (horizontal rule) -->
+                <hr>
+
+                <!-- Preformatted text -->
+                <pre><code>function example() {
+    console.log("Hello, World!");
+}</code></pre>
+
+                <!-- Description list -->
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language</dd>
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets</dd>
+                    <dt>JavaScript</dt>
+                    <dd>Programming language for web browsers</dd>
+                </dl>
+
+                <!-- Table -->
+                <table border="1">
+                    <caption>Sample Data Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Header 1</th>
+                            <th scope="col">Header 2</th>
+                            <th scope="col">Header 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data 1</td>
+                            <td>Data 2</td>
+                            <td>Data 3</td>
+                        </tr>
+                        <tr>
+                            <td>Data 4</td>
+                            <td>Data 5</td>
+                            <td>Data 6</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Total</th>
+                            <td>2</td>
+                            <td>6</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <!-- Colgroup for table styling -->
+                <table border="1">
+                    <colgroup>
+                        <col style="background-color: #f0f0f0;">
+                        <col span="2" style="background-color: #e0e0e0;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Unordered list -->
+                <ul>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ul>
+
+                <!-- Description items in context -->
+                <section>
+                    <h3>Key Concepts</h3>
+                    <dl>
+                        <div>
+                            <dt>Term 1</dt>
+                            <dd>Definition 1</dd>
+                        </div>
+                        <div>
+                            <dt>Term 2</dt>
+                            <dd>Definition 2</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <!-- Template element -->
+                <template id="itemTemplate">
+                    <div class="item">
+                        <h4></h4>
+                        <p></p>
+                    </div>
+                </template>
+
+                <!-- Slot for web components -->
+                <div style="border: 1px solid #ccc; padding: 10px;">
+                    <p>Example content that could use slots in a web component.</p>
+                    <slot name="content">Default content</slot>
+                </div>
+
+                <!-- NoScript -->
+                <noscript>
+                    <p>This page requires JavaScript to be enabled.</p>
+                </noscript>
+
+                <!-- Selected content element -->
+                <selectedcontent>
+                    <p>This is content wrapped in a selectedcontent element.</p>
+                </selectedcontent>
+
+                <!-- Bidi and ruby elements -->
+                <p>
+                    Bidirectional text: <bdi>مرحبا</bdi> alongside English text.
+                    Bidirectional override: <bdo dir="rtl">English text in RTL override</bdo>
+                </p>
+                <ruby>漢字<rt>かんじ</rt></ruby>
+                <rp>(</rp>kanji<rp>)</rp>
+
+                <!-- Title with h2-h6 -->
+                <h2>Heading Level 2</h2>
+                <h3>Heading Level 3</h3>
+                <h4>Heading Level 4</h4>
+                <h5>Heading Level 5</h5>
+                <h6>Heading Level 6</h6>
+
+                <!-- Hgroup example -->
+                <hgroup>
+                    <h2>Main heading</h2>
+                    <p>Subheading for context</p>
+                </hgroup>
+            </section>
+        </article>
+
+        <!-- Additional section for remaining semantic elements -->
+        <section>
+            <h2>Additional Semantic Elements</h2>
+            
+            <!-- br and wbr -->
+            <p>
+                Line break:<br>
+                Next line here.
+            </p>
+            <p>
+                Long word with break opportunity: super<wbr>cali<wbr>fragilistic<wbr>expialidocious
+            </p>
+
+            <!-- hr already used above -->
+            
+            <!-- Base is in head but included for completeness -->
+            <!-- Meta is in head -->
+            <!-- Link is in head -->
+            <!-- Script -->
+            <script>
+                // Example inline script
+                console.log('Page loaded successfully');
+            </script>
+
+            <!-- Noscript already used -->
+        </section>
+    </main>
+
+    <!-- Landmark: Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2026 AI WCAG Gauntlet Benchmark. All rights reserved.</p>
+        <p>Last updated: <time datetime="2026-05-27">May 27, 2026</time></p>
+    </footer>
+
+</body>
+</html>
