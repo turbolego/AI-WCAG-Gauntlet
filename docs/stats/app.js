@@ -1419,4 +1419,4 @@ function setupExportButtons() {
   }
 }
 
-main();
+document.addEventListener('DOMContentLoaded', main);
