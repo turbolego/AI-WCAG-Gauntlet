@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI WCAG Gauntlet - HTML5 Showcase</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-215802/style.css">
+    <style>
+        .js-only { display: none; }
+        .has-js .js-only { display: inline; }
+    </style>
+    <script>
+        document.documentElement.classList.add("has-js");
+    </script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" id="top">
+        <p class="eyebrow">Benchmark showcase</p>
+        <h1>AI WCAG Gauntlet</h1>
+        <p class="lede">A single page that exercises every HTML5 element with WCAG 2.2 AAA-minded patterns.</p>
+        <nav aria-label="Primary">
+            <ul class="nav-list">
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#content">Content</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+            </ul>
+        </nav>
+        <search aria-label="Site search">
+            <form class="search-form" action="#" role="search">
+                <label for="search-input">Search this demo</label>
+                <input id="search-input" name="q" type="search" placeholder="Search HTML5 tags" autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+        </search>
+    </header>
+
+    <main id="main-content">
+        <section id="structure">
+            <hgroup>
+                <h2>Document structure</h2>
+                <p class="subtitle">Landmarks, groupings, and navigation helpers.</p>
+            </hgroup>
+            <article>
+                <h3>Article with an aside</h3>
+                <p>This paragraph includes <strong>strong</strong> emphasis, <em>emphasis</em>, <b>bold</b>, <i>italic</i>,
+                    <u>underline</u>, <s>strikethrough</s>, <mark>highlight</mark>, <small>small</small>, and
+                    <span class="text-pill">a span wrapper</span>.</p>
+                <p>
+                    Here is an <abbr title="World Wide Web Consortium">W3C</abbr> abbreviation, a
+                    <dfn id="dfn-wcag">WCAG</dfn> definition, and a <cite>WCAG 2.2</cite> citation.
+                </p>
+                <p>
+                    Inline data: <data value="42">42</data> items logged on
+                    <time datetime="2026-05-26">May 26, 2026</time>.
+                </p>
+                <p>
+                    Bidirectional text: <bdi>user-123</bdi> and <bdo dir="rtl">RTL sample</bdo>.
+                </p>
+                <p>
+                    Quoted text <q cite="https://www.w3.org/TR/WCAG22/">Accessibility benefits everyone</q>.
+                </p>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Content should be perceivable, operable, understandable, and robust.</p>
+                </blockquote>
+                <p>
+                    Keyboard cue: <kbd>Shift</kbd> + <kbd>Tab</kbd> moves focus backward, and
+                    <samp>status: ready</samp> is sample output. Variable <var>x</var> appears in
+                    <code>const x = 1;</code>.
+                </p>
+                <pre><code>function demo() {
+  return "All tags accounted for.";
+}</code></pre>
+                <p>
+                    Ruby annotation: <ruby>漢<rt>Han</rt><rp>(</rp><rt>han</rt><rp>)</rp></ruby>.
+                </p>
+                <p>
+                    Text flow with breakpoints: AccessibilitySuperLongWord<wbr>BreakPoint.
+                </p>
+                <p>
+                    Line break example:<br>Second line after a break.
+                </p>
+                <p>
+                    Superscript H<sup>2</sup>O and subscript CO<sub>2</sub> values.
+                </p>
+                <p>
+                    <ins datetime="2026-05-26">Inserted guidance</ins> and
+                    <del datetime="2026-05-20">deprecated note</del>.
+                </p>
+                <hr>
+            </article>
+            <section>
+                <h3>Lists and menus</h3>
+                <h4>Supporting heading level four</h4>
+                <p class="subtitle">Bridges the outline to smaller heading levels.</p>
+                <h5>Compact heading level five</h5>
+                <p class="subtitle">Supporting text for nested heading levels.</p>
+                <h6>Compact heading level six</h6>
+                <p>Small heading levels still convey structure in the outline.</p>
+                <ol>
+                    <li>Ordered list item</li>
+                    <li>Second item</li>
+                </ol>
+                <ul>
+                    <li>Unordered list item</li>
+                    <li>Another item</li>
+                </ul>
+                <dl>
+                    <dt>Term</dt>
+                    <dd>Description of the term</dd>
+                </dl>
+                <menu class="action-menu">
+                    <li><button type="button">Primary action</button></li>
+                    <li><button type="button">Secondary action</button></li>
+                </menu>
+            </section>
+        </section>
+
+        <section id="content">
+            <h2>Content blocks</h2>
+            <div class="card-grid">
+                <figure class="media-card">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon in monochrome">
+                    <figcaption>Figure with alt text and caption.</figcaption>
+                </figure>
+                <figure class="media-card">
+                    <picture>
+                        <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+                    </picture>
+                    <figcaption>Responsive image inside a picture element.</figcaption>
+                </figure>
+            </div>
+            <div class="map-wrapper">
+                <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark symbol with a focusable map" usemap="#benchmark-map">
+                <map name="benchmark-map" id="benchmark-map">
+                    <area shape="rect" coords="0,0,250,250" href="#media" alt="Jump to media section">
+                </map>
+            </div>
+            <canvas id="demo-canvas" width="240" height="120">
+                Canvas fallback text describing a simple bar chart.
+            </canvas>
+            <p class="js-only">JavaScript detected: dynamic demos enabled.</p>
+            <iframe
+                title="Inline accessibility summary"
+                srcdoc="<p>Embedded content uses srcdoc for reliable, local rendering.</p>"
+            ></iframe>
+            <details>
+                <summary>Expandable details with summary</summary>
+                <p>Details content that is keyboard accessible.</p>
+            </details>
+            <dialog open aria-labelledby="dialog-title">
+                <h3 id="dialog-title">Open dialog sample</h3>
+                <p>This dialog is open for demonstration and includes clear text.</p>
+            </dialog>
+        </section>
+
+        <section id="media">
+            <h2>Media elements</h2>
+            <audio controls>
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+            <video controls width="420">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="/AI-WCAG-Gauntlet/resources/captions.vtt" srclang="en" label="English captions" default>
+                Your browser does not support the video tag.
+            </video>
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Embedded SVG icon">
+                Object fallback text for the SVG icon.
+            </object>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Embedded SVG via embed">
+        </section>
+
+        <section id="forms">
+            <h2>Form controls</h2>
+            <form class="demo-form" action="#" method="post">
+                <fieldset>
+                    <legend>Profile details</legend>
+                    <label for="full-name">Full name</label>
+                    <input id="full-name" name="full-name" type="text" autocomplete="name" required>
+
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+
+                    <label for="role">Role</label>
+                    <select id="role" name="role">
+                        <optgroup label="Engineering">
+                            <option value="frontend">Frontend</option>
+                            <option value="backend">Backend</option>
+                        </optgroup>
+                        <optgroup label="Design">
+                            <option value="ux">UX</option>
+                            <option value="visual">Visual</option>
+                        </optgroup>
+                    </select>
+
+                    <label for="language">Preferred language</label>
+                    <input id="language" name="language" list="language-options" placeholder="Choose or type">
+                    <datalist id="language-options">
+                        <option value="HTML"></option>
+                        <option value="CSS"></option>
+                        <option value="JavaScript"></option>
+                    </datalist>
+
+                    <label for="message">Notes</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+
+                    <label for="progress">Progress</label>
+                    <progress id="progress" value="72" max="100">72%</progress>
+
+                    <label for="satisfaction">Satisfaction</label>
+                    <meter id="satisfaction" min="0" max="10" value="8">8/10</meter>
+
+                    <label for="range">Range input</label>
+                    <input id="range" name="range" type="range" min="0" max="100" value="40">
+                    <output for="range" name="range-output">40</output>
+
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+            <p>
+                Selected content marker: <selectedcontent>Option A highlighted</selectedcontent>
+            </p>
+        </section>
+
+        <section id="tables">
+            <h2>Tabular data</h2>
+            <table>
+                <caption>Accessibility checkpoints</caption>
+                <colgroup>
+                    <col span="1">
+                    <col span="1">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Checkpoint</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Text contrast</td>
+                        <td>Pass</td>
+                    </tr>
+                    <tr>
+                        <td>Keyboard support</td>
+                        <td>Pass</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>2 items</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <template id="demo-template">
+            <div class="template-card">
+                <p>Template content for future reuse.</p>
+                <slot name="template-slot">Default slot content</slot>
+            </div>
+        </template>
+    </main>
+
+    <aside class="site-aside" aria-labelledby="aside-title">
+        <h2 id="aside-title">Aside panel</h2>
+        <p>Quick tips that complement the page without interrupting the main flow.</p>
+        <address>
+            Contact: <a href="mailto:accessibility@example.com">accessibility@example.com</a>
+        </address>
+    </aside>
+
+    <noscript>
+        <p>JavaScript is disabled; all core content remains available.</p>
+    </noscript>
+
+    <footer class="site-footer">
+        <p>End of the HTML5 tag showcase.</p>
+        <p><a href="#top">Back to top</a></p>
+    </footer>
+</body>
+</html>

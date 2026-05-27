@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/AI-WCAG-Gauntlet/">
+    <title>AI WCAG Gauntlet Showcase</title>
+    <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-220729/style.css">
+    <style>
+        .sr-only{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;white-space:nowrap}
+    </style>
+    <script>
+        document.documentElement.classList.add("js-enabled");
+    </script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+        <div class="brand">
+            <p class="kicker">WCAG 2.2 AAA Demonstration</p>
+            <h1>AI WCAG Gauntlet</h1>
+            <p class="lead">A single-page showcase that exercises every HTML5 element.</p>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#extras">Extras</a></li>
+            </ul>
+        </nav>
+        <search aria-label="Site search">
+            <form action="#overview" method="get" role="search">
+                <label for="site-query">Search the showcase</label>
+                <input id="site-query" name="q" type="search" placeholder="Search tags" autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+        </search>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section id="overview" class="panel" aria-labelledby="overview-title">
+            <h2 id="overview-title">Overview</h2>
+            <p>
+                This page demonstrates strict structure, high contrast, and complete
+                tag coverage. Text can scale without loss of content, and all controls
+                are labeled for assistive technology.
+            </p>
+            <hgroup>
+                <h3>Semantic emphasis</h3>
+                <p>Supporting heading for grouped content.</p>
+            </hgroup>
+            <p>
+                <strong>Strong text</strong>, <em>emphasis</em>, <small>small print</small>,
+                <mark>highlighted terms</mark>, <b>bold</b>, <i>italic</i>, <u>underline</u>,
+                <s>strikethrough</s>, and <span>inline spans</span> are displayed.
+            </p>
+            <p>
+                Use <abbr title="World Wide Web Consortium">W3C</abbr> references, a
+                <cite>living standard</cite>, and a short <q>quoted phrase</q>.
+            </p>
+            <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                <p>Accessibility is an essential aspect of quality for all web experiences.</p>
+            </blockquote>
+            <p>
+                <dfn id="def-accessibility">Accessibility</dfn> ensures people with
+                disabilities can perceive, understand, and interact.
+            </p>
+            <p>
+                <bdi>Mixing</bdi> names like <bdi>علي</bdi> stays readable with
+                <bdo dir="rtl">bidirectional override</bdo>.
+            </p>
+            <p>
+                Key commands like <kbd>Option</kbd> + <kbd>F5</kbd> are supported, and
+                sample output is shown with <samp>STATUS: PASS</samp>. Variables such as
+                <var>score</var> are inline.
+            </p>
+            <p>
+                Line breaks<br>appear with <code>&lt;br&gt;</code>, while separators use
+                <code>&lt;hr&gt;</code>.
+            </p>
+            <hr>
+            <p>
+                Word<wbr>breaks demonstrate responsive wrapping in long tokens.
+            </p>
+            <p>
+                <data value="110">110 tags</data> are represented, with a
+                <time datetime="2026-05-26">May 26, 2026</time> timestamp.
+                Water is shown as H<sub>2</sub>O and performance grows by 10<sup>3</sup>.
+            </p>
+        </section>
+
+        <section id="media" class="panel" aria-labelledby="media-title">
+            <h2 id="media-title">Media and Graphics</h2>
+            <figure>
+                <picture>
+                    <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 700px)">
+                    <img
+                        src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                        alt="Ordnance survey benchmark pinhead icon"
+                        width="250"
+                        height="250"
+                        usemap="#pin-map"
+                    >
+                </picture>
+                <figcaption>Responsive imagery with an image map.</figcaption>
+            </figure>
+            <map name="pin-map">
+                <area shape="circle" coords="125,125,80" href="#overview" alt="Jump to overview">
+            </map>
+
+            <div class="media-grid">
+                <img
+                    src="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                    alt="Large benchmark icon"
+                    width="320"
+                    height="320"
+                >
+                <object
+                    data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+                    type="image/svg+xml"
+                    aria-label="Benchmark icon as object"
+                >
+                    <p>SVG icon could not be displayed.</p>
+                </object>
+                <embed
+                    src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+                    type="image/svg+xml"
+                    aria-label="Embedded benchmark icon"
+                >
+            </div>
+
+            <canvas width="240" height="160" role="img" aria-label="Canvas placeholder with text">
+                Canvas fallback text for accessibility.
+            </canvas>
+
+            <audio controls aria-label="Benchmark audio sample">
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+
+            <video controls width="420" aria-describedby="video-desc">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="/AI-WCAG-Gauntlet/resources/benchmark-captions.vtt" srclang="en" label="English captions" default>
+                Your browser does not support the video element.
+            </video>
+            <p id="video-desc">Climate projection animation with captions.</p>
+        </section>
+
+        <section id="forms" class="panel" aria-labelledby="forms-title">
+            <h2 id="forms-title">Forms and Inputs</h2>
+            <form class="form-grid" aria-describedby="form-help">
+                <p id="form-help">All fields are labeled and grouped for clarity.</p>
+                <fieldset>
+                    <legend>Profile details</legend>
+                    <label for="full-name">Full name</label>
+                    <input id="full-name" name="full-name" type="text" autocomplete="name" required>
+
+                    <label for="role">Role</label>
+                    <input id="role" name="role" type="text" list="roles" autocomplete="organization-title">
+                    <datalist id="roles">
+                        <option value="Accessibility lead"></option>
+                        <option value="QA analyst"></option>
+                        <option value="Front-end engineer"></option>
+                    </datalist>
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="4"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Preferences</legend>
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <optgroup label="Delivery">
+                            <option value="standard">Standard</option>
+                            <option value="expedited">Expedited</option>
+                        </optgroup>
+                    </select>
+
+                    <label for="rating">Accessibility rating</label>
+                    <input id="rating" name="rating" type="range" min="1" max="5" value="4">
+
+                    <label for="effort">Effort indicator</label>
+                    <meter id="effort" min="0" max="10" value="8">8 of 10</meter>
+
+                    <label for="progress">Progress</label>
+                    <progress id="progress" max="100" value="70">70%</progress>
+
+                    <label for="agreement">Agree to terms</label>
+                    <input id="agreement" name="agreement" type="checkbox" checked>
+                </fieldset>
+
+                <label for="output">Computed score</label>
+                <output id="output" for="rating">4</output>
+
+                <button type="submit">Submit form</button>
+            </form>
+        </section>
+
+        <section id="tables" class="panel" aria-labelledby="tables-title">
+            <h2 id="tables-title">Tables and Lists</h2>
+            <table>
+                <caption>Benchmark scoring summary</caption>
+                <colgroup>
+                    <col span="1" class="col-strong">
+                    <col span="2">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Target</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Tags</th>
+                        <td>110</td>
+                        <td>Complete</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">WCAG</th>
+                        <td>AAA</td>
+                        <td>Aligned</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">All checks must reach zero issues.</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="list-grid">
+                <ul>
+                    <li>Accessible navigation</li>
+                    <li>Keyboard focus visibility</li>
+                    <li>Clear labels and help text</li>
+                </ul>
+                <ol>
+                    <li>Run the test suite.</li>
+                    <li>Fix reported issues.</li>
+                    <li>Iterate until pass.</li>
+                </ol>
+                <dl>
+                    <dt>AAA</dt>
+                    <dd>Highest WCAG conformance level.</dd>
+                    <dt>QualWeb</dt>
+                    <dd>Automated ACT rules checker.</dd>
+                </dl>
+            </div>
+        </section>
+
+        <section id="extras" class="panel" aria-labelledby="extras-title">
+            <h2 id="extras-title">Extra Elements</h2>
+            <article>
+                <header>
+                    <h3>Inline code sample</h3>
+                </header>
+                <h4>Level four heading</h4>
+                <h5>Level five heading</h5>
+                <h6>Level six heading</h6>
+                <pre><code>&lt;main aria-labelledby="overview"&gt;Accessible content&lt;/main&gt;</code></pre>
+                <p>
+                    Changes may be <del>removed</del> and <ins>inserted</ins> to show
+                    revision history.
+                </p>
+                <details>
+                    <summary>Expandable guidance</summary>
+                    <p>Details and summary provide an accessible disclosure pattern.</p>
+                </details>
+                <footer>
+                    <p>Article footer with contextual info.</p>
+                </footer>
+            </article>
+
+            <menu aria-label="Quick actions">
+                <li><button type="button">Reset filters</button></li>
+                <li><button type="button">Download report</button></li>
+            </menu>
+
+            <nav aria-label="Secondary">
+                <a href="#overview">Back to overview</a>
+            </nav>
+
+            <p>
+                <ruby>
+                    WCAG<rt>double-u-c-a-g</rt>
+                    <rp>(</rp><rt>WCAG</rt><rp>)</rp>
+                </ruby>
+                supports pronunciation hints.
+            </p>
+
+            <p>
+                <selectedcontent aria-live="polite">Selected content placeholder.</selectedcontent>
+            </p>
+
+            <template id="template-demo">
+                <section>
+                    <slot name="slot-demo">Slotted content appears here.</slot>
+                </section>
+            </template>
+        </section>
+    </main>
+
+    <aside class="callout" aria-label="Supplemental information">
+        <p>
+            This aside includes a safe iframe preview and a minimal dialog.
+        </p>
+        <iframe
+            title="Embedded preview"
+            srcdoc="<p>Embedded summary card.</p>"
+        ></iframe>
+        <dialog open aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="false">
+            <h3 id="dialog-title">Open status</h3>
+            <p id="dialog-desc">This dialog is shown inline and is non-modal.</p>
+        </dialog>
+    </aside>
+
+    <footer class="site-footer">
+        <p>Built to satisfy WCAG 2.2 Level AAA.</p>
+        <address>
+            Contact the team at <a href="mailto:accessibility@example.com">accessibility@example.com</a>.
+        </address>
+    </footer>
+
+    <noscript>
+        <p>This experience is fully functional without JavaScript.</p>
+    </noscript>
+</body>
+</html>

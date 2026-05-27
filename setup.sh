@@ -44,7 +44,8 @@ fi
 #MODEL_NAME="GPT-4o"
 #MODEL_NAME="GPT-5.4"
 #MODEL_NAME="GPT-5.4 mini (Preview)"
-MODEL_NAME="GPT-5.3-Codex"
+MODEL_NAME="GPT-5.2-Codex"
+#MODEL_NAME="GPT-5.3-Codex"
 #MODEL_NAME="Gemini 3 Flash (Preview)"
 #MODEL_NAME="Gemini 3.1 Pro (Preview)"
 

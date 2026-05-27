@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI WCAG Gauntlet Showcase</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-222305/style.css">
+    <style>
+        :root { color-scheme: light; }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const output = document.getElementById("score-output");
+            const range = document.getElementById("contrast-range");
+            if (output && range) {
+                output.value = range.value;
+                range.addEventListener("input", () => {
+                    output.value = range.value;
+                });
+            }
+        });
+    </script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" id="top">
+        <div class="brand">
+            <p class="eyebrow">AI WCAG Gauntlet</p>
+            <h1>Accessible HTML5 Tag Showcase</h1>
+            <p class="lead">A single-page reference implementing every HTML5 element with WCAG 2.2 AAA-friendly patterns.</p>
+        </div>
+        <nav aria-label="Primary">
+            <ul class="nav-list">
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#text">Text</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <search class="site-search" aria-label="Site search">
+        <form action="#" method="get">
+            <label for="q">Search the showcase</label>
+            <input id="q" name="q" type="search" placeholder="Search tags" autocomplete="on">
+            <button type="submit">Search</button>
+        </form>
+    </search>
+
+    <main id="main">
+        <section id="structure" aria-labelledby="structure-title">
+            <h2 id="structure-title">Document structure</h2>
+
+            <article class="card">
+                <header>
+                    <h3>Landmarks and sections</h3>
+                    <p class="muted">Header, nav, main, section, article, aside, and footer are all present.</p>
+                </header>
+                <p>Here is an <abbr title="World Wide Web Consortium">W3C</abbr> reference paragraph with <strong>strong emphasis</strong>,
+                    <em>emphasis</em>, <b>bold</b>, <i>italic</i>, <u>underline</u>, and <s>strikethrough</s> text.
+                    We also include <mark>highlighted phrases</mark>, <small>small print</small>, and <span>inline spans</span>.</p>
+
+                <hgroup>
+                    <h4>Grouping headings</h4>
+                    <p class="muted">A supporting subheading inside an hgroup.</p>
+                </hgroup>
+
+                <p>Line breaks<br>can be explicit, and long words use soft breaks like supercalifragilistic<wbr>expialidocious.</p>
+
+                <aside class="callout" role="note" aria-labelledby="aside-title">
+                    <h5 id="aside-title">Aside: quick facts</h5>
+                    <ul>
+                        <li><bdi>Espana</bdi> uses BDI.</li>
+                        <li><bdo dir="rtl">Reversed text</bdo> uses BDO.</li>
+                        <li><data value="2026">2026</data> is the data value.</li>
+                    </ul>
+                </aside>
+
+                <footer>
+                    <p>Contact the benchmark team at <a href="mailto:benchmarks@example.com">benchmarks@example.com</a>.</p>
+                </footer>
+            </article>
+
+            <section class="card" aria-labelledby="quote-title">
+                <h3 id="quote-title">Quotations</h3>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Accessibility is not a feature, it is the foundation of inclusive design.</p>
+                </blockquote>
+                <p><q cite="https://www.w3.org/WAI/">Clear structure helps everyone.</q></p>
+            </section>
+
+            <section class="card" aria-labelledby="list-title">
+                <h3 id="list-title">Lists and definitions</h3>
+                <ol>
+                    <li>Ordered item one</li>
+                    <li>Ordered item two</li>
+                </ol>
+                <ul>
+                    <li>Unordered item one</li>
+                    <li>Unordered item two</li>
+                </ul>
+                <dl>
+                    <dt>WCAG</dt>
+                    <dd>Web Content Accessibility Guidelines.</dd>
+                    <dt>AAA</dt>
+                    <dd>Highest conformance level.</dd>
+                </dl>
+            </section>
+        </section>
+
+        <section id="media" aria-labelledby="media-title">
+            <h2 id="media-title">Media and embedded content</h2>
+
+            <figure class="card">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark pinhead icon">
+                <figcaption>Raster image with descriptive alternative text.</figcaption>
+            </figure>
+
+            <picture class="card">
+                <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark icon">
+            </picture>
+
+            <figure class="card">
+                <figcaption>Image map with accessible area links.</figcaption>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Icon with mapped area" usemap="#icon-map">
+                <map name="icon-map">
+                    <area shape="rect" coords="0,0,80,80" href="#structure" alt="Jump to structure section">
+                </map>
+            </figure>
+
+            <div class="card media-grid">
+                <audio controls>
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                </audio>
+
+                <video controls width="360">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="#" srclang="en" label="English" default>
+                </video>
+            </div>
+
+            <div class="card media-grid">
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Vector icon"></object>
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Embedded SVG icon">
+                <iframe title="Inline preview" srcdoc="<p>Inline frame content with <strong>bold</strong> text.</p>"></iframe>
+            </div>
+
+            <canvas id="demo-canvas" width="260" height="120">Canvas fallback text for accessibility.</canvas>
+        </section>
+
+        <section id="forms" aria-labelledby="forms-title">
+            <h2 id="forms-title">Forms and inputs</h2>
+
+            <form class="card" action="#" method="post">
+                <fieldset>
+                    <legend>Profile details</legend>
+
+                    <label for="name">Full name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required>
+
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+
+                    <label for="role">Role</label>
+                    <input id="role" name="role" list="role-list" placeholder="Designer, QA, Engineer">
+                    <datalist id="role-list">
+                        <option value="Designer"></option>
+                        <option value="QA Analyst"></option>
+                        <option value="Engineer"></option>
+                    </datalist>
+
+                    <label for="team">Team</label>
+                    <select id="team" name="team">
+                        <optgroup label="Product">
+                            <option>Accessibility</option>
+                            <option>Research</option>
+                        </optgroup>
+                        <optgroup label="Engineering">
+                            <option>Platform</option>
+                            <option>Experience</option>
+                        </optgroup>
+                        <selectedcontent>Accessibility</selectedcontent>
+                    </select>
+
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="3"></textarea>
+
+                    <label for="contrast-range">Contrast target</label>
+                    <input id="contrast-range" name="contrast" type="range" min="1" max="10" value="7">
+                    <output id="score-output" for="contrast-range">7</output>
+
+                    <div class="metrics">
+                        <label for="progress">Progress</label>
+                        <progress id="progress" value="80" max="100">80%</progress>
+
+                        <label for="meter">Quality meter</label>
+                        <meter id="meter" min="0" max="10" value="9">9 out of 10</meter>
+                    </div>
+
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+
+            <details class="card">
+                <summary>More input examples</summary>
+                <p>Keyboard hints: press <kbd>Tab</kbd> to move, <kbd>Enter</kbd> to activate.</p>
+                <p>Sample output: <samp>Form submitted successfully.</samp></p>
+                <p>Variable example: <var>x</var> = 42.</p>
+            </details>
+
+            <dialog open class="card" aria-label="Notification dialog">
+                <p>This dialog is open for demonstration purposes.</p>
+                <form method="dialog">
+                    <button>Close</button>
+                </form>
+            </dialog>
+
+            <menu type="toolbar" class="card" aria-label="Quick actions">
+                <button type="button">Save</button>
+                <button type="button">Share</button>
+                <button type="button">Export</button>
+            </menu>
+        </section>
+
+        <section id="tables" aria-labelledby="tables-title">
+            <h2 id="tables-title">Tables and data</h2>
+
+            <table class="card">
+                <caption>Benchmark readiness table</caption>
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">Area</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Owner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML tags</td>
+                        <td>Complete</td>
+                        <td>Automation</td>
+                    </tr>
+                    <tr>
+                        <td>WCAG checks</td>
+                        <td>In review</td>
+                        <td>Accessibility</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Updated <time datetime="2026-05-26">May 26, 2026</time></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section id="text" aria-labelledby="text-title">
+            <h2 id="text-title">Text formatting</h2>
+            <h3>Subheading level three</h3>
+            <h4>Subheading level four</h4>
+            <h5>Subheading level five</h5>
+            <h6>Subheading level six</h6>
+            <hr>
+            <p><cite>WCAG 2.2</cite> guidance includes emphasizing <dfn>focus visibility</dfn> and avoiding <del datetime="2026-05-01">removed guidance</del>.
+                The <ins datetime="2026-05-26">updated note</ins> is visible.</p>
+
+            <p>Example equation: H<sub>2</sub>O and E = mc<sup>2</sup>.</p>
+
+            <pre><code>const status = "AAA";
+console.log(status);
+</code></pre>
+
+            <p>Ruby annotation: <ruby>漢<rt>Kan</rt><rp>(</rp><rt>ji</rt><rp>)</rp></ruby></p>
+        </section>
+
+        <section class="card" aria-labelledby="extra-title">
+            <h2 id="extra-title">Templates and scripts</h2>
+            <template id="card-template">
+                <article class="card">
+                    <h3><slot name="card-title">Template title</slot></h3>
+                    <p><slot name="card-body">Template body content.</slot></p>
+                </article>
+            </template>
+            <noscript>This page uses minimal scripts; most content works without JavaScript.</noscript>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <address>
+            Built by the AI WCAG Gauntlet team, 123 Benchmark Way, Accessible City.
+        </address>
+        <p><a href="#top">Back to top</a></p>
+    </footer>
+</body>
+</html>
