@@ -219,6 +219,7 @@ async function main() {
   renderErrorBreakdown(data.error_breakdown);
   renderStrategyCharts(data.model_progress, data.runs_by_model);
   renderCoverageCharts(data.tag_coverage_by_model);
+  renderHardestTags(data.hardest_tags);
   renderMissingTagsHeatmap(data.missing_tags_frequency, data.total_runs);
   renderProgressSection(data.model_progress);
 
@@ -672,6 +673,56 @@ function renderCoverageCharts(rows) {
         y: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } }, grid: { color: C.border } },
       },
     }),
+  });
+}
+
+/* ── Hardest Tags Highscore ──────────────────────────────────── */
+function renderHardestTags(hardestTags) {
+  const tbody = document.querySelector('#hardest-tags-table tbody');
+  if (!hardestTags?.length) { tbody.innerHTML = '<tr><td colspan="7">No data.</td></tr>'; return; }
+
+  const PAGE_SIZE = 20;
+  let showAll = false;
+
+  function render() {
+    const visible = showAll ? hardestTags : hardestTags.slice(0, PAGE_SIZE);
+    tbody.innerHTML = visible.map(t => {
+      const pctBar = `<span class="difficulty-bar" style="--pct:${t.miss_pct}%" title="${t.miss_pct}% miss rate"></span>`;
+      const missLabel = `${t.miss_count} / ${t.total_runs}`;
+      const failedLabel = `${t.models_failed} / ${t.models_attempted}`;
+      const hardestFor = t.models_never.length
+        ? t.models_never.slice(0, 3).map(m => `<span class="tag-model tag-model--fail">${esc(m)}</span>`).join(' ')
+          + (t.models_never.length > 3 ? ` <span class="tag-model-more">+${t.models_never.length - 3}</span>` : '')
+        : '<span class="tag-model tag-model--none">—</span>';
+      const easiestFor = t.models_always.length
+        ? t.models_always.slice(0, 3).map(m => `<span class="tag-model tag-model--pass">${esc(m)}</span>`).join(' ')
+          + (t.models_always.length > 3 ? ` <span class="tag-model-more">+${t.models_always.length - 3}</span>` : '')
+        : '<span class="tag-model tag-model--none">—</span>';
+
+      return `<tr>
+        <td data-label="#">${t.rank}</td>
+        <td data-label="Tag"><code class="tag-code">&lt;${esc(t.tag)}&gt;</code></td>
+        <td data-label="Miss Rate">${pctBar} ${t.miss_pct}%</td>
+        <td data-label="Runs Missed">${missLabel}</td>
+        <td data-label="Models Failed">${failedLabel} (${t.fail_rate}%)</td>
+        <td data-label="Hardest For">${hardestFor}</td>
+        <td data-label="Easiest For">${easiestFor}</td>
+      </tr>`;
+    }).join('');
+
+    const countEl = $('#hardest-tags-count');
+    countEl.textContent = showAll
+      ? `Showing all ${hardestTags.length} tags`
+      : `Showing top ${Math.min(PAGE_SIZE, hardestTags.length)} of ${hardestTags.length} tags`;
+  }
+
+  render();
+
+  const btn = $('#hardest-tags-show-all');
+  btn.addEventListener('click', () => {
+    showAll = !showAll;
+    btn.textContent = showAll ? 'Show top 20' : 'Show all';
+    render();
   });
 }
 

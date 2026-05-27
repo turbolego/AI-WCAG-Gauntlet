@@ -54,6 +54,7 @@
       <a href="#strategies">Strategies</a>
       <a href="#errors">Error Breakdown</a>
       <a href="#coverage">Tag Coverage</a>
+      <a href="#hardest-tags">Hardest Tags</a>
       <a href="#missing-tags">Missing Tags</a>
       <a href="#progress">Iteration Progress</a>
     </nav>
@@ -347,6 +348,37 @@
               <h3 id="chart-cov-pct-label">Coverage percentage per model</h3>
               <div class="chart-wrap" style="height:320px">
                 <canvas id="chart-coverage-pct" role="img" aria-labelledby="chart-cov-pct-label"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Hardest Tags Highscore -->
+        <section id="hardest-tags" aria-labelledby="hardest-tags-title">
+          <div class="section-header">
+            <h2 class="section-title" id="hardest-tags-title">Hardest Tags</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
+            <span class="section-sub" aria-hidden="true">HTML5 tags ranked by difficulty — which tags AI models struggle with most when building WCAG 2.2 AAA pages</span>
+          </div>
+          <div class="table-wrapper">
+            <table id="hardest-tags-table" aria-label="HTML5 tags ranked by difficulty for AI models">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tag</th>
+                  <th scope="col">Miss Rate</th>
+                  <th scope="col">Runs Missed</th>
+                  <th scope="col">Models Failed</th>
+                  <th scope="col">Hardest For</th>
+                  <th scope="col">Easiest For</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="table-footer">
+              <span class="table-count" id="hardest-tags-count"></span>
+              <div class="table-footer-actions">
+                <button class="show-all-btn" id="hardest-tags-show-all" type="button">Show all</button>
               </div>
             </div>
           </div>

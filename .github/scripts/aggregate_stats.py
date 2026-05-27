@@ -324,6 +324,74 @@ def build_missing_tags_frequency(runs):
     return result
 
 
+# ── Hardest tags (ranked by difficulty for AI models) ──────────────────────────
+def build_hardest_tags(runs):
+    """
+    For each tag: compute difficulty stats based on how many models/runs
+    fail to include it. Also track which models always include it vs never.
+    Ranked by miss_pct descending (hardest first).
+    """
+    total_runs = len(runs)
+    all_models = sorted(set(r["model"] for r in runs))
+    total_models = len(all_models)
+
+    # Per-tag: track which models missed it and how often
+    tag_model_miss = defaultdict(lambda: defaultdict(int))   # tag -> model -> miss_count
+    tag_model_total = defaultdict(lambda: defaultdict(int))  # tag -> model -> total_runs
+
+    for run in runs:
+        model = run["model"]
+        final = final_iteration(run["iterations"])
+        missing = set(final.get("missing_tags", []))
+
+        for tag in ALL_TAGS:
+            tag_model_total[tag][model] += 1
+            if tag in missing:
+                tag_model_miss[tag][model] += 1
+
+    result = []
+    for tag in ALL_TAGS:
+        miss_count = sum(tag_model_miss[tag].values())
+        miss_pct = round(miss_count / total_runs * 100, 1) if total_runs else 0
+
+        # Models that NEVER included this tag (missed in 100% of their runs)
+        models_never = []
+        # Models that ALWAYS included this tag (missed in 0% of their runs)
+        models_always = []
+        for model in all_models:
+            total = tag_model_total[tag].get(model, 0)
+            missed = tag_model_miss[tag].get(model, 0)
+            if total > 0:
+                if missed == total:
+                    models_never.append(model)
+                elif missed == 0:
+                    models_always.append(model)
+
+        models_attempted = len([m for m in all_models if tag_model_total[tag].get(m, 0) > 0])
+        models_failed = len([m for m in all_models
+                            if tag_model_miss[tag].get(m, 0) > 0
+                            and tag_model_total[tag].get(m, 0) > 0])
+
+        result.append({
+            "rank":           0,  # filled below
+            "tag":            tag,
+            "miss_count":     miss_count,
+            "miss_pct":       miss_pct,
+            "total_runs":     total_runs,
+            "models_attempted": models_attempted,
+            "models_failed":  models_failed,
+            "fail_rate":      round(models_failed / models_attempted * 100, 1)
+                              if models_attempted else 0,
+            "models_never":   models_never,   # never used this tag
+            "models_always":  models_always,  # always used this tag
+        })
+
+    result.sort(key=lambda x: (-x["miss_pct"], -x["models_failed"], x["tag"]))
+    for i, row in enumerate(result, 1):
+        row["rank"] = i
+    return result
+
+
 # ── Per-model iteration progress ───────────────────────────────────────────────
 def build_model_progress(runs):
     """
@@ -445,6 +513,7 @@ def main():
         "leaderboard":            build_leaderboard(runs),
         "runs_by_model":          build_runs_by_model(runs),
         "missing_tags_frequency": build_missing_tags_frequency(runs),
+        "hardest_tags":           build_hardest_tags(runs),
         "model_progress":         build_model_progress(runs),
         "error_breakdown":        build_error_breakdown(runs),
         "tag_coverage_by_model":  build_tag_coverage_by_model(runs),
