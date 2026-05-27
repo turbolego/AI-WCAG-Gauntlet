@@ -474,6 +474,9 @@ function renderStrategyCharts(modelProgress, runsByModel) {
   renderStrategyEfficiency(runsByModel);
   renderStrategyVelocity(modelProgress, models);
   renderStrategyResolution(modelProgress, models);
+  renderConsistencyChart(runsByModel);
+  renderFirstIterChart(modelProgress, models);
+  renderConvergenceChart(modelProgress, models);
 }
 
 /** All models on one line chart — average score per iteration */
@@ -706,6 +709,193 @@ function renderStrategyResolution(modelProgress, models) {
         legend: {
           ...CD.plugins.legend,
           position: 'bottom',
+        },
+      },
+    }),
+  });
+}
+
+/** Box-plot style: min / median / max score per model (floating bar chart) */
+function renderConsistencyChart(runsByModel) {
+  if (!runsByModel?.length) return;
+
+  // Group final scores by model
+  const byModel = {};
+  for (const run of runsByModel) {
+    if (!byModel[run.model]) byModel[run.model] = [];
+    byModel[run.model].push(run.final_score);
+  }
+
+  // Only show models with 2+ runs
+  const models = Object.keys(byModel).filter(m => byModel[m].length >= 2);
+  if (!models.length) return;
+
+  // Sort by median descending
+  models.sort((a, b) => {
+    const medA = median(byModel[a]);
+    const medB = median(byModel[b]);
+    return medB - medA;
+  });
+
+  function median(arr) {
+    const s = [...arr].sort((a, b) => a - b);
+    const mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }
+
+  const mins = models.map(m => Math.min(...byModel[m]));
+  const maxs = models.map(m => Math.max(...byModel[m]));
+  const medians = models.map(m => median(byModel[m]));
+
+  new Chart($('#chart-consistency'), {
+    type: 'bar',
+    data: {
+      labels: models,
+      datasets: [
+        {
+          label: 'Score range (min → max)',
+          data: models.map((m, i) => [mins[i], maxs[i]]),
+          backgroundColor: models.map((_, i) => modelColor(i) + '44'),
+          borderColor: models.map((_, i) => modelColor(i)),
+          borderWidth: 2,
+          borderRadius: 3,
+          borderSkipped: false,
+        },
+        {
+          label: 'Median score',
+          type: 'line',
+          data: medians,
+          borderColor: C.text,
+          backgroundColor: C.text,
+          pointRadius: 6,
+          pointStyle: 'rectRot',
+          borderWidth: 0,
+          showLine: false,
+        },
+      ],
+    },
+    options: mergeCD({
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 }, maxRotation: 45, minRotation: 25 }, grid: { color: C.border } },
+        y: {
+          title: { display: true, text: 'Final score (APS)', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+        },
+      },
+      plugins: {
+        ...CD.plugins,
+        legend: { ...CD.plugins.legend, position: 'bottom' },
+        tooltip: {
+          ...CD.plugins.tooltip,
+          callbacks: {
+            label: (ctx) => {
+              if (ctx.datasetIndex === 0) {
+                const [lo, hi] = ctx.raw;
+                return `${ctx.dataset.label}: ${lo.toFixed(1)} – ${hi.toFixed(1)} (range: ${(hi - lo).toFixed(1)})`;
+              }
+              return `Median: ${ctx.parsed.y.toFixed(1)}`;
+            },
+          },
+        },
+      },
+    }),
+  });
+}
+
+/** Bar chart: average first-iteration score per model */
+function renderFirstIterChart(modelProgress, models) {
+  const firstScores = models.map(model => {
+    const scores = [];
+    for (const run of modelProgress[model]) {
+      const first = run.iterations.find(it => it.iteration === 1);
+      if (first) scores.push(first.score ?? 0);
+    }
+    return scores.length ? +(scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2) : 0;
+  });
+
+  // Sort by first-iteration score descending
+  const indices = models.map((_, i) => i).sort((a, b) => firstScores[b] - firstScores[a]);
+  const sortedModels = indices.map(i => models[i]);
+  const sortedScores = indices.map(i => firstScores[i]);
+
+  new Chart($('#chart-first-iter'), {
+    type: 'bar',
+    data: {
+      labels: sortedModels,
+      datasets: [{
+        label: 'Avg first-iteration score',
+        data: sortedScores,
+        backgroundColor: sortedModels.map((_, i) => modelColor(i) + 'bb'),
+        borderColor: sortedModels.map((_, i) => modelColor(i)),
+        borderWidth: 1,
+        borderRadius: 3,
+      }],
+    },
+    options: mergeCD({
+      plugins: { ...CD.plugins, legend: { display: false } },
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 }, maxRotation: 45, minRotation: 25 }, grid: { color: C.border } },
+        y: {
+          title: { display: true, text: 'Score at iteration 1', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+        },
+      },
+    }),
+  });
+}
+
+/** Bar chart: iterations to reach 90% of final score (best run per model) */
+function renderConvergenceChart(modelProgress, models) {
+  const convergence = models.map(model => {
+    // Find best run
+    let bestRun = null;
+    let bestScore = -1;
+    for (const run of modelProgress[model]) {
+      const finalIt = run.iterations[run.iterations.length - 1];
+      if ((finalIt?.score ?? 0) > bestScore) {
+        bestScore = finalIt.score;
+        bestRun = run;
+      }
+    }
+    if (!bestRun || bestRun.iterations.length === 0) return 0;
+
+    const finalScore = bestRun.iterations[bestRun.iterations.length - 1]?.score ?? 0;
+    const threshold = finalScore * 0.9;
+
+    // Find first iteration that reaches 90% of final
+    const sorted = [...bestRun.iterations].sort((a, b) => a.iteration - b.iteration);
+    for (const it of sorted) {
+      if ((it.score ?? 0) >= threshold) return it.iteration;
+    }
+    return sorted[sorted.length - 1]?.iteration ?? 0;
+  });
+
+  new Chart($('#chart-convergence'), {
+    type: 'bar',
+    data: {
+      labels: models,
+      datasets: [{
+        label: 'Iterations to 90% of final score',
+        data: convergence,
+        backgroundColor: models.map((_, i) => modelColor(i) + 'bb'),
+        borderColor: models.map((_, i) => modelColor(i)),
+        borderWidth: 1,
+        borderRadius: 3,
+      }],
+    },
+    options: mergeCD({
+      plugins: { ...CD.plugins, legend: { display: false } },
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 }, maxRotation: 45, minRotation: 25 }, grid: { color: C.border } },
+        y: {
+          title: { display: true, text: 'Iterations needed', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 }, stepSize: 1 },
+          grid: { color: C.border },
+          min: 0,
         },
       },
     }),
