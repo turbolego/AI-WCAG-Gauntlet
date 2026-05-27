@@ -38,6 +38,7 @@
     <nav aria-label="Page sections">
       <a href="#leaderboard">Leaderboard</a>
       <a href="#run-history">Run History</a>
+      <a href="#strategies">Strategies</a>
       <a href="#errors">Error Breakdown</a>
       <a href="#coverage">Tag Coverage</a>
       <a href="#missing-tags">Missing Tags</a>
@@ -155,6 +156,54 @@
               </thead>
               <tbody id="run-history-body"></tbody>
             </table>
+          </div>
+        </section>
+
+        <!-- Model Strategies -->
+        <section id="strategies" aria-labelledby="strategies-title">
+          <div class="section-header">
+            <h2 class="section-title" id="strategies-title">Model Strategies</h2>
+            <span class="section-sub" aria-hidden="true">How different models approach the benchmark over time</span>
+          </div>
+
+          <!-- All-models score comparison -->
+          <div class="chart-grid">
+            <div class="chart-card chart-card-wide">
+              <h3 id="chart-strategy-compare-label">Score progression — all models compared</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px">Average score at each iteration across all runs per model</p>
+              <div class="chart-wrap" style="height:360px">
+                <canvas id="chart-strategy-compare" role="img" aria-labelledby="chart-strategy-compare-label"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Efficiency scatter + Velocity -->
+          <div class="chart-grid">
+            <div class="chart-card">
+              <h3 id="chart-strategy-efficiency-label">Efficiency — iterations vs final score</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px">Each dot is a run. Top-left = best strategy (high score, few iterations)</p>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-strategy-efficiency" role="img" aria-labelledby="chart-strategy-efficiency-label"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3 id="chart-strategy-velocity-label">Score velocity — points gained per iteration</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px">Average score improvement per iteration (best run per model)</p>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-strategy-velocity" role="img" aria-labelledby="chart-strategy-velocity-label"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error resolution priority -->
+          <div class="chart-grid">
+            <div class="chart-card chart-card-wide">
+              <h3 id="chart-strategy-resolution-label">Error resolution priority — what models fix first</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px">Percentage of each error type resolved between iteration 1 and final iteration (best run per model)</p>
+              <div class="chart-wrap" style="height:320px">
+                <canvas id="chart-strategy-resolution" role="img" aria-labelledby="chart-strategy-resolution-label"></canvas>
+              </div>
+            </div>
           </div>
         </section>
 

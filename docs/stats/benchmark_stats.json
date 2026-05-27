@@ -1,9 +1,449 @@
 {
-  "generated_at": "2026-05-13T04:57:32.606996Z",
-  "total_runs": 29,
-  "total_models": 10,
+  "generated_at": "2026-05-27T04:11:58.993980Z",
+  "total_runs": 57,
+  "total_models": 19,
   "total_tags": 113,
   "leaderboard": [
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-204100",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 202.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:45:54Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-204100/index.html",
+      "rank": 1
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-205217",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 202.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:56:54Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-205217/index.html",
+      "rank": 2
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-212236",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 194.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:25:58Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-212236/index.html",
+      "rank": 3
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-214819",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 194.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:51:52Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214819/index.html",
+      "rank": 4
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 194.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:00:36Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-195657/index.html",
+      "rank": 5
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "run_id": "Claude Sonnet 4.6-20260526-134808",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 193.27,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "pass",
+      "timestamp": "2026-05-26T12:04:36Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Sonnet 4.6/Claude Sonnet 4.6-20260526-134808/index.html",
+      "rank": 6
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-214004",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 186.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:45:20Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214004/index.html",
+      "rank": 7
+    },
+    {
+      "model": "GPT-5.4",
+      "run_id": "GPT-5.4-20260526-133225",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 186.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T11:41:28Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.4/GPT-5.4-20260526-133225/index.html",
+      "rank": 8
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 186.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T17:50:23Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-194427/index.html",
+      "rank": 9
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-203030",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:38:49Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-203030/index.html",
+      "rank": 10
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-220729",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:13:34Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-220729/index.html",
+      "rank": 11
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:15:25Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-200546/index.html",
+      "rank": 12
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:25:11Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-201800/index.html",
+      "rank": 13
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-05-26T16:35:39Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-182335/index.html",
+      "rank": 14
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-215802",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 178.05,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:05:57Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-215802/index.html",
+      "rank": 15
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-222305",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 178.05,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:30:33Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-222305/index.html",
+      "rank": 16
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 178.05,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "pass",
+      "timestamp": "2026-05-26T16:51:42Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-183941/index.html",
+      "rank": 17
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 178.05,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:06:41Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-192423/index.html",
+      "rank": 18
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260526-131001",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 170.47,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 6,
+      "status": "pass",
+      "timestamp": "2026-05-26T11:22:36Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260526-131001/index.html",
+      "rank": 19
+    },
+    {
+      "model": "Gemini 3 Flash (Preview)",
+      "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 158.39,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 12,
+      "status": "pass",
+      "timestamp": "2026-05-26T13:14:37Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260526-144754/index.html",
+      "rank": 20
+    },
     {
       "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260503-094502",
@@ -24,7 +464,73 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094502/index.html",
-      "rank": 1
+      "rank": 21
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-072227",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 99.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 1,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 6,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:28:34Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-072227/index.html",
+      "rank": 22
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260526-111221",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 99.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 3,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1,
+      "iterations_used": 19,
+      "status": "fail",
+      "timestamp": "2026-05-26T09:43:17Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260526-111221/index.html",
+      "rank": 23
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-073521",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 98.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 7,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:42:14Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-073521/index.html",
+      "rank": 24
     },
     {
       "model": "GPT-4.1",
@@ -46,7 +552,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-191848/index.html",
-      "rank": 2
+      "rank": 25
     },
     {
       "model": "GPT-4.1",
@@ -68,7 +574,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094907/index.html",
-      "rank": 3
+      "rank": 26
     },
     {
       "model": "GPT-4.1",
@@ -90,7 +596,51 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html",
-      "rank": 4
+      "rank": 27
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-122258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 95.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 5,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 6,
+      "status": "fail",
+      "timestamp": "2026-05-13T10:28:25Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-122258/index.html",
+      "rank": 28
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-082458",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 94.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 6,
+      "pa11y_issues": 2,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-05-13T06:28:58Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-082458/index.html",
+      "rank": 29
     },
     {
       "model": "GPT-4.1",
@@ -112,7 +662,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html",
-      "rank": 5
+      "rank": 30
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-090126",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 94.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 9,
+      "pa11y_issues": 3,
+      "qualweb_issues": 2,
+      "iterations_used": 12,
+      "status": "fail",
+      "timestamp": "2026-05-13T07:14:57Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-090126/index.html",
+      "rank": 31
     },
     {
       "model": "GPT-4.1",
@@ -134,7 +706,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html",
-      "rank": 6
+      "rank": 32
     },
     {
       "model": "GPT-4.1",
@@ -156,7 +728,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-190404/index.html",
-      "rank": 7
+      "rank": 33
     },
     {
       "model": "GPT-4o",
@@ -178,7 +750,29 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html",
-      "rank": 8
+      "rank": 34
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-065934",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 90.0,
+      "html_tag_errors": 5,
+      "w3c_errors": 0,
+      "axe_violations": 4,
+      "pa11y_issues": 19,
+      "qualweb_issues": 0,
+      "iterations_used": 4,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:05:33Z",
+      "tag_coverage_pct": 95.6,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-065934/index.html",
+      "rank": 35
     },
     {
       "model": "GPT-4o",
@@ -200,7 +794,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
-      "rank": 9
+      "rank": 36
     },
     {
       "model": "mistral-large-latest",
@@ -222,7 +816,29 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260512-110459/index.html",
-      "rank": 10
+      "rank": 37
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-084214",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 82.73,
+      "html_tag_errors": 18,
+      "w3c_errors": 0,
+      "axe_violations": 2,
+      "pa11y_issues": 3,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "fail",
+      "timestamp": "2026-05-13T06:46:09Z",
+      "tag_coverage_pct": 84.1,
+      "axe_version": "4.11.4",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-084214/index.html",
+      "rank": 38
     },
     {
       "model": "mistral-large-latest",
@@ -244,7 +860,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260510-055752/index.html",
-      "rank": 11
+      "rank": 39
     },
     {
       "model": "mistral-large-latest",
@@ -266,7 +882,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 12
+      "rank": 40
     },
     {
       "model": "GPT-4o",
@@ -288,7 +904,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-224010/index.html",
-      "rank": 13
+      "rank": 41
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -310,7 +926,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260509-054549/index.html",
-      "rank": 14
+      "rank": 42
     },
     {
       "model": "GPT-4o",
@@ -332,7 +948,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
-      "rank": 15
+      "rank": 43
     },
     {
       "model": "meta-llama-Llama-3.1-8B-Instruct",
@@ -354,7 +970,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "unknown",
       "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html",
-      "rank": 16
+      "rank": 44
     },
     {
       "model": "GPT-4o",
@@ -376,7 +992,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-210242/index.html",
-      "rank": 17
+      "rank": 45
     },
     {
       "model": "mistral-small-latest",
@@ -398,7 +1014,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 18
+      "rank": 46
     },
     {
       "model": "GPT-4o",
@@ -420,7 +1036,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-201910/index.html",
-      "rank": 19
+      "rank": 47
     },
     {
       "model": "mistral-small-latest",
@@ -442,7 +1058,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260512-124600/index.html",
-      "rank": 20
+      "rank": 48
     },
     {
       "model": "mistral-medium-latest",
@@ -464,7 +1080,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html",
-      "rank": 21
+      "rank": 49
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -486,7 +1102,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 22
+      "rank": 50
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -508,7 +1124,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260513-044348/index.html",
-      "rank": 23
+      "rank": 51
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -530,7 +1146,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html",
-      "rank": 24
+      "rank": 52
     },
     {
       "model": "command-a-03-2025",
@@ -552,7 +1168,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/command-a-03-2025/command-a-03-2025-20260512-145216/index.html",
-      "rank": 25
+      "rank": 53
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -574,7 +1190,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 26
+      "rank": 54
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -596,7 +1212,7 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 27
+      "rank": 55
     },
     {
       "model": "GPT-4o",
@@ -618,7 +1234,7 @@
       "axe_version": "4.11.2",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 28
+      "rank": 56
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -640,10 +1256,370 @@
       "axe_version": "4.11.4",
       "pa11y_version": "9.1.1",
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 29
+      "rank": 57
     }
   ],
   "runs_by_model": [
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-204100",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 202.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:45:54Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-204100/index.html"
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-205217",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 202.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:56:54Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-205217/index.html"
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-212236",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 194.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:25:58Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-212236/index.html"
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-214819",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 194.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:51:52Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214819/index.html"
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 194.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:00:36Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-195657/index.html"
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "run_id": "Claude Sonnet 4.6-20260526-134808",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 193.27,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T12:04:36Z",
+      "benchmark_url": "benchmarks/Claude Sonnet 4.6/Claude Sonnet 4.6-20260526-134808/index.html"
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "run_id": "GPT-5.3-Codex-20260526-214004",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 186.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T19:45:20Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214004/index.html"
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 186.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T17:50:23Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-194427/index.html"
+    },
+    {
+      "model": "GPT-5.4",
+      "run_id": "GPT-5.4-20260526-133225",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 186.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T11:41:28Z",
+      "benchmark_url": "benchmarks/GPT-5.4/GPT-5.4-20260526-133225/index.html"
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-203030",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:38:49Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-203030/index.html"
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-220729",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:13:34Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-220729/index.html"
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:15:25Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-200546/index.html"
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:25:11Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-201800/index.html"
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T16:35:39Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-182335/index.html"
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-215802",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 178.05,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:05:57Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-215802/index.html"
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "run_id": "GPT-5.2-Codex-20260526-222305",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 178.05,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T20:30:33Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-222305/index.html"
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 178.05,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T16:51:42Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-183941/index.html"
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 178.05,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T18:06:41Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-192423/index.html"
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260526-131001",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 6,
+      "final_score": 170.47,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T11:22:36Z",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260526-131001/index.html"
+    },
+    {
+      "model": "Gemini 3 Flash (Preview)",
+      "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 12,
+      "final_score": 158.39,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-05-26T13:14:37Z",
+      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260526-144754/index.html"
+    },
     {
       "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260503-094502",
@@ -664,6 +1640,42 @@
     },
     {
       "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-072227",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 6,
+      "final_score": 99.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 1,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:28:34Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-072227/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260526-111221",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 19,
+      "final_score": 99.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 3,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 1,
+      "status": "fail",
+      "timestamp": "2026-05-26T09:43:17Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260526-111221/index.html"
+    },
+    {
+      "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260512-191848",
       "source": "local",
       "provider": "github-copilot",
@@ -679,6 +1691,24 @@
       "status": "fail",
       "timestamp": "2026-05-12T17:33:37Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-191848/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-073521",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 7,
+      "final_score": 98.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:42:14Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-073521/index.html"
     },
     {
       "model": "GPT-4.1",
@@ -718,6 +1748,42 @@
     },
     {
       "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-122258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 6,
+      "final_score": 95.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 5,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T10:28:25Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-122258/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-082458",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 94.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 6,
+      "final_pa11y_issues": 2,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T06:28:58Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-082458/index.html"
+    },
+    {
+      "model": "GPT-4.1",
       "run_id": "GPT-4.1-20260512-194127",
       "source": "local",
       "provider": "github-copilot",
@@ -733,6 +1799,24 @@
       "status": "fail",
       "timestamp": "2026-05-12T17:53:09Z",
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-090126",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 12,
+      "final_score": 94.09,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 9,
+      "final_pa11y_issues": 3,
+      "final_qualweb_issues": 2,
+      "status": "fail",
+      "timestamp": "2026-05-13T07:14:57Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-090126/index.html"
     },
     {
       "model": "GPT-4.1",
@@ -789,6 +1873,24 @@
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html"
     },
     {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-065934",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 4,
+      "final_score": 90.0,
+      "final_html_errors": 5,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 4,
+      "final_pa11y_issues": 19,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T05:05:33Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-065934/index.html"
+    },
+    {
       "model": "GPT-4o",
       "run_id": "GPT-4o-20260503-093139",
       "source": "local",
@@ -823,6 +1925,24 @@
       "status": "fail",
       "timestamp": "2026-05-12T11:47:28Z",
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260512-110459/index.html"
+    },
+    {
+      "model": "GPT-4.1",
+      "run_id": "GPT-4.1-20260513-084214",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 82.73,
+      "final_html_errors": 18,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 2,
+      "final_pa11y_issues": 3,
+      "final_qualweb_issues": 0,
+      "status": "fail",
+      "timestamp": "2026-05-13T06:46:09Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-084214/index.html"
     },
     {
       "model": "mistral-large-latest",
@@ -1170,523 +2290,523 @@
   "missing_tags_frequency": [
     {
       "tag": "selectedcontent",
-      "miss_count": 21,
-      "miss_pct": 72.4
+      "miss_count": 22,
+      "miss_pct": 38.6
     },
     {
       "tag": "data",
-      "miss_count": 18,
-      "miss_pct": 62.1
+      "miss_count": 19,
+      "miss_pct": 33.3
     },
     {
       "tag": "h6",
+      "miss_count": 19,
+      "miss_pct": 33.3
+    },
+    {
+      "tag": "h5",
       "miss_count": 18,
-      "miss_pct": 62.1
+      "miss_pct": 31.6
+    },
+    {
+      "tag": "hgroup",
+      "miss_count": 18,
+      "miss_pct": 31.6
+    },
+    {
+      "tag": "pre",
+      "miss_count": 18,
+      "miss_pct": 31.6
+    },
+    {
+      "tag": "search",
+      "miss_count": 18,
+      "miss_pct": 31.6
+    },
+    {
+      "tag": "br",
+      "miss_count": 17,
+      "miss_pct": 29.8
     },
     {
       "tag": "col",
       "miss_count": 17,
-      "miss_pct": 58.6
+      "miss_pct": 29.8
     },
     {
       "tag": "colgroup",
       "miss_count": 17,
-      "miss_pct": 58.6
+      "miss_pct": 29.8
+    },
+    {
+      "tag": "dfn",
+      "miss_count": 17,
+      "miss_pct": 29.8
     },
     {
       "tag": "embed",
       "miss_count": 17,
-      "miss_pct": 58.6
-    },
-    {
-      "tag": "h5",
-      "miss_count": 17,
-      "miss_pct": 58.6
+      "miss_pct": 29.8
     },
     {
       "tag": "menu",
       "miss_count": 17,
-      "miss_pct": 58.6
+      "miss_pct": 29.8
     },
     {
-      "tag": "pre",
+      "tag": "rp",
       "miss_count": 17,
-      "miss_pct": 58.6
-    },
-    {
-      "tag": "search",
-      "miss_count": 17,
-      "miss_pct": 58.6
+      "miss_pct": 29.8
     },
     {
       "tag": "tfoot",
       "miss_count": 17,
-      "miss_pct": 58.6
-    },
-    {
-      "tag": "br",
-      "miss_count": 16,
-      "miss_pct": 55.2
-    },
-    {
-      "tag": "dfn",
-      "miss_count": 16,
-      "miss_pct": 55.2
-    },
-    {
-      "tag": "hgroup",
-      "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 29.8
     },
     {
       "tag": "hr",
       "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 28.1
+    },
+    {
+      "tag": "i",
+      "miss_count": 16,
+      "miss_pct": 28.1
+    },
+    {
+      "tag": "iframe",
+      "miss_count": 16,
+      "miss_pct": 28.1
     },
     {
       "tag": "object",
       "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 28.1
     },
     {
       "tag": "ol",
       "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 28.1
     },
     {
-      "tag": "rp",
+      "tag": "q",
       "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 28.1
+    },
+    {
+      "tag": "s",
+      "miss_count": 16,
+      "miss_pct": 28.1
     },
     {
       "tag": "span",
       "miss_count": 16,
-      "miss_pct": 55.2
+      "miss_pct": 28.1
+    },
+    {
+      "tag": "u",
+      "miss_count": 16,
+      "miss_pct": 28.1
+    },
+    {
+      "tag": "b",
+      "miss_count": 15,
+      "miss_pct": 26.3
     },
     {
       "tag": "bdi",
       "miss_count": 15,
-      "miss_pct": 51.7
+      "miss_pct": 26.3
     },
     {
       "tag": "bdo",
       "miss_count": 15,
-      "miss_pct": 51.7
+      "miss_pct": 26.3
+    },
+    {
+      "tag": "del",
+      "miss_count": 15,
+      "miss_pct": 26.3
     },
     {
       "tag": "dialog",
       "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "i",
-      "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "iframe",
-      "miss_count": 15,
-      "miss_pct": 51.7
+      "miss_pct": 26.3
     },
     {
       "tag": "optgroup",
       "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "q",
-      "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "s",
-      "miss_count": 15,
-      "miss_pct": 51.7
+      "miss_pct": 26.3
     },
     {
       "tag": "slot",
       "miss_count": 15,
-      "miss_pct": 51.7
+      "miss_pct": 26.3
     },
     {
       "tag": "template",
       "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "u",
-      "miss_count": 15,
-      "miss_pct": 51.7
-    },
-    {
-      "tag": "b",
-      "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 26.3
     },
     {
       "tag": "datalist",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "dd",
       "miss_count": 14,
-      "miss_pct": 48.3
-    },
-    {
-      "tag": "del",
-      "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "dl",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "dt",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
+    },
+    {
+      "tag": "ins",
+      "miss_count": 14,
+      "miss_pct": 24.6
     },
     {
       "tag": "picture",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "rt",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "ruby",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "sub",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "sup",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
     },
     {
       "tag": "wbr",
       "miss_count": 14,
-      "miss_pct": 48.3
+      "miss_pct": 24.6
+    },
+    {
+      "tag": "area",
+      "miss_count": 13,
+      "miss_pct": 22.8
     },
     {
       "tag": "canvas",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "cite",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "div",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "em",
       "miss_count": 13,
-      "miss_pct": 44.8
-    },
-    {
-      "tag": "ins",
-      "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "kbd",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
+    },
+    {
+      "tag": "map",
+      "miss_count": 13,
+      "miss_pct": 22.8
     },
     {
       "tag": "meter",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "noscript",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "output",
       "miss_count": 13,
-      "miss_pct": 44.8
+      "miss_pct": 22.8
     },
     {
       "tag": "select",
       "miss_count": 13,
-      "miss_pct": 44.8
-    },
-    {
-      "tag": "area",
-      "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 22.8
     },
     {
       "tag": "details",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "h4",
       "miss_count": 12,
-      "miss_pct": 41.4
-    },
-    {
-      "tag": "map",
-      "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "progress",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "samp",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "small",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "strong",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "style",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "summary",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "textarea",
       "miss_count": 12,
-      "miss_pct": 41.4
+      "miss_pct": 21.1
     },
     {
       "tag": "mark",
       "miss_count": 11,
-      "miss_pct": 37.9
+      "miss_pct": 19.3
     },
     {
       "tag": "track",
       "miss_count": 11,
-      "miss_pct": 37.9
+      "miss_pct": 19.3
     },
     {
       "tag": "var",
       "miss_count": 11,
-      "miss_pct": 37.9
+      "miss_pct": 19.3
     },
     {
       "tag": "blockquote",
       "miss_count": 10,
-      "miss_pct": 34.5
+      "miss_pct": 17.5
     },
     {
       "tag": "fieldset",
       "miss_count": 10,
-      "miss_pct": 34.5
+      "miss_pct": 17.5
     },
     {
       "tag": "legend",
       "miss_count": 10,
-      "miss_pct": 34.5
+      "miss_pct": 17.5
     },
     {
       "tag": "abbr",
       "miss_count": 9,
-      "miss_pct": 31.0
+      "miss_pct": 15.8
     },
     {
       "tag": "code",
       "miss_count": 9,
-      "miss_pct": 31.0
+      "miss_pct": 15.8
     },
     {
       "tag": "option",
       "miss_count": 9,
-      "miss_pct": 31.0
+      "miss_pct": 15.8
     },
     {
       "tag": "time",
       "miss_count": 9,
-      "miss_pct": 31.0
+      "miss_pct": 15.8
     },
     {
       "tag": "base",
       "miss_count": 8,
-      "miss_pct": 27.6
+      "miss_pct": 14.0
     },
     {
       "tag": "script",
       "miss_count": 8,
-      "miss_pct": 27.6
+      "miss_pct": 14.0
     },
     {
       "tag": "video",
       "miss_count": 8,
-      "miss_pct": 27.6
+      "miss_pct": 14.0
     },
     {
       "tag": "address",
       "miss_count": 7,
-      "miss_pct": 24.1
+      "miss_pct": 12.3
     },
     {
       "tag": "audio",
       "miss_count": 7,
-      "miss_pct": 24.1
+      "miss_pct": 12.3
     },
     {
       "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 20.7
+      "miss_pct": 10.5
     },
     {
       "tag": "figcaption",
       "miss_count": 6,
-      "miss_pct": 20.7
+      "miss_pct": 10.5
     },
     {
       "tag": "figure",
       "miss_count": 6,
-      "miss_pct": 20.7
+      "miss_pct": 10.5
     },
     {
       "tag": "h3",
+      "miss_count": 6,
+      "miss_pct": 10.5
+    },
+    {
+      "tag": "button",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "img",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "source",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "table",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "tbody",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "td",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "th",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "thead",
       "miss_count": 5,
-      "miss_pct": 17.2
+      "miss_pct": 8.8
     },
     {
       "tag": "tr",
       "miss_count": 5,
-      "miss_pct": 17.2
-    },
-    {
-      "tag": "button",
-      "miss_count": 4,
-      "miss_pct": 13.8
+      "miss_pct": 8.8
     },
     {
       "tag": "form",
       "miss_count": 4,
-      "miss_pct": 13.8
+      "miss_pct": 7.0
     },
     {
       "tag": "label",
       "miss_count": 4,
-      "miss_pct": 13.8
+      "miss_pct": 7.0
     },
     {
       "tag": "link",
       "miss_count": 4,
-      "miss_pct": 13.8
+      "miss_pct": 7.0
     },
     {
       "tag": "aside",
       "miss_count": 3,
-      "miss_pct": 10.3
+      "miss_pct": 5.3
     },
     {
       "tag": "h2",
       "miss_count": 3,
-      "miss_pct": 10.3
+      "miss_pct": 5.3
     },
     {
       "tag": "article",
       "miss_count": 2,
-      "miss_pct": 6.9
+      "miss_pct": 3.5
     },
     {
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 6.9
+      "miss_pct": 3.5
     },
     {
       "tag": "a",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "h1",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "li",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "main",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "nav",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "ul",
       "miss_count": 1,
-      "miss_pct": 3.4
+      "miss_pct": 1.8
     },
     {
       "tag": "body",
@@ -1735,6 +2855,180 @@
     }
   ],
   "model_progress": {
+    "Claude Haiku 4.5": [
+      {
+        "run_id": "Claude Haiku 4.5-20260526-131001",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T11:11:20Z"
+          },
+          {
+            "iteration": 2,
+            "score": 91.09,
+            "html_tag_errors": 11,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T11:14:23Z"
+          },
+          {
+            "iteration": 3,
+            "score": 102.27,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T11:17:38Z"
+          },
+          {
+            "iteration": 4,
+            "score": 179.69,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T11:19:36Z"
+          },
+          {
+            "iteration": 5,
+            "score": 174.57,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T11:21:06Z"
+          },
+          {
+            "iteration": 6,
+            "score": 170.47,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T11:22:36Z"
+          }
+        ]
+      }
+    ],
+    "Claude Opus 4.6": [
+      {
+        "run_id": "Claude Opus 4.6-20260526-203030",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 99.82,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:34:57Z"
+          },
+          {
+            "iteration": 2,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:36:55Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:38:49Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6-20260526-204100",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 202.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:45:54Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6-20260526-205217",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 202.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:56:54Z"
+          }
+        ]
+      }
+    ],
+    "Claude Sonnet 4.6": [
+      {
+        "run_id": "Claude Sonnet 4.6-20260526-134808",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 102.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T12:01:25Z"
+          },
+          {
+            "iteration": 2,
+            "score": 193.27,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T12:04:36Z"
+          }
+        ]
+      }
+    ],
     "GPT-4.1": [
       {
         "run_id": "GPT-4.1-20260503-094502",
@@ -2241,6 +3535,706 @@
             "qualweb_issues": 1,
             "status": "fail",
             "timestamp": "2026-05-12T17:53:09Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-065934",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:00:00Z"
+          },
+          {
+            "iteration": 2,
+            "score": 90.0,
+            "html_tag_errors": 5,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 17,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:03:03Z"
+          },
+          {
+            "iteration": 3,
+            "score": 90.82,
+            "html_tag_errors": 4,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 20,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:04:31Z"
+          },
+          {
+            "iteration": 4,
+            "score": 90.0,
+            "html_tag_errors": 5,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 19,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:05:33Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-072227",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:22:48Z"
+          },
+          {
+            "iteration": 2,
+            "score": 83.18,
+            "html_tag_errors": 15,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:24:55Z"
+          },
+          {
+            "iteration": 3,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:26:32Z"
+          },
+          {
+            "iteration": 4,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:27:19Z"
+          },
+          {
+            "iteration": 5,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:27:56Z"
+          },
+          {
+            "iteration": 6,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:28:34Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-073521",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:35:42Z"
+          },
+          {
+            "iteration": 2,
+            "score": 80.45,
+            "html_tag_errors": 22,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:38:18Z"
+          },
+          {
+            "iteration": 3,
+            "score": 95.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:39:38Z"
+          },
+          {
+            "iteration": 4,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:40:21Z"
+          },
+          {
+            "iteration": 5,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:41:05Z"
+          },
+          {
+            "iteration": 6,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:41:34Z"
+          },
+          {
+            "iteration": 7,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T05:42:14Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-082458",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:25:18Z"
+          },
+          {
+            "iteration": 2,
+            "score": 85.82,
+            "html_tag_errors": 13,
+            "w3c_errors": 0,
+            "axe_violations": 5,
+            "pa11y_issues": 1,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:26:13Z"
+          },
+          {
+            "iteration": 3,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:27:30Z"
+          },
+          {
+            "iteration": 4,
+            "score": 94.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:28:58Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-084214",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:42:36Z"
+          },
+          {
+            "iteration": 2,
+            "score": 82.73,
+            "html_tag_errors": 18,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 3,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T06:46:09Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-090126",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:01:48Z"
+          },
+          {
+            "iteration": 2,
+            "score": 75.27,
+            "html_tag_errors": 23,
+            "w3c_errors": 0,
+            "axe_violations": 8,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:04:10Z"
+          },
+          {
+            "iteration": 3,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:06:04Z"
+          },
+          {
+            "iteration": 4,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 8,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:07:51Z"
+          },
+          {
+            "iteration": 5,
+            "score": 92.45,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 8,
+            "pa11y_issues": 4,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:09:00Z"
+          },
+          {
+            "iteration": 6,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 5,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:09:45Z"
+          },
+          {
+            "iteration": 7,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 6,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:11:24Z"
+          },
+          {
+            "iteration": 8,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:12:24Z"
+          },
+          {
+            "iteration": 9,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:13:09Z"
+          },
+          {
+            "iteration": 10,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:13:44Z"
+          },
+          {
+            "iteration": 11,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:14:20Z"
+          },
+          {
+            "iteration": 12,
+            "score": 94.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 9,
+            "pa11y_issues": 3,
+            "qualweb_issues": 2,
+            "status": "fail",
+            "timestamp": "2026-05-13T07:14:57Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-122258",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:23:23Z"
+          },
+          {
+            "iteration": 2,
+            "score": 81.0,
+            "html_tag_errors": 14,
+            "w3c_errors": 0,
+            "axe_violations": 7,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:25:18Z"
+          },
+          {
+            "iteration": 3,
+            "score": 91.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 6,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:26:48Z"
+          },
+          {
+            "iteration": 4,
+            "score": 92.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 6,
+            "pa11y_issues": 4,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:27:18Z"
+          },
+          {
+            "iteration": 5,
+            "score": 95.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 5,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:27:57Z"
+          },
+          {
+            "iteration": 6,
+            "score": 95.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 5,
+            "pa11y_issues": 2,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-13T10:28:25Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260526-111221",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:13:39Z"
+          },
+          {
+            "iteration": 2,
+            "score": 92.91,
+            "html_tag_errors": 8,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:15:52Z"
+          },
+          {
+            "iteration": 3,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:17:40Z"
+          },
+          {
+            "iteration": 4,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:19:14Z"
+          },
+          {
+            "iteration": 5,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:20:46Z"
+          },
+          {
+            "iteration": 6,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:22:26Z"
+          },
+          {
+            "iteration": 7,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:24:09Z"
+          },
+          {
+            "iteration": 8,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:25:44Z"
+          },
+          {
+            "iteration": 9,
+            "score": 98.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 4,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:27:25Z"
+          },
+          {
+            "iteration": 10,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:28:53Z"
+          },
+          {
+            "iteration": 11,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:30:33Z"
+          },
+          {
+            "iteration": 12,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:32:17Z"
+          },
+          {
+            "iteration": 13,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:33:52Z"
+          },
+          {
+            "iteration": 14,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:35:21Z"
+          },
+          {
+            "iteration": 15,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:37:09Z"
+          },
+          {
+            "iteration": 16,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:38:48Z"
+          },
+          {
+            "iteration": 17,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:40:19Z"
+          },
+          {
+            "iteration": 18,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:41:53Z"
+          },
+          {
+            "iteration": 19,
+            "score": 99.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "status": "fail",
+            "timestamp": "2026-05-26T09:43:17Z"
           }
         ]
       }
@@ -3576,6 +5570,687 @@
             "qualweb_issues": 2,
             "status": "fail",
             "timestamp": "2026-05-12T20:50:58Z"
+          }
+        ]
+      }
+    ],
+    "GPT-5.2-Codex": [
+      {
+        "run_id": "GPT-5.2-Codex-20260526-215802",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T19:59:18Z"
+          },
+          {
+            "iteration": 2,
+            "score": 99.82,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:02:33Z"
+          },
+          {
+            "iteration": 3,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:04:21Z"
+          },
+          {
+            "iteration": 4,
+            "score": 178.05,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T20:05:57Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.2-Codex-20260526-220729",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:08:44Z"
+          },
+          {
+            "iteration": 2,
+            "score": 96.55,
+            "html_tag_errors": 6,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:11:38Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T20:13:34Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.2-Codex-20260526-222305",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:24:24Z"
+          },
+          {
+            "iteration": 2,
+            "score": 99.82,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:27:18Z"
+          },
+          {
+            "iteration": 3,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T20:28:59Z"
+          },
+          {
+            "iteration": 4,
+            "score": 178.05,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T20:30:33Z"
+          }
+        ]
+      }
+    ],
+    "GPT-5.3-Codex": [
+      {
+        "run_id": "GPT-5.3-Codex-20260526-212236",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T19:23:58Z"
+          },
+          {
+            "iteration": 2,
+            "score": 194.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T19:25:58Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.3-Codex-20260526-214004",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T19:41:28Z"
+          },
+          {
+            "iteration": 3,
+            "score": 186.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T19:45:20Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.3-Codex-20260526-214819",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T19:49:40Z"
+          },
+          {
+            "iteration": 2,
+            "score": 194.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T19:51:52Z"
+          }
+        ]
+      }
+    ],
+    "GPT-5.4": [
+      {
+        "run_id": "GPT-5.4-20260526-133225",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T11:33:49Z"
+          },
+          {
+            "iteration": 2,
+            "score": 103.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T11:39:50Z"
+          },
+          {
+            "iteration": 3,
+            "score": 186.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T11:41:28Z"
+          }
+        ]
+      }
+    ],
+    "GPT-5.4 mini (Preview)": [
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T17:45:46Z"
+          },
+          {
+            "iteration": 2,
+            "score": 103.27,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T17:48:57Z"
+          },
+          {
+            "iteration": 3,
+            "score": 186.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T17:50:23Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T17:58:15Z"
+          },
+          {
+            "iteration": 2,
+            "score": 194.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:00:36Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:07:08Z"
+          },
+          {
+            "iteration": 2,
+            "score": 95.73,
+            "html_tag_errors": 7,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:13:31Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:15:25Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:19:19Z"
+          },
+          {
+            "iteration": 2,
+            "score": 100.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T18:22:57Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:25:11Z"
+          }
+        ]
+      }
+    ],
+    "Gemini 3 Flash (Preview)": [
+      {
+        "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T12:49:12Z"
+          },
+          {
+            "iteration": 2,
+            "score": 13.73,
+            "html_tag_errors": 106,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T12:52:33Z"
+          },
+          {
+            "iteration": 3,
+            "score": 13.73,
+            "html_tag_errors": 106,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T12:56:18Z"
+          },
+          {
+            "iteration": 4,
+            "score": 98.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T12:58:36Z"
+          },
+          {
+            "iteration": 5,
+            "score": 98.82,
+            "html_tag_errors": 2,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:00:15Z"
+          },
+          {
+            "iteration": 6,
+            "score": 96.18,
+            "html_tag_errors": 6,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:02:10Z"
+          },
+          {
+            "iteration": 7,
+            "score": 100.27,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:04:48Z"
+          },
+          {
+            "iteration": 8,
+            "score": 100.27,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 3,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:07:56Z"
+          },
+          {
+            "iteration": 9,
+            "score": 102.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:09:38Z"
+          },
+          {
+            "iteration": 10,
+            "score": 102.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:10:54Z"
+          },
+          {
+            "iteration": 11,
+            "score": 103.09,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T13:12:43Z"
+          },
+          {
+            "iteration": 12,
+            "score": 158.39,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T13:14:37Z"
+          }
+        ]
+      }
+    ],
+    "Gemini 3.1 Pro (Preview)": [
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T16:25:01Z"
+          },
+          {
+            "iteration": 2,
+            "score": 99.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T16:33:44Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T16:35:39Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T16:41:01Z"
+          },
+          {
+            "iteration": 2,
+            "score": 13.73,
+            "html_tag_errors": 106,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T16:44:57Z"
+          },
+          {
+            "iteration": 3,
+            "score": 100.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T16:49:14Z"
+          },
+          {
+            "iteration": 4,
+            "score": 178.05,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T16:51:42Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T17:25:43Z"
+          },
+          {
+            "iteration": 2,
+            "score": 101.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 1,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-05-26T17:30:17Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T17:32:05Z"
+          },
+          {
+            "iteration": 4,
+            "score": 178.05,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-05-26T18:06:41Z"
           }
         ]
       }
@@ -6963,6 +9638,87 @@
   },
   "error_breakdown": [
     {
+      "model": "Claude Opus 4.6",
+      "score": 202.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "score": 194.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "score": 194.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "score": 193.27,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "GPT-5.4",
+      "score": 186.09,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "score": 170.47,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "Gemini 3 Flash (Preview)",
+      "score": 158.39,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
       "model": "GPT-4.1",
       "score": 100.45,
       "html_tag_errors": 0,
@@ -7054,6 +9810,60 @@
     }
   ],
   "tag_coverage_by_model": [
+    {
+      "model": "Claude Opus 4.6",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "model": "GPT-5.3-Codex",
+      "used_count": 115,
+      "missing_count": 0,
+      "coverage_pct": 101.8
+    },
+    {
+      "model": "GPT-5.4 mini (Preview)",
+      "used_count": 115,
+      "missing_count": 0,
+      "coverage_pct": 101.8
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "used_count": 114,
+      "missing_count": 0,
+      "coverage_pct": 100.9
+    },
+    {
+      "model": "GPT-5.4",
+      "used_count": 115,
+      "missing_count": 0,
+      "coverage_pct": 101.8
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "model": "Gemini 3.1 Pro (Preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "used_count": 115,
+      "missing_count": 0,
+      "coverage_pct": 101.8
+    },
+    {
+      "model": "Gemini 3 Flash (Preview)",
+      "used_count": 115,
+      "missing_count": 0,
+      "coverage_pct": 101.8
+    },
     {
       "model": "GPT-4.1",
       "used_count": 113,

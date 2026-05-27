@@ -523,6 +523,10 @@ tbody td {
     padding: 24px;
 }
 
+.chart-card-wide {
+    grid-column: 1 / -1;
+}
+
 /* Chart card heading — visible label, also used as aria-label on canvas */
 .chart-card h3 {
     font-family: var(--mono);

@@ -126,6 +126,7 @@ async function main() {
   renderRunHistory(window._runHistoryData);
   setupRunHistorySort();
   renderErrorBreakdown(data.error_breakdown);
+  renderStrategyCharts(data.model_progress, data.runs_by_model);
   renderCoverageCharts(data.tag_coverage_by_model);
   renderMissingTagsHeatmap(data.missing_tags_frequency, data.total_runs);
   renderProgressSection(data.model_progress);
@@ -462,6 +463,253 @@ function renderMissingTagsHeatmap(tags, totalRuns) {
         <div class="tag-pct" aria-hidden="true">${t.miss_pct}%</div>
       </div>`;
   }).join('');
+}
+
+/* ── Model Strategy charts ────────────────────────────────────── */
+function renderStrategyCharts(modelProgress, runsByModel) {
+  const models = Object.keys(modelProgress ?? {});
+  if (!models.length) return;
+
+  renderStrategyCompare(modelProgress, models);
+  renderStrategyEfficiency(runsByModel);
+  renderStrategyVelocity(modelProgress, models);
+  renderStrategyResolution(modelProgress, models);
+}
+
+/** All models on one line chart — average score per iteration */
+function renderStrategyCompare(modelProgress, models) {
+  const maxIter = Math.max(...models.map(m =>
+    Math.max(...modelProgress[m].flatMap(r => r.iterations.map(it => it.iteration)))
+  ));
+
+  const datasets = models.map((model, i) => {
+    const byIter = {};
+    for (const run of modelProgress[model]) {
+      for (const it of run.iterations) {
+        if (!byIter[it.iteration]) byIter[it.iteration] = [];
+        byIter[it.iteration].push(it.score ?? 0);
+      }
+    }
+    const avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+    const data = [];
+    for (let n = 1; n <= maxIter; n++) {
+      data.push(byIter[n] ? +avg(byIter[n]).toFixed(2) : null);
+    }
+    return {
+      label: model,
+      data,
+      borderColor: modelColor(i),
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      pointRadius: 3,
+      pointBackgroundColor: modelColor(i),
+      tension: 0.3,
+      spanGaps: true,
+    };
+  });
+
+  const labels = Array.from({ length: maxIter }, (_, i) => `${i + 1}`);
+
+  new Chart($('#chart-strategy-compare'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: mergeCD({
+      scales: {
+        x: {
+          title: { display: true, text: 'Iteration', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+        },
+        y: {
+          title: { display: true, text: 'Score (APS)', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+        },
+      },
+      plugins: {
+        ...CD.plugins,
+        legend: {
+          ...CD.plugins.legend,
+          position: 'bottom',
+        },
+      },
+    }),
+  });
+}
+
+/** Scatter: X = iterations used, Y = final score — each dot is a run */
+function renderStrategyEfficiency(runsByModel) {
+  if (!runsByModel?.length) return;
+
+  // Group runs by model
+  const byModel = {};
+  for (const run of runsByModel) {
+    if (!byModel[run.model]) byModel[run.model] = [];
+    byModel[run.model].push(run);
+  }
+
+  const models = Object.keys(byModel);
+  const datasets = models.map((model, i) => ({
+    label: model,
+    data: byModel[model].map(r => ({
+      x: r.total_iterations,
+      y: r.final_score,
+    })),
+    backgroundColor: modelColor(i) + 'cc',
+    borderColor: modelColor(i),
+    borderWidth: 1,
+    pointRadius: 6,
+    pointHoverRadius: 9,
+  }));
+
+  new Chart($('#chart-strategy-efficiency'), {
+    type: 'scatter',
+    data: { datasets },
+    options: mergeCD({
+      scales: {
+        x: {
+          title: { display: true, text: 'Iterations used', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+        },
+        y: {
+          title: { display: true, text: 'Final score (APS)', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+        },
+      },
+      plugins: {
+        ...CD.plugins,
+        legend: {
+          ...CD.plugins.legend,
+          position: 'bottom',
+        },
+        tooltip: {
+          ...CD.plugins.tooltip,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} APS in ${ctx.parsed.x} iter`,
+          },
+        },
+      },
+    }),
+  });
+}
+
+/** Bar chart: average score gained per iteration (best run per model) */
+function renderStrategyVelocity(modelProgress, models) {
+  const velocities = models.map(model => {
+    // Find best run (highest final score)
+    let bestRun = null;
+    let bestScore = -1;
+    for (const run of modelProgress[model]) {
+      const finalIt = run.iterations[run.iterations.length - 1];
+      if ((finalIt?.score ?? 0) > bestScore) {
+        bestScore = finalIt.score;
+        bestRun = run;
+      }
+    }
+    if (!bestRun || bestRun.iterations.length === 0) return 0;
+    const iters = bestRun.iterations;
+    const firstScore = iters[0]?.score ?? 0;
+    const lastScore = iters[iters.length - 1]?.score ?? 0;
+    const numIters = iters.length;
+    return numIters > 1 ? +((lastScore - firstScore) / (numIters - 1)).toFixed(2) : 0;
+  });
+
+  new Chart($('#chart-strategy-velocity'), {
+    type: 'bar',
+    data: {
+      labels: models,
+      datasets: [{
+        label: 'Avg points/iteration',
+        data: velocities,
+        backgroundColor: models.map((_, i) => modelColor(i) + 'bb'),
+        borderColor: models.map((_, i) => modelColor(i)),
+        borderWidth: 1,
+        borderRadius: 3,
+      }],
+    },
+    options: mergeCD({
+      plugins: { ...CD.plugins, legend: { display: false } },
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 }, maxRotation: 45, minRotation: 25 }, grid: { color: C.border } },
+        y: {
+          title: { display: true, text: 'Points gained per iteration', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+        },
+      },
+    }),
+  });
+}
+
+/** Grouped bar: % of each error type resolved between iter 1 and final (best run per model) */
+function renderStrategyResolution(modelProgress, models) {
+  const resolutions = models.map(model => {
+    // Find best run
+    let bestRun = null;
+    let bestScore = -1;
+    for (const run of modelProgress[model]) {
+      const finalIt = run.iterations[run.iterations.length - 1];
+      if ((finalIt?.score ?? 0) > bestScore) {
+        bestScore = finalIt.score;
+        bestRun = run;
+      }
+    }
+    if (!bestRun || bestRun.iterations.length < 2) {
+      return { html: 0, w3c: 0, axe: 0, pa11y: 0, qualweb: 0 };
+    }
+    const first = bestRun.iterations[0];
+    const last = bestRun.iterations[bestRun.iterations.length - 1];
+
+    const pctResolved = (startVal, endVal) => {
+      if (startVal === 0) return endVal === 0 ? 100 : 0;
+      return Math.max(0, Math.round(((startVal - endVal) / startVal) * 100));
+    };
+
+    return {
+      html: pctResolved(first.html_tag_errors ?? 0, last.html_tag_errors ?? 0),
+      w3c: pctResolved(first.w3c_errors ?? 0, last.w3c_errors ?? 0),
+      axe: pctResolved(first.axe_violations ?? 0, last.axe_violations ?? 0),
+      pa11y: pctResolved(first.pa11y_issues ?? 0, last.pa11y_issues ?? 0),
+      qualweb: pctResolved(first.qualweb_issues ?? 0, last.qualweb_issues ?? 0),
+    };
+  });
+
+  new Chart($('#chart-strategy-resolution'), {
+    type: 'bar',
+    data: {
+      labels: models,
+      datasets: [
+        { label: 'Missing tags resolved %', data: resolutions.map(r => r.html), backgroundColor: 'rgba(255,112,112,0.75)', borderColor: C.accent3, borderWidth: 1 },
+        { label: 'W3C errors resolved %', data: resolutions.map(r => r.w3c), backgroundColor: 'rgba(251,191,36,0.75)', borderColor: C.warn, borderWidth: 1 },
+        { label: 'Axe violations resolved %', data: resolutions.map(r => r.axe), backgroundColor: 'rgba(192,132,252,0.75)', borderColor: C.accent4, borderWidth: 1 },
+        { label: 'Pa11y issues resolved %', data: resolutions.map(r => r.pa11y), backgroundColor: 'rgba(71,212,255,0.75)', borderColor: C.accent2, borderWidth: 1 },
+        { label: 'QualWeb issues resolved %', data: resolutions.map(r => r.qualweb), backgroundColor: 'rgba(244,114,182,0.75)', borderColor: '#f472b6', borderWidth: 1 },
+      ],
+    },
+    options: mergeCD({
+      scales: {
+        x: { ticks: { color: C.muted, font: { family: 'DM Mono', size: 10 }, maxRotation: 45, minRotation: 25 }, grid: { color: C.border } },
+        y: {
+          title: { display: true, text: '% resolved', color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          ticks: { color: C.muted, font: { family: 'DM Mono', size: 11 } },
+          grid: { color: C.border },
+          min: 0,
+          max: 100,
+        },
+      },
+      plugins: {
+        ...CD.plugins,
+        legend: {
+          ...CD.plugins.legend,
+          position: 'bottom',
+        },
+      },
+    }),
+  });
 }
 
 /* ── Iteration progress ──────────────────────────────────────── */

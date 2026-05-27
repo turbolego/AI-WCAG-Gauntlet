@@ -416,38 +416,6 @@ tbody td {
   border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
-/* Provider-keyed badge colours (data-provider attribute) */
-.source-badge[data-provider="github-copilot"] {
-  background-color: rgba(139, 148, 158, 0.18);
-  color: #8b949e;
-  border: 1px solid rgba(139, 148, 158, 0.3);
-}
-.source-badge[data-provider="ollama"] {
-  background-color: rgba(74, 222, 128, 0.2);
-  color: var(--pass);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-}
-.source-badge[data-provider="openai"] {
-  background-color: rgba(16, 185, 129, 0.2);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-.source-badge[data-provider="huggingface"] {
-  background-color: rgba(255, 199, 51, 0.2);
-  color: #c7a100;
-  border: 1px solid rgba(255, 199, 51, 0.35);
-}
-.source-badge[data-provider="mistral"] {
-  background-color: rgba(255, 121, 63, 0.2);
-  color: #ff793f;
-  border: 1px solid rgba(255, 121, 63, 0.3);
-}
-.source-badge[data-provider="openrouter"] {
-  background-color: rgba(167, 139, 250, 0.2);
-  color: #a78bfa;
-  border: 1px solid rgba(167, 139, 250, 0.3);
-}
-
 .run-id {
   font-family: var(--mono);
   font-size: 12px;
@@ -551,6 +519,10 @@ tbody td {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
+}
+
+.chart-card-wide {
+  grid-column: 1/-1;
 }
 
 /* Chart card heading — visible label, also used as aria-label on canvas */
