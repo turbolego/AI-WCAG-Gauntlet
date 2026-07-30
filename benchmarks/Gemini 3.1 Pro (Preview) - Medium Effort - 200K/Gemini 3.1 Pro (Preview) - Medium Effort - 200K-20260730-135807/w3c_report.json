@@ -1,0 +1,377 @@
+{
+  "validates": false,
+  "errorCount": 38,
+  "messageCount": 39,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 36,
+      "message": "Saw “<” when expecting an attribute name. Probable cause: Missing “>” immediately before.",
+      "extract": "><s            <details><s    ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 44,
+      "firstColumn": 22,
+      "message": "Element “details” is missing a required instance of child element “summary”.",
+      "extract": " <details><s            <details><s    ",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 44,
+      "firstColumn": 22,
+      "message": "Attribute “<details” not allowed on element “s” at this point.",
+      "extract": " <details><s            <details><s    ",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 59,
+      "firstColumn": 45,
+      "message": "Attribute “ails” not allowed on element “s” at this point.",
+      "extract": " <details><s        ails>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 33,
+      "message": "Saw “<” when expecting an attribute name. Probable cause: Missing “>” immediately before.",
+      "extract": "og             <dialog      lo",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 60,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": " lo            <dialog       /",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 67,
+      "message": "Duplicate attribute “<dialog”.",
+      "extract": "        <dialog       /fo     ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 75,
+      "message": "A slash was not immediately followed by “>”.",
+      "extract": "<dialog       /fo            <",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 89,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": "/fo            <dialog        ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 96,
+      "message": "Duplicate attribute “<dialog”.",
+      "extract": "        <dialog             <d",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 109,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": "og             <dype=\"button\" ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 141,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": "cli            <dialog        ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 148,
+      "message": "Duplicate attribute “<dialog”.",
+      "extract": "        <dialog             <d",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 161,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": "og             <dialood       ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 179,
+      "message": "“<” in attribute name. Probable cause: “>” missing immediately before.",
+      "extract": "alood         n</button>\n     ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 181,
+      "message": "A slash was not immediately followed by “>”.",
+      "extract": "ood         n</button>\n       ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 187,
+      "firstColumn": 13,
+      "message": "Element “dialog” not allowed as child of element “s” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <dialog             <dialog      lo            <dialog       /fo            <dialog             <dype=\"button\" oncli            <dialog             <dialood         n</button>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 175
+    },
+    {
+      "type": "error",
+      "lastLine": 36,
+      "lastColumn": 238,
+      "firstColumn": 228,
+      "message": "Stray end tag “datalist”.",
+      "extract": "1</option></datalist>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 11
+    },
+    {
+      "type": "error",
+      "lastLine": 38,
+      "lastColumn": 138,
+      "firstColumn": 124,
+      "message": "Duplicate ID “S”.",
+      "extract": "          <select id=\"S\"><optga",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "info",
+      "lastLine": 38,
+      "lastColumn": 35,
+      "firstColumn": 21,
+      "subType": "warning",
+      "message": "The first occurrence of ID “S” was here.",
+      "extract": "          <select id=\"S\"><optgr",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "error",
+      "lastLine": 38,
+      "lastColumn": 148,
+      "firstColumn": 139,
+      "message": "The “optgabel” element is a completely-unknown element that is not allowed anywhere in any HTML content.",
+      "extract": "ct id=\"S\"><optgabel>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 54,
+      "message": "“<” at the start of an unquoted attribute value. Probable cause: Missing “>” immediately before.",
+      "extract": "               <textarea id=  ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 66,
+      "message": "Duplicate attribute “id”.",
+      "extract": "   <textarea id=       el     ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 96,
+      "message": "Saw “<” when expecting an attribute name. Probable cause: Missing “>” immediately before.",
+      "extract": "               <textarea id=  ",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 108,
+      "message": "Duplicate attribute “id”.",
+      "extract": "   <textarea id=   ber\" id=\"N1",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 115,
+      "message": "“\"” in an unquoted attribute value. Probable causes: Attributes running together or a URL query string in an unquoted attribute value.",
+      "extract": "tarea id=   ber\" id=\"N1\" value",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 119,
+      "message": "Duplicate attribute “id”.",
+      "extract": "a id=   ber\" id=\"N1\" value=\"1\"",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 74,
+      "lastColumn": 7,
+      "message": "End of file seen when expecting text or an end tag.",
+      "extract": "dy>\n</html>",
+      "hiliteStart": 10,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 39,
+      "lastColumn": 134,
+      "firstColumn": 21,
+      "message": "Unclosed element “textarea”.",
+      "extract": "          <textarea id=                    <textarea id=       el                    <textarea id=   ber\" id=\"N1\" value=\"1\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 114
+    },
+    {
+      "type": "error",
+      "lastLine": 38,
+      "lastColumn": 148,
+      "firstColumn": 139,
+      "message": "Unclosed element “optgabel”.",
+      "extract": "ct id=\"S\"><optgabel>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 38,
+      "lastColumn": 138,
+      "firstColumn": 124,
+      "message": "Unclosed element “select”.",
+      "extract": "          <select id=\"S\"><optga",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "error",
+      "lastLine": 35,
+      "lastColumn": 22,
+      "firstColumn": 13,
+      "message": "Unclosed element “fieldset”.",
+      "extract": "          <fieldset>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 31,
+      "lastColumn": 187,
+      "firstColumn": 13,
+      "message": "Unclosed element “dialog”.",
+      "extract": "          <dialog             <dialog      lo            <dialog       /fo            <dialog             <dype=\"button\" oncli            <dialog             <dialood         n</button>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 175
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 59,
+      "firstColumn": 45,
+      "message": "Unclosed element “s”.",
+      "extract": " <details><s        ails>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 15
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 44,
+      "firstColumn": 22,
+      "message": "Unclosed element “s”.",
+      "extract": " <details><s            <details><s    ",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "error",
+      "lastLine": 30,
+      "lastColumn": 21,
+      "firstColumn": 13,
+      "message": "Unclosed element “details”.",
+      "extract": "          <details><s    ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 15,
+      "lastColumn": 38,
+      "firstColumn": 9,
+      "message": "Unclosed element “section”.",
+      "extract": ">\n        <section aria-labelledby=\"h2\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 30
+    },
+    {
+      "type": "error",
+      "lastLine": 14,
+      "lastColumn": 10,
+      "firstColumn": 5,
+      "message": "Unclosed element “main”.",
+      "extract": "ader>\n    <main>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 74,
+      "lastColumn": 7,
+      "message": "End of file seen and there were open elements.",
+      "extract": "dy>\n</html>",
+      "hiliteStart": 10,
+      "hiliteLength": 1
+    }
+  ]
+}

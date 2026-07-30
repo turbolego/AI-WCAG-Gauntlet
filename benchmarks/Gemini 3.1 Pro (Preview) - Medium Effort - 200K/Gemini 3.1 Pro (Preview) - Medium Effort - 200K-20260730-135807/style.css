@@ -1,0 +1,39 @@
+/* Basic styling for the benchmark */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Ensure focus styles are visible */
+a:focus, button:focus, input:focus, select:focus, textarea:focus, summary:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+/* Color contrast improvements */
+a {
+    color: #0056b3; /* high contrast link color */
+}
+
+a:visited {
+    color: #660099;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
