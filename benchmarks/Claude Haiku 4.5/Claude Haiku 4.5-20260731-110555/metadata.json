@@ -1,0 +1,8 @@
+{
+  "model": "Claude Haiku 4.5",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-07-31T09:05:55Z",
+  "folder": "Claude Haiku 4.5-20260731-110555"
+}
