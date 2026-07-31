@@ -1,6 +1,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { normalizeModel, buildEndpoints } from "./generate-page.mjs";
+import { normalizeModel } from "./generate-page.mjs";
+import { buildEndpoints } from "./providers/github.mjs";
 
 const COPILOT_URL = "https://api.githubcopilot.com/chat/completions";
 const MODELS_URL = "https://models.github.ai/inference/chat/completions";
