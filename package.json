@@ -22,7 +22,7 @@
   "homepage": "https://github.com/turbolego/AI-WCAG-Gauntlet#readme",
   "devDependencies": {
     "@qualweb/cli": "^0.7.21",
-    "@qualweb/core": "^0.8.11",
+    "@qualweb/core": "^0.9.0",
     "axe-core": "^4.11.3",
     "pa11y": "^9.1.1",
     "puppeteer-core": "^25.0.0",
