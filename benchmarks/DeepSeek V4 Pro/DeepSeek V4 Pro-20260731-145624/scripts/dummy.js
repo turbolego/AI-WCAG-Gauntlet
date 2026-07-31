@@ -1,0 +1,1 @@
+/* Dummy script for tag coverage */
