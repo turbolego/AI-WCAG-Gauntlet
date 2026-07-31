@@ -1,0 +1,8 @@
+{
+  "model": "DeepSeek V4 Pro",
+  "provider": "nvidia",
+  "providerLabel": "Hermes",
+  "tool": "vscode",
+  "timestamp": "2026-07-31T12:13:33Z",
+  "folder": "DeepSeek V4 Pro-20260731-121333"
+}
