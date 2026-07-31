@@ -1,0 +1,174 @@
+{
+  "validates": false,
+  "errorCount": 11,
+  "messageCount": 16,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 714,
+      "lastColumn": 39,
+      "firstColumn": 9,
+      "message": "The “aria-label” attribute must not be specified on any “del” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": ">\n        <del aria-label=\"Deleted text\">This t",
+      "hiliteStart": 10,
+      "hiliteLength": 31
+    },
+    {
+      "type": "error",
+      "lastLine": 715,
+      "lastColumn": 40,
+      "firstColumn": 9,
+      "message": "The “aria-label” attribute must not be specified on any “ins” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": ">\n        <ins aria-label=\"Inserted text\">This t",
+      "hiliteStart": 10,
+      "hiliteLength": 32
+    },
+    {
+      "type": "error",
+      "lastLine": 740,
+      "lastColumn": 43,
+      "firstColumn": 5,
+      "message": "The “aria-label” attribute must not be specified on any “del” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "e -->\n    <del id=\"del-tag\" aria-label=\"del tag\">del ta",
+      "hiliteStart": 10,
+      "hiliteLength": 39
+    },
+    {
+      "type": "error",
+      "lastLine": 742,
+      "lastColumn": 43,
+      "firstColumn": 5,
+      "message": "The “aria-label” attribute must not be specified on any “ins” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "</h6>\n    <ins id=\"ins-tag\" aria-label=\"ins tag\">ins ta",
+      "hiliteStart": 10,
+      "hiliteLength": 39
+    },
+    {
+      "type": "info",
+      "lastLine": 760,
+      "lastColumn": 105,
+      "firstColumn": 7,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "el>\n      <input type=\"text\" id=\"demo-name\" name=\"demo-name\" required aria-required=\"true\" aria-label=\"Name\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 99
+    },
+    {
+      "type": "info",
+      "lastLine": 763,
+      "lastColumn": 109,
+      "firstColumn": 7,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "el>\n      <input type=\"email\" id=\"demo-email\" name=\"demo-email\" required aria-required=\"true\" aria-label=\"Email\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 103
+    },
+    {
+      "type": "info",
+      "lastLine": 795,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "rap\">\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "error",
+      "lastLine": 827,
+      "lastColumn": 80,
+      "firstColumn": 15,
+      "message": "The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "          <div class=\"kpi-value\" id=\"kpi-models\" aria-label=\"Models tested\">—</div",
+      "hiliteStart": 10,
+      "hiliteLength": 66
+    },
+    {
+      "type": "error",
+      "lastLine": 831,
+      "lastColumn": 85,
+      "firstColumn": 15,
+      "message": "The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "          <div class=\"kpi-value\" id=\"kpi-runs\" aria-label=\"Total benchmark runs\">—</div",
+      "hiliteStart": 10,
+      "hiliteLength": 71
+    },
+    {
+      "type": "error",
+      "lastLine": 835,
+      "lastColumn": 91,
+      "firstColumn": 15,
+      "message": "The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "          <div class=\"kpi-value\" id=\"kpi-passes\" aria-label=\"Runs with perfect scores\">—</div",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "error",
+      "lastLine": 839,
+      "lastColumn": 119,
+      "firstColumn": 15,
+      "message": "The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "          <div class=\"kpi-value\" id=\"kpi-best-score\" aria-label=\"Best score achieved\" style=\"color:var(--accent2)\">—\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 105
+    },
+    {
+      "type": "error",
+      "lastLine": 844,
+      "lastColumn": 112,
+      "firstColumn": 15,
+      "message": "The “aria-label” attribute must not be specified on any “div” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "          <div class=\"kpi-value\" id=\"kpi-tags\" aria-label=\"HTML5 tags tracked\" style=\"color:var(--accent4)\">—</div",
+      "hiliteStart": 10,
+      "hiliteLength": 98
+    },
+    {
+      "type": "error",
+      "lastLine": 867,
+      "firstLine": 866,
+      "lastColumn": 76,
+      "firstColumn": 21,
+      "message": "The “role” attribute must not be used on a “th” element which has a “table” ancestor with no “role” attribute, or with a “role” attribute whose value is “table”, “grid”, or “treegrid”.",
+      "extract": "      <tr>\n                  <th scope=\"col\" role=\"columnheader\" aria-sort=\"ascending\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "info",
+      "lastLine": 867,
+      "firstLine": 866,
+      "lastColumn": 76,
+      "firstColumn": 21,
+      "subType": "warning",
+      "message": "The “columnheader” role is unnecessary for element “th”.",
+      "extract": "      <tr>\n                  <th scope=\"col\" role=\"columnheader\" aria-sort=\"ascending\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "info",
+      "lastLine": 1011,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "ain>\n\n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    },
+    {
+      "type": "error",
+      "lastLine": 712,
+      "lastColumn": 10,
+      "firstColumn": 7,
+      "message": "The heading “h6” (with computed level 6) follows the heading “h2” (with computed level 2), skipping 3 heading levels.",
+      "extract": "h2>\n      <h6>Headin",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

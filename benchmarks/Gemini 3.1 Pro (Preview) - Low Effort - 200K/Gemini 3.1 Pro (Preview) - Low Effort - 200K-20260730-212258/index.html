@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/AI-WCAG-Gauntlet/">
+    <title>AI WCAG Gauntlet Benchmark</title>
+    <link rel="stylesheet" href="./benchmarks/Gemini 3.1 Pro (Preview) - Low Effort - 200K/Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258/style.css">
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <header>
+        <h1 id="top">Testing</h1>
+        <hgroup>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+        </hgroup>
+        <nav aria-label="Main nav">
+            <ul>
+                <li><a href="#test">Link</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <search>
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>Search</legend>
+                    <label for="search">Keywords:</label>
+                    <input type="search" id="search" name="q">
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </search>
+        <section aria-labelledby="sec1">
+            <h2 id="sec1">Text</h2>
+            <article>
+                <p>Hello <abbr title="World">W</abbr> an address <address>123 Fake</address></p>
+                <aside aria-label="Aside">Aside</aside>
+                <p><b>Bold</b> <i>Italic</i> <u>Under</u> <s>Strike</s> <bdi>BDI</bdi> <bdo dir="ltr">BDO</bdo> <cite>Cite</cite> <code>Code</code> <kbd>Key</kbd> <samp>Samp</samp> <var>Var</var>. <data value="1">Data</data> <del>Del</del> <ins>Ins</ins> <em>Em</em> <strong>Str</strong> <mark>Mark</mark> <q>Q</q> <small>Small</small> <sub>Sub</sub> <sup>Sup</sup> <time datetime="2026">Time</time> <wbr> Break<br></p>
+                <blockquote><p>Quote</p></blockquote>
+                <pre><code>Pre</code></pre>
+                <ruby>Base<rt>ann</rt><rp>)</rp></ruby>
+            </article>
+        </section>
+        <section aria-labelledby="sec2">
+            <h2 id="sec2">Lists and Tables</h2>
+            <dl>
+                <dt>Term <dfn>Def</dfn></dt>
+                <dd>Desc</dd>
+            </dl>
+            <ol><li>Item</li></ol>
+            <menu><li><button>Btn</button></li></menu>
+            <table border="1">
+                <caption>Table</caption>
+                <colgroup><col><col></colgroup>
+                <thead><tr><th scope="col">A</th><th scope="col">B</th></tr></thead>
+                <tbody><tr><td>1</td><td>2</td></tr></tbody>
+                <tfoot><tr><td>3</td><td>4</td></tr></tfoot>
+            </table>
+        </section>
+        <section aria-labelledby="sec3">
+            <h2 id="sec3">Forms</h2>
+            <div role="group" aria-label="Form group">
+                <label for="lst">List:</label>
+                <input list="dl" id="lst">
+                <datalist id="dl"><option value="opt"></option></datalist>
+                <label for="sel">Select:</label>
+                <select id="sel"><optgroup label="Grp"><option value="v">V</option></optgroup></select>
+                <label for="area">Area:</label>
+                <textarea id="area">Tx</textarea>
+                <label for="out">Out:</label>
+                <output id="out">Out</output>
+                <label for="mtr">Meter:</label>
+                <meter id="mtr" min="0" max="100" value="50">50%</meter>
+                <label for="prog">Progress:</label>
+                <progress id="prog" max="100" value="50">50%</progress>
+            </div>
+            <details>
+                <summary>Sum</summary>
+                <p>Det</p>
+            </details>
+            <dialog id="dl2" aria-labelledby="dlh">
+                <h2 id="dlh">A</h2>
+                <form method="dialog"><button>C</button></form>
+            </dialog>
+            <button aria-controls="dl2" onclick="document.getElementById('dl2').showModal()">O</button>
+        </section>
+        <section aria-labelledby="sec4">
+            <h2 id="sec4">Media</h2>
+            <figure>
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Fig" width="250" height="250">
+                <figcaption>Cap</figcaption>
+            </figure>
+            <picture>
+                <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Pic" width="250" height="250">
+            </picture>
+            <map name="mp">
+                <area shape="rect" coords="0,0,1,1" href="#top" alt="M">
+            </map>
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" usemap="#mp" alt="Map" width="250" height="250">
+            <audio controls aria-label="Audio">
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+            </audio>
+            <video controls width="400" height="225" aria-label="Video">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" src="data:text/vtt;charset=utf-8,WEBVTT%0A%0A1%0A00:00:01.000%20--%3E%2000:00:03.000%0ATest" srclang="en" label="En" default>
+            </video>
+            <canvas width="100" height="100" aria-label="Canv">Fallback</canvas>
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Obj"></object>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Emb">
+            <iframe title="Frame" src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%3E%3Chtml%20lang%3D%22en%22%3E%3Chead%3E%3Ctitle%3EIFrame%3C%2Ftitle%3E%3C%2Fhead%3E%3Cbody%3EIframe%20Content%3C%2Fbody%3E%3C%2Fhtml%3E" width="300" height="200"></iframe>
+            <noscript>No JS</noscript>
+            <template id="tmpl"><p>Temp</p></template>
+            <div>
+                <template shadowrootmode="open">
+                    <slot name="sl">Sl</slot>
+                    <selectedcontent></selectedcontent>
+                </template>
+                <span slot="sl">Slx</span>
+            </div>
+        </section>
+        <!-- Some structural stuff to ensure counts pass -->
+        <div><span><span aria-label="d"></span></span></div>
+    </main>
+    <footer>
+        <p>Foot</p>
+    </footer>
+</body>
+</html>

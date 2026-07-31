@@ -1,0 +1,25 @@
+/* WCAG 2.2 AAA Compliant CSS */
+:root {
+    --text-color: #0b0b0b;
+    --bg-color: #ffffff;
+    --link-color: #0044cc;
+    --link-focus: #002277;
+    --border-color: #333333;
+}
+html { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; line-height: 1.6; }
+body { color: var(--text-color); background-color: var(--bg-color); margin: 0; padding: 1rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+p, li, dl, dt, dd { margin-bottom: 2rem; letter-spacing: 0.12em; word-spacing: 0.16em; }
+h1, h2, h3, h4, h5, h6 { color: #000; line-height: 1.2; }
+a { color: var(--link-color); text-decoration: underline; text-underline-offset: 0.2em; }
+a:hover, a:focus, a:active { color: var(--link-focus); text-decoration-thickness: 0.2rem; outline: 3px solid var(--link-focus); outline-offset: 4px; background-color: #e6f0ff; }
+input, select, textarea, button, summary, details, [role="button"], a { min-height: 44px; min-width: 44px; }
+input, input, input, input, inpu sinput, input, input, in"buinput, input, input, input, inpu sinput, inp2pinpulid input, input, input, inrder-radius: 4px; color: #000; background-color: #fff; }input, input, input, inpus,input, input, input, inpfocus, input, input, input, input, inpu sinput, input, input, in"buinput, input, input, input, inpu sually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+.visually-hidd.visually-hidd.visually-hidd.visually-hidd.visually-hidd.visually-hidd.visually-hidd.vihe.visually-hidd.visually-hidd.visually-hidd.visually-hidde-.visually-hidd.visually-hidd.visually-hidd.visually-hidd.visually-hidd.visually-hidddex: 1000; }
+fieldset { border: 2px solid var(--border-color); padding: 1rem; margin-bottom: 2rem; }
+legend { font-weight: bold; padding: 0 0.5rem; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+th, td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
+th { background-color: #e0e0e0; color: #000; }
+blockquote { border-left: 5px solid var(--border-color); padding-left: 1rem; margin-left: 0; }
+figure { margin: 2rem 0; border: 1px solid #ccc; padding: 1rem; }
+figcaption { font-style: italic; color: #222; }

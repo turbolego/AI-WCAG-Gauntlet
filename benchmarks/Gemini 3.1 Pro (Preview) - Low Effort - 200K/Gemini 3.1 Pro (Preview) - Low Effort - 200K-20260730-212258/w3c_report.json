@@ -1,0 +1,119 @@
+{
+  "validates": false,
+  "errorCount": 9,
+  "messageCount": 11,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 8,
+      "lastColumn": 163,
+      "firstColumn": 5,
+      "message": "Bad value “./benchmarks/Gemini 3.1 Pro (Preview) - Low Effort - 200K/Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258/style.css” for attribute “href” on element “link”: Illegal character in path segment. Space is not allowed.",
+      "extract": "itle>\n    <link rel=\"stylesheet\" href=\"./benchmarks/Gemini 3.1 Pro (Preview) - Low Effort - 200K/Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258/style.css\">\n</hea",
+      "hiliteStart": 10,
+      "hiliteLength": 159
+    },
+    {
+      "type": "error",
+      "lastLine": 15,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h3” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h3>h3</h3",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 16,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h4” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h4>h4</h4",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 17,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h5” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h5>h5</h5",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 18,
+      "lastColumn": 16,
+      "firstColumn": 13,
+      "message": "Element “h6” not allowed as child of element “hgroup” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "          <h6>h6</h6",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 40,
+      "lastColumn": 96,
+      "firstColumn": 93,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "</address></p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 45,
+      "lastColumn": 55,
+      "firstColumn": 49,
+      "message": "Element “ruby” is missing a required instance of child element “rp”.",
+      "extract": "<rp>)</rp></ruby>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 45,
+      "lastColumn": 55,
+      "firstColumn": 49,
+      "message": "Element “ruby” is missing a required instance of child element “rt”.",
+      "extract": "<rp>)</rp></ruby>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "info",
+      "lastLine": 39,
+      "lastColumn": 21,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "Article lacks heading. Consider using “h2”-“h6” elements to add identifying headings to all articles.",
+      "extract": "          <article>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "info",
+      "lastLine": 56,
+      "lastColumn": 30,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "The “border” attribute on the “table” element is obsolete. Consider specifying “img { border: 0; }” in CSS instead.",
+      "extract": "          <table border=\"1\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 18
+    },
+    {
+      "type": "error",
+      "lastLine": 127,
+      "lastColumn": 40,
+      "firstColumn": 20,
+      "message": "The “aria-label” attribute must not be specified on any “span” element unless the element has a “role” value other than “caption”, “code”, “deletion”, “emphasis”, “generic”, “insertion”, “paragraph”, “presentation”, “strong”, “subscript”, or “superscript”.",
+      "extract": "div><span><span aria-label=\"d\"></span",
+      "hiliteStart": 10,
+      "hiliteLength": 21
+    }
+  ]
+}
