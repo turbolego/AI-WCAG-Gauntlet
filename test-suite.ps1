@@ -44,7 +44,14 @@ function Find-Chrome {
         return $env:PUPPETEER_EXECUTABLE_PATH
     }
 
-    $userProfile = $env:USERPROFILE ?? $env:HOME ?? "C:\Users\$env:USERNAME"
+    if ($env:USERPROFILE) {
+        $userProfile = $env:USERPROFILE
+    } elseif ($env:HOME) {
+        $userProfile = $env:HOME
+    } else {
+        $userProfile = "C:\Users\$env:USERNAME"
+    }
+
     $candidates = @(
         # Puppeteer-managed Chrome (Windows cache path)
         (Join-Path $userProfile ".cache\puppeteer\chrome\win64-*\chrome-win64\chrome.exe"),
@@ -101,8 +108,13 @@ $SERVE_PORT   = if ($env:A11Y_SERVE_PORT) { [int]$env:A11Y_SERVE_PORT } else { 2
 $PARENT_DIR   = Split-Path $SCRIPT_DIR -Parent
 $PROJECT_NAME = Split-Path $SCRIPT_DIR -Leaf
 
-$python3 = (Get-Command "python3" -ErrorAction SilentlyContinue)?.Source ??
-           (Get-Command "python"  -ErrorAction SilentlyContinue)?.Source
+$python3 = $null
+$python3Cmd = Get-Command "python3" -ErrorAction SilentlyContinue
+if ($python3Cmd) { $python3 = $python3Cmd.Source }
+if (-not $python3) {
+    $pythonCmd = Get-Command "python" -ErrorAction SilentlyContinue
+    if ($pythonCmd) { $python3 = $pythonCmd.Source }
+}
 
 $serveProcess = $null
 if ($python3) {
@@ -181,10 +193,18 @@ try {
     $axeReport = Get-Content (Join-Path $TARGET_DIR "axe_report.json") -Raw | ConvertFrom-Json
     if ($axeReport -is [array]) {
         $AXE_VIOLATIONS = ($axeReport | ForEach-Object { $_.violations } | Where-Object { $_ } | Measure-Object).Count
-        $AXE_VERSION    = $axeReport[0].testEngine.version ?? "unknown"
+        if ($axeReport[0].testEngine -and $axeReport[0].testEngine.version) {
+            $AXE_VERSION = $axeReport[0].testEngine.version
+        } else {
+            $AXE_VERSION = "unknown"
+        }
     } else {
         $AXE_VIOLATIONS = ($axeReport.violations | Where-Object { $_ } | Measure-Object).Count
-        $AXE_VERSION    = $axeReport.testEngine.version ?? "unknown"
+        if ($axeReport.testEngine -and $axeReport.testEngine.version) {
+            $AXE_VERSION = $axeReport.testEngine.version
+        } else {
+            $AXE_VERSION = "unknown"
+        }
     }
 } catch {
     Write-Host "Error: axe failed — $_"
@@ -243,11 +263,19 @@ try {
     Pop-Location
 
     $qualwebReport = Get-Content (Join-Path $TARGET_DIR "qualweb_report.json") -Raw | ConvertFrom-Json
-    $QUALWEB_ISSUES = [int]($qualwebReport.failedCount ?? 0)
+    if ($qualwebReport.failedCount -ne $null) {
+        $QUALWEB_ISSUES = [int]$qualwebReport.failedCount
+    } else {
+        $QUALWEB_ISSUES = 0
+    }
 } catch {
     Write-Host "Warning: qualweb failed ($($_)). Continuing with empty report."
-    '{"failedCount":0,"results":[],"error":"qualweb script failed"}' |
-        Out-File (Join-Path $TARGET_DIR "qualweb_report.json") -Encoding UTF8
+    $qualwebFallback = [ordered]@{
+        failedCount = 0
+        results     = @()
+        error       = "qualweb script failed"
+    }
+    $qualwebFallback | ConvertTo-Json -Depth 10 | Out-File (Join-Path $TARGET_DIR "qualweb_report.json") -Encoding UTF8
     $QUALWEB_ISSUES = 0
 }
 

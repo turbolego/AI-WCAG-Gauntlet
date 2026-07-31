@@ -1,0 +1,8 @@
+﻿{
+    "model":  "Qwen-3.5-32k",
+    "provider":  "github-copilot",
+    "providerLabel":  "GitHub Copilot",
+    "tool":  "vscode",
+    "timestamp":  "2026-05-13T07:10:36Z",
+    "folder":  "Qwen-3.5-32k-20260513-071036"
+}
