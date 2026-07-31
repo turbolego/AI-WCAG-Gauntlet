@@ -1,0 +1,62 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 5,
+  "messages": [
+    {
+      "type": "info",
+      "lastLine": 43,
+      "lastColumn": 26,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "r -->\n    <header role=\"banner\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 22
+    },
+    {
+      "type": "info",
+      "lastLine": 146,
+      "lastColumn": 129,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"full-name\" name=\"full-name\" required autocomplete=\"name\" aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 101
+    },
+    {
+      "type": "info",
+      "lastLine": 150,
+      "lastColumn": 123,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email\" name=\"email\" required autocomplete=\"email\" aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 95
+    },
+    {
+      "type": "info",
+      "lastLine": 226,
+      "lastColumn": 105,
+      "firstColumn": 29,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"checkbox\" id=\"agree\" name=\"agree\" required aria-required=\"true\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 77
+    },
+    {
+      "type": "info",
+      "lastLine": 433,
+      "lastColumn": 31,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "r -->\n    <footer role=\"contentinfo\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}

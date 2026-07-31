@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI WCAG Gauntlet - A comprehensive HTML5 technical showcase demonstrating all valid HTML5 elements with WCAG 2.2 Level AAA compliance.">
+    <title>AI WCAG Gauntlet — HTML5 &amp; WCAG 2.2 AAA Showcase</title>
+    <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-5.3-Codex%20-%20Extra%20High%20Effort/GPT-5.3-Codex%20-%20Extra%20High%20Effort-20260731-071253/style.css">
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+    <script>
+        window.alert = window.confirm = window.prompt = function() { return null; };
+    </script>
+    <template id="card-template">
+        <div class="card">
+            <slot name="card-title">Default Title</slot>
+            <slot name="card-content">Default Content</slot>
+        </div>
+    </template>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <noscript><p>This page works best with JavaScript enabled for interactive elements.</p></noscript>
+
+    <!-- Header -->
+    <header role="banner">
+        <hgroup>
+            <h1>AI WCAG Gauntlet</h1>
+            <p>A comprehensive HTML5 technical showcase with WCAG 2.2 Level AAA compliance</p>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#text-section">Text Elements</a></li>
+                <li><a href="#forms-section">Forms</a></li>
+                <li><a href="#media-section">Media</a></li>
+                <li><a href="#tables-section">Tables</a></li>
+                <li><a href="#interactive-section">Interactive</a></li>
+                <li><a href="#misc-section">Miscellaneous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Text Elements Section -->
+        <article id="text-section">
+            <header>
+                <h2>Text &amp; Semantic Elements</h2>
+            </header>
+            <section aria-labelledby="heading-inline">
+                <h3 id="heading-inline">Inline Text Elements</h3>
+                <p>This paragraph demonstrates various inline elements: <strong>strongly emphasized text</strong>, <em>emphasized text</em>, <b>bold text</b>, <i>italic text</i>, <u>underlined text</u>, <s>strikethrough text</s>, <small>small text</small>, <mark>highlighted text</mark>, and <span>span elements</span>.</p>
+                <p>Technical text: <code>const x = 42;</code>, <kbd>Ctrl+C</kbd>, <samp>Output: Hello World</samp>, <var>x</var> = <var>y</var> + 1.</p>
+                <p>The word <dfn id="dfn-benchmark">benchmark</dfn> refers to a standard test for measuring performance.</p>
+                <p>The <abbr title="World Wide Web Consortium">W3C</abbr> sets web standards. Visit <a href="https://www.w3.org/">their website</a> for more info.</p>
+                <p><cite>The Web Content Accessibility Guidelines</cite> are essential for accessible web development.</p>
+                <p>This contains a <q>short inline quotation</q> within the text.</p>
+                <p>H<sub>2</sub>O is water, and E = mc<sup>2</sup> is Einstein's famous equation.</p>
+                <p>This text contains a line<br>break and a <wbr>word break opportunity for long words like super<wbr>cali<wbr>fragilistic.</p>
+                <p>The event is on <time datetime="2026-05-26">May 26, 2026</time>.</p>
+                <p>The price is <data value="49.99">$49.99</data>.</p>
+                <p>Text direction: <bdi>مرحبا</bdi> is Arabic for hello. <bdo dir="rtl">This text is reversed</bdo>.</p>
+                <p>This text has been <del datetime="2026-01-01">removed</del> and <ins datetime="2026-01-02">inserted</ins>.</p>
+                <p>The Japanese word <ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp>字<rp>(</rp><rt>ji</rt><rp>)</rp></ruby> means kanji.</p>
+            </section>
+
+            <section aria-labelledby="heading-block">
+                <h3 id="heading-block">Block Elements</h3>
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Web Content Accessibility Guidelines (WCAG) 2.2 covers a wide range of recommendations for making Web content more accessible.</p>
+                </blockquote>
+                <address>
+                    Contact: <a href="mailto:info@example.com">info@example.com</a><br>
+                    123 Accessibility Lane, Web City
+                </address>
+                <pre><code>function greet(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+                <h4>Heading Level 4</h4>
+                <h5>Heading Level 5</h5>
+                <h6>Heading Level 6</h6>
+                <hr>
+                <div class="content-block">
+                    <p>This is a div container with a paragraph inside.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="heading-lists">
+                <h3 id="heading-lists">Lists</h3>
+                <h4>Unordered List</h4>
+                <ul>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ul>
+                <h4>Ordered List</h4>
+                <ol>
+                    <li>Step one</li>
+                    <li>Step two</li>
+                    <li>Step three</li>
+                </ol>
+                <h4>Description List</h4>
+                <dl>
+                    <dt>Accessibility</dt>
+                    <dd>The quality of being easily reached, entered, or used by people who have a disability.</dd>
+                    <dt>WCAG</dt>
+                    <dd>Web Content Accessibility Guidelines — a set of recommendations for making web content more accessible.</dd>
+                </dl>
+                <h4>Menu</h4>
+                <menu>
+                    <li><button type="button">Action 1</button></li>
+                    <li><button type="button">Action 2</button></li>
+                </menu>
+            </section>
+        </article>
+
+        <!-- Forms Section -->
+        <article id="forms-section">
+            <header>
+                <h2>Forms &amp; Input Elements</h2>
+            </header>
+            <section aria-labelledby="heading-form">
+                <h3 id="heading-form">Contact Form</h3>
+                <form action="#" method="post" aria-label="Contact form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <p>
+                            <label for="full-name">Full Name (required):</label>
+                            <input type="text" id="full-name" name="full-name" required autocomplete="name" aria-required="true">
+                        </p>
+                        <p>
+                            <label for="email">Email Address (required):</label>
+                            <input type="email" id="email" name="email" required autocomplete="email" aria-required="true">
+                        </p>
+                        <p>
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel">
+                        </p>
+                        <p>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob">
+                        </p>
+                        <p>
+                            <label for="website">Website:</label>
+                            <input type="url" id="website" name="website" autocomplete="url">
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Preferences</legend>
+                        <p>
+                            <label for="color-choice">Favorite Color:</label>
+                            <input type="color" id="color-choice" name="color-choice" value="#4a90d9">
+                        </p>
+                        <p>
+                            <label for="satisfaction">Satisfaction (1-10):</label>
+                            <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" value="7">
+                            <output for="satisfaction" id="satisfaction-output">7</output>
+                        </p>
+                        <p>
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="0" max="100" value="1">
+                        </p>
+                        <p>
+                            <label for="search-input">Search:</label>
+                            <input type="search" id="search-input" name="search-input" list="search-suggestions">
+                            <datalist id="search-suggestions">
+                                <option value="Accessibility">
+                                <option value="WCAG 2.2">
+                                <option value="HTML5">
+                                <option value="ARIA">
+                            </datalist>
+                        </p>
+                        <p>
+                            <label for="password-input">Password:</label>
+                            <input type="password" id="password-input" name="password-input" autocomplete="new-password">
+                        </p>
+                        <p>
+                            <label for="file-upload">Upload File:</label>
+                            <input type="file" id="file-upload" name="file-upload">
+                        </p>
+                        <p>
+                            <input type="hidden" name="form-id" value="contact-form-1">
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Category Selection</legend>
+                        <p>
+                            <label for="category">Category:</label>
+                            <select id="category" name="category">
+                                <optgroup label="Technical">
+                                    <option value="html">HTML</option>
+                                    <option value="css">CSS</option>
+                                    <option value="js">JavaScript</option>
+                                </optgroup>
+                                <optgroup label="Design">
+                                    <option value="ux">UX Design</option>
+                                    <option value="a11y">Accessibility</option>
+                                </optgroup>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Agreement</legend>
+                        <p>
+                            <input type="checkbox" id="agree" name="agree" required aria-required="true">
+                            <label for="agree">I agree to the terms (required)</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="contact-email" name="contact-method" value="email" checked>
+                            <label for="contact-email">Contact by email</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                            <label for="contact-phone">Contact by phone</label>
+                        </p>
+                    </fieldset>
+                    <p>
+                        <button type="submit">Submit Form</button>
+                        <button type="reset">Reset Form</button>
+                    </p>
+                </form>
+            </section>
+
+            <section aria-labelledby="heading-meter-progress">
+                <h3 id="heading-meter-progress">Progress &amp; Meter</h3>
+                <p>
+                    <label for="disk-usage">Disk Usage:</label>
+                    <meter id="disk-usage" value="0.7" min="0" max="1" low="0.3" high="0.8" optimum="0.5">70%</meter>
+                </p>
+                <p>
+                    <label for="download-progress">Download Progress:</label>
+                    <progress id="download-progress" value="65" max="100">65%</progress>
+                </p>
+            </section>
+        </article>
+
+        <!-- Media Section -->
+        <article id="media-section">
+            <header>
+                <h2>Media Elements</h2>
+            </header>
+            <section aria-labelledby="heading-images">
+                <h3 id="heading-images">Images</h3>
+                <figure>
+                    <picture>
+                        <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 800px)">
+                        <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 400px)">
+                        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark pin icon showing a traditional survey marker" width="250" height="250">
+                    </picture>
+                    <figcaption>Figure 1: Ordnance Survey benchmark pin icon used for survey markers.</figcaption>
+                </figure>
+                <p>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Survey benchmark pin icon - small version" width="100" height="100" usemap="#icon-map">
+                    <map name="icon-map">
+                        <area shape="circle" coords="50,50,50" href="#media-section" alt="Circular area linking to media section">
+                    </map>
+                </p>
+            </section>
+
+            <section aria-labelledby="heading-audio-video">
+                <h3 id="heading-audio-video">Audio &amp; Video</h3>
+                <figure>
+                    <audio controls aria-label="Audio pronunciation of the word benchmarking">
+                        <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <figcaption>Audio: Pronunciation of "benchmarking" in English.</figcaption>
+                </figure>
+                <figure>
+                    <video controls width="400" aria-label="Video showing IPCC climate projections for the 21st century">
+                        <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                        <track kind="captions" src="/AI-WCAG-Gauntlet/resources/captions.vtt" srclang="en" label="English captions" default>
+                        Your browser does not support the video element.
+                    </video>
+                    <figcaption>Video: IPCC projections of temperature and precipitation in the 21st Century.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="heading-embedded">
+                <h3 id="heading-embedded">Embedded Content</h3>
+                <figure>
+                    <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="150" height="150" aria-label="Ordnance Survey benchmark pin SVG graphic">
+                        <p>SVG object fallback: Ordnance Survey benchmark pin icon</p>
+                    </object>
+                    <figcaption>SVG object embed of the benchmark pin icon.</figcaption>
+                </figure>
+                <figure>
+                    <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="100" height="100" aria-label="Embedded SVG benchmark icon">
+                    <figcaption>Embedded SVG benchmark pin icon.</figcaption>
+                </figure>
+                <figure>
+                    <iframe src="about:blank" title="Example embedded frame" width="300" height="100" sandbox="allow-same-origin"></iframe>
+                    <figcaption>An iframe example (blank content for demonstration).</figcaption>
+                </figure>
+                <canvas id="demo-canvas" width="200" height="100" aria-label="Decorative canvas showing a gradient rectangle">
+                    Your browser does not support the canvas element.
+                </canvas>
+            </section>
+        </article>
+
+        <!-- Tables Section -->
+        <article id="tables-section">
+            <header>
+                <h2>Table Elements</h2>
+            </header>
+            <section aria-labelledby="heading-data-table">
+                <h3 id="heading-data-table">WCAG Conformance Levels</h3>
+                <table>
+                    <caption>WCAG 2.2 Conformance Level Comparison</caption>
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 40%;">
+                        <col style="width: 40%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Level</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Criteria Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A</th>
+                            <td>Minimum accessibility requirements</td>
+                            <td>30 success criteria</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">AA</th>
+                            <td>Addresses major barriers to access</td>
+                            <td>20 additional criteria</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">AAA</th>
+                            <td>Highest level of accessibility</td>
+                            <td>28 additional criteria</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Total</th>
+                            <td>All levels combined</td>
+                            <td>78 success criteria</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </article>
+
+        <!-- Interactive Section -->
+        <article id="interactive-section">
+            <header>
+                <h2>Interactive Elements</h2>
+            </header>
+            <section aria-labelledby="heading-details">
+                <h3 id="heading-details">Details &amp; Dialog</h3>
+                <details>
+                    <summary>What is WCAG 2.2 AAA compliance?</summary>
+                    <p>WCAG 2.2 Level AAA represents the highest level of web accessibility conformance. It includes all Level A and AA criteria plus additional requirements for enhanced accessibility.</p>
+                </details>
+                <details>
+                    <summary>Why are semantic HTML elements important?</summary>
+                    <p>Semantic HTML elements provide meaning to content, helping assistive technologies understand page structure and improving navigation for users with disabilities.</p>
+                </details>
+                <dialog id="info-dialog" aria-labelledby="dialog-title">
+                    <h3 id="dialog-title">Information</h3>
+                    <p>This is a native HTML dialog element demonstration.</p>
+                    <form method="dialog">
+                        <button type="submit">Close</button>
+                    </form>
+                </dialog>
+                <p><button type="button" id="open-dialog-btn" aria-haspopup="dialog">Open Dialog</button></p>
+            </section>
+
+            <section aria-labelledby="heading-search">
+                <h3 id="heading-search">Search</h3>
+                <search>
+                    <form role="search" aria-label="Site search">
+                        <label for="site-search">Search this site:</label>
+                        <input type="search" id="site-search" name="q">
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+            </section>
+        </article>
+
+        <!-- Miscellaneous Section -->
+        <article id="misc-section">
+            <header>
+                <h2>Miscellaneous Elements</h2>
+            </header>
+            <section aria-labelledby="heading-misc">
+                <h3 id="heading-misc">Additional HTML5 Elements</h3>
+                <p>The <selectedcontent></selectedcontent> element is part of newer specifications.</p>
+            </section>
+        </article>
+    </main>
+
+    <!-- Aside -->
+    <aside aria-label="Related information">
+        <h2>Related Resources</h2>
+        <nav aria-label="Related links">
+            <ul>
+                <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Specification</a></li>
+                <li><a href="https://html.spec.whatwg.org/">HTML Living Standard</a></li>
+                <li><a href="https://www.w3.org/WAI/">Web Accessibility Initiative</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p><small>&copy; 2026 AI WCAG Gauntlet. All rights reserved.</small></p>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#main-content">Back to top</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Canvas rendering
+        (function() {
+            var canvas = document.getElementById('demo-canvas');
+            if (canvas && canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+                var gradient = ctx.createLinearGradient(0, 0, 200, 0);
+                gradient.addColorStop(0, '#1a237e');
+                gradient.addColorStop(1, '#4a90d9');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 200, 100);
+            }
+        })();
+
+        // Output for range input
+        (function() {
+            var range = document.getElementById('satisfaction');
+            var output = document.getElementById('satisfaction-output');
+            if (range && output) {
+                range.addEventListener('input', function() {
+                    output.textContent = this.value;
+                });
+            }
+        })();
+
+        // Dialog opener
+        document.getElementById('open-dialog-btn').addEventListener('click', function() {
+            document.getElementById('info-dialog').showModal();
+        });
+    </script>
+</body>
+</html>
