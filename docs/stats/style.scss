@@ -570,6 +570,28 @@ tbody td {
     font-family: var(--mono);
 }
 
+/* Similarity (cheat detection) cells */
+.sim-ok {
+    color: var(--pass);
+    font-family: var(--mono);
+}
+
+.sim-warn {
+    color: var(--warn);
+    font-family: var(--mono);
+}
+
+.sim-bad {
+    color: var(--accent3);
+    font-family: var(--mono);
+    font-weight: 700;
+}
+
+.sim-na {
+    color: var(--text-muted);
+    font-family: var(--mono);
+}
+
 /* Coverage bar */
 .cov-bar-wrap {
     display: flex;

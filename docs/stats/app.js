@@ -352,7 +352,7 @@ function drawLeaderboard() {
   }
 
   if (dataToDisplay.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="13" class="empty">No data matches the current filters.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="14" class="empty">No data matches the current filters.</td></tr>`;
     $('#lb-showing').textContent = '';
     $('#lb-show-all').style.display = 'none';
     return;
@@ -383,6 +383,17 @@ function drawLeaderboard() {
       </div>`;
     const iterCls = r.iterations_used <= 5 ? 'num-good'
       : r.iterations_used <= 12 ? 'num-warn' : 'num-bad';
+    // Cheat-detection: similarity to the closest older page from another model
+    let simCell = '<span class="sim-na" aria-label="No older page from another model to compare">—</span>';
+    if (r.similarity_pct != null) {
+      const sim = Number(r.similarity_pct);
+      const simCls = sim >= 90 ? 'sim-bad' : sim >= 70 ? 'sim-warn' : 'sim-ok';
+      const simLabel = sim >= 90 ? 'likely copy'
+        : sim >= 70 ? 'very similar' : 'normal';
+      const simTarget = (r.similar_to_model && r.similar_to_run)
+        ? ` to ${esc(r.similar_to_model)} / ${esc(r.similar_to_run)}` : '';
+      simCell = `<span class="${simCls}" title="${sim.toFixed(1)}% similar${simTarget}" aria-label="Similarity ${sim.toFixed(1)}% — ${simLabel}${simTarget}">${sim.toFixed(1)}%${sim >= 90 ? ' ⚠' : ''}</span>`;
+    }
     // Generate sparkline from model_progress data for this run
     let spark = '';
     const mp = window._modelProgress[r.model];
@@ -404,6 +415,7 @@ function drawLeaderboard() {
       <td data-label="Axe">${numCell(r.axe_violations)}</td>
       <td data-label="Pa11y">${numCell(r.pa11y_issues ?? 0)}</td>
       <td data-label="QualWeb">${numCell(r.qualweb_issues ?? 0)}</td>
+      <td data-label="Similarity">${simCell}</td>
       <td data-label="Iterations"><span class="${iterCls}" aria-label="${r.iterations_used} iterations">${r.iterations_used}</span>${spark}</td>
       <td data-label="Run ID">${r.benchmark_url
         ? `<a class="run-id" href="${esc(r.benchmark_url)}" target="_blank" rel="noopener" aria-label="Open benchmark page for run ${esc(r.run_id)}">${esc(r.run_id)}</a>`
@@ -1393,11 +1405,12 @@ function setupExportButtons() {
   const lbBtn = $('#lb-export-csv');
   if (lbBtn) {
     lbBtn.addEventListener('click', () => {
-      const headers = ['Rank', 'Model', 'Source', 'Score', 'Status', 'Tag Coverage %', 'Missing Tags', 'W3C Errors', 'Axe Violations', 'Pa11y Issues', 'QualWeb Issues', 'Iterations', 'Run ID', 'Timestamp'];
+      const headers = ['Rank', 'Model', 'Source', 'Score', 'Status', 'Tag Coverage %', 'Missing Tags', 'W3C Errors', 'Axe Violations', 'Pa11y Issues', 'QualWeb Issues', 'Similarity %', 'Similar To', 'Iterations', 'Run ID', 'Timestamp'];
       const rows = lbData.map(r => [
         r.rank, r.model, r.providerLabel || r.source, (r.score ?? 0).toFixed(1),
         r.status, r.tag_coverage_pct, r.html_tag_errors, r.w3c_errors,
         r.axe_violations, r.pa11y_issues ?? 0, r.qualweb_issues ?? 0,
+        r.similarity_pct ?? '', r.similar_to_run ? `${r.similar_to_model} / ${r.similar_to_run}` : '',
         r.iterations_used, r.run_id, r.timestamp || ''
       ]);
       downloadCSV('leaderboard.csv', headers, rows);
