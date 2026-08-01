@@ -49,6 +49,7 @@
 
     <nav aria-label="Page sections">
       <a href="#leaderboard">Leaderboard</a>
+      <a href="#skill">WCAG Skill</a>
       <a href="#run-history">Run History</a>
       <a href="#timeline">Timeline</a>
       <a href="#strategies">Strategies</a>
@@ -197,6 +198,48 @@
               <button id="lb-export-csv" class="export-btn" type="button" aria-label="Export leaderboard as CSV">⬇ CSV</button>
               <button id="lb-show-all" class="show-all-btn" type="button">Show all</button>
             </div>
+          </div>
+        </section>
+
+        <!-- WCAG Skill callout -->
+        <section id="skill" aria-labelledby="skill-title">
+          <div class="section-header">
+            <h2 class="section-title" id="skill-title">WCAG Skill</h2>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
+          </div>
+          <div class="skill-callout">
+            <p class="skill-lede">
+              Boost your model's score with the
+              <a href="https://github.com/turbolego/wcag-skill" target="_blank" rel="noopener">wcag-skill</a>
+              <span class="skill-badge">v1.1.0</span> — an agent skill distilled from these benchmarks.
+              Available on
+              <a href="https://clawhub.ai/turbolego/skills/wcag-skill" target="_blank" rel="noopener">ClawHub</a>.
+            </p>
+            <div class="skill-stats">
+              <div class="skill-stat">
+                <span class="skill-stat-value" id="skill-best-score">191.8</span>
+                <span class="skill-stat-label">best template score</span>
+              </div>
+              <div class="skill-stat">
+                <span class="skill-stat-value" id="skill-tag-count">107</span>
+                <span class="skill-stat-label">WHATWG tags covered</span>
+              </div>
+              <div class="skill-stat">
+                <span class="skill-stat-value skill-stat-fast">2</span>
+                <span class="skill-stat-label">iterations to PASS</span>
+              </div>
+              <div class="skill-stat">
+                <span class="skill-stat-value" id="skill-install">openclaw skills install @turbolego/wcag-skill</span>
+                <span class="skill-stat-label">install command</span>
+              </div>
+            </div>
+            <p class="skill-desc">
+              The skill includes a <strong>fast-path template</strong> (known-good page with 107 WHATWG tags),
+              a <strong>tag-coverage pre-check script</strong>, <strong>iteration logs</strong> from passing runs
+              (DeepSeek V4 Pro: SCORE 191.8, max), and a proven <strong>5-step workflow</strong>:
+              Audit → Triage → Fix → Verify → Prevent. Skip the wasted first iteration — copy the template,
+              replace placeholders, and start scoring on iteration 1.
+            </p>
           </div>
         </section>
 
