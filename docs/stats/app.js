@@ -36,17 +36,21 @@ function readHashState() {
   const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
   return {
     section: hash.split('?')[0] || '',
-    model: params.get('model') || '',
-    source: params.get('source') || '',
-    similarity: params.get('similarity') || '',
+    models: params.getAll('model').filter(Boolean),
+    sources: params.getAll('source').filter(Boolean),
+    similarities: params.getAll('similarity').filter(Boolean),
   };
 }
 
 function writeHashState(section, filters) {
   const params = new URLSearchParams();
-  if (filters.model) params.set('model', filters.model);
-  if (filters.source) params.set('source', filters.source);
-  if (filters.similarity) params.set('similarity', filters.similarity);
+  const addAll = (key, values) => {
+    const arr = Array.isArray(values) ? values : (values ? [values] : []);
+    arr.forEach(v => params.append(key, v));
+  };
+  addAll('model', filters.models);
+  addAll('source', filters.sources);
+  addAll('similarity', filters.similarities);
   const qs = params.toString();
   const newHash = section + (qs ? '?' + qs : '');
   history.replaceState(null, '', '#' + newHash);
@@ -255,9 +259,9 @@ let lbData = [];
 let lbSort = { col: 'rank', dir: 1 };
 let lbShowBestOnly = true;
 let lbShowAll = false;
-let lbFilterModel = '';
-let lbFilterSource = '';
-let lbFilterSimilarity = '';
+let lbFilterModels = [];      // multi-select: any selected model matches
+let lbFilterSources = [];     // multi-select: any selected source matches
+let lbFilterSimilarities = []; // multi-select: any selected similarity mode matches
 const LB_PAGE_SIZE = 10;
 
 function renderLeaderboard(rows) {
@@ -273,15 +277,33 @@ function populateFilterOptions(prefix, data) {
   const models = [...new Set(data.map(r => r.model))].sort();
   const sources = [...new Set(data.map(r => r.providerLabel || r.source || '').filter(Boolean))].sort();
 
+  // Legacy single-select path (run history) — keep working.
   const modelSelect = $(`#${prefix}-filter-model`);
   const sourceSelect = $(`#${prefix}-filter-source`);
-  if (modelSelect) {
-    modelSelect.innerHTML = '<option value="">All models</option>' +
-      models.map(m => `<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  if (modelSelect || sourceSelect) {
+    if (modelSelect) {
+      modelSelect.innerHTML = '<option value="">All models</option>' +
+        models.map(m => `<option value="${esc(m)}">${esc(m)}</option>`).join('');
+    }
+    if (sourceSelect) {
+      sourceSelect.innerHTML = '<option value="">All sources</option>' +
+        sources.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+    }
+    return;
   }
-  if (sourceSelect) {
-    sourceSelect.innerHTML = '<option value="">All sources</option>' +
-      sources.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+
+  // Multi-select checkbox dropdowns (leaderboard).
+  const modelOpts = $(`#${prefix}-filter-model-options`);
+  const sourceOpts = $(`#${prefix}-filter-source-options`);
+  if (modelOpts) {
+    modelOpts.innerHTML = models
+      .map(m => `<label class="filter-option"><input type="checkbox" value="${esc(m)}"><span>${esc(m)}</span></label>`)
+      .join('');
+  }
+  if (sourceOpts) {
+    sourceOpts.innerHTML = sources
+      .map(s => `<label class="filter-option"><input type="checkbox" value="${esc(s)}"><span>${esc(s)}</span></label>`)
+      .join('');
   }
 }
 
@@ -299,34 +321,91 @@ function setupLeaderboardFilter() {
     });
   }
 
-  const modelSelect = $('#lb-filter-model');
-  const sourceSelect = $('#lb-filter-source');
-  if (modelSelect) {
-    modelSelect.addEventListener('change', () => {
-      lbFilterModel = modelSelect.value;
-      lbShowAll = false;
-      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
-      drawLeaderboard();
-    });
-  }
-  if (sourceSelect) {
-    sourceSelect.addEventListener('change', () => {
-      lbFilterSource = sourceSelect.value;
-      lbShowAll = false;
-      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
-      drawLeaderboard();
-    });
-  }
+  // Multi-select dropdowns: toggle panels, sync checks, count badge, clear.
+  const dropdowns = [...document.querySelectorAll('#leaderboard .filter-dropdown')];
 
-  const similaritySelect = $('#lb-filter-similarity');
-  if (similaritySelect) {
-    similaritySelect.addEventListener('change', () => {
-      lbFilterSimilarity = similaritySelect.value;
-      lbShowAll = false;
-      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
-      drawLeaderboard();
+  const syncCountBadge = (wrap) => {
+    const key = wrap.dataset.filter;
+    const values = { model: lbFilterModels, source: lbFilterSources, similarity: lbFilterSimilarities }[key];
+    const countEl = wrap.querySelector('.filter-dropdown-count');
+    const labelEl = wrap.querySelector('.filter-dropdown-label');
+    if (countEl) {
+      if (values.length > 0) {
+        countEl.textContent = values.length;
+        countEl.hidden = false;
+        if (labelEl) labelEl.textContent = { model: 'Model', source: 'Source', similarity: 'Similarity' }[key];
+      } else {
+        countEl.hidden = true;
+        if (labelEl) labelEl.textContent = { model: 'Model', source: 'Source', similarity: 'Similarity' }[key];
+      }
+    }
+  };
+
+  const closeAll = (except) => {
+    dropdowns.forEach(w => {
+      if (w !== except) {
+        w.querySelector('.filter-dropdown-btn').setAttribute('aria-expanded', 'false');
+        const panel = w.querySelector('.filter-dropdown-panel');
+        if (panel) panel.hidden = true;
+      }
     });
-  }
+  };
+
+  dropdowns.forEach(wrap => {
+    const btn = wrap.querySelector('.filter-dropdown-btn');
+    const panel = wrap.querySelector('.filter-dropdown-panel');
+    const key = wrap.dataset.filter;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      closeAll(isOpen ? wrap : null);
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        if (panel) panel.hidden = false;
+      }
+    });
+
+    // Clear button
+    const clearBtn = wrap.querySelector('.filter-clear-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const vals = { model: lbFilterModels, source: lbFilterSources, similarity: lbFilterSimilarities }[key];
+        vals.length = 0;
+        wrap.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+        syncCountBadge(wrap);
+        lbShowAll = false;
+        writeHashState('leaderboard', { models: lbFilterModels, sources: lbFilterSources, similarities: lbFilterSimilarities });
+        drawLeaderboard();
+      });
+    }
+
+    // Checkbox changes
+    panel.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const vals = { model: lbFilterModels, source: lbFilterSources, similarity: lbFilterSimilarities }[key];
+        if (cb.checked) {
+          if (!vals.includes(cb.value)) vals.push(cb.value);
+        } else {
+          const i = vals.indexOf(cb.value);
+          if (i >= 0) vals.splice(i, 1);
+        }
+        syncCountBadge(wrap);
+        lbShowAll = false;
+        writeHashState('leaderboard', { models: lbFilterModels, sources: lbFilterSources, similarities: lbFilterSimilarities });
+        drawLeaderboard();
+      });
+    });
+  });
+
+  // Close any open dropdown when clicking elsewhere.
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.filter-dropdown')) closeAll(null);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll(null);
+  });
 }
 
 function setupLeaderboardPagination() {
@@ -356,26 +435,29 @@ function drawLeaderboard() {
     dataToDisplay = Object.values(bestPerModel);
   }
 
-  // Apply model/source filters
-  if (lbFilterModel) {
-    dataToDisplay = dataToDisplay.filter(r => r.model === lbFilterModel);
+  // Apply model/source filters (multi-select: any selected value matches).
+  if (lbFilterModels.length > 0) {
+    dataToDisplay = dataToDisplay.filter(r => lbFilterModels.includes(r.model));
   }
-  if (lbFilterSource) {
-    dataToDisplay = dataToDisplay.filter(r => (r.providerLabel || r.source || '') === lbFilterSource);
+  if (lbFilterSources.length > 0) {
+    dataToDisplay = dataToDisplay.filter(r => lbFilterSources.includes(r.providerLabel || r.source || ''));
   }
 
-  // Apply similarity filter (cheat detection). Runs with a null similarity
-  // (no comparable older page) are treated as clean for every filter.
-  if (lbFilterSimilarity) {
+  // Apply similarity filters (multi-select: any selected mode matches).
+  // Runs with a null similarity (no comparable older page) are treated as
+  // clean for the clean/exclude-copies modes and excluded from similar/copies.
+  if (lbFilterSimilarities.length > 0) {
     dataToDisplay = dataToDisplay.filter(r => {
       const s = r.similarity_pct;
-      switch (lbFilterSimilarity) {
-        case 'clean':          return s == null || s < 70;
-        case 'similar':        return s != null && s >= 70 && s < 90;
-        case 'copies':         return s != null && s >= 90;
-        case 'exclude-copies': return s == null || s < 90;
-        default:               return true;
-      }
+      return lbFilterSimilarities.some(mode => {
+        switch (mode) {
+          case 'clean':          return s == null || s < 70;
+          case 'similar':        return s != null && s >= 70 && s < 90;
+          case 'copies':         return s != null && s >= 90;
+          case 'exclude-copies': return s == null || s < 90;
+          default:               return true;
+        }
+      });
     });
   }
 
@@ -1410,23 +1492,40 @@ function renderTimeline(runsByModel) {
 /* ── Apply URL hash state to filters ─────────────────────────── */
 function applyHashState() {
   const state = readHashState();
-  if (state.model) {
-    const lbModel = $('#lb-filter-model');
+
+  // Leaderboard multi-select checkboxes
+  const syncChecks = (wrap, values) => {
+    if (!wrap) return;
+    wrap.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => {
+      cb.checked = values.includes(cb.value);
+    });
+    const countEl = wrap.querySelector('.filter-dropdown-count');
+    if (countEl) {
+      if (values.length > 0) {
+        countEl.textContent = values.length;
+        countEl.hidden = false;
+      } else {
+        countEl.hidden = true;
+      }
+    }
+  };
+  syncChecks(document.querySelector('#leaderboard .filter-dropdown[data-filter="model"]'), state.models);
+  syncChecks(document.querySelector('#leaderboard .filter-dropdown[data-filter="source"]'), state.sources);
+  syncChecks(document.querySelector('#leaderboard .filter-dropdown[data-filter="similarity"]'), state.similarities);
+  lbFilterModels = [...state.models];
+  lbFilterSources = [...state.sources];
+  lbFilterSimilarities = [...state.similarities];
+
+  // Run history (legacy single-select, first value only)
+  if (state.models.length) {
     const rhModel = $('#rh-filter-model');
-    if (lbModel) { lbModel.value = state.model; lbFilterModel = state.model; }
-    if (rhModel) { rhModel.value = state.model; rhFilterModel = state.model; }
+    if (rhModel) { rhModel.value = state.models[0]; rhFilterModel = state.models[0]; }
   }
-  if (state.source) {
-    const lbSource = $('#lb-filter-source');
+  if (state.sources.length) {
     const rhSource = $('#rh-filter-source');
-    if (lbSource) { lbSource.value = state.source; lbFilterSource = state.source; }
-    if (rhSource) { rhSource.value = state.source; rhFilterSource = state.source; }
+    if (rhSource) { rhSource.value = state.sources[0]; rhFilterSource = state.sources[0]; }
   }
-  if (state.similarity) {
-    const lbSim = $('#lb-filter-similarity');
-    if (lbSim) { lbSim.value = state.similarity; lbFilterSimilarity = state.similarity; }
-  }
-  if (state.model || state.source || state.similarity) {
+  if (state.models.length || state.sources.length || state.similarities.length) {
     drawLeaderboard();
     renderRunHistory(window._runHistoryData || []);
   }

@@ -302,6 +302,127 @@ section:last-of-type {
   outline-offset: 2px;
 }
 
+/* Multi-select filter dropdowns (Model / Source / Similarity) */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 4px 8px;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-dropdown-btn:hover,
+.filter-dropdown-btn:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.filter-dropdown-btn[aria-expanded=true] {
+  border-color: var(--accent);
+}
+
+.filter-dropdown-count {
+  font-size: 10px;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--surface1);
+  font-weight: 700;
+}
+
+.filter-dropdown-caret {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+}
+
+.filter-dropdown-btn[aria-expanded=true] .filter-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 50;
+  min-width: 220px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: 6px;
+}
+
+.filter-dropdown-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px 2px 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 6px;
+}
+
+.filter-clear-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.filter-clear-btn:hover,
+.filter-clear-btn:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  padding: 4px 6px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.filter-option:hover {
+  background: var(--surface1);
+}
+
+.filter-option input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.filter-option input[type=checkbox]:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
 /* ── Back to top link ─────────────────────────────────────────── */
 .back-to-top {
   font-family: var(--mono);
