@@ -38,6 +38,7 @@ function readHashState() {
     section: hash.split('?')[0] || '',
     model: params.get('model') || '',
     source: params.get('source') || '',
+    similarity: params.get('similarity') || '',
   };
 }
 
@@ -45,6 +46,7 @@ function writeHashState(section, filters) {
   const params = new URLSearchParams();
   if (filters.model) params.set('model', filters.model);
   if (filters.source) params.set('source', filters.source);
+  if (filters.similarity) params.set('similarity', filters.similarity);
   const qs = params.toString();
   const newHash = section + (qs ? '?' + qs : '');
   history.replaceState(null, '', '#' + newHash);
@@ -255,6 +257,7 @@ let lbShowBestOnly = true;
 let lbShowAll = false;
 let lbFilterModel = '';
 let lbFilterSource = '';
+let lbFilterSimilarity = '';
 const LB_PAGE_SIZE = 10;
 
 function renderLeaderboard(rows) {
@@ -302,7 +305,7 @@ function setupLeaderboardFilter() {
     modelSelect.addEventListener('change', () => {
       lbFilterModel = modelSelect.value;
       lbShowAll = false;
-      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource });
+      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
       drawLeaderboard();
     });
   }
@@ -310,7 +313,17 @@ function setupLeaderboardFilter() {
     sourceSelect.addEventListener('change', () => {
       lbFilterSource = sourceSelect.value;
       lbShowAll = false;
-      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource });
+      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
+      drawLeaderboard();
+    });
+  }
+
+  const similaritySelect = $('#lb-filter-similarity');
+  if (similaritySelect) {
+    similaritySelect.addEventListener('change', () => {
+      lbFilterSimilarity = similaritySelect.value;
+      lbShowAll = false;
+      writeHashState('leaderboard', { model: lbFilterModel, source: lbFilterSource, similarity: lbFilterSimilarity });
       drawLeaderboard();
     });
   }
@@ -349,6 +362,21 @@ function drawLeaderboard() {
   }
   if (lbFilterSource) {
     dataToDisplay = dataToDisplay.filter(r => (r.providerLabel || r.source || '') === lbFilterSource);
+  }
+
+  // Apply similarity filter (cheat detection). Runs with a null similarity
+  // (no comparable older page) are treated as clean for every filter.
+  if (lbFilterSimilarity) {
+    dataToDisplay = dataToDisplay.filter(r => {
+      const s = r.similarity_pct;
+      switch (lbFilterSimilarity) {
+        case 'clean':          return s == null || s < 70;
+        case 'similar':        return s != null && s >= 70 && s < 90;
+        case 'copies':         return s != null && s >= 90;
+        case 'exclude-copies': return s == null || s < 90;
+        default:               return true;
+      }
+    });
   }
 
   if (dataToDisplay.length === 0) {
@@ -1394,7 +1422,11 @@ function applyHashState() {
     if (lbSource) { lbSource.value = state.source; lbFilterSource = state.source; }
     if (rhSource) { rhSource.value = state.source; rhFilterSource = state.source; }
   }
-  if (state.model || state.source) {
+  if (state.similarity) {
+    const lbSim = $('#lb-filter-similarity');
+    if (lbSim) { lbSim.value = state.similarity; lbFilterSimilarity = state.similarity; }
+  }
+  if (state.model || state.source || state.similarity) {
     drawLeaderboard();
     renderRunHistory(window._runHistoryData || []);
   }
