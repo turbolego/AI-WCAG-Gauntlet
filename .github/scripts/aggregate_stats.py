@@ -25,6 +25,8 @@ Expected folder layout:
 
 import json
 import datetime
+import difflib
+import re
 from pathlib import Path
 from collections import Counter, defaultdict
 
@@ -256,17 +258,127 @@ def final_iteration(iterations):
     return max(iterations, key=lambda it: it.get("iteration", 0))
 
 
+# ── Page similarity (cheat detection) ─────────────────────────────────────────
+# Compares the final index.html of each run against the final index.html of every
+# OLDER run from a DIFFERENT model (case-insensitive model name comparison).
+# Near-identical pages (>= ~90%) indicate the model copied another model's page.
+
+_SIM_TOKEN_RE = re.compile(r"<[^>]+>|[a-z0-9]+")
+
+
+def _sim_normalize_html(html):
+    """Strip comments + style/script bodies, collapse whitespace, lowercase."""
+    html = re.sub(r"<!--.*?-->", " ", html, flags=re.S)
+    html = re.sub(r"<style[^>]*>.*?</style>", " ", html, flags=re.S | re.I)
+    html = re.sub(r"<script[^>]*>.*?</script>", " ", html, flags=re.S | re.I)
+    html = re.sub(r"\s+", " ", html)
+    return html.strip().lower()
+
+
+def _sim_tokens(html):
+    return _SIM_TOKEN_RE.findall(_sim_normalize_html(html))
+
+
+def _sim_score_pct(tokens_a, tokens_b):
+    if not tokens_a or not tokens_b:
+        return 0.0
+    ratio = difflib.SequenceMatcher(None, tokens_a, tokens_b, autojunk=False).ratio()
+    return round(ratio * 100, 1)
+
+
+def _run_timestamp(run):
+    """Best-effort timestamp (ISO string) for a run; '' if unknown."""
+    final = final_iteration(run["iterations"])
+    ts = final.get("timestamp") or ""
+    if not ts:
+        # fall back to metadata.json if the iterations lack one
+        meta = run_dir_meta(run)
+        ts = (meta or {}).get("timestamp") or ""
+    return ts
+
+
+def run_dir_meta(run):
+    """Read metadata.json for a run, if present."""
+    path = BENCHMARKS_DIR / run["model"] / run["run_id"] / "metadata.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError:
+        return None
+
+
+def build_similarity(runs):
+    """
+    For each run, find the most similar OLDER page from a DIFFERENT model.
+
+    Returns { (model, run_id): {
+        "similarity_pct":   float 0-100 or None (no older different-model run),
+        "similar_to_run":   run_id of the closest older page,
+        "similar_to_model": model of the closest older page,
+    }}
+    """
+    # Pre-tokenize every run's final index.html once (token difflib is ~10x
+    # faster than char difflib and gives the same separation for full-page copies).
+    tokenized = []
+    for run in runs:
+        html_path = BENCHMARKS_DIR / run["model"] / run["run_id"] / "index.html"
+        tokens = []
+        if html_path.exists():
+            try:
+                html = html_path.read_text(encoding="utf-8", errors="replace")
+                tokens = _sim_tokens(html)
+            except OSError:
+                tokens = []
+        tokenized.append({
+            "model":   run["model"],
+            "run_id":  run["run_id"],
+            "ts":      _run_timestamp(run),
+            "tokens":  tokens,
+        })
+
+    # Sort oldest → newest so each run only looks backwards for older pages.
+    tokenized.sort(key=lambda r: (r["ts"], r["run_id"]))
+
+    result = {}
+    for i, cur in enumerate(tokenized):
+        best_pct = None
+        best_run = None
+        best_model = None
+        for older in tokenized[:i]:
+            if older["ts"] and cur["ts"] and older["ts"] >= cur["ts"]:
+                continue  # not strictly older
+            if older["model"].lower() == cur["model"].lower():
+                continue  # same model (case-insensitive)
+            pct = _sim_score_pct(cur["tokens"], older["tokens"])
+            if best_pct is None or pct > best_pct:
+                best_pct = pct
+                best_run = older["run_id"]
+                best_model = older["model"]
+
+        result[(cur["model"], cur["run_id"])] = {
+            "similarity_pct":   best_pct,
+            "similar_to_run":   best_run,
+            "similar_to_model": best_model,
+        }
+
+    return result
+
+
 # ── Leaderboard ────────────────────────────────────────────────────────────────
-def build_leaderboard(runs):
+def build_leaderboard(runs, similarity=None):
     """
     All runs ranked by their final score.
     Keeps EVERY run as its own row (models may appear multiple times).
+    similarity: optional dict from build_similarity(), keyed by (model, run_id).
     """
+    similarity = similarity or {}
     rows = []
     for run in runs:
         final = final_iteration(run["iterations"])
         score = final.get("score", 0)
         html_err = final.get("html_tag_errors", TOTAL_TAGS)
+        sim = similarity.get((run["model"], run["run_id"]), {})
         rows.append({
             "model":           run["model"],
             "run_id":          run["run_id"],
@@ -289,6 +401,10 @@ def build_leaderboard(runs):
             "axe_version":     final.get("axe_version", "unknown"),
             "pa11y_version":   final.get("pa11y_version", "unknown"),
             "benchmark_url":   f"benchmarks/{run['model']}/{run['run_id']}/index.html",
+            # Cheat-detection: max similarity to an older page from another model
+            "similarity_pct":   sim.get("similarity_pct"),
+            "similar_to_run":   sim.get("similar_to_run"),
+            "similar_to_model": sim.get("similar_to_model"),
         })
 
     rows.sort(key=lambda x: (-x["score"], x["iterations_used"]))
@@ -505,12 +621,15 @@ def main():
     total_models = len(set(r["model"] for r in runs))
     print(f"Found {total_runs} benchmark run(s) across {total_models} model(s).")
 
+    print("Computing page similarity (cheat detection)...")
+    similarity = build_similarity(runs)
+
     stats = {
         "generated_at":           datetime.datetime.utcnow().isoformat() + "Z",
         "total_runs":             total_runs,
         "total_models":           total_models,
         "total_tags":             TOTAL_TAGS,
-        "leaderboard":            build_leaderboard(runs),
+        "leaderboard":            build_leaderboard(runs, similarity),
         "runs_by_model":          build_runs_by_model(runs),
         "missing_tags_frequency": build_missing_tags_frequency(runs),
         "hardest_tags":           build_hardest_tags(runs),
