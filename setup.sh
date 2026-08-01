@@ -38,6 +38,7 @@ fi
 # The model name used for benchmarking (used as the folder name)
 
 #MODEL_NAME="Claude Opus 4.6"
+MODEL_NAME="Claude Opus 4.6 - Max Effort - 1M"
 #MODEL_NAME="Claude Sonnet 4.6"
 #MODEL_NAME="Claude Haiku 4.5"
 #MODEL_NAME="GPT-4.1"
@@ -60,25 +61,25 @@ fi
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
 #MODEL_NAME="qwen2.5-coder-1.5b"
 
-MODEL_NAME="DeepSeek V4 Pro"
+#MODEL_NAME="DeepSeek V4 Pro"
 
 # The provider where the model runs (machine-readable identifier).
 # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
-#PROVIDER="github-copilot"
+PROVIDER="github-copilot"
 #PROVIDER="ollama"
 #PROVIDER="llama.cpp"
 
-PROVIDER="nvidia"
+#PROVIDER="nvidia"
 
 # Human-readable label for the provider shown in the dashboard Source column.
 # Examples: "GitHub Copilot", "Ollama", "OpenAI", "HuggingFace", "Mistral AI", "OpenRouter"
-#PROVIDER_LABEL="GitHub Copilot"
+PROVIDER_LABEL="GitHub Copilot"
 #PROVIDER_LABEL="Ollama"
 #PROVIDER_LABEL="Cline"
 #PROVIDER_LABEL="Kilo Code
 #PROVIDER_LABEL="Continue"
 
-PROVIDER_LABEL="Hermes"
+#PROVIDER_LABEL="Hermes"
 
 # The tool/interface used to run the benchmark.
 # Examples: "vscode", "github-actions", "cli"

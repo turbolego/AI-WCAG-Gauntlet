@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML5 Technical Showcase demonstrating all valid HTML5 elements with WCAG 2.2 Level AAA compliance">
+    <title>HTML5 Technical Showcase — WCAG 2.2 AAA Compliant</title>
+    <link rel="stylesheet" href="benchmarks/Claude%20Opus%204.6%20-%20Max%20Effort%20-%201M/Claude%20Opus%204.6%20-%20Max%20Effort%20-%201M-20260731-213529/style.css">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <hgroup>
+            <h1>HTML5 Technical Showcase</h1>
+            <p>Demonstrating all valid HTML5 elements with WCAG 2.2 Level AAA compliance</p>
+        </hgroup>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#text-section">Text Elements</a></li>
+                <li><a href="#forms-section">Forms</a></li>
+                <li><a href="#media-section">Media</a></li>
+                <li><a href="#tables-section">Tables</a></li>
+                <li><a href="#interactive-section">Interactive</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article id="text-section">
+            <h2>Text and Inline Elements</h2>
+
+            <section aria-labelledby="heading-paragraphs">
+                <h3 id="heading-paragraphs">Paragraphs and Inline Text</h3>
+                <p>This paragraph demonstrates various <strong>inline text elements</strong>. Here is <em>emphasized text</em>, <b>bold text</b>, <i>italic text</i>, and <u>underlined text</u>. We can also show <s>struck-through text</s> for content no longer accurate.</p>
+
+                <p>Technical terms like <dfn id="dfn-html">HTML</dfn> (<abbr title="HyperText Markup Language">HTML</abbr>) can be defined inline. Variables like <var>x</var> = <var>y</var> + 1 appear in equations. Use <kbd>Ctrl</kbd>+<kbd>S</kbd> to save. The output is: <samp>Hello, World!</samp>.</p>
+
+                <p>Here is <code>inline code</code>, a <cite>citation reference</cite>, a <q>short inline quotation</q>, and text with <mark>highlighted importance</mark>. You can <small>make text smaller</small> or use <sup>superscript</sup> and <sub>subscript</sub>. Use word<wbr>break opportunities for long words.</p>
+
+                <p>The price is <data value="49.99">forty-nine dollars and ninety-nine cents</data>. The event starts at <time datetime="2026-06-15T09:00:00Z">June 15, 2026 at 9:00 AM UTC</time>.</p>
+
+                <p>Ruby annotations are used in East Asian typography: <ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp>字<rp>(</rp><rt>ji</rt><rp>)</rp></ruby>.</p>
+
+                <p>Text can flow in different directions using <bdi>مرحبا</bdi> for bidirectional isolation and <bdo dir="rtl">reversed text</bdo> for bidirectional override.</p>
+
+                <p>Here is an <a href="#text-section">internal link</a> and a reference with <ins>inserted content</ins> and <del>deleted content</del>.</p>
+            </section>
+
+            <section aria-labelledby="heading-blocks">
+                <h4 id="heading-blocks">Block-Level Text Elements</h4>
+
+                <blockquote cite="https://www.w3.org/TR/WCAG22/">
+                    <p>Web Content Accessibility Guidelines (WCAG) 2.2 covers a wide range of recommendations for making Web content more accessible.</p>
+                </blockquote>
+
+                <pre><code>function greet(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+
+                <address>
+                    Contact the developer at<br>
+                    123 Web Street, Internet City, WC 12345
+                </address>
+
+                <h5>Definition List</h5>
+                <dl>
+                    <dt>Accessibility</dt>
+                    <dd>The practice of making websites usable by as many people as possible.</dd>
+                    <dt>WCAG</dt>
+                    <dd>Web Content Accessibility Guidelines — a set of standards for web accessibility.</dd>
+                </dl>
+
+                <h6>Lists</h6>
+                <ol>
+                    <li>First ordered item</li>
+                    <li>Second ordered item</li>
+                    <li>Third ordered item</li>
+                </ol>
+                <ul>
+                    <li>Unordered item one</li>
+                    <li>Unordered item two</li>
+                    <li>Unordered item three</li>
+                </ul>
+
+                <hr>
+            </section>
+        </article>
+
+        <article id="forms-section">
+            <h2>Form Elements</h2>
+            <section aria-labelledby="heading-form">
+                <h3 id="heading-form">Contact Form</h3>
+                <form action="#" method="post" aria-label="Contact form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full-name" autocomplete="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country" autocomplete="country">
+                                <optgroup label="North America">
+                                    <option value="us">United States</option>
+                                    <option value="ca">Canada</option>
+                                </optgroup>
+                                <optgroup label="Europe">
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="de">Germany</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="browser">Preferred Browser</label>
+                            <input type="text" id="browser" name="browser" list="browsers">
+                            <datalist id="browsers">
+                                <option value="Chrome">
+                                <option value="Firefox">
+                                <option value="Safari">
+                                <option value="Edge">
+                            </datalist>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Message Details</legend>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <meter id="priority" min="0" max="10" value="5" low="3" high="7" optimum="5">5 out of 10</meter>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="progress-bar">Completion Progress</label>
+                            <progress id="progress-bar" max="100" value="70">70%</progress>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="result">Calculation Result</label>
+                            <output id="result" name="result" for="priority">5</output>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit">Send Message</button>
+                        <button type="reset">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+            <section aria-labelledby="heading-search">
+                <h3 id="heading-search">Search</h3>
+                <search>
+                    <form role="search" aria-label="Site search">
+                        <label for="search-input">Search this site</label>
+                        <input type="search" id="search-input" name="q">
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+            </section>
+        </article>
+
+        <article id="media-section">
+            <h2>Media Elements</h2>
+
+            <section aria-labelledby="heading-images">
+                <h3 id="heading-images">Images and Figures</h3>
+                <figure>
+                    <picture>
+                        <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+                        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark pin head icon used as a reference point in surveying" width="250" height="250">
+                    </picture>
+                    <figcaption>Figure 1: Ordnance Survey benchmark icon — a pin head marker used in topographic surveying.</figcaption>
+                </figure>
+
+                <div>
+                    <map name="icon-map">
+                        <area shape="rect" coords="0,0,250,250" href="#media-section" alt="Full benchmark icon area linking to media section">
+                    </map>
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Clickable benchmark icon with image map" usemap="#icon-map" width="250" height="250">
+                </div>
+            </section>
+
+            <section aria-labelledby="heading-audio">
+                <h3 id="heading-audio">Audio</h3>
+                <audio controls aria-label="Audio pronunciation of the word benchmarking">
+                    <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>Audio: Pronunciation of the word "benchmarking" in English.</p>
+            </section>
+
+            <section aria-labelledby="heading-video">
+                <h3 id="heading-video">Video</h3>
+                <video controls width="400" aria-label="IPCC climate projections video showing temperature and precipitation changes">
+                    <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                    <track kind="captions" src="/AI-WCAG-Gauntlet/resources/captions.vtt" srclang="en" label="English captions" default>
+                    Your browser does not support the video element.
+                </video>
+                <p>Video: IPCC projections of temperature and precipitation in the 21st century.</p>
+            </section>
+
+            <section aria-labelledby="heading-embed">
+                <h3 id="heading-embed">Embedded Content</h3>
+                <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="100" height="100" aria-label="Ordnance Survey benchmark icon SVG embedded object">
+                    <p>SVG benchmark icon (fallback text for browsers that cannot display the object).</p>
+                </object>
+
+                <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="100" height="100" aria-label="Embedded SVG benchmark icon">
+
+                <iframe src="about:blank" title="Empty embedded frame for demonstration" width="300" height="100"></iframe>
+
+                <canvas width="200" height="100" aria-label="Decorative canvas element">Your browser does not support the canvas element.</canvas>
+            </section>
+        </article>
+
+        <article id="tables-section">
+            <h2>Table Elements</h2>
+            <section aria-labelledby="heading-table">
+                <h3 id="heading-table">Data Table</h3>
+                <table>
+                    <caption>WCAG Conformance Levels and Their Requirements</caption>
+                    <colgroup>
+                        <col span="1">
+                        <col span="1">
+                        <col span="1">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Level</th>
+                            <th scope="col">Criteria Count</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>30</td>
+                            <td>Minimum level of accessibility</td>
+                        </tr>
+                        <tr>
+                            <td>AA</td>
+                            <td>20</td>
+                            <td>Addresses major barriers for users with disabilities</td>
+                        </tr>
+                        <tr>
+                            <td>AAA</td>
+                            <td>28</td>
+                            <td>Highest level of accessibility conformance</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td>78</td>
+                            <td>Combined success criteria across all levels</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </article>
+
+        <article id="interactive-section">
+            <h2>Interactive Elements</h2>
+
+            <section aria-labelledby="heading-details">
+                <h3 id="heading-details">Disclosure Widget</h3>
+                <details>
+                    <summary>What is WCAG 2.2 Level AAA?</summary>
+                    <p>WCAG 2.2 Level AAA represents the highest level of web accessibility conformance. It includes all Level A and AA criteria plus additional requirements such as enhanced color contrast (7:1 ratio), sign language interpretation, and extended audio descriptions.</p>
+                </details>
+            </section>
+
+            <section aria-labelledby="heading-dialog">
+                <h3 id="heading-dialog">Dialog</h3>
+                <dialog id="info-dialog" aria-labelledby="dialog-title">
+                    <h4 id="dialog-title">Information Dialog</h4>
+                    <p>This is a native HTML dialog element demonstrating accessible modal content.</p>
+                    <form method="dialog">
+                        <button type="submit">Close</button>
+                    </form>
+                </dialog>
+                <button type="button" id="open-dialog-btn" aria-haspopup="dialog">Open Dialog</button>
+            </section>
+
+            <section aria-labelledby="heading-menu">
+                <h3 id="heading-menu">Menu</h3>
+                <menu>
+                    <li><button type="button">Action One</button></li>
+                    <li><button type="button">Action Two</button></li>
+                    <li><button type="button">Action Three</button></li>
+                </menu>
+            </section>
+        </article>
+
+        <aside aria-labelledby="heading-aside">
+            <h3 id="heading-aside">Supplementary Information</h3>
+            <p>This aside contains supplementary content related to the main showcase. It uses the <code>&lt;aside&gt;</code> element to indicate tangential content.</p>
+            <div>
+                <span>A span within a div provides generic inline and block containers.</span>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#text-section">Text</a></li>
+                <li><a href="#forms-section">Forms</a></li>
+                <li><a href="#media-section">Media</a></li>
+                <li><a href="#tables-section">Tables</a></li>
+            </ul>
+        </nav>
+        <p><small>&copy; 2026 HTML5 Technical Showcase. All rights reserved.</small></p>
+    </footer>
+
+    <template id="card-template">
+        <div class="card">
+            <slot name="card-title">Default Title</slot>
+            <slot name="card-content">Default Content</slot>
+            <selectedcontent></selectedcontent>
+        </div>
+    </template>
+
+    <noscript>
+        <p>This page works best with JavaScript enabled for interactive features.</p>
+    </noscript>
+
+    <script>
+        (function() {
+            var btn = document.getElementById('open-dialog-btn');
+            var dialog = document.getElementById('info-dialog');
+            if (btn && dialog && dialog.showModal) {
+                btn.addEventListener('click', function() {
+                    dialog.showModal();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
