@@ -117,6 +117,15 @@
                 <option value="">All sources</option>
               </select>
             </label>
+            <label for="lb-filter-similarity" class="filter-label">Similarity
+              <select id="lb-filter-similarity" class="filter-select" aria-label="Filter leaderboard by similarity score">
+                <option value="">All scores</option>
+                <option value="clean">Clean only (&lt;70%)</option>
+                <option value="similar">Similar only (70–89%)</option>
+                <option value="copies">Likely copies only (≥90%)</option>
+                <option value="exclude-copies">Exclude likely copies (&lt;90%)</option>
+              </select>
+            </label>
           </div>
           <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table - Leaderboard">
             <table aria-labelledby="leaderboard-title">
