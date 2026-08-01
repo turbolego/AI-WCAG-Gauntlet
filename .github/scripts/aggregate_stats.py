@@ -313,43 +313,77 @@ def build_similarity(runs):
     For each run, find the most similar OLDER page from a DIFFERENT model.
 
     Returns { (model, run_id): {
-        "similarity_pct":   float 0-100 or None (no older different-model run),
+        "similarity_pct":   float 0-100 or None (no comparable older run),
         "similar_to_run":   run_id of the closest older page,
         "similar_to_model": model of the closest older page,
     }}
+
+    A run is "older" only when BOTH timestamps are parseable and strictly earlier.
+    Runs with missing/unreadable index.html are marked None (not comparable)
+    and are also skipped as comparison targets.
     """
-    # Pre-tokenize every run's final index.html once (token difflib is ~10x
-    # faster than char difflib and gives the same separation for full-page copies).
+
+    def _parse_ts(iso_str):
+        """Return a naive UTC datetime or None."""
+        if not iso_str:
+            return None
+        try:
+            # ISO-8601 with optional trailing Z
+            s = iso_str.replace("Z", "+00:00")
+            return datetime.datetime.fromisoformat(s)
+        except (ValueError, TypeError):
+            return None
+
+    # Pre-tokenize every run's final index.html once.
     tokenized = []
     for run in runs:
         html_path = BENCHMARKS_DIR / run["model"] / run["run_id"] / "index.html"
-        tokens = []
+        tokens = None  # None = not comparable (vs [] = empty page)
         if html_path.exists():
             try:
                 html = html_path.read_text(encoding="utf-8", errors="replace")
                 tokens = _sim_tokens(html)
             except OSError:
-                tokens = []
+                pass
+        ts_raw = _run_timestamp(run)
         tokenized.append({
             "model":   run["model"],
             "run_id":  run["run_id"],
-            "ts":      _run_timestamp(run),
+            "ts_raw":  ts_raw,
+            "ts_dt":   _parse_ts(ts_raw),
             "tokens":  tokens,
         })
 
-    # Sort oldest → newest so each run only looks backwards for older pages.
-    tokenized.sort(key=lambda r: (r["ts"], r["run_id"]))
+    # Sort: known timestamps first (oldest → newest), None timestamps last
+    # (order among None-timestamped runs doesn't matter since they can't
+    # be proven older/younger).
+    tokenized.sort(key=lambda r: (r["ts_dt"] is None, r["ts_dt"] or datetime.datetime.min, r["run_id"]))
 
     result = {}
     for i, cur in enumerate(tokenized):
+        # If current run has no readable page, it's not comparable — store None.
+        if cur["tokens"] is None:
+            result[(cur["model"], cur["run_id"])] = {
+                "similarity_pct":   None,
+                "similar_to_run":   None,
+                "similar_to_model": None,
+            }
+            continue
+
         best_pct = None
         best_run = None
         best_model = None
         for older in tokenized[:i]:
-            if older["ts"] and cur["ts"] and older["ts"] >= cur["ts"]:
-                continue  # not strictly older
+            # Only compare when both timestamps are known and older is strictly earlier.
+            if cur["ts_dt"] is None or older["ts_dt"] is None:
+                continue
+            if older["ts_dt"] >= cur["ts_dt"]:
+                continue
             if older["model"].lower() == cur["model"].lower():
                 continue  # same model (case-insensitive)
+            if older["tokens"] is None:
+                continue  # not comparable
+
             pct = _sim_score_pct(cur["tokens"], older["tokens"])
             if best_pct is None or pct > best_pct:
                 best_pct = pct
