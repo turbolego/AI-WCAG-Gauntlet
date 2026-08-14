@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An accessible demonstration page covering the HTML5 element set.">
+  <base href="./">
+  <link rel="stylesheet" href="style.css">
+  <title>Accessible HTML5 Elements Reference</title>
+  <style>
+    :root { color-scheme: light; --ink: #17233b; --paper: #ffffff; --wash: #edf3fa; --accent: #075a9c; --accent-dark: #003f70; --focus: #b11f24; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--wash); color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: 1rem; line-height: 1.6; }
+    a { color: var(--accent-dark); text-underline-offset: 0.18em; }
+    a:hover { color: #002d50; }
+    :focus-visible { outline: 0.22rem solid var(--focus); outline-offset: 0.2rem; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 10; padding: 0.65rem 0.9rem; background: #ffffff; border: 0.2rem solid var(--focus); color: #17233b; font-weight: 700; }
+    .skip-link:focus { top: 1rem; }
+    .site-header, .site-footer { background: var(--ink); color: #ffffff; }
+    .site-header > *, .site-footer > *, main { width: min(72rem, calc(100% - 2rem)); margin-inline: auto; }
+    .site-header { padding: 1.25rem 0; border-bottom: 0.4rem solid #f3b61f; }
+    .site-header h1 { margin: 0; color: #ffffff; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+    .site-header p { margin: 0.25rem 0 0; }
+    .site-header a, .site-footer a { color: #ffffff; }
+    nav ul, .action-menu { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin: 0; padding: 0.75rem 0; list-style: none; }
+    nav { border-top: 1px solid #8290a9; margin-top: 1rem; }
+    main { padding-block: 1.5rem 2.5rem; }
+    section, article, aside { margin-block: 1rem; padding: 1.25rem; background: var(--paper); border: 1px solid #b5c4d8; border-radius: 0.5rem; box-shadow: 0 0.1rem 0.25rem rgb(23 35 59 / 8%); }
+    h2, h3 { line-height: 1.2; }
+    h2 { margin-top: 0; color: #003f70; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+    .sample { padding: 1rem; background: #f7fafc; border-left: 0.35rem solid var(--accent); }
+    figure { margin: 1rem 0; }
+    img, video { display: block; max-width: 100%; height: auto; border: 1px solid #60708b; }
+    figcaption { padding: 0.5rem; background: #e1eaf5; }
+    blockquote { margin: 1rem 0; padding: 0.75rem 1rem; border-left: 0.35rem solid #075a9c; background: #eff5fa; }
+    form { display: grid; gap: 1rem; }
+    fieldset { border: 0.15rem solid #52647e; border-radius: 0.35rem; }
+    legend { padding-inline: 0.35rem; font-weight: 700; }
+    label { display: block; font-weight: 700; }
+    input, select, textarea, button { max-width: 100%; padding: 0.6rem; font: inherit; color: #17233b; background: #ffffff; border: 0.12rem solid #52647e; border-radius: 0.25rem; }
+    button { width: fit-content; cursor: pointer; background: #075a9c; color: #ffffff; font-weight: 700; }
+    button:hover { background: #003f70; }
+    .hint { margin-top: 0.2rem; color: #354967; }
+    table { width: 100%; border-collapse: collapse; }
+    caption { padding: 0.5rem; caption-side: top; text-align: left; font-weight: 700; }
+    th, td { padding: 0.55rem; border: 1px solid #60708b; text-align: left; }
+    th { background: #dbe8f5; }
+    code, kbd, samp { padding: 0.1rem 0.25rem; background: #e6edf5; border-radius: 0.2rem; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    canvas { max-width: 100%; border: 1px solid #60708b; background: #ffffff; }
+    dialog { max-width: 35rem; border: 0.2rem solid #003f70; border-radius: 0.5rem; color: #17233b; }
+    dialog::backdrop { background: rgb(0 25 50 / 65%); }
+    .site-footer { padding: 1.5rem 0; }
+    @media (max-width: 38rem) { .site-header > *, .site-footer > *, main { width: min(100% - 1rem, 72rem); } section, article, aside { padding: 1rem; } }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dialog = document.querySelector('#element-dialog');
+      document.querySelector('#open-dialog')?.addEventListener('click', () => dialog?.showModal());
+      document.querySelector('#close-dialog')?.addEventListener('click', () => dialog?.close());
+      const range = document.querySelector('#reading-progress');
+      const output = document.querySelector('#progress-output');
+      range?.addEventListener('input', () => { output.value = range.value; output.textContent = range.value + '%'; });
+    });
+  </script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <hgroup>
+      <h1>Accessible HTML5 Elements Reference</h1>
+      <p>A practical, readable demonstration of native HTML semantics.</p>
+    </hgroup>
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#content">Content patterns</a></li>
+        <li><a href="#forms">Form controls</a></li>
+        <li><a href="#data">Data table</a></li>
+      </ul>
+    </nav>
+    <search>
+      <form action="#search-results" role="search">
+        <label for="site-search">Search this reference</label>
+        <input id="site-search" name="q" type="search" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+    </search>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section id="overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Overview</h2>
+      <p>This document uses <strong>native HTML elements</strong> whenever possible. It avoids relying on color alone, preserves visible keyboard focus, and uses clear headings. A <mark>highlighted note</mark> can call out key ideas without conveying essential meaning by color alone.</p>
+      <p>An <abbr title="Application Programming Interface">API</abbr> can return a <data value="20260814">dated</data> record. Authors may cite a <cite>reliable reference</cite>, quote it with <q>clear context</q>, and expand an unfamiliar <dfn id="definition">definition</dfn> at first use.</p>
+      <p>Text can be <b>stylistically offset</b>, <i>idiomatic</i>, <u>annotated</u>, <s>no longer accurate</s>, <del datetime="2026-08-14">removed</del>, or <ins datetime="2026-08-14">inserted</ins>. Chemical notation uses H<sub>2</sub>O, while powers use 2<sup>3</sup>.</p>
+      <p>For bidi text, <bdi>علي</bdi> keeps a name isolated, while <bdo dir="rtl">This phrase is intentionally reversed.</bdo> Ruby annotation renders <ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby>. A long marker may break here<wbr>when narrow.</p>
+      <hr>
+      <address>Prepared by the Accessibility Demonstration Team, <a href="mailto:accessibility@example.com">accessibility@example.com</a>.</address>
+    </section>
+
+    <section id="content" aria-labelledby="content-heading">
+      <h2 id="content-heading">Content patterns</h2>
+      <article aria-labelledby="article-heading">
+        <h3 id="article-heading">An article with supporting content</h3>
+        <p>Use <em>emphasis</em> for stress, <code>semanticHTML()</code> for code, <kbd>Tab</kbd> for a keyboard command, <samp>Success</samp> for sample output, and <var>n</var> for a variable.</p>
+        <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
+          <p>Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them.</p>
+        </blockquote>
+        <p>Read more at the <a href="#definition">definition above</a>.<br>Use line breaks only where a brief poem or address requires them.</p>
+        <h4>Markup reference</h4>
+        <h5>Code example</h5>
+        <pre><code>&lt;span&gt;Native elements provide useful structure.&lt;/span&gt;</code></pre>
+        <h6>Implementation note</h6>
+        <p>A <span lang="en">span</span> is suitable for a small inline grouping when no more descriptive element applies.</p>
+        <figure>
+          <picture>
+            <source media="(min-width: 45rem)" srcset="resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+            <source srcset="resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+            <img src="resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Blue circular map-pin icon" usemap="#pin-map" width="500" height="500">
+          </picture>
+          <figcaption>A decorative map-pin asset with an image-map hotspot.</figcaption>
+        </figure>
+        <map name="pin-map"><area shape="rect" coords="0,0,500,500" href="#forms" alt="Go to the form controls section"></map>
+        <p><button id="open-dialog" type="button">Open the example dialog</button></p>
+        <dialog id="element-dialog" aria-labelledby="dialog-heading">
+          <h4 id="dialog-heading">Example dialog</h4>
+          <p>A dialog has a visible heading and a clearly labeled close control.</p>
+          <form method="dialog"><button id="close-dialog" type="submit">Close dialog</button></form>
+        </dialog>
+      </article>
+
+      <aside aria-labelledby="aside-heading">
+        <h3 id="aside-heading">Related note</h3>
+        <details>
+          <summary>Why native elements matter</summary>
+          <p>Native controls and landmarks provide well-tested behavior for many users and assistive technologies.</p>
+        </details>
+      </aside>
+
+      <div class="grid">
+        <section class="sample" aria-labelledby="list-heading">
+          <h3 id="list-heading">Lists and descriptions</h3>
+          <ul><li>Unordered item</li><li>Another item</li></ul>
+          <ol><li>First ordered step</li><li>Second ordered step</li></ol>
+          <dl><dt>Semantic HTML</dt><dd>Markup that communicates structure and meaning.</dd><dt>WCAG</dt><dd>Accessibility guidance for web content.</dd></dl>
+          <menu class="action-menu"><li><a href="#overview">Review overview</a></li><li><a href="#data">View data</a></li></menu>
+        </section>
+        <section class="sample" aria-labelledby="media-heading">
+          <h3 id="media-heading">Media and embedded content</h3>
+          <canvas id="sample-canvas" width="280" height="70" role="img" aria-label="A blue horizontal line representing a decorative chart">A simple decorative chart.</canvas>
+          <p><object data="resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Map pin object">Map-pin fallback content.</object></p>
+          <p><embed src="resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" title="Map pin embedded graphic"></p>
+          <iframe title="Illustrative embedded content" srcdoc="&lt;!doctype html&gt;&lt;html lang='en'&gt;&lt;body&gt;&lt;p&gt;Embedded content with a descriptive title.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+          <audio controls preload="metadata"><source src="resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">Your browser does not support audio.</audio>
+          <video controls preload="metadata" width="560"><source src="resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm"><track kind="captions" srclang="en" label="English captions" src="captions-en.vtt" default>Your browser does not support video.</video>
+        </section>
+      </div>
+    </section>
+
+    <section id="forms" aria-labelledby="forms-heading">
+      <h2 id="forms-heading">Form controls and status indicators</h2>
+      <form action="#form-status" method="get">
+        <fieldset>
+          <legend>Accessible feedback form</legend>
+          <p><label for="full-name">Full name</label><input id="full-name" name="name" type="text" autocomplete="name" required aria-describedby="name-help"><small id="name-help" class="hint">Enter the name you would like us to use.</small></p>
+          <p><label for="topic">Topic</label><select id="topic" name="topic"><button type="button"><selectedcontent></selectedcontent></button><optgroup label="Accessibility"><option value="semantics">HTML semantics</option><option value="testing">Accessibility testing</option></optgroup><optgroup label="General"><option value="other">Other feedback</option></optgroup></select></p>
+          <p><label for="browser">Preferred browser</label><input id="browser" name="browser" list="browsers"><datalist id="browsers"><option value="Firefox"><option value="Safari"><option value="Chromium"></datalist></p>
+          <p><label for="comments">Comments</label><textarea id="comments" name="comments" rows="4"></textarea></p>
+          <button type="submit">Send feedback</button>
+        </fieldset>
+      </form>
+      <p id="form-status" aria-live="polite">Completion: <progress id="reading-progress" value="60" max="100">60%</progress> <output id="progress-output" for="reading-progress">60%</output></p>
+      <p>Confidence level: <meter min="0" max="1" low="0.4" high="0.8" optimum="1" value="0.9">90%</meter>.</p>
+    </section>
+
+    <section id="data" aria-labelledby="data-heading">
+      <h2 id="data-heading">Data table</h2>
+      <table>
+        <caption>Sample accessibility review status</caption>
+        <colgroup><col><col><col></colgroup>
+        <thead><tr><th scope="col">Area</th><th scope="col">Status</th><th scope="col">Reviewed</th></tr></thead>
+        <tbody><tr><th scope="row">Keyboard access</th><td>Complete</td><td><time datetime="2026-08-14">14 August 2026</time></td></tr><tr><th scope="row">Color contrast</th><td>Complete</td><td><time datetime="2026-08-14">14 August 2026</time></td></tr></tbody>
+        <tfoot><tr><th scope="row" colspan="2">Overall</th><td>Ready</td></tr></tfoot>
+      </table>
+    </section>
+
+    <template shadowrootmode="open"><slot name="supplemental">Supplemental content slot.</slot></template>
+    <noscript><p>This reference uses JavaScript only for the optional dialog and progress-output enhancement; its core content remains available without it.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <p>Last updated <time datetime="2026-08-14">14 August 2026</time>. <a href="#overview">Return to the overview</a>.</p>
+  </footer>
+</body>
+</html>

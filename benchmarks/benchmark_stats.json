@@ -1,9 +1,261 @@
 {
-  "generated_at": "2026-05-13T04:57:32.549Z",
-  "total_runs": 29,
-  "total_models": 10,
+  "generated_at": "2026-08-14T21:52:22.752Z",
+  "total_runs": 68,
+  "total_models": 25,
   "total_tags": 113,
   "leaderboard": [
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260526-131001",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T11:10:01Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260526-131001/index.html",
+      "rank": 1
+    },
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260527-080929",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-27T06:09:29Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260527-080929/index.html",
+      "rank": 2
+    },
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260731-110555",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-31T09:05:55Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260731-110555/index.html",
+      "rank": 3
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-203030",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T18:30:30Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-203030/index.html",
+      "rank": 4
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-204100",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T18:41:00Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-204100/index.html",
+      "rank": 5
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-205217",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T18:52:17Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-205217/index.html",
+      "rank": 6
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-31T19:35:29Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.12.1",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260731-213529/index.html",
+      "rank": 7
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-08-14T21:30:20Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.12.1",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-213020/index.html",
+      "rank": 8
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-214333",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-08-14T21:43:33Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.13.0",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-214333/index.html",
+      "rank": 9
+    },
+    {
+      "model": "claude sonnet 4.6",
+      "run_id": "Claude Sonnet 4.6-20260526-134808",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T11:48:08Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Claude Sonnet 4.6/Claude Sonnet 4.6-20260526-134808/index.html",
+      "rank": 10
+    },
+    {
+      "model": "deepseek v4 pro",
+      "run_id": "DeepSeek V4 Pro-20260731-121333",
+      "source": "local",
+      "provider": "nvidia",
+      "providerLabel": "Hermes",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-31T12:13:33Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.12.1",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/DeepSeek V4 Pro/DeepSeek V4 Pro-20260731-121333/index.html",
+      "rank": 11
+    },
+    {
+      "model": "deepseek v4 pro",
+      "run_id": "DeepSeek V4 Pro-20260731-145624",
+      "source": "local",
+      "provider": "nvidia",
+      "providerLabel": "Hermes",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-31T14:56:24Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.12.1",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/DeepSeek V4 Pro/DeepSeek V4 Pro-20260731-145624/index.html",
+      "rank": 12
+    },
     {
       "model": "gpt-4.1",
       "run_id": "GPT-4.1-20260503-094502",
@@ -23,7 +275,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094502/index.html",
-      "rank": 1
+      "rank": 13
     },
     {
       "model": "gpt-4.1",
@@ -44,7 +296,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-094907/index.html",
-      "rank": 2
+      "rank": 14
     },
     {
       "model": "gpt-4.1",
@@ -65,7 +317,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260503-112416/index.html",
-      "rank": 3
+      "rank": 15
     },
     {
       "model": "gpt-4.1",
@@ -86,7 +338,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260506-190246/index.html",
-      "rank": 4
+      "rank": 16
     },
     {
       "model": "gpt-4.1",
@@ -107,7 +359,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-190404/index.html",
-      "rank": 5
+      "rank": 17
     },
     {
       "model": "gpt-4.1",
@@ -128,7 +380,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-191848/index.html",
-      "rank": 6
+      "rank": 18
     },
     {
       "model": "gpt-4.1",
@@ -149,7 +401,175 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html",
-      "rank": 7
+      "rank": 19
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-065934",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T04:59:34Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-065934/index.html",
+      "rank": 20
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-072227",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T05:22:27Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-072227/index.html",
+      "rank": 21
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-073521",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T05:35:21Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-073521/index.html",
+      "rank": 22
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-082458",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T06:24:58Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-082458/index.html",
+      "rank": 23
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-084214",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T06:42:14Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-084214/index.html",
+      "rank": 24
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-090126",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 2,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T07:01:26Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-090126/index.html",
+      "rank": 25
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-122258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-13T10:22:58Z",
+      "tag_coverage_pct": 100,
+      "axe_version": null,
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-122258/index.html",
+      "rank": 26
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260526-111221",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 1,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T09:12:21Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260526-111221/index.html",
+      "rank": 27
     },
     {
       "model": "gpt-4o",
@@ -170,7 +590,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-090800/index.html",
-      "rank": 8
+      "rank": 28
     },
     {
       "model": "gpt-4o",
@@ -191,7 +611,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-091943/index.html",
-      "rank": 9
+      "rank": 29
     },
     {
       "model": "gpt-4o",
@@ -212,7 +632,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260503-093139/index.html",
-      "rank": 10
+      "rank": 30
     },
     {
       "model": "gpt-4o",
@@ -233,7 +653,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260506-192633/index.html",
-      "rank": 11
+      "rank": 31
     },
     {
       "model": "gpt-4o",
@@ -254,7 +674,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-201910/index.html",
-      "rank": 12
+      "rank": 32
     },
     {
       "model": "gpt-4o",
@@ -275,7 +695,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-210242/index.html",
-      "rank": 13
+      "rank": 33
     },
     {
       "model": "gpt-4o",
@@ -296,7 +716,406 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-224010/index.html",
-      "rank": 14
+      "rank": 34
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-215802",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T19:58:02Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-215802/index.html",
+      "rank": 35
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-220729",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T20:07:29Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-220729/index.html",
+      "rank": 36
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-222305",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T20:23:05Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-222305/index.html",
+      "rank": 37
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-212236",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T19:22:36Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-212236/index.html",
+      "rank": 38
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-214004",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T19:40:04Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214004/index.html",
+      "rank": 39
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-214819",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T19:48:19Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214819/index.html",
+      "rank": 40
+    },
+    {
+      "model": "gpt-5.3-codex - extra high effort",
+      "run_id": "GPT-5.3-Codex - Extra High Effort-20260731-071253",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-31T05:12:53Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.3-Codex - Extra High Effort/GPT-5.3-Codex - Extra High Effort-20260731-071253/index.html",
+      "rank": 41
+    },
+    {
+      "model": "gpt-5.4",
+      "run_id": "GPT-5.4-20260526-133225",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T11:32:25Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.4/GPT-5.4-20260526-133225/index.html",
+      "rank": 42
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T17:44:27Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-194427/index.html",
+      "rank": 43
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T17:56:57Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-195657/index.html",
+      "rank": 44
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T18:05:46Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-200546/index.html",
+      "rank": 45
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T18:18:00Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-201800/index.html",
+      "rank": 46
+    },
+    {
+      "model": "gemini 3 flash (preview)",
+      "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T12:47:54Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260526-144754/index.html",
+      "rank": 47
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T16:23:35Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-182335/index.html",
+      "rank": 48
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T16:39:41Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-183941/index.html",
+      "rank": 49
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-05-26T17:24:23Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-192423/index.html",
+      "rank": 50
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - high effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - High Effort - 200K-20260730-162636",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-30T14:26:36Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - High Effort - 200K/Gemini 3.1 Pro (Preview) - High Effort - 200K-20260730-162636/index.html",
+      "rank": 51
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - low effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-30T19:22:58Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - Low Effort - 200K/Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258/index.html",
+      "rank": 52
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - medium effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - Medium Effort - 200K-20260730-135807",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 1,
+      "timestamp": "2026-07-30T11:58:07Z",
+      "tag_coverage_pct": 100,
+      "axe_version": "4.11.4",
+      "pa11y_version": null,
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - Medium Effort - 200K/Gemini 3.1 Pro (Preview) - Medium Effort - 200K-20260730-135807/index.html",
+      "rank": 53
     },
     {
       "model": "command-a-03-2025",
@@ -317,7 +1136,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/command-a-03-2025/command-a-03-2025-20260512-145216/index.html",
-      "rank": 15
+      "rank": 54
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -338,7 +1157,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260509-054549/index.html",
-      "rank": 16
+      "rank": 55
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -359,7 +1178,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/command-a-reasoning-08-2025/command-a-reasoning-08-2025-20260513-044348/index.html",
-      "rank": 17
+      "rank": 56
     },
     {
       "model": "meta-llama-llama-3.1-8b-instruct",
@@ -380,7 +1199,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-Llama-3.1-8B-Instruct/meta-llama-Llama-3.1-8B-Instruct-20260509-083751/index.html",
-      "rank": 18
+      "rank": 57
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -401,7 +1220,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143/index.html",
-      "rank": 19
+      "rank": 58
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -422,7 +1241,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726/index.html",
-      "rank": 20
+      "rank": 59
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -443,7 +1262,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260506-133602/index.html",
-      "rank": 21
+      "rank": 60
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -464,7 +1283,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/meta-llama-llama-4-scout-17b-16e-instruct/meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844/index.html",
-      "rank": 22
+      "rank": 61
     },
     {
       "model": "mistral-large-latest",
@@ -485,7 +1304,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260506-104634/index.html",
-      "rank": 23
+      "rank": 62
     },
     {
       "model": "mistral-large-latest",
@@ -506,7 +1325,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260510-055752/index.html",
-      "rank": 24
+      "rank": 63
     },
     {
       "model": "mistral-large-latest",
@@ -527,7 +1346,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-large-latest/mistral-large-latest-20260512-110459/index.html",
-      "rank": 25
+      "rank": 64
     },
     {
       "model": "mistral-medium-latest",
@@ -548,7 +1367,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-medium-latest/mistral-medium-latest-20260512-115848/index.html",
-      "rank": 26
+      "rank": 65
     },
     {
       "model": "mistral-small-latest",
@@ -569,7 +1388,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260506-173546/index.html",
-      "rank": 27
+      "rank": 66
     },
     {
       "model": "mistral-small-latest",
@@ -590,7 +1409,7 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/mistral-small-latest/mistral-small-latest-20260512-124600/index.html",
-      "rank": 28
+      "rank": 67
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -611,10 +1430,214 @@
       "axe_version": null,
       "pa11y_version": null,
       "benchmark_url": "benchmarks/openai-gpt-oss-120b/openai-gpt-oss-120b-20260512-050745/index.html",
-      "rank": 29
+      "rank": 68
     }
   ],
   "runs_by_model": [
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260526-131001",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T11:10:01Z",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260526-131001/index.html"
+    },
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260527-080929",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-27T06:09:29Z",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260527-080929/index.html"
+    },
+    {
+      "model": "claude haiku 4.5",
+      "run_id": "Claude Haiku 4.5-20260731-110555",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-31T09:05:55Z",
+      "benchmark_url": "benchmarks/Claude Haiku 4.5/Claude Haiku 4.5-20260731-110555/index.html"
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-203030",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T18:30:30Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-203030/index.html"
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-204100",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T18:41:00Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-204100/index.html"
+    },
+    {
+      "model": "claude opus 4.6",
+      "run_id": "Claude Opus 4.6-20260526-205217",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T18:52:17Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6/Claude Opus 4.6-20260526-205217/index.html"
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-31T19:35:29Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260731-213529/index.html"
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-08-14T21:30:20Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-213020/index.html"
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-214333",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-08-14T21:43:33Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-214333/index.html"
+    },
+    {
+      "model": "claude sonnet 4.6",
+      "run_id": "Claude Sonnet 4.6-20260526-134808",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T11:48:08Z",
+      "benchmark_url": "benchmarks/Claude Sonnet 4.6/Claude Sonnet 4.6-20260526-134808/index.html"
+    },
+    {
+      "model": "deepseek v4 pro",
+      "run_id": "DeepSeek V4 Pro-20260731-121333",
+      "source": "local",
+      "provider": "nvidia",
+      "providerLabel": "Hermes",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-31T12:13:33Z",
+      "benchmark_url": "benchmarks/DeepSeek V4 Pro/DeepSeek V4 Pro-20260731-121333/index.html"
+    },
+    {
+      "model": "deepseek v4 pro",
+      "run_id": "DeepSeek V4 Pro-20260731-145624",
+      "source": "local",
+      "provider": "nvidia",
+      "providerLabel": "Hermes",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-31T14:56:24Z",
+      "benchmark_url": "benchmarks/DeepSeek V4 Pro/DeepSeek V4 Pro-20260731-145624/index.html"
+    },
     {
       "model": "gpt-4.1",
       "run_id": "GPT-4.1-20260503-094502",
@@ -735,6 +1758,142 @@
       "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260512-194127/index.html"
     },
     {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-065934",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T04:59:34Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-065934/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-072227",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T05:22:27Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-072227/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-073521",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T05:35:21Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-073521/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-082458",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T06:24:58Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-082458/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-084214",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T06:42:14Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-084214/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-090126",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 2,
+      "timestamp": "2026-05-13T07:01:26Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-090126/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260513-122258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-13T10:22:58Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260513-122258/index.html"
+    },
+    {
+      "model": "gpt-4.1",
+      "run_id": "GPT-4.1-20260526-111221",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 1,
+      "timestamp": "2026-05-26T09:12:21Z",
+      "benchmark_url": "benchmarks/GPT-4.1/GPT-4.1-20260526-111221/index.html"
+    },
+    {
       "model": "gpt-4o",
       "run_id": "GPT-4o-20260503-090800",
       "source": "local",
@@ -852,6 +2011,329 @@
       "final_qualweb_issues": 2,
       "timestamp": "2026-05-12T20:40:10Z",
       "benchmark_url": "benchmarks/GPT-4o/GPT-4o-20260512-224010/index.html"
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-215802",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T19:58:02Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-215802/index.html"
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-220729",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T20:07:29Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-220729/index.html"
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "run_id": "GPT-5.2-Codex-20260526-222305",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T20:23:05Z",
+      "benchmark_url": "benchmarks/GPT-5.2-Codex/GPT-5.2-Codex-20260526-222305/index.html"
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-212236",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T19:22:36Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-212236/index.html"
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-214004",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T19:40:04Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214004/index.html"
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "run_id": "GPT-5.3-Codex-20260526-214819",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T19:48:19Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex/GPT-5.3-Codex-20260526-214819/index.html"
+    },
+    {
+      "model": "gpt-5.3-codex - extra high effort",
+      "run_id": "GPT-5.3-Codex - Extra High Effort-20260731-071253",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-31T05:12:53Z",
+      "benchmark_url": "benchmarks/GPT-5.3-Codex - Extra High Effort/GPT-5.3-Codex - Extra High Effort-20260731-071253/index.html"
+    },
+    {
+      "model": "gpt-5.4",
+      "run_id": "GPT-5.4-20260526-133225",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T11:32:25Z",
+      "benchmark_url": "benchmarks/GPT-5.4/GPT-5.4-20260526-133225/index.html"
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T17:44:27Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-194427/index.html"
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T17:56:57Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-195657/index.html"
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T18:05:46Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-200546/index.html"
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T18:18:00Z",
+      "benchmark_url": "benchmarks/GPT-5.4 mini (Preview)/GPT-5.4 mini (Preview)-20260526-201800/index.html"
+    },
+    {
+      "model": "gemini 3 flash (preview)",
+      "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T12:47:54Z",
+      "benchmark_url": "benchmarks/Gemini 3 Flash (Preview)/Gemini 3 Flash (Preview)-20260526-144754/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T16:23:35Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-182335/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T16:39:41Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-183941/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-05-26T17:24:23Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview)/Gemini 3.1 Pro (Preview)-20260526-192423/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - high effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - High Effort - 200K-20260730-162636",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-30T14:26:36Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - High Effort - 200K/Gemini 3.1 Pro (Preview) - High Effort - 200K-20260730-162636/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - low effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-30T19:22:58Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - Low Effort - 200K/Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258/index.html"
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - medium effort - 200k",
+      "run_id": "Gemini 3.1 Pro (Preview) - Medium Effort - 200K-20260730-135807",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 1,
+      "final_score": 200,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "timestamp": "2026-07-30T11:58:07Z",
+      "benchmark_url": "benchmarks/Gemini 3.1 Pro (Preview) - Medium Effort - 200K/Gemini 3.1 Pro (Preview) - Medium Effort - 200K-20260730-135807/index.html"
     },
     {
       "model": "command-a-03-2025",
@@ -1677,6 +3159,196 @@
     }
   ],
   "model_progress": {
+    "claude haiku 4.5": [
+      {
+        "run_id": "Claude Haiku 4.5-20260526-131001",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T11:10:01Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Haiku 4.5-20260527-080929",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-27T06:09:29Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Haiku 4.5-20260731-110555",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-31T09:05:55Z"
+          }
+        ]
+      }
+    ],
+    "claude opus 4.6": [
+      {
+        "run_id": "Claude Opus 4.6-20260526-203030",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T18:30:30Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6-20260526-204100",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T18:41:00Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6-20260526-205217",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T18:52:17Z"
+          }
+        ]
+      }
+    ],
+    "claude opus 4.6 - max effort - 1m": [
+      {
+        "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-31T19:35:29Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-08-14T21:30:20Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-214333",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-08-14T21:43:33Z"
+          }
+        ]
+      }
+    ],
+    "claude sonnet 4.6": [
+      {
+        "run_id": "Claude Sonnet 4.6-20260526-134808",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T11:48:08Z"
+          }
+        ]
+      }
+    ],
+    "deepseek v4 pro": [
+      {
+        "run_id": "DeepSeek V4 Pro-20260731-121333",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-31T12:13:33Z"
+          }
+        ]
+      },
+      {
+        "run_id": "DeepSeek V4 Pro-20260731-145624",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-31T14:56:24Z"
+          }
+        ]
+      }
+    ],
     "gpt-4.1": [
       {
         "run_id": "GPT-4.1-20260503-094502",
@@ -1780,6 +3452,126 @@
             "pa11y_issues": 0,
             "qualweb_issues": 1,
             "timestamp": "2026-05-12T17:41:27Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-065934",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T04:59:34Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-072227",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T05:22:27Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-073521",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T05:35:21Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-082458",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T06:24:58Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-084214",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T06:42:14Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-090126",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 2,
+            "timestamp": "2026-05-13T07:01:26Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260513-122258",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-13T10:22:58Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-4.1-20260526-111221",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 1,
+            "timestamp": "2026-05-26T09:12:21Z"
           }
         ]
       }
@@ -1887,6 +3679,311 @@
             "pa11y_issues": 0,
             "qualweb_issues": 2,
             "timestamp": "2026-05-12T20:40:10Z"
+          }
+        ]
+      }
+    ],
+    "gpt-5.2-codex": [
+      {
+        "run_id": "GPT-5.2-Codex-20260526-215802",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T19:58:02Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.2-Codex-20260526-220729",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T20:07:29Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.2-Codex-20260526-222305",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T20:23:05Z"
+          }
+        ]
+      }
+    ],
+    "gpt-5.3-codex": [
+      {
+        "run_id": "GPT-5.3-Codex-20260526-212236",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T19:22:36Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.3-Codex-20260526-214004",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T19:40:04Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.3-Codex-20260526-214819",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T19:48:19Z"
+          }
+        ]
+      }
+    ],
+    "gpt-5.3-codex - extra high effort": [
+      {
+        "run_id": "GPT-5.3-Codex - Extra High Effort-20260731-071253",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-31T05:12:53Z"
+          }
+        ]
+      }
+    ],
+    "gpt-5.4": [
+      {
+        "run_id": "GPT-5.4-20260526-133225",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T11:32:25Z"
+          }
+        ]
+      }
+    ],
+    "gpt-5.4 mini (preview)": [
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-194427",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T17:44:27Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-195657",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T17:56:57Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-200546",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T18:05:46Z"
+          }
+        ]
+      },
+      {
+        "run_id": "GPT-5.4 mini (Preview)-20260526-201800",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T18:18:00Z"
+          }
+        ]
+      }
+    ],
+    "gemini 3 flash (preview)": [
+      {
+        "run_id": "Gemini 3 Flash (Preview)-20260526-144754",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T12:47:54Z"
+          }
+        ]
+      }
+    ],
+    "gemini 3.1 pro (preview)": [
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-182335",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T16:23:35Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-183941",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T16:39:41Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Gemini 3.1 Pro (Preview)-20260526-192423",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-05-26T17:24:23Z"
+          }
+        ]
+      }
+    ],
+    "gemini 3.1 pro (preview) - high effort - 200k": [
+      {
+        "run_id": "Gemini 3.1 Pro (Preview) - High Effort - 200K-20260730-162636",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-30T14:26:36Z"
+          }
+        ]
+      }
+    ],
+    "gemini 3.1 pro (preview) - low effort - 200k": [
+      {
+        "run_id": "Gemini 3.1 Pro (Preview) - Low Effort - 200K-20260730-212258",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-30T19:22:58Z"
+          }
+        ]
+      }
+    ],
+    "gemini 3.1 pro (preview) - medium effort - 200k": [
+      {
+        "run_id": "Gemini 3.1 Pro (Preview) - Medium Effort - 200K-20260730-135807",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 200,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "timestamp": "2026-07-30T11:58:07Z"
           }
         ]
       }
@@ -2135,6 +4232,51 @@
   },
   "error_breakdown": [
     {
+      "model": "claude haiku 4.5",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "claude opus 4.6",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "claude sonnet 4.6",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "deepseek v4 pro",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
       "model": "gpt-4.1",
       "score": 200,
       "html_tag_errors": 0,
@@ -2151,6 +4293,96 @@
       "axe_violations": 0,
       "pa11y_issues": 0,
       "qualweb_issues": 1
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gpt-5.3-codex - extra high effort",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gpt-5.4",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gemini 3 flash (preview)",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - high effort - 200k",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - low effort - 200k",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - medium effort - 200k",
+      "score": 200,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
     },
     {
       "model": "command-a-03-2025",
@@ -2227,6 +4459,36 @@
   ],
   "tag_coverage_by_model": [
     {
+      "model": "claude haiku 4.5",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "claude opus 4.6",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "claude opus 4.6 - max effort - 1m",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "claude sonnet 4.6",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "deepseek v4 pro",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
       "model": "gpt-4.1",
       "used_count": 113,
       "missing_count": 0,
@@ -2234,6 +4496,66 @@
     },
     {
       "model": "gpt-4o",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gpt-5.2-codex",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gpt-5.3-codex - extra high effort",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gpt-5.4",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gpt-5.4 mini (preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gemini 3 flash (preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gemini 3.1 pro (preview)",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - high effort - 200k",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - low effort - 200k",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100
+    },
+    {
+      "model": "gemini 3.1 pro (preview) - medium effort - 200k",
       "used_count": 113,
       "missing_count": 0,
       "coverage_pct": 100

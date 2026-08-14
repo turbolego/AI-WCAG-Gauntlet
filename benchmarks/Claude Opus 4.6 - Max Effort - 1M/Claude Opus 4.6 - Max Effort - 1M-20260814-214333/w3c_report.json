@@ -1,0 +1,11 @@
+{
+  "validates": false,
+  "errorCount": 0,
+  "messageCount": 1,
+  "messages": [
+    {
+      "type": "network-error",
+      "message": " socket hang up"
+    }
+  ]
+}
