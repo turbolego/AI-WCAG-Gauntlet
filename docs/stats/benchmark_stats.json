@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-01T10:13:05.679298Z",
-  "total_runs": 65,
-  "total_models": 24,
+  "generated_at": "2026-08-14T21:35:26.708262Z",
+  "total_runs": 67,
+  "total_models": 25,
   "total_tags": 113,
   "leaderboard": [
     {
@@ -155,6 +155,31 @@
       "rank": 6
     },
     {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 192.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 2,
+      "status": "pass",
+      "timestamp": "2026-07-31T19:42:17Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.12.1",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260731-213529/index.html",
+      "similarity_pct": 99.9,
+      "similar_to_run": "Claude Opus 4.6-20260526-205217",
+      "similar_to_model": "Claude Opus 4.6",
+      "rank": 7
+    },
+    {
       "model": "DeepSeek V4 Pro",
       "run_id": "DeepSeek V4 Pro-20260731-145624",
       "source": "local",
@@ -177,7 +202,7 @@
       "similarity_pct": 23.5,
       "similar_to_run": "Claude Haiku 4.5-20260527-080929",
       "similar_to_model": "Claude Haiku 4.5",
-      "rank": 7
+      "rank": 8
     },
     {
       "model": "GPT-5.3-Codex",
@@ -202,7 +227,7 @@
       "similarity_pct": 99.9,
       "similar_to_run": "GPT-5.4-20260526-133225",
       "similar_to_model": "GPT-5.4",
-      "rank": 8
+      "rank": 9
     },
     {
       "model": "GPT-5.4",
@@ -227,7 +252,7 @@
       "similarity_pct": 79.8,
       "similar_to_run": "Claude Haiku 4.5-20260526-131001",
       "similar_to_model": "Claude Haiku 4.5",
-      "rank": 9
+      "rank": 10
     },
     {
       "model": "GPT-5.4 mini (Preview)",
@@ -252,7 +277,7 @@
       "similarity_pct": 99.9,
       "similar_to_run": "GPT-5.4-20260526-133225",
       "similar_to_model": "GPT-5.4",
-      "rank": 10
+      "rank": 11
     },
     {
       "model": "Claude Opus 4.6",
@@ -277,7 +302,32 @@
       "similarity_pct": 25.0,
       "similar_to_run": "mistral-large-latest-20260512-110459",
       "similar_to_model": "mistral-large-latest",
-      "rank": 11
+      "rank": 12
+    },
+    {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "score": 184.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0,
+      "iterations_used": 3,
+      "status": "pass",
+      "timestamp": "2026-08-14T21:34:53Z",
+      "tag_coverage_pct": 100.0,
+      "axe_version": "4.12.1",
+      "pa11y_version": "9.1.1",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-213020/index.html",
+      "similarity_pct": 29.8,
+      "similar_to_run": "GPT-4.1-20260513-072227",
+      "similar_to_model": "GPT-4.1",
+      "rank": 13
     },
     {
       "model": "GPT-5.2-Codex",
@@ -302,7 +352,7 @@
       "similarity_pct": 24.4,
       "similar_to_run": "GPT-5.4 mini (Preview)-20260526-200546",
       "similar_to_model": "GPT-5.4 mini (Preview)",
-      "rank": 12
+      "rank": 14
     },
     {
       "model": "GPT-5.4 mini (Preview)",
@@ -327,7 +377,7 @@
       "similarity_pct": 21.6,
       "similar_to_run": "mistral-large-latest-20260512-110459",
       "similar_to_model": "mistral-large-latest",
-      "rank": 13
+      "rank": 15
     },
     {
       "model": "GPT-5.4 mini (Preview)",
@@ -352,7 +402,7 @@
       "similarity_pct": 19.2,
       "similar_to_run": "Claude Sonnet 4.6-20260526-134808",
       "similar_to_model": "Claude Sonnet 4.6",
-      "rank": 14
+      "rank": 16
     },
     {
       "model": "Gemini 3.1 Pro (Preview)",
@@ -377,7 +427,7 @@
       "similarity_pct": 27.1,
       "similar_to_run": "GPT-4.1-20260512-194127",
       "similar_to_model": "GPT-4.1",
-      "rank": 15
+      "rank": 17
     },
     {
       "model": "Claude Haiku 4.5",
@@ -402,7 +452,7 @@
       "similarity_pct": 27.7,
       "similar_to_run": "Gemini 3.1 Pro (Preview)-20260526-192423",
       "similar_to_model": "Gemini 3.1 Pro (Preview)",
-      "rank": 16
+      "rank": 18
     },
     {
       "model": "Claude Haiku 4.5",
@@ -427,7 +477,7 @@
       "similarity_pct": 34.9,
       "similar_to_run": "GPT-5.4-20260526-133225",
       "similar_to_model": "GPT-5.4",
-      "rank": 17
+      "rank": 19
     },
     {
       "model": "GPT-5.2-Codex",
@@ -452,7 +502,7 @@
       "similarity_pct": 24.6,
       "similar_to_run": "GPT-5.4-20260526-133225",
       "similar_to_model": "GPT-5.4",
-      "rank": 18
+      "rank": 20
     },
     {
       "model": "GPT-5.2-Codex",
@@ -477,7 +527,7 @@
       "similarity_pct": 24.6,
       "similar_to_run": "Gemini 3 Flash (Preview)-20260526-144754",
       "similar_to_model": "Gemini 3 Flash (Preview)",
-      "rank": 19
+      "rank": 21
     },
     {
       "model": "GPT-5.3-Codex - Extra High Effort",
@@ -502,7 +552,7 @@
       "similarity_pct": 98.7,
       "similar_to_run": "Claude Opus 4.6-20260526-204100",
       "similar_to_model": "Claude Opus 4.6",
-      "rank": 20
+      "rank": 22
     },
     {
       "model": "Gemini 3.1 Pro (Preview)",
@@ -527,7 +577,7 @@
       "similarity_pct": 31.0,
       "similar_to_run": "GPT-4.1-20260526-111221",
       "similar_to_model": "GPT-4.1",
-      "rank": 21
+      "rank": 23
     },
     {
       "model": "Gemini 3.1 Pro (Preview)",
@@ -552,7 +602,7 @@
       "similarity_pct": 25.2,
       "similar_to_run": "Gemini 3 Flash (Preview)-20260526-144754",
       "similar_to_model": "Gemini 3 Flash (Preview)",
-      "rank": 22
+      "rank": 24
     },
     {
       "model": "Claude Haiku 4.5",
@@ -577,7 +627,7 @@
       "similarity_pct": 21.3,
       "similar_to_run": "GPT-4.1-20260512-194127",
       "similar_to_model": "GPT-4.1",
-      "rank": 23
+      "rank": 25
     },
     {
       "model": "DeepSeek V4 Pro",
@@ -602,7 +652,7 @@
       "similarity_pct": 23.2,
       "similar_to_run": "Claude Haiku 4.5-20260527-080929",
       "similar_to_model": "Claude Haiku 4.5",
-      "rank": 24
+      "rank": 26
     },
     {
       "model": "Gemini 3 Flash (Preview)",
@@ -627,7 +677,7 @@
       "similarity_pct": 24.9,
       "similar_to_run": "GPT-4.1-20260503-094907",
       "similar_to_model": "GPT-4.1",
-      "rank": 25
+      "rank": 27
     },
     {
       "model": "GPT-4.1",
@@ -652,7 +702,7 @@
       "similarity_pct": 19.2,
       "similar_to_run": "GPT-4o-20260503-093139",
       "similar_to_model": "GPT-4o",
-      "rank": 26
+      "rank": 28
     },
     {
       "model": "GPT-4.1",
@@ -677,7 +727,7 @@
       "similarity_pct": 23.8,
       "similar_to_run": "GPT-4o-20260512-201910",
       "similar_to_model": "GPT-4o",
-      "rank": 27
+      "rank": 29
     },
     {
       "model": "GPT-4.1",
@@ -702,7 +752,7 @@
       "similarity_pct": 27.5,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 28
+      "rank": 30
     },
     {
       "model": "GPT-4.1",
@@ -727,7 +777,7 @@
       "similarity_pct": 20.0,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 29
+      "rank": 31
     },
     {
       "model": "GPT-4.1",
@@ -752,7 +802,7 @@
       "similarity_pct": 25.5,
       "similar_to_run": "command-a-reasoning-08-2025-20260509-054549",
       "similar_to_model": "command-a-reasoning-08-2025",
-      "rank": 30
+      "rank": 32
     },
     {
       "model": "GPT-4.1",
@@ -777,7 +827,7 @@
       "similarity_pct": 15.3,
       "similar_to_run": "GPT-4o-20260503-090800",
       "similar_to_model": "GPT-4o",
-      "rank": 31
+      "rank": 33
     },
     {
       "model": "GPT-4.1",
@@ -802,7 +852,7 @@
       "similarity_pct": 16.5,
       "similar_to_run": "GPT-4o-20260503-091943",
       "similar_to_model": "GPT-4o",
-      "rank": 32
+      "rank": 34
     },
     {
       "model": "GPT-4.1",
@@ -827,7 +877,7 @@
       "similarity_pct": 27.3,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 33
+      "rank": 35
     },
     {
       "model": "GPT-4.1",
@@ -852,7 +902,7 @@
       "similarity_pct": 29.3,
       "similar_to_run": "GPT-4o-20260512-201910",
       "similar_to_model": "GPT-4o",
-      "rank": 34
+      "rank": 36
     },
     {
       "model": "GPT-4.1",
@@ -877,7 +927,7 @@
       "similarity_pct": 20.6,
       "similar_to_run": "command-a-03-2025-20260512-145216",
       "similar_to_model": "command-a-03-2025",
-      "rank": 35
+      "rank": 37
     },
     {
       "model": "GPT-4.1",
@@ -902,7 +952,7 @@
       "similarity_pct": 23.0,
       "similar_to_run": "command-a-03-2025-20260512-145216",
       "similar_to_model": "command-a-03-2025",
-      "rank": 36
+      "rank": 38
     },
     {
       "model": "GPT-4.1",
@@ -927,7 +977,7 @@
       "similarity_pct": 16.0,
       "similar_to_run": "GPT-4o-20260503-090800",
       "similar_to_model": "GPT-4o",
-      "rank": 37
+      "rank": 39
     },
     {
       "model": "GPT-4.1",
@@ -952,7 +1002,7 @@
       "similarity_pct": 25.5,
       "similar_to_run": "meta-llama-Llama-3.1-8B-Instruct-20260509-083751",
       "similar_to_model": "meta-llama-Llama-3.1-8B-Instruct",
-      "rank": 38
+      "rank": 40
     },
     {
       "model": "GPT-4o",
@@ -977,7 +1027,7 @@
       "similarity_pct": 20.5,
       "similar_to_run": "GPT-4.1-20260506-190246",
       "similar_to_model": "GPT-4.1",
-      "rank": 39
+      "rank": 41
     },
     {
       "model": "GPT-4.1",
@@ -1002,7 +1052,7 @@
       "similarity_pct": 19.8,
       "similar_to_run": "mistral-medium-latest-20260512-115848",
       "similar_to_model": "mistral-medium-latest",
-      "rank": 40
+      "rank": 42
     },
     {
       "model": "Gemini 3.1 Pro (Preview) - Low Effort - 200K",
@@ -1027,7 +1077,7 @@
       "similarity_pct": 28.2,
       "similar_to_run": "GPT-4.1-20260513-072227",
       "similar_to_model": "GPT-4.1",
-      "rank": 41
+      "rank": 43
     },
     {
       "model": "GPT-4o",
@@ -1052,7 +1102,7 @@
       "similarity_pct": null,
       "similar_to_run": null,
       "similar_to_model": null,
-      "rank": 42
+      "rank": 44
     },
     {
       "model": "mistral-large-latest",
@@ -1077,7 +1127,7 @@
       "similarity_pct": 21.3,
       "similar_to_run": "mistral-small-latest-20260506-173546",
       "similar_to_model": "mistral-small-latest",
-      "rank": 43
+      "rank": 45
     },
     {
       "model": "GPT-4.1",
@@ -1102,7 +1152,7 @@
       "similarity_pct": 25.1,
       "similar_to_run": "mistral-medium-latest-20260512-115848",
       "similar_to_model": "mistral-medium-latest",
-      "rank": 44
+      "rank": 46
     },
     {
       "model": "mistral-large-latest",
@@ -1127,7 +1177,7 @@
       "similarity_pct": 21.5,
       "similar_to_run": "mistral-small-latest-20260506-173546",
       "similar_to_model": "mistral-small-latest",
-      "rank": 45
+      "rank": 47
     },
     {
       "model": "mistral-large-latest",
@@ -1152,7 +1202,7 @@
       "similarity_pct": 14.0,
       "similar_to_run": "GPT-4.1-20260503-094502",
       "similar_to_model": "GPT-4.1",
-      "rank": 46
+      "rank": 48
     },
     {
       "model": "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -1177,7 +1227,7 @@
       "similarity_pct": 26.8,
       "similar_to_run": "GPT-4o-20260503-093139",
       "similar_to_model": "GPT-4o",
-      "rank": 47
+      "rank": 49
     },
     {
       "model": "GPT-4o",
@@ -1202,7 +1252,7 @@
       "similarity_pct": 29.2,
       "similar_to_run": "GPT-4.1-20260506-190246",
       "similar_to_model": "GPT-4.1",
-      "rank": 48
+      "rank": 50
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -1227,7 +1277,7 @@
       "similarity_pct": 24.2,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-131726",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 49
+      "rank": 51
     },
     {
       "model": "GPT-4o",
@@ -1252,7 +1302,7 @@
       "similarity_pct": null,
       "similar_to_run": null,
       "similar_to_model": null,
-      "rank": 50
+      "rank": 52
     },
     {
       "model": "meta-llama-Llama-3.1-8B-Instruct",
@@ -1277,7 +1327,7 @@
       "similarity_pct": 25.2,
       "similar_to_run": "GPT-4.1-20260506-190246",
       "similar_to_model": "GPT-4.1",
-      "rank": 51
+      "rank": 53
     },
     {
       "model": "GPT-4o",
@@ -1302,7 +1352,7 @@
       "similarity_pct": 27.9,
       "similar_to_run": "command-a-03-2025-20260512-145216",
       "similar_to_model": "command-a-03-2025",
-      "rank": 52
+      "rank": 54
     },
     {
       "model": "mistral-small-latest",
@@ -1327,7 +1377,7 @@
       "similarity_pct": 19.9,
       "similar_to_run": "mistral-large-latest-20260506-104634",
       "similar_to_model": "mistral-large-latest",
-      "rank": 53
+      "rank": 55
     },
     {
       "model": "GPT-4o",
@@ -1352,7 +1402,7 @@
       "similarity_pct": 34.0,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 54
+      "rank": 56
     },
     {
       "model": "mistral-small-latest",
@@ -1377,7 +1427,7 @@
       "similarity_pct": 15.6,
       "similar_to_run": "mistral-large-latest-20260512-110459",
       "similar_to_model": "mistral-large-latest",
-      "rank": 55
+      "rank": 57
     },
     {
       "model": "mistral-medium-latest",
@@ -1402,7 +1452,7 @@
       "similarity_pct": 36.9,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 56
+      "rank": 58
     },
     {
       "model": "openai-gpt-oss-120b",
@@ -1427,7 +1477,7 @@
       "similarity_pct": 22.2,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260506-104143",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 57
+      "rank": 59
     },
     {
       "model": "command-a-reasoning-08-2025",
@@ -1452,7 +1502,7 @@
       "similarity_pct": 38.1,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 58
+      "rank": 60
     },
     {
       "model": "Gemini 3.1 Pro (Preview) - High Effort - 200K",
@@ -1477,7 +1527,7 @@
       "similarity_pct": 12.2,
       "similar_to_run": "mistral-large-latest-20260512-110459",
       "similar_to_model": "mistral-large-latest",
-      "rank": 59
+      "rank": 61
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1502,7 +1552,7 @@
       "similarity_pct": 31.9,
       "similar_to_run": "openai-gpt-oss-120b-20260512-050745",
       "similar_to_model": "openai-gpt-oss-120b",
-      "rank": 60
+      "rank": 62
     },
     {
       "model": "command-a-03-2025",
@@ -1527,7 +1577,7 @@
       "similarity_pct": 52.6,
       "similar_to_run": "meta-llama-llama-4-scout-17b-16e-instruct-20260512-052844",
       "similar_to_model": "meta-llama-llama-4-scout-17b-16e-instruct",
-      "rank": 61
+      "rank": 63
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1552,7 +1602,7 @@
       "similarity_pct": 26.9,
       "similar_to_run": "GPT-4o-20260503-091943",
       "similar_to_model": "GPT-4o",
-      "rank": 62
+      "rank": 64
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1577,7 +1627,7 @@
       "similarity_pct": 29.8,
       "similar_to_run": "GPT-4o-20260503-091943",
       "similar_to_model": "GPT-4o",
-      "rank": 63
+      "rank": 65
     },
     {
       "model": "GPT-4o",
@@ -1602,7 +1652,7 @@
       "similarity_pct": null,
       "similar_to_run": null,
       "similar_to_model": null,
-      "rank": 64
+      "rank": 66
     },
     {
       "model": "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -1627,7 +1677,7 @@
       "similarity_pct": 31.6,
       "similar_to_run": "GPT-4o-20260503-091943",
       "similar_to_model": "GPT-4o",
-      "rank": 65
+      "rank": 67
     }
   ],
   "runs_by_model": [
@@ -1740,6 +1790,24 @@
       "benchmark_url": "benchmarks/Claude Sonnet 4.6/Claude Sonnet 4.6-20260526-134808/index.html"
     },
     {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 2,
+      "final_score": 192.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-07-31T19:42:17Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260731-213529/index.html"
+    },
+    {
       "model": "DeepSeek V4 Pro",
       "run_id": "DeepSeek V4 Pro-20260731-145624",
       "source": "local",
@@ -1810,6 +1878,24 @@
       "status": "pass",
       "timestamp": "2026-05-26T11:41:28Z",
       "benchmark_url": "benchmarks/GPT-5.4/GPT-5.4-20260526-133225/index.html"
+    },
+    {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+      "source": "local",
+      "provider": "github-copilot",
+      "providerLabel": "GitHub Copilot",
+      "tool": "vscode",
+      "total_iterations": 3,
+      "final_score": 184.45,
+      "final_html_errors": 0,
+      "final_w3c_errors": 0,
+      "final_axe_violations": 0,
+      "final_pa11y_issues": 0,
+      "final_qualweb_issues": 0,
+      "status": "pass",
+      "timestamp": "2026-08-14T21:34:53Z",
+      "benchmark_url": "benchmarks/Claude Opus 4.6 - Max Effort - 1M/Claude Opus 4.6 - Max Effort - 1M-20260814-213020/index.html"
     },
     {
       "model": "Claude Opus 4.6",
@@ -2806,502 +2892,502 @@
     {
       "tag": "selectedcontent",
       "miss_count": 23,
-      "miss_pct": 35.4
+      "miss_pct": 34.3
     },
     {
       "tag": "data",
       "miss_count": 20,
-      "miss_pct": 30.8
+      "miss_pct": 29.9
     },
     {
       "tag": "pre",
       "miss_count": 20,
-      "miss_pct": 30.8
+      "miss_pct": 29.9
     },
     {
       "tag": "h5",
       "miss_count": 19,
-      "miss_pct": 29.2
+      "miss_pct": 28.4
     },
     {
       "tag": "h6",
       "miss_count": 19,
-      "miss_pct": 29.2
+      "miss_pct": 28.4
     },
     {
       "tag": "hgroup",
       "miss_count": 19,
-      "miss_pct": 29.2
+      "miss_pct": 28.4
     },
     {
       "tag": "col",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "colgroup",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "dfn",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "embed",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "hr",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "menu",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "object",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "q",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "search",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "tfoot",
       "miss_count": 18,
-      "miss_pct": 27.7
+      "miss_pct": 26.9
     },
     {
       "tag": "br",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "i",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "iframe",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "ol",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "rp",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "s",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "u",
       "miss_count": 17,
-      "miss_pct": 26.2
+      "miss_pct": 25.4
     },
     {
       "tag": "b",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "bdi",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "bdo",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "datalist",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "dialog",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "slot",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "span",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "template",
       "miss_count": 16,
-      "miss_pct": 24.6
+      "miss_pct": 23.9
     },
     {
       "tag": "dd",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "del",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "dl",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "dt",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "meter",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "noscript",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "optgroup",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "output",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "picture",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "ruby",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "sub",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "sup",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "wbr",
       "miss_count": 15,
-      "miss_pct": 23.1
+      "miss_pct": 22.4
     },
     {
       "tag": "area",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "cite",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "em",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "ins",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "kbd",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "map",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "progress",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "rt",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "style",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "summary",
       "miss_count": 14,
-      "miss_pct": 21.5
+      "miss_pct": 20.9
     },
     {
       "tag": "canvas",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "details",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "div",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "h4",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "samp",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "select",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "small",
       "miss_count": 13,
-      "miss_pct": 20.0
+      "miss_pct": 19.4
     },
     {
       "tag": "mark",
       "miss_count": 12,
-      "miss_pct": 18.5
+      "miss_pct": 17.9
     },
     {
       "tag": "strong",
       "miss_count": 12,
-      "miss_pct": 18.5
+      "miss_pct": 17.9
     },
     {
       "tag": "textarea",
       "miss_count": 12,
-      "miss_pct": 18.5
+      "miss_pct": 17.9
     },
     {
       "tag": "track",
       "miss_count": 12,
-      "miss_pct": 18.5
+      "miss_pct": 17.9
     },
     {
       "tag": "var",
       "miss_count": 12,
-      "miss_pct": 18.5
+      "miss_pct": 17.9
     },
     {
       "tag": "blockquote",
       "miss_count": 11,
-      "miss_pct": 16.9
+      "miss_pct": 16.4
     },
     {
       "tag": "legend",
       "miss_count": 11,
-      "miss_pct": 16.9
+      "miss_pct": 16.4
     },
     {
       "tag": "time",
       "miss_count": 11,
-      "miss_pct": 16.9
+      "miss_pct": 16.4
     },
     {
       "tag": "abbr",
       "miss_count": 10,
-      "miss_pct": 15.4
+      "miss_pct": 14.9
     },
     {
       "tag": "code",
       "miss_count": 10,
-      "miss_pct": 15.4
+      "miss_pct": 14.9
     },
     {
       "tag": "fieldset",
       "miss_count": 10,
-      "miss_pct": 15.4
+      "miss_pct": 14.9
     },
     {
       "tag": "video",
       "miss_count": 10,
-      "miss_pct": 15.4
+      "miss_pct": 14.9
     },
     {
       "tag": "base",
       "miss_count": 9,
-      "miss_pct": 13.8
+      "miss_pct": 13.4
     },
     {
       "tag": "option",
       "miss_count": 9,
-      "miss_pct": 13.8
+      "miss_pct": 13.4
     },
     {
       "tag": "script",
       "miss_count": 9,
-      "miss_pct": 13.8
+      "miss_pct": 13.4
     },
     {
       "tag": "address",
       "miss_count": 8,
-      "miss_pct": 12.3
+      "miss_pct": 11.9
     },
     {
       "tag": "audio",
       "miss_count": 8,
-      "miss_pct": 12.3
+      "miss_pct": 11.9
     },
     {
       "tag": "figcaption",
       "miss_count": 7,
-      "miss_pct": 10.8
+      "miss_pct": 10.4
     },
     {
       "tag": "figure",
       "miss_count": 7,
-      "miss_pct": 10.8
+      "miss_pct": 10.4
     },
     {
       "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 9.2
+      "miss_pct": 9.0
     },
     {
       "tag": "h3",
       "miss_count": 6,
-      "miss_pct": 9.2
+      "miss_pct": 9.0
     },
     {
       "tag": "img",
       "miss_count": 6,
-      "miss_pct": 9.2
+      "miss_pct": 9.0
     },
     {
       "tag": "source",
       "miss_count": 6,
-      "miss_pct": 9.2
+      "miss_pct": 9.0
     },
     {
       "tag": "button",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "link",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "table",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "tbody",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "td",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "th",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "thead",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "tr",
       "miss_count": 5,
-      "miss_pct": 7.7
+      "miss_pct": 7.5
     },
     {
       "tag": "aside",
       "miss_count": 4,
-      "miss_pct": 6.2
+      "miss_pct": 6.0
     },
     {
       "tag": "form",
       "miss_count": 4,
-      "miss_pct": 6.2
+      "miss_pct": 6.0
     },
     {
       "tag": "label",
       "miss_count": 4,
-      "miss_pct": 6.2
+      "miss_pct": 6.0
     },
     {
       "tag": "article",
       "miss_count": 3,
-      "miss_pct": 4.6
+      "miss_pct": 4.5
     },
     {
       "tag": "h2",
       "miss_count": 3,
-      "miss_pct": 4.6
+      "miss_pct": 4.5
     },
     {
       "tag": "ul",
       "miss_count": 3,
-      "miss_pct": 4.6
+      "miss_pct": 4.5
     },
     {
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 3.1
+      "miss_pct": 3.0
     },
     {
       "tag": "nav",
       "miss_count": 2,
-      "miss_pct": 3.1
+      "miss_pct": 3.0
     },
     {
       "tag": "a",
@@ -3374,11 +3460,11 @@
       "rank": 1,
       "tag": "selectedcontent",
       "miss_count": 23,
-      "miss_pct": 35.4,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 34.3,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 11,
-      "fail_rate": 45.8,
+      "fail_rate": 44.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3393,6 +3479,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3410,11 +3497,11 @@
       "rank": 2,
       "tag": "pre",
       "miss_count": 20,
-      "miss_pct": 30.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 29.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 12,
-      "fail_rate": 50.0,
+      "fail_rate": 48.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -3429,6 +3516,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3445,11 +3533,11 @@
       "rank": 3,
       "tag": "data",
       "miss_count": 20,
-      "miss_pct": 30.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 29.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 11,
-      "fail_rate": 45.8,
+      "fail_rate": 44.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3463,6 +3551,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3480,11 +3569,11 @@
       "rank": 4,
       "tag": "h5",
       "miss_count": 19,
-      "miss_pct": 29.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 28.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 11,
-      "fail_rate": 45.8,
+      "fail_rate": 44.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3498,6 +3587,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3515,11 +3605,11 @@
       "rank": 5,
       "tag": "h6",
       "miss_count": 19,
-      "miss_pct": 29.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 28.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -3533,6 +3623,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3551,11 +3642,11 @@
       "rank": 6,
       "tag": "hgroup",
       "miss_count": 19,
-      "miss_pct": 29.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 28.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3567,6 +3658,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3585,11 +3677,11 @@
       "rank": 7,
       "tag": "dfn",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 11,
-      "fail_rate": 45.8,
+      "fail_rate": 44.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3602,6 +3694,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3619,11 +3712,11 @@
       "rank": 8,
       "tag": "q",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 11,
-      "fail_rate": 45.8,
+      "fail_rate": 44.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -3637,6 +3730,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3654,11 +3748,11 @@
       "rank": 9,
       "tag": "col",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3671,6 +3765,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3689,11 +3784,11 @@
       "rank": 10,
       "tag": "colgroup",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3706,6 +3801,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3724,11 +3820,11 @@
       "rank": 11,
       "tag": "embed",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3742,6 +3838,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3760,11 +3857,11 @@
       "rank": 12,
       "tag": "hr",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Low Effort - 200K",
@@ -3778,6 +3875,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3796,11 +3894,11 @@
       "rank": 13,
       "tag": "menu",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
         "command-a-03-2025",
@@ -3814,6 +3912,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3832,11 +3931,11 @@
       "rank": 14,
       "tag": "object",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -3849,6 +3948,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3867,11 +3967,11 @@
       "rank": 15,
       "tag": "search",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -3884,6 +3984,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3902,11 +4003,11 @@
       "rank": 16,
       "tag": "tfoot",
       "miss_count": 18,
-      "miss_pct": 27.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 26.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3919,6 +4020,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -3937,11 +4039,11 @@
       "rank": 17,
       "tag": "i",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -3955,6 +4057,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -3973,11 +4076,11 @@
       "rank": 18,
       "tag": "rp",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -3990,6 +4093,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4008,11 +4112,11 @@
       "rank": 19,
       "tag": "s",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4026,6 +4130,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4044,11 +4149,11 @@
       "rank": 20,
       "tag": "u",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4062,6 +4167,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4080,11 +4186,11 @@
       "rank": 21,
       "tag": "br",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -4096,6 +4202,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4115,11 +4222,11 @@
       "rank": 22,
       "tag": "iframe",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4131,6 +4238,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4150,11 +4258,11 @@
       "rank": 23,
       "tag": "ol",
       "miss_count": 17,
-      "miss_pct": 26.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 25.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4167,6 +4275,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4186,11 +4295,11 @@
       "rank": 24,
       "tag": "b",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4203,6 +4312,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4222,11 +4332,11 @@
       "rank": 25,
       "tag": "datalist",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4237,6 +4347,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4256,11 +4367,11 @@
       "rank": 26,
       "tag": "dialog",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4272,6 +4383,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4291,11 +4403,11 @@
       "rank": 27,
       "tag": "slot",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4308,6 +4420,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4327,11 +4440,11 @@
       "rank": 28,
       "tag": "span",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-Llama-3.1-8B-Instruct",
@@ -4342,6 +4455,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4361,11 +4475,11 @@
       "rank": 29,
       "tag": "template",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4378,6 +4492,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4397,11 +4512,11 @@
       "rank": 30,
       "tag": "bdi",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4413,6 +4528,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4433,11 +4549,11 @@
       "rank": 31,
       "tag": "bdo",
       "miss_count": 16,
-      "miss_pct": 24.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 23.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4449,6 +4565,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4469,11 +4586,11 @@
       "rank": 32,
       "tag": "meter",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4485,6 +4602,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4503,11 +4621,11 @@
       "rank": 33,
       "tag": "noscript",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4520,6 +4638,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4538,11 +4657,11 @@
       "rank": 34,
       "tag": "output",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4555,6 +4674,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4573,11 +4693,11 @@
       "rank": 35,
       "tag": "dd",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4591,6 +4711,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4610,11 +4731,11 @@
       "rank": 36,
       "tag": "del",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-Llama-3.1-8B-Instruct",
@@ -4626,6 +4747,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -4645,11 +4767,11 @@
       "rank": 37,
       "tag": "dl",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4663,6 +4785,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4682,11 +4805,11 @@
       "rank": 38,
       "tag": "dt",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4700,6 +4823,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4719,11 +4843,11 @@
       "rank": 39,
       "tag": "optgroup",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -4735,6 +4859,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4754,11 +4879,11 @@
       "rank": 40,
       "tag": "ruby",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
         "command-a-03-2025",
@@ -4770,6 +4895,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4789,11 +4915,11 @@
       "rank": 41,
       "tag": "picture",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4806,6 +4932,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4826,11 +4953,11 @@
       "rank": 42,
       "tag": "sub",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4843,6 +4970,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4863,11 +4991,11 @@
       "rank": 43,
       "tag": "sup",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4880,6 +5008,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4900,11 +5029,11 @@
       "rank": 44,
       "tag": "wbr",
       "miss_count": 15,
-      "miss_pct": 23.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 22.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -4917,6 +5046,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4937,11 +5067,11 @@
       "rank": 45,
       "tag": "progress",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4953,6 +5083,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -4971,11 +5102,11 @@
       "rank": 46,
       "tag": "style",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 10,
-      "fail_rate": 41.7,
+      "fail_rate": 40.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Low Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -4986,6 +5117,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5004,11 +5136,11 @@
       "rank": 47,
       "tag": "area",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5019,6 +5151,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -5038,11 +5171,11 @@
       "rank": 48,
       "tag": "ins",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-Llama-3.1-8B-Instruct",
@@ -5054,6 +5187,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -5073,11 +5207,11 @@
       "rank": 49,
       "tag": "map",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5088,6 +5222,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -5107,11 +5242,11 @@
       "rank": 50,
       "tag": "summary",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -5123,6 +5258,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5142,11 +5278,11 @@
       "rank": 51,
       "tag": "em",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-reasoning-08-2025",
@@ -5158,6 +5294,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5178,11 +5315,11 @@
       "rank": 52,
       "tag": "kbd",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5194,6 +5331,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5214,11 +5352,11 @@
       "rank": 53,
       "tag": "rt",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -5229,6 +5367,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5249,11 +5388,11 @@
       "rank": 54,
       "tag": "cite",
       "miss_count": 14,
-      "miss_pct": 21.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 20.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5265,6 +5404,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5286,11 +5426,11 @@
       "rank": 55,
       "tag": "h4",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 9,
-      "fail_rate": 37.5,
+      "fail_rate": 36.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5302,6 +5442,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5321,11 +5462,11 @@
       "rank": 56,
       "tag": "details",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5336,6 +5477,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5356,11 +5498,11 @@
       "rank": 57,
       "tag": "samp",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5372,6 +5514,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5392,11 +5535,11 @@
       "rank": 58,
       "tag": "small",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5408,6 +5551,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5428,11 +5572,11 @@
       "rank": 59,
       "tag": "canvas",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -5443,6 +5587,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5464,11 +5609,11 @@
       "rank": 60,
       "tag": "div",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-Llama-3.1-8B-Instruct",
@@ -5479,6 +5624,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5500,11 +5646,11 @@
       "rank": 61,
       "tag": "select",
       "miss_count": 13,
-      "miss_pct": 20.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 19.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 6,
-      "fail_rate": 25.0,
+      "fail_rate": 24.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -5515,6 +5661,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5537,11 +5684,11 @@
       "rank": 62,
       "tag": "mark",
       "miss_count": 12,
-      "miss_pct": 18.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 17.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5553,6 +5700,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5573,11 +5721,11 @@
       "rank": 63,
       "tag": "var",
       "miss_count": 12,
-      "miss_pct": 18.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 17.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5589,6 +5737,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5609,11 +5758,11 @@
       "rank": 64,
       "tag": "strong",
       "miss_count": 12,
-      "miss_pct": 18.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 17.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 6,
-      "fail_rate": 25.0,
+      "fail_rate": 24.0,
       "models_never": [
         "command-a-reasoning-08-2025",
         "meta-llama-Llama-3.1-8B-Instruct",
@@ -5624,6 +5773,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5646,11 +5796,11 @@
       "rank": 65,
       "tag": "track",
       "miss_count": 12,
-      "miss_pct": 18.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 17.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 6,
-      "fail_rate": 25.0,
+      "fail_rate": 24.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5659,6 +5809,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5681,11 +5832,11 @@
       "rank": 66,
       "tag": "textarea",
       "miss_count": 12,
-      "miss_pct": 18.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 17.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "command-a-03-2025",
         "command-a-reasoning-08-2025",
@@ -5695,6 +5846,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5718,11 +5870,11 @@
       "rank": 67,
       "tag": "blockquote",
       "miss_count": 11,
-      "miss_pct": 16.9,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 16.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5733,6 +5885,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5754,11 +5907,11 @@
       "rank": 68,
       "tag": "time",
       "miss_count": 11,
-      "miss_pct": 16.9,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 16.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -5770,6 +5923,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5791,11 +5945,11 @@
       "rank": 69,
       "tag": "legend",
       "miss_count": 11,
-      "miss_pct": 16.9,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 16.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
         "command-a-03-2025",
@@ -5805,6 +5959,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5828,11 +5983,11 @@
       "rank": 70,
       "tag": "abbr",
       "miss_count": 10,
-      "miss_pct": 15.4,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 14.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5842,6 +5997,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5863,11 +6019,11 @@
       "rank": 71,
       "tag": "code",
       "miss_count": 10,
-      "miss_pct": 15.4,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 14.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -5878,6 +6034,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5899,11 +6056,11 @@
       "rank": 72,
       "tag": "video",
       "miss_count": 10,
-      "miss_pct": 15.4,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 14.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 7,
-      "fail_rate": 29.2,
+      "fail_rate": 28.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
@@ -5913,6 +6070,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5934,11 +6092,11 @@
       "rank": 73,
       "tag": "fieldset",
       "miss_count": 10,
-      "miss_pct": 15.4,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 14.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -5947,6 +6105,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -5971,11 +6130,11 @@
       "rank": 74,
       "tag": "script",
       "miss_count": 9,
-      "miss_pct": 13.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 13.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 8,
-      "fail_rate": 33.3,
+      "fail_rate": 32.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Low Effort - 200K",
         "command-a-03-2025",
@@ -5985,6 +6144,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6005,11 +6165,11 @@
       "rank": 75,
       "tag": "base",
       "miss_count": 9,
-      "miss_pct": 13.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 13.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 6,
-      "fail_rate": 25.0,
+      "fail_rate": 24.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -6018,6 +6178,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6040,11 +6201,11 @@
       "rank": 76,
       "tag": "option",
       "miss_count": 9,
-      "miss_pct": 13.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 13.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "command-a-03-2025",
         "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -6053,6 +6214,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6076,11 +6238,11 @@
       "rank": 77,
       "tag": "address",
       "miss_count": 8,
-      "miss_pct": 12.3,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 11.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "meta-llama-llama-4-scout-17b-16e-instruct",
@@ -6089,6 +6251,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6113,11 +6276,11 @@
       "rank": 78,
       "tag": "audio",
       "miss_count": 8,
-      "miss_pct": 12.3,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 11.9,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "meta-llama-llama-4-scout-17b-16e-instruct"
@@ -6125,6 +6288,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6149,11 +6313,11 @@
       "rank": 79,
       "tag": "figcaption",
       "miss_count": 7,
-      "miss_pct": 10.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 10.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -6162,6 +6326,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6185,11 +6350,11 @@
       "rank": 80,
       "tag": "figure",
       "miss_count": 7,
-      "miss_pct": 10.8,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 10.4,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025",
@@ -6198,6 +6363,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6221,17 +6387,18 @@
       "rank": 81,
       "tag": "h3",
       "miss_count": 6,
-      "miss_pct": 9.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 9.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "openai-gpt-oss-120b"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -6256,11 +6423,11 @@
       "rank": 82,
       "tag": "img",
       "miss_count": 6,
-      "miss_pct": 9.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 9.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "command-a-03-2025"
@@ -6268,6 +6435,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6292,17 +6460,18 @@
       "rank": 83,
       "tag": "source",
       "miss_count": 6,
-      "miss_pct": 9.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 9.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6327,15 +6496,16 @@
       "rank": 84,
       "tag": "caption",
       "miss_count": 6,
-      "miss_pct": 9.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 9.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6361,11 +6531,11 @@
       "rank": 85,
       "tag": "link",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 5,
-      "fail_rate": 20.8,
+      "fail_rate": 20.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K",
         "meta-llama-Llama-3.1-8B-Instruct"
@@ -6373,6 +6543,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6396,15 +6567,16 @@
       "rank": 86,
       "tag": "button",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-5.2-Codex",
@@ -6430,15 +6602,16 @@
       "rank": 87,
       "tag": "table",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6464,15 +6637,16 @@
       "rank": 88,
       "tag": "tbody",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6498,15 +6672,16 @@
       "rank": 89,
       "tag": "td",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6532,15 +6707,16 @@
       "rank": 90,
       "tag": "th",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6566,15 +6742,16 @@
       "rank": 91,
       "tag": "thead",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6600,15 +6777,16 @@
       "rank": 92,
       "tag": "tr",
       "miss_count": 5,
-      "miss_pct": 7.7,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 7.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6634,17 +6812,18 @@
       "rank": 93,
       "tag": "aside",
       "miss_count": 4,
-      "miss_pct": 6.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 6.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 4,
-      "fail_rate": 16.7,
+      "fail_rate": 16.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6669,15 +6848,16 @@
       "rank": 94,
       "tag": "form",
       "miss_count": 4,
-      "miss_pct": 6.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 6.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 2,
-      "fail_rate": 8.3,
+      "fail_rate": 8.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6704,15 +6884,16 @@
       "rank": 95,
       "tag": "label",
       "miss_count": 4,
-      "miss_pct": 6.2,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 6.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 2,
-      "fail_rate": 8.3,
+      "fail_rate": 8.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6739,17 +6920,18 @@
       "rank": 96,
       "tag": "article",
       "miss_count": 3,
-      "miss_pct": 4.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 4.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6775,11 +6957,11 @@
       "rank": 97,
       "tag": "ul",
       "miss_count": 3,
-      "miss_pct": 4.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 4.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 3,
-      "fail_rate": 12.5,
+      "fail_rate": 12.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - High Effort - 200K",
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K"
@@ -6787,6 +6969,7 @@
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6812,15 +6995,16 @@
       "rank": 98,
       "tag": "h2",
       "miss_count": 3,
-      "miss_pct": 4.6,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 4.5,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6848,17 +7032,18 @@
       "rank": 99,
       "tag": "nav",
       "miss_count": 2,
-      "miss_pct": 3.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 3.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 2,
-      "fail_rate": 8.3,
+      "fail_rate": 8.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6885,15 +7070,16 @@
       "rank": 100,
       "tag": "input",
       "miss_count": 2,
-      "miss_pct": 3.1,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "miss_pct": 3.0,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6922,14 +7108,15 @@
       "tag": "a",
       "miss_count": 1,
       "miss_pct": 1.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6958,16 +7145,17 @@
       "tag": "footer",
       "miss_count": 1,
       "miss_pct": 1.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [
         "Gemini 3.1 Pro (Preview) - Medium Effort - 200K"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -6996,16 +7184,17 @@
       "tag": "h1",
       "miss_count": 1,
       "miss_pct": 1.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [
         "meta-llama-Llama-3.1-8B-Instruct"
       ],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7034,14 +7223,15 @@
       "tag": "li",
       "miss_count": 1,
       "miss_pct": 1.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7070,14 +7260,15 @@
       "tag": "main",
       "miss_count": 1,
       "miss_pct": 1.5,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 1,
-      "fail_rate": 4.2,
+      "fail_rate": 4.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7106,14 +7297,15 @@
       "tag": "body",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7143,14 +7335,15 @@
       "tag": "head",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7180,14 +7373,15 @@
       "tag": "header",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7217,14 +7411,15 @@
       "tag": "html",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7254,14 +7449,15 @@
       "tag": "meta",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7291,14 +7487,15 @@
       "tag": "p",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7328,14 +7525,15 @@
       "tag": "section",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7365,14 +7563,15 @@
       "tag": "title",
       "miss_count": 0,
       "miss_pct": 0.0,
-      "total_runs": 65,
-      "models_attempted": 24,
+      "total_runs": 67,
+      "models_attempted": 25,
       "models_failed": 0,
       "fail_rate": 0.0,
       "models_never": [],
       "models_always": [
         "Claude Haiku 4.5",
         "Claude Opus 4.6",
+        "Claude Opus 4.6 - Max Effort - 1M",
         "Claude Sonnet 4.6",
         "DeepSeek V4 Pro",
         "GPT-4.1",
@@ -7638,6 +7837,73 @@
             "qualweb_issues": 0,
             "status": "pass",
             "timestamp": "2026-05-26T18:56:54Z"
+          }
+        ]
+      }
+    ],
+    "Claude Opus 4.6 - Max Effort - 1M": [
+      {
+        "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260731-213529",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 202.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-07-31T19:40:42Z"
+          },
+          {
+            "iteration": 2,
+            "score": 192.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-07-31T19:42:17Z"
+          }
+        ]
+      },
+      {
+        "run_id": "Claude Opus 4.6 - Max Effort - 1M-20260814-213020",
+        "iterations": [
+          {
+            "iteration": 1,
+            "score": 12.91,
+            "html_tag_errors": 107,
+            "w3c_errors": 0,
+            "axe_violations": 2,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-08-14T21:31:39Z"
+          },
+          {
+            "iteration": 2,
+            "score": 101.64,
+            "html_tag_errors": 1,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "fail",
+            "timestamp": "2026-08-14T21:33:34Z"
+          },
+          {
+            "iteration": 3,
+            "score": 184.45,
+            "html_tag_errors": 0,
+            "w3c_errors": 0,
+            "axe_violations": 0,
+            "pa11y_issues": 0,
+            "qualweb_issues": 0,
+            "status": "pass",
+            "timestamp": "2026-08-14T21:34:53Z"
           }
         ]
       }
@@ -14961,6 +15227,15 @@
       "qualweb_issues": 0
     },
     {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "score": 192.45,
+      "html_tag_errors": 0,
+      "w3c_errors": 0,
+      "axe_violations": 0,
+      "pa11y_issues": 0,
+      "qualweb_issues": 0
+    },
+    {
       "model": "DeepSeek V4 Pro",
       "score": 192.45,
       "html_tag_errors": 0,
@@ -15165,6 +15440,12 @@
       "used_count": 114,
       "missing_count": 0,
       "coverage_pct": 100.9
+    },
+    {
+      "model": "Claude Opus 4.6 - Max Effort - 1M",
+      "used_count": 113,
+      "missing_count": 0,
+      "coverage_pct": 100.0
     },
     {
       "model": "DeepSeek V4 Pro",
