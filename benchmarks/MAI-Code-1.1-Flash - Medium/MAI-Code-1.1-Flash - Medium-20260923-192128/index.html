@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI WCAG Gauntlet Showcase</title>
+    <base href="/AI-WCAG-Gauntlet/">
+    <meta name="description" content="Accessible HTML5 benchmark page covering every required tag and WCAG AAA best practices.">
+    <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/MAI-Code-1.1-Flash%20-%20Medium/MAI-Code-1.1-Flash%20-%20Medium-20260923-192128/style.css">
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --ink: #0f172a;
+        --muted: #334155;
+        --primary: #0f4c81;
+        --accent: #d97706;
+        --border: #cbd5e1;
+      }
+    </style>
+  <script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+  <body>
+    <header>
+      <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#elements">Elements</a>
+        <a href="#forms">Forms</a>
+        <a href="#media">Media</a>
+        <search aria-label="Site search">
+          <label for="site-search">Quick search</label>
+          <input id="site-search" type="search" name="q" placeholder="Search benchmark">
+        </search>
+      </nav>
+    </header>
+
+    <main id="overview">
+      <hgroup>
+        <h1>AI WCAG Gauntlet Showcase</h1>
+      </hgroup>
+      <div class="hero-copy">
+        <p>Built for semantic HTML accessibility and robust validation.</p>
+      </div>
+
+      <h2>Overview</h2>
+
+      <article>
+        <h3>Core guidance</h3>
+        <p>
+          This benchmark demonstrates comprehensive <abbr title="HyperText Markup Language">HTML</abbr>
+          coverage, clear semantics, and WCAG guidance aligned with <strong>AAA-level</strong> practices.
+        </p>
+        <blockquote cite="https://www.w3.org/WAI/standards-guidelines/wcag/">
+          <p>Accessibility is a critical part of modern web design and development.</p>
+        </blockquote>
+        <p>
+          Use <code>&lt;main&gt;</code> and <code>&lt;section&gt;</code> to structure content,
+          <em>support keyboard access</em>, and preserve clear heading order from <b>H1</b> through
+          <i>H6</i>.
+        </p>
+        <p><a href="#forms">Jump to form controls</a> or <a href="#media">review media examples</a>.</p>
+        <p>According to <cite>WCAG 2.2 principles</cite>, content should remain comprehensible and navigable.</p>
+      </article>
+
+      <section id="elements">
+        <h2>Semantic structure and inline markup</h2>
+        <p>
+          <s>Legacy styles</s> are not needed here because <small>semantic HTML</small> is enough to communicate
+          meaning. This includes <u>underlined emphasis</u>, <mark>highlighted calls to action</mark>,
+          <del>removed text</del>, <ins>new additions</ins>, and <sub>subscript</sub> and <sup>superscript</sup>
+          references. The <data value="wcag-aaa">WCAG AAA</data> standard guides accessible design.
+        </p>
+        <figure>
+          <img src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Benchmark icon" width="240" height="240" usemap="#benchmark-map">
+          <map name="benchmark-map">
+            <area shape="rect" coords="0,0,120,120" href="#overview" alt="Overview section link">
+            <area shape="circle" coords="180,120,60" href="#media" alt="Media section link">
+          </map>
+          <figcaption>Benchmark icon with interactive fallback hotspot regions.</figcaption>
+        </figure>
+
+        <picture>
+          <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 700px)">
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Responsive benchmark image" width="180" height="180">
+        </picture>
+
+        <hr>
+
+        <h3>Definitions, lists, and tabular data</h3>
+        <dl>
+          <dt><dfn>HTML</dfn></dt>
+          <dd>HyperText Markup Language used to structure web pages.</dd>
+          <dt><abbr title="Accessible Rich Internet Applications">ARIA</abbr></dt>
+          <dd>Additional semantics for widgets and accessible interaction patterns.</dd>
+        </dl>
+
+        <ol>
+          <li>Define clear structure.</li>
+          <li>Use semantic landmarks.</li>
+          <li>Validate and test accessibility.</li>
+        </ol>
+
+        <ul>
+          <li>Keyboard support</li>
+          <li>Color contrast</li>
+          <li>Screen-reader clarity</li>
+        </ul>
+
+        <table>
+          <caption>Accessibility checklist summary</caption>
+          <colgroup>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Area</th>
+              <th scope="col">Status</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Structure</td>
+              <td>Pass</td>
+              <td>Landmarks and headings are clear.</td>
+            </tr>
+            <tr>
+              <td>Forms</td>
+              <td>Pass</td>
+              <td>Labels and instructions are present.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">All items verified for AAA alignment.</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <p>
+          Use <bdi>مرحبا</bdi> and <bdo dir="rtl">This text is written in reverse direction.</bdo>
+          to demonstrate directional text handling.
+        </p>
+        <p><kbd>Tab</kbd> navigation helps users move through form controls efficiently.</p>
+        <p><samp>File saved successfully.</samp> The <var>status</var> variable tracks completion.</p>
+        <pre><code>const isAccessible = true;
+console.log(isAccessible ? 'Ready' : 'Review');</code></pre>
+        <ruby>
+          調和
+          <rp>(</rp><rt>chouwa</rt><rp>)</rp>
+        </ruby>
+        <p><q>Clear markup supports robust accessibility.</q></p>
+        <p><time datetime="2026-09-23">23 September 2026</time> is the benchmark date.</p>
+      </section>
+
+      <aside>
+        <details open>
+          <summary>Accessibility notes</summary>
+          <p>Every focusable control has a clear label, and each section is named by heading text.</p>
+        </details>
+      </aside>
+
+      <nav aria-label="Secondary navigation">
+        <menu>
+          <li><button type="button">Overview</button></li>
+          <li><button type="button">Standards</button></li>
+          <li><button type="button">Media</button></li>
+        </menu>
+      </nav>
+
+      <section id="forms">
+        <h2>Form controls and validation</h2>
+        <form aria-label="Benchmark contact form">
+          <fieldset>
+            <legend>Contact preferences</legend>
+            <label><input type="checkbox" name="email-updates" checked> Receive accessibility updates</label>
+            <label><input type="checkbox" name="audio-briefing"> Include audio briefing</label>
+          </fieldset>
+
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="jane@example.com" required>
+
+          <label for="country">Country</label>
+          <input id="country" name="country" list="countries" placeholder="Choose a country">
+          <datalist id="countries">
+            <option value="Australia"></option>
+            <option value="Canada"></option>
+            <option value="Germany"></option>
+            <option value="United Kingdom"></option>
+          </datalist>
+
+          <label for="priority">Priority</label>
+          <input id="priority" name="priority" type="range" min="0" max="100" value="60">
+          <output for="priority" id="priority-output">60</output>
+
+          <label for="plan">Plan</label>
+          <select id="plan" name="plan">
+            <optgroup label="Options">
+              <option value="baseline">Baseline</option>
+              <option value="enhanced" selected>Enhanced</option>
+              <option value="audit">Full audit</option>
+            </optgroup>
+          </select>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Describe your requirements"></textarea>
+
+          <meter id="quality-meter" min="0" max="100" value="80">80%</meter>
+          <progress value="80" max="100">80%</progress>
+
+          <button type="submit">Submit response</button>
+        </form>
+      </section>
+
+      <section id="media">
+        <h2>Embedded media and canvas use</h2>
+
+        <audio controls aria-label="Benchmark audio sample">
+          <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+        </audio>
+
+        <video controls width="640" height="360" aria-label="Benchmark video example">
+          <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+          <track default kind="captions" srclang="en" label="English captions" src="/AI-WCAG-Gauntlet/resources/benchmark-captions.vtt">
+        </video>
+
+        <figure>
+          <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="SVG object benchmark output"></object>
+          <figcaption>Embedded SVG object.</figcaption>
+        </figure>
+
+        <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Benchmark embed icon">
+        <iframe title="Support notes" srcdoc="<h3>Core note</h3><p>Accessible interface design preserves clarity and usability.</p>"></iframe>
+        <canvas width="260" height="120" aria-label="Simple benchmark chart"></canvas>
+      </section>
+
+      <h3>Inline examples for less common tags</h3>
+      <p>
+        Inline summary of <small>small text</small>, <var>variable</var>, and <span>line break</span><wbr> opportunities.
+      </p>
+      <p><br>Line break example.</p>
+      <h4>Checklist summary</h4>
+      <p>Everything should remain clear, labeled, and keyboard-friendly.</p>
+      <h5>Secondary checklist</h5>
+      <p>All core ARIA and semantic options are in place for testing.</p>
+      <h6>Final note</h6>
+      <p>Final validation should confirm that all HTML tags and accessibility requirements are met.</p>
+
+      <template>
+        <slot name="benchmark-slot">Selected benchmark content</slot>
+      </template>
+      <noscript>
+        <p>JavaScript is not available, but this page remains informative.</p>
+      </noscript>
+      <selectedcontent></selectedcontent>
+
+      <dialog open aria-labelledby="dialog-title">
+        <h4 id="dialog-title">Status</h4>
+        <p>All required benchmark elements are intentionally included for validation.</p>
+        <form method="dialog"><button type="submit">Close</button></form>
+      </dialog>
+
+      <script>
+        const rangeInput = document.getElementById('priority');
+        const output = document.getElementById('priority-output');
+        if (rangeInput && output) {
+          const syncOutput = () => { output.textContent = rangeInput.value; };
+          rangeInput.addEventListener('input', syncOutput);
+          syncOutput();
+        }
+      </script>
+    </main>
+
+    <footer>
+      <address>
+        Benchmark support: <a href="mailto:benchmark@example.com">benchmark@example.com</a>
+      </address>
+      <p><small>Updated <time datetime="2026-09-23T19:00:00Z">23 Sep 2026</time>.</small></p>
+    </footer>
+  </body>
+</html>
