@@ -24,7 +24,7 @@
     "@qualweb/cli": "^0.7.21",
     "@qualweb/core": "^0.9.0",
     "axe-core": "^4.11.3",
-    "pa11y": "^9.1.1",
+    "pa11y": "^10.0.0",
     "puppeteer-core": "^25.0.0",
     "w3c-html-validator": "^2.2.0"
   },
