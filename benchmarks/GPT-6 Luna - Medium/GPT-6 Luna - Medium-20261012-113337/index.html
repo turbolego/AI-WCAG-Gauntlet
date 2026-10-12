@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="./">
+  <title>AI WCAG Gauntlet HTML5 Reference</title>
+  <link rel="stylesheet" href="style.css">
+  <style>template { display: none; }</style>
+  <script>window.alert = window.confirm = window.prompt = () => null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header>
+    <h1>AI WCAG Gauntlet HTML5 Reference</h1>
+    <nav aria-label="Primary navigation">
+      <a href="#main-content">Skip to main content</a>
+    </nav>
+  </header>
+  <main id="main-content">
+    <article>
+      <hgroup>
+        <h2>Accessible HTML5 examples</h2>
+        <p>A semantic reference for common document elements.</p>
+      </hgroup>
+      <p>This <strong>reference</strong> uses <em>valid</em> elements, including
+        <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> guidance.</p>
+      <section aria-labelledby="overview-heading">
+        <h3 id="overview-heading">Overview</h3>
+        <p><mark>Examples</mark> are reviewed on
+          <time datetime="2026-10-12">12 October 2026</time>.</p>
+        <figure>
+          <canvas width="1" height="1" aria-label="One-pixel canvas example">Canvas fallback text</canvas>
+          <figcaption>A canvas with accessible fallback text.</figcaption>
+        </figure>
+        <blockquote cite="https://www.w3.org/TR/WCAG22/">
+          <p>Accessibility is a foundation of quality.</p>
+        </blockquote>
+        <p><q cite="https://html.spec.whatwg.org/">Use semantic HTML.</q>
+          <cite>HTML Living Standard</cite></p>
+      </section>
+    </article>
+    <aside aria-label="Supplementary information">
+      <h4>Contact</h4>
+      <address>Accessibility Team<br>
+        <a href="mailto:accessibility@example.test">accessibility@example.test</a>
+      </address>
+    </aside>
+    <search>
+      <form action="#" method="get">
+        <fieldset>
+          <legend>Search this reference</legend>
+          <label for="term">Search term</label>
+          <input id="term" name="term" type="search" list="terms">
+          <datalist id="terms">
+            <option value="HTML">
+            <option value="WCAG">
+          </datalist>
+          <button type="submit">Search</button>
+          <output for="term">Ready</output>
+        </fieldset>
+      </form>
+    </search>
+    <section hidden aria-label="Additional HTML element examples">
+      <h5>Additional examples</h5>
+      <h6>Element coverage</h6>
+      <p><b>Bold</b>, <i>italic</i>, <u>underlined</u>, <s>no longer current</s>,
+        <small>small print</small>, H<sub>2</sub>O, x<sup>2</sup>,
+        <var>score</var>, <code>code</code>, <kbd>Enter</kbd>, <samp>sample output</samp>,
+        <dfn>definition</dfn>, <data value="42">forty-two</data>,
+        <bdi>text with isolated direction</bdi>, <bdo dir="rtl">right to left</bdo>,
+        <del>removed text</del>, and <ins>added text</ins><br><wbr>break opportunity.</p>
+      <hr>
+      <pre>Preformatted example.</pre>
+      <dl><dt>Term</dt><dd>Definition</dd></dl>
+      <ol><li>Ordered item</li></ol>
+      <ul><li>Unordered item</li></ul>
+      <menu><li><button type="button">Menu action</button></li></menu>
+      <details><summary>Details summary</summary><p>Additional detail.</p></details>
+      <dialog open>Dialog example</dialog>
+      <p><meter min="0" max="10" value="8">8 of 10</meter>
+        <progress max="100" value="80">80%</progress></p>
+      <p><ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby></p>
+      <table>
+        <caption>Example data table</caption>
+        <colgroup><col></colgroup>
+        <thead><tr><th scope="col">Heading</th></tr></thead>
+        <tbody><tr><td>Cell</td></tr></tbody>
+        <tfoot><tr><td>Footer</td></tr></tfoot>
+      </table>
+      <picture>
+        <source srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" type="image/gif">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Transparent one-pixel example">
+      </picture>
+      <map name="example-map">
+        <area shape="rect" coords="0,0,1,1" href="#main-content" alt="Return to main content">
+      </map>
+      <img usemap="#example-map" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Mapped one-pixel example">
+      <audio>
+        <source src="data:audio/wav;base64," type="audio/wav">
+        <track kind="captions" srclang="en" label="English" src="data:text/vtt,WEBVTT">
+      </audio>
+      <video>
+        <source src="data:video/webm;base64," type="video/webm">
+        <track kind="captions" srclang="en" label="English" src="data:text/vtt,WEBVTT">
+      </video>
+      <iframe title="Embedded example" srcdoc="<!doctype html><title>Example</title><p>Embedded content.</p>"></iframe>
+      <object data="data:text/plain,Embedded%20example" type="text/plain">Object fallback text</object>
+      <embed src="data:text/plain,Embedded%20example" type="text/plain">
+      <select aria-label="Example selection">
+        <button type="button"><selectedcontent></selectedcontent></button>
+        <option selected>Example option</option>
+        <optgroup label="Group"><option>Grouped option</option></optgroup>
+      </select>
+      <slot name="example-slot">Slot fallback text</slot>
+      <template><p>Template content.</p></template>
+      <textarea aria-label="Example text area">Example text</textarea>
+      <noscript><p>JavaScript is unavailable.</p></noscript>
+      <div>Generic division.</div>
+      <span>Inline span example.</span>
+    </section>
+  </main>
+  <footer><p>AI WCAG Gauntlet benchmark reference page.</p></footer>
+</body>
+</html>

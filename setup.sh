@@ -57,7 +57,8 @@ fi
 #MODEL_NAME="gemma-4-E2B-it-GGUF:Q4_K_M"
 #MODEL_NAME="Qwen3.5-2B-GGUF:Q4_K_M"
 #MODEL_NAME="Ornith-1.0-9B-GGUF:Q4_K_M"
-MODEL_NAME="MAI-Code-1.1-Flash - Medium"
+#MODEL_NAME="MAI-Code-1.1-Flash - Medium"
+MODEL_NAME="GPT-6 Luna - Medium"
 
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
 #MODEL_NAME="qwen2.5-coder-1.5b"
