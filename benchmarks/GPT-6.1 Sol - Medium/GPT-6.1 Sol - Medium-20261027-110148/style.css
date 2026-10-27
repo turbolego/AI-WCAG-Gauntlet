@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-padding-top: 1rem;
+}
+
+body {
+    font: 1.125rem/1.7 system-ui, sans-serif;
+    margin: 0;
+    padding: 1.5rem;
+    background: #fff;
+    color: #171717;
+}
+
+header,
+main,
+body > aside,
+footer {
+    max-width: 70ch;
+    margin-inline: auto;
+}
+
+section {
+    padding-block: 1.5rem;
+    border-bottom: 2px solid #555;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.35;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 1.125rem;
+}
+
+a {
+    color: #003b70;
+    text-underline-offset: 0.2em;
+}
+
+a:visited {
+    color: #4a205c;
+}
+
+a:hover {
+    text-decoration-thickness: 3px;
+}
+
+nav ul,
+menu {
+    padding-left: 1.5rem;
+}
+
+nav a,
+button,
+summary,
+area {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+nav a {
+    display: inline-block;
+    padding-block: 0.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    max-width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #444;
+    border-radius: 0.25rem;
+    color: #171717;
+    background: #fff;
+}
+
+button,
+summary {
+    cursor: pointer;
+}
+
+button {
+    margin-block: 0.5rem;
+}
+
+input,
+select,
+textarea {
+    min-height: 44px;
+}
+
+fieldset {
+    margin-block: 1.5rem;
+    min-width: 0;
+    border: 2px solid #555;
+}
+
+legend {
+    font-weight: 700;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption {
+    text-align: left;
+    font-weight: 700;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #555;
+}
+
+th {
+    background: #eee;
+}
+
+figure {
+    margin-inline: 0;
+}
+
+img,
+video,
+audio,
+iframe,
+canvas,
+object,
+embed {
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+iframe {
+    border: 2px solid #555;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding: 1rem;
+    background: #f0f0f0;
+}
+
+small {
+    font-size: 1rem;
+}
+
+summary {
+    padding: 0.5rem;
+}
+
+dialog {
+    max-width: min(90vw, 40rem);
+    color: #171717;
+    background: #fff;
+    border: 3px solid #171717;
+}
+
+dialog::backdrop {
+    background: rgb(0 0 0 / 60%);
+}
+
+footer {
+    padding-block: 2rem;
+}
+
+.skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    transform: translateY(-200%);
+    padding: 0.75rem;
+    color: #003b70;
+    background: #fff;
+    border: 3px solid #171717;
+    z-index: 1;
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+:focus-visible {
+    outline: 3px solid #171717;
+    outline-offset: 4px;
+}
+
+@media (max-width: 35rem) {
+    body {
+        padding: 1rem;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+    }
+}

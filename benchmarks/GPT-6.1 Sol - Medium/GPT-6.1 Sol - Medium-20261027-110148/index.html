@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/AI-WCAG-Gauntlet/">
+    <title>HTML field guide - AI WCAG Gauntlet</title>
+    <link rel="stylesheet" href="benchmarks/GPT-6.1%20Sol%20-%20Medium/GPT-6.1%20Sol%20-%20Medium-20261027-110148/style.css">
+    <style>
+        html { color-scheme: light; background: #fff; color: #171717; }
+        a { color: #003b70; }
+        mark { background: #fff1a8; color: #171717; }
+        :focus-visible { outline: 3px solid #171717; outline-offset: 4px; }
+    </style>
+    <noscript><style>.script-only { display: none; }</style></noscript>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <hgroup>
+            <h1>HTML field guide</h1>
+            <p>A technical showcase of the HTML Living Standard.</p>
+        </hgroup>
+        <nav aria-label="On this page">
+            <ul>
+                <li><a href="#words">Words and structure</a></li>
+                <li><a href="#data">Data and controls</a></li>
+                <li><a href="#media">Images and media</a></li>
+                <li><a href="#components">Components</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" tabindex="-1">
+        <section id="words" aria-labelledby="words-title">
+            <h2 id="words-title">Words and structure</h2>
+            <article aria-labelledby="article-title">
+                <h3 id="article-title">A surveyor's notebook</h3>
+                <p>A <dfn id="benchmark-definition">benchmark</dfn> is a fixed reference for measurement.
+                    <abbr title="Hypertext Markup Language">HTML</abbr> gives content meaning.
+                    <strong>Meaning comes first</strong>; <em>presentation supports it</em>.</p>
+                <p><b>Field note:</b> the <i lang="la">in situ</i> marker is <mark>the reference point</mark>.
+                    An <u>annotated term</u> is underlined here, not a link.
+                    <s>The draft measurement was 10 metres.</s>
+                    <del datetime="2026-10-27">10 m</del> <ins datetime="2026-10-27">12 m</ins>.</p>
+                <h4>Reading measurements</h4>
+                <p>Water is H<sub>2</sub>O; an area is measured in m<sup>2</sup>.
+                    The variable <var>h</var> is height.
+                    Use <code>document.title</code>, press <kbd>Tab</kbd> to move focus,
+                    and read the example response <samp>Ready</samp>.</p>
+                <h5>Language examples</h5>
+                <p>A name in isolation: <bdi lang="ar" dir="rtl">ليلى</bdi>.
+                    Reversed direction: <bdo dir="rtl">survey</bdo>.
+                    Japanese reading: <ruby lang="ja">山<rp>(</rp><rt>やま</rt><rp>)</rp></ruby>.</p>
+                <h6>A long identifier</h6>
+                <p>survey<wbr>Station<wbr>Reference<wbr>Number</p>
+                <blockquote cite="https://html.spec.whatwg.org/">
+                    <p>HTML is the World Wide Web's core markup language.</p>
+                </blockquote>
+                <p>Source: <cite>HTML Living Standard</cite>. Our rule of thumb is
+                    <q>give every control a clear name</q>.</p>
+                <pre><code>&lt;main&gt;
+    &lt;h1&gt;A clear page title&lt;/h1&gt;
+&lt;/main&gt;</code></pre>
+                <hr>
+                <p>Published <time datetime="2026-10-27">27 October 2026</time>.
+                    Record <data value="12">twelve</data>.
+                    <small>This field guide is an educational example, not a survey record.</small></p>
+            </article>
+        </section>
+        <section id="data" aria-labelledby="data-title">
+            <h2 id="data-title">Data and controls</h2>
+            <table>
+                <caption>Example reference heights in metres</caption>
+                <colgroup><col><col></colgroup>
+                <thead><tr><th scope="col">Station</th><th scope="col">Height (m)</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row">North</th><td>12</td></tr>
+                    <tr><th scope="row">South</th><td>18</td></tr>
+                </tbody>
+                <tfoot><tr><th scope="row">Mean</th><td>15</td></tr></tfoot>
+            </table>
+            <search aria-label="Field guide search">
+                <form action="benchmarks/GPT-6.1%20Sol%20-%20Medium/GPT-6.1%20Sol%20-%20Medium-20261027-110148/index.html" method="get">
+                    <label for="query">Search this field guide</label>
+                    <input id="query" name="q" type="search" list="topics">
+                    <datalist id="topics">
+                        <option value="Measurements"></option>
+                        <option value="Media"></option>
+                    </datalist>
+                    <button type="submit">Search</button>
+                </form>
+            </search>
+            <form id="example-form">
+                <fieldset>
+                    <legend>Example observation (not saved)</legend>
+                    <p>
+                        <label for="station">Station</label>
+                        <select id="station" name="station">
+                            <optgroup label="Survey stations">
+                                <option value="north">North</option>
+                                <option value="south">South</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="units">Display units</label>
+                        <select id="units" name="units">
+                            <button><selectedcontent></selectedcontent></button>
+                            <option value="metres">Metres</option>
+                            <option value="feet">Feet</option>
+                        </select>
+                    </p>
+                    <p><label for="notes">Observation notes</label>
+                        <textarea id="notes" name="notes" rows="3" cols="35"></textarea></p>
+                    <p><label for="height">Height in metres</label>
+                        <input id="height" name="height" type="number" value="12" min="0" max="100">
+                        <button type="button" id="show-height" class="script-only">Show height</button></p>
+                    <p><label for="result">Example result</label>
+                        <output id="result" for="height">12 metres</output></p>
+                </fieldset>
+            </form>
+            <p><label for="completion">Example progress: 3 of 4 observations</label>
+                <progress id="completion" value="3" max="4">3 of 4</progress></p>
+            <p><label for="quality">Example confidence: 80 percent</label>
+                <meter id="quality" min="0" max="100" value="80">80 percent</meter></p>
+        </section>
+        <section id="media" aria-labelledby="media-title">
+            <h2 id="media-title">Images and media</h2>
+            <figure>
+                <picture>
+                    <source media="(min-width: 50rem)" srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+                    <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                        width="250" height="250" alt="Ordnance Survey benchmark symbol: a horizontal line above three upward-pointing strokes.">
+                </picture>
+                <figcaption>The benchmark symbol identifies a survey reference.</figcaption>
+            </figure>
+            <h3>Image map</h3>
+            <p>Select the symbol to return to its definition. The same destination is available as a text link.</p>
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                width="250" height="250" usemap="#symbol-map" alt="Benchmark symbol linked to its definition.">
+            <map name="symbol-map">
+                <area shape="rect" coords="0,0,250,250" href="#benchmark-definition" alt="Definition of benchmark">
+            </map>
+            <p><a href="#benchmark-definition">Definition of benchmark</a></p>
+            <h3>Sound example</h3>
+            <p id="audio-description">A pronunciation recording of the English word "benchmarking". Transcript: benchmarking.</p>
+            <audio controls preload="none" aria-label="Pronunciation of benchmarking" aria-describedby="audio-description">
+                <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+                <p>Your browser does not support audio playback.</p>
+            </audio>
+            <h3>Climate projection animation</h3>
+            <p id="video-description">An IPCC animation displays projected temperature and precipitation changes during the twenty-first century.
+                This visual example is not used to convey measurements in this guide.</p>
+            <video controls preload="none" width="480" aria-label="IPCC temperature and precipitation projection animation"
+                aria-describedby="video-description">
+                <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+                <track kind="captions" srclang="en" label="English" default
+                    src="data:text/vtt,WEBVTT%0A%0A00%3A00.000%20--%3E%2001%3A00.000%0A%5BClimate%20projection%20animation%5D%0A">
+                <p>Your browser does not support video playback.</p>
+            </video>
+            <h3>Vector and embedded alternatives</h3>
+            <p>The following two embedded images show the same benchmark symbol described above.</p>
+            <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+                type="image/svg+xml" width="180" height="180" role="img" aria-label="Benchmark reference symbol">
+                Benchmark reference symbol: a horizontal line above three upward-pointing strokes.
+            </object>
+            <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+                type="image/svg+xml" width="180" height="180" role="img" aria-label="Benchmark reference symbol">
+            <h3>A drawing and its text equivalent</h3>
+            <canvas id="drawing" width="300" height="100" role="img" aria-label="A horizontal reference line">
+                A horizontal reference line.
+            </canvas>
+            <h3>An embedded vector document</h3>
+            <p>This frame displays the same benchmark symbol, with a horizontal line above three upward-pointing strokes.</p>
+            <iframe title="Benchmark reference symbol" width="250" height="250"
+                src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"></iframe>
+        </section>
+        <section id="components" aria-labelledby="components-title">
+            <h2 id="components-title">Components</h2>
+            <details>
+                <summary>How to use this guide</summary>
+                <p>Use the navigation links to move between examples. No time limits or automatic playback are used.</p>
+            </details>
+            <div class="script-only">
+                <menu><li><button type="button" id="open-note">Open example dialog</button></li></menu>
+                <dialog id="note-dialog" aria-labelledby="dialog-title">
+                    <h3 id="dialog-title">Example dialog</h3>
+                    <p>Press Escape or use the Close button to return to the guide.</p>
+                    <form method="dialog"><button autofocus>Close dialog</button></form>
+                </dialog>
+            </div>
+            <template id="note-template">
+                <p><slot name="message">A reusable note can be placed here.</slot></p>
+            </template>
+            <p><span>Reusable templates keep document structure separate from content.</span></p>
+        </section>
+    </main>
+    <aside aria-labelledby="reading-title">
+        <h2 id="reading-title">Reading order</h2>
+        <p>Headings, lists and landmarks make the structure available without visual styling.</p>
+        <ol><li>Find the reference.</li><li>Record the measurement.</li><li>Check the result.</li></ol>
+        <dl>
+            <dt>Reference</dt><dd>A known, stable point.</dd>
+            <dt>Observation</dt><dd>A measurement relative to that point.</dd>
+        </dl>
+    </aside>
+    <footer>
+        <p>AI WCAG Gauntlet - HTML field guide.</p>
+        <address>Maintainer: <a href="https://github.com/turbolego/AI-WCAG-Gauntlet">AI WCAG Gauntlet project</a><br>
+            Educational benchmark collection.</address>
+    </footer>
+    <script>
+        const dialog = document.getElementById('note-dialog');
+        document.getElementById('open-note').addEventListener('click', () => dialog.showModal());
+        document.getElementById('example-form').addEventListener('submit', event => event.preventDefault());
+        document.getElementById('show-height').addEventListener('click', () => {
+            const height = document.getElementById('height');
+            if (height.reportValidity()) {
+                document.getElementById('result').value = `${height.value} metres`;
+            }
+        });
+        const context = document.getElementById('drawing').getContext('2d');
+        if (context) {
+            context.strokeStyle = '#171717';
+            context.lineWidth = 4;
+            context.beginPath();
+            context.moveTo(20, 50);
+            context.lineTo(280, 50);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
