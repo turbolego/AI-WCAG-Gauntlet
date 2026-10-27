@@ -38,24 +38,33 @@ RESOURCES="$SCRIPT_DIR/resources"
 # --- Resolve a single shared Chrome for Testing binary (all tools use this) ---
 CHROME_FOR_TESTING_PATH="${CHROME_FOR_TESTING_PATH:-}"
 if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
-    _HOME="${HOME:-/root}"
+    # Windows Chrome installation
+    if command -v win_chrome >/dev/null 2>&1; then
+        CHROME_FOR_TESTING_PATH="$(win_chrome)"
+    elif [ -f "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" ]; then
+        CHROME_FOR_TESTING_PATH="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    elif [ -f "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe" ]; then
+        CHROME_FOR_TESTING_PATH="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    else
+        _HOME="${HOME:-/root}"
 
-    # macOS cache layout
-    while IFS= read -r _candidate; do
-        if [ -x "$_candidate" ]; then
-            CHROME_FOR_TESTING_PATH="$_candidate"
-            break
-        fi
-    done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-mac-*/"Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" 2>/dev/null | sort -Vr)
-
-    # Linux cache layout fallback
-    if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
+        # macOS cache layout
         while IFS= read -r _candidate; do
             if [ -x "$_candidate" ]; then
                 CHROME_FOR_TESTING_PATH="$_candidate"
                 break
             fi
-        done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-linux*/chrome 2>/dev/null | sort -Vr)
+        done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-mac-*/"Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" 2>/dev/null | sort -Vr)
+
+        # Linux cache layout fallback
+        if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
+            while IFS= read -r _candidate; do
+                if [ -x "$_candidate" ]; then
+                    CHROME_FOR_TESTING_PATH="$_candidate"
+                    break
+                fi
+            done < <(ls -1d "${_HOME}/.cache/puppeteer/chrome/"*/chrome-linux*/chrome 2>/dev/null | sort -Vr)
+        fi
     fi
 fi
 

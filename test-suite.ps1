@@ -1,6 +1,6 @@
 # AI WCAG Gauntlet - Test Suite
 # Runs axe-core, pa11y, QualWeb, and W3C Nu Html Checker against the benchmark page.
-# Mirrors test-suite.sh exactly — same tools, same flags, same output format.
+# Mirrors test-suite.sh exactly -- same tools, same flags, same output format.
 #
 # NOTE: This script always exits with code 0. Agents must read the STATUS: line
 # at the bottom of output to decide whether to iterate or stop.
@@ -89,7 +89,7 @@ $chromePath = Find-Chrome
 if ($chromePath) {
     $env:PUPPETEER_EXECUTABLE_PATH = $chromePath
 } else {
-    Write-Host "Warning: no Chrome/Chromium found — pa11y/QualWeb may fail."
+    Write-Host "Warning: no Chrome/Chromium found -- pa11y/QualWeb may fail."
 }
 
 # --- Increment iterations counter ---
@@ -123,7 +123,7 @@ if ($python3) {
         -PassThru -WindowStyle Hidden -ErrorAction SilentlyContinue
     Start-Sleep -Seconds 1
 } else {
-    Write-Host "Warning: python3/python not found — HTTP server not started. CSS/resources may fail."
+    Write-Host "Warning: python3/python not found -- HTTP server not started. CSS/resources may fail."
 }
 
 # Build the HTTP URL for the target page, URL-encoding the relative path
@@ -136,7 +136,7 @@ $relTargetEnc = $relTargetEnc -join '/'
 $TARGET_HTTP_URL = "http://localhost:$SERVE_PORT/$PROJECT_NAME/$relTargetEnc/index.html"
 Write-Host "Testing via HTTP: $TARGET_HTTP_URL"
 
-# Cleanup helper — always stop the HTTP server on exit
+# Cleanup helper -- always stop the HTTP server on exit
 function Stop-ServeProcess {
     if ($serveProcess -and -not $serveProcess.HasExited) {
         Stop-Process -Id $serveProcess.Id -Force -ErrorAction SilentlyContinue
@@ -148,8 +148,8 @@ Write-Host "Running HTML5 tag test..."
 $HTML_TAG_ERRORS = 0
 try {
     Push-Location $TARGET_DIR
-    $tagResult = & python3 (Join-Path $RESOURCES "check_html5_tags.py") 2>&1
-    if ($LASTEXITCODE -ne 0) { throw "check_html5_tags.py failed: $tagResult" }
+    & node (Join-Path $RESOURCES "check_html5_tags.mjs") "index.html" 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "check_html5_tags.mjs failed" }
     Pop-Location
 
     $REPORT = Join-Path $TARGET_DIR "html5_tags_report.json"
@@ -181,14 +181,22 @@ Write-Host "Running axe..."
 $AXE_VIOLATIONS = 0
 $AXE_VERSION    = "unknown"
 try {
+    $CHROME_PROFILE_ROOT = Join-Path $TARGET_DIR ".chrome-profile"
+    if (-not (Test-Path $CHROME_PROFILE_ROOT)) { New-Item -ItemType Directory -Path $CHROME_PROFILE_ROOT -Force | Out-Null }
+    $env:CHROME_USER_DATA_DIR = Join-Path $CHROME_PROFILE_ROOT "axe"
+
+    # Set CHROME_PATH for run-axe.mjs (it reads CHROME_PATH, not PUPPETEER_EXECUTABLE_PATH)
+    if ($chromePath) {
+        $env:CHROME_PATH = $chromePath
+    }
+
     Push-Location $TARGET_DIR
-    & axe $TARGET_HTTP_URL `
-        '--chrome-options={"args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]}' `
-        --timeout 60000 `
-        --tags "wcag2a,wcag2aa,wcag2aaa,wcag21a,wcag21aa,wcag22aa,best-practice" `
-        --save "axe_report.json" `
-        2>&1 | Out-Null
-    Pop-Location
+    try {
+        & node (Join-Path $SCRIPT_DIR "scripts/run-axe.mjs") $TARGET_HTTP_URL "axe_report.json" 2>&1 | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "run-axe.mjs failed" }
+    } finally {
+        Pop-Location
+    }
 
     $axeReport = Get-Content (Join-Path $TARGET_DIR "axe_report.json") -Raw | ConvertFrom-Json
     if ($axeReport -is [array]) {
@@ -207,7 +215,7 @@ try {
         }
     }
 } catch {
-    Write-Host "Error: axe failed — $_"
+    Write-Host "Error: axe failed -- $_"
     Stop-ServeProcess
     exit 0
 }
@@ -223,7 +231,7 @@ try {
         --reporter json `
         $TARGET_HTTP_URL 2>$null
 
-    # pa11y exits non-zero when issues found — that is expected, so we don't
+    # pa11y exits non-zero when issues found -- that is expected, so we don't
     # treat $LASTEXITCODE != 0 as a hard error here.
 
     if ([string]::IsNullOrWhiteSpace($pa11yJson)) {
@@ -247,7 +255,9 @@ try {
 
 try {
     $PA11Y_VERSION = (& pa11y --version 2>&1) -join "" -replace "`n",""
-} catch { }
+} catch {
+    # Version check failed, keep default
+}
 
 # --- QualWeb validation ---
 Write-Host "Running qualweb..."
@@ -263,7 +273,7 @@ try {
     Pop-Location
 
     $qualwebReport = Get-Content (Join-Path $TARGET_DIR "qualweb_report.json") -Raw | ConvertFrom-Json
-    if ($qualwebReport.failedCount -ne $null) {
+    if ($null -ne $qualwebReport.failedCount) {
         $QUALWEB_ISSUES = [int]$qualwebReport.failedCount
     } else {
         $QUALWEB_ISSUES = 0
@@ -283,11 +293,15 @@ try {
     $pkgPath = Join-Path $SCRIPT_DIR "node_modules\@qualweb\core\package.json"
     if (Test-Path $pkgPath) {
         $QUALWEB_VERSION = (Get-Content $pkgPath -Raw | ConvertFrom-Json).version
+        if (-not $QUALWEB_VERSION) { $QUALWEB_VERSION = "unknown" }
     }
-} catch { }
+} catch {
+    # Package version check failed, keep default
+}
 
 # --- Scoring ---
 $TAG_COVERAGE = [int](Get-Content (Join-Path $TARGET_DIR "html5_tags_report.json") -Raw | ConvertFrom-Json).used_tags.Count
+if (-not $TAG_COVERAGE) { $TAG_COVERAGE = 0 }
 
 if ($HTML_TAG_ERRORS -eq 0 -and $W3C_ERRORS -eq 0 -and $AXE_VIOLATIONS -eq 0 -and
     $PA11Y_ISSUES -eq 0 -and $QUALWEB_ISSUES -eq 0) {
@@ -336,7 +350,7 @@ if (Test-Path $RESULTS_JSON) {
         $updated  = @($existing) + @($iterationResult)
         $updated  | ConvertTo-Json -Depth 100 | Out-File $RESULTS_JSON -Encoding UTF8
     } catch {
-        # File corrupt — start fresh
+        # File corrupt -- start fresh
         @($iterationResult) | ConvertTo-Json -Depth 100 | Out-File $RESULTS_JSON -Encoding UTF8
     }
 } else {
@@ -358,7 +372,8 @@ Write-Host "QUALWEB_ISSUES  = $QUALWEB_ISSUES"
 Write-Host "QUALWEB_VERSION = $QUALWEB_VERSION"
 Write-Host "ITERATIONS      = $ITERATIONS"
 Write-Host "SCORE           = $SCORE"
-Write-Host "MISSING_TAGS    = $($missingTags -join ', ')"
+$missingTagsStr = ($missingTags -join ', ')
+Write-Host "MISSING_TAGS    = $missingTagsStr"
 Write-Host "--------------------------------"
 
 # Stop HTTP server before exiting
@@ -368,12 +383,12 @@ Stop-ServeProcess
 # Always exit 0 so AI agents never treat a test failure as a fatal script error.
 # Agents must read the STATUS: line to decide whether to iterate or stop.
 if ($ITERATION_STATUS -eq "pass") {
-    Write-Host "STATUS: PASS — All tests passed successfully. Do not run test-suite.ps1 again."
+    Write-Host "STATUS: PASS -- All tests passed successfully. Do not run test-suite.ps1 again."
     exit 0
 } elseif ($ITERATIONS -ge 20) {
-    Write-Host "STATUS: FAIL — Maximum iterations (20) reached. Stop and report final results."
+    Write-Host "STATUS: FAIL -- Maximum iterations (20) reached. Stop and report final results."
     exit 0
 } else {
-    Write-Host "STATUS: FAIL — Fix the errors above, edit index.html and style.css as needed, then run test-suite.ps1 again."
+    Write-Host "STATUS: FAIL -- Fix the errors above, edit index.html and style.css as needed, then run test-suite.ps1 again."
     exit 0
 }

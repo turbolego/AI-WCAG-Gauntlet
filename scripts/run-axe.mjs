@@ -34,6 +34,7 @@ const browser = await puppeteer.launch({
 
 try {
   const page = await browser.newPage();
+  page.on("dialog", dialog => dialog.dismiss());
   page.setDefaultNavigationTimeout(NAV_TIMEOUT_MS);
   let hitNavigationTimeout = false;
   try {
