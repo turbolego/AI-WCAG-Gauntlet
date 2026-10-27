@@ -61,7 +61,8 @@ fi
 #MODEL_NAME="GPT-6 Luna - Medium"
 #MODEL_NAME="unsloth/Qwen3.5-9B-Q4_K_M"
 #MODEL_NAME="gemma4:e4b-it-qat"
-MODEL_NAME="Qwen3.6-35B-A3B-Q4_K_M"
+#MODEL_NAME="Qwen3.6-35B-A3B-Q4_K_M"
+MODEL_NAME="GPT-6.1 Sol - Medium"
 
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
 #MODEL_NAME="qwen2.5-coder-1.5b"
@@ -70,23 +71,23 @@ MODEL_NAME="Qwen3.6-35B-A3B-Q4_K_M"
 
 # The provider where the model runs (machine-readable identifier).
 # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
-#PROVIDER="github-copilot"
+PROVIDER="github-copilot"
 #PROVIDER="ollama"
 #PROVIDER="llama.cpp"
 
 #PROVIDER="nvidia"
-PROVIDER="Cline"
+#PROVIDER="Cline"
 
 # Human-readable label for the provider shown in the dashboard Source column.
 # Examples: "GitHub Copilot", "Ollama", "OpenAI", "HuggingFace", "Mistral AI", "OpenRouter"
-#PROVIDER_LABEL="GitHub Copilot"
+PROVIDER_LABEL="GitHub Copilot"
 #PROVIDER_LABEL="Ollama"
 #PROVIDER_LABEL="Cline"
 #PROVIDER_LABEL="Kilo Code
 #PROVIDER_LABEL="Continue"
 
 #PROVIDER_LABEL="Hermes"
-PROVIDER_LABEL="llama.cpp"
+#PROVIDER_LABEL="llama.cpp"
 
 # The tool/interface used to run the benchmark.
 # Examples: "vscode", "github-actions", "cli"

@@ -16,7 +16,8 @@
 #$MODEL_NAME = "unsloth/Qwen3.5-9B-Q4_K_M"
 #$MODEL_NAME = "qwen35-9b:latest"
 #$MODEL_NAME = "Qwen3.6-35B-A3B-Q4_K_M"
-$MODEL_NAME = "Claude Sonnet 5"
+#$MODEL_NAME = "Claude Sonnet 5"
+$MODEL_NAME = "GPT-6.1 Sol - Medium"
 
 # The provider where the model runs (machine-readable identifier).
 # Examples: "github-copilot", "ollama", "openai", "huggingface", "mistral", "openrouter"
