@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WCAG 2.2 Level AAA Compliant HTML5 Technical Showcase">
+  <meta name="author" content="AI WCAG Gauntlet">
+  <base href="/AI-WCAG-Gauntlet/">
+  <title>HTML5 WCAG 2.2 AAA Technical Showcase</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml">
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .highlight {
+      background-color: #ffeb3b;
+      padding: 0 0.2em;
+    }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <div role="banner" aria-label="Site banner">
+    <header>
+      <hgroup>
+        <h1>HTML5 WCAG 2.2 AAA Technical Showcase</h1>
+      </hgroup>
+      <h2>Complete HTML5 Element Reference with Accessibility Features</h2>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#text-level">Text Level</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#multimedia">Multimedia</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#interactive">Interactive</a></li>
+        </ul>
+      </nav>
+      <hr>
+    </header>
+  </div>
+
+    <main id="main-content" aria-label="Main content">
+    <!-- Text Level Elements -->
+    <section id="text-level" aria-labelledby="text-level-heading">
+      <h2 id="text-level-heading">Text Level Elements</h2>
+
+      <article aria-labelledby="article-heading">
+        <h3 id="article-heading">Semantic Text Elements</h3>
+        <address>
+          Created by AI WCAG Gauntlet Benchmark. Contact: <a href="mailto:benchmark@example.com" aria-label="Send email to benchmark team">benchmark@example.com</a>
+        </address>
+
+        <p>The <abbr title="HyperText Markup Language">HTML</abbr> standard defines all elements used in web documents.
+          For technical details, see the <a href="#tables" aria-label="Jump to tables section">tables section</a> below.</p>
+
+        <p>Emphasized text uses <em>emphasis</em> tags, while strong importance uses <strong>strong emphasis</strong> tags.</p>
+
+        <p>Inline code example: <code>const x = 5;</code> demonstrates the <code>code</code> element.</p>
+
+        <p>For marked content, use <mark>highlighted text</mark> to draw attention.</p>
+
+        <p>The <q>quote element</q> creates inline quotes.</p>
+
+        <p><abbr title="World Wide Web Consortium">W3C</abbr> defines <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> standards.</p>
+
+        <p><b>Bold text</b> and <i>italic text</i> for styling.</p>
+
+        <p>Text with <s>strikethrough</s> indication and <u>underlined</u> text.</p>
+
+        <p>Subscript: H<sub>2</sub>O and Superscript: E=mc<sup>2</sup></p>
+
+        <p>The <small>small text</small> element for fine print.</p>
+
+        <p><span class="highlight">Span element for styling</span> provides inline grouping.</p>
+
+        <p><data value="42">The answer is 42</data></p>
+
+        <p><time datetime="2026-07-02">July 2, 2026</time> demonstrates the time element.</p>
+
+        <p><var>E</var> = <var>m</var><var>c</var><sup>2</sup> uses variables.</p>
+
+        <p><dfn>Accessibility</dfn> refers to the design of products for people with disabilities.</p>
+
+        <p><cite>The WCAG 2.2 Specification</cite> is the reference document.</p>
+
+        <p><samp>Output: Success</samp> shows sample output.</p>
+
+        <p><kbd>Ctrl+S</kbd> demonstrates keyboard input.</p>
+
+        <p><del>Deleted text</del> and <ins>inserted text</ins> show changes.</p>
+
+        <p>Bidi override: <bdi>Arabic text</bdi> and <bdo dir="rtl">right-to-left text</bdo>.</p>
+
+        <p><ruby>漢<rt>kan</rt><rp>(</rp><rp>)</rp></ruby><ruby>字<rt>ji</rt><rp>(</rp><rp>)</rp></ruby> demonstrates ruby annotations with <rp> and <rt> fallback parentheses.</p>
+      </article>
+
+      <blockquote cite="https://www.w3.org/WAI/standards-guidelines/wcag/" aria-label="WCAG quote">
+        <p>Accessibility is the design of products, tools, and resources such that they can be used by as many people as possible.</p>
+      </blockquote>
+
+      <figure>
+        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+             alt="Benchmark icon - small version" width="250" height="250">
+        <figcaption>Figure 1: Small benchmark icon with alt text</figcaption>
+      </figure>
+
+      <figure>
+        <picture>
+          <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 800px)">
+          <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 500px)">
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+               alt="Responsive benchmark icon" width="250" height="250">
+        </picture>
+        <figcaption>Figure 2: Responsive image using picture and source elements</figcaption>
+      </figure>
+
+      <details>
+        <summary>Click to expand more information</summary>
+        <p>This content is hidden until the user expands the details section.</p>
+        <p>The <details> and <summary> elements create native accordion functionality.</p>
+      </details>
+
+      <details>
+        <summary>Additional details</summary>
+        <dl>
+          <dt>HTML5 Tags</dt>
+          <dd>All elements from the WHATWG Living Standard</dd>
+          <dt>WCAG 2.2</dt>
+          <dd>Web Content Accessibility Guidelines Level AAA</dd>
+        </dl>
+      </details>
+    </section>
+
+    <!-- Form Elements -->
+    <section id="forms" aria-labelledby="forms-heading">
+      <h2 id="forms-heading">Form Elements</h2>
+
+      <form id="demo-form" action="#" method="post" aria-labelledby="form-title" novalidate>
+        <h3 id="form-title">Interactive Form Demo</h3>
+
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <label for="name-input">Name:</label>
+          <input type="text" id="name-input" name="name" required aria-required="true" autocomplete="name">
+          <br><br>
+
+          <label for="email-input">Email:</label>
+          <input type="email" id="email-input" name="email" required aria-required="true" autocomplete="email">
+          <br><br>
+
+          <label for="autocomplete-input">Autocomplete:</label>
+          <input type="text" id="autocomplete-input" name="autocomplete" list="suggestions" aria-describedby="autocomplete-help">
+          <datalist id="suggestions">
+            <option value="Option A">
+            <option value="Option B">
+            <option value="Option C">
+          </datalist>
+          <span id="autocomplete-help">Select or type a suggestion</span>
+          <br><br>
+
+          <label for="number-input">Number (1-10):</label>
+          <input type="number" id="number-input" name="number" min="1" max="10" value="5" aria-describedby="number-help">
+          <span id="number-help">Enter a number between 1 and 10</span>
+          <br><br>
+
+          <label for="range-input">Range:</label>
+          <input type="range" id="range-input" name="range" min="0" max="100" value="50">
+          <br><br>
+
+          <label for="date-input">Date:</label>
+          <input type="date" id="date-input" name="date">
+          <br><br>
+
+          <label for="time-input">Time:</label>
+          <input type="time" id="time-input" name="time">
+          <br><br>
+
+          <label for="month-input">Month:</label>
+          <input type="month" id="month-input" name="month">
+          <br><br>
+
+          <label for="week-input">Week:</label>
+          <input type="week" id="week-input" name="week">
+          <br><br>
+
+          <label for="color-input">Color:</label>
+          <input type="color" id="color-input" name="color" value="#000000" aria-label="Pick a color">
+          <br><br>
+
+          <label for="url-input">URL:</label>
+          <input type="url" id="url-input" name="url">
+          <br><br>
+
+          <label for="tel-input">Telephone:</label>
+          <input type="tel" id="tel-input" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autocomplete="tel">
+          <br><br>
+        </fieldset>
+
+        <fieldset>
+          <legend>Selection Options</legend>
+
+          <label for="select-input">Select Option:</label>
+          <select id="select-input" name="select">
+            <optgroup label="Group A">
+              <option value="a1">Option A1</option>
+              <option value="a2">Option A2</option>
+            </optgroup>
+            <optgroup label="Group B">
+              <option value="b1">Option B1</option>
+              <option value="b2">Option B2</option>
+            </optgroup>
+          </select>
+          <br><br>
+
+          <label for="textarea-input">Textarea:</label>
+          <textarea id="textarea-input" name="textarea" rows="4" cols="50" aria-describedby="textarea-help"></textarea>
+          <span id="textarea-help">Enter your message here</span>
+          <br><br>
+
+          <fieldset>
+            <legend>Checkboxes</legend>
+            <label>
+              <input type="checkbox" name="checkbox" value="1" aria-label="Checkbox option 1"> Option 1
+            </label>
+            <label>
+              <input type="checkbox" name="checkbox" value="2" aria-label="Checkbox option 2"> Option 2
+            </label>
+          </fieldset>
+          <br>
+
+          <fieldset>
+            <legend>Radio Buttons</legend>
+            <label>
+              <input type="radio" name="radio" value="x" aria-label="Radio option X"> Option X
+            </label>
+            <label>
+              <input type="radio" name="radio" value="y" aria-label="Radio option Y"> Option Y
+            </label>
+          </fieldset>
+        </fieldset>
+
+        <fieldset>
+          <legend>Advanced Form Elements</legend>
+
+          <label for="search-input">Search:</label>
+          <input type="search" id="search-input" name="search" aria-label="Search">
+          <br><br>
+
+          <label for="file-input">Upload File:</label>
+          <input type="file" id="file-input" name="file" aria-describedby="file-help">
+          <span id="file-help">Upload a document</span>
+          <br><br>
+
+          <!-- Hidden input field (not visible, no label needed) -->
+          <input type="hidden" id="hidden-input" name="hidden" value="secret">
+
+          <output name="result" for="number-input" aria-label="Calculation result">50</output>
+          <br><br>
+
+          <button type="submit" aria-label="Submit form">Submit</button>
+          <button type="reset" aria-label="Reset form">Reset</button>
+          <button type="button" aria-label="Button without action">Plain Button</button>
+          <br><br>
+
+          <input type="submit" value="Submit Input" aria-label="Submit using input button">
+          <input type="button" value="Button Input" aria-label="Button input">
+          <input type="reset" value="Reset Input" aria-label="Reset using input button">
+          <input type="image" src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" alt="Submit with image" aria-label="Submit form with image">
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Multimedia Elements -->
+    <section id="multimedia" aria-labelledby="multimedia-heading">
+      <h2 id="multimedia-heading">Multimedia Elements</h2>
+
+      <h3 id="audio-heading">Audio</h3>
+      <audio controls preload="metadata" aria-label="Audio player example">
+        <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+        <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="audio/webm">
+        Your browser does not support the audio element.
+      </audio>
+
+      <h3 id="video-heading">Video</h3>
+      <video controls width="400" preload="metadata" aria-label="Video player example" poster="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png">
+        <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+        <track kind="captions" src="#" srclang="en" label="English captions" default aria-label="English captions">
+        Your browser does not support the video element.
+      </video>
+
+      <h3 id="embed-heading">Embedded Content</h3>
+      <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="200" height="200" aria-label="Embedded SVG image">
+
+      <h3 id="object-heading">Object Element</h3>
+      <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="200" height="200" aria-label="Object SVG image">
+        <p>Fallback content: <a href="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg">View SVG image</a></p>
+      </object>
+
+      <h3 id="iframe-heading">Inline Frame</h3>
+      <iframe srcdoc="<html><body><p>This is content inside an <strong>iframe</strong>.</p></body></html>" width="400" height="200" title="Iframe example with sample content" sandbox="allow-same-origin"></iframe>
+    </section>
+
+    <!-- Table Elements -->
+    <section id="tables" aria-labelledby="tables-heading">
+      <h2 id="tables-heading">Table Elements</h2>
+
+      <table aria-labelledby="table-caption">
+        <caption id="table-caption">Sample Data Table</caption>
+        <colgroup>
+          <col style="background-color: #f0f0f0;">
+          <col span="2">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td>30</td>
+            <td>London</td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td>25</td>
+            <td>Paris</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total entries: 2</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h3 id="map-heading">Image Map</h3>
+      <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+           alt="Clickable benchmark icon" usemap="#benchmark-map" width="250" height="250">
+      <map name="benchmark-map">
+        <area shape="rect" coords="0,0,250,250" href="#text-level" alt="Go to text section" aria-label="Navigate to text level section">
+      </map>
+    </section>
+
+    <!-- Interactive Elements -->
+    <section id="interactive" aria-labelledby="interactive-heading">
+      <h2 id="interactive-heading">Interactive Elements</h2>
+
+      <h3 id="dialog-heading">Dialog Element</h3>
+      <dialog id="info-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
+        <h3 id="dialog-title">Dialog Title</h3>
+        <p id="dialog-desc">This is a dialog element. It can be used for modals or popups.</p>
+        <button onclick="document.getElementById('info-dialog').close()" aria-label="Close dialog">Close</button>
+      </dialog>
+      <button onclick="document.getElementById('info-dialog').showModal()" aria-label="Open dialog">Open Dialog</button>
+
+      <h3 id="menu-heading">Menu Element</h3>
+      <menu>
+        <li><button type="button" aria-label="New file">New</button></li>
+        <li><button type="button" aria-label="Open file">Open</button></li>
+        <li><button type="button" aria-label="Save file">Save</button></li>
+      </menu>
+
+      <h3 id="progress-heading">Progress and Meter</h3>
+      <label for="progress-bar">Progress:</label>
+      <progress id="progress-bar" value="70" max="100" aria-label="Progress bar at 70 percent">70%</progress>
+      <br>
+      <label for="disk-meter">Disk usage:</label>
+      <meter id="disk-meter" value="0.6" min="0" max="1" low="0.3" high="0.8" optimum="0.2" aria-label="Disk usage meter at 60 percent">60%</meter>
+
+      <h3 id="template-heading">Template Element</h3>
+      <template id="card-template">
+        <div class="card">
+          <h4>{{title}}</h4>
+          <p>{{content}}</p>
+        </div>
+      </template>
+      <div id="card-container"></div>
+
+      <h3 id="noscript-heading">Noscript Element</h3>
+      <noscript>
+        <p>JavaScript is disabled. This showcase requires JavaScript for full interactivity.</p>
+      </noscript>
+
+      <h3 id="slot-heading">Slot Element (Web Components)</h3>
+      <p>The <slot> element is used in Web Components for shadow DOM composition.</p>
+
+      <h3 id="selectedcontent-heading">Selected Content</h3>
+      <p>The <selectedcontent> element represents selected content from a shadow tree.</p>
+
+      <h3 id="wbr-heading">Word Break Opportunity</h3>
+      <p>This isaverylongwordthat可能需要wbr<br>breakopportunity</p>
+
+      <h3 id="canvas-heading">Canvas Element</h3>
+      <canvas id="drawing-canvas" width="200" height="100" aria-label="Canvas drawing example" role="img">
+        Your browser does not support the canvas element.
+      </canvas>
+
+      <h3 id="search-element-heading">Search Element</h3>
+      <search aria-label="Site search">
+        <form role="search">
+          <label for="site-search">Search:</label>
+          <input type="search" id="site-search" name="q" aria-label="Search site">
+          <button type="submit" aria-label="Submit search">Go</button>
+        </form>
+      </search>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <hr>
+      <p>&copy; 2026 AI WCAG Gauntlet. Built with all <a href="https://html.spec.whatwg.org/multipage/indices.html" aria-label="HTML Living Standard">112 HTML5 elements</a>.</p>
+      <p>Generated for the <a href="https://github.com/turbolego/AI-WCAG-Gauntlet" aria-label="AI WCAG Gauntlet GitHub repository">AI-WCAG-Gauntlet</a> benchmark.</p>
+    </footer>
+  </main>
+
+  <div role="contentinfo" aria-label="Site footer">
+    <p>Additional footer content with <br>line breaks.</p>
+  </div>
+
+  <script>
+    // Populate cards from template
+    const template = document.getElementById('card-template');
+    const container = document.getElementById('card-container');
+    if (template && container) {
+      const clone = document.importNode(template.content, true);
+      clone.querySelector('h4').textContent = 'Sample Card';
+      clone.querySelector('p').textContent = 'Generated from template element.';
+      container.appendChild(clone);
+    }
+
+    // Draw on canvas
+    const canvas = document.getElementById('drawing-canvas');
+    if (canvas && canvas.getContext) {
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#4CAF50';
+      ctx.fillRect(10, 10, 80, 80);
+      ctx.fillStyle = '#2196F3';
+      ctx.beginPath();
+      ctx.arc(150, 50, 30, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>

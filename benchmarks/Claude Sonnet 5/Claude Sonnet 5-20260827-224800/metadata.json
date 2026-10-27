@@ -1,0 +1,8 @@
+{
+  "model": "Claude Sonnet 5",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-08-27T22:48:00Z",
+  "folder": "Claude Sonnet 5-20260827-224800"
+}

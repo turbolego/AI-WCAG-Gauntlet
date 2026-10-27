@@ -1,0 +1,8 @@
+﻿{
+    "model":  "Qwen3.6-35B-A3B-Q4_K_M",
+    "provider":  "Cline",
+    "providerLabel":  "llama.cpp",
+    "tool":  "vscode",
+    "timestamp":  "2026-07-02T21:07:16Z",
+    "folder":  "Qwen3.6-35B-A3B-Q4_K_M-20260702-210716"
+}

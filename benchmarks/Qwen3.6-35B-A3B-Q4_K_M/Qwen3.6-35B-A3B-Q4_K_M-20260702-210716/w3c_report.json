@@ -1,0 +1,259 @@
+{
+  "validates": false,
+  "errorCount": 23,
+  "messageCount": 25,
+  "messages": [
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 47,
+      "firstColumn": 41,
+      "message": "Element “ruby” is missing a required instance of child element “rp”.",
+      "extract": "<rp>(</rp></ruby><rp>)<",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 47,
+      "firstColumn": 41,
+      "message": "Element “ruby” is missing a required instance of child element “rt”.",
+      "extract": "<rp>(</rp></ruby><rp>)<",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 51,
+      "firstColumn": 48,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "rp></ruby><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 51,
+      "firstColumn": 48,
+      "message": "Element “rp” not allowed as child of element “p” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "rp></ruby><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 92,
+      "firstColumn": 86,
+      "message": "Element “ruby” is missing a required instance of child element “rp”.",
+      "extract": "<rp>(</rp></ruby><rp>)<",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 92,
+      "firstColumn": 86,
+      "message": "Element “ruby” is missing a required instance of child element “rt”.",
+      "extract": "<rp>(</rp></ruby><rp>)<",
+      "hiliteStart": 10,
+      "hiliteLength": 7
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 96,
+      "firstColumn": 93,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "rp></ruby><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 96,
+      "firstColumn": 93,
+      "message": "Element “rp” not allowed as child of element “p” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "rp></ruby><rp>)</rp>",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 142,
+      "firstColumn": 139,
+      "message": "Start tag “rp” seen without a “ruby” element being open.",
+      "extract": "ions with <rp> and <",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 142,
+      "firstColumn": 139,
+      "message": "Element “rp” not allowed as child of element “p” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "ions with <rp> and <",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 103,
+      "lastColumn": 151,
+      "firstColumn": 148,
+      "message": "Start tag “rt” seen without a “ruby” element being open.",
+      "extract": " <rp> and <rt> fallb",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 129,
+      "lastColumn": 29,
+      "firstColumn": 25,
+      "message": "Text not allowed in element “details” in this context.",
+      "extract": " <details> and <summa",
+      "hiliteStart": 10,
+      "hiliteLength": 5
+    },
+    {
+      "type": "error",
+      "lastLine": 129,
+      "lastColumn": 90,
+      "firstColumn": 87,
+      "message": "No “p” element in scope but a “p” end tag seen.",
+      "extract": "tionality.</p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 129,
+      "lastColumn": 90,
+      "firstColumn": 87,
+      "message": "Element “p” not allowed as child of element “summary” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "tionality.</p>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 130,
+      "lastColumn": 16,
+      "firstColumn": 7,
+      "message": "End tag “details” seen, but there were open elements.",
+      "extract": "/p>\n      </details>\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 129,
+      "lastColumn": 38,
+      "firstColumn": 30,
+      "message": "Unclosed element “summary”.",
+      "extract": "ails> and <summary> eleme",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "error",
+      "lastLine": 141,
+      "lastColumn": 14,
+      "firstColumn": 5,
+      "message": "End tag “section” seen, but there were open elements.",
+      "extract": "ails>\n    </section>\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 10
+    },
+    {
+      "type": "error",
+      "lastLine": 126,
+      "lastColumn": 15,
+      "firstColumn": 7,
+      "message": "Unclosed element “details”.",
+      "extract": "e>\n\n      <details>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 9
+    },
+    {
+      "type": "info",
+      "lastLine": 154,
+      "lastColumn": 107,
+      "firstColumn": 11,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"text\" id=\"name-input\" name=\"name\" required aria-required=\"true\" autocomplete=\"name\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 97
+    },
+    {
+      "type": "info",
+      "lastLine": 158,
+      "lastColumn": 111,
+      "firstColumn": 11,
+      "subType": "warning",
+      "message": "Attribute “aria-required” is unnecessary for elements that have attribute “required”.",
+      "extract": "          <input type=\"email\" id=\"email-input\" name=\"email\" required aria-required=\"true\" autocomplete=\"email\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 101
+    },
+    {
+      "type": "error",
+      "lastLine": 398,
+      "lastColumn": 85,
+      "firstColumn": 82,
+      "message": "End tag “p” seen, but there were open elements.",
+      "extract": "mposition.</p>\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 398,
+      "lastColumn": 19,
+      "firstColumn": 14,
+      "message": "Unclosed element “slot”.",
+      "extract": "   <p>The <slot> eleme",
+      "hiliteStart": 10,
+      "hiliteLength": 6
+    },
+    {
+      "type": "error",
+      "lastLine": 401,
+      "lastColumn": 86,
+      "firstColumn": 31,
+      "message": "Text not allowed in element “selectedcontent” in this context.",
+      "extract": "edcontent> element represents selected content from a shadow tree.</p>\n\n",
+      "hiliteStart": 10,
+      "hiliteLength": 56
+    },
+    {
+      "type": "error",
+      "lastLine": 401,
+      "lastColumn": 90,
+      "firstColumn": 87,
+      "message": "End tag “p” seen, but there were open elements.",
+      "extract": "adow tree.</p>\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    },
+    {
+      "type": "error",
+      "lastLine": 401,
+      "lastColumn": 30,
+      "firstColumn": 14,
+      "message": "Unclosed element “selectedcontent”.",
+      "extract": "   <p>The <selectedcontent> eleme",
+      "hiliteStart": 10,
+      "hiliteLength": 17
+    }
+  ]
+}
