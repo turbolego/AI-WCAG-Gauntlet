@@ -35,6 +35,6 @@
     "@puppeteer/browsers": "3.2.6",
     "basic-ftp": "6.2.1",
     "qs": "6.17.1",
-    "zod": "4.6.6"
+    "zod": "4.6.7"
   }
 }
