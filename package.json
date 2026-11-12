@@ -32,7 +32,7 @@
     "@huggingface/inference": "^4.13.15"
   },
   "overrides": {
-    "@puppeteer/browsers": "3.2.6",
+    "@puppeteer/browsers": "3.2.7",
     "basic-ftp": "6.2.6",
     "qs": "6.17.1",
     "zod": "4.6.7"
