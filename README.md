@@ -54,6 +54,30 @@ Run AI models locally on your machine using ollama or similar tools.
 - Tracks full iteration history in `test_results.json` (array format)
 - Use existing `setup.sh` and `test-suite.sh` scripts
 
+#### Ollama (local OpenAI-compatible models)
+
+The `ollama` provider (`scripts/providers/ollama.mjs`) runs the gauntlet
+against any model served by a local Ollama server. No API token needed.
+
+```bash
+# 1. Pull the models you want to compare
+ollama pull qwen3.5:0.8b                                          # base model
+ollama pull turbolego/qwen3.5-0.8b-wcag-gauntlet-lora-q4_k_m      # fused LoRA
+
+# 2. Run each through the gauntlet (model names matching
+#    ollama/* or turbolego/* auto-route to the ollama provider)
+GAUNTLET_PROVIDER=ollama bash run-benchmark-local.sh qwen3.5:0.8b 20
+bash run-benchmark-local.sh turbolego/qwen3.5-0.8b-wcag-gauntlet-lora-q4_k_m 20
+
+# Ollama on another machine (e.g. over Tailscale):
+OLLAMA_BASE_URL=http://100.64.0.9:11434 GAUNTLET_PROVIDER=ollama \
+  bash run-benchmark-local.sh qwen3.5:0.8b 20
+```
+
+Environment: `OLLAMA_BASE_URL` (default `http://127.0.0.1:11434`),
+`OLLAMA_TIMEOUT_MS` (default 600000 — small models on CPU are slow),
+`GAUNTLET_PROVIDER=ollama` to force the provider for plain tag names.
+
 ### 2. API-Based Benchmarking (GitHub Actions)
 Run AI models via API endpoints directly from GitHub Actions workflows.
     - **Azure/OpenAI models**: `ai-wcag-gauntlet-api.yml`

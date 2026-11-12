@@ -9,6 +9,7 @@ import { generateWithCloudflare } from "./providers/cloudflare.mjs";
 import { generateWithAlibaba } from "./providers/alibaba.mjs";
 import { generateWithGroq } from "./providers/groq.mjs";
 import { generateWithHuggingFace } from "./providers/huggingface.mjs";
+import { generateWithOllama, getOllamaBaseUrl } from "./providers/ollama.mjs";
 import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
 import { isLowTokenModel } from "./model-config.mjs";
 
@@ -744,6 +745,51 @@ async function main() {
       }
     } else {
       modelError = "No HUGGINGFACE_TOKEN available for Hugging Face request.";
+    }
+  } else if (provider === "ollama") {
+    // Ollama: local OpenAI-compatible endpoint, no token. OLLAMA_BASE_URL
+    // defaults to http://127.0.0.1:11434; model arg is an Ollama tag.
+    const feedback = await readFeedback(previousDir);
+    const maxTokens = await calculateOptimalMaxTokens(previousDir);
+    try {
+      await logProviderInteraction(outputDir, iteration, "input", {
+        provider: "ollama",
+        model: modelArg,
+        baseUrl: getOllamaBaseUrl(),
+        iteration,
+        maxTokens,
+        hasFeedback: Boolean(feedback),
+        timestamp: new Date().toISOString()
+      });
+      const result = await generateWithOllama({
+        model: modelArg,
+        iteration,
+        feedback,
+        maxTokens
+      });
+      generated = result;
+      generatedByModel = true;
+      await logProviderInteraction(outputDir, iteration, "output", {
+        provider: "ollama",
+        model: modelArg,
+        baseUrl: getOllamaBaseUrl(),
+        iteration,
+        success: true,
+        generatedKeys: Object.keys(result).filter(k => k !== "usage").sort(),
+        usage: result?.usage,
+        rawModel: result?.rawModel,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      modelError = error instanceof Error ? error.message : String(error);
+      await logProviderInteraction(outputDir, iteration, "error", {
+        provider: "ollama",
+        model: modelArg,
+        baseUrl: getOllamaBaseUrl(),
+        iteration,
+        error: modelError,
+        timestamp: new Date().toISOString()
+      });
     }
   } else {
     const normalizedModel = normalizeModel(modelArg);

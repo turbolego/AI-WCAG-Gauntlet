@@ -5,6 +5,9 @@
 # Examples:
 #   bash run-benchmark-local.sh mistral-small-latest 20
 #   bash run-benchmark-local.sh openrouter 10
+#   OLLAMA_BASE_URL=http://127.0.0.1:11434 GAUNTLET_PROVIDER=ollama bash run-benchmark-local.sh qwen3.5:0.8b 20
+#   bash run-benchmark-local.sh turbolego/qwen3.5-0.8b-wcag-gauntlet-lora-q4_k_m 20
+#     (model names matching ollama/* or turbolego/* auto-route to the ollama provider)
 
 set +e
 set -uo pipefail
@@ -12,11 +15,16 @@ set -uo pipefail
 # Parse arguments
 MODEL="${1:-mistral-small-latest}"
 ITERATIONS="${2:-20}"
-PROVIDER="mistral"
 
-# Handle OpenRouter models
-if [[ "$MODEL" == openrouter* ]] || [[ "$MODEL" == "meta-llama"* ]]; then
+# Provider routing: explicit GAUNTLET_PROVIDER wins, then name-based, then default
+if [[ "${GAUNTLET_PROVIDER:-}" != "" ]]; then
+  PROVIDER="$GAUNTLET_PROVIDER"
+elif [[ "$MODEL" == ollama* ]] || [[ "$MODEL" == turbolego/* ]]; then
+  PROVIDER="ollama"
+elif [[ "$MODEL" == openrouter* ]] || [[ "$MODEL" == meta-llama* ]]; then
   PROVIDER="openrouter"
+else
+  PROVIDER="mistral"
 fi
 
 SAFE_MODEL=$(echo "$MODEL" | sed 's/[^A-Za-z0-9._-]/-/g')
