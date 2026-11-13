@@ -147,6 +147,7 @@ test("deletion, hiding and duplicate removal are penalized even when remaining H
     `<main hidden>${fixtureHtml}</main>`,
     `<main style="display: none !important">${fixtureHtml}</main>`,
     `<main style="visibility:hidden">${fixtureHtml}</main>`,
+    `<dialog>${fixtureHtml}</dialog>`,
     `<script>${fixtureHtml}</script><style>${fixtureHtml}</style><template>${fixtureHtml}</template>`
   ]) {
     const report = checkLegacy(html, { fixtureHtml });
@@ -174,6 +175,63 @@ test("changing link targets is penalized even when link text is preserved", () =
   });
   assert.deepEqual(report.preservation_errors, ['Link href missing: "/original" (1 occurrence(s))']);
   assert.equal(report.legacy_error_count, 1);
+});
+
+test("closed dialogs contribute neither baseline text nor links, while open dialogs do", () => {
+  const content = `<p>Viktig nyhet</p><a href="/nytt">Les</a>`;
+  assert.equal(checkLegacy("", { fixtureHtml: `<dialog>${content}</dialog>` }).legacy_error_count, 0);
+  assert.equal(checkLegacy(`<dialog open>${content}</dialog>`, { fixtureHtml: content }).legacy_error_count, 0);
+  assert.equal(checkLegacy(`<dialog style="display:block">${content}</dialog>`, { fixtureHtml: content }).legacy_error_count, 0);
+  assert.ok(checkLegacy("", { fixtureHtml: `<dialog open>${content}</dialog>` }).preservation_errors.length > 0);
+});
+
+test("base changes cannot silently retarget preserved fragment and relative links", () => {
+  for (const [fixtureHtml, repaired] of [
+    [`<a href="#nyheter">Les</a>`, `<base href="/AI-WCAG-Gauntlet/"><a href="#nyheter">Les</a>`],
+    [`<base href="https://example.invalid/old/"><a href="news">Les</a>`,
+      `<base href="https://example.invalid/new/"><a href="news">Les</a>`],
+    [`<a href="/news">Les</a>`, `<base href="https://elsewhere.invalid/"><a href="/news">Les</a>`]
+  ]) {
+    const report = checkLegacy(repaired, { fixtureHtml });
+    assert.equal(report.preservation_errors.length, 1);
+    assert.match(report.preservation_errors[0], /Link href missing/);
+  }
+});
+
+test("link preservation accepts equivalent destinations and ignores inert or irrelevant bases", () => {
+  const content = `<a href="#nyheter">Les</a>`;
+  for (const base of [`<base target="_self">`, `<base href="">`,
+    `<base href="data:text/plain,not-a-base">`, `<base href="javascript:void(0)">`,
+    `<template><base href="https://elsewhere.invalid/"></template>`]) {
+    assert.equal(checkLegacy(base + content, { fixtureHtml: content }).legacy_error_count, 0);
+  }
+  const fixtureHtml = `<base href="https://example.invalid/news/"><a href="./story">Les</a>`;
+  const repaired = `<base target="_self"><base href="https://example.invalid/other/">
+    <base href="https://ignored.invalid/"><a href="https://example.invalid/news/story">Les</a>`;
+  assert.equal(checkLegacy(repaired, { fixtureHtml }).legacy_error_count, 0);
+  const absolute = `<a href="https://example.invalid/news">Les</a><a href="mailto:avis@example.invalid">Kontakt</a>`;
+  assert.equal(checkLegacy(`<base href="/changed/">${absolute}`, { fixtureHtml: absolute }).legacy_error_count, 0);
+  assert.equal(checkLegacy(`<base href="http://[">${absolute}`, { fixtureHtml: absolute }).legacy_error_count, 0);
+});
+
+test("unresolvable link destinations produce preservation errors rather than aborting evaluation", () => {
+  const fixtureHtml = `<a href="story">Les</a>`;
+  for (const base of [`<base href="mailto:avis@example.invalid">`, `<base href="http://[">`,
+    `<base href="http://["><base href="https://ignored.invalid/">`]) {
+    const report = checkLegacy(base + fixtureHtml, { fixtureHtml });
+    assert.ok(report.preservation_errors.some((message) => message.includes("Link destination invalid")));
+    assert.ok(report.preservation_errors.some((message) => message.includes("Link href missing")));
+  }
+});
+
+test("equivalent link spellings still require the original destination multiplicity", () => {
+  const fixtureHtml = `<a href="./story">Les</a><a href="story">Les</a>`;
+  assert.equal(checkLegacy(`<a href="story">Les</a><a href="story">Les</a>`, { fixtureHtml }).legacy_error_count, 0);
+  const report = checkLegacy(`<a href="story">Les</a><span>Les</span>`, {
+    fixtureHtml
+  });
+  assert.equal(report.preservation_errors.length, 1);
+  assert.match(report.preservation_errors[0], /Link href missing:.*\(1 occurrence\(s\)\)/);
 });
 
 test("the pure synchronous API is deterministic and rejects non-string inputs", () => {

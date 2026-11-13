@@ -41,7 +41,11 @@ image links. Ordinary data tables, named image links, and isolated positioned
 elements are not banned. Contrast, landmarks, and accessible names are also
 checked by the existing accessibility validators.
 
-The preservation guard checks DOM text/link multiplicities and inline visibility.
+The preservation guard checks DOM text/link multiplicities, inline visibility,
+and native closed-dialog state. Link destinations are resolved through each
+document's first active `base href` and compared across shared document-URL
+contexts, so a base change cannot silently retarget preserved links. A
+target-only `<base target="_self">` satisfies tag coverage without retargeting links.
 It is not a full rendered-CSS or functional-equivalence check. Synthetic fixtures
 are not copies of particular real sites, and automated passes do not certify all
 WCAG 2.2 AAA criteria.

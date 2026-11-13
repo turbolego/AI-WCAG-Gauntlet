@@ -8,6 +8,11 @@ import { SAXParser } from "parse5-sax-parser";
 const resource = JSON.parse(readFileSync(new URL("../resources/legacy_tags.json", import.meta.url), "utf8"));
 const obsoleteTags = new Set(resource.tags);
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+// Distinct document URLs keep an absolute base from impersonating a portable relative destination.
+const comparisonDocumentUrls = [
+  "https://fixture.invalid/legacy/index.html",
+  "http://repair.invalid:8080/nested/legacy/page.html?view=1"
+];
 const nonVisibleTags = new Set(["head", "script", "style", "template", "noscript", "title"]);
 const blockTags = new Set([
   "address", "article", "aside", "blockquote", "br", "caption", "center", "dd", "div",
@@ -76,20 +81,29 @@ function inventory(html) {
   const elements = [];
   const visibleElements = [];
   const ids = new Map();
-  function visit(node, ancestorHidden = false) {
+  let baseHref;
+  function visit(node, ancestorHidden = false, inTemplate = false) {
     const isHidden = ancestorHidden || hidden(node);
     if (node.tagName) {
       elements.push(node);
       if (!isHidden) visibleElements.push(node);
       const id = attribute(node, "id");
       if (id && !ids.has(id)) ids.set(id, node);
+      if (!inTemplate && node.namespaceURI === HTML_NAMESPACE && node.tagName === "base" && baseHref === undefined) {
+        baseHref = attribute(node, "href");
+      }
     }
-    for (const child of node.childNodes || []) visit(child, isHidden);
+    for (const child of node.childNodes || []) visit(child, isHidden, inTemplate);
     // Template contents are real markup, but do not contribute visible content.
-    if (node.content) visit(node.content, true);
+    if (node.content) visit(node.content, true, true);
   }
   visit(document);
-  return { document, elements, visibleElements, ids };
+  const baseUrls = comparisonDocumentUrls.map((documentUrl) => {
+    if (baseHref !== undefined && !URL.canParse(baseHref, documentUrl)) return null;
+    const base = new URL(baseHref ?? documentUrl, documentUrl);
+    return ["data:", "javascript:"].includes(base.protocol) ? documentUrl : base.href;
+  });
+  return { document, elements, visibleElements, ids, baseUrls };
 }
 
 function accessibleName(node, ids, visited = new Set()) {
@@ -133,7 +147,7 @@ function counts(values) {
 /**
  * Detect obsolete markup independently of HTML5 tag coverage.
  * Preservation is a DOM-based, inline-visibility check, not a browser/CSS audit.
- * Text and href multiplicities may increase or be reordered, but must not decrease.
+ * Text and resolved link multiplicities may increase or be reordered, but must not decrease.
  */
 export function checkLegacy(html, { fixtureHtml } = {}) {
   if (typeof html !== "string") throw new TypeError("html must be a string");
@@ -192,13 +206,26 @@ export function checkLegacy(html, { fixtureHtml } = {}) {
       const missing = count - (actualText.get(word) || 0);
       if (missing > 0) preservationErrors.push(`Visible text missing: ${JSON.stringify(word)} (${missing} occurrence(s))`);
     }
-    const linkCounts = (entry) => counts(entry.visibleElements
-      .filter((node) => ["a", "area"].includes(node.tagName) && attribute(node, "href") !== undefined)
-      .map((node) => attribute(node, "href")));
+    const linkCounts = (entry) => {
+      const links = new Map();
+      for (const node of entry.visibleElements) {
+        const href = attribute(node, "href");
+        if (!["a", "area"].includes(node.tagName) || href === undefined) continue;
+        if (entry.baseUrls.some((base) => !URL.canParse(href, base ?? undefined))) {
+          preservationErrors.push(`Link destination invalid: ${JSON.stringify(href)}`);
+          continue;
+        }
+        const destination = JSON.stringify(entry.baseUrls.map((base) => new URL(href, base ?? undefined).href));
+        const link = links.get(destination) || { href, count: 0 };
+        link.count++;
+        links.set(destination, link);
+      }
+      return links;
+    };
     const expectedLinks = linkCounts(fixture);
     const actualLinks = linkCounts(page);
-    for (const [href, count] of expectedLinks) {
-      const missing = count - (actualLinks.get(href) || 0);
+    for (const [destination, { href, count }] of expectedLinks) {
+      const missing = count - (actualLinks.get(destination)?.count || 0);
       if (missing > 0) preservationErrors.push(`Link href missing: ${JSON.stringify(href)} (${missing} occurrence(s))`);
     }
   }
