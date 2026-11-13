@@ -136,6 +136,13 @@ fi
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 
 echo "Running tests for: $TARGET_DIR"
+TASK="showcase"
+if [ -f "$TARGET_DIR/task.json" ]; then
+    TASK=$(jq -er '.task | select(. == "showcase" or . == "legacy-repair")' "$TARGET_DIR/task.json") || {
+        echo "Error: invalid task.json"
+        exit 1
+    }
+fi
 
 # --- Validate ---
 if [ ! -d "$TARGET_DIR" ]; then
@@ -152,6 +159,15 @@ if [ ! -d "$RESOURCES" ]; then
 fi
 
 # --- Increment iterations counter ---
+if [ "$TASK" = "legacy-repair" ]; then
+    for report in w3c_report.json axe_report.json pa11y_report.json qualweb_report.json legacy_report.json; do
+        if ! rm -f "$TARGET_DIR/$report"; then
+            echo "Error: cannot clear stale $report"
+            exit 1
+        fi
+    done
+fi
+
 ITERATIONS_FILE="$TARGET_DIR/iterations_count.txt"
 if [ ! -f "$ITERATIONS_FILE" ]; then
     echo 0 > "$ITERATIONS_FILE"
@@ -180,8 +196,8 @@ export CHROME_USER_DATA_DIR="$CHROME_PROFILE_ROOT/shared"
 
 # --- HTML5 tag test ---
 echo "Running HTML5 tag test..."
-if ! (cd "$TARGET_DIR" && python3 "$RESOURCES/check_html5_tags.py" > /dev/null); then
-    echo "Error: check_html5_tags.py failed"
+if ! node "$SCRIPT_DIR/scripts/check-html5-tags.mjs" "$TARGET_DIR/index.html" "$TARGET_DIR/html5_tags_report.json"; then
+    echo "Error: check-html5-tags.mjs failed"
     exit 1
 fi
 
@@ -279,35 +295,47 @@ AXE_VERSION=$(jq -r '
 
 # --- Pa11y validation ---
 echo "Running pa11y..."
+PA11Y_CONFIG="$CHROME_PROFILE_ROOT/pa11y-config.json"
+if ! jq -n --arg executable "$PUPPETEER_EXECUTABLE_PATH" --arg profile "$CHROME_PROFILE_ROOT/pa11y" \
+    '{chromeLaunchConfig: {executablePath: $executable, args: ["--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", ("--user-data-dir=" + $profile)]}}' \
+    > "$PA11Y_CONFIG"; then
+    echo "Error: cannot write Pa11y configuration"
+    exit 1
+fi
 if ! (
     cd "$TARGET_DIR"
     # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
     # puppeteer-core finds a working Chrome binary.
-    PA11Y_CHROME_CONFIG=$(printf '{"executablePath":"%s","args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--user-data-dir=%s"]}' "$PUPPETEER_EXECUTABLE_PATH" "$CHROME_PROFILE_ROOT/pa11y")
     pa11y \
         --runner axe \
         --standard WCAG2AAA \
-        --chrome-launch-config "$PA11Y_CHROME_CONFIG" \
+        --config "$PA11Y_CONFIG" \
         --reporter json \
         "$TARGET_HTTP_URL" \
-        > pa11y_report.json 2>/dev/null || true
+        > pa11y_report.json 2>pa11y_stderr.log
+    PA11Y_EXIT=$?
+    if [ "$PA11Y_EXIT" -ne 0 ] && [ "$PA11Y_EXIT" -ne 2 ]; then
+        echo "Error: Pa11y scan failed (exit $PA11Y_EXIT); see pa11y_stderr.log"
+        exit 1
+    fi
     # pa11y exits non-zero when issues are found — that's expected
 ); then
-    echo "Warning: pa11y exited with an error; continuing with empty report"
-    echo "[]" > "$TARGET_DIR/pa11y_report.json"
+    echo "Error: Pa11y scan did not complete"
+    exit 1
 fi
 
 # Ensure the file is valid JSON (pa11y may emit nothing on hard crash)
-if ! jq empty "$TARGET_DIR/pa11y_report.json" 2>/dev/null; then
-    echo "Warning: pa11y_report.json invalid — resetting to empty array"
-    echo "[]" > "$TARGET_DIR/pa11y_report.json"
+if ! jq -e 'type == "array" or (type == "object" and (.issues | type == "array"))' \
+    "$TARGET_DIR/pa11y_report.json" >/dev/null 2>&1; then
+    echo "Error: invalid Pa11y report"
+    exit 1
 fi
 
 PA11Y_ISSUES=$(jq 'if type == "array" then length else (.issues // [] | length) end' \
         "$TARGET_DIR/pa11y_report.json" 2>/dev/null)
-# If PA11Y_ISSUES is empty or not a number, default to 0
 if ! [[ "$PA11Y_ISSUES" =~ ^[0-9]+$ ]]; then
-    PA11Y_ISSUES=0
+    echo "Error: invalid Pa11y issue count"
+    exit 1
 fi
 
 PA11Y_VERSION=$(pa11y --version 2>/dev/null || echo "unknown")
@@ -324,22 +352,35 @@ if ! (
         "$TARGET_DIR/index.html" \
         "$TARGET_DIR/qualweb_report.json"
 ); then
-    echo "Warning: qualweb failed; continuing with empty report"
-    echo '{"failedCount":0,"results":[],"error":"qualweb script failed"}' > "$TARGET_DIR/qualweb_report.json"
+    echo "Error: QualWeb scan did not complete"
+    exit 1
 fi
 
-# Ensure valid JSON
-if ! jq empty "$TARGET_DIR/qualweb_report.json" 2>/dev/null; then
-    echo "Warning: qualweb_report.json invalid — resetting"
-    echo '{"failedCount":0,"results":[]}' > "$TARGET_DIR/qualweb_report.json"
+if ! jq -e 'type == "object" and (has("error") | not) and (has("note") | not)
+    and (.failedCount | type == "number" and . >= 0 and . == floor)
+    and (.results | type == "array")' "$TARGET_DIR/qualweb_report.json" >/dev/null 2>&1; then
+    echo "Error: invalid or skipped QualWeb report"
+    exit 1
 fi
 
-QUALWEB_ISSUES=$(jq '.failedCount // 0' "$TARGET_DIR/qualweb_report.json" 2>/dev/null || echo 0)
+if ! QUALWEB_ISSUES=$(jq '.failedCount' "$TARGET_DIR/qualweb_report.json"); then
+    echo "Error: cannot read QualWeb issue count"
+    exit 1
+fi
 if ! [[ "$QUALWEB_ISSUES" =~ ^[0-9]+$ ]]; then
     QUALWEB_ISSUES=0
 fi
 
 QUALWEB_VERSION=$(node -e "try{const p=require('./node_modules/@qualweb/core/package.json');console.log(p.version)}catch(e){console.log('unknown')}" 2>/dev/null || echo "unknown")
+
+LEGACY_ERRORS=0
+if [ "$TASK" = "legacy-repair" ]; then
+    if ! node "$SCRIPT_DIR/scripts/legacy-run.mjs" "$TARGET_DIR"; then
+        echo "Error: legacy repair evaluation failed"
+        exit 1
+    fi
+    LEGACY_ERRORS=$(jq -er '.legacy_error_count | select(type == "number" and . >= 0)' "$TARGET_DIR/legacy_report.json") || exit 1
+fi
 
 # --- Determine pass/fail status and calculate score ---
 # APS formula — clear tier separation: pass ~153-203, fail 0-103.
@@ -354,13 +395,14 @@ if [ "$HTML_TAG_ERRORS" -eq 0 ] && \
    [ "$W3C_ERRORS" -eq 0 ] && \
    [ "$AXE_VIOLATIONS" -eq 0 ] && \
    [ "$PA11Y_ISSUES" -eq 0 ] && \
-   [ "$QUALWEB_ISSUES" -eq 0 ]; then
+   [ "$QUALWEB_ISSUES" -eq 0 ] && \
+   [ "$LEGACY_ERRORS" -eq 0 ]; then
     ITERATION_STATUS="pass"
     QUALITY_SCORE=60
     EFFICIENCY_SCORE=$(awk "BEGIN {printf \"%.4f\", 50 * (0.8 ^ ($ITERATIONS - 1))}")
 else
     ITERATION_STATUS="fail"
-    TOTAL_ERRORS=$(( W3C_ERRORS + AXE_VIOLATIONS + PA11Y_ISSUES + QUALWEB_ISSUES ))
+    TOTAL_ERRORS=$(( W3C_ERRORS + AXE_VIOLATIONS + PA11Y_ISSUES + QUALWEB_ISSUES + LEGACY_ERRORS ))
     QUALITY_SCORE=$(( 10 - TOTAL_ERRORS ))
     [ "$QUALITY_SCORE" -lt 0 ] && QUALITY_SCORE=0
     EFFICIENCY_SCORE=0
@@ -372,6 +414,8 @@ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # --- Build this iteration's result object ---
 ITERATION_RESULT=$(jq -n \
+    --arg task "$TASK" \
+    --argjson legacy_errors "$LEGACY_ERRORS" \
     --arg  timestamp       "$TIMESTAMP" \
     --arg  iteration       "$ITERATIONS" \
     --arg  status          "$ITERATION_STATUS" \
@@ -387,6 +431,9 @@ ITERATION_RESULT=$(jq -n \
     --argjson missing_tags "$(jq '.missing_tags' "$REPORT")" \
     --argjson used_tags    "$(jq '.used_tags'    "$REPORT")" \
     '{
+        task: $task,
+        task_version: 1,
+        legacy_errors: $legacy_errors,
         timestamp:       $timestamp,
         iteration:       ($iteration       | tonumber),
         status:          $status,
@@ -402,6 +449,11 @@ ITERATION_RESULT=$(jq -n \
         missing_tags:    $missing_tags,
         used_tags:       $used_tags
     }')
+
+if [ "$TASK" = "legacy-repair" ]; then
+    ITERATION_RESULT=$(jq --slurpfile legacy "$TARGET_DIR/legacy_report.json" \
+        '. + {fixture: $legacy[0].fixture, legacy: $legacy[0]}' <<< "$ITERATION_RESULT") || exit 1
+fi
 
 # --- Append to test_results.json (array, one entry per iteration) ---
 RESULTS_JSON="$TARGET_DIR/test_results.json"
@@ -428,6 +480,8 @@ echo "PA11Y_ISSUES    = $PA11Y_ISSUES"
 echo "PA11Y_VERSION   = $PA11Y_VERSION"
 echo "QUALWEB_ISSUES  = $QUALWEB_ISSUES"
 echo "QUALWEB_VERSION = $QUALWEB_VERSION"
+echo "TASK            = $TASK"
+echo "LEGACY_ERRORS   = $LEGACY_ERRORS"
 echo "ITERATIONS      = $ITERATIONS"
 echo "SCORE           = $SCORE"
 echo "MISSING_TAGS    = $(jq -r '.missing_tags | join(", ")' "$REPORT")"

@@ -11,6 +11,7 @@ import { generateWithGroq } from "./providers/groq.mjs";
 import { generateWithHuggingFace } from "./providers/huggingface.mjs";
 import { generateWithModel, buildEndpoints } from "./providers/github.mjs";
 import { isLowTokenModel } from "./model-config.mjs";
+import { readFixture, validateTask } from "./benchmark-task.mjs";
 
 /**
  * Format axe-core violations into a compact feedback string for the AI model.
@@ -36,17 +37,17 @@ export function formatAxeViolations(violations) {
   return lines.join("\n");
 }
 
-const REQUIRED_HTML5_TAGS = [
-  "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
-  "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
-  "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure",
-  "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i",
-  "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "menu",
-  "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture",
-  "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "search", "section", "select", "slot",
-  "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template",
-  "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
-];
+export function formatLegacyIssues(report) {
+  const lines = [];
+  for (const item of report.legacy_present) {
+    lines.push(`Deprecated <${item.tag}>: ${item.count}; ${item.examples.join("; ")}`);
+  }
+  for (const item of report.legacy_patterns_matched) {
+    lines.push(`${item.id}: ${item.count}; ${item.examples.join("; ")}`);
+  }
+  lines.push(...report.preservation_errors);
+  return lines.length ? `Legacy repair errors:\n${lines.join("\n")}` : "";
+}
 // Keeps prompt size bounded while preserving enough context from prior reports.
 // Reduced to allow more room for model output (especially for models with low token limits).
 const MAX_FEEDBACK_CHARS = 1500;
@@ -315,7 +316,7 @@ async function calculateOptimalMaxTokens(previousDir) {
   }
 }
 
-async function readFeedback(previousDir, model = null) {
+async function readFeedback(previousDir, model = null, task = "showcase") {
   if (!previousDir) {
     return "";
   }
@@ -336,6 +337,10 @@ async function readFeedback(previousDir, model = null) {
     const latest = results[results.length - 1];
     
     const feedbackParts = [];
+    if (task === "legacy-repair") {
+      const report = JSON.parse(await fs.readFile(path.join(previousDir, "legacy_report.json"), "utf8"));
+      feedbackParts.push(formatLegacyIssues(report));
+    }
     
     // Show score progression
     if (results.length > 1) {
@@ -406,10 +411,12 @@ async function readFeedback(previousDir, model = null) {
     } catch { /* ignore */ }
 
     return feedbackParts.join("\n").slice(0, maxFeedbackChars);
-  } catch {
+  } catch (error) {
     // Fallback to raw file reading if parsing fails
+    if (task === "legacy-repair") console.warn(`Legacy feedback incomplete: ${error.message}`);
     const feedbackParts = [];
     const files = [
+      ...(task === "legacy-repair" ? ["legacy_report.json"] : []),
       "test_results.json",
       "html5_tags_report.json",
       "w3c_report.json",
@@ -443,10 +450,34 @@ async function main() {
   const iteration = Number.parseInt(args.iteration ?? "1", 10);
   const previousDir = args.previousDir;
   const provider = args.provider ?? "github";
+  const taskContext = validateTask(args.task, args.fixture);
+  if (taskContext.task === "legacy-repair") {
+    taskContext.fixtureHtml = readFixture(taskContext.fixture);
+    if (previousDir) {
+      for (const [field, filename] of [["candidateHtml", "index.html"], ["candidateCss", "style.css"]]) {
+        try {
+          taskContext[field] = await fs.readFile(path.join(previousDir, filename), "utf8");
+        } catch (error) {
+          if (error.code !== "ENOENT") throw error;
+        }
+      }
+    }
+  }
 
   if (!outputDir) {
     throw new Error("Missing required argument: --outputDir");
   }
+  try {
+    const existing = JSON.parse(await fs.readFile(path.join(outputDir, "task.json"), "utf8"));
+    if (existing.task !== taskContext.task || existing.fixture !== taskContext.fixture) {
+      throw new Error("Cannot change task or fixture within a benchmark run");
+    }
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  await fs.mkdir(outputDir, { recursive: true });
+  await fs.writeFile(path.join(outputDir, "task.json"), JSON.stringify(
+    validateTask(taskContext.task, taskContext.fixture), null, 2));
 
   let generated = defaultPage();
   let generatedByModel = false;
@@ -456,7 +487,7 @@ async function main() {
   if (provider === "openrouter") {
     const orToken = process.env.OPENROUTER_TOKEN;
     if (orToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "openrouter",
@@ -469,7 +500,8 @@ async function main() {
           model: modelArg,
           token: orToken,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -496,7 +528,7 @@ async function main() {
   } else if (provider === "mistral") {
     const mistralToken = process.env.MISTRAL_TOKEN;
     if (mistralToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "mistral",
@@ -509,7 +541,8 @@ async function main() {
           model: modelArg,
           token: mistralToken,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -536,7 +569,7 @@ async function main() {
   } else if (provider === "cohere") {
     const cohereToken = process.env.COHERE_TOKEN;
     if (cohereToken) {
-      const feedback = await readFeedback(previousDir, modelArg);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       const maxTokens = await calculateOptimalMaxTokens(previousDir);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
@@ -553,6 +586,7 @@ async function main() {
           token: cohereToken,
           iteration,
           feedback,
+          taskContext,
           maxTokens
         });
         generatedByModel = true;
@@ -582,7 +616,7 @@ async function main() {
     const cloudflareToken = process.env.CLOUDFLARE_TOKEN;
     const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
     if (cloudflareToken && accountId) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "cloudflare",
@@ -596,7 +630,8 @@ async function main() {
           token: cloudflareToken,
           accountId,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -623,7 +658,7 @@ async function main() {
   } else if (provider === "alibaba") {
     const alibabaToken = process.env.ALIBABA_TOKEN;
     if (alibabaToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "alibaba",
@@ -636,7 +671,8 @@ async function main() {
           model: modelArg,
           token: alibabaToken,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -663,7 +699,7 @@ async function main() {
   } else if (provider === "groq") {
     const groqToken = process.env.GROQ_TOKEN;
     if (groqToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       const maxTokens = await calculateOptimalMaxTokens(previousDir);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
@@ -679,6 +715,7 @@ async function main() {
           token: groqToken,
           iteration,
           feedback,
+          taskContext,
           maxTokens
         });
         generated = result;
@@ -708,7 +745,7 @@ async function main() {
   } else if (provider === "huggingface") {
     const hfToken = process.env.HUGGINGFACE_TOKEN;
     if (hfToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "huggingface",
@@ -721,7 +758,8 @@ async function main() {
           model: modelArg,
           token: hfToken,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -752,7 +790,7 @@ async function main() {
     const keyToken = process.env.KEY_GITHUB_TOKEN;
 
     if (token || keyToken) {
-      const feedback = await readFeedback(previousDir);
+      const feedback = await readFeedback(previousDir, modelArg, taskContext.task);
       try {
         await logProviderInteraction(outputDir, iteration, "input", {
           provider: "github",
@@ -768,7 +806,8 @@ async function main() {
           token,
           keyToken,
           iteration,
-          feedback
+          feedback,
+          taskContext
         });
         generatedByModel = true;
         await logProviderInteraction(outputDir, iteration, "output", {
@@ -796,8 +835,11 @@ async function main() {
     }
   }
 
-  await writePage(outputDir, generated);
+  if (generatedByModel || taskContext.task !== "legacy-repair") {
+    await writePage(outputDir, generated);
+  }
   const generationData = {
+    ...validateTask(taskContext.task, taskContext.fixture),
     requestedModel: modelArg,
     resolvedModel,
     provider,
@@ -817,7 +859,12 @@ async function main() {
   );
 
   if (!generatedByModel) {
-    console.warn(`Model generation fallback used: ${modelError}`);
+    if (taskContext.task === "legacy-repair") {
+      console.error(`Legacy repair generation failed; candidate not replaced: ${modelError}`);
+      process.exitCode = 1;
+    } else {
+      console.warn(`Model generation fallback used: ${modelError}`);
+    }
   }
 }
 

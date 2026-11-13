@@ -20,6 +20,11 @@ on:
       - 'benchmarks/**'
       - 'docs/stats/**'
       - '.github/scripts/aggregate_stats.py'
+      - 'scripts/aggregate-stats.mjs'
+      - 'scripts/benchmark-task.mjs'
+      - 'resources/html_tags.json'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/generate-stats.yml'
   workflow_dispatch:
 
@@ -43,6 +48,15 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: '3.15'
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install aggregation dependencies
+        run: npm ci --ignore-scripts
 
       # ✅ Install Sass
       - name: Install Sass

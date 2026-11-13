@@ -3,6 +3,61 @@
 ## Mission
 Build a single-page technical showcase that implements every valid HTML5 tag while adhering to **WCAG 2.2 Level AAA** standards. The showcase must include both `index.html` and `style.css` files.
 
+## Legacy-repair task
+
+The optional `legacy-repair` task starts from a synthetic Norwegian front page
+instead of a blank page. **Every required HTML5 tag remains mandatory**, including
+`selectedcontent`. Preserve the fixture's visible content and link destinations;
+extend it with meaningful examples of tags it does not already contain.
+Replace obsolete markup rather than adding it to the required tag list.
+
+Run a configured Mistral model locally:
+
+```bash
+rtk bash run-benchmark-local.sh mistral-small-latest 20 legacy-repair norwegian-news
+```
+
+`MISTRAL_TOKEN` must already be configured. Other fixture IDs are
+`community-portal` and `local-directory`. The default task is `showcase`.
+For individual generation calls, pass `--task legacy-repair --fixture <id>` to
+`scripts/generate-page.mjs`; use the same output/previous directory on later
+iterations. All eight providers receive the same task and required-tag contract.
+Existing GitHub Actions invocations remain showcase runs unless these arguments
+are explicitly added.
+
+The generator persists `task.json`. Both test suites read that file automatically.
+Each repair iteration writes `legacy_report.json` after the browser validators
+and embeds its metrics in the iteration result. A repair passes only when **tag
+coverage, W3C, axe, Pa11y, QualWeb, and legacy errors are all zero**. Tool errors
+or missing/invalid repair reports do not count as successful scans.
+Both task modes abort on incomplete Pa11y scans or malformed, failed, or skipped
+QualWeb scans rather than substituting zero-error reports. Pa11y's shared-browser
+configuration is supplied through a temporary `--config` JSON file.
+
+The versioned [legacy rules](resources/legacy_tags.json) detect obsolete tags,
+tag-specific presentation attributes, explicitly presentational tables, clusters
+of at least three sibling divs with inline absolute positioning, and unnamed
+image links. Ordinary data tables, named image links, and isolated positioned
+elements are not banned. Contrast, landmarks, and accessible names are also
+checked by the existing accessibility validators.
+
+The preservation guard checks DOM text/link multiplicities, inline visibility,
+and native closed-dialog state. Link destinations are resolved through each
+document's first active `base href` and compared across shared document-URL
+contexts, so a base change cannot silently retarget preserved links. A
+target-only `<base target="_self">` satisfies tag coverage without retargeting links.
+It is not a full rendered-CSS or functional-equivalence check. Synthetic fixtures
+are not copies of particular real sites, and automated passes do not certify all
+WCAG 2.2 AAA criteria.
+
+Legacy results have separate dashboard summaries (`legacy_repair_stats`,
+`hardest_legacy_patterns`, and `legacy_repair_runs`) and are not mixed into
+showcase rankings. Regenerate the repository dashboard data with:
+
+```bash
+rtk node scripts/aggregate-stats.mjs
+```
+
 ## HTML5 Tags Reference
 All HTML5 tags required for this benchmark are listed in [resources/html_tags.json](resources/html_tags.json), sourced from the [WHATWG HTML Living Standard](https://html.spec.whatwg.org/multipage/indices.html). This file defines the authoritative set of tags that must be implemented and covered in your solution.
 
@@ -11,6 +66,8 @@ All HTML5 tags required for this benchmark are listed in [resources/html_tags.js
 - [resources/html_tags.json](resources/html_tags.json) (full tag list included in this repo)
 
 You must ensure that every tag in this list is used at least once in your `index.html`.
+`selectedcontent` is valid and required; use it inside a `button` child of a
+customizable `select`. Obsolete `param` is not part of the required set.
 
 ## WCAG 2.2 Specification
 This benchmark requires strict conformance to the [WCAG 2.2 specification](https://www.w3.org/TR/WCAG22/). The full machine-readable spec is provided in `resources/wcag_22.json` and should be used as the authoritative reference for all accessibility requirements, success criteria, and guideline interpretations.
@@ -48,7 +105,7 @@ In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`n
    - `STATUS: PASS` → Stop. The benchmark is complete.
    - `STATUS: FAIL — Maximum iterations` → Stop. Report the final results.
    - `STATUS: FAIL — Fix the errors` → Edit `index.html` and/or `style.css` to fix the reported errors, then go to step 1.
-3. **Never stop early.** The script always exits with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line.
+3. **Never stop early.** Completed iterations exit with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line. Infrastructure failures can exit nonzero without recording a result: repair the tooling before retrying, and never publish such attempts as passing runs.
 4. **Never declare completion based on "false positives".** If `AXE_VIOLATIONS` or `PA11Y_ISSUES` is non-zero in the test output, they are real failures that must be fixed. You are not permitted to stop and claim the remaining issues are false positives — keep iterating until the counts reach 0 or the 20-iteration cap is hit.
 5. **Never stop because the task feels done.** As long as `STATUS: FAIL — Fix the errors` is printed and iterations remain, you must continue the loop without asking for confirmation.
 
@@ -109,6 +166,8 @@ benchmarks/
         └── benchmark_log.md
 ```
 
+Repair runs additionally contain `task.json` and `legacy_report.json`.
+
 ## test_results.json schema
 `test_results.json` is a JSON **array** — one object is appended for each iteration, so you can track progress over time:
 ```json
@@ -128,6 +187,22 @@ benchmarks/
   },
   { "iteration": 2, "..." : "..." }
 ]
+```
+
+New results include `task`, `task_version`, and `legacy_errors`. Repair results
+also include `fixture` and a `legacy` object containing:
+
+```json
+{
+  "version": 1,
+  "legacy_present": [{"tag": "font", "count": 1, "examples": ["<font color=\"red\">"]}],
+  "legacy_patterns_matched": [{"id": "presentational-attributes", "count": 1, "examples": []}],
+  "legacy_error_count": 2,
+  "preservation_errors": [],
+  "baseline_legacy_present": [{"tag": "font", "count": 1, "examples": []}],
+  "baseline_legacy_patterns": [{"id": "presentational-attributes", "count": 1, "examples": []}],
+  "residual_axe": {"color-contrast": 0, "color-contrast-enhanced": 0, "region": 0, "link-name": 0}
+}
 ```
 
 ## Scoring Formula
@@ -155,7 +230,13 @@ The Efficiency Score uses **exponential decay** — each additional iteration co
 - **FAIL range**: 0 – 103 points
 - Guaranteed gap of ≥ 50 points between any passing and any failing run.
 
-A `STATUS: PASS` requires **all four** checks to be zero: HTML tag errors, W3C errors, axe violations, and pa11y issues.
+The runners also include QualWeb failures in the failed Quality Score penalty.
+Repair runs additionally include `legacy_errors` (obsolete-tag occurrences,
+pattern occurrences, and preservation failures). The existing tag-score denominator
+and showcase score formula are unchanged; aggregation retains recorded scores.
+
+A `STATUS: PASS` requires HTML tag errors, W3C errors, axe violations, Pa11y issues,
+and QualWeb failures to be zero; repair runs additionally require zero legacy errors.
 
 ## WCAG 2.2 Reference
 - [WCAG 2.2 Specification](https://www.w3.org/TR/WCAG22/)

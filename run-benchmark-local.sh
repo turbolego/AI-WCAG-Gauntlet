@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Benchmark runner for local testing
-# Usage: bash run-benchmark-local.sh [model] [iterations]
+# Usage: bash run-benchmark-local.sh [model] [iterations] [task] [fixture]
 # Examples:
 #   bash run-benchmark-local.sh mistral-small-latest 20
 #   bash run-benchmark-local.sh openrouter 10
@@ -13,6 +13,15 @@ set -uo pipefail
 MODEL="${1:-mistral-small-latest}"
 ITERATIONS="${2:-20}"
 PROVIDER="mistral"
+TASK="${3:-showcase}"
+FIXTURE="${4:-}"
+TASK_ARGS=(--task "$TASK")
+if [ -n "$FIXTURE" ]; then
+  TASK_ARGS+=(--fixture "$FIXTURE")
+fi
+if ! node --input-type=module -e 'import {validateTask} from "./scripts/benchmark-task.mjs"; validateTask(process.argv[1], process.argv[2] || null)' "$TASK" "$FIXTURE"; then
+  exit 1
+fi
 
 # Handle OpenRouter models
 if [[ "$MODEL" == openrouter* ]] || [[ "$MODEL" == "meta-llama"* ]]; then
@@ -65,7 +74,8 @@ for i in $(seq 1 "$ITERATIONS"); do
     --provider "$PROVIDER" \
     --outputDir "$RUN_DIR" \
     --iteration "$i" \
-    --previousDir "$RUN_DIR"
+    --previousDir "$RUN_DIR" \
+    "${TASK_ARGS[@]}"
 
   GENERATION_JSON="$RUN_DIR/generation.json"
   if [ ! -f "$GENERATION_JSON" ]; then

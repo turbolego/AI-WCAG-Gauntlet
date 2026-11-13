@@ -54,7 +54,7 @@ function findChrome() {
 }
 
 const chromePath = findChrome();
-const emptyReport = { failedCount: 0, results: [], note: "QualWeb skipped — no Chrome found" };
+const emptyReport = { failedCount: 0, results: [], error: "QualWeb skipped — no Chrome found" };
 const chromeArgs = ["--no-sandbox", "--disable-dev-shm-usage", "--headless=new"];
 
 if (process.env.CHROME_USER_DATA_DIR) {
@@ -62,7 +62,7 @@ if (process.env.CHROME_USER_DATA_DIR) {
 }
 
 if (!chromePath) {
-  console.error("run-qualweb.mjs: No Chrome binary found — writing empty report.");
+  console.error("run-qualweb.mjs: No Chrome binary found — writing error report.");
   await fs.writeFile(reportPath, JSON.stringify(emptyReport, null, 2), "utf8");
   process.exit(0);
 }

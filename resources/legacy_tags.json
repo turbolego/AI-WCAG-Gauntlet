@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "tags": [
+    "acronym", "applet", "basefont", "bgsound", "big", "blink", "center",
+    "dir", "font", "frame", "frameset", "isindex", "keygen", "listing",
+    "marquee", "menuitem", "multicol", "nextid", "nobr", "noembed",
+    "noframes", "param", "plaintext", "rb", "rtc", "spacer", "strike",
+    "tt", "xmp"
+  ],
+  "patterns": [
+    {
+      "id": "presentational-attributes",
+      "description": "Obsolete presentational attributes on applicable HTML elements; counts elements, not attributes."
+    },
+    {
+      "id": "layout-table",
+      "description": "Tables explicitly marked role=presentation or role=none; unmarked tables are not guessed to be layout."
+    },
+    {
+      "id": "absolute-div-cluster",
+      "description": "Three or more sibling divs with inline position:absolute; counts participating divs."
+    },
+    {
+      "id": "unnamed-image-link",
+      "description": "Links containing images but lacking text, alternative text, or an accessible ARIA/title name."
+    }
+  ]
+}
