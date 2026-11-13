@@ -6,7 +6,24 @@ This repository provides a standardized framework for benchmarking AI Agents on 
 The AI must autonomously iterates until it achieves:
 1. **0** W3C Validation Errors.
 2. **0** axe-core accessibility violations (Level AAA).
-3. **100%** HTML5 tag coverage (approx. 110 tags).
+3. **100%** coverage of the required HTML5 tags in `resources/html_tags.json`,
+   including `selectedcontent`.
+
+### Legacy repair
+
+The optional legacy-repair task migrates one of three synthetic Norwegian pages
+to accessible, valid HTML5. **All required tags remain mandatory in this task.**
+It runs the same validator suite plus deprecated-markup and content-preservation
+checks, with separate dashboard statistics.
+
+```bash
+rtk bash run-benchmark-local.sh mistral-small-latest 20 legacy-repair norwegian-news
+```
+
+Configure `MISTRAL_TOKEN` first. See [BENCHMARK.md](BENCHMARK.md#legacy-repair-task)
+for fixtures, generation arguments, report schema, and checker limitations.
+The implementation sequence and rollout checklist are in
+[LEGACY-REPAIR-PLAN.md](LEGACY-REPAIR-PLAN.md).
 
 ## How to Run the Benchmark
 1. **Prepare Environment**: Install `axe-core/cli`, `serve`, `pa11y`, and `@qualweb/cli` globally. Run `npm ci` to install `w3c-html-validator` and other dependencies.

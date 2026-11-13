@@ -1,3 +1,4 @@
+import { buildTaskPrompt } from "../benchmark-task.mjs";
 import { extractAndRepairJson } from "../generate-page.mjs";
 import { getModelConfig, getSafeMaxTokens } from "../model-config.mjs";
 
@@ -80,21 +81,10 @@ function checkTPMCapacity(estimatedTokens) {
   return { shouldWait: false, waitMs: 0 };
 }
 
-export async function generateWithCohere({ model, token, iteration, feedback, maxTokens = null }) {
+export async function generateWithCohere({ model, token, iteration, feedback, maxTokens = null, taskContext = {} }) {
   const modelConfig = getModelConfig(model);
   const safeMaxTokens = maxTokens ?? getSafeMaxTokens(model);
   
-  const REQUIRED_HTML5_TAGS = [
-    "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote",
-    "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd",
-    "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure",
-    "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i",
-    "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "menu",
-    "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture",
-    "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "search", "section", "select", "slot",
-    "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template",
-    "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr"
-  ];
 
   // Adjust system message for reasoning models
   const isReasoningModel = modelConfig.hasReasoningMode || model.includes("reasoning");
@@ -103,18 +93,8 @@ export async function generateWithCohere({ model, token, iteration, feedback, ma
     : "You MUST output ONLY valid JSON. Nothing else. No thinking, no explanations, no reasoning, no planning. Start with { immediately. Output the JSON object with keys: html, css, js (all as strings). Valid JSON only. No markdown fences. No apologies. Just JSON.";
 
   const prompt = [
-    "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
-    isReasoningModel 
-      ? "Output JSON immediately."
-      : "Do not use reasoning or extended thinking. Output JSON immediately.",
-    "",
-    "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
-    "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
-    "Ensure proper nesting, valid attributes, and WCAG compliance.",
-    "You do not need to include every possible HTML5 tag—focus on semantic structure and accessibility.",
-    "",
-    `Iteration ${iteration}.`,
-    feedback ? `Issues to fix: ${feedback}` : "Create a diverse, accessible HTML page."
+    buildTaskPrompt({ iteration, ...taskContext }),
+    feedback ? `Previous reports:\n${feedback}` : ""
   ].filter(Boolean).join("\n");
 
   // Debug logging

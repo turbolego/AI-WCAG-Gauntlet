@@ -27,6 +27,7 @@ import json
 import datetime
 import difflib
 import re
+import subprocess
 from pathlib import Path
 from collections import Counter, defaultdict
 
@@ -35,22 +36,7 @@ BENCHMARKS_DIR = REPO_ROOT / "benchmarks"
 OUT_DIR       = REPO_ROOT / "docs" / "stats"
 OUT_FILE      = OUT_DIR / "benchmark_stats.json"
 
-ALL_TAGS = [
-    "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base",
-    "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption",
-    "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del",
-    "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset",
-    "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5",
-    "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img",
-    "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map",
-    "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol",
-    "optgroup", "option", "output", "p", "picture", "pre", "progress", "q",
-    "rp", "rt", "ruby", "s", "samp", "script", "search", "section", "select",
-    "selectedcontent", "slot", "small", "source", "span", "strong", "style",
-    "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea",
-    "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var",
-    "video", "wbr",
-]
+ALL_TAGS = json.loads((REPO_ROOT / "resources" / "html_tags.json").read_text())["tags"]
 TOTAL_TAGS = len(ALL_TAGS)
 
 
@@ -83,6 +69,14 @@ def load_runs():
                 test_data = json.loads(results_file.read_text(encoding='utf-8-sig'))
             except json.JSONDecodeError as e:
                 print(f"WARNING: could not parse {results_file}: {e}")
+                continue
+
+            task_file = run_dir / "task.json"
+            task_record = json.loads(task_file.read_text(encoding="utf-8-sig")) if task_file.exists() else {}
+            records = test_data if isinstance(test_data, list) else [test_data]
+            if task_record.get("task") == "legacy-repair" or any(
+                isinstance(record, dict) and record.get("task") == "legacy-repair" for record in records
+            ):
                 continue
 
             # Handle two formats:
@@ -646,6 +640,16 @@ def build_runs_by_model(runs):
     return result
 
 
+def build_legacy_stats(benchmarks_dir):
+    """Use the shared legacy aggregation contract for both dashboards."""
+    result = subprocess.run(
+        ["node", str(REPO_ROOT / "scripts" / "aggregate-stats.mjs"),
+         "--benchDir", str(benchmarks_dir), "--legacyOnly", "true"],
+        check=True, stdout=subprocess.PIPE, text=True,
+    )
+    return json.loads(result.stdout)
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -659,6 +663,7 @@ def main():
     similarity = build_similarity(runs)
 
     stats = {
+        **build_legacy_stats(BENCHMARKS_DIR),
         "generated_at":           datetime.datetime.utcnow().isoformat() + "Z",
         "total_runs":             total_runs,
         "total_models":           total_models,

@@ -127,6 +127,37 @@ async function main() {
   renderCoverageCharts(data.tag_coverage_by_model);
   renderMissingTagsHeatmap(data.missing_tags_frequency, data.total_runs);
   renderProgressSection(data.model_progress);
+  renderLegacyRepair(data);
+}
+
+function renderLegacyRepair(data) {
+  const rows = data.legacy_repair_stats ?? [];
+  const labels = ['Model', 'Runs', 'Pass rate', 'Deprecated occurrences removed', 'Remaining',
+    'Contrast / region / link-name nodes'];
+  const body = $('#legacy-repair-body');
+  body.replaceChildren();
+  $('#legacy-repair-empty').hidden = rows.length > 0;
+  for (const row of rows) {
+    const axe = row.residual_axe ?? {};
+    const contrast = (axe['color-contrast'] ?? 0) + (axe['color-contrast-enhanced'] ?? 0);
+    const tr = document.createElement('tr');
+    for (const [index, value] of [row.model, row.runs, `${row.pass_rate}%`,
+      row.deprecated_tags_removed, row.deprecated_tags_remaining,
+      `${contrast} / ${axe.region ?? 0} / ${axe['link-name'] ?? 0}`].entries()) {
+      const td = document.createElement('td');
+      td.dataset.label = labels[index];
+      td.textContent = String(value);
+      tr.append(td);
+    }
+    body.append(tr);
+  }
+  const patterns = $('#legacy-patterns');
+  patterns.replaceChildren();
+  for (const pattern of data.hardest_legacy_patterns ?? []) {
+    const li = document.createElement('li');
+    li.textContent = `${pattern.pattern}: remains in ${pattern.residual_runs}/${pattern.exposed_runs} exposed runs (${pattern.residual_rate}%)`;
+    patterns.append(li);
+  }
 }
 
 /* ── Header ──────────────────────────────────────────────────── */

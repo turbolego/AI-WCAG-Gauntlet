@@ -1,4 +1,5 @@
 import { extractAndRepairJson } from "../generate-page.mjs";
+import { buildTaskPrompt } from "../benchmark-task.mjs";
 
 /**
  * Track TPM (Tokens Per Minute) state across requests.
@@ -102,16 +103,16 @@ function checkTPMCapacity(estimatedTokens) {
   return { shouldWait: false, waitMs: 0 };
 }
 
-export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000 }) {
+export async function generateWithGroq({ model, token, iteration, feedback, maxTokens = 6000, taskContext = {} }) {
   const buildPrompt = (feedbackText, trimmed = false) => {
     const lines = [
       "Output ONLY valid JSON with keys: html, css, js (all strings, no markdown fences).",
       "Do not use reasoning or extended thinking. Output JSON immediately.",
       "",
-      "Generate a single-page web app with accessible, valid HTML5 and semantic structure.",
+      buildTaskPrompt({ iteration, ...taskContext }),
       "Include diverse elements: header, nav, main, article, section, aside, footer, form, table, lists, media, and text-level tags.",
       "Ensure proper nesting, valid attributes, and WCAG compliance.",
-      trimmed ? "Focus on fixing the top 1-2 critical issues only." : "You do not need to include every possible HTML5 tag—focus on semantic structure and accessibility.",
+      trimmed ? "Prioritize the top issues without dropping task requirements." : "",
       "",
       `Iteration ${iteration}.`,
     ];
@@ -180,7 +181,7 @@ export async function generateWithGroq({ model, token, iteration, feedback, maxT
     try {
       // Recheck TPM capacity before each attempt (including retries)
       if (attempt > 1) {
-        const retryEstimatedTokens = estimateTokens(messages, currentMaxTokens);
+        const retryEstimatedTokens = estimateTokens(currentMessages, currentMaxTokens);
         const retryCheck = checkTPMCapacity(retryEstimatedTokens);
         if (retryCheck.shouldWait) {
           console.error(`[GROQ_TPM] Retry attempt needs to wait ${Math.ceil(retryCheck.waitMs / 1000)}s for TPM reset...`);

@@ -23,6 +23,18 @@ if (-not $TargetDir) {
 $TARGET_DIR = (Resolve-Path $TargetDir).Path
 
 Write-Host "Running tests for: $TARGET_DIR"
+$TASK = "showcase"
+$taskPath = Join-Path $TARGET_DIR "task.json"
+if (Test-Path $taskPath) {
+    try {
+        $taskRecord = Get-Content $taskPath -Raw | ConvertFrom-Json -ErrorAction Stop
+        $TASK = $taskRecord.task
+        if ($TASK -notin @("showcase", "legacy-repair")) { throw "Unknown task" }
+    } catch {
+        Write-Host "Error: invalid task.json -- $_"
+        exit 1
+    }
+}
 
 # --- Validate ---
 if (-not (Test-Path $TARGET_DIR)) {
@@ -143,13 +155,26 @@ function Stop-ServeProcess {
     }
 }
 
+if ($TASK -eq "legacy-repair") {
+    try {
+        foreach ($report in @("w3c_report.json", "axe_report.json", "pa11y_report.json", "qualweb_report.json", "legacy_report.json")) {
+            $reportPath = Join-Path $TARGET_DIR $report
+            if (Test-Path $reportPath) { Remove-Item $reportPath -ErrorAction Stop }
+        }
+    } catch {
+        Write-Host "Error: cannot clear stale report -- $_"
+        Stop-ServeProcess
+        exit 1
+    }
+}
+
 # --- HTML5 tag test ---
 Write-Host "Running HTML5 tag test..."
 $HTML_TAG_ERRORS = 0
 try {
     Push-Location $TARGET_DIR
-    & node (Join-Path $RESOURCES "check_html5_tags.mjs") "index.html" 2>&1 | Out-Null
-    if ($LASTEXITCODE -ne 0) { throw "check_html5_tags.mjs failed" }
+    & node (Join-Path $SCRIPT_DIR "scripts/check-html5-tags.mjs") "index.html" "html5_tags_report.json" 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "check-html5-tags.mjs failed" }
     Pop-Location
 
     $REPORT = Join-Path $TARGET_DIR "html5_tags_report.json"
@@ -231,10 +256,12 @@ try {
         --reporter json `
         $TARGET_HTTP_URL 2>$null
 
-    # pa11y exits non-zero when issues found -- that is expected, so we don't
-    # treat $LASTEXITCODE != 0 as a hard error here.
+    if ($TASK -eq "legacy-repair" -and $LASTEXITCODE -notin @(0, 2)) {
+        throw "Pa11y scan failed (exit $LASTEXITCODE)"
+    }
 
     if ([string]::IsNullOrWhiteSpace($pa11yJson)) {
+        if ($TASK -eq "legacy-repair") { throw "Empty Pa11y report" }
         $pa11yJson = "[]"
     }
 
@@ -248,6 +275,11 @@ try {
         $PA11Y_ISSUES = ($pa11yReport.issues | Where-Object { $_ } | Measure-Object).Count
     }
 } catch {
+    if ($TASK -eq "legacy-repair") {
+        Write-Host "Error: Pa11y scan did not complete -- $_"
+        Stop-ServeProcess
+        exit 1
+    }
     Write-Host "Warning: pa11y execution failed ($($_)). Resetting to empty report."
     "[]" | Out-File (Join-Path $TARGET_DIR "pa11y_report.json") -Encoding UTF8
     $PA11Y_ISSUES = 0
@@ -299,18 +331,31 @@ try {
     # Package version check failed, keep default
 }
 
+$LEGACY_ERRORS = 0
+$legacyReport = $null
+if ($TASK -eq "legacy-repair") {
+    & node (Join-Path $SCRIPT_DIR "scripts/legacy-run.mjs") $TARGET_DIR
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Error: legacy repair evaluation failed"
+        Stop-ServeProcess
+        exit 1
+    }
+    $legacyReport = Get-Content (Join-Path $TARGET_DIR "legacy_report.json") -Raw | ConvertFrom-Json
+    $LEGACY_ERRORS = [int]$legacyReport.legacy_error_count
+}
+
 # --- Scoring ---
 $TAG_COVERAGE = [int](Get-Content (Join-Path $TARGET_DIR "html5_tags_report.json") -Raw | ConvertFrom-Json).used_tags.Count
 if (-not $TAG_COVERAGE) { $TAG_COVERAGE = 0 }
 
 if ($HTML_TAG_ERRORS -eq 0 -and $W3C_ERRORS -eq 0 -and $AXE_VIOLATIONS -eq 0 -and
-    $PA11Y_ISSUES -eq 0 -and $QUALWEB_ISSUES -eq 0) {
+    $PA11Y_ISSUES -eq 0 -and $QUALWEB_ISSUES -eq 0 -and $LEGACY_ERRORS -eq 0) {
     $ITERATION_STATUS = "pass"
     $QUALITY_SCORE    = 60
     $EFFICIENCY_SCORE = [math]::Round(50 * [math]::Pow(0.8, $ITERATIONS - 1), 4)
 } else {
     $ITERATION_STATUS = "fail"
-    $TOTAL_ERRORS     = $W3C_ERRORS + $AXE_VIOLATIONS + $PA11Y_ISSUES + $QUALWEB_ISSUES
+    $TOTAL_ERRORS     = $W3C_ERRORS + $AXE_VIOLATIONS + $PA11Y_ISSUES + $QUALWEB_ISSUES + $LEGACY_ERRORS
     $QUALITY_SCORE    = [math]::Max(0, 10 - $TOTAL_ERRORS)
     $EFFICIENCY_SCORE = 0
 }
@@ -325,6 +370,9 @@ $usedTags    = $tagsReport.used_tags
 
 # --- Build iteration result object ---
 $iterationResult = [ordered]@{
+    task            = $TASK
+    task_version    = 1
+    legacy_errors   = $LEGACY_ERRORS
     timestamp       = $TIMESTAMP_ISO
     iteration       = $ITERATIONS
     status          = $ITERATION_STATUS
@@ -339,6 +387,10 @@ $iterationResult = [ordered]@{
     qualweb_version = $QUALWEB_VERSION
     missing_tags    = $missingTags
     used_tags       = $usedTags
+}
+if ($TASK -eq "legacy-repair") {
+    $iterationResult.fixture = $legacyReport.fixture
+    $iterationResult.legacy = $legacyReport
 }
 
 # --- Append to test_results.json (array, one entry per iteration) ---
@@ -370,6 +422,8 @@ Write-Host "PA11Y_ISSUES    = $PA11Y_ISSUES"
 Write-Host "PA11Y_VERSION   = $PA11Y_VERSION"
 Write-Host "QUALWEB_ISSUES  = $QUALWEB_ISSUES"
 Write-Host "QUALWEB_VERSION = $QUALWEB_VERSION"
+Write-Host "TASK            = $TASK"
+Write-Host "LEGACY_ERRORS   = $LEGACY_ERRORS"
 Write-Host "ITERATIONS      = $ITERATIONS"
 Write-Host "SCORE           = $SCORE"
 $missingTagsStr = ($missingTags -join ', ')

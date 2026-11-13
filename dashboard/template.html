@@ -37,6 +37,7 @@
 
     <nav aria-label="Page sections">
       <a href="#leaderboard">Leaderboard</a>
+      <a href="#legacy-repair">Legacy repair</a>
       <a href="#run-history">Run History</a>
       <a href="#errors">Error Breakdown</a>
       <a href="#coverage">Tag Coverage</a>
@@ -236,6 +237,28 @@
               </div>
             </div>
           </div>
+        </section>
+
+        <section id="legacy-repair" aria-labelledby="legacy-repair-title">
+          <div class="section-header">
+            <h2 class="section-title" id="legacy-repair-title">Legacy Repair</h2>
+          </div>
+          <p>Separate repair task: every required HTML5 tag and all validator checks remain mandatory.
+            Synthetic fixtures must retain their content and links. Automated passes do not certify full WCAG AAA conformance.</p>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table - Legacy repair">
+            <table>
+              <caption>Legacy repair results by model (not included in the showcase leaderboard)</caption>
+              <thead><tr>
+                <th scope="col">Model</th><th scope="col">Runs</th><th scope="col">Pass rate</th>
+                <th scope="col">Deprecated occurrences removed</th><th scope="col">Remaining</th>
+                <th scope="col">Contrast / region / link-name nodes</th>
+              </tr></thead>
+              <tbody id="legacy-repair-body"></tbody>
+            </table>
+          </div>
+          <p id="legacy-repair-empty" hidden>No legacy-repair runs recorded yet.</p>
+          <h3>Hardest legacy patterns</h3>
+          <ul id="legacy-patterns"></ul>
         </section>
 
       </div><!-- /#app -->
