@@ -18,7 +18,8 @@ export function legacyRunReport(dir) {
   const pa11y = read("pa11y_report.json");
   if (!Array.isArray(pa11y) && !Array.isArray(pa11y?.issues)) throw new Error("Invalid Pa11y report");
   const qualweb = read("qualweb_report.json");
-  if (qualweb.error || !Number.isInteger(qualweb.failedCount) || !Array.isArray(qualweb.results)) {
+  if (!qualweb || Object.hasOwn(qualweb, "error") || Object.hasOwn(qualweb, "note")
+    || !Number.isInteger(qualweb.failedCount) || qualweb.failedCount < 0 || !Array.isArray(qualweb.results)) {
     throw new Error("QualWeb did not produce a valid completed scan");
   }
   const w3c = read("w3c_report.json");

@@ -295,48 +295,47 @@ AXE_VERSION=$(jq -r '
 
 # --- Pa11y validation ---
 echo "Running pa11y..."
+PA11Y_CONFIG="$CHROME_PROFILE_ROOT/pa11y-config.json"
+if ! jq -n --arg executable "$PUPPETEER_EXECUTABLE_PATH" --arg profile "$CHROME_PROFILE_ROOT/pa11y" \
+    '{chromeLaunchConfig: {executablePath: $executable, args: ["--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", ("--user-data-dir=" + $profile)]}}' \
+    > "$PA11Y_CONFIG"; then
+    echo "Error: cannot write Pa11y configuration"
+    exit 1
+fi
 if ! (
     cd "$TARGET_DIR"
     # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
     # puppeteer-core finds a working Chrome binary.
-    PA11Y_CHROME_CONFIG=$(printf '{"executablePath":"%s","args":["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--user-data-dir=%s"]}' "$PUPPETEER_EXECUTABLE_PATH" "$CHROME_PROFILE_ROOT/pa11y")
     pa11y \
         --runner axe \
         --standard WCAG2AAA \
-        --chrome-launch-config "$PA11Y_CHROME_CONFIG" \
+        --config "$PA11Y_CONFIG" \
         --reporter json \
         "$TARGET_HTTP_URL" \
         > pa11y_report.json 2>pa11y_stderr.log
     PA11Y_EXIT=$?
-    if [ "$TASK" = "legacy-repair" ] && [ "$PA11Y_EXIT" -ne 0 ] && [ "$PA11Y_EXIT" -ne 2 ]; then
+    if [ "$PA11Y_EXIT" -ne 0 ] && [ "$PA11Y_EXIT" -ne 2 ]; then
         echo "Error: Pa11y scan failed (exit $PA11Y_EXIT); see pa11y_stderr.log"
         exit 1
     fi
     # pa11y exits non-zero when issues are found — that's expected
 ); then
-    if [ "$TASK" = "legacy-repair" ]; then
-        echo "Error: Pa11y scan did not complete"
-        exit 1
-    fi
-    echo "Warning: pa11y exited with an error; continuing with empty report"
-    echo "[]" > "$TARGET_DIR/pa11y_report.json"
+    echo "Error: Pa11y scan did not complete"
+    exit 1
 fi
 
 # Ensure the file is valid JSON (pa11y may emit nothing on hard crash)
-if ! jq empty "$TARGET_DIR/pa11y_report.json" 2>/dev/null; then
-    if [ "$TASK" = "legacy-repair" ]; then
-        echo "Error: invalid Pa11y report"
-        exit 1
-    fi
-    echo "Warning: pa11y_report.json invalid — resetting to empty array"
-    echo "[]" > "$TARGET_DIR/pa11y_report.json"
+if ! jq -e 'type == "array" or (type == "object" and (.issues | type == "array"))' \
+    "$TARGET_DIR/pa11y_report.json" >/dev/null 2>&1; then
+    echo "Error: invalid Pa11y report"
+    exit 1
 fi
 
 PA11Y_ISSUES=$(jq 'if type == "array" then length else (.issues // [] | length) end' \
         "$TARGET_DIR/pa11y_report.json" 2>/dev/null)
-# If PA11Y_ISSUES is empty or not a number, default to 0
 if ! [[ "$PA11Y_ISSUES" =~ ^[0-9]+$ ]]; then
-    PA11Y_ISSUES=0
+    echo "Error: invalid Pa11y issue count"
+    exit 1
 fi
 
 PA11Y_VERSION=$(pa11y --version 2>/dev/null || echo "unknown")
@@ -353,17 +352,21 @@ if ! (
         "$TARGET_DIR/index.html" \
         "$TARGET_DIR/qualweb_report.json"
 ); then
-    echo "Warning: qualweb failed; continuing with empty report"
-    echo '{"failedCount":0,"results":[],"error":"qualweb script failed"}' > "$TARGET_DIR/qualweb_report.json"
+    echo "Error: QualWeb scan did not complete"
+    exit 1
 fi
 
-# Ensure valid JSON
-if ! jq empty "$TARGET_DIR/qualweb_report.json" 2>/dev/null; then
-    echo "Warning: qualweb_report.json invalid — resetting"
-    echo '{"failedCount":0,"results":[]}' > "$TARGET_DIR/qualweb_report.json"
+if ! jq -e 'type == "object" and (has("error") | not) and (has("note") | not)
+    and (.failedCount | type == "number" and . >= 0 and . == floor)
+    and (.results | type == "array")' "$TARGET_DIR/qualweb_report.json" >/dev/null 2>&1; then
+    echo "Error: invalid or skipped QualWeb report"
+    exit 1
 fi
 
-QUALWEB_ISSUES=$(jq '.failedCount // 0' "$TARGET_DIR/qualweb_report.json" 2>/dev/null || echo 0)
+if ! QUALWEB_ISSUES=$(jq '.failedCount' "$TARGET_DIR/qualweb_report.json"); then
+    echo "Error: cannot read QualWeb issue count"
+    exit 1
+fi
 if ! [[ "$QUALWEB_ISSUES" =~ ^[0-9]+$ ]]; then
     QUALWEB_ISSUES=0
 fi

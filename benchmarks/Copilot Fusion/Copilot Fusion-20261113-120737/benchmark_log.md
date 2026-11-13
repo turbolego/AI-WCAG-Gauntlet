@@ -29,3 +29,17 @@
 - Result: `PASS`.
 - Missing required HTML tags, W3C errors, axe violations, Pa11y issues, and QualWeb issues: 0.
 - Final score: 183.8000.
+
+## Review correction: results withheld
+- The reported pass above is invalid: `pa11y_stderr.log` records an unsupported
+  `--chrome-launch-config` option, and `pa11y_report.json` is empty. Pa11y did not
+  complete any of the recorded scans, so its reported zero counts are not evidence
+  of a successful validation.
+- Preserved the original iteration history as `unvalidated_test_results.json`.
+  There is intentionally no publishable `test_results.json`; both dashboard
+  aggregators omit this run until all required validators complete successfully.
+  The historical score and pass above must not be used as benchmark results.
+- Increased skip-link selector specificity so its dark text is not overridden by
+  `.site-header a` when revealed on keyboard focus (WCAG 2.2 SC 1.4.6 and 2.4.1).
+- A fresh complete run with the repaired Pa11y configuration is still required;
+  no replacement pass or score has been claimed.

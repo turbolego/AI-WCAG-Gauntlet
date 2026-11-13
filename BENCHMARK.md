@@ -30,6 +30,9 @@ Each repair iteration writes `legacy_report.json` after the browser validators
 and embeds its metrics in the iteration result. A repair passes only when **tag
 coverage, W3C, axe, Pa11y, QualWeb, and legacy errors are all zero**. Tool errors
 or missing/invalid repair reports do not count as successful scans.
+Both task modes abort on incomplete Pa11y scans or malformed, failed, or skipped
+QualWeb scans rather than substituting zero-error reports. Pa11y's shared-browser
+configuration is supplied through a temporary `--config` JSON file.
 
 The versioned [legacy rules](resources/legacy_tags.json) detect obsolete tags,
 tag-specific presentation attributes, explicitly presentational tables, clusters
@@ -98,7 +101,7 @@ In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`n
    - `STATUS: PASS` → Stop. The benchmark is complete.
    - `STATUS: FAIL — Maximum iterations` → Stop. Report the final results.
    - `STATUS: FAIL — Fix the errors` → Edit `index.html` and/or `style.css` to fix the reported errors, then go to step 1.
-3. **Never stop early.** The script always exits with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line.
+3. **Never stop early.** Completed iterations exit with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line. Infrastructure failures can exit nonzero without recording a result: repair the tooling before retrying, and never publish such attempts as passing runs.
 4. **Never declare completion based on "false positives".** If `AXE_VIOLATIONS` or `PA11Y_ISSUES` is non-zero in the test output, they are real failures that must be fixed. You are not permitted to stop and claim the remaining issues are false positives — keep iterating until the counts reach 0 or the 20-iteration cap is hit.
 5. **Never stop because the task feels done.** As long as `STATUS: FAIL — Fix the errors` is printed and iterations remain, you must continue the loop without asking for confirmation.
 

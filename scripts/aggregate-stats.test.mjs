@@ -38,8 +38,15 @@ test("repair evaluation measures fixture baseline, residual markup and focused a
   assert.deepEqual(report.preservation_errors, []);
   assert.equal(report.residual_axe["color-contrast-enhanced"], 2);
   assert.equal(report.residual_axe.region, 1);
-  write(dir, "qualweb_report.json", { failedCount: 0, results: [], error: "browser crashed" });
-  assert.throws(() => legacyRunReport(dir), /valid completed scan/);
+  for (const invalid of [
+    { failedCount: 0, results: [], error: "browser crashed" },
+    { failedCount: 0, results: [], note: "QualWeb skipped - no Chrome found" },
+    { failedCount: -1, results: [] },
+    { failedCount: 0, results: null }
+  ]) {
+    write(dir, "qualweb_report.json", invalid);
+    assert.throws(() => legacyRunReport(dir), /valid completed scan/);
+  }
   write(dir, "qualweb_report.json", { failedCount: 0, results: [] });
   fs.rmSync(path.join(dir, "pa11y_report.json"));
   assert.throws(() => legacyRunReport(dir), /ENOENT/);

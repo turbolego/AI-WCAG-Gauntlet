@@ -66,7 +66,7 @@ summary:focus-visible {
   list-style: none;
 }
 
-.skip-link {
+.site-header .skip-link {
   position: absolute;
   z-index: 1;
   top: 0.5rem;
@@ -77,7 +77,7 @@ summary:focus-visible {
   transform: translateY(-180%);
 }
 
-.skip-link:focus {
+.site-header .skip-link:focus {
   transform: translateY(0);
 }
 

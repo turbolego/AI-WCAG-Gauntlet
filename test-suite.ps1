@@ -2,8 +2,8 @@
 # Runs axe-core, pa11y, QualWeb, and W3C Nu Html Checker against the benchmark page.
 # Mirrors test-suite.sh exactly -- same tools, same flags, same output format.
 #
-# NOTE: This script always exits with code 0. Agents must read the STATUS: line
-# at the bottom of output to decide whether to iterate or stop.
+# Completed iterations exit with code 0; infrastructure errors can exit nonzero.
+# Agents must read the STATUS: line to decide whether to iterate or stop.
 
 param(
     [Parameter(Mandatory = $true, Position = 0)]
@@ -250,23 +250,34 @@ Write-Host "Running pa11y..."
 $PA11Y_ISSUES  = 0
 $PA11Y_VERSION = "unknown"
 try {
+    $pa11yConfigPath = Join-Path $CHROME_PROFILE_ROOT "pa11y-config.json"
+    @{
+        chromeLaunchConfig = @{
+            executablePath = $chromePath
+            args = @("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
+                "--user-data-dir=$(Join-Path $CHROME_PROFILE_ROOT 'pa11y')")
+        }
+    } | ConvertTo-Json -Depth 5 | Set-Content $pa11yConfigPath -Encoding UTF8 -ErrorAction Stop
     $pa11yJson = & pa11y `
         --runner axe `
         --standard WCAG2AAA `
+        --config $pa11yConfigPath `
         --reporter json `
-        $TARGET_HTTP_URL 2>$null
+        $TARGET_HTTP_URL 2>(Join-Path $TARGET_DIR "pa11y_stderr.log")
 
-    if ($TASK -eq "legacy-repair" -and $LASTEXITCODE -notin @(0, 2)) {
+    if ($LASTEXITCODE -notin @(0, 2)) {
         throw "Pa11y scan failed (exit $LASTEXITCODE)"
     }
 
     if ([string]::IsNullOrWhiteSpace($pa11yJson)) {
-        if ($TASK -eq "legacy-repair") { throw "Empty Pa11y report" }
-        $pa11yJson = "[]"
+        throw "Empty Pa11y report"
     }
 
     # Validate JSON
-    $pa11yReport = $pa11yJson | ConvertFrom-Json -ErrorAction Stop
+    $pa11yReport = $pa11yJson | ConvertFrom-Json -NoEnumerate -ErrorAction Stop
+    if ($pa11yReport -isnot [array] -and $pa11yReport.issues -isnot [array]) {
+        throw "Invalid Pa11y report"
+    }
     $pa11yJson   | Out-File (Join-Path $TARGET_DIR "pa11y_report.json") -Encoding UTF8
 
     if ($pa11yReport -is [array]) {
@@ -275,14 +286,9 @@ try {
         $PA11Y_ISSUES = ($pa11yReport.issues | Where-Object { $_ } | Measure-Object).Count
     }
 } catch {
-    if ($TASK -eq "legacy-repair") {
-        Write-Host "Error: Pa11y scan did not complete -- $_"
-        Stop-ServeProcess
-        exit 1
-    }
-    Write-Host "Warning: pa11y execution failed ($($_)). Resetting to empty report."
-    "[]" | Out-File (Join-Path $TARGET_DIR "pa11y_report.json") -Encoding UTF8
-    $PA11Y_ISSUES = 0
+    Write-Host "Error: Pa11y scan did not complete -- $_"
+    Stop-ServeProcess
+    exit 1
 }
 
 try {
@@ -302,23 +308,23 @@ try {
         (Join-Path $TARGET_DIR "index.html") `
         (Join-Path $TARGET_DIR "qualweb_report.json") `
         2>&1 | Out-Null
+    $qualwebExit = $LASTEXITCODE
     Pop-Location
+    if ($qualwebExit -ne 0) { throw "QualWeb scan failed (exit $qualwebExit)" }
 
-    $qualwebReport = Get-Content (Join-Path $TARGET_DIR "qualweb_report.json") -Raw | ConvertFrom-Json
-    if ($null -ne $qualwebReport.failedCount) {
-        $QUALWEB_ISSUES = [int]$qualwebReport.failedCount
-    } else {
-        $QUALWEB_ISSUES = 0
+    $qualwebReport = Get-Content (Join-Path $TARGET_DIR "qualweb_report.json") -Raw -ErrorAction Stop |
+        ConvertFrom-Json -ErrorAction Stop
+    if ($qualwebReport.PSObject.Properties.Name -contains "error" -or
+        $qualwebReport.PSObject.Properties.Name -contains "note" -or
+        ($qualwebReport.failedCount -isnot [int] -and $qualwebReport.failedCount -isnot [long]) -or
+        $qualwebReport.failedCount -lt 0 -or $qualwebReport.results -isnot [array]) {
+        throw "Invalid or skipped QualWeb report"
     }
+    $QUALWEB_ISSUES = [int]$qualwebReport.failedCount
 } catch {
-    Write-Host "Warning: qualweb failed ($($_)). Continuing with empty report."
-    $qualwebFallback = [ordered]@{
-        failedCount = 0
-        results     = @()
-        error       = "qualweb script failed"
-    }
-    $qualwebFallback | ConvertTo-Json -Depth 10 | Out-File (Join-Path $TARGET_DIR "qualweb_report.json") -Encoding UTF8
-    $QUALWEB_ISSUES = 0
+    Write-Host "Error: QualWeb scan did not complete -- $_"
+    Stop-ServeProcess
+    exit 1
 }
 
 try {
