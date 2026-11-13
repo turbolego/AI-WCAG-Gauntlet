@@ -1,0 +1,8 @@
+{
+  "model": "Gemini 4 Argon",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-11-13T11:35:27Z",
+  "folder": "Gemini 4 Argon-20261113-123527"
+}

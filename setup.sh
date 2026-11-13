@@ -64,7 +64,8 @@ fi
 #MODEL_NAME="Qwen3.6-35B-A3B-Q4_K_M"
 #MODEL_NAME="GPT-6.1 Sol - Medium"
 #MODEL_NAME="turbolego/qwen3.5-0.8b-base-q4_k_m"
-MODEL_NAME="Copilot Fusion"
+#MODEL_NAME="Copilot Fusion"
+MODEL_NAME="Gemini 4 Argon"
 
 #MODEL_NAME="sorc/qwen3.5-claude-4.6-opus-q4:2b"
 #MODEL_NAME="qwen2.5-coder-1.5b"

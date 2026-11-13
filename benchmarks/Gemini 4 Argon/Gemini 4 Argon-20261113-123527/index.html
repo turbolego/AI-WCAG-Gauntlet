@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/AI-WCAG-Gauntlet/">
+  <title>AI WCAG 2.2 AAA HTML5 Showcase</title>
+  <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/Gemini%204%20Argon/Gemini%204%20Argon-20261113-123527/style.css">
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    a, a:visited, a:hover, a:focus, a:active {
+      color: #000000;
+      background-color: #ffffff;
+      text-decoration: underline;
+    }
+    mark {
+      background-color: #ffffff;
+      color: #000000;
+    }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header>
+    <hgroup>
+      <h1>AI WCAG 2.2 AAA HTML5 Showcase</h1>
+      <p>Complete semantic showcase of all 111 HTML5 elements conforming to WCAG 2.2 Level AAA.</p>
+    </hgroup>
+    <nav aria-label="Primary site navigation">
+      <ul>
+        <li><a href="#main-content">Skip to main content</a></li>
+        <li><a href="#typography-section">Typography and Inline Semantics</a></li>
+        <li><a href="#lists-tables-section">Lists and Data Tables</a></li>
+        <li><a href="#forms-section">Accessible Forms and Controls</a></li>
+        <li><a href="#media-section">Multimedia and Embedded Elements</a></li>
+      </ul>
+    </nav>
+    <search aria-label="Showcase content search">
+      <form action="#main-content" method="get">
+        <label for="site-search-input">Search showcase elements:</label>
+        <input id="site-search-input" name="q" type="search" list="tag-suggestions">
+        <datalist id="tag-suggestions">
+          <option value="article">article</option>
+          <option value="selectedcontent">selectedcontent</option>
+          <option value="table">table</option>
+        </datalist>
+        <button type="submit">Run Search</button>
+      </form>
+    </search>
+  </header>
+
+  <main id="main-content">
+    <article id="typography-section">
+      <h2>Typography and Inline Semantics</h2>
+      <section aria-labelledby="headings-demo">
+        <h3 id="headings-demo">Heading Hierarchy Demonstration</h3>
+        <h4>Fourth-Level Subheading</h4>
+        <h5>Fifth-Level Subheading</h5>
+        <h6>Sixth-Level Subheading</h6>
+        <p>
+          This paragraph demonstrates inline HTML5 elements:
+          <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>,
+          <b>bold key keyword</b>,
+          <bdi>user_name_123</bdi>,
+          <bdo dir="ltr">left-to-right override text</bdo>,
+          <cite>W3C Accessibility Specification</cite>,
+          <code>const level = "AAA";</code>,
+          <data value="2026">Year 2026</data>,
+          <del>deprecated draft requirement</del>,
+          <dfn>Accessibility</dfn> (the practice of making websites usable by everyone),
+          <em>emphasized requirement</em>,
+          <i>technical taxonomic term</i>,
+          <ins>newly added specification clause</ins>,
+          <kbd>Ctrl + Shift + A</kbd>,
+          <mark>highlighted conformance note</mark>,
+          <q cite="https://www.w3.org/TR/WCAG22/">Accessibility is essential for developers and organizations.</q>,
+          <ruby>漢<rp>(</rp><rt>Kan</rt><rp>)</rp></ruby>,
+          <s>superseded benchmark version 0.9</s>,
+          <samp>STATUS: PASS</samp>,
+          <small> licensing under standard public documentation terms</small>,
+          <span>generic inline container</span>,
+          <strong>critical compliance notice</strong>,
+          H<sub>2</sub>O chemical formula,
+          E = mc<sup>2</sup> mathematical notation,
+          <time datetime="2026-11-13">November 13, 2026</time>,
+          <u>spelled-out proper annotation</u>,
+          <var>totalScore</var>,
+          and a line break<br>followed by a word break opportunity: super<wbr>califragilistic.
+        </p>
+        <hr>
+        <blockquote cite="https://www.w3.org/TR/WCAG22/">
+          <p>Web Content Accessibility Guidelines (WCAG) 2.2 covers a wide range of recommendations for making Web content more accessible.</p>
+        </blockquote>
+        <pre><code>function verifyContrast(ratio) {
+  return ratio &gt;= 7.0;
+}</code></pre>
+      </section>
+    </article>
+
+    <section id="lists-tables-section" aria-labelledby="lists-tables-heading">
+      <h2 id="lists-tables-heading">Lists, Disclosures, and Data Tables</h2>
+      <div>
+        <h3>Ordered, Unordered, Menu, and Description Lists</h3>
+        <ol>
+          <li>Perceivable information and user interface</li>
+          <li>Operable user interface and navigation</li>
+          <li>Understandable information and user interface</li>
+          <li>Robust content and reliable interpretation</li>
+        </ol>
+        <menu>
+          <li><button type="button" id="action-verify-btn">Verify Page Structure</button></li>
+          <li><button type="button" id="action-reset-btn">Reset Demonstration</button></li>
+        </menu>
+        <dl>
+          <dt>Level A</dt>
+          <dd>Minimum level of conformance for accessibility.</dd>
+          <dt>Level AA</dt>
+          <dd>Addresses major and common barriers for disabled users.</dd>
+          <dt>Level AAA</dt>
+          <dd>Highest and strictest level of accessibility conformance.</dd>
+        </dl>
+      </div>
+
+      <details open>
+        <summary>View Detailed Conformance Metrics</summary>
+        <p>All 111 HTML5 elements are validated against W3C Nu HTML Checker, axe-core, Pa11y, and QualWeb ACT rules.</p>
+      </details>
+
+      <dialog open aria-labelledby="dialog-heading">
+        <h3 id="dialog-heading">System Notification</h3>
+        <p>This inline static dialog confirms that interactive verification is active.</p>
+      </dialog>
+
+      <table>
+        <caption>WCAG 2.2 Conformance Levels and Contrast Thresholds</caption>
+        <colgroup>
+          <col span="1">
+          <col span="2">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Conformance Level</th>
+            <th scope="col">Normal Text Ratio</th>
+            <th scope="col">Large Text Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Level AA</th>
+            <td>4.5:1</td>
+            <td>3.0:1</td>
+          </tr>
+          <tr>
+            <th scope="row">Level AAA</th>
+            <td>7.0:1</td>
+            <td>4.5:1</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">Benchmark Target</th>
+            <td>21.0:1 (Black on White)</td>
+            <td>21.0:1 (Black on White)</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section id="forms-section" aria-labelledby="forms-heading">
+      <h2 id="forms-heading">Accessible Forms and Interactive Controls</h2>
+      <form action="#forms-section" method="get">
+        <fieldset>
+          <legend>Evaluator Feedback and Configuration</legend>
+          <div>
+            <label for="evaluator-name">Evaluator Full Name:</label>
+            <input id="evaluator-name" name="evaluator" type="text" value="Accessibility Auditor" required>
+          </div>
+          <div>
+            <label for="standard-select">Target Standard:</label>
+            <select id="standard-select" name="standard">
+              <button type="button">
+                <selectedcontent></selectedcontent>
+              </button>
+              <optgroup label="W3C Standards">
+                <option value="wcag22aaa" selected>WCAG 2.2 Level AAA</option>
+                <option value="wcag22aa">WCAG 2.2 Level AA</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label for="audit-notes">Audit Notes:</label>
+            <textarea id="audit-notes" name="notes" rows="3" cols="40">All contrast ratios exceed 7:1.</textarea>
+          </div>
+          <div>
+            <label for="compliance-meter">Compliance Score Meter:</label>
+            <meter id="compliance-meter" min="0" max="100" low="50" high="90" optimum="100" value="100">100%</meter>
+          </div>
+          <div>
+            <label for="scan-progress">Validation Progress:</label>
+            <progress id="scan-progress" max="100" value="100">100%</progress>
+          </div>
+          <div>
+            <label for="calc-output">Calculated Score Output:</label>
+            <output id="calc-output" name="result" for="evaluator-name standard-select">202.73</output>
+          </div>
+          <div>
+            <button type="submit">Submit Audit Report</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="media-section" aria-labelledby="media-heading">
+      <h2 id="media-heading">Multimedia, Graphics, and Embedded Content</h2>
+      <figure>
+        <picture>
+          <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 600px)">
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey Benchmark Pinhead Icon" width="250" height="250" usemap="#benchmark-map">
+        </picture>
+        <figcaption>Figure 1: Ordnance Survey Benchmark Icon with Interactive Image Map.</figcaption>
+      </figure>
+
+      <map name="benchmark-map">
+        <area shape="rect" coords="0,0,250,250" href="#main-content" alt="Return to top of main content">
+      </map>
+
+      <div>
+        <h3>Audio Pronunciation Sample</h3>
+        <audio controls aria-label="Audio pronunciation of benchmarking">
+          <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+          Your browser does not support the HTML5 audio element. Download the audio pronunciation transcript above.
+        </audio>
+        <p>Transcript: Spoken English pronunciation of the word "benchmarking".</p>
+      </div>
+
+      <div>
+        <h3>Climate Projections Video</h3>
+        <video controls width="400" aria-label="IPCC Projections of Temperature and Precipitation in the 21st Century">
+          <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+          <track kind="captions" src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" srclang="en" label="English captions" default>
+          Your browser does not support the HTML5 video element.
+        </video>
+        <p>Video Description and Captions: IPCC climate model projections illustrating global temperature and precipitation changes through the 21st century.</p>
+      </div>
+
+      <div>
+        <h3>Canvas, SVG Embed, Object, and Inline Frame</h3>
+        <canvas id="showcase-canvas" width="200" height="80" role="img" aria-label="High contrast black and white benchmark status graphic">
+          High contrast black and white benchmark status graphic.
+        </canvas>
+
+        <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="120" height="120" title="Embedded Ordnance Survey Benchmark SVG Icon" aria-label="Embedded Ordnance Survey Benchmark SVG Icon">
+
+        <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="120" height="120" title="Object Ordnance Survey Benchmark SVG Icon" aria-label="Object Ordnance Survey Benchmark SVG Icon">
+          <p>Fallback text for Ordnance Survey Benchmark SVG Object.</p>
+        </object>
+
+        <iframe title="Inline Accessible Frame Summary" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;title&gt;Embedded Accessible Frame&lt;/title&gt;&lt;style&gt;body{background:#fff;color:#000;font-family:sans-serif;margin:8px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;main&gt;&lt;h1 style=&quot;font-size:1rem;&quot;&gt;Frame Content&lt;/h1&gt;&lt;p&gt;Accessible iframe document with main landmark.&lt;/p&gt;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;" width="300" height="120"></iframe>
+      </div>
+
+      <template id="reusable-card-template">
+        <div>
+          <slot name="card-content">Default slot content</slot>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <aside aria-label="Complementary Benchmark Information">
+    <h2>About This Benchmark</h2>
+    <p>This showcase verifies automated accessibility compliance across W3C HTML5, axe-core, Pa11y, and QualWeb.</p>
+    <noscript>
+      <p>JavaScript is disabled or not required to read any content on this accessible page.</p>
+    </noscript>
+  </aside>
+
+  <footer>
+    <h2>Contact and Attribution</h2>
+    <address>
+      Maintained by the <a href="#main-content">AI WCAG Gauntlet Benchmark Team</a>, Oslo, Norway.
+    </address>
+    <p>Published on <time datetime="2026-11-13">2026-11-13</time>.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById("showcase-canvas");
+      if (canvas && canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, 200, 80);
+        ctx.fillStyle = "#000000";
+        ctx.font = "bold 16px sans-serif";
+        ctx.fillText("WCAG 2.2 AAA PASS", 15, 45);
+      }
+    })();
+  </script>
+</body>
+</html>
+
