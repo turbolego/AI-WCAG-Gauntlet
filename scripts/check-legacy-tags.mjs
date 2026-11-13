@@ -53,6 +53,8 @@ function styleValue(node, property) {
 
 function hidden(node) {
   return nonVisibleTags.has(node.tagName) || attribute(node, "hidden") !== undefined
+    || (node.tagName === "dialog" && attribute(node, "open") === undefined
+      && !styleValue(node, "display"))
     || styleValue(node, "display") === "none"
     || ["hidden", "collapse"].includes(styleValue(node, "visibility"));
 }
