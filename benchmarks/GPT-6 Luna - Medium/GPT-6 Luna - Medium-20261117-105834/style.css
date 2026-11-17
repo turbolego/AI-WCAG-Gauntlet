@@ -1,0 +1,194 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  color: #17212b;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  padding-block: 3rem 2rem;
+  border-bottom: 0.2rem solid #315b4a;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #344a40;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 16ch;
+  margin-block: 0.4rem 1rem;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+h2 {
+  margin-block-start: 0;
+}
+
+a {
+  color: #064b35;
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  color: #083723;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 0.2rem solid #8a3200;
+  outline-offset: 0.2rem;
+}
+
+main {
+  padding-block: 2rem 4rem;
+}
+
+section,
+article,
+aside,
+figure,
+form {
+  margin-block: 2rem;
+}
+
+.intro,
+.search-panel,
+#examples,
+.site-footer {
+  max-width: 52rem;
+}
+
+.feature-image img,
+figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+small {
+  color: #303b44;
+}
+
+fieldset {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 36rem;
+  padding: 1rem;
+  border: 0.12rem solid #58666f;
+  border-radius: 0.4rem;
+}
+
+input,
+textarea,
+select,
+button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.7rem;
+  border: 0.12rem solid #45535d;
+  border-radius: 0.25rem;
+  font: inherit;
+}
+
+button {
+  width: fit-content;
+  color: #fff;
+  background: #174b37;
+  cursor: pointer;
+}
+
+details {
+  padding: 1rem;
+  border: 0.12rem solid #58666f;
+  border-radius: 0.5rem;
+}
+
+summary {
+  width: fit-content;
+  color: #064b35;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.examples-content {
+  padding-block-start: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption,
+th,
+td {
+  padding: 0.65rem;
+  border: 0.1rem solid #58666f;
+  text-align: left;
+}
+
+caption,
+th {
+  font-weight: 700;
+}
+
+audio,
+video,
+iframe,
+object,
+embed,
+canvas {
+  display: block;
+  max-width: 100%;
+  margin-block: 1rem;
+}
+
+.site-footer {
+  padding-block: 1rem 2rem;
+  border-top: 0.12rem solid #58666f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}

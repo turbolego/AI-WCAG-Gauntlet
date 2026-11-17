@@ -304,16 +304,32 @@ if ! jq -n --arg executable "$PUPPETEER_EXECUTABLE_PATH" --arg profile "$CHROME_
 fi
 if ! (
     cd "$TARGET_DIR"
+    PA11Y_STDERR_TEMP="pa11y_stderr.log.tmp"
+    if ! rm -f pa11y_stderr.log "$PA11Y_STDERR_TEMP"; then
+        echo "Error: cannot prepare Pa11y stderr log"
+        exit 1
+    fi
     # PUPPETEER_EXECUTABLE_PATH is exported above so pa11y's bundled
     # puppeteer-core finds a working Chrome binary.
     pa11y \
         --runner axe \
         --standard WCAG2AAA \
         --config "$PA11Y_CONFIG" \
+        --include-warnings \
+        --include-notices \
         --reporter json \
         "$TARGET_HTTP_URL" \
-        > pa11y_report.json 2>pa11y_stderr.log
+        > pa11y_report.json 2>"$PA11Y_STDERR_TEMP"
     PA11Y_EXIT=$?
+    if [ -s "$PA11Y_STDERR_TEMP" ]; then
+        if ! mv "$PA11Y_STDERR_TEMP" pa11y_stderr.log; then
+            echo "Error: cannot save Pa11y stderr log"
+            exit 1
+        fi
+    elif ! rm -f "$PA11Y_STDERR_TEMP"; then
+        echo "Error: cannot remove empty Pa11y stderr log"
+        exit 1
+    fi
     if [ "$PA11Y_EXIT" -ne 0 ] && [ "$PA11Y_EXIT" -ne 2 ]; then
         echo "Error: Pa11y scan failed (exit $PA11Y_EXIT); see pa11y_stderr.log"
         exit 1
