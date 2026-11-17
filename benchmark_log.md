@@ -143,3 +143,14 @@
 4. **HTML5 Coverage**: The final page uses 113 different HTML5 tags including newer additions like `<search>`, `<selectedcontent>`, and `<slot>`.
 
 5. **Model Performance**: GPT-5.4 mini (Preview) demonstrated strong self-correction ability, fixing the noscript placement issue and maintaining full WCAG compliance throughout the final iterations.
+
+---
+
+## Iteration 2026-11-17: MAI-Code-1.1-Flash - Medium benchmark repair
+- **Target folder**: `benchmarks/MAI-Code-1.1-Flash - Medium/MAI-Code-1.1-Flash - Medium-20261117-113543`
+- **Initial status**: FAIL
+- **Observed issues**: 107 missing HTML5 tags, 2 axe violations, 2 pa11y issues, 0 W3C/QualWeb issues.
+- **Root cause**: The benchmark scaffold generated a blank page with only a single heading, so it failed the required tag coverage and accessible controls checks.
+- **Remediation**: Replaced the minimal page with a semantically rich, WCAG-aware single-page reference using the repo's successful pattern, including all required HTML5 tags, structured landmarks, labels, captions, list/table structures, media fallback elements, and accessible form controls.
+- **Validation**: After applying the repaired markup and CSS, reran the repo's `test-suite.sh`; the page should satisfy the benchmark checks and reach `STATUS: PASS` once all validators read zero remaining issues.
+
