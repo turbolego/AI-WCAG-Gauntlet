@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base target="_self">
+  <title>AI WCAG Gauntlet HTML5 Reference</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    template { display: none; }
+  </style>
+  <script>window.alert = window.confirm = window.prompt = () => null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">A practical guide to semantic markup</p>
+    <h1>HTML5, made accessible</h1>
+    <nav aria-label="Primary navigation">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="intro">
+      <hgroup>
+        <h2>Build a stronger web</h2>
+        <p>Small, meaningful elements make pages easier to use.</p>
+      </hgroup>
+      <p>
+        The <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+        encourage clear structure. Use <strong>semantic HTML</strong> and
+        <em>carefully considered design</em> to help everyone.
+      </p>
+      <p>
+        This guide was updated
+        <time datetime="2026-11-17">17 November 2026</time>.
+        <mark>Explore the examples below.</mark>
+      </p>
+      <figure class="feature-image">
+        <picture>
+          <source
+            srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+            media="(min-width: 40rem)">
+          <img
+            src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+            alt="Survey benchmark pinhead symbol">
+        </picture>
+        <figcaption>A responsive image with a descriptive text alternative.</figcaption>
+      </figure>
+      <p>
+        Read <a href="#examples">the element examples</a> or send a note to
+        <a href="mailto:accessibility@example.test">the accessibility team</a>.
+      </p>
+      <blockquote cite="https://www.w3.org/TR/WCAG22/">
+        <p>Accessibility is a foundation of quality.</p>
+      </blockquote>
+      <p><q cite="https://html.spec.whatwg.org/">Use semantic HTML.</q>
+        <cite>HTML Living Standard</cite></p>
+      <address>Accessibility Team<br>
+        <a href="mailto:accessibility@example.test">accessibility@example.test</a>
+      </address>
+    </article>
+
+    <section class="search-panel" aria-labelledby="search-heading">
+      <h2 id="search-heading">Find an example</h2>
+      <search>
+        <form action="#examples" method="get">
+          <fieldset>
+            <legend>Search this reference</legend>
+            <label for="term">Search term</label>
+            <input id="term" name="term" type="search" list="terms">
+            <datalist id="terms">
+              <option value="HTML">
+              <option value="Accessibility">
+            </datalist>
+            <button type="submit">Search examples</button>
+            <output for="term">Ready to explore</output>
+          </fieldset>
+        </form>
+      </search>
+    </section>
+
+    <section id="examples" aria-labelledby="examples-heading">
+      <h2 id="examples-heading">Explore the elements</h2>
+      <p>Open the guide to browse additional semantic HTML examples.</p>
+      <details>
+        <summary>Show the full HTML5 reference</summary>
+        <div class="examples-content">
+          <article aria-labelledby="text-heading">
+            <h3 id="text-heading">Text and structure</h3>
+            <p>
+              <b>Bold text</b>, <i>alternate voice</i>, <u>annotated text</u>,
+              <s>outdated information</s>, <small>small print</small>,
+              H<sub>2</sub>O, x<sup>2</sup>, a <var>score</var>,
+              <code>code</code>, press <kbd>Enter</kbd>,
+              <samp>sample output</samp>, <dfn>definition</dfn>,
+              <data value="42">forty-two</data>,
+              <bdi>text with isolated direction</bdi>,
+              <bdo dir="rtl">right to left</bdo>,
+              <del>removed text</del>, and <ins>added text</ins>.
+              A line break follows.<br>
+              After a break opportunity<wbr> comes more text.
+            </p>
+            <hr>
+            <pre>Preformatted text
+keeps its line breaks.</pre>
+            <dl>
+              <dt>Semantic markup</dt>
+              <dd>Elements that describe the meaning of their content.</dd>
+            </dl>
+            <p><ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby></p>
+          </article>
+
+          <aside aria-labelledby="aside-heading">
+            <h4 id="aside-heading">A useful aside</h4>
+            <p>Supplementary content belongs in an aside.</p>
+          </aside>
+
+          <section aria-labelledby="lists-heading">
+            <h5 id="lists-heading">Lists and actions</h5>
+            <ol>
+              <li>Plan the content</li>
+              <li>Choose meaningful elements</li>
+            </ol>
+            <ul>
+              <li>Keep a clear structure</li>
+              <li>Check accessibility</li>
+            </ul>
+            <menu aria-label="Reference actions">
+              <li><button type="button">Save this guide</button></li>
+            </menu>
+          </section>
+
+          <section aria-labelledby="media-heading">
+            <h6 id="media-heading">Images, audio, and video</h6>
+            <figure>
+              <img
+                src="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                alt="A larger view of the survey benchmark pinhead symbol"
+                usemap="#symbol-map">
+              <map name="symbol-map">
+                <area shape="rect" coords="0,0,500,500" href="#examples"
+                  alt="Return to the HTML5 examples">
+              </map>
+              <figcaption>An image map with a named destination.</figcaption>
+            </figure>
+            <audio controls aria-label="Benchmark audio example">
+              <source
+                src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav"
+                type="audio/wav">
+              <track kind="captions" srclang="en" label="English captions"
+                src="data:text/vtt,WEBVTT%0A">
+              Audio playback is not supported by this browser.
+            </audio>
+            <video controls width="480" aria-label="Climate projection video example">
+              <source
+                src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm"
+                type="video/webm">
+              <track kind="captions" srclang="en" label="English captions"
+                src="data:text/vtt,WEBVTT%0A">
+              Video playback is not supported by this browser.
+            </video>
+            <object
+              data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+              type="image/svg+xml"
+              title="Survey benchmark pinhead symbol">
+              <img
+                src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+                alt="Survey benchmark pinhead symbol">
+            </object>
+            <embed
+              src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+              type="image/svg+xml"
+              title="Embedded survey benchmark symbol">
+            <canvas width="1" height="1" aria-label="One-pixel canvas example">
+              Canvas fallback text
+            </canvas>
+            <iframe
+              title="Embedded HTML example"
+              srcdoc="<!doctype html><html lang='en'><head><title>Embedded example</title><script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head><body><p>Embedded content.</p></body></html>">
+            </iframe>
+          </section>
+
+          <section aria-labelledby="data-heading">
+            <h3 id="data-heading">Data and progress</h3>
+            <p>Reading progress: <meter min="0" max="10" value="8">8 of 10</meter></p>
+            <p>Reference completion: <progress max="100" value="80">80%</progress></p>
+            <table>
+              <caption>Example review schedule</caption>
+              <colgroup><col><col></colgroup>
+              <thead>
+                <tr><th scope="col">Topic</th><th scope="col">Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Structure</th><td>Reviewed</td></tr>
+                <tr><th scope="row">Contrast</th><td>In progress</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><th scope="row">Total topics</th><td>2</td></tr>
+              </tfoot>
+            </table>
+          </section>
+
+          <section aria-labelledby="form-heading">
+            <h3 id="form-heading">Accessible form controls</h3>
+            <form>
+              <fieldset>
+                <legend>Share feedback</legend>
+                <label for="feedback">Your feedback</label>
+                <textarea id="feedback" name="feedback" rows="3"></textarea>
+                <label for="topic">Choose a topic</label>
+                <select id="topic" name="topic" aria-label="Example selection">
+                  <button type="button"><selectedcontent></selectedcontent></button>
+                  <optgroup label="Foundations">
+                    <option selected>Semantic HTML</option>
+                    <option>Accessibility</option>
+                  </optgroup>
+                </select>
+                <button type="submit">Send feedback</button>
+              </fieldset>
+            </form>
+          </section>
+
+          <dialog aria-labelledby="dialog-heading">
+            <h3 id="dialog-heading">Example dialog</h3>
+            <p>This dialog demonstrates a native HTML element.</p>
+          </dialog>
+          <slot name="example-slot">Slot fallback text</slot>
+          <template><p>Template content.</p></template>
+          <noscript><p>JavaScript is unavailable.</p></noscript>
+          <div class="generic-example">A generic division.</div>
+          <span class="inline-example">An inline span example.</span>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>AI WCAG Gauntlet <span aria-hidden="true">·</span> A reference for better HTML.</p>
+  </footer>
+</body>
+</html>

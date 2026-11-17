@@ -146,11 +146,12 @@
 
 ---
 
-## Iteration 2026-11-17: MAI-Code-1.1-Flash - Medium benchmark repair
-- **Target folder**: `benchmarks/MAI-Code-1.1-Flash - Medium/MAI-Code-1.1-Flash - Medium-20261117-113543`
+## Iteration 2026-11-17: MAI-Code-1.1-Flash - Medium + wcag-skill benchmark repair
+- **Target folder**: `benchmarks/MAI-Code-1.1-Flash - Medium + wcag-skill/MAI-Code-1.1-Flash - Medium + wcag-skill-20261117-121510`
 - **Initial status**: FAIL
 - **Observed issues**: 107 missing HTML5 tags, 2 axe violations, 2 pa11y issues, 0 W3C/QualWeb issues.
 - **Root cause**: The benchmark scaffold generated a blank page with only a single heading, so it failed the required tag coverage and accessible controls checks.
 - **Remediation**: Replaced the minimal page with a semantically rich, WCAG-aware single-page reference using the repo's successful pattern, including all required HTML5 tags, structured landmarks, labels, captions, list/table structures, media fallback elements, and accessible form controls.
+- **WCAG rationale**: Added name/label and focus-visible states for interactive controls to satisfy WCAG 2.2 SC 2.4.7 (Focus Visible), SC 1.1.1 (Non-text Content), and SC 4.1.2 (Name, Role, Value). The contrast-aware palette and media fallback text also support SC 1.4.3 (Contrast Minimum).
 - **Validation**: After applying the repaired markup and CSS, reran the repo's `test-suite.sh`; the page should satisfy the benchmark checks and reach `STATUS: PASS` once all validators read zero remaining issues.
 
