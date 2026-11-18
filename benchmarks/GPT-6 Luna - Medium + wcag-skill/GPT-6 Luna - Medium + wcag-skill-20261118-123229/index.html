@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An accessible technical showcase of native HTML elements and benchmark data.">
+  <meta name="color-scheme" content="light">
+  <title>Accessible HTML Showcase | AI WCAG Gauntlet</title>
+  <base target="_self">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <noscript>
+    <p class="notice">JavaScript is not required to read this showcase. The range output and add-note example need JavaScript to update.</p>
+  </noscript>
+
+  <header class="site-header">
+    <div class="page-width">
+      <p class="eyebrow">AI WCAG Gauntlet · HTML element index</p>
+      <hgroup>
+        <h1>Accessible HTML Showcase</h1>
+        <p>Native elements, meaningful examples, and clear interaction states.</p>
+      </hgroup>
+      <nav aria-label="Showcase sections">
+        <ul class="nav-list">
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#data">Data and forms</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#interaction">Interaction</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-width" aria-label="Main content">
+    <article aria-labelledby="intro-heading">
+      <header class="intro">
+        <h2 id="intro-heading">A practical element reference</h2>
+        <p>This page uses native HTML for structure and interaction. Its examples remain in normal reading order and work without relying on color alone.</p>
+        <p><strong>Current focus:</strong> semantic markup, readable contrast, and keyboard access. <em>Support details are included beside each example.</em></p>
+        <p>Terms such as <dfn id="semantic-html">semantic HTML</dfn> describe elements whose meaning is represented in the document structure.</p>
+        <p>One benchmark sample is <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2. The <i>status</i> value is <data value="0.82">82 percent</data>, and a <b>clear label</b> helps people understand each control.</p>
+        <p>Mixed-direction text stays readable: report code <bdi>AX-37</bdi>. An explicit right-to-left sample is <bdo dir="rtl">مرحبا</bdo>.</p>
+        <blockquote cite="https://www.w3.org/TR/WCAG22/">
+          <p>Make web content accessible to people with disabilities.</p>
+          <p>— <cite>Web Content Accessibility Guidelines</cite></p>
+        </blockquote>
+        <p>The short quotation <q cite="https://www.w3.org/TR/WCAG22/">perceivable, operable, understandable, and robust</q> summarizes the four WCAG principles.</p>
+        <p>Review note: <del datetime="2026-01-15">color is the only status cue</del> <ins datetime="2026-01-16">text and shape identify status as well</ins>.</p>
+        <p><s>Old score: 60 points</s> is retained as a historical example; current results are recorded in the test report.</p>
+        <p>Benchmark reading takes <time datetime="PT5M">about five minutes</time>. For long terms, a line break opportunity is provided at accessible<wbr>documentation<wbr>examples.</p>
+      </header>
+    </article>
+
+    <section id="structure" class="panel" aria-labelledby="structure-heading">
+      <h2 id="structure-heading">Document structure and text</h2>
+      <div class="columns">
+        <section aria-labelledby="text-heading">
+          <h3 id="text-heading">Text-level semantics</h3>
+          <p>Use <mark>highlighting</mark> to identify a relevant result, <small>small text for a short note</small>, and <u>underlining only when it has a clear annotation meaning</u>.</p>
+          <p>Scientific notation can use subscripts such as CO<sub>2</sub> and superscripts such as 10<sup>2</sup>.</p>
+          <p>Inline source code: <code>document.documentElement.lang</code>. Keyboard input: <kbd>Tab</kbd>, then <kbd>Enter</kbd>. Program output: <samp>Validation complete</samp>. A variable may be written <var>sampleCount</var>.</p>
+          <p>Ruby annotation: <ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>.</p>
+          <pre><code>const status = "ready";
+console.log(status);</code></pre>
+          <p>A definition list pairs terms and descriptions.</p>
+          <dl>
+            <dt>Perceivable</dt>
+            <dd>Information is available through at least one usable sensory channel.</dd>
+            <dt>Operable</dt>
+            <dd>Controls and navigation work with supported input methods.</dd>
+          </dl>
+          <hr>
+          <p>Supplied definitions are concise and appear next to their terms.</p>
+        </section>
+
+        <aside class="callout" aria-labelledby="aside-heading">
+          <h3 id="aside-heading">Related guidance</h3>
+          <p>Native headings and landmarks support navigation (WCAG 2.2 SC 1.3.1 and 2.4.6).</p>
+          <address>
+            Benchmark maintainers<br>
+            <a href="mailto:accessibility@example.org">accessibility@example.org</a>
+          </address>
+        </aside>
+      </div>
+
+      <section aria-labelledby="heading-levels">
+        <h3 id="heading-levels">A heading hierarchy</h3>
+        <section aria-labelledby="level-four">
+          <h4 id="level-four">Level four topic</h4>
+          <section aria-labelledby="level-five">
+            <h5 id="level-five">Level five detail</h5>
+            <section aria-labelledby="level-six">
+              <h6 id="level-six">Level six note</h6>
+              <p>Heading levels are nested in order to show the relationship between this note and its parent topics.</p>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <div class="sample-map">
+        <p>The illustration is an image map with one keyboard-accessible destination.</p>
+        <img
+          src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+          alt="Ordnance Survey map pin illustration; its mapped area links to media examples"
+          usemap="#media-map"
+          width="120"
+          height="120">
+        <map name="media-map">
+          <area shape="rect" coords="0,0,120,120" href="#media" alt="Jump to media examples">
+        </map>
+      </div>
+    </section>
+
+    <section id="data" class="panel" aria-labelledby="data-heading">
+      <h2 id="data-heading">Data, lists, and progress</h2>
+      <div class="columns">
+        <section aria-labelledby="table-heading">
+          <h3 id="table-heading">Review summary</h3>
+          <table>
+            <caption>Example review status by checkpoint</caption>
+            <colgroup>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Checkpoint</th>
+                <th scope="col">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Markup</th>
+                <td>Reviewed</td>
+              </tr>
+              <tr>
+                <th scope="row">Keyboard</th>
+                <td>Ready for manual test</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Total checkpoints</th>
+                <td>2</td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+
+        <section aria-labelledby="list-heading">
+          <h3 id="list-heading">Review sequence</h3>
+          <ol>
+            <li>Read the page in document order.</li>
+            <li>Use the controls with a keyboard.</li>
+            <li>Confirm that the result text updates.</li>
+          </ol>
+          <h4>Supporting resources</h4>
+          <ul>
+            <li>Native elements</li>
+            <li>Visible focus</li>
+            <li>Text alternatives</li>
+          </ul>
+          <menu aria-label="Reference links" role="list">
+            <li><a href="#forms">Go to the form</a></li>
+            <li><a href="#media">Go to the media</a></li>
+          </menu>
+        </section>
+      </div>
+
+      <div class="status-grid">
+        <p>Contrast review: <meter min="0" max="10" low="4" high="7" optimum="10" value="8">8 out of 10</meter></p>
+        <p>Content review: <progress max="100" value="80">80%</progress></p>
+      </div>
+    </section>
+
+    <section id="forms" class="panel" aria-labelledby="form-heading">
+      <h2 id="form-heading">Forms and native controls</h2>
+      <div class="columns">
+        <form id="review-form">
+          <fieldset>
+            <legend>Review settings</legend>
+            <p>
+              <label for="reviewer-name">Reviewer name</label>
+              <input id="reviewer-name" name="reviewer-name" type="text" autocomplete="name" required>
+            </p>
+            <p>
+              <label for="review-focus">Choose a review focus</label>
+              <input id="review-focus" name="review-focus" list="focus-options" autocomplete="off">
+              <datalist id="focus-options">
+                <option value="Keyboard access">Keyboard access</option>
+                <option value="Text alternatives">Text alternatives</option>
+                <option value="Readable contrast">Readable contrast</option>
+              </datalist>
+            </p>
+            <p>
+              <label for="review-level">Conformance target</label>
+              <select id="review-level" name="review-level">
+                <button>
+                  <selectedcontent></selectedcontent>
+                </button>
+                <option value="a">Level A</option>
+                <optgroup label="Enhanced targets">
+                  <option value="aa" selected>Level AA</option>
+                  <option value="aaa">Level AAA</option>
+                </optgroup>
+              </select>
+            </p>
+            <p>
+              <label for="review-notes">Review notes</label>
+              <textarea id="review-notes" name="review-notes" rows="3">Native controls preserve familiar keyboard behavior.</textarea>
+            </p>
+            <p>
+              <label for="sample-range">Sample size</label>
+              <output id="sample-count" name="sample-count" for="sample-range">5</output>
+              <input id="sample-range" name="sample-range" type="range" min="1" max="10" value="5" aria-describedby="range-help">
+              <span id="range-help" class="help-text">Use the arrow keys to change the value.</span>
+            </p>
+            <p class="check-row">
+              <input id="include-manual" name="include-manual" type="checkbox" checked>
+              <label for="include-manual">Include manual checks in the report</label>
+            </p>
+            <button type="submit">Save review settings</button>
+            <p id="form-status" class="status-message" role="status" aria-live="polite"></p>
+          </fieldset>
+        </form>
+
+        <section aria-labelledby="search-heading">
+          <h3 id="search-heading">Search this page</h3>
+          <search>
+            <form action="#data" method="get">
+              <label for="page-search">Find a topic</label>
+              <input id="page-search" name="q" type="search">
+              <button type="submit">Find topic</button>
+            </form>
+          </search>
+          <p>The search control uses the browser's native search input and a visible label.</p>
+          <benchmark-reference>
+            <span slot="reference-note">Reference slot: this assigned note is rendered in the component.</span>
+          </benchmark-reference>
+          <template id="reference-slot-template">
+            <p><slot name="reference-note">Fallback note for an unassigned reference slot.</slot></p>
+          </template>
+        </section>
+      </div>
+    </section>
+
+    <section id="media" class="panel" aria-labelledby="media-heading">
+      <h2 id="media-heading">Images, embedded content, and media</h2>
+      <div class="columns media-grid">
+        <figure>
+          <picture>
+            <source
+              srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+              media="(min-width: 32rem)"
+              type="image/png">
+            <img
+              src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png"
+              alt="A blue map pin from the supplied Ordnance Survey icon set"
+              width="250"
+              height="250">
+          </picture>
+          <figcaption>Responsive image example using the supplied map pin artwork.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+            alt="Outline drawing of a map pin"
+            width="120"
+            height="120">
+          <figcaption>Scalable vector image example.</figcaption>
+        </figure>
+      </div>
+
+      <div class="columns">
+        <figure>
+          <audio controls preload="metadata">
+            <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+            Your browser does not support the audio player.
+          </audio>
+          <figcaption>
+            <strong>Pronunciation sample</strong>
+            <p>Text alternative: “Flame, not lame.”</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <video controls preload="metadata" width="640" height="360" aria-describedby="video-summary">
+            <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+            <track kind="captions" src="video-captions.vtt" srclang="en" label="English captions" default>
+            <track kind="descriptions" src="video-description.vtt" srclang="en" label="Visual description">
+            Your browser does not support the video player.
+          </video>
+          <figcaption>
+            <strong>Climate projection visualization</strong>
+            <p id="video-summary">NASA visualizations show climate-model estimates of temperature and precipitation patterns through 2100, compared with the 1971–2000 average. The linked source record describes the video; this summary is not a verbatim transcript.</p>
+            <p><a href="https://svs.gsfc.nasa.gov/vis/a010000/a011300/a011376/G2013-080_IPCC_viz-transcript.html">Read the official NASA transcript</a> and <a href="https://commons.wikimedia.org/wiki/File:IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm">media source description</a>.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <details>
+        <summary>Read the video transcript</summary>
+        <p>Who can tell what the future will be like? NASA scientists have combined data from several climate models, used by the UN Intergovernmental Panel on Climate Change, to show how patterns of temperature and precipitation could change through the end of the 21st century. This visualization shows the expected changes in temperature and precipitation compared with average levels of the late 20th century.</p>
+        <p>The largest temperature increases are seen in the Northern Hemisphere. Across North America, areas that typically have snow, such as the Rocky Mountains and northern Canada, will see the earliest and largest temperature rise. Warming temperatures will eliminate the reflective and cooling effect of white snow cover. Reduced albedo is why the Arctic region shows dramatic warming as polar sea ice melts and darker ocean water absorbs energy from the sun. Warmer water then accelerates sea-ice melting.</p>
+        <p>Land areas around the globe show a greater temperature increase than surrounding ocean waters. Evaporation helps keep the ocean surface cool, while the deep ocean can absorb substantial energy before heating up.</p>
+        <p>Off the coast of South America, an unusually warm patch of the Pacific Ocean is associated with El Niño, a cyclical occurrence that brings more precipitation to that area and affects the region's climate. Models project warmer waters and increased precipitation stretching across the Pacific toward Indonesia as the century progresses.</p>
+        <p>Monsoons over the Indian subcontinent are projected to bring increased precipitation across a wider area. Eastern Africa and the Sahel may see increases up to 100 percent, while the Mediterranean may see a decrease of more than 40 percent.</p>
+        <p>In general, dry mid-latitude and subtropical regions are projected to receive less precipitation, while wet mid-latitude regions may receive more. The poles and high latitudes are also expected to see increased precipitation. For North America, models indicate more precipitation in the north and less in the south.</p>
+      </details>
+
+      <div class="columns">
+        <figure>
+          <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Map pin vector illustration">
+            Map pin illustration, supplied as an SVG.
+          </object>
+          <figcaption>Vector content embedded with an object element.</figcaption>
+        </figure>
+        <figure>
+          <embed
+            src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg"
+            type="image/svg+xml"
+            aria-label="Map pin vector illustration embedded directly">
+          <figcaption>Vector content embedded directly with an embed element.</figcaption>
+        </figure>
+      </div>
+
+      <figure>
+        <canvas id="sample-chart" width="480" height="180" role="img" aria-label="Bar chart showing three review checkpoints">
+          A bar chart compares three checkpoints: markup 90, keyboard 70, and media 60.
+        </canvas>
+        <figcaption>Canvas demonstration with an equivalent text description.</figcaption>
+      </figure>
+
+      <iframe
+        title="A small embedded note about native HTML"
+        src="frame-note.html">
+      </iframe>
+      <p>The iframe contains a short same-origin note; its title identifies the frame.</p>
+    </section>
+
+    <section id="interaction" class="panel" aria-labelledby="interaction-heading">
+      <h2 id="interaction-heading">Interactive examples</h2>
+      <div class="columns">
+        <section aria-labelledby="details-heading">
+          <h3 id="details-heading">Disclosure</h3>
+          <details open>
+            <summary>Show the review method</summary>
+            <p>Check structure, keyboard operation, names, contrast, and responsive reflow.</p>
+          </details>
+        </section>
+        <section aria-labelledby="dialog-heading">
+          <h3 id="dialog-heading">Dialog</h3>
+          <button id="open-dialog" type="button">Open review note</button>
+          <dialog id="review-dialog" aria-labelledby="dialog-title">
+            <h4 id="dialog-title">Review note</h4>
+            <p>This native dialog can be closed with its button or the Escape key.</p>
+            <form method="dialog">
+              <button type="submit">Close note</button>
+            </form>
+          </dialog>
+        </section>
+        <section aria-labelledby="note-heading">
+          <h3 id="note-heading">Add a review note</h3>
+          <label for="new-observation">New note</label>
+          <input id="new-observation" type="text" maxlength="80">
+          <button id="add-observation" type="button">Add note</button>
+          <ul id="observations" aria-label="Added review notes">
+            <li id="empty-observations">No review notes have been added.</li>
+          </ul>
+          <p id="observation-status" class="status-message" role="status" aria-live="polite"></p>
+          <template id="observation-template">
+            <li><strong>Review note:</strong> <span class="observation-copy"></span></li>
+          </template>
+        </section>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>Built with native HTML and CSS. Benchmark completion means the automated checks reported no findings; it is not a certification of WCAG conformance.</p>
+      <address>Questions: <a href="mailto:accessibility@example.org">contact the accessibility team</a>.</address>
+    </footer>
+  </main>
+
+  <script>
+    const range = document.querySelector("#sample-range");
+    const output = document.querySelector("#sample-count");
+    range.addEventListener("input", () => {
+      output.value = range.value;
+      output.textContent = range.value;
+    });
+
+    document.querySelector("#review-form").addEventListener("submit", event => {
+      event.preventDefault();
+      document.querySelector("#form-status").textContent = "Review settings saved for this page.";
+    });
+
+    const dialog = document.querySelector("#review-dialog");
+    document.querySelector("#open-dialog").addEventListener("click", () => dialog.showModal());
+
+    document.querySelector("#add-observation").addEventListener("click", () => {
+      const input = document.querySelector("#new-observation");
+      const text = input.value.trim();
+      const status = document.querySelector("#observation-status");
+      if (!text) {
+        status.textContent = "Enter a note before adding it.";
+        input.focus();
+        return;
+      }
+      const item = document.querySelector("#observation-template").content.cloneNode(true);
+      item.querySelector(".observation-copy").textContent = text;
+      document.querySelector("#empty-observations")?.remove();
+      document.querySelector("#observations").append(item);
+      status.textContent = "Review note added.";
+      input.value = "";
+      input.focus();
+    });
+
+    const canvas = document.querySelector("#sample-chart");
+    const context = canvas.getContext("2d");
+    if (context) {
+      context.fillStyle = "#163e72";
+      context.fillRect(48, 30, 80, 120);
+      context.fillRect(190, 56, 80, 94);
+      context.fillRect(332, 70, 80, 80);
+      context.fillStyle = "#172b3a";
+      context.font = "16px sans-serif";
+      context.fillText("Markup", 54, 172);
+      context.fillText("Keyboard", 188, 172);
+      context.fillText("Media", 344, 172);
+    }
+
+    customElements.define("benchmark-reference", class extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: "open" }).append(
+          document.querySelector("#reference-slot-template").content.cloneNode(true)
+        );
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Native HTML note</title>
+</head>
+<body>
+  <main aria-label="Embedded note">
+    <h1>Native HTML note</h1>
+    <p>Native HTML provides built-in semantics and keyboard behavior.</p>
+  </main>
+  <script src="/AI-WCAG-Gauntlet/node_modules/pa11y/node_modules/axe-core/axe.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      axe.run().then(results => {
+        document.documentElement.dataset.axeViolations = String(results.violations.length);
+      });
+    });
+  </script>
+</body>
+</html>
