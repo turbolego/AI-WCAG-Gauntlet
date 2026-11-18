@@ -1,304 +1,251 @@
 ---
 name: wcag-skill
-description: "Build, audit, and repair web content against WCAG 2.2. Use when: (1) creating accessible HTML/CSS/JS, (2) remediating accessibility defects, (3) running reproducible automated audits, (4) preparing WCAG 2.2 AAA evidence and human-test records, or (5) running the optional AI-WCAG-Gauntlet benchmark."
+description: "Build, audit, and repair web content against WCAG 2.2. Use for accessible HTML/CSS/JS, accessibility remediation, reproducible audits, AAA evidence, and AI-WCAG-Gauntlet benchmarks. For benchmarks, preflight tag coverage, W3C, axe, Pa11y, and QualWeb before the first scored test-suite run."
 allowed-tools: Bash, Read, Write, Edit, Env
 metadata:
-  version: 2.0.32
-  openclaw:
-    requires:
-      bins:
-        - node
-        - npm
-        - python3
-        - curl
-        - java
-    envVars:
-      - name: AXE_CHROME_PATH
-        required: false
-        description: Explicit Chrome/Chromium binary path for scripts/a11y-audit.sh when auto-detection fails.
-      - name: AXE_CHROMEDRIVER_PATH
-        required: false
-        description: Explicit Chromedriver binary path for scripts/a11y-audit.sh when auto-detection fails.
-      - name: AXE_CHROME_EXTRA_ARGS
-        required: false
-        description: Space-separated Chrome flags for scripts/a11y-audit.sh. Set to an empty string to keep the Chrome sandbox enabled when CI=true.
-      - name: CI
-        required: false
-        description: When "true" and AXE_CHROME_EXTRA_ARGS is unset, scripts/a11y-audit.sh disables the Chrome sandbox for hosted CI runners.
-      - name: NODE_OPTIONS
-        required: false
-        description: Read and extended by scripts/a11y-audit-limited.sh with a Node heap limit.
-      - name: ULIMIT_PERCENT
-        required: false
-        description: Percentage of available memory used for ulimit -v by scripts/a11y-audit-limited.sh (default 90).
-      - name: ULIMIT_MIN_MB
-        required: false
-        description: Minimum ulimit -v value in MB for scripts/a11y-audit-limited.sh (default 1536).
-      - name: NODE_PERCENT
-        required: false
-        description: Percentage of available memory used for the Node heap by scripts/a11y-audit-limited.sh (default 30).
-      - name: NODE_MIN_MB
-        required: false
-        description: Minimum Node heap in MB for scripts/a11y-audit-limited.sh (default 256).
-      - name: WCAG_TEST_URL
-        required: false
-        description: Page URL for templates/playwright-state.spec.ts (default http://127.0.0.1:8000/).
-    install:
-      - kind: node
-        package: "@axe-core/cli"
-        bins: [axe]
-      - kind: node
-        package: pa11y
-        bins: [pa11y]
-      - kind: node
-        package: "@qualweb/cli"
-        bins: [qw]
-      - kind: node
-        package: vnu-jar
-        bins: [vnu]
-      - kind: node
-        package: chromedriver
-        bins: [chromedriver]
-    homepage: https://github.com/turbolego/wcag-skill
+  version: 3.0.0
 ---
 
-# WCAG 2.2 Accessibility
+# WCAG 2.2: build, then verify
 
-Use this skill to build or audit web content. Prefer native HTML, test through
-HTTP, and treat automated output as evidence—not proof of conformance.
+Use native HTML and test rendered content over HTTP. Automated passes mean
+**no automated findings**, not WCAG conformance. For benchmark work, read the
+unattended benchmark workflow below **before invoking either test suite**.
 
-## Choose the scope first
+## Scope and tool discovery
 
-1. Inventory every route, breakpoint, interactive state, overlay, error path,
-   media item, authentication step, and third-party component in scope.
-2. Set the target: `baseline`, `AA`, or `AAA`.
-3. For an AAA target, read **all three** references before implementation:
-   - [`references/validator-workflow.md`](references/validator-workflow.md)
-   - [`references/aaa-evidence-matrix.md`](references/aaa-evidence-matrix.md)
-   - [`references/manual-test-protocol.md`](references/manual-test-protocol.md)
+1. Establish the target (`baseline`, `AA`, or `AAA`) and inventory routes,
+   breakpoints, controls, dynamic states, errors, frames, and media.
+2. Resolve the repository root and read its task instructions. In this
+   repository, read [BENCHMARK.md](../../../BENCHMARK.md) for benchmark work,
+   [html_tags.json](../../../resources/html_tags.json) for required elements,
+   and [wcag_22.json](../../../resources/wcag_22.json) for success criteria.
+3. This bundled skill contains only this document. Do not try to run missing
+   `scripts/a11y-audit.sh`, `scripts/a11y-audit-limited.sh`,
+   `scripts/check-wcag-412.py`, `benchmark/scripts/check-tag-coverage.py`, or
+   read absent `references/` files. Use the existing repository tools below.
+   In another project, discover its installed equivalents first.
+4. Reuse installed dependencies. Install project-local dependencies only
+   after a missing-dependency failure or a manifest change. Do not install
+   system-wide packages or change host settings. Inspect setup scripts before
+   execution; preserve user configuration and avoid global-install branches.
 
-> Do not say “WCAG AAA compliant” from automated results. Level AAA requires
-> every applicable A, AA, and AAA success criterion for the full page and any
-> complete process. Record an explicit evidence row or non-applicability
-> rationale for each criterion.
+## Actual tools in this repository
 
-## Capabilities and boundaries
+All paths and commands below are relative to the **repository root**, not the
+skill folder. Prefix CLI commands with `rtk`; `rtk proxy` preserves raw output
+when writing JSON reports.
 
-The `allowed-tools` frontmatter declares the agent-facing tools and the
-`shell` and `env` capabilities used by this skill. It does not set the host's
-shell-execution policy, sandbox commands, constrain file paths, or restrict
-network access.
+| Purpose | Existing command | Evidence |
+|---|---|---|
+| Required HTML elements | `rtk node scripts/check-html5-tags.mjs <html> <report>` | `missing_tags`, `used_tags`, `requiredCount` |
+| HTML validity | `rtk node resources/run-w3c-validator.mjs <html> <report>` | `errorCount`, `messages` |
+| Rendered axe audit | `rtk node scripts/run-axe.mjs <http-url> <report>` | `violations`, `incomplete` |
+| Pa11y with its own axe runner | `rtk proxy node node_modules/pa11y/bin/pa11y.js --runner axe --standard WCAG2AAA --config <config> --include-warnings --include-notices --reporter json <http-url>` | JSON array or object's `issues` array |
+| QualWeb ACT rules | `rtk node resources/run-qualweb.mjs <html> <report>` | `failedCount`, `results`; reject `error` or `note` |
+| Legacy repair and preservation | `rtk node scripts/check-legacy-tags.mjs <html> <report> <original-fixture-html>` | `legacy_error_count`, `preservation_errors` |
 
-| Script | Commands run | Reads | Writes | Network |
-|---|---|---|---|---|
-| `scripts/a11y-audit.sh <url> [out-dir]` | `axe`, `pa11y`, `node` (QualWeb CLI), `vnu` via Java, `curl`, `npm root -g`, Chrome/Chromium, Chromedriver | Environment variables in the frontmatter; installed tool paths | `out-dir` (default `a11y-reports/`): four JSON reports, `fetched-page.html`, and a Chrome wrapper script when extra Chrome flags apply | Loads the target URL, its redirects, and subresources in a browser; fetches the page with `curl` |
-| `scripts/a11y-audit-limited.sh` | `free`, `awk`, `cat`, `ulimit`, then `scripts/a11y-audit.sh` | `/proc/meminfo`, cgroup memory files, memory-limit variables, `NODE_OPTIONS` | Same as `a11y-audit.sh`, relative to the skill root | Same as `a11y-audit.sh` |
-| `scripts/run-w3c-validator.mjs <input> <output> [url]` | `vnu` | The input HTML file | The output JSON file | None |
-| `scripts/check-wcag-412.py <html>` | None | The input HTML file | Standard output only | None |
-| `scripts/check-legacy-markup.py <html-or-directory> [...]` | None | HTML files provided on the command line and `resources/legacy_tags.json` | Standard output only | None |
-| `benchmark/scripts/check-tag-coverage.py <html> [tags.json]` | None | The input HTML, obsolete-tag list, and (in benchmark mode) required-tag list | Standard output only | None |
-| `templates/playwright-state.spec.ts` | Playwright browser | `WCAG_TEST_URL` | Playwright output | Loads `WCAG_TEST_URL` |
+These are the validators used by the scored suites and for the mandatory
+unscored benchmark preflight below. Do not use the scored suite as a preflight:
+it increments the run counter and records an iteration.
 
-Boundaries:
+Audit only authorized content. W3C validation sends the supplied HTML to the
+Nu Html Checker service; do not send confidential content. Browser audits load
+the target and its subresources. Never request, enter, or approve administrator
+passwords, keychain access, privilege elevation, or OS security prompts.
+Do not change host security settings to make an audit run.
 
-- No script requires or reads credentials, tokens, or secrets. Release tooling
-  that uses a publishing token is excluded from the skill bundle.
-- Audit only URLs you are authorized to test. Prefer loopback or staging hosts;
-  the browser tools follow redirects and load third-party subresources.
-- Use a dedicated output directory. Do not pass sensitive files as HTML inputs
-  or sensitive paths as output destinations; scripts overwrite outputs.
-- Keep the Chrome sandbox enabled unless the environment variable `CI` is set to `true`; if `CI` is `true` and `AXE_CHROME_EXTRA_ARGS` is unset, the wrapper disables the sandbox.
-- Verify execution restrictions in the host runtime; the skill manifest cannot
-  establish them. On OpenClaw, `openclaw approvals get` and
-  `openclaw exec-policy show` report configured/effective execution policy.
-  Use the host's allowlist, approval policy, or sandbox, and verify that it
-  applies to the actual execution host.
-- Shell may run the listed local audit tools and explicit project-local setup
-  or maintenance commands such as `npm ci`. Audit scripts do not install
-  packages or modify system settings; keep dependency installs project-local
-  and do not install system-wide software. Scripts write only to their
-  documented outputs.
+## Unattended benchmark workflow
 
-## Build accessible by default
+Build a complete candidate, preflight all five validators, then run the
+official suite. The preflight is mandatory and unscored; it must not increment
+the benchmark counter. Fix preflight findings and rerun the full preflight
+before the first scored run. This is a bounded validation loop on the candidate,
+not a reason to run repeated scored suites. Log preflight findings and repairs
+separately from scored iterations; an automated PASS cannot prove AAA
+conformance.
 
-- Use one `<main>`, a meaningful `<title>`, one clear `<h1>`, and landmarks
-  only where their semantics help orientation. Use `<section>` for a meaningful
-  thematic grouping; give it an accessible heading when that improves its name.
-  Use `<div>` for visual grouping alone.
-- Use real `<a>`, `<button>`, `<input>`, `<select>`, `<textarea>`, and native
-  disclosure/dialog patterns before inventing ARIA widgets. Never put a
-  focusable element inside `aria-hidden="true"` content.
-- Give informative images equivalent text; use `alt=""` only for decorative
-  images. Provide the relevant captions, transcript, audio description, or
-  media alternative for media.
-- Label every form control, group related controls with `<fieldset><legend>`,
-  use appropriate input types and `autocomplete`, preserve entered data after
-  recoverable errors, and identify errors in text as well as colour.
-- Keep DOM order aligned with reading and Tab order. Provide a mechanism to
-  bypass repeated blocks where applicable (such as a skip link), visible focus,
-  keyboard operation, and no keyboard trap.
-- Do not communicate status, errors, required fields, or instructions by colour,
-  position, shape, or sound alone. Respect `prefers-reduced-motion`.
-- Ensure pointer targets are at least 24×24 CSS px (AA) or 44×44 CSS px (AAA) unless an exception applies.
-- Ensure all functionality that uses dragging can also be achieved by a single
-  pointer without dragging (AA), unless dragging is essential or the
-  functionality is determined by the user agent and not modified by the
-  author.
-- Ensure keyboard focus is visible when operated by keyboard (AA, WCAG 2.2 SC
-  2.4.7 Focus Visible).
-- Meet WCAG 2.2 SC 1.4.11 Non-text Contrast (AA): visual information needed to
-  identify applicable UI components and states, and parts of graphics needed
-  to understand content, has at least 3:1 contrast against adjacent colors,
-  subject to the criterion's exceptions.
-- Meet WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum, AA): when a component
-  receives keyboard focus, it is not entirely hidden by author-created content.
-- For WCAG 4.1.2, inventory interactive components and dynamic states. Use
-  [`scripts/check-wcag-412.py`](scripts/check-wcag-412.py) as a source-markup
-  candidate check, then verify rendered name, role, value, and state. Any
-  user-triggered state change requires a before/after interaction test; axe,
-  Pa11y, QualWeb, and a static inventory alone cannot establish that it works.
-  Follow [`references/dynamic-state-test-protocol.md`](references/dynamic-state-test-protocol.md)
-  and record `DYNAMIC TEST REQUIRED` until the transition is tested.
-- Prevent legacy presentation markup, layout tables, div-based layouts that
-  disrupt reading order, low-contrast text, unnamed image links, and unlabelled
-  controls. Follow the repair workflow below for existing pages.
+### 1. Prepare and build the complete candidate
 
-## Legacy markup repair
+- Run the requested setup using the permitted local environment. Resolve the
+  newest timestamped folder under the configured model; use that exact folder
+  throughout. Do not copy previous benchmark submissions as the solution.
+- Build `index.html` and `style.css` before running the scored suite. Use the
+  authoritative tag list, not a remembered count or a hand-written subset.
+- Check valid content models: `optgroup` belongs in `select`, not `datalist`;
+  give suggestions explicit text/labels. Place required `selectedcontent`
+  inside a `button` child of a customizable `select`. Do not add obsolete
+  `param`. Include meaningful `del` and `ol` examples when required.
+- Use the repository's media files via `/AI-WCAG-Gauntlet/resources/`.
+  Verify media and stylesheet URLs actually load. A `<base target="_self">`
+  avoids accidentally retargeting relative links.
+- A caption track must match the media; a placeholder caption or an accessible
+  player name is not an equivalent transcript, captions, or audio description.
+- Keep required examples operational. Do not move failing content into
+  `template`, hide it, remove it, or disable rules just to satisfy coverage
+  while excluding it from accessibility scans.
 
-Preserve visible content, link destinations and fragment targets, language,
-and behavior while replacing obsolete markup. Do not remove content just to
-silence a checker. See [`references/legacy-markup-repair.md`](references/legacy-markup-repair.md)
-for a worked example and verification checklist.
+### 2. Run the required five-validator preflight before scoring
 
-| Legacy pattern | Repair |
-|---|---|
-| `<font>` and presentational `color`/`size` | Semantic text or `<span>` plus CSS; test contrast against the actual background. |
-| `<center>`, `<basefont>` | CSS alignment and root font styles; assess page structure separately. |
-| `<marquee>`, `<blink>` | Preserve the information as static content by default and remove motion/blinking. If automatically moving content lasts more than five seconds alongside other content, provide pause/stop/hide controls unless an exception applies (SC 2.2.2); reduced-motion preferences do not replace required controls. A live region is only for genuinely dynamic updates. |
-| Layout `<table>` | CSS grid/flex; retain real data tables with appropriate headers and `scope`. |
-| Absolutely positioned div clusters | Assess the actual reading order and purpose of each region; use appropriate landmarks without turning every `div` into one. Positioning alone is not an accessibility failure. |
-| Image-only link without a name | Give the image purpose-based `alt` text. Prefer visible link text when available; use `aria-label` only when native naming is unsuitable. |
-| Unlabelled search input | Prefer an explicit visible `<label for>`; wrapping labels and `<fieldset><legend>` for related controls are also appropriate. Do not substitute placeholders for labels. |
+Do this after the candidate is built and before the first call to either
+`test-suite.sh` or `test-suite.ps1`. Use the five commands in the tools table;
+write every report and temporary browser profile to one uniquely allocated
+directory under the OS temp directory, never the benchmark folder. For
+PowerShell, allocate the scratch directory under
+`[System.IO.Path]::GetTempPath()` and remove only that exact directory after
+the preflight.
 
-Use the numeric contrast targets below: AA is 4.5:1 normal and 3:1 large
-text (SC 1.4.3); AAA is 7:1 normal and 4.5:1 large text (SC 1.4.6),
-subject to each criterion's exceptions. Check actual rendered colors.
+For Bash, run from the repository root. Start a local HTTP server on an
+available port, serving the repository's parent directory, and construct the
+candidate URL using the same project-relative path encoding as
+`test-suite.sh`. This preserves `/AI-WCAG-Gauntlet/resources/` URLs and lets axe
+and Pa11y inspect the rendered page and stylesheet. Stop the server and remove
+the scratch directory when done.
 
-```bash
-python3 scripts/check-legacy-markup.py path/to/page.html
+Use the same Chrome for Testing binary and launch flags as the scored suite.
+Preserve a valid configured browser path; otherwise follow the browser
+discovery in `test-suite.sh`. Export that resolved executable as
+`CHROME_PATH` and `PUPPETEER_EXECUTABLE_PATH` for the standalone runners. Keep
+axe, Pa11y, and QualWeb profiles inside the OS temp directory.
+
+Run all five validators against the same candidate before deciding whether it
+is ready:
+
+1. `rtk node scripts/check-html5-tags.mjs <run-folder>/index.html <temp>/tags.json`
+2. `rtk node resources/run-w3c-validator.mjs <run-folder>/index.html <temp>/w3c.json`
+3. `rtk node scripts/run-axe.mjs <candidate-http-url> <temp>/axe.json`
+4. `rtk proxy node node_modules/pa11y/bin/pa11y.js --runner axe --standard WCAG2AAA --config <temp>/pa11y-config.json --include-warnings --include-notices --reporter json <candidate-http-url>`
+5. `rtk node resources/run-qualweb.mjs <run-folder>/index.html <temp>/qualweb.json`
+
+Create the Pa11y config with the same `chromeLaunchConfig.executablePath` and
+headless launch arguments used by `test-suite.sh`; set its user-data directory
+inside the temp directory. Set `CHROME_USER_DATA_DIR` to distinct temp
+subdirectories for axe and QualWeb. Pa11y exit code 2 means findings; accept it
+as a completed scan and inspect its JSON, but treat any other nonzero exit as a
+tool failure.
+
+Require a valid, fresh report from every tool. Before scoring, coverage must
+have no missing tags, W3C must have 0 errors, axe must have no violations (read
+and assess every `incomplete` result), Pa11y must have no issues, and QualWeb
+must have an integer `failedCount` of 0, a `results` array, and neither `error`
+nor `note`. A skipped, stale, malformed, or missing report is an infrastructure
+failure, never a zero-finding result.
+
+If any validator finds an issue, fix the candidate and rerun **all five**
+preflight validators. Do not run the scored suite while any finding or tool
+failure remains. Log each preflight pass/fail, findings, and repairs in
+`benchmark_log.md`, clearly labeled unscored. Once every validator is clean,
+stop the preflight server, remove its exact temp directory, and proceed to the
+first scored suite run.
+
+### 3. Keep browser launches and scratch data under control
+
+- Use the suite's default Chrome for Testing discovery. Do not substitute the
+  personal Google Chrome application or attach to a user's browser profile.
+- Do not create Chrome shell wrappers, strip or override launch flags, or set
+  `CHROME_FOR_TESTING_PATH`, `CHROME_PATH`, or `PUPPETEER_EXECUTABLE_PATH` to an
+  improvised executable. Preserve a valid user-configured test-browser path.
+- If the environment cannot run the suite's normal browser configuration,
+  report an infrastructure blocker. Do not work around host policy or ask the
+  user to authorize a password or security dialog. If a prompt appears, stop
+  the launch without approving it; do not retry that launch configuration.
+- Do not create preflight directories, browser profiles, caches, launchers, or
+  audit reports in benchmark folders. The suite manages its own transient
+  profiles; leave that behavior unchanged. The mandatory preflight uses only
+  an OS-temp scratch directory as described above.
+- Never overwrite scored reports, `test_results.json`, or
+  `iterations_count.txt`, and never reset counters. A temporary local static
+  server for the mandatory preflight is permitted; do not create a custom
+  browser launcher or substitute validator pipeline.
+
+### 4. Run the official scored suite and obey its status
+
+Once the candidate is built, run the selected suite directly:
+
+```sh
+rtk bash test-suite.sh "<run-folder>"
 ```
 
-This static source inventory reports obsolete elements with file names and
-line numbers as warnings, not WCAG failures. It does not detect presentation
-attributes, layout tables, contrast, names, CSS-generated content, or
-script-rendered markup. Inspect rendered pages and states; run the normal
-audit and manual tests. Landmarks can aid navigation, but the axe `region` rule
-is a best-practice check rather than a WCAG success criterion. Use landmarks
-for regions with a meaningful purpose; nested `<header>` and `<footer>`
-elements do not always expose banner/contentinfo landmarks.
+Or, in PowerShell:
 
-## Low-memory audit guardrail (script-level)
-
-When running on hosts with <2 GB RAM or in containers, use `scripts/a11y-audit-limited.sh`. Never delete `scripts/a11y-audit-limited.sh`. Do not remove or rename it in any change, including pull requests.
-It reads memory from `/proc/meminfo` (MemAvailable first), falls back to `free -m` (6th column = available memory in MB), then checks cgroup limits from `memory.limit_in_bytes` (v1) and `memory.max` (v2). It ignores the v1 unlimited sentinel (`9223372036854775807`), caps any cgroup value greater than the host MemTotal (or 1 TB if MemTotal is unavailable) to MemTotal, and uses the smallest valid limit from the available sources. If neither cgroup file yields a valid numeric limit, ignore both and use the value from `/proc/meminfo` or `free -m`. Log which source was used to stderr. Memory limits (`ulimit -v` and `NODE_OPTIONS`) are configurable via `ULIMIT_PERCENT`/`ULIMIT_MIN_MB` and `NODE_PERCENT`/`NODE_MIN_MB` environment variables with sensible defaults, and always capped to the available budget (never exceed it). If no memory value can be read from any source, the wrapper exits with an explicit error that names the sources it tried. It must not start the audit with an unlimited budget. If `ulimit -v` fails, the wrapper exits with an explicit error rather than swallowing it.
-
-In extremely constrained environments (<512MB available), you may need to explicitly set `NODE_OPTIONS="--max-old-space-size=256"` before running the audit wrapper.
-
-Pitfall: never rely on host `/proc/meminfo` inside a container — verify the container's cgroup quota (v1 `memory.limit_in_bytes`, v2 `memory.max`) matches the guardrail; the wrapper checks cgroup values and uses the smallest valid budget but host and container budgets can diverge.
-
-Pitfall: vnu requires Java 17+; using older Java causes `UnsupportedClassVersionError`. In CI, set `JAVA_HOME` to a Java 17+ installation and add `_JAVA_OPTIONS="-Xmx256m -Xshare:off -Djava.io.tmpdir=/tmp"` to redirect temp storage to disk and avoid shared-memory exhaustion.
-
-- See also [`references/pil-logo-grid.md`](references/pil-logo-grid.md) for the PIL circular-logo layout pattern used when updating grid images.
-
-## CI workflow maintenance
-
-Keep GitHub Actions workflows (`.github/workflows/*.yml`) in sync with the pinned tool versions in `package.json`.
-When the Chrome version on the runner changes, the `Align chromedriver to the installed Chrome major version` step must use a reliable version extraction: `chrome_major=$(/opt/hostedtoolcache/setup-chrome/chromium/stable/x64/chrome --version 2>/dev/null | grep -oE '[0-9]+' | head -1)`.
-This prevents `npm error ETARGET` when requesting a non‑existent chromedriver version.
-
-Periodically run `npm ci` in a clean environment to verify that the pinned dependencies install without errors on the target Node version (>=22).
-If you encounter heap-limit errors, increase the Node old space via `NODE_OPTIONS` (e.g., `NODE_OPTIONS="--max-old-space-size=512"`) before running `npm ci`.
-
-## CI / audit environment notes
-
-- `vnu-jar` requires Java 17 or newer; CI runners with older Java will throw `UnsupportedClassVersionError`. Set `JAVA_HOME` to a Java 17+ installation when needed.
-- `vnu` writes temporary files to `/dev/shm`. On CI runners with small shared-memory partitions, add `_JAVA_OPTIONS="-Xshare:off -Djava.io.tmpdir=/tmp -Xmx256m"` to redirect temp storage to disk and cap heap.
-- The audit wrapper (`scripts/a11y-audit-limited.sh`) reads container memory via `memory.limit_in_bytes` (v1) and `memory.max` (v2). Read both values when present, then keep the smaller valid value; if neither cgroup file yields a valid numeric limit, ignore both and use the value from `/proc/meminfo` or `free -m`. Log which source was used to stderr.
-- The `scripts/run-w3c-validator.mjs` script must be able to parse vnu output that may include warning messages; it now combines stdout and stderr and extracts a JSON object if necessary.
-
-
-## Use the right numeric target
-
-| Requirement | Baseline / AA minimum | AAA target |
-|---|---:|---:|
-| Normal text contrast | 4.5:1 | 7:1 |
-| Large text contrast | 3:1 | 4.5:1 |
-| UI component / state contrast (SC 1.4.11 Non-text Contrast) | At least 3:1 against adjacent colors, subject to exceptions | Same AA requirement |
-| Focus Appearance (SC 2.4.13, AAA) | No 2.4.13 requirement at AA | Indicator area at least as large as a two-CSS-pixel-thick perimeter of the unfocused component; at least 3:1 contrast between the same pixels in focused and unfocused states |
-| Pointer target (SC 2.5.8 AA / SC 2.5.5 AAA) | 24×24 CSS px, subject to SC 2.5.8 exceptions | 44×44 CSS px, subject to SC 2.5.5 exceptions |
-| Dragging movements (SC 2.5.7) | Provide a single-pointer alternative that does not require dragging, unless an exception applies | Same AA requirement |
-
-For AAA, WCAG 2.2 SC 2.4.12 Focus Not Obscured (Enhanced, AAA) requires that no
-part of a focused component is hidden by author-created content. SC 2.4.13
-Focus Appearance (AAA) requires an indicator area at least as large as a
-two-CSS-pixel-thick perimeter of the unfocused component and at least 3:1
-contrast between the same pixels in focused and unfocused states, subject to
-the criterion's exceptions. These are AAA requirements, not AA requirements;
-the stronger focus appearance may be used as an optional recommendation for AA
-projects.
-
-## Audit → triage → fix → verify
-
-
-1. The agent may install the tools listed in the frontmatter through
-   project-local dependency setup; the audit scripts do not install them.
-   Ensure Chrome/Chromium and a matching Chromedriver are available from the
-   host, CI environment, or project dependencies. Set `AXE_CHROME_PATH` and
-   `AXE_CHROMEDRIVER_PATH` when auto-detection is insufficient.
-   In low-memory environments (e.g., <2GB RAM), consider using the headless
-   shell and limiting memory via `NODE_OPTIONS` and `ulimit -v`; see
-   `scripts/a11y-audit-limited.sh` for an example.
-
-2. Serve the site over HTTP. Run the reproducible wrapper in
-   [`references/validator-workflow.md`](references/validator-workflow.md).
-
-3. Triage structural and markup errors first, then semantic, visual, operable,
-   and understandable issues. Deduplicate findings across tools; retain raw
-   JSON reports.
-
-4. Fix one coherent group of issues, rerun the audit, and record the result.
-   Review every `incomplete`, `cantTell`, warning, and false-positive decision.
-
-5. For AAA, complete the mandatory manual protocol and evidence matrix before
-   any conformance statement.
-
-### WCAG 4.1.2 dynamic-state check
-
-Run the source-markup inventory as a prompt for review, not as a conformance
-result:
-
-```bash
-python3 scripts/check-wcag-412.py path/to/page.html
+```powershell
+rtk pwsh -NoLogo -NoProfile -File ./test-suite.ps1 "<run-folder>"
 ```
 
-Inspect every reported component in the rendered page. For each stateful
-component, test the initial state, activate it with the supported input, and
-verify both the programmatic state and the corresponding UI change. Include
-keyboard activation and assistive-technology review for custom widgets or
-announcements whose meaning depends on context.
+Never use `-ExecutionPolicy Bypass`. Read the final `STATUS:` line:
 
-## Report precisely
+- `STATUS: PASS`: log the result and **stop**; do not run the suite again.
+- `STATUS: FAIL — Maximum iterations`: stop and report the recorded outcome.
+- `STATUS: FAIL — Fix the errors`: repair the reported failures and immediately
+  rerun the scored suite, respecting the task's 20-iteration cap. The
+  preflight is required before the first scored run but does not replace this
+  required post-failure loop.
+- No status or an infrastructure error: diagnose the tooling; do not invent
+  a result or treat exit code 0 as success. Never resolve a blocker by
+  requesting privileges, modifying browser security, or using personal Chrome.
 
-For each finding, report the route/state, relevant success criterion, affected
-selector or component, user impact, exact change, validation method, and retest
-result. Say “no automated findings” when that is all the tools establish.
+Read fresh reports from the suite. Missing, skipped, stale, or invalid reports
+are tool failures, not zero findings. HTML coverage must have no missing tags;
+W3C must have 0 errors; axe must have no violations (review incomplete entries);
+Pa11y must have no issues; QualWeb must have no `error` or `note`, an integer
+`failedCount` of 0, and a `results` array. Pa11y exit 2 means findings, not a
+tool failure. For legacy repair, require 0 legacy errors and no preservation
+errors; preserve fixture content, behavior, language, destinations, and targets.
 
-## Optional benchmark extension
+Fix markup first, then semantics, contrast, keyboard behavior, and states.
+After a scored failure, repair the reported errors and immediately rerun the
+suite. Record commands, versions, counts, changes, and WCAG criteria in the log.
+For Pa11y's `frame-tested`, inspect origin, sandbox, loading, and whether axe
+can execute inside the rendered frame. Keep frames same-origin and testable
+when their behavior permits. Merely adding a title or script is not proof of
+repair; moving a failing frame into an inert template is not a fix.
 
-The AI-WCAG-Gauntlet tag-coverage experiment is **not** a production
-accessibility gate. Use it only when the task explicitly requests benchmark
-scoring. Read [`benchmark/README.md`](benchmark/README.md) then; never copy its
-reference template into a benchmark submission. Its
-[legacy-repair task](https://github.com/turbolego/AI-WCAG-Gauntlet/blob/main/BENCHMARK.md#legacy-repair-task)
-retains all 113 required tags and adds preservation and legacy checks to the
-validator loop; a production repair does not require benchmark tag coverage.
+Use available browser tools for keyboard focus, reflow, contrast, and dynamic
+states only when doing so requires no new privileged or custom browser launch.
+Confirm disclosures open, dialogs return focus, form errors preserve input,
+and slider/output values update. Mark untested manual and assistive-technology
+checks as pending.
+
+Never edit validators, rule sets, scoring, recorded results, or counters to
+manufacture a pass. Report scored iterations **and** preparatory checks; report
+the unscored preflight separately from the scored iteration count.
+
+## Accessible implementation checklist
+
+- Use one clear `h1`, one `main`, meaningful document title/language, sensible
+  heading order, and landmarks for real regions (SC 1.3.1, 2.4.2, 3.1.1).
+- Prefer native controls with visible labels, fieldset/legend grouping, useful
+  autocomplete, textual error identification and correction, and preserved
+  input (SC 1.3.5, 3.3.1, 3.3.2, 3.3.3, 4.1.2).
+- Preserve DOM reading order; provide a skip link, keyboard access, no traps,
+  visible focus, and no obscured focused controls (SC 1.3.2, 2.1.1, 2.1.2,
+  2.4.1, 2.4.7, 2.4.11; AAA: 2.1.3, 2.4.12, 2.4.13).
+- AA contrast: 4.5:1 normal text, 3:1 large text; AAA: 7:1 normal, 4.5:1
+  large (SC 1.4.3, 1.4.6). Applicable UI boundaries/states need 3:1 against
+  adjacent colors (SC 1.4.11). Measure rendered colors, including focus and
+  error states, not just CSS declarations.
+- AAA focus appearance needs at least a two-CSS-pixel-perimeter area and 3:1
+  same-pixel focused/unfocused contrast, subject to exceptions (SC 2.4.13).
+- Pointer targets: 24 by 24 CSS px at AA, 44 by 44 at AAA, subject to exceptions
+  (SC 2.5.8, 2.5.5). Provide non-dragging alternatives (SC 2.5.7).
+- Give images meaningful alternatives; provide accurate transcripts, captions,
+  media alternatives and audio description as applicable (SC 1.1.1, 1.2.1-1.2.9).
+  Do not rely on autoplay, color alone, or motion; provide pause controls when
+  required and respect reduced-motion preferences (SC 1.4.1, 2.2.2, 2.3.3).
+- Replace obsolete presentation markup with semantic HTML/CSS without losing
+  content or links. Retain real data tables with headers and captions. Do not
+  relabel best-practice rules as WCAG success criteria.
+
+## Production audits and reporting
+
+Outside benchmark work, omit tag-coverage and scoring requirements; use the
+same real validators and browser checks for the agreed scope. A static
+inventory cannot establish dynamic name, role, value, or state: test initial
+state, supported activation, resulting programmatic state, and visible result
+(SC 4.1.2). Mark untested transitions `DYNAMIC TEST REQUIRED`.
+
+For each finding record route/state, selector, user impact, WCAG criterion,
+exact change, method, and retest result. Before any AAA conformance claim,
+record evidence or a justified non-applicability decision for every applicable
+A, AA, and AAA criterion, including manual and assistive-technology tests.
+Never turn a benchmark PASS into a claim of full WCAG 2.2 AAA conformance.

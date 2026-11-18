@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An accessible field guide to climate data, native HTML, and inclusive interface patterns.">
+  <base target="_self">
+  <title>Field Notes: Climate Data and Accessible HTML</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .inline-note { border-inline-start: 0.3rem solid #075985; padding-inline-start: 1rem; }
+  </style>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <p class="eyebrow">Open learning series · Field guide 04</p>
+    <hgroup>
+      <h1>Field Notes: a clearer view of climate data</h1>
+      <p>Evidence, context, and practical ways to make the web work for more people.</p>
+    </hgroup>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
+      </ul>
+    </nav>
+    <search aria-label="Search this field guide">
+      <form action="#toolkit" method="get" role="search">
+        <label for="site-search">Find a topic</label>
+        <input id="site-search" name="q" type="search" placeholder="For example, temperature">
+        <button type="submit">Search the guide</button>
+      </form>
+    </search>
+  </header>
+
+  <main id="main-content">
+    <section id="overview" class="panel" aria-labelledby="overview-title">
+      <p class="eyebrow">The question</p>
+      <h2 id="overview-title">How do projections help us plan?</h2>
+      <p>Climate models help researchers explore how the Earth may respond to different greenhouse-gas emissions scenarios. This guide pairs a short overview with a real data visualization and a small set of accessible, working examples.</p>
+      <p class="inline-note">Use the summary and data table even if you do not play the media. No conclusion in this guide depends on color, sound, or motion alone.</p>
+      <figure class="map-figure">
+        <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" width="160" height="160" usemap="#guide-map" alt="A round survey marker with a red center and a black outline; its mapped area links to the data summary.">
+        <map name="guide-map">
+          <area shape="rect" coords="0,0,160,160" href="#evidence" alt="Jump to the evidence and data summary">
+        </map>
+        <figcaption>The marker is decorative context; the adjacent link and summary provide the same destination and information.</figcaption>
+      </figure>
+      <p>One useful distinction is between a <dfn>projection</dfn>, a conditional estimate based on a scenario, and a prediction, which implies a particular expected outcome.</p>
+      <p>Researchers describe more than one pathway. <abbr title="Intergovernmental Panel on Climate Change">IPCC</abbr> assessments compare evidence across models, while this page explains one NASA visualization in plain language.</p>
+      <p>For example, the word <data value="1850">1850</data> is machine-readable, and a <time datetime="2100">year 2100 horizon</time> names the period shown in the animation.</p>
+      <p>A name from the sample data may include another script: <bdi>ليلى</bdi>. The following sample deliberately changes direction: <bdo dir="rtl">Climate data</bdo>.</p>
+      <p>In Japanese, a ruby annotation can clarify pronunciation: <ruby>気候<rp>(</rp><rt>きこう</rt><rp>)</rp></ruby>.</p>
+    </section>
+
+    <section id="evidence" class="panel" aria-labelledby="evidence-title">
+      <p class="eyebrow">The evidence</p>
+      <h2 id="evidence-title">Read the chart in context</h2>
+      <p>The visualization compares projected temperature and precipitation patterns with a historical average from 1971–2000. It is an illustration of model results, not a local weather forecast.</p>
+      <blockquote cite="https://svs.gsfc.nasa.gov/11376">
+        <p>Climate models estimate how temperature and precipitation patterns could change throughout the twenty-first century.</p>
+        <footer>Summary of the <cite>NASA Scientific Visualization Studio climate projection</cite>.</footer>
+      </blockquote>
+      <p>For a short quotation, the same idea can be stated as <q cite="https://svs.gsfc.nasa.gov/11376">patterns could change throughout the twenty-first century</q>.</p>
+      <p><strong>Interpretation matters:</strong> a scenario describes a possible pathway; it is not a promise that one exact outcome will occur.</p>
+      <p><em>Read the units and reference period before comparing values.</em> A <i>baseline</i> is the reference period used for comparison, while <b>scenario</b> is the emissions pathway used by a model.</p>
+      <p><s>Old note: every region changes in the same way.</s> That statement is not current: projected changes vary by region and by scenario.</p>
+      <p>The term <u class="annotation">warming</u> is marked as a defined annotation in this sentence, not as a link.</p>
+      <p>Researchers <del datetime="2024-01-01">used one single forecast for every future</del> <ins datetime="2024-01-01">compare several conditional scenarios and model results</ins>.</p>
+      <p>A careful summary should name the source, the comparison period, and the uncertainty. <small>This learning page is not a substitute for the underlying assessment.</small></p>
+      <p>Use a stable, plain-text label such as <code>baseline_1971_2000</code> when referring to the comparison period in a data file.</p>
+      <p>A keyboard shortcut may be written as <kbd>Tab</kbd>; a system response might read <samp>Report ready</samp>. A model variable is often named <var>T</var> for temperature.</p>
+      <p>The title of this section uses <sub>2</sub> only when a chemical formula needs it, as in CO<sub>2</sub>; a numbered note can use a superscript, such as 21<sup>st</sup>.</p>
+      <p>Words can have <mark>highlighted importance</mark> without color being the only indicator.</p>
+      <p>Long identifiers can wrap safely: <code>scenario<wbr>_temperature<wbr>_projection<wbr>_2100</code>.</p>
+      <p><span class="source-label">Reference value:</span> the baseline is the period used for comparison.</p>
+      <dl>
+        <dt>Baseline</dt>
+        <dd>The historical period against which a projection is compared.</dd>
+        <dt>Scenario</dt>
+        <dd>A conditional pathway used to explore possible model outcomes.</dd>
+      </dl>
+      <pre><code>compare(projection, baseline)
+describe(scenario, uncertainty)</code></pre>
+      <hr>
+      <h3>Three points to keep in view</h3>
+      <ol>
+        <li>Compare the projection with its stated baseline.</li>
+        <li>Check which emissions scenario and model are represented.</li>
+        <li>Use regional patterns and uncertainty, not a single headline number.</li>
+      </ol>
+      <h4>A note about scope</h4>
+      <p>This page summarizes the linked NASA visualization and does not reproduce the underlying model data.</p>
+      <h5>Reading note</h5>
+      <p>Explanations are provided in text as well as in the visual media.</p>
+      <h6>Source note</h6>
+      <p>See the NASA source link in the media section for the project description.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="data-title">
+      <h2 id="data-title">A compact comparison table</h2>
+      <div class="table-scroll" role="region" aria-label="How to interpret the examples table" tabindex="0">
+        <table>
+          <caption>How to interpret the examples in this guide</caption>
+          <colgroup>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">What it represents</th>
+              <th scope="col">How to use it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Baseline</th>
+              <td>1971–2000 historical average</td>
+              <td>Reference for the displayed projections</td>
+            </tr>
+            <tr>
+              <th scope="row">Horizon</th>
+              <td>Changes through 2100</td>
+              <td>Long-range scenario context, not a weather forecast</td>
+            </tr>
+            <tr>
+              <th scope="row">Emissions pathway</th>
+              <td>One of several modeled scenarios</td>
+              <td>Compare pathways rather than treating one as certain</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="2">Key reminder</th>
+              <td>Always state the reference period and scenario.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="media" class="panel" aria-labelledby="media-title">
+      <p class="eyebrow">The media</p>
+      <h2 id="media-title">Explore the source material</h2>
+      <figure>
+        <picture>
+          <source srcset="/AI-WCAG-Gauntlet/resources/500px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 40rem)">
+          <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" width="250" height="250" alt="A survey marker shown at a larger size for this responsive example.">
+        </picture>
+        <figcaption>The image is a responsive illustration and does not encode the climate data.</figcaption>
+      </figure>
+      <figure>
+        <canvas id="reading-illustration" width="480" height="160" aria-label="Illustrative graphic with three equal-height bars for baseline, scenario, and uncertainty. It does not show measured climate data." aria-describedby="canvas-description">Text alternative: three equal-height bars represent the reading checkpoints baseline, scenario, and uncertainty; the graphic contains no measured climate data.</canvas>
+        <figcaption id="canvas-description">Three equal-height bars label the reading checkpoints baseline, scenario, and uncertainty. No climate measurement is encoded.</figcaption>
+      </figure>
+      <div class="media-grid">
+        <figure>
+          <img src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" width="120" height="120" alt="A red-centered survey pin outlined in black.">
+          <figcaption>Vector version of the survey marker.</figcaption>
+        </figure>
+        <figure>
+          <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="120" height="120" aria-label="Embedded red and black survey marker">
+          <figcaption>The embedded vector repeats the marker shown above.</figcaption>
+        </figure>
+        <figure>
+          <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="120" height="120" aria-label="Object version of the survey marker">
+            <p>The vector image could not be displayed. <a href="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg">Open the SVG marker.</a></p>
+          </object>
+          <figcaption>Object version with a text fallback link.</figcaption>
+        </figure>
+      </div>
+      <div class="media-grid">
+        <figure>
+          <video controls muted playsinline preload="metadata" width="640" aria-describedby="video-summary">
+            <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+            <track kind="captions" src="video-captions.vtt" srclang="en" label="English captions" default>
+            <p>Your browser does not support video. Read the text summary below.</p>
+          </video>
+          <figcaption>NASA climate-model visualization of temperature and precipitation projections.</figcaption>
+        </figure>
+        <figure>
+          <audio controls preload="metadata" aria-label="Short spoken English sample">
+            <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+            <p>Your browser does not support audio. The transcript is provided below.</p>
+          </audio>
+          <figcaption>Short pronunciation sample. Transcript: “Flame, not lame.”</figcaption>
+        </figure>
+      </div>
+      <aside id="video-summary" class="summary-box" aria-labelledby="summary-title">
+        <h3 id="summary-title">Text summary of the video</h3>
+        <p>The NASA visualization shows modelled temperature and precipitation patterns through 2100. Its comparisons use a 1971–2000 historical average; the NASA description notes that the IPCC report uses a different 1986–2005 baseline. One scenario described by NASA reaches 670 parts per million of carbon dioxide by 2100, compared with about 400 parts per million at the time of the visualization.</p>
+        <p><a href="https://svs.gsfc.nasa.gov/11376">Read the NASA project description and source context</a>.</p>
+      </aside>
+      <p>Further reading is available from the <a href="https://www.ipcc.ch/">Intergovernmental Panel on Climate Change</a>.</p>
+      <h3>A text-only embedded note</h3>
+      <iframe
+        title="Text-only note about climate projections"
+      srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;Embedded climate note&lt;/title&gt;&lt;script src=&quot;/AI-WCAG-Gauntlet/node_modules/pa11y/node_modules/axe-core/axe.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;window.addEventListener(&quot;load&quot;,function(){window.axe.run().then(function(result){window.__frameAudit=result;});});&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;main aria-label=&quot;Embedded climate note&quot;&gt;&lt;h1&gt;Climate note&lt;/h1&gt;&lt;p&gt;Model projections are conditional estimates. Read each scenario alongside its baseline and uncertainty.&lt;/p&gt;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;">
+      </iframe>
+    </section>
+
+    <section id="toolkit" class="panel" aria-labelledby="toolkit-title">
+      <p class="eyebrow">The toolkit</p>
+      <h2 id="toolkit-title">Try a few native controls</h2>
+      <details>
+        <summary>Show the quick reading checklist</summary>
+        <ul>
+          <li>Find the reference period and units.</li>
+          <li>Identify the scenario and model.</li>
+          <li>Read the text summary if the animation is not useful to you.</li>
+        </ul>
+      </details>
+      <form id="feedback-form" action="#feedback-status" method="get">
+        <fieldset>
+          <legend>Send a note about this field guide</legend>
+          <label for="reader-name">Your name</label>
+          <input id="reader-name" name="name" autocomplete="name" required>
+          <label for="topic">Topic</label>
+          <input id="topic" name="topic" list="topic-options" required>
+          <datalist id="topic-options">
+            <option value="Temperature" label="Temperature projections"></option>
+            <option value="Precipitation" label="Precipitation projections"></option>
+            <option value="Accessibility" label="Accessible media and controls"></option>
+          </datalist>
+          <label for="region">Choose a reading preference</label>
+          <select id="region" name="region">
+            <button type="button">
+              <selectedcontent></selectedcontent>
+            </button>
+            <optgroup label="Presentation">
+              <option value="text" selected>Text summary first</option>
+              <option value="table">Data table first</option>
+            </optgroup>
+            <optgroup label="Media">
+              <option value="captions">Captions and controls</option>
+              <option value="still">Still images and descriptions</option>
+            </optgroup>
+          </select>
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" rows="4" autocomplete="off"></textarea>
+          <button type="submit">Send feedback</button>
+        </fieldset>
+      </form>
+      <p id="feedback-status" role="status" aria-live="polite">The form is a local demonstration; enter a name and topic to test its validation.</p>
+      <p>Choose a topic suggestion: <label for="climate-topic">Topic name</label> <input id="climate-topic" name="climate-topic" list="topic-options" placeholder="Start typing"></p>
+      <div class="status-grid">
+        <p>Reading progress: <progress id="reading-progress" max="100" value="35">35%</progress></p>
+        <p>Evidence confidence: <meter min="0" max="100" low="40" high="80" optimum="90" value="76">76 out of 100</meter></p>
+        <p>Interactive example value: <output id="example-output" for="advance-button">0</output></p>
+      </div>
+      <button id="advance-button" type="button">Advance the example</button>
+      <dialog id="source-dialog" aria-labelledby="dialog-title">
+        <h3 id="dialog-title">Source and attribution</h3>
+        <p>The climate visualization is described by NASA's Scientific Visualization Studio. The local image and media samples are included as benchmark resources.</p>
+        <form method="dialog">
+          <button type="submit">Close this dialog</button>
+        </form>
+      </dialog>
+      <button id="open-dialog" type="button">Open source details</button>
+      <button id="add-example" type="button">Add an example card</button>
+      <div id="example-cards" aria-live="polite"></div>
+      <template id="example-template">
+        <article class="example-card">
+          <h3>One more useful question</h3>
+          <p>Which scenario, period, and unit does this statement describe?</p>
+        </article>
+      </template>
+      <slot name="extra-guidance">
+        <p>Extra guidance: all controls work with a keyboard, and each form field has a visible label.</p>
+      </slot>
+      <menu aria-label="Page actions">
+        <li><button type="button" id="reset-example">Reset example value</button></li>
+        <li><a href="#overview">Return to the overview</a></li>
+      </menu>
+      <noscript>
+        <p>JavaScript is off. The content, form labels, and reading checklist remain available; the example buttons will not update the page.</p>
+      </noscript>
+    </section>
+
+    <section class="panel" aria-labelledby="closing-title">
+      <h2 id="closing-title">Keep the evidence usable</h2>
+      <p>Make uncertainty visible, preserve a meaningful text alternative, and let readers choose how to explore the information.</p>
+      <address>
+        Learning desk, Open Data Field Notes<br>
+        <a href="mailto:learning@example.org">learning@example.org</a>
+      </address>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Field Notes · Last reviewed <time datetime="2026-11-18">18 November 2026</time></p>
+    <nav aria-label="Footer navigation">
+      <ul class="nav-list">
+        <li><a href="#overview">Back to the beginning</a></li>
+        <li><a href="https://svs.gsfc.nasa.gov/11376">NASA source page</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <script>
+    "use strict";
+    const exampleOutput = document.querySelector("#example-output");
+    const progress = document.querySelector("#reading-progress");
+    const feedbackForm = document.querySelector("#feedback-form");
+    const feedbackStatus = document.querySelector("#feedback-status");
+    let exampleValue = 0;
+
+    const illustration = document.querySelector("#reading-illustration");
+    const drawing = illustration.getContext("2d");
+    if (drawing) {
+      const labels = ["Baseline", "Scenario", "Uncertainty"];
+      drawing.font = "18px system-ui, sans-serif";
+      drawing.fillStyle = "#075985";
+      labels.forEach((label, index) => {
+        const x = 25 + index * 150;
+        drawing.fillRect(x, 24, 110, 66);
+        drawing.fillStyle = "#17233b";
+        drawing.fillText(label, x, 125);
+        drawing.fillStyle = "#075985";
+      });
+    }
+
+    document.querySelector("#advance-button").addEventListener("click", () => {
+      exampleValue = Math.min(exampleValue + 1, 5);
+      exampleOutput.value = String(exampleValue);
+      progress.value = 35 + exampleValue * 10;
+    });
+
+    document.querySelector("#reset-example").addEventListener("click", () => {
+      exampleValue = 0;
+      exampleOutput.value = "0";
+      progress.value = 35;
+    });
+
+    document.querySelector("#open-dialog").addEventListener("click", () => {
+      document.querySelector("#source-dialog").showModal();
+    });
+
+    document.querySelector("#add-example").addEventListener("click", () => {
+      const template = document.querySelector("#example-template");
+      document.querySelector("#example-cards").replaceChildren(template.content.cloneNode(true));
+    });
+
+    feedbackForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!feedbackForm.reportValidity()) return;
+      feedbackStatus.textContent = "Thank you. Your local demonstration note is ready.";
+    });
+  </script>
+</body>
+</html>

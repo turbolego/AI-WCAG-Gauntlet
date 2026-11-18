@@ -37,6 +37,10 @@ RESOURCES="$SCRIPT_DIR/resources"
 
 # --- Resolve a single shared Chrome for Testing binary (all tools use this) ---
 CHROME_FOR_TESTING_PATH="${CHROME_FOR_TESTING_PATH:-}"
+if [ -n "$CHROME_FOR_TESTING_PATH" ] && [ ! -x "$CHROME_FOR_TESTING_PATH" ]; then
+    echo "Warning: configured Chrome is unavailable; searching installed browsers instead."
+    CHROME_FOR_TESTING_PATH=""
+fi
 if [ -z "$CHROME_FOR_TESTING_PATH" ]; then
     # Windows Chrome installation
     if command -v win_chrome >/dev/null 2>&1; then

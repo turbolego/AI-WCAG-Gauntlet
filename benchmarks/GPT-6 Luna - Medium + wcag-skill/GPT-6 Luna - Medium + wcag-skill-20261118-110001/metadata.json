@@ -1,0 +1,8 @@
+{
+  "model": "GPT-6 Luna - Medium + wcag-skill",
+  "provider": "github-copilot",
+  "providerLabel": "GitHub Copilot",
+  "tool": "vscode",
+  "timestamp": "2026-11-18T10:00:01Z",
+  "folder": "GPT-6 Luna - Medium + wcag-skill-20261118-110001"
+}

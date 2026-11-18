@@ -3,6 +3,21 @@
 ## Mission
 Build a single-page technical showcase that implements every valid HTML5 tag while adhering to **WCAG 2.2 Level AAA** standards. The showcase must include both `index.html` and `style.css` files.
 
+## Benchmark validity — mandatory scored run
+
+**A benchmark is not valid or complete unless you run the official `test-suite.sh`
+at least once against the new run folder and inspect its final `STATUS:` line.**
+Preflight checks, manual inspection, setup, and generated files do not count as
+an official test-suite run. Do not stop after building the page or after
+preflight; proceed to the scored suite.
+
+The minimum requirement is one completed suite invocation with a recorded
+iteration in `test_results.json` and a `STATUS:` result. If the suite fails with
+errors, follow the loop protocol below until it passes or reaches the 20-run
+limit. If the suite cannot complete because of an infrastructure or environment
+blocker, do not claim a valid or completed benchmark: report the blocker and
+that no scored result was produced.
+
 ## Legacy-repair task
 
 The optional `legacy-repair` task starts from a synthetic Norwegian front page
@@ -99,15 +114,48 @@ All accessibility fixes and code changes must be justified with reference to the
 ## Required tools
 In addition to `axe-core/cli` and `serve`, the test suite requires **pa11y** (`npm install -g pa11y`), **qualweb** (`npm install -g @qualweb/cli`), and **w3c-html-validator** (included via `npm ci`). Pa11y is run against an HTTP URL (via a local `python3 -m http.server` instance) with the WCAG2AAA standard and the axe runner — the same approach used for axe-core. Serving via HTTP is required because generated pages include `<base href="/AI-WCAG-Gauntlet/">`, which causes CSS and media resources to resolve to wrong paths under `file://`, making color-contrast and other style-dependent checks unreliable.
 
+Use a persistent installed Chrome/Chromium executable for `CHROME_FOR_TESTING_PATH`; do not point it to a session-temporary wrapper. The Bash suite warns and searches installed browser locations when that override is missing or not executable, so a stale path does not prevent a new run from reaching Pa11y.
+
+### Unattended browser safety and temporary files
+
+Before the first scored suite run, run an unscored preflight of all five
+validators: required tag coverage, W3C, axe, Pa11y, and QualWeb. Use the
+repository's existing validator commands and the same Chrome for Testing binary
+and launch flags as the suite. Store preflight reports and isolated browser
+profiles only in a unique OS-temp directory, never in the benchmark folder or
+scored report paths. Serve the candidate over HTTP so CSS and media resolve as
+they will in the suite. Fix any finding and rerun all five preflight checks
+before scoring. Log these unscored checks and repairs separately.
+
+Then run the official suite, which remains mandatory even when preflight is
+clean. Let the suite select Chrome for Testing and manage its launch flags,
+temporary profiles, HTTP server, and cleanup. Do not substitute the personal
+Google Chrome application, create browser wrappers, strip launch flags, or
+attach to a user's browser profile.
+
+The benchmark must never request, enter, or approve administrator passwords,
+keychain access, privilege elevation, or OS security prompts. If a prompt
+appears, stop the launch without approving it and report an infrastructure
+blocker. Do not retry that configuration or change host security settings.
+This safety requirement takes precedence over the automatic retry loop.
+
+Do not add preflight folders, caches, profiles, or launchers to benchmark
+deliverables. Mandatory preflight reports and profiles belong in a uniquely
+allocated OS temporary directory outside the repository and must be removed
+after use. Record findings in `benchmark_log.md`; retain only the candidate,
+its required assets, and official suite outputs in the run folder. Do not
+overwrite scored reports or reset counters during preflight.
+
 ## Loop Protocol (follow exactly)
-1. Run `test-suite.sh`.
-2. Read the `STATUS:` line at the bottom of its output.
+1. **Before scoring**, run the five-validator preflight described above: tag coverage, W3C, axe, Pa11y, and QualWeb. Fix findings and repeat all five until each has a valid clean report. These preflight checks are unscored and must not increment `iterations_count.txt`.
+2. **Then run `test-suite.sh` at least once** against the new benchmark folder. This is mandatory even if all preflight validators are clean.
+3. Read the `STATUS:` line at the bottom of its output. A run without this official status is not a valid benchmark result.
    - `STATUS: PASS` → Stop. The benchmark is complete.
    - `STATUS: FAIL — Maximum iterations` → Stop. Report the final results.
    - `STATUS: FAIL — Fix the errors` → Edit `index.html` and/or `style.css` to fix the reported errors, then go to step 1.
-3. **Never stop early.** Completed iterations exit with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line. Infrastructure failures can exit nonzero without recording a result: repair the tooling before retrying, and never publish such attempts as passing runs.
-4. **Never declare completion based on "false positives".** If `AXE_VIOLATIONS` or `PA11Y_ISSUES` is non-zero in the test output, they are real failures that must be fixed. You are not permitted to stop and claim the remaining issues are false positives — keep iterating until the counts reach 0 or the 20-iteration cap is hit.
-5. **Never stop because the task feels done.** As long as `STATUS: FAIL — Fix the errors` is printed and iterations remain, you must continue the loop without asking for confirmation.
+4. **Never stop early.** Completed iterations exit with code 0; a zero exit code does NOT mean the benchmark passed. You must check the `STATUS:` line. Infrastructure failures can exit nonzero without recording a result: repair the tooling before retrying, and never publish such attempts as passing runs.
+5. **Never declare completion based on "false positives".** If `AXE_VIOLATIONS` or `PA11Y_ISSUES` is non-zero in the test output, they are real failures that must be fixed. You are not permitted to stop and claim the remaining issues are false positives — keep iterating until the counts reach 0 or the 20-iteration cap is hit.
+6. **Never stop because the task feels done.** As long as `STATUS: FAIL — Fix the errors` is printed and iterations remain, you must continue the loop without asking for confirmation.
 
 ## Media resources
 HTML5 tags that require media (`<audio>`, `<video>`, `<img>`, `<picture>`, `<source>`, `<track>`, `<embed>`, `<object>`) **must use files from the `resources/` folder** at the repo root.
