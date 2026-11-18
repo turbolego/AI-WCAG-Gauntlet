@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An accessible technical showcase of HTML elements and native controls.">
+  <base href="/AI-WCAG-Gauntlet/" target="_self">
+  <title>Accessible HTML Showcase | AI WCAG Gauntlet</title>
+  <link rel="stylesheet" href="/AI-WCAG-Gauntlet/benchmarks/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill-20261118-133316/style.css">
+  <style>html { color-scheme: light; }</style>
+  <script>document.documentElement.classList.add("js");</script>
+<script>window.alert=window.confirm=window.prompt=()=>null;</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <p class="eyebrow">AI WCAG Gauntlet · Technical showcase</p>
+    <hgroup>
+      <h1>HTML, made clear</h1>
+      <p>A practical collection of native HTML elements, controls, and media.</p>
+    </hgroup>
+    <nav aria-label="On this page">
+      <ul>
+        <li><a href="#text">Text</a></li>
+        <li><a href="#controls">Controls</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#data">Data</a></li>
+      </ul>
+    </nav>
+    <search aria-label="Find a section">
+      <form action="#main" method="get">
+        <label for="site-search">Search this showcase</label>
+        <input id="site-search" type="search" name="q">
+        <button type="submit">Search</button>
+      </form>
+    </search>
+  </header>
+  <main id="main">
+    <article aria-labelledby="text">
+      <header class="section-heading">
+        <p class="eyebrow">01 · Content</p>
+        <h2 id="text">Text and meaning</h2>
+        <p>Native elements express the purpose and structure of content.</p>
+      </header>
+      <section class="card" aria-labelledby="type-heading">
+        <h3 id="type-heading">A small type specimen</h3>
+        <p><strong>Strong importance</strong> and <b>attention</b> are distinct. <em>Emphasis</em> and <i>alternate voice</i> are distinct too. Here is <u>annotated text</u>, <s>outdated information</s>, <small>small print</small>, H<sub>2</sub>O, and 2<sup>3</sup>.</p>
+        <p><abbr title="World Wide Web Consortium">W3C</abbr> publishes standards. <dfn>Semantic HTML</dfn> means choosing elements for their meaning. The <data value="42">answer</data> is available as machine-readable data.</p>
+        <p>A change: <del datetime="2026-01-01">old guidance</del> <ins datetime="2026-02-01">current guidance</ins>. It was <mark>highlighted for review</mark> on <time datetime="2026-02-01">February 1, 2026</time>.</p>
+        <p>Keyboard input: <kbd>Tab</kbd>. Program output: <samp>All checks complete.</samp> A variable such as <var>count</var> changes over time. Inline code: <code>document.querySelector("main")</code>.</p>
+        <pre><code>&lt;main&gt;
+  &lt;h1&gt;A clear page title&lt;/h1&gt;
+&lt;/main&gt;</code></pre>
+        <p>Keep words together with super<wbr>califragilistic and include a line break here:<br>next line.</p>
+        <p><bdi>مرحبا</bdi> can be isolated in a mixed-direction sentence. <bdo dir="rtl">This text has an explicit direction.</bdo></p>
+        <p>The <cite>HTML Living Standard</cite> describes web elements. A quotation can be <q cite="https://html.spec.whatwg.org/">short and inline</q>.</p>
+        <blockquote cite="https://www.w3.org/TR/WCAG22/">
+          <p>Content should be perceivable, operable, understandable, and robust.</p>
+          <footer>W3C, <cite>Web Content Accessibility Guidelines</cite></footer>
+        </blockquote>
+        <p><ruby>漢<rp>(</rp><rt>かん</rt><rp>)</rp></ruby> demonstrates ruby annotation.</p>
+        <hr>
+        <h4>A nested heading</h4>
+        <p>Here is a short paragraph describing the next examples.</p>
+        <h5>Details</h5>
+        <p>Short supporting detail.</p>
+        <h6>Note</h6>
+        <p>A concise note completes the heading scale.</p>
+      </section>
+      <section class="card" aria-labelledby="lists-heading">
+        <h3 id="lists-heading">Grouped information</h3>
+        <h4>Steps</h4>
+        <ol>
+          <li>Choose native elements.</li>
+          <li>Give every control a clear label.</li>
+          <li>Test with keyboard and assistive technology.</li>
+        </ol>
+        <h4>Terms</h4>
+        <dl>
+          <dt>Landmark</dt><dd>A named region that helps people navigate.</dd>
+          <dt>Focus</dt><dd>The current keyboard interaction location.</dd>
+        </dl>
+        <menu aria-label="Helpful references">
+          <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a></li>
+          <li><a href="https://html.spec.whatwg.org/">HTML Standard</a></li>
+        </menu>
+      </section>
+    </article>
+    <section id="controls" aria-labelledby="controls-heading">
+      <header class="section-heading">
+        <p class="eyebrow">02 · Interaction</p>
+        <h2 id="controls-heading">Native controls</h2>
+        <p>Labels, grouping, and visible feedback make interactions easier to use.</p>
+      </header>
+      <div class="card-grid">
+        <section class="card" aria-labelledby="form-heading">
+          <h3 id="form-heading">Contact form</h3>
+          <form action="#form-result" method="get">
+            <fieldset>
+              <legend>Your details</legend>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required>
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-help">
+              <p id="email-help" class="help">We use this only to reply to your message.</p>
+              <label for="topic">Topic</label>
+              <input id="topic" name="topic" list="topics">
+              <datalist id="topics">
+                <option value="Accessibility"></option>
+                <option value="HTML"></option>
+                <option value="CSS"></option>
+              </datalist>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="3"></textarea>
+            </fieldset>
+            <button type="submit">Send message</button>
+            <output id="form-result" name="result">Submitting opens a confirmation URL.</output>
+          </form>
+        </section>
+        <section class="card" aria-labelledby="choices-heading">
+          <h3 id="choices-heading">Preferences</h3>
+          <form>
+            <fieldset>
+              <legend>Choose a format</legend>
+              <label for="format">Format</label>
+              <select id="format" name="format">
+                <button><selectedcontent></selectedcontent></button>
+                <option value="html">HTML</option>
+                <optgroup label="Styles">
+                  <option value="css">CSS</option>
+                  <option value="design">Design tokens</option>
+                </optgroup>
+              </select>
+              <label for="level">Experience level</label>
+              <select id="level" name="level">
+                <option value="">Select a level</option>
+                <option value="new">New to accessibility</option>
+                <option value="experienced">Experienced</option>
+              </select>
+              <label for="notes">Additional notes</label>
+              <textarea id="notes" name="notes" rows="2"></textarea>
+            </fieldset>
+            <button type="button" id="notice-button">Show a helpful note</button>
+            <p id="notice" role="status" aria-live="polite">No new note.</p>
+          </form>
+        </section>
+        <section class="card" aria-labelledby="measurement-heading">
+          <h3 id="measurement-heading">Measurements</h3>
+          <label for="rating">Confidence: <meter id="rating" min="0" max="5" value="4">4 out of 5</meter></label>
+          <label for="progress">Checklist progress</label>
+          <progress id="progress" max="5" value="3">3 of 5 complete</progress>
+          <label for="quantity">Number of examples</label>
+          <input id="quantity" name="quantity" type="number" min="1" max="10" value="3">
+          <label for="range">Reading size</label>
+          <input id="range" type="range" min="16" max="24" value="18">
+          <output id="range-value" for="range">18 pixels</output>
+          <p><button type="button" id="dialog-open">Open details</button></p>
+          <dialog id="details-dialog" aria-labelledby="dialog-title">
+            <h4 id="dialog-title">Native dialog</h4>
+            <p>This dialog can be closed with its button or the Escape key.</p>
+            <form method="dialog"><button>Close details</button></form>
+          </dialog>
+          <details>
+            <summary>Why use native controls?</summary>
+            <p>Built-in semantics and keyboard behavior reduce custom code.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+    <section id="media" aria-labelledby="media-heading">
+      <header class="section-heading">
+        <p class="eyebrow">03 · Media</p>
+        <h2 id="media-heading">Images and media</h2>
+        <p>Images have text alternatives; players expose native controls.</p>
+      </header>
+      <div class="card-grid">
+        <figure class="card">
+          <picture>
+            <source srcset="/AI-WCAG-Gauntlet/resources/960px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" media="(min-width: 700px)">
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark pinhead icon" width="250" height="250" usemap="#pin-map">
+          </picture>
+          <figcaption>A map pin icon at responsive sizes.</figcaption>
+        </figure>
+        <section class="card" aria-labelledby="audio-heading">
+          <h3 id="audio-heading">Audio sample</h3>
+          <audio controls preload="metadata" aria-label="Flame, not lame pronunciation sample">
+            <source src="/AI-WCAG-Gauntlet/resources/LL-Q1860_(eng)-Flame,_not_lame-benchmarking.wav" type="audio/wav">
+            Your browser does not support audio playback.
+          </audio>
+          <p>Audio sample: “Flame, not lame.”</p>
+        </section>
+        <section class="card" aria-labelledby="video-heading">
+          <h3 id="video-heading">Climate projection video</h3>
+          <video controls preload="metadata" width="640" aria-describedby="video-description">
+            <source src="/AI-WCAG-Gauntlet/resources/IPCC_Projections_of_Temperature_and_Precipitation_in_the_21st_Century.webm" type="video/webm">
+            <track kind="captions" src="/AI-WCAG-Gauntlet/benchmarks/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill-20261118-133316/video-notes.vtt" srclang="en" label="English captions" default>
+            Your browser does not support video playback.
+          </video>
+          <p id="video-description">The video is an IPCC projection of temperature and precipitation in the 21st century. Visual detail and spoken content may require a separate description or transcript.</p>
+        </section>
+        <figure class="card">
+          <img src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" alt="Vector version of the Ordnance Survey benchmark pinhead icon" width="96" height="96">
+          <figcaption>Vector artwork remains crisp when resized.</figcaption>
+        </figure>
+        <section class="card" aria-labelledby="embedded-heading">
+          <h3 id="embedded-heading">Embedded image</h3>
+          <object data="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" aria-label="Ordnance Survey benchmark pinhead illustration">
+            <img src="/AI-WCAG-Gauntlet/resources/250px-Ordnance_survey_benchmark_Pinhead_icon.svg.png" alt="Ordnance Survey benchmark pinhead illustration">
+          </object>
+          <embed src="/AI-WCAG-Gauntlet/resources/Ordnance_survey_benchmark_Pinhead_icon.svg" type="image/svg+xml" width="96" height="96" title="Ordnance Survey pinhead vector">
+        </section>
+      </div>
+      <map name="pin-map">
+        <area shape="rect" coords="0,0,250,250" href="#data" alt="Continue to the data examples">
+      </map>
+      <p>The image map links to <a href="#data">the data section</a>.</p>
+      <section class="card" aria-labelledby="frame-heading">
+        <h3 id="frame-heading">Embedded note</h3>
+        <iframe title="A short note about accessibility" src="/AI-WCAG-Gauntlet/benchmarks/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill/GPT-6%20Luna%20-%20Low%20%2B%20wcag-skill-20261118-133316/frame-note.html"></iframe>
+      </section>
+    </section>
+    <section id="data" aria-labelledby="data-heading">
+      <header class="section-heading">
+        <p class="eyebrow">04 · Structure</p>
+        <h2 id="data-heading">Tables and supporting regions</h2>
+      </header>
+      <div class="card">
+        <table>
+          <caption>Example review checklist</caption>
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Check</th><th scope="col">Purpose</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Labels</th><td>Identify each form control.</td></tr>
+            <tr><th scope="row">Focus</th><td>Show keyboard location clearly.</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Total</th><td>Two example checks</td></tr></tfoot>
+        </table>
+      </div>
+      <aside class="card" aria-labelledby="aside-heading">
+        <h3 id="aside-heading">Further reading</h3>
+        <p>Consult the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WAI accessibility guidelines</a>.</p>
+      </aside>
+    </section>
+    <section class="card" aria-labelledby="canvas-heading">
+      <h2 id="canvas-heading">Canvas fallback</h2>
+      <canvas width="300" height="60">A decorative sample canvas; its label is “sample graphic”.</canvas>
+      <p>The canvas is optional decoration; the surrounding text carries the information.</p>
+    </section>
+    <footer class="site-footer">
+      <address>Questions? <a href="mailto:accessibility@example.org">Email the accessibility team</a>.</address>
+      <p><span>Built with</span> <strong>semantic HTML</strong> and careful testing.</p>
+    </footer>
+    <section class="card" aria-label="Reusable content example">
+      <slot name="example">This visible fallback is shown when no custom content is provided.</slot>
+    </section>
+  </main>
+  <noscript><p class="noscript-note">Interactive enhancements are unavailable; native content remains available.</p></noscript>
+  <template id="unused-template"><p>Reusable example fragment.</p></template>
+  <script>
+    const noticeButton = document.querySelector("#notice-button");
+    const notice = document.querySelector("#notice");
+    noticeButton.addEventListener("click", () => { notice.textContent = "Use the visible label to identify each control."; });
+    const range = document.querySelector("#range");
+    const rangeValue = document.querySelector("#range-value");
+    range.addEventListener("input", () => { rangeValue.value = `${range.value} pixels`; });
+    const dialog = document.querySelector("#details-dialog");
+    document.querySelector("#dialog-open").addEventListener("click", () => dialog.showModal());
+    dialog.addEventListener("close", () => document.querySelector("#dialog-open").focus());
+  </script>
+</body>
+</html>
