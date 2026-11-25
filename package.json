@@ -34,7 +34,7 @@
     "parse5-sax-parser": "^8.0.1"
   },
   "overrides": {
-    "@puppeteer/browsers": "3.2.7",
+    "@puppeteer/browsers": "3.3.0",
     "basic-ftp": "6.2.6",
     "qs": "6.17.1",
     "zod": "4.6.7"
